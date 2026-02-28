@@ -141,6 +141,35 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 - **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
 - **WhatsApp:** No headers — use **bold** or CAPS for emphasis
 
+## 📚 个人知识库 (PKM) 工作流
+
+**目录**：`knowledge-base/`（子目录：tools/ research/ work/ reference/ bookmarks/）
+**网页**：`knowledge-base/index.html`（本地浏览，暗色主题）
+**索引**：`knowledge-base/index.json`（所有条目元数据）
+
+### 触发词
+用户说以下任何一个时，触发知识库写入流程：
+- 「收藏」「记录知识库」「追加知识库」「存到知识库」「记一下」「bookmark」
+
+### 工作流程
+1. **主 agent** 判断内容分类（tools/research/work/reference/bookmarks）
+2. **派 sub-agent**（sonnet）执行：
+   - 将内容写为 markdown 文件到对应子目录
+   - 更新 `index.json`（追加新条目）
+   - 运行 `bash knowledge-base/rebuild.sh` 重建索引
+   - `git add && git commit`
+3. **主 agent** 回复用户确认
+
+### 文件命名规则
+- 文件名：kebab-case，如 `feishu-bot-permissions.md`
+- 每个文件开头用 `# 标题` 格式
+- 可选 YAML front matter（tags、summary）
+
+### 网页更新
+- index.html 从 index.json 动态加载，无需重新生成 HTML
+- 只需要保持 index.json 正确即可
+- 启动方式：`cd knowledge-base && python3 -m http.server 8906`
+
 ## 🤖 Sub-Agent 模型分层策略
 
 **核心原则：主 Agent 用 opus 深度思考，执行类任务派 sub-agent 用便宜的模型。**
