@@ -19,6 +19,9 @@ Commands:
     sheets-create <title> <folder_token>          - Create spreadsheet
     sheets-meta <spreadsheet_token>               - Get sheet metadata
     sheets-add-sheet <spreadsheet_token> <title>  - Add a new sheet
+    sheets-append <spreadsheet_token> <range> <json_values> - Append rows
+    doc-import <local_md_file> <folder_token> [title]      - Import MD as Feishu doc
+    drive-versions <file_token> [type]             - List file version history
 """
 
 import json, sys, os, requests, mimetypes
@@ -162,23 +165,31 @@ def doc_copy(doc_token: str, folder_token: str, title: str = None):
 
 # ── Doc: Import from Markdown/HTML ────────────────────────────────────────────
 
-def doc_import(content: str, file_name: str, folder_token: str, file_type: str = "md"):
-    """Import markdown or docx content as a new Feishu document."""
-    import tempfile, time
+def doc_import(local_file: str, folder_token: str, file_name: str = None):
+    """
+    Import a local .docx or .xlsx file as a Feishu document.
+    Note: Feishu import does NOT support .md files directly.
+    For markdown → Feishu doc, use feishu_doc tool's write action instead.
+    """
+    import time
+    local_file = str(local_file)
+    if not os.path.exists(local_file):
+        raise FileNotFoundError(f"File not found: {local_file}")
+    ext = os.path.splitext(local_file)[1].lower().lstrip(".")
+    if ext not in ("docx", "xlsx"):
+        raise ValueError(f"Unsupported format: .{ext}. Only .docx and .xlsx are supported.")
+    file_name = file_name or os.path.basename(local_file)
     token = get_tenant_token()
-    suffix = ".md" if file_type == "md" else ".docx"
-    with tempfile.NamedTemporaryFile(suffix=suffix, delete=False, mode="w", encoding="utf-8") as tmp:
-        tmp.write(content)
-        tmp_path = tmp.name
+    suffix = f".{ext}"
+    tmp_path = local_file
 
-    # Upload the temp file first
-    upload_result = drive_upload(tmp_path, folder_token, file_name + suffix)
-    os.unlink(tmp_path)
+    # Upload the file first
+    upload_result = drive_upload(tmp_path, folder_token, file_name)
     file_token = upload_result.get("file_token")
 
-    # Import the uploaded file
+    # Import the uploaded file as Feishu docx
     r = _post("/open-apis/drive/v1/import_tasks", {
-        "file_extension": file_type,
+        "file_extension": ext,
         "file_token": file_token,
         "type": "docx",
         "point": {"mount_type": 1, "mount_key": folder_token}
@@ -339,6 +350,25 @@ def main():
 
     elif cmd == "sheets-add-sheet":
         out(sheets_add_sheet(args[1], args[2]))
+
+    elif cmd == "sheets-append":
+        values = json.loads(args[3])
+        out(sheets_append(args[1], args[2], values))
+
+    elif cmd == "doc-import":
+        # doc-import <local_docx_or_xlsx_file> <folder_token> [name]
+        name = args[3] if len(args) > 3 else None
+        out(doc_import(args[1], args[2], name))
+
+    elif cmd == "drive-versions":
+        # List file versions
+        r = _get(f"/open-apis/drive/v1/files/{args[1]}/versions",
+                 params={"obj_type": args[2] if len(args) > 2 else "docx", "page_size": 20})
+        if r.get("code") != 0:
+            raise RuntimeError(f"Versions error: {r}")
+        items = r.get("data", {}).get("items", [])
+        out([{"version": x.get("version"), "name": x.get("name"), "creator": x.get("creator_id"),
+              "create_time": x.get("create_time")} for x in items])
 
     else:
         print(f"Unknown command: {cmd}")
