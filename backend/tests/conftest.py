@@ -13,6 +13,7 @@ from backend.engine.skill_test import SkillTestEngine
 from backend.engine.slots import SlotManager
 from backend.models.chaos import ChaosBag
 from backend.models.enums import CardType, ChaosTokenType, PlayerClass, Skill, SlotType
+from backend.models.investigator import InvestigatorCard, DeckRequirement
 from backend.models.state import (
     CardData, CardInstance, GameState, InvestigatorState,
     LocationState, ScenarioState, SkillValues,
@@ -43,6 +44,36 @@ def make_investigator_data(
             combat=combat,
             agility=agility,
         ),
+    )
+
+
+def make_investigator_card(
+    id: str = "test_investigator",
+    name: str = "Test Investigator",
+    name_cn: str = "测试调查员",
+    card_class: PlayerClass = PlayerClass.NEUTRAL,
+    willpower: int = 3,
+    intellect: int = 3,
+    combat: int = 3,
+    agility: int = 3,
+    health: int = 7,
+    sanity: int = 7,
+    deck_requirement: DeckRequirement | None = None,
+) -> InvestigatorCard:
+    return InvestigatorCard(
+        id=id,
+        name=name,
+        name_cn=name_cn,
+        card_class=card_class,
+        health=health,
+        sanity=sanity,
+        skills=SkillValues(
+            willpower=willpower,
+            intellect=intellect,
+            combat=combat,
+            agility=agility,
+        ),
+        deck_requirement=deck_requirement,
     )
 
 

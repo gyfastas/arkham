@@ -24,6 +24,8 @@ class DamageEngine:
         source: str | None = None,
         direct: bool = False,
         target_instance_id: str | None = None,
+        damage_assignment: dict[str, int] | None = None,
+        horror_assignment: dict[str, int] | None = None,
     ) -> None:
         """Deal damage and/or horror to an investigator.
 
@@ -34,6 +36,10 @@ class DamageEngine:
             source: Source card instance_id.
             direct: If True, bypass asset assignment (direct damage/horror).
             target_instance_id: If direct, specific target card instance.
+            damage_assignment: Optional dict mapping instance_id -> damage to assign
+                to allies. Remaining damage goes to investigator.
+                e.g. {"inst_milan": 1} assigns 1 damage to Dr. Milan.
+            horror_assignment: Same as damage_assignment but for horror.
         """
         inv = self.game_state.get_investigator(investigator_id)
         if inv is None:
@@ -42,9 +48,10 @@ class DamageEngine:
         if direct and target_instance_id:
             self._apply_direct(target_instance_id, damage, horror)
         else:
-            # Step 1: Assignment (for now, auto-assign to investigator)
-            # In a full implementation, the player would choose assignment
-            assigned_damage = self._assign_to_investigator(inv, damage, horror)
+            # Step 1: Assign damage/horror (can go to allies or investigator)
+            inv_damage, inv_horror = self._assign_damage(
+                inv, damage, horror, damage_assignment, horror_assignment,
+            )
 
             # Step 2: Emit events for abilities to react
             if damage > 0:
@@ -69,8 +76,8 @@ class DamageEngine:
                 )
                 self.bus.emit(ctx)
 
-            # Step 3: Apply
-            self._apply_to_investigator(inv, damage, horror)
+            # Step 3: Apply remaining to investigator
+            self._apply_to_investigator(inv, inv_damage, inv_horror)
 
         # Check defeat
         self._check_defeat(investigator_id)
@@ -109,11 +116,104 @@ class DamageEngine:
             return True
         return False
 
-    def _assign_to_investigator(self, inv: InvestigatorState, damage: int, horror: int) -> dict:
-        """Auto-assign damage/horror. Assets with health/sanity can absorb."""
-        # Simple implementation: assign all to investigator
-        # A full implementation would let player choose asset assignment
-        return {"investigator_damage": damage, "investigator_horror": horror}
+    def _assign_damage(
+        self,
+        inv: InvestigatorState,
+        damage: int,
+        horror: int,
+        damage_assignment: dict[str, int] | None = None,
+        horror_assignment: dict[str, int] | None = None,
+    ) -> tuple[int, int]:
+        """Assign damage/horror to allies and investigator.
+
+        If damage_assignment/horror_assignment is provided, apply specified
+        amounts to ally assets (must have health/sanity). Remaining goes to
+        the investigator.
+
+        Returns (investigator_damage, investigator_horror) after ally soaking.
+        """
+        inv_damage = damage
+        inv_horror = horror
+
+        if damage_assignment:
+            for inst_id, amount in damage_assignment.items():
+                if amount <= 0 or inv_damage <= 0:
+                    continue
+                ci = self.game_state.get_card_instance(inst_id)
+                if ci is None:
+                    continue
+                cd = self.game_state.get_card_data(ci.card_id)
+                if cd is None or cd.health is None:
+                    continue
+                # Only soak up to remaining health on the ally
+                remaining_hp = cd.health - ci.damage
+                actual = min(amount, remaining_hp, inv_damage)
+                if actual > 0:
+                    ci.damage += actual
+                    inv_damage -= actual
+                    self._check_asset_defeat(inst_id)
+
+        if horror_assignment:
+            for inst_id, amount in horror_assignment.items():
+                if amount <= 0 or inv_horror <= 0:
+                    continue
+                ci = self.game_state.get_card_instance(inst_id)
+                if ci is None:
+                    continue
+                cd = self.game_state.get_card_data(ci.card_id)
+                if cd is None or cd.sanity is None:
+                    continue
+                # Only soak up to remaining sanity on the ally
+                remaining_san = cd.sanity - ci.horror
+                actual = min(amount, remaining_san, inv_horror)
+                if actual > 0:
+                    ci.horror += actual
+                    inv_horror -= actual
+                    self._check_asset_defeat(inst_id)
+
+        return inv_damage, inv_horror
+
+    def get_ally_soak_targets(self, investigator_id: str) -> list[dict]:
+        """Return list of allies that can soak damage or horror.
+
+        Each entry: {instance_id, card_id, name, remaining_health, remaining_sanity}
+        """
+        inv = self.game_state.get_investigator(investigator_id)
+        if inv is None:
+            return []
+        targets = []
+        for inst_id in inv.play_area:
+            ci = self.game_state.get_card_instance(inst_id)
+            if ci is None:
+                continue
+            cd = self.game_state.get_card_data(ci.card_id)
+            if cd is None:
+                continue
+            if cd.health is None and cd.sanity is None:
+                continue
+            # Must be an ally (has ally slot or ally trait)
+            from backend.models.enums import SlotType
+            is_ally = (SlotType.ALLY in (cd.slots or [])
+                       or "ally" in (cd.traits or []))
+            if not is_ally:
+                continue
+            remaining_hp = (cd.health - ci.damage) if cd.health is not None else None
+            remaining_san = (cd.sanity - ci.horror) if cd.sanity is not None else None
+            if (remaining_hp is not None and remaining_hp > 0) or \
+               (remaining_san is not None and remaining_san > 0):
+                targets.append({
+                    "instance_id": inst_id,
+                    "card_id": ci.card_id,
+                    "name": cd.name,
+                    "name_cn": cd.name_cn,
+                    "remaining_health": remaining_hp,
+                    "remaining_sanity": remaining_san,
+                    "health": cd.health,
+                    "sanity": cd.sanity,
+                    "damage": ci.damage,
+                    "horror": ci.horror,
+                })
+        return targets
 
     def _apply_to_investigator(self, inv: InvestigatorState, damage: int, horror: int) -> None:
         inv.damage += damage

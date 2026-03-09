@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失落知识的图书馆 — 黛西·沃克</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; }
+.container { max-width: 1100px; margin: 0 auto; padding: 12px; }
+
+/* Header */
+.scenario-header { text-align: center; padding: 8px; margin-bottom: 8px; }
+.scenario-header h1 { font-size: 18px; color: #d4a017; letter-spacing: 2px; }
+.scenario-header .subtitle { font-size: 12px; color: #888; margin-top: 2px; }
+
+/* Status Bar */
+.status-bar { display: flex; gap: 14px; padding: 10px 16px; background: #16213e; border-radius: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+.stat { display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; }
+.stat .icon { font-size: 18px; } .stat .val { color: #fff; font-size: 18px; } .stat .label { color: #888; font-size: 11px; }
+.hp { color: #e74c3c; } .san { color: #3498db; } .res { color: #f1c40f; } .act { color: #2ecc71; }
+.clue { color: #9b59b6; } .doom-stat { color: #e74c3c; }
+.round-info { margin-left: auto; color: #888; font-size: 13px; }
+.inv-name { color: #d4a017; font-weight: 700; font-size: 14px; }
+.inv-skills { font-size: 11px; color: #aaa; }
+
+/* Doom bar */
+.doom-bar { height: 8px; background: #333; border-radius: 4px; margin-bottom: 10px; overflow: hidden; }
+.doom-fill { height: 100%; background: linear-gradient(90deg, #8b0000, #e74c3c); transition: width 0.5s; }
+
+/* Map — 3 locations horizontal */
+.map-section { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; }
+.location-card {
+  flex: 1; padding: 10px; background: #16213e; border: 2px solid #333; border-radius: 8px;
+  cursor: pointer; transition: all 0.15s; position: relative;
+}
+.location-card.current { border-color: #d4a017; box-shadow: 0 0 12px rgba(212,160,23,0.3); }
+.location-card:hover:not(.current) { border-color: #555; }
+.loc-header { display: flex; justify-content: space-between; align-items: center; }
+.loc-name { font-size: 15px; font-weight: 700; color: #fff; }
+.loc-badge { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: #d4a017; color: #000; font-weight: 700; }
+.loc-stats { display: flex; gap: 12px; color: #aaa; font-size: 13px; margin-top: 4px; }
+.loc-enemies { font-size: 12px; color: #e74c3c; margin-top: 4px; }
+.loc-connection { font-size: 11px; color: #555; margin-top: 4px; }
+.map-arrow { font-size: 20px; color: #555; flex-shrink: 0; }
+
+/* Main Layout */
+.main { display: grid; grid-template-columns: 280px 1fr; gap: 10px; margin-bottom: 10px; }
+.left-panel { display: flex; flex-direction: column; gap: 10px; }
+.panel { background: #16213e; border-radius: 8px; padding: 10px; }
+.panel h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+/* Enemies */
+.enemy-card { background: #2c1810; border: 1px solid #5c3a28; border-radius: 6px; padding: 8px; margin-bottom: 6px; }
+.enemy-card.exhausted { opacity: 0.5; border-style: dashed; }
+.enemy-name { font-weight: 700; color: #e74c3c; font-size: 14px; }
+.enemy-stats { display: flex; gap: 10px; font-size: 12px; color: #ccc; margin-top: 3px; }
+.enemy-hp-bar { height: 5px; background: #333; border-radius: 3px; margin-top: 4px; overflow: hidden; }
+.enemy-hp-fill { height: 100%; background: #e74c3c; transition: width 0.3s; }
+.enemy-status { font-size: 11px; color: #888; margin-top: 3px; }
+.enemy-keyword { font-size: 10px; color: #e67e22; background: #3c2a10; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-top: 2px; }
+.enemy-actions { display: flex; gap: 6px; margin-top: 4px; }
+.enemy-action-btn { padding: 3px 10px; border: 1px solid #555; border-radius: 4px; background: transparent; color: #ccc; cursor: pointer; font-size: 11px; transition: all 0.15s; }
+.enemy-action-btn:hover { border-color: #667eea; color: #fff; background: #1a1a3e; }
+.enemy-action-btn.fight { border-color: #c0392b; color: #e74c3c; }
+.enemy-action-btn.fight:hover { background: #3c1515; }
+.enemy-action-btn.engage { border-color: #e67e22; color: #f39c12; }
+.enemy-action-btn.engage:hover { background: #3c2a10; }
+
+/* Threat Area (Necronomicon) */
+.threat-section { margin-bottom: 10px; }
+.threat-card {
+  background: #2a1030; border: 2px solid #8e44ad; border-radius: 8px; padding: 10px;
+  display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.15s;
+}
+.threat-card:hover { border-color: #c39bd3; box-shadow: 0 0 8px rgba(142,68,173,0.4); }
+.threat-card .threat-name { font-weight: 700; color: #c39bd3; font-size: 14px; }
+.threat-card .threat-detail { font-size: 12px; color: #aaa; margin-top: 2px; }
+.horror-tokens { display: flex; gap: 4px; }
+.horror-token { width: 22px; height: 22px; background: #8e44ad; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; }
+.horror-token.empty { background: #333; color: #666; }
+.threat-activate-btn { padding: 4px 12px; border: 1px solid #8e44ad; border-radius: 4px; background: transparent; color: #c39bd3; cursor: pointer; font-size: 11px; margin-left: auto; }
+.threat-activate-btn:hover { background: #3a1545; }
+
+/* Log */
+.log-panel { min-height: 180px; max-height: 350px; overflow-y: auto; }
+.log-entry { font-size: 12px; padding: 2px 0; border-bottom: 1px solid #1a1a2e; line-height: 1.4; }
+
+/* Hand */
+.hand-section { margin-bottom: 10px; }
+.hand-section h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; padding-left: 4px; }
+.hand-cards { display: flex; gap: 8px; overflow-x: auto; padding: 4px; }
+.card { min-width: 135px; max-width: 135px; background: #16213e; border: 2px solid #333; border-radius: 8px; padding: 8px; cursor: pointer; transition: all 0.15s; flex-shrink: 0; position: relative; }
+.card:hover { border-color: #667eea; transform: translateY(-4px); box-shadow: 0 4px 12px rgba(102,126,234,0.3); }
+.card-name { font-size: 12px; font-weight: 700; color: #fff; } .card-name-cn { font-size: 11px; color: #aaa; }
+.card-type { font-size: 10px; color: #667eea; text-transform: uppercase; margin-top: 2px; }
+.card-cost { position: absolute; top: 5px; right: 7px; background: #f1c40f; color: #000; border-radius: 50%; width: 19px; height: 19px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.card-text { font-size: 10px; color: #999; margin-top: 3px; line-height: 1.3; }
+.card-icons { font-size: 10px; color: #667eea; margin-top: 3px; }
+.card.guardian { border-color: #2980b9; } .card.seeker { border-color: #d4a017; } .card.neutral { border-color: #666; }
+.card.event { background: #1a2040; } .card.skill { background: #1a1a30; border-style: dashed; }
+/* Tome highlight */
+.card.tome-card { border-color: #8e44ad !important; box-shadow: 0 0 6px rgba(142,68,173,0.3); }
+.card .tome-badge { position: absolute; top: 5px; left: 5px; background: #8e44ad; color: #fff; font-size: 8px; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+.card .fast-badge { position: absolute; bottom: 5px; right: 5px; background: #27ae60; color: #fff; font-size: 8px; padding: 1px 4px; border-radius: 3px; }
+
+/* Play Area */
+.play-area-section { margin-bottom: 10px; }
+.play-area-section h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; padding-left: 4px; }
+.play-area-cards { display: flex; gap: 8px; flex-wrap: wrap; padding: 4px; min-height: 36px; }
+.asset-in-play { background: #0f3460; border: 2px solid #3282b8; border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; transition: all 0.15s; position: relative; }
+.asset-in-play:hover { border-color: #bbe1fa; }
+.asset-in-play.exhausted { opacity: 0.5; transform: rotate(5deg); border-style: dashed; }
+.asset-in-play .uses { color: #f1c40f; font-size: 11px; }
+.asset-in-play.tome-asset { border-color: #8e44ad; background: #1a1040; }
+.asset-in-play.tome-asset:hover { border-color: #c39bd3; }
+.asset-in-play.ally-asset { border-color: #27ae60; background: #0f2a1a; }
+.asset-in-play.ally-asset:hover { border-color: #2ecc71; }
+.ally-hp-bar { display: flex; gap: 2px; margin-top: 3px; }
+.ally-hp-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ally-hp-dot.hp { background: #e74c3c; } .ally-hp-dot.hp.lost { background: #333; }
+.ally-hp-dot.san { background: #3498db; } .ally-hp-dot.san.lost { background: #333; }
+.tome-activate-btn { display: inline-block; margin-left: 6px; padding: 1px 6px; border: 1px solid #8e44ad; border-radius: 3px; background: transparent; color: #c39bd3; cursor: pointer; font-size: 10px; }
+.tome-activate-btn:hover { background: #3a1545; }
+
+/* Actions */
+.action-bar { display: flex; gap: 8px; padding: 10px; background: #16213e; border-radius: 8px; flex-wrap: wrap; justify-content: center; }
+.action-btn { padding: 8px 16px; border: 2px solid #333; border-radius: 8px; background: #1a1a2e; color: #e0e0e0; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; display: flex; align-items: center; gap: 5px; }
+.action-btn:hover:not(:disabled) { border-color: #667eea; background: #2a2a4e; }
+.action-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.action-btn.danger { border-color: #c0392b; } .action-btn.danger:hover:not(:disabled) { border-color: #e74c3c; background: #3c1515; }
+.action-btn.success { border-color: #27ae60; } .action-btn.success:hover:not(:disabled) { border-color: #2ecc71; background: #153320; }
+.action-btn.end-turn { border-color: #e67e22; } .action-btn.end-turn:hover:not(:disabled) { border-color: #f39c12; background: #3c2a10; }
+
+/* Overlays */
+.game-over-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.game-over-overlay .message { text-align: center; padding: 40px; border-radius: 16px; max-width: 420px; }
+.game-over-overlay .message.win { background: #0a2a0a; border: 2px solid #2ecc71; }
+.game-over-overlay .message.lose { background: #2c1010; border: 2px solid #e74c3c; }
+.game-over-overlay h1 { font-size: 28px; margin-bottom: 16px; }
+.game-over-overlay p { color: #ccc; margin-bottom: 20px; font-size: 15px; }
+
+.toast { position: fixed; top: 20px; right: 20px; padding: 12px 20px; background: #333; border-radius: 8px; font-size: 14px; z-index: 200; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.toast.show { opacity: 1; } .toast.error { background: #5c1a1a; border: 1px solid #e74c3c; } .toast.success { background: #1a3c1a; border: 1px solid #2ecc71; }
+
+/* Modals */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 50; }
+.modal-inner { background: #16213e; border: 2px solid #667eea; border-radius: 12px; padding: 20px; min-width: 300px; max-width: 480px; max-height: 80vh; overflow-y: auto; }
+.modal-inner h3 { margin-bottom: 10px; }
+.modal-option { padding: 8px 14px; border: 1px solid #333; border-radius: 6px; margin-bottom: 6px; cursor: pointer; transition: all 0.15s; }
+.modal-option:hover { border-color: #667eea; background: #1a1a3e; }
+.commit-card { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border: 1px solid #333; border-radius: 6px; margin-bottom: 5px; cursor: pointer; transition: all 0.15s; }
+.commit-card:hover { border-color: #667eea; }
+.commit-card.selected { border-color: #2ecc71; background: rgba(46,204,113,0.1); }
+.commit-card .card-info { flex: 1; } .commit-card .card-info .name { font-size: 12px; font-weight: 600; } .commit-card .card-info .detail { font-size: 10px; color: #888; }
+.commit-card .icons { color: #667eea; font-size: 12px; font-weight: 700; } .commit-card .check { width: 20px; text-align: center; color: #2ecc71; font-size: 16px; }
+.commit-summary { font-size: 12px; color: #aaa; margin: 6px 0; padding: 6px; background: #111; border-radius: 4px; }
+.commit-summary strong { color: #fff; }
+.modal-buttons { display: flex; gap: 8px; margin-top: 10px; }
+.modal-buttons button { flex: 1; padding: 8px; border: 2px solid #333; border-radius: 8px; background: #1a1a2e; color: #e0e0e0; cursor: pointer; font-size: 13px; font-weight: 600; }
+.modal-buttons .confirm { border-color: #27ae60; } .modal-buttons .confirm:hover { border-color: #2ecc71; background: #153320; }
+.modal-buttons .cancel:hover { border-color: #e74c3c; background: #3c1515; }
+
+/* Chaos Bag */
+.chaos-bag-section { background: #16213e; border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; }
+.chaos-bag-section h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.chaos-bag-section h3 .bag-count { color: #aaa; font-weight: 400; }
+.chaos-tokens { display: flex; gap: 4px; flex-wrap: wrap; }
+.chaos-token {
+  width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; border: 1px solid #555; transition: all 0.2s;
+}
+.chaos-token.number { background: #2a2a4e; color: #e0e0e0; }
+.chaos-token.positive { background: #1a3c1a; color: #2ecc71; border-color: #2ecc71; }
+.chaos-token.symbol { background: #3c1515; color: #e74c3c; border-color: #c0392b; }
+.chaos-token.elder-sign { background: #1a2a3c; color: #3498db; border-color: #2980b9; }
+.chaos-token.auto-fail { background: #5c1a1a; color: #e74c3c; border-color: #e74c3c; }
+.chaos-token.special { background: #3c2a10; color: #f39c12; border-color: #e67e22; }
+.chaos-token .count { position: absolute; top: -2px; right: -2px; font-size: 8px; background: #333; padding: 0 3px; border-radius: 3px; }
+.chaos-token-group { display: flex; align-items: center; gap: 1px; margin-right: 4px; position: relative; }
+.chaos-token-group .multiplier { font-size: 9px; color: #888; margin-left: 1px; }
+
+/* Win condition indicator */
+.win-hint { font-size: 11px; color: #888; text-align: center; padding: 4px; }
+.win-hint .ready { color: #2ecc71; font-weight: 700; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-track { background: #1a1a2e; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div class="scenario-header">
+    <h1>失落知识的图书馆</h1>
+    <div class="subtitle">The Lost Library — Daisy Walker Scenario</div>
+  </div>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div><span class="inv-name">黛西·沃克</span> <span class="inv-skills">意3 智5 战2 敏2</span></div>
+    <div class="stat hp"><span class="icon">&#10084;</span> <span class="val" id="hp">5</span>/<span id="hp-max">5</span></div>
+    <div class="stat san"><span class="icon">&#128065;</span> <span class="val" id="san">9</span>/<span id="san-max">9</span></div>
+    <div class="stat res"><span class="icon">&#9679;</span> <span class="val" id="resources">5</span> <span class="label">资源</span></div>
+    <div class="stat act"><span class="icon">&#9654;</span> <span class="val" id="actions">4</span> <span class="label">行动</span></div>
+    <div class="stat clue"><span class="icon">&#128270;</span> <span class="val" id="clues">0</span>/<span id="clues-needed">7</span> <span class="label">线索</span></div>
+    <div class="stat doom-stat"><span class="icon">&#128128;</span> <span class="val" id="doom">0</span>/<span id="doom-max">8</span> <span class="label">毁灭</span></div>
+    <div class="stat" style="color:#aaa"><span class="icon">&#127183;</span> <span class="val" id="deck-count">0</span> <span class="label">牌库</span></div>
+    <div class="round-info">第<span id="round-num">1</span>轮 · <span id="phase-name">调查阶段</span></div>
+  </div>
+
+  <!-- Doom Progress -->
+  <div class="doom-bar"><div class="doom-fill" id="doom-bar-fill" style="width:0%"></div></div>
+
+  <!-- Chaos Bag -->
+  <div class="chaos-bag-section" id="chaos-bag-section">
+    <h3>混沌袋 <span class="bag-count" id="chaos-bag-count">(16)</span></h3>
+    <div class="chaos-tokens" id="chaos-bag-tokens"></div>
+  </div>
+
+  <!-- Win Condition Hint -->
+  <div class="win-hint" id="win-hint">收集7线索并返回阅览室即可获胜</div>
+
+  <!-- Map: 3 locations -->
+  <div class="map-section" id="map-container"></div>
+
+  <!-- Threat Area (Necronomicon) -->
+  <div class="threat-section" id="threat-section" style="display:none">
+    <div class="panel">
+      <h3>威胁区</h3>
+      <div id="threat-container"></div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="main">
+    <div class="left-panel">
+      <div class="panel"><h3>敌人</h3><div id="enemies-container"></div></div>
+    </div>
+    <div class="panel log-panel" id="log-panel"><h3>事件日志</h3><div id="log-entries"></div></div>
+  </div>
+
+  <!-- Hand -->
+  <div class="hand-section"><h3>手牌 (<span id="hand-count">0</span>)</h3><div class="hand-cards" id="hand-container"></div></div>
+
+  <!-- Play Area -->
+  <div class="play-area-section"><h3>装备区</h3><div class="play-area-cards" id="play-area-container"></div></div>
+
+  <!-- Action Bar -->
+  <div class="action-bar">
+    <button class="action-btn danger" onclick="startFight()" id="btn-fight">&#9876; 战斗</button>
+    <button class="action-btn" onclick="startEvade()" id="btn-evade">&#128737; 闪避</button>
+    <button class="action-btn" onclick="startInvestigate()" id="btn-investigate">&#128269; 调查</button>
+    <button class="action-btn" onclick="doSimpleAction('RESOURCE')" id="btn-resource">&#128176; 资源</button>
+    <button class="action-btn" onclick="doSimpleAction('DRAW')" id="btn-draw">&#127183; 抽牌</button>
+    <button class="action-btn end-turn" onclick="endTurn()" id="btn-end">&#9193; 结束回合</button>
+    <button class="action-btn" onclick="resetGame()" style="margin-left:auto; font-size:11px; padding:6px 10px;">&#128260; 重置</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="game-over-overlay" id="game-over-overlay" style="display:none">
+  <div class="message" id="game-over-box">
+    <h1 id="game-over-title"></h1>
+    <p id="game-over-text"></p>
+    <button class="action-btn success" onclick="resetGame()">&#128260; 重新开始</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="weapon-modal" style="display:none">
+  <div class="modal-inner"><h3>选择武器</h3><div id="weapon-options"></div><div class="modal-option" onclick="selectWeapon(null)">&#9994; 徒手攻击</div></div>
+</div>
+
+<div class="modal-overlay" id="enemy-modal" style="display:none">
+  <div class="modal-inner"><h3 id="enemy-modal-title">选择目标</h3><div id="enemy-options"></div><div class="modal-option" onclick="closeModal('enemy-modal')" style="color:#888">取消</div></div>
+</div>
+
+<div class="modal-overlay" id="soak-modal" style="display:none">
+  <div class="modal-inner">
+    <h3>分配伤害/恐惧</h3>
+    <div class="commit-summary" id="soak-summary"></div>
+    <div id="soak-targets"></div>
+    <div class="modal-buttons"><button class="cancel" onclick="cancelSoak()">全部由黛西承受</button><button class="confirm" onclick="confirmSoak()">确认分配</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="commit-modal" style="display:none">
+  <div class="modal-inner">
+    <h3 id="commit-title">投入卡牌到检定</h3>
+    <div class="commit-summary" id="commit-summary"></div>
+    <div id="commit-cards-list"></div>
+    <div class="modal-buttons"><button class="cancel" onclick="cancelCommit()">跳过</button><button class="confirm" onclick="confirmCommit()">确认投入</button></div>
+  </div>
+</div>
+
+<script>
+let state = null;
+let pendingAction = null;
+let committedCardIds = [];
+
+async function api(path, data) {
+  const opts = data !== undefined
+    ? { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) }
+    : { method: 'GET' };
+  return (await fetch(path, opts)).json();
+}
+
+async function refreshState() { const d = await api('/api/state'); state = d; render(d); }
+
+async function resetGame() {
+  document.getElementById('game-over-overlay').style.display = 'none';
+  const d = await api('/api/setup', {}); state = d.state; render(d.state);
+  showToast('游戏已重置', 'success');
+}
+
+async function doSimpleAction(action, extra = {}) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  const d = await api('/api/action', { action, ...extra }); state = d.state; render(d.state);
+  if (!d.success) showToast(d.message, 'error');
+}
+
+function moveTo(locId) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  if (locId === state.investigator.location_id) return;
+  doSimpleAction('MOVE', { destination: locId });
+}
+
+// Fight flow
+function startFight() {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  if (state.enemies.length === 0) { showToast('没有可攻击的敌人', 'error'); return; }
+  if (state.enemies.length === 1) { pickFightTarget(state.enemies[0].instance_id); return; }
+  showEnemySelect('选择攻击目标', state.enemies, pickFightTarget);
+}
+
+function pickFightTarget(enemyId) {
+  const weapons = state.play_area.filter(a => !a.exhausted && a.traits && a.traits.includes('weapon'));
+  if (weapons.length > 0) { showWeaponSelect(weapons, enemyId); }
+  else { showCommitModal('FIGHT', { enemy_instance_id: enemyId }, 'combat'); }
+}
+
+function startEvade() {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  const engaged = state.enemies.filter(e => e.engaged);
+  if (engaged.length === 0) { showToast('没有已交战的敌人可闪避', 'error'); return; }
+  if (engaged.length === 1) { showCommitModal('EVADE', { enemy_instance_id: engaged[0].instance_id }, 'agility'); return; }
+  showEnemySelect('选择闪避目标', engaged, (id) => showCommitModal('EVADE', { enemy_instance_id: id }, 'agility'));
+}
+
+function startInvestigate() {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  showCommitModal('INVESTIGATE', {}, 'intellect');
+}
+
+function startEngage(enemyId) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  doSimpleAction('ENGAGE', { enemy_instance_id: enemyId });
+}
+
+function fightEnemy(enemyId) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  pickFightTarget(enemyId);
+}
+
+// Enemy select
+let enemySelectCallback = null;
+function showEnemySelect(title, enemies, cb) {
+  enemySelectCallback = cb;
+  document.getElementById('enemy-modal-title').textContent = title;
+  document.getElementById('enemy-options').innerHTML = enemies.map(e => {
+    const hp = e.health - e.current_damage;
+    return `<div class="modal-option" onclick="selectEnemy('${e.instance_id}')">${e.name_cn} — ${e.engaged?'交战中':'未交战'} | HP:${hp}/${e.health} | 闪避:${e.evade}</div>`;
+  }).join('');
+  document.getElementById('enemy-modal').style.display = 'flex';
+}
+function selectEnemy(id) { document.getElementById('enemy-modal').style.display = 'none'; if (enemySelectCallback) { enemySelectCallback(id); enemySelectCallback = null; } }
+
+// Weapon select
+let weaponEnemyId = null;
+function showWeaponSelect(weapons, eid) {
+  weaponEnemyId = eid;
+  document.getElementById('weapon-options').innerHTML = weapons.map(w => {
+    const uses = w.uses?.ammo !== undefined ? ` [弹药:${w.uses.ammo}]` : '';
+    return `<div class="modal-option" onclick="selectWeapon('${w.instance_id}')">${w.name_cn||w.name}${uses}</div>`;
+  }).join('');
+  document.getElementById('weapon-modal').style.display = 'flex';
+}
+function selectWeapon(id) {
+  document.getElementById('weapon-modal').style.display = 'none';
+  const extra = { enemy_instance_id: weaponEnemyId };
+  if (id) extra.weapon_instance_id = id;
+  showCommitModal('FIGHT', extra, 'combat');
+}
+
+// Commit cards modal
+function showCommitModal(action, extra, skillType) {
+  pendingAction = { action, extra, skillType }; committedCardIds = [];
+  const eligible = (state.hand || []).filter(c => c.skill_icons && ((c.skill_icons[skillType]||0) + (c.skill_icons.wild||0)) > 0);
+  if (eligible.length === 0) { executeAction(action, extra, []); return; }
+  const skillCn = { combat:'战斗', intellect:'智力', agility:'敏捷', willpower:'意志' };
+  document.getElementById('commit-title').textContent = `投入卡牌到${skillCn[skillType]||skillType}检定`;
+  updateCommitSummary(skillType);
+  document.getElementById('commit-cards-list').innerHTML = eligible.map(c => {
+    const matching = (c.skill_icons[skillType]||0) + (c.skill_icons.wild||0);
+    const detail = Object.entries(c.skill_icons).filter(([,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ');
+    return `<div class="commit-card" id="commit-${c.id}" onclick="toggleCommit('${c.id}')"><div class="check"></div><div class="card-info"><div class="name">${c.name_cn} (${c.name})</div><div class="detail">${typeLabel(c.type)} | ${detail}</div></div><div class="icons">+${matching}</div></div>`;
+  }).join('');
+  document.getElementById('commit-modal').style.display = 'flex';
+}
+function toggleCommit(id) {
+  const idx = committedCardIds.indexOf(id);
+  if (idx >= 0) committedCardIds.splice(idx, 1); else committedCardIds.push(id);
+  const el = document.getElementById('commit-' + id);
+  if (el) { el.classList.toggle('selected', committedCardIds.includes(id)); el.querySelector('.check').textContent = committedCardIds.includes(id) ? '\u2713' : ''; }
+  updateCommitSummary(pendingAction.skillType);
+}
+function updateCommitSummary(st) {
+  let total = 0;
+  for (const id of committedCardIds) { const c = state.hand.find(x => x.id === id); if (c?.skill_icons) total += (c.skill_icons[st]||0) + (c.skill_icons.wild||0); }
+  const baseSkill = state.investigator.skills?.[st] || 0;
+  document.getElementById('commit-summary').innerHTML = `基础技能 <strong>${baseSkill}</strong> + 投入 <strong>+${total}</strong> = <strong>${baseSkill+total}</strong>（已选${committedCardIds.length}张）`;
+}
+function confirmCommit() { document.getElementById('commit-modal').style.display = 'none'; if (pendingAction) { executeAction(pendingAction.action, pendingAction.extra, committedCardIds); pendingAction = null; committedCardIds = []; } }
+function cancelCommit() { document.getElementById('commit-modal').style.display = 'none'; if (pendingAction) { executeAction(pendingAction.action, pendingAction.extra, []); pendingAction = null; committedCardIds = []; } }
+
+async function executeAction(action, extra, committed) {
+  const payload = { action, ...extra };
+  if (committed?.length > 0) payload.committed_cards = committed;
+  const d = await api('/api/action', payload); state = d.state; render(d.state);
+  if (!d.success) showToast(d.message, 'error');
+}
+
+async function endTurn() { const d = await api('/api/end-turn', {}); state = d.state; render(d.state); }
+
+// Activate Necronomicon
+async function activateNecronomicon() {
+  const d = await api('/api/action', { action: 'ACTIVATE_NECRONOMICON' });
+  state = d.state; render(d.state);
+  if (!d.success) showToast(d.message, 'error');
+}
+
+// Activate Tome (uses action)
+async function activateTome(instanceId) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  const d = await api('/api/action', { action: 'ACTIVATE_TOME', instance_id: instanceId });
+  state = d.state; render(d.state);
+  if (!d.success) showToast(d.message, 'error');
+}
+
+// Damage soak assignment
+let pendingSoak = null;
+let soakAssignment = {}; // {instance_id: {damage: N, horror: N}}
+
+function showSoakModal(totalDamage, totalHorror, source) {
+  if (!state || !state.ally_soak_targets || state.ally_soak_targets.length === 0) return false;
+  pendingSoak = { totalDamage, totalHorror, source };
+  soakAssignment = {};
+  const targets = state.ally_soak_targets;
+  let html = '';
+  targets.forEach(t => {
+    soakAssignment[t.instance_id] = { damage: 0, horror: 0 };
+    const hpInfo = t.remaining_health != null ? `HP:${t.remaining_health}/${t.health}` : '';
+    const sanInfo = t.remaining_sanity != null ? `SAN:${t.remaining_sanity}/${t.sanity}` : '';
+    html += `<div style="padding:8px;border:1px solid #333;border-radius:6px;margin-bottom:6px;">
+      <div style="font-weight:600;color:#2ecc71">${t.name_cn} (${t.name})</div>
+      <div style="font-size:11px;color:#aaa">${hpInfo} ${sanInfo}</div>
+      <div style="display:flex;gap:12px;margin-top:4px">`;
+    if (t.remaining_health != null && t.remaining_health > 0 && totalDamage > 0) {
+      html += `<div style="font-size:12px">伤害: <button onclick="adjustSoak('${t.instance_id}','damage',-1)" style="width:22px">-</button> <span id="soak-dmg-${t.instance_id}">0</span> <button onclick="adjustSoak('${t.instance_id}','damage',1)" style="width:22px">+</button></div>`;
+    }
+    if (t.remaining_sanity != null && t.remaining_sanity > 0 && totalHorror > 0) {
+      html += `<div style="font-size:12px">恐惧: <button onclick="adjustSoak('${t.instance_id}','horror',-1)" style="width:22px">-</button> <span id="soak-hor-${t.instance_id}">0</span> <button onclick="adjustSoak('${t.instance_id}','horror',1)" style="width:22px">+</button></div>`;
+    }
+    html += `</div></div>`;
+  });
+  document.getElementById('soak-targets').innerHTML = html;
+  updateSoakSummary();
+  document.getElementById('soak-modal').style.display = 'flex';
+  return true;
+}
+
+function adjustSoak(instId, type, delta) {
+  if (!pendingSoak || !soakAssignment[instId]) return;
+  const t = state.ally_soak_targets.find(x => x.instance_id === instId);
+  if (!t) return;
+  const cur = soakAssignment[instId][type];
+  const max = type === 'damage' ? (t.remaining_health || 0) : (t.remaining_sanity || 0);
+  const totalField = type === 'damage' ? 'totalDamage' : 'totalHorror';
+  // Calculate total already assigned to all allies for this type
+  let totalAssigned = 0;
+  Object.values(soakAssignment).forEach(a => totalAssigned += a[type]);
+  const newVal = cur + delta;
+  if (newVal < 0 || newVal > max) return;
+  if (delta > 0 && totalAssigned >= pendingSoak[totalField]) return;
+  soakAssignment[instId][type] = newVal;
+  const elId = type === 'damage' ? `soak-dmg-${instId}` : `soak-hor-${instId}`;
+  const el = document.getElementById(elId);
+  if (el) el.textContent = newVal;
+  updateSoakSummary();
+}
+
+function updateSoakSummary() {
+  if (!pendingSoak) return;
+  let assignedDmg = 0, assignedHor = 0;
+  Object.values(soakAssignment).forEach(a => { assignedDmg += a.damage; assignedHor += a.horror; });
+  const invDmg = pendingSoak.totalDamage - assignedDmg;
+  const invHor = pendingSoak.totalHorror - assignedHor;
+  document.getElementById('soak-summary').innerHTML =
+    `总计: <strong>${pendingSoak.totalDamage}</strong>伤害 / <strong>${pendingSoak.totalHorror}</strong>恐惧<br>` +
+    `盟友承受: ${assignedDmg}伤害 / ${assignedHor}恐惧 | 黛西承受: <strong>${invDmg}</strong>伤害 / <strong>${invHor}</strong>恐惧`;
+}
+
+async function confirmSoak() {
+  document.getElementById('soak-modal').style.display = 'none';
+  if (!pendingSoak) return;
+  const dmgMap = {}, horMap = {};
+  Object.entries(soakAssignment).forEach(([id, a]) => {
+    if (a.damage > 0) dmgMap[id] = a.damage;
+    if (a.horror > 0) horMap[id] = a.horror;
+  });
+  const d = await api('/api/action', {
+    action: 'ASSIGN_DAMAGE',
+    total_damage: pendingSoak.totalDamage,
+    total_horror: pendingSoak.totalHorror,
+    damage_assignment: dmgMap,
+    horror_assignment: horMap,
+    source: pendingSoak.source,
+  });
+  state = d.state; render(d.state);
+  pendingSoak = null;
+}
+
+function cancelSoak() {
+  document.getElementById('soak-modal').style.display = 'none';
+  if (pendingSoak) {
+    // All damage goes to investigator — just call with no assignment
+    confirmSoakNoAssignment();
+  }
+}
+
+async function confirmSoakNoAssignment() {
+  if (!pendingSoak) return;
+  const d = await api('/api/action', {
+    action: 'ASSIGN_DAMAGE',
+    total_damage: pendingSoak.totalDamage,
+    total_horror: pendingSoak.totalHorror,
+    damage_assignment: {},
+    horror_assignment: {},
+    source: pendingSoak.source,
+  });
+  state = d.state; render(d.state);
+  pendingSoak = null;
+}
+
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+// ============================================================
+// Render
+// ============================================================
+function render(s) {
+  if (!s) return;
+  const inv = s.investigator;
+
+  // Status bar
+  document.getElementById('hp').textContent = inv.health - inv.damage;
+  document.getElementById('hp-max').textContent = inv.health;
+  document.getElementById('san').textContent = inv.sanity - inv.horror;
+  document.getElementById('san-max').textContent = inv.sanity;
+  document.getElementById('resources').textContent = inv.resources;
+  document.getElementById('actions').textContent = inv.actions_remaining;
+  document.getElementById('clues').textContent = inv.clues;
+  document.getElementById('clues-needed').textContent = s.total_clues_needed;
+  document.getElementById('doom').textContent = s.doom;
+  document.getElementById('doom-max').textContent = s.doom_threshold;
+  document.getElementById('deck-count').textContent = inv.deck_count;
+  document.getElementById('round-num').textContent = s.round;
+  document.getElementById('phase-name').textContent = phaseLabel(s.phase);
+  document.getElementById('doom-bar-fill').style.width = (s.doom / s.doom_threshold * 100) + '%';
+
+  // Chaos Bag
+  if (s.chaos_bag) {
+    document.getElementById('chaos-bag-count').textContent = `(${s.chaos_bag.total})`;
+    const tokenOrder = ['+1','0','-1','-2','-3','-4','-5','-6','-7','-8','skull','cultist','tablet','elder_thing','elder_sign','auto_fail','bless','curse'];
+    const tokenLabels = {'+1':'+1','0':'0','-1':'-1','-2':'-2','-3':'-3','-4':'-4','-5':'-5','-6':'-6','-7':'-7','-8':'-8',
+      'skull':'💀','cultist':'🗡','tablet':'📋','elder_thing':'👁','elder_sign':'⭐','auto_fail':'❌','bless':'✝','curse':'🌑'};
+    const tokenClasses = {'+1':'positive','0':'number','-1':'number','-2':'number','-3':'number','-4':'number','-5':'number','-6':'number','-7':'number','-8':'number',
+      'skull':'symbol','cultist':'special','tablet':'special','elder_thing':'special','elder_sign':'elder-sign','auto_fail':'auto-fail','bless':'positive','curse':'symbol'};
+    let tokensHtml = '';
+    for (const t of tokenOrder) {
+      const count = s.chaos_bag.tokens[t] || 0;
+      if (count <= 0) continue;
+      const label = tokenLabels[t] || t;
+      const cls = tokenClasses[t] || 'number';
+      for (let i = 0; i < count; i++) {
+        tokensHtml += `<div class="chaos-token ${cls}" title="${t}">${label}</div>`;
+      }
+    }
+    document.getElementById('chaos-bag-tokens').innerHTML = tokensHtml;
+  }
+
+  // Win condition hint
+  const hintEl = document.getElementById('win-hint');
+  if (inv.clues >= s.total_clues_needed && inv.location_id === s.win_location) {
+    hintEl.innerHTML = '<span class="ready">已满足胜利条件！</span>';
+  } else if (inv.clues >= s.total_clues_needed) {
+    hintEl.innerHTML = `<span class="ready">线索已足够！</span>返回阅览室即可获胜`;
+  } else {
+    const remaining = s.total_clues_needed - inv.clues;
+    hintEl.textContent = `还需收集${remaining}条线索，然后返回阅览室`;
+  }
+
+  // Map — 3 locations with arrows
+  const locOrder = ['reading_room', 'restricted_section', 'archive'];
+  let mapHtml = '';
+  locOrder.forEach((id, i) => {
+    const loc = s.locations[id];
+    if (!loc) return;
+    const current = loc.is_current ? 'current' : '';
+    const badge = loc.is_current ? '<span class="loc-badge">当前</span>' : '';
+    const canMove = !loc.is_current && s.location.connections.includes(id);
+    const onclick = canMove ? `onclick="moveTo('${id}')"` : '';
+    mapHtml += `<div class="location-card ${current}" ${onclick}>
+      <div class="loc-header"><span class="loc-name">${loc.name_cn}</span>${badge}</div>
+      <div class="loc-stats"><span>隐蔽 ${loc.shroud}</span><span>线索 ${loc.clues}</span></div>
+      ${loc.enemies_here > 0 ? `<div class="loc-enemies">${loc.enemies_here} 个敌人</div>` : ''}
+      ${canMove ? '<div class="loc-connection">点击移动</div>' : ''}
+    </div>`;
+    if (i < locOrder.length - 1) {
+      mapHtml += '<div class="map-arrow">&#8596;</div>';
+    }
+  });
+  document.getElementById('map-container').innerHTML = mapHtml;
+
+  // Threat area (Necronomicon)
+  const threatSection = document.getElementById('threat-section');
+  if (s.threat_area && s.threat_area.length > 0) {
+    threatSection.style.display = 'block';
+    document.getElementById('threat-container').innerHTML = s.threat_area.map(t => {
+      const horrorCount = t.uses?.horror || 0;
+      let tokens = '';
+      for (let i = 0; i < 3; i++) {
+        tokens += i < horrorCount
+          ? '<div class="horror-token">&#128128;</div>'
+          : '<div class="horror-token empty">&#9675;</div>';
+      }
+      return `<div class="threat-card" onclick="activateNecronomicon()">
+        <div>
+          <div class="threat-name">${t.name_cn} (${t.name})</div>
+          <div class="threat-detail">自由行动：点击移除1恐惧到黛西</div>
+        </div>
+        <div class="horror-tokens">${tokens}</div>
+        <button class="threat-activate-btn" onclick="event.stopPropagation();activateNecronomicon()">激活</button>
+      </div>`;
+    }).join('');
+  } else {
+    threatSection.style.display = 'none';
+  }
+
+  // Enemies
+  const noActions = inv.actions_remaining <= 0;
+  document.getElementById('enemies-container').innerHTML = s.enemies.map(e => {
+    const hpPct = e.health > 0 ? ((e.health - e.current_damage) / e.health * 100) : 0;
+    const keywords = (e.keywords || []).map(k => `<span class="enemy-keyword">${k}</span>`).join(' ');
+    let actHtml = '';
+    if (!noActions) {
+      actHtml = '<div class="enemy-actions">';
+      actHtml += `<button class="enemy-action-btn fight" onclick="fightEnemy('${e.instance_id}')">&#9876; 攻击</button>`;
+      actHtml += e.engaged
+        ? `<button class="enemy-action-btn" onclick="startEvade()">&#128737; 闪避</button>`
+        : `<button class="enemy-action-btn engage" onclick="startEngage('${e.instance_id}')">&#127919; 交战</button>`;
+      actHtml += '</div>';
+    }
+    return `<div class="enemy-card ${e.exhausted?'exhausted':''}">
+      <div class="enemy-name">${e.name_cn} (${e.name})</div>
+      <div class="enemy-stats"><span>&#9876; ${e.fight}</span><span>&#10084; ${e.health-e.current_damage}/${e.health}</span><span>&#128737; ${e.evade}</span><span>&#128128; ${e.damage_dealt}/${e.horror_dealt}</span></div>
+      <div class="enemy-hp-bar"><div class="enemy-hp-fill" style="width:${Math.max(0,hpPct)}%"></div></div>
+      <div class="enemy-status">${e.engaged?'交战中':'未交战'}${e.exhausted?' · 已消耗':''}${keywords?' · '+keywords:''}</div>
+      ${actHtml}
+    </div>`;
+  }).join('') || '<div style="color:#666;font-size:12px">此地无敌人</div>';
+
+  // Hand
+  document.getElementById('hand-count').textContent = s.hand.length;
+  document.getElementById('hand-container').innerHTML = s.hand.map(c => {
+    const icons = c.skill_icons ? Object.entries(c.skill_icons).filter(([,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ') : '';
+    const isTome = c.is_tome;
+    const tomeClass = isTome ? 'tome-card' : '';
+    const tomeBadge = isTome ? '<div class="tome-badge">TOME</div>' : '';
+    const fastBadge = c.is_fast ? '<div class="fast-badge">FAST</div>' : '';
+    return `<div class="card ${c.class||'neutral'} ${c.type||''} ${tomeClass}" onclick="playCard('${c.id}')">
+      ${tomeBadge}${fastBadge}
+      ${c.cost!=null?`<div class="card-cost">${c.cost}</div>`:''}
+      <div class="card-name">${c.name}</div><div class="card-name-cn">${c.name_cn}</div>
+      <div class="card-type">${typeLabel(c.type)}${c.slots&&c.slots.length?' · '+c.slots.join('/'):''}</div>
+      <div class="card-text">${c.text||''}</div>
+      ${icons?`<div class="card-icons">${icons}</div>`:''}
+    </div>`;
+  }).join('') || '<div style="color:#666;font-size:12px;padding:8px">手牌为空</div>';
+
+  // Play area
+  document.getElementById('play-area-container').innerHTML = s.play_area.map(a => {
+    const usesHtml = a.uses && Object.keys(a.uses).length > 0 ? `<div class="uses">${Object.entries(a.uses).map(([k,v])=>`${k}:${v}`).join(' ')}</div>` : '';
+    const isTome = a.is_tome;
+    const isAlly = a.is_ally;
+    const tomeClass = isTome ? 'tome-asset' : '';
+    const allyClass = isAlly ? 'ally-asset' : '';
+    const activateBtn = isTome && !a.exhausted && !noActions
+      ? `<button class="tome-activate-btn" onclick="event.stopPropagation();activateTome('${a.instance_id}')">&#128214; 激活</button>`
+      : '';
+    // Ally HP/SAN dots
+    let allyHpHtml = '';
+    if (isAlly && (a.health != null || a.sanity != null)) {
+      let dots = '';
+      if (a.health != null) {
+        for (let i = 0; i < a.health; i++) dots += `<div class="ally-hp-dot hp ${i < a.health - (a.damage||0) ? '' : 'lost'}"></div>`;
+      }
+      if (a.sanity != null) {
+        for (let i = 0; i < a.sanity; i++) dots += `<div class="ally-hp-dot san ${i < a.sanity - (a.horror||0) ? '' : 'lost'}"></div>`;
+      }
+      allyHpHtml = `<div class="ally-hp-bar">${dots}</div>`;
+    }
+    return `<div class="asset-in-play ${a.exhausted?'exhausted':''} ${tomeClass} ${allyClass}" title="${a.name}">
+      <strong>${a.name_cn||a.name}</strong>${usesHtml}
+      ${a.slots.length?`<div style="font-size:10px;color:#666">${a.slots.join('/')}</div>`:''}
+      ${allyHpHtml}
+      ${activateBtn}
+    </div>`;
+  }).join('') || '<div style="color:#666;font-size:12px;padding:8px">无装备</div>';
+
+  // Log
+  document.getElementById('log-entries').innerHTML = s.log.map(e => `<div class="log-entry">${e}</div>`).join('');
+  const lp = document.getElementById('log-panel'); lp.scrollTop = lp.scrollHeight;
+
+  // Buttons
+  document.getElementById('btn-fight').disabled = noActions || s.enemies.length === 0;
+  document.getElementById('btn-evade').disabled = noActions || s.enemies.filter(e=>e.engaged).length === 0;
+  document.getElementById('btn-investigate').disabled = noActions;
+  document.getElementById('btn-resource').disabled = noActions;
+  document.getElementById('btn-draw').disabled = noActions;
+
+  // Game over
+  if (s.game_over || inv.defeated) {
+    const go = s.game_over || { type: 'lose', message: '黛西被击败了！' };
+    const box = document.getElementById('game-over-box');
+    box.className = 'message ' + go.type;
+    document.getElementById('game-over-title').textContent = go.type === 'win' ? '调查成功！' : '调查失败';
+    document.getElementById('game-over-title').style.color = go.type === 'win' ? '#2ecc71' : '#e74c3c';
+    document.getElementById('game-over-text').textContent = go.message;
+    document.getElementById('game-over-overlay').style.display = 'flex';
+  }
+}
+
+function playCard(cardId) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  const card = state.hand.find(c => c.id === cardId); if (!card) return;
+  if (card.type === 'skill') { showToast('技能卡只能投入到检定中', 'error'); return; }
+  doSimpleAction('PLAY', { card_id: cardId });
+}
+
+function phaseLabel(p) { return { SETUP:'准备', MYTHOS:'神话', INVESTIGATION:'调查', ENEMY:'敌人', UPKEEP:'刷新' }[p] || p; }
+function typeLabel(t) { return { asset:'支援', event:'事件', skill:'技能' }[t] || t; }
+function skillLabel(s) { return { willpower:'意', intellect:'智', combat:'战', agility:'敏', wild:'万' }[s] || s; }
+function showToast(msg, type='') { const el = document.getElementById('toast'); el.textContent = msg; el.className = 'toast show ' + type; setTimeout(() => el.className = 'toast', 2000); }
+
+resetGame();
+</script>
+</body>
+</html>

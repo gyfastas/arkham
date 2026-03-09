@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import json
+import warnings
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
 from backend.models.enums import CardType, Phase, PlayerClass, Skill, SlotType
+
+if TYPE_CHECKING:
+    from backend.models.investigator import InvestigatorCard
 
 
 @dataclass
@@ -102,7 +106,7 @@ class CardInstance:
 @dataclass
 class InvestigatorState:
     investigator_id: str
-    card_data: CardData
+    card_data: CardData  # Deprecated: use investigator_card instead
     location_id: str = ""
     resources: int = 5
     hand: list[str] = field(default_factory=list)          # card_id list
@@ -115,13 +119,26 @@ class InvestigatorState:
     clues: int = 0
     actions_remaining: int = 3
     has_taken_turn: bool = False
+    _investigator_card: Any = field(default=None, repr=False)
+
+    @property
+    def investigator_card(self) -> InvestigatorCard | None:
+        return self._investigator_card
+
+    @investigator_card.setter
+    def investigator_card(self, value: InvestigatorCard) -> None:
+        self._investigator_card = value
 
     @property
     def health(self) -> int:
+        if self._investigator_card is not None:
+            return self._investigator_card.effective_health
         return self.card_data.health or 0
 
     @property
     def sanity(self) -> int:
+        if self._investigator_card is not None:
+            return self._investigator_card.effective_sanity
         return self.card_data.sanity or 0
 
     @property
@@ -137,6 +154,8 @@ class InvestigatorState:
         return self.damage >= self.health or self.horror >= self.sanity
 
     def get_skill(self, skill: Skill) -> int:
+        if self._investigator_card is not None:
+            return self._investigator_card.get_skill(skill)
         if self.card_data.skills:
             return self.card_data.skills.get(skill)
         return 0
@@ -166,7 +185,7 @@ class ScenarioState:
     current_phase: Phase = Phase.SETUP
     round_number: int = 0
     doom_on_agenda: int = 0
-    doom_threshold: int = 7
+    doom_threshold: int = 7  # Fallback if no agenda_cards defined
     act_deck: list[str] = field(default_factory=list)
     agenda_deck: list[str] = field(default_factory=list)
     current_act_index: int = 0
@@ -174,6 +193,35 @@ class ScenarioState:
     encounter_deck: list[str] = field(default_factory=list)
     encounter_discard: list[str] = field(default_factory=list)
     victory_display: list[str] = field(default_factory=list)
+
+    # Multi-act/agenda system (new)
+    agenda_cards: dict[str, Any] = field(default_factory=dict)  # id -> AgendaCard
+    act_cards: dict[str, Any] = field(default_factory=dict)     # id -> ActCard
+    resolutions: dict[str, Any] = field(default_factory=dict)   # id -> Resolution
+
+    @property
+    def current_agenda(self) -> Any | None:
+        """Get the current AgendaCard based on agenda_deck and current_agenda_index."""
+        if not self.agenda_deck or self.current_agenda_index >= len(self.agenda_deck):
+            return None
+        agenda_id = self.agenda_deck[self.current_agenda_index]
+        return self.agenda_cards.get(agenda_id)
+
+    @property
+    def current_act(self) -> Any | None:
+        """Get the current ActCard based on act_deck and current_act_index."""
+        if not self.act_deck or self.current_act_index >= len(self.act_deck):
+            return None
+        act_id = self.act_deck[self.current_act_index]
+        return self.act_cards.get(act_id)
+
+    @property
+    def effective_doom_threshold(self) -> int:
+        """Doom threshold from the current agenda card, or fallback."""
+        agenda = self.current_agenda
+        if agenda is not None:
+            return agenda.doom_threshold
+        return self.doom_threshold
 
 
 @dataclass

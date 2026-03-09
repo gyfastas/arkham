@@ -8,7 +8,7 @@
   "level": null,
   "traits": ["item"],
   "skill_icons": {"willpower": 1, "intellect": 1, "wild": 1},
-  "slots": ["body"],
+  "slots": [],
   "text": "You have 2 additional hand slots, which can only be used to hold Tome assets.",
   "text_cn": "你拥有2个额外的手部栏位，只能用于放置典籍支援卡。",
   "health": null,

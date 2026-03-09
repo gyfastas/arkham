@@ -45,7 +45,7 @@ class MythosPhase:
 
     def _check_doom_threshold(self) -> None:
         total = self.game_state.total_doom_in_play()
-        threshold = self.game_state.scenario.doom_threshold
+        threshold = self.game_state.scenario.effective_doom_threshold
 
         self._emit(GameEvent.DOOM_THRESHOLD_CHECK, amount=total)
 

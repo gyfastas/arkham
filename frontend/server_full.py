@@ -5,6 +5,7 @@ import json
 import sys
 import os
 import random
+from collections import Counter
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from dataclasses import asdict
@@ -23,6 +24,7 @@ from backend.cards.neutral.guts_lv0 import Guts
 from backend.models.enums import (
     Action, CardType, ChaosTokenType, GameEvent, Phase, PlayerClass, Skill, SlotType,
 )
+from backend.models.investigator import InvestigatorCard
 from backend.models.state import CardData, CardInstance, SkillValues
 
 # Global game instance and action log
@@ -63,6 +65,7 @@ ENCOUNTER_CARDS = {
         "name": "Ancient Evils", "name_cn": "远古邪恶",
         "type": "treachery", "test": None, "difficulty": 0,
         "fail_effect": "doom", "fail_amount": 1,
+        "doom_check_immediate": True,
         "text": "在密谋上放置1点毁灭标记。",
     },
     "swarm_of_rats": {
@@ -87,14 +90,13 @@ def create_game() -> Game:
     # --- Card Data ---
 
     # Investigator
-    inv_data = CardData(
+    inv_card = InvestigatorCard(
         id="blank_investigator", name="The Investigator", name_cn="调查员",
-        type=CardType.INVESTIGATOR, card_class=PlayerClass.NEUTRAL,
+        card_class=PlayerClass.NEUTRAL,
         health=7, sanity=7,
         skills=SkillValues(willpower=3, intellect=3, combat=3, agility=3),
         ability="No special ability.",
     )
-    g.register_card_data(inv_data)
 
     # Location 1: Study (start)
     study_data = CardData(
@@ -199,7 +201,7 @@ def create_game() -> Game:
     random.shuffle(deck)
 
     # Add investigator and locations
-    g.add_investigator("player", inv_data, deck=deck, starting_location="study")
+    g.add_investigator("player", inv_card, deck=deck, starting_location="study")
     g.add_location("study", study_data, clues=3)
     g.add_location("hallway", hallway_data, clues=2)
 
@@ -347,6 +349,11 @@ def serialize_state(g: Game) -> dict:
         "doom_threshold": scenario.doom_threshold,
         "encounter_deck_count": len(scenario.encounter_deck),
         "total_clues_needed": 5,
+        "chaos_bag": {
+            "tokens": {t.value: c for t, c in Counter(g.chaos_bag.tokens).items()},
+            "sealed": {t.value: c for t, c in Counter(g.chaos_bag.sealed).items()},
+            "total": len(g.chaos_bag.tokens),
+        },
         "game_over": game_over,
         "log": action_log[-30:],
     }
@@ -404,7 +411,8 @@ def resolve_encounter_card(card_id: str) -> str:
     if effect == "doom":
         game.state.scenario.doom_on_agenda += enc["fail_amount"]
         action_log.append(f"💀 密谋上增加{enc['fail_amount']}点毁灭 (当前: {game.state.scenario.doom_on_agenda}/{game.state.scenario.doom_threshold})")
-        check_agenda()
+        if enc.get("doom_check_immediate", True):
+            check_agenda()
         return f"+{enc['fail_amount']} doom"
 
     if effect == "shroud_up":
@@ -716,6 +724,10 @@ def handle_end_turn() -> dict:
         enc_id = scenario.encounter_deck.pop(0)
         scenario.encounter_discard.append(enc_id)
         resolve_encounter_card(enc_id)
+
+        # Check if encounter card caused game over (e.g. Ancient Evils doom)
+        if game_over:
+            return {"message": game_over["message"]}
 
         if inv.is_defeated:
             action_log.append("💀 调查员被击败！游戏结束！")

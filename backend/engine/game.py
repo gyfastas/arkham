@@ -16,6 +16,7 @@ from backend.engine.slots import SlotManager
 from backend.engine.actions import ActionResolver
 from backend.models.chaos import ChaosBag
 from backend.models.enums import GameEvent, Phase
+from backend.models.investigator import InvestigatorCard
 from backend.models.state import (
     CardData, GameState, InvestigatorState, LocationState, ScenarioState,
 )
@@ -53,16 +54,45 @@ class Game:
     def add_investigator(
         self,
         investigator_id: str,
-        card_data: CardData,
+        card_data: CardData | InvestigatorCard = None,
         deck: list[str] | None = None,
         starting_location: str = "",
+        *,
+        investigator_card: InvestigatorCard | None = None,
     ) -> InvestigatorState:
+        # Support both old (CardData) and new (InvestigatorCard) paths
+        if isinstance(card_data, InvestigatorCard):
+            investigator_card = card_data
+            card_data = None
+
+        if investigator_card and not card_data:
+            # Build a CardData shim for backward compat
+            from backend.models.enums import CardType
+            card_data = CardData(
+                id=investigator_card.id,
+                name=investigator_card.name,
+                name_cn=investigator_card.name_cn,
+                type=CardType.INVESTIGATOR,
+                card_class=investigator_card.card_class,
+                health=investigator_card.health,
+                sanity=investigator_card.sanity,
+                skills=investigator_card.skills,
+                ability=investigator_card.ability,
+                elder_sign=investigator_card.elder_sign,
+                traits=investigator_card.traits,
+                unique=investigator_card.unique,
+                pack=investigator_card.pack,
+            )
+
         inv = InvestigatorState(
             investigator_id=investigator_id,
             card_data=card_data,
             location_id=starting_location,
             deck=list(deck) if deck else [],
         )
+        if investigator_card:
+            inv.investigator_card = investigator_card
+
         self.state.investigators[investigator_id] = inv
         self.state.player_order.append(investigator_id)
         if not self.state.lead_investigator_id:
