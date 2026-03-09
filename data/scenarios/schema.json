@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Scenario",
+  "description": "剧本数据格式",
+  "type": "object",
+  "required": ["id", "name", "name_cn", "type"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "name_cn": { "type": "string" },
+    "type": { "type": "string", "enum": ["official", "homebrew"], "description": "官方或自创" },
+    "campaign": { "type": "string", "description": "所属战役ID" },
+    "sequence": { "type": "integer", "description": "在战役中的顺序" },
+    "setup": {
+      "type": "object",
+      "description": "布置阶段",
+      "properties": {
+        "locations": { "type": "array", "items": { "type": "string" } },
+        "encounter_sets": { "type": "array", "items": { "type": "string" } },
+        "special_rules": { "type": "string" }
+      }
+    },
+    "act_deck": { "type": "array", "items": { "type": "object" }, "description": "事件幕" },
+    "agenda_deck": { "type": "array", "items": { "type": "object" }, "description": "密谋幕" },
+    "resolution": { "type": "object", "description": "结局分支" },
+    "difficulty": { "type": "string", "enum": ["easy", "standard", "hard", "expert"] }
+  }
+}

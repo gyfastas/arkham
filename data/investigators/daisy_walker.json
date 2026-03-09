@@ -1,0 +1,32 @@
+{
+  "id": "daisy_walker",
+  "name": "Daisy Walker",
+  "name_cn": "黛西·沃克",
+  "title": "The Librarian",
+  "title_cn": "图书馆员",
+  "class": "seeker",
+  "health": 5,
+  "sanity": 9,
+  "skills": {
+    "willpower": 3,
+    "intellect": 5,
+    "combat": 2,
+    "agility": 2
+  },
+  "ability": "You may take an additional action during your turn, which can only be used to activate a Tome ability.",
+  "ability_cn": "在你的回合中，你可以执行1个额外行动，该行动只能用于启动一个典籍能力。",
+  "elder_sign": "+0. If this test is successful, draw 1 card for each Tome you control.",
+  "elder_sign_cn": "+0。如果此次检定成功，你每控制1个典籍便抽1张牌。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "seeker": {"min_level": 0, "max_level": 5},
+      "mystic": {"min_level": 0, "max_level": 2},
+      "neutral": {"min_level": 0, "max_level": 5}
+    }
+  },
+  "signature_cards": ["daisys_tote_bag", "the_necronomicon"],
+  "weakness": "the_necronomicon",
+  "flavor_text": "\"I know of books so powerful, they can rewrite reality.\"",
+  "pack": "core"
+}

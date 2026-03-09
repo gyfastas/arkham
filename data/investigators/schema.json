@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Investigator",
+  "description": "调查员数据格式",
+  "type": "object",
+  "required": ["id", "name", "name_cn", "class", "health", "sanity", "skills", "ability"],
+  "properties": {
+    "id": { "type": "string", "description": "唯一标识符, 如 roland_banks" },
+    "name": { "type": "string", "description": "英文名" },
+    "name_cn": { "type": "string", "description": "中文名" },
+    "class": { "type": "string", "enum": ["guardian", "seeker", "rogue", "mystic", "survivor", "neutral"] },
+    "health": { "type": "integer", "minimum": 1 },
+    "sanity": { "type": "integer", "minimum": 1 },
+    "skills": {
+      "type": "object",
+      "properties": {
+        "willpower": { "type": "integer" },
+        "intellect": { "type": "integer" },
+        "combat": { "type": "integer" },
+        "agility": { "type": "integer" }
+      },
+      "required": ["willpower", "intellect", "combat", "agility"]
+    },
+    "ability": { "type": "string", "description": "调查员特殊能力文本" },
+    "elder_sign": { "type": "string", "description": "远古印记效果" },
+    "deck_requirements": { "type": "object", "description": "构筑限制" },
+    "signature_cards": { "type": "array", "items": { "type": "string" }, "description": "专属卡牌ID列表" },
+    "weakness": { "type": "string", "description": "专属弱点卡牌ID" },
+    "flavor_text": { "type": "string" },
+    "pack": { "type": "string", "description": "所属扩展包" }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EncounterCard",
+  "description": "遭遇卡牌数据格式",
+  "type": "object",
+  "required": ["id", "name", "name_cn", "type"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "name_cn": { "type": "string" },
+    "type": { "type": "string", "enum": ["enemy", "treachery", "location"] },
+    "traits": { "type": "array", "items": { "type": "string" } },
+    "text": { "type": "string", "description": "卡牌效果" },
+    "flavor_text": { "type": "string" },
+    "enemy_stats": {
+      "type": "object",
+      "description": "仅敌人卡",
+      "properties": {
+        "fight": { "type": "integer" },
+        "health": { "type": "integer" },
+        "evade": { "type": "integer" },
+        "damage": { "type": "integer" },
+        "horror": { "type": "integer" }
+      }
+    },
+    "location_stats": {
+      "type": "object",
+      "description": "仅地点卡",
+      "properties": {
+        "shroud": { "type": "integer", "description": "隐蔽值" },
+        "clues": { "type": ["integer", "string"], "description": "线索数, 可为per_investigator" }
+      }
+    },
+    "encounter_set": { "type": "string", "description": "所属遭遇组" },
+    "scenario": { "type": "string", "description": "所属剧本" }
+  }
+}
