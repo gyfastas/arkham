@@ -1,0 +1,17 @@
+{
+  "id": "45_automatic_lv0",
+  "name": ".45 Automatic",
+  "name_cn": ".45自动手枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": ["item", "weapon", "firearm"],
+  "skill_icons": {"agility": 1},
+  "slots": ["hand"],
+  "text": "Uses (4 ammo). Spend 1 ammo: Fight. You get +1 combat for this attack. This attack deals +1 damage.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

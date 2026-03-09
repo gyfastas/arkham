@@ -1,0 +1,17 @@
+{
+  "id": "emergency_cache_lv2",
+  "name": "Emergency Cache",
+  "name_cn": "应急物品",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": ["supply"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Gain 3 resources. Draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

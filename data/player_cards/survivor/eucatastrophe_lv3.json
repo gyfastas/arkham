@@ -1,0 +1,17 @@
+{
+  "id": "eucatastrophe_lv3",
+  "name": "Eucatastrophe",
+  "name_cn": "美满结局",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 3,
+  "traits": ["fortune", "blessed"],
+  "skill_icons": {"wild": 2},
+  "slots": [],
+  "text": "Fast. Play when a chaos token would reduce your skill value to 0 during a skill test. Cancel that chaos token and treat it as an elder sign token instead.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

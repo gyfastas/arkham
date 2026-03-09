@@ -1,0 +1,18 @@
+{
+  "id": "18_derringer_lv0",
+  "name": ".18 Derringer",
+  "name_cn": ".18大口径短口手枪",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": ["item", "weapon", "firearm", "illicit"],
+  "skill_icons": {"combat": 1},
+  "slots": ["hand"],
+  "text": "Uses (2 ammo). Spend 1 ammo: Fight. You get +2 combat and deal +1 damage. If you fail, place 1 ammo on .18 Derringer.",
+  "uses": {"ammo": 2},
+  "health": null,
+  "sanity": null,
+  "pack": "stella_clark",
+  "unique": false
+}

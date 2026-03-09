@@ -1,0 +1,17 @@
+{
+  "id": "baseball_bat_lv0",
+  "name": "Baseball Bat",
+  "name_cn": "球棒",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["item", "weapon", "melee"],
+  "skill_icons": {"combat": 1},
+  "slots": ["hand", "hand"],
+  "text": "Fight. You get +2 combat and deal +1 damage for this attack. If a skull or auto_fail chaos token is revealed during this attack, discard Baseball Bat after the attack resolves.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

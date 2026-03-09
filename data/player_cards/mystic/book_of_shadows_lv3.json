@@ -1,0 +1,17 @@
+{
+  "id": "book_of_shadows_lv3",
+  "name": "Book of Shadows",
+  "name_cn": "影之书",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 4,
+  "level": 3,
+  "traits": ["item", "tome"],
+  "skill_icons": {"willpower": 1, "intellect": 1},
+  "slots": ["hand"],
+  "text": "+1 arcane slot. Exhaust: Add 1 charge to a Spell.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

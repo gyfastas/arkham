@@ -1,0 +1,17 @@
+{
+  "id": "holy_rosary_lv0",
+  "name": "Holy Rosary",
+  "name_cn": "圣玫瑰珠",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["item", "charm"],
+  "skill_icons": {"willpower": 1},
+  "slots": ["accessory"],
+  "text": "+1 willpower.",
+  "health": null,
+  "sanity": 2,
+  "pack": "rcore",
+  "unique": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "guard_dog_lv0",
+  "name": "Guard Dog",
+  "name_cn": "看门狗",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": ["ally", "creature"],
+  "skill_icons": {"combat": 1},
+  "slots": ["ally"],
+  "text": "When an enemy attack deals damage to Guard Dog: Deal 1 damage to the attacking enemy.",
+  "health": 3,
+  "sanity": 1,
+  "pack": "rcore",
+  "unique": false
+}

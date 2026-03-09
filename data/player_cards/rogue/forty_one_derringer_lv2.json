@@ -1,0 +1,18 @@
+{
+  "id": "forty_one_derringer_lv2",
+  "name": ".41 Derringer",
+  "name_cn": ".41短口手枪",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": ["item", "weapon", "firearm", "illicit"],
+  "skill_icons": {"combat": 1, "agility": 1},
+  "slots": ["hand"],
+  "text": "Uses (3 ammo). Fight. You get +2 combat for this attack. If you succeed by 1 or more, this attack deals +1 damage. If you succeed by 3 or more, you may take an additional action this turn.",
+  "uses": {"ammo": 3},
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

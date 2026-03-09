@@ -1,0 +1,17 @@
+{
+  "id": "mind_over_matter_lv0",
+  "name": "Mind over Matter",
+  "name_cn": "心胜于物",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": ["insight"],
+  "skill_icons": {"combat": 1, "agility": 1},
+  "slots": [],
+  "text": "Fast. Play only during your turn. Until the end of the round, you may use your intellect in place of your combat and agility.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

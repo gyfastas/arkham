@@ -1,0 +1,17 @@
+{
+  "id": "extra_ammunition_lv1",
+  "name": "Extra Ammunition",
+  "name_cn": "多余的弹药",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 1,
+  "traits": ["supply"],
+  "skill_icons": {"intellect": 1},
+  "slots": [],
+  "text": "Place 3 ammo on a Firearm asset.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

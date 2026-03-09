@@ -1,0 +1,17 @@
+{
+  "id": "seeking_answers_lv2",
+  "name": "Seeking Answers",
+  "name_cn": "寻找答案",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": ["insight"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Investigate. If you succeed, instead of discovering 1 clue at your location, discover a total of 2 clues at your location and connected locations.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

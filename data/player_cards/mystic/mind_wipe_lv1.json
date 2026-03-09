@@ -1,0 +1,17 @@
+{
+  "id": "mind_wipe_lv1",
+  "name": "Mind Wipe",
+  "name_cn": "记忆抹消",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": ["spell"],
+  "skill_icons": {"willpower": 1, "combat": 1},
+  "slots": [],
+  "text": "Fast. Blank a non-Elite enemy's text until end of phase.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

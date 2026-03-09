@@ -1,0 +1,17 @@
+{
+  "id": "working_a_hunch_lv0",
+  "name": "Working a Hunch",
+  "name_cn": "直觉判断",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": ["insight"],
+  "skill_icons": {"intellect": 2},
+  "slots": [],
+  "text": "Fast. Play only during your turn. Discover 1 clue at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

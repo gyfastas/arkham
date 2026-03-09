@@ -1,0 +1,17 @@
+{
+  "id": "knife_lv0",
+  "name": "Knife",
+  "name_cn": "刀子",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["item", "weapon", "melee"],
+  "skill_icons": {"combat": 1},
+  "slots": ["hand"],
+  "text": "Fight. You get +1 combat for this attack. Discard Knife: Fight. You get +2 combat and deal +1 damage for this attack.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

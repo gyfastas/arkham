@@ -1,0 +1,17 @@
+{
+  "id": "shrivelling_lv0",
+  "name": "Shrivelling",
+  "name_cn": "皱缩术",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": ["spell"],
+  "skill_icons": {"combat": 1},
+  "slots": ["arcane"],
+  "text": "Uses (4 charges). Fight using willpower instead of combat. +1 damage. If skull/cultist/tablet/elder_thing/auto_fail revealed, take 1 horror.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

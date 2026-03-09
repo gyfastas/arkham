@@ -1,0 +1,17 @@
+{
+  "id": "police_badge_lv2",
+  "name": "Police Badge",
+  "name_cn": "警徽",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": ["item"],
+  "skill_icons": {"willpower": 1, "wild": 1},
+  "slots": ["accessory"],
+  "text": "+1 willpower. Discard: investigator gets 2 additional actions.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

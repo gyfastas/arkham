@@ -1,0 +1,17 @@
+{
+  "id": "close_call_lv2",
+  "name": "Close Call",
+  "name_cn": "千钧一发",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": ["fortune"],
+  "skill_icons": {"combat": 1, "agility": 1},
+  "slots": [],
+  "text": "Fast. Play after you evade a non-Elite enemy. Shuffle that enemy into the encounter deck.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

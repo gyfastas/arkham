@@ -1,0 +1,17 @@
+{
+  "id": "hyperawareness_lv0",
+  "name": "Hyperawareness",
+  "name_cn": "超感知",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent"],
+  "skill_icons": {"intellect": 1, "agility": 1},
+  "slots": [],
+  "text": "Spend 1 resource: You get +1 intellect for this skill test. Spend 1 resource: You get +1 agility for this skill test.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

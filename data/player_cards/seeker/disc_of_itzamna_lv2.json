@@ -1,0 +1,17 @@
+{
+  "id": "disc_of_itzamna_lv2",
+  "name": "Disc of Itzamna",
+  "name_cn": "伊察姆纳圆盘",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": ["item", "relic"],
+  "skill_icons": {"willpower": 1, "intellect": 1, "combat": 1},
+  "slots": ["accessory"],
+  "text": "When a non-Elite enemy spawns at your location, discard Disc of Itzamna: Discard that enemy.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": true
+}

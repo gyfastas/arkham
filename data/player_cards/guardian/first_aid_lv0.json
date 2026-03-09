@@ -1,0 +1,17 @@
+{
+  "id": "first_aid_lv0",
+  "name": "First Aid",
+  "name_cn": "急救",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent", "science"],
+  "skill_icons": {"willpower": 1},
+  "slots": [],
+  "text": "Uses (3 supplies). Spend 1 supply: Heal 1 damage or horror from an investigator at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

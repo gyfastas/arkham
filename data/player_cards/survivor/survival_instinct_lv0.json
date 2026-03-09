@@ -1,0 +1,17 @@
+{
+  "id": "survival_instinct_lv0",
+  "name": "Survival Instinct",
+  "name_cn": "求生本能",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["innate"],
+  "skill_icons": {"agility": 1},
+  "slots": [],
+  "text": "If this test is successful during an evasion attempt, you may immediately disengage from each enemy engaged with you and move to a connecting location.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

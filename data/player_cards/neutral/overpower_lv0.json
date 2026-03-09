@@ -1,0 +1,17 @@
+{
+  "id": "overpower_lv0",
+  "name": "Overpower",
+  "name_cn": "压制",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["practiced"],
+  "skill_icons": {"combat": 2},
+  "slots": [],
+  "text": "If this test is successful, draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

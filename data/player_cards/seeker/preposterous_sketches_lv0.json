@@ -1,0 +1,17 @@
+{
+  "id": "preposterous_sketches_lv0",
+  "name": "Preposterous Sketches",
+  "name_cn": "荒唐的素描",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": ["insight"],
+  "skill_icons": {"willpower": 1, "intellect": 1},
+  "slots": [],
+  "text": "Play only if there is a clue on your location. Draw 3 cards.",
+  "health": null,
+  "sanity": null,
+  "pack": "dwl",
+  "unique": false
+}

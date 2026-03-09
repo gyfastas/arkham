@@ -1,0 +1,17 @@
+{
+  "id": "scrying_lv0",
+  "name": "Scrying",
+  "name_cn": "探知术",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["spell"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["arcane"],
+  "text": "Uses (3 charges). Look at top 3 cards of any deck, reorder them.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

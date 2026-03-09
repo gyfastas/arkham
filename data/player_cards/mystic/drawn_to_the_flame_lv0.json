@@ -1,0 +1,17 @@
+{
+  "id": "drawn_to_the_flame_lv0",
+  "name": "Drawn to the Flame",
+  "name_cn": "飞蛾扑火",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": ["insight"],
+  "skill_icons": {"willpower": 1, "intellect": 1},
+  "slots": [],
+  "text": "Draw top encounter card. Discover 2 clues at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

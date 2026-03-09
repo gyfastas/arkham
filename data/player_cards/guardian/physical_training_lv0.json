@@ -1,0 +1,17 @@
+{
+  "id": "physical_training_lv0",
+  "name": "Physical Training",
+  "name_cn": "体能训练",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent"],
+  "skill_icons": {"willpower": 1, "combat": 1},
+  "slots": [],
+  "text": "Spend 1 resource: +1 willpower for this skill test. Spend 1 resource: +1 combat for this skill test.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

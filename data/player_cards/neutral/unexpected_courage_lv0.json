@@ -1,0 +1,17 @@
+{
+  "id": "unexpected_courage_lv0",
+  "name": "Unexpected Courage",
+  "name_cn": "绝处逢生",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["innate"],
+  "skill_icons": {"wild": 2},
+  "slots": [],
+  "text": "",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

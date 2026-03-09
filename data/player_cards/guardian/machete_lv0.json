@@ -1,0 +1,17 @@
+{
+  "id": "machete_lv0",
+  "name": "Machete",
+  "name_cn": "弯刀",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": ["item", "weapon", "melee"],
+  "skill_icons": {"combat": 1},
+  "slots": ["hand"],
+  "text": "Fight. You get +1 combat for this attack. If the attacked enemy is the only enemy engaged with you, this attack deals +1 damage.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

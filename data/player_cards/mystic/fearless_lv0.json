@@ -1,0 +1,17 @@
+{
+  "id": "fearless_lv0",
+  "name": "Fearless",
+  "name_cn": "无所畏惧",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["innate"],
+  "skill_icons": {"willpower": 1},
+  "slots": [],
+  "text": "If successful, heal 1 horror.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

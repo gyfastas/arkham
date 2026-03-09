@@ -1,0 +1,17 @@
+{
+  "id": "dr_milan_christopher_lv0",
+  "name": "Dr. Milan Christopher",
+  "name_cn": "米兰·克里斯托弗博士",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": ["ally", "miskatonic"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["ally"],
+  "text": "You get +1 intellect. After you successfully investigate: Gain 1 resource.",
+  "health": 1,
+  "sanity": 2,
+  "pack": "core",
+  "unique": true
+}

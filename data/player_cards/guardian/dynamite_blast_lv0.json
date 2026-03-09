@@ -1,0 +1,17 @@
+{
+  "id": "dynamite_blast_lv0",
+  "name": "Dynamite Blast",
+  "name_cn": "炸药爆破",
+  "class": "guardian",
+  "type": "event",
+  "cost": 5,
+  "level": 0,
+  "traits": ["tactic"],
+  "skill_icons": {"willpower": 1},
+  "slots": [],
+  "text": "Deal 3 damage to each enemy at chosen location.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

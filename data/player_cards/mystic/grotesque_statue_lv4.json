@@ -1,0 +1,17 @@
+{
+  "id": "grotesque_statue_lv4",
+  "name": "Grotesque Statue",
+  "name_cn": "诡秘石像",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": ["item", "relic"],
+  "skill_icons": {"wild": 1},
+  "slots": ["hand"],
+  "text": "Uses (4 charges). Reveal 2 chaos tokens, choose 1.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

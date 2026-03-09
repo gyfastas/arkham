@@ -1,0 +1,17 @@
+{
+  "id": "leo_de_luca_lv0",
+  "name": "Leo De Luca",
+  "name_cn": "里奥·德·卢卡",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 6,
+  "level": 0,
+  "traits": ["ally", "criminal"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["ally"],
+  "text": "You may take an additional action during your turn.",
+  "health": 2,
+  "sanity": 2,
+  "pack": "rcore",
+  "unique": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "opportunist_lv0",
+  "name": "Opportunist",
+  "name_cn": "机会主义者",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["innate"],
+  "skill_icons": {"wild": 1},
+  "text": "If this test is successful by 3 or more, return Opportunist to your hand instead of discarding it.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

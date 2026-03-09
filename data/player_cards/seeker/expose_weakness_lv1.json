@@ -1,0 +1,17 @@
+{
+  "id": "expose_weakness_lv1",
+  "name": "Expose Weakness",
+  "name_cn": "暴露弱点",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": ["insight"],
+  "skill_icons": {"intellect": 1, "combat": 2},
+  "slots": [],
+  "text": "Fast. Choose an enemy at your location. Test intellect (X), where X is that enemy's fight value. For each point you succeed by, reduce that enemy's fight value by 1 for the next attack this phase.",
+  "health": null,
+  "sanity": null,
+  "pack": "dwl",
+  "unique": false
+}

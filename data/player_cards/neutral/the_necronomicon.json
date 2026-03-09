@@ -1,0 +1,22 @@
+{
+  "id": "the_necronomicon",
+  "name": "The Necronomicon",
+  "name_cn": "死灵之书",
+  "subtitle": "John Dee Translation",
+  "subtitle_cn": "约翰·迪伊译本",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": null,
+  "traits": ["item", "tome"],
+  "skill_icons": {},
+  "slots": ["hand"],
+  "text": "Revelation - Put The Necronomicon into play in your threat area, with 3 horror on it. It cannot leave play while it has 1 or more horror on it. Action (Free): Move 1 horror from The Necronomicon to Daisy Walker.",
+  "text_cn": "揭示 - 将死灵之书放入你的威胁区域，上面放置3个恐惧标记。只要上面有1个或以上的恐惧标记，它就不能离场。自由行动：将1个恐惧标记从死灵之书移到黛西·沃克身上。",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": true,
+  "signature": "daisy_walker",
+  "weakness": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "you_handle_this_one_lv0",
+  "name": "You Handle This One!",
+  "name_cn": "交给你了！",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": ["trick"],
+  "skill_icons": {"agility": 1},
+  "slots": [],
+  "text": "Fast. Play after you draw a non-peril encounter card. Choose another investigator. That investigator is considered to have drawn that card instead. Gain 1 resource.",
+  "keywords": ["fast"],
+  "health": null,
+  "sanity": null,
+  "pack": "the_forgotten_age",
+  "unique": false
+}

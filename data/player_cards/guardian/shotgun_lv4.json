@@ -1,0 +1,17 @@
+{
+  "id": "shotgun_lv4",
+  "name": "Shotgun",
+  "name_cn": "霰弹枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 5,
+  "level": 4,
+  "traits": ["item", "weapon", "firearm"],
+  "skill_icons": {"combat": 2},
+  "slots": ["hand", "hand"],
+  "text": "Uses (2 ammo). Fight. +3 combat. Damage = points succeeded by (min 1, max 5).",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

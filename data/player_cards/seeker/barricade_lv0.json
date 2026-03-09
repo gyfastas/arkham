@@ -1,0 +1,17 @@
+{
+  "id": "barricade_lv0",
+  "name": "Barricade",
+  "name_cn": "屏障",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": ["insight", "tactic"],
+  "skill_icons": {"willpower": 1, "intellect": 1, "agility": 1},
+  "slots": [],
+  "text": "Attach to your location. Non-Elite enemies cannot move to attached location. Forced - When an investigator leaves attached location: Discard Barricade.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

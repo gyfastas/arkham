@@ -1,0 +1,17 @@
+{
+  "id": "shortcut_lv0",
+  "name": "Shortcut",
+  "name_cn": "捷径",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": ["insight", "tactic"],
+  "skill_icons": {"willpower": 1, "agility": 1},
+  "slots": [],
+  "text": "Fast. Play only during your turn. Choose an investigator at your location. Move that investigator to a connecting location.",
+  "health": null,
+  "sanity": null,
+  "pack": "dwl",
+  "unique": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "vicious_blow_lv0",
+  "name": "Vicious Blow",
+  "name_cn": "致命打击",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["practiced"],
+  "skill_icons": {"combat": 1},
+  "slots": [],
+  "text": "If successful during attack, +1 damage.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

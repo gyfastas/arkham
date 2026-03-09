@@ -1,0 +1,17 @@
+{
+  "id": "arcane_studies_lv0",
+  "name": "Arcane Studies",
+  "name_cn": "神秘研究",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent"],
+  "skill_icons": {"willpower": 1, "intellect": 1},
+  "slots": [],
+  "text": "Spend 1 resource: +1 willpower. Spend 1 resource: +1 intellect.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

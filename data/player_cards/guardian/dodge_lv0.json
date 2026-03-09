@@ -1,0 +1,17 @@
+{
+  "id": "dodge_lv0",
+  "name": "Dodge",
+  "name_cn": "闪躲",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": ["tactic"],
+  "skill_icons": {"willpower": 1, "agility": 1},
+  "slots": [],
+  "text": "Fast. Play when an enemy attacks. Cancel that attack.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

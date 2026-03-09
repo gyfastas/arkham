@@ -1,0 +1,16 @@
+{
+  "id": "backstab_lv0",
+  "name": "Backstab",
+  "name_cn": "背刺",
+  "class": "rogue",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": ["tactic"],
+  "skill_icons": {"combat": 1, "agility": 1},
+  "text": "Fight. Use agility instead of combat for this attack. This attack deals +2 damage.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

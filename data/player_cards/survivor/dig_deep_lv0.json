@@ -1,0 +1,17 @@
+{
+  "id": "dig_deep_lv0",
+  "name": "Dig Deep",
+  "name_cn": "深挖",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent"],
+  "skill_icons": {"willpower": 1, "agility": 1},
+  "slots": [],
+  "text": "Spend 1 resource: You get +1 willpower for this skill test. Spend 1 resource: You get +1 agility for this skill test.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

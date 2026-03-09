@@ -1,0 +1,18 @@
+{
+  "id": "switchblade_lv0",
+  "name": "Switchblade",
+  "name_cn": "弹簧刀",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["item", "weapon", "melee", "illicit"],
+  "skill_icons": {"agility": 1},
+  "slots": ["hand"],
+  "text": "Fast. Fight. If you succeed by 2 or more, this attack deals +1 damage.",
+  "keywords": ["fast"],
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "arcane_initiate_lv0",
+  "name": "Arcane Initiate",
+  "name_cn": "新晋术士",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["ally", "sorcerer"],
+  "skill_icons": {"willpower": 1},
+  "slots": ["ally"],
+  "text": "Forced: Place 1 doom on enter. Exhaust: Search top 3 for Spell, draw it.",
+  "health": 1,
+  "sanity": 2,
+  "pack": "rcore",
+  "unique": false
+}

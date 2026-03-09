@@ -1,0 +1,17 @@
+{
+  "id": "look_what_i_found_lv0",
+  "name": "\"Look what I found!\"",
+  "name_cn": "看看我发现了什么！",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": ["fortune"],
+  "skill_icons": {"intellect": 2},
+  "slots": [],
+  "text": "Fast. Play after you fail a skill test while investigating by 2 or less. Discover 2 clues at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "rite_of_seeking_lv2",
+  "name": "Rite of Seeking",
+  "name_cn": "礼寻术",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 4,
+  "level": 2,
+  "traits": ["spell"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["arcane"],
+  "text": "Uses (3 charges). Investigate using willpower +2. Discover 1 additional clue.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

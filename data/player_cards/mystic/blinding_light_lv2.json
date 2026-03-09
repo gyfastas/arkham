@@ -1,0 +1,17 @@
+{
+  "id": "blinding_light_lv2",
+  "name": "Blinding Light",
+  "name_cn": "眩光一闪",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": ["spell"],
+  "skill_icons": {"willpower": 1, "agility": 1},
+  "slots": [],
+  "text": "Evade using willpower. If succeed, deal 2 damage.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

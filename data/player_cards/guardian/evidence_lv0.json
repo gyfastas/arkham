@@ -1,0 +1,17 @@
+{
+  "id": "evidence_lv0",
+  "name": "Evidence!",
+  "name_cn": "证据！",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": ["insight"],
+  "skill_icons": {"intellect": 2},
+  "slots": [],
+  "text": "Fast. Play after you defeat an enemy. Discover 1 clue at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

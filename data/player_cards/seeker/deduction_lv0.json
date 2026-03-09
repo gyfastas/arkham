@@ -1,0 +1,17 @@
+{
+  "id": "deduction_lv0",
+  "name": "Deduction",
+  "name_cn": "推理",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["practiced"],
+  "skill_icons": {"intellect": 1},
+  "slots": [],
+  "text": "If this test is successful, discover 1 additional clue at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

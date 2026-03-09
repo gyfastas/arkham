@@ -1,0 +1,17 @@
+{
+  "id": "research_librarian_lv0",
+  "name": "Research Librarian",
+  "name_cn": "研究馆员",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["ally", "miskatonic"],
+  "skill_icons": {"agility": 1},
+  "slots": ["ally"],
+  "text": "After Research Librarian enters play: Search your deck for a Tome asset and add it to your hand. Shuffle your deck.",
+  "health": 1,
+  "sanity": 1,
+  "pack": "core",
+  "unique": false
+}

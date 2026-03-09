@@ -1,0 +1,17 @@
+{
+  "id": "pickpocketing_lv0",
+  "name": "Pickpocketing",
+  "name_cn": "扒窃",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent", "illicit"],
+  "skill_icons": {"agility": 1},
+  "slots": [],
+  "text": "After you evade an enemy, exhaust Pickpocketing: Draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

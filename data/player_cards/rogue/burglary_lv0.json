@@ -1,0 +1,17 @@
+{
+  "id": "burglary_lv0",
+  "name": "Burglary",
+  "name_cn": "夜盗",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["talent", "illicit"],
+  "skill_icons": {"intellect": 1},
+  "slots": [],
+  "text": "Exhaust Burglary: Investigate. If you succeed, instead of discovering clues, gain 3 resources.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

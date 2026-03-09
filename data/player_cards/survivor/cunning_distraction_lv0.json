@@ -1,0 +1,17 @@
+{
+  "id": "cunning_distraction_lv0",
+  "name": "Cunning Distraction",
+  "name_cn": "调虎离山",
+  "class": "survivor",
+  "type": "event",
+  "cost": 5,
+  "level": 0,
+  "traits": ["tactic"],
+  "skill_icons": {"willpower": 1, "wild": 1},
+  "slots": [],
+  "text": "Automatically evade each enemy at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

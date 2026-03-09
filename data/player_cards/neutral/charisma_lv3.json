@@ -1,0 +1,18 @@
+{
+  "id": "charisma_lv3",
+  "name": "Charisma",
+  "name_cn": "魅力超凡",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 3,
+  "traits": ["talent"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. You may have 2 allies in play (instead of the normal maximum of 1).",
+  "keywords": ["permanent"],
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

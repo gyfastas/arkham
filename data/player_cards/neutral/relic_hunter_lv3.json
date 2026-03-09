@@ -1,0 +1,18 @@
+{
+  "id": "relic_hunter_lv3",
+  "name": "Relic Hunter",
+  "name_cn": "宝物猎人",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 3,
+  "traits": ["talent"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. You may have 2 accessories in play (instead of the normal maximum of 1).",
+  "keywords": ["permanent"],
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

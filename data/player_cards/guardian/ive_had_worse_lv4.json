@@ -1,0 +1,17 @@
+{
+  "id": "ive_had_worse_lv4",
+  "name": "\"I've had worse...\"",
+  "name_cn": "\"我见过更糟的……\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 4,
+  "traits": ["spirit"],
+  "skill_icons": {"willpower": 2, "agility": 1},
+  "slots": [],
+  "text": "Fast. Cancel up to 5 damage/horror. Gain resources equal to amount canceled.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

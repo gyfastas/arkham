@@ -1,0 +1,17 @@
+{
+  "id": "magnifying_glass_lv1",
+  "name": "Magnifying Glass",
+  "name_cn": "放大镜",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 0,
+  "level": 1,
+  "traits": ["item", "tool"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["hand"],
+  "text": "Fast. You get +1 intellect while investigating. If there are no clues on your location: Return Magnifying Glass to your hand.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

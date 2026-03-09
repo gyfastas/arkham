@@ -1,0 +1,17 @@
+{
+  "id": "aquinnah_lv1",
+  "name": "Aquinnah",
+  "name_cn": "安奎娜",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 5,
+  "level": 1,
+  "traits": ["ally"],
+  "skill_icons": {"willpower": 1},
+  "slots": ["ally"],
+  "text": "When an enemy attacks you, exhaust Aquinnah and take 1 horror: Deal that enemy's damage to another enemy at your location instead.",
+  "health": 1,
+  "sanity": 4,
+  "pack": "core",
+  "unique": true
+}

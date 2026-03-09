@@ -1,0 +1,17 @@
+{
+  "id": "hard_knocks_lv0",
+  "name": "Hard Knocks",
+  "name_cn": "沉重打击",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["talent"],
+  "skill_icons": {"combat": 1, "agility": 1},
+  "slots": [],
+  "text": "Spend 1 resource: You get +1 combat for this skill test. Spend 1 resource: You get +1 agility for this skill test.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

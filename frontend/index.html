@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arkham Horror LCG - Combat Test</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 12px; }
+
+/* Status Bar */
+.status-bar {
+  display: flex; gap: 16px; padding: 12px 16px;
+  background: #16213e; border-radius: 8px; margin-bottom: 12px;
+  flex-wrap: wrap; align-items: center;
+}
+.stat {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 14px; font-weight: 600;
+}
+.stat .icon { font-size: 18px; }
+.stat .val { color: #fff; font-size: 18px; }
+.stat .label { color: #888; font-size: 11px; }
+.hp { color: #e74c3c; }
+.san { color: #3498db; }
+.res { color: #f1c40f; }
+.act { color: #2ecc71; }
+.clue { color: #9b59b6; }
+.round-info { margin-left: auto; color: #888; font-size: 13px; }
+
+/* Main Layout */
+.main { display: grid; grid-template-columns: 280px 1fr; gap: 12px; margin-bottom: 12px; }
+
+/* Left Panel */
+.left-panel { display: flex; flex-direction: column; gap: 12px; }
+.panel {
+  background: #16213e; border-radius: 8px; padding: 12px;
+}
+.panel h3 { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+/* Location */
+.location-info { font-size: 14px; }
+.location-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.location-stats { display: flex; gap: 16px; color: #aaa; }
+
+/* Enemies */
+.enemy-card {
+  background: #2c1810; border: 1px solid #5c3a28; border-radius: 6px;
+  padding: 10px; margin-bottom: 8px;
+}
+.enemy-card.exhausted { opacity: 0.5; border-style: dashed; }
+.enemy-name { font-weight: 700; color: #e74c3c; font-size: 15px; }
+.enemy-stats { display: flex; gap: 12px; font-size: 12px; color: #ccc; margin-top: 4px; }
+.enemy-hp-bar {
+  height: 6px; background: #333; border-radius: 3px; margin-top: 6px; overflow: hidden;
+}
+.enemy-hp-fill { height: 100%; background: #e74c3c; transition: width 0.3s; }
+.enemy-status { font-size: 11px; color: #888; margin-top: 4px; }
+.enemy-actions { display: flex; gap: 6px; margin-top: 6px; }
+.enemy-action-btn {
+  padding: 3px 10px; border: 1px solid #555; border-radius: 4px;
+  background: transparent; color: #ccc; cursor: pointer; font-size: 11px;
+  transition: all 0.15s;
+}
+.enemy-action-btn:hover { border-color: #667eea; color: #fff; background: #1a1a3e; }
+.enemy-action-btn.fight { border-color: #c0392b; color: #e74c3c; }
+.enemy-action-btn.fight:hover { background: #3c1515; }
+.enemy-action-btn.engage { border-color: #e67e22; color: #f39c12; }
+.enemy-action-btn.engage:hover { background: #3c2a10; }
+
+/* Log */
+.log-panel { min-height: 200px; max-height: 400px; overflow-y: auto; }
+.log-entry { font-size: 13px; padding: 3px 0; border-bottom: 1px solid #1a1a2e; line-height: 1.4; }
+.log-entry:last-child { border-bottom: none; }
+
+/* Hand */
+.hand-section { margin-bottom: 12px; }
+.hand-section h3 { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; padding-left: 4px; }
+.hand-cards {
+  display: flex; gap: 8px; overflow-x: auto; padding: 4px;
+}
+.card {
+  min-width: 140px; max-width: 140px;
+  background: #16213e; border: 2px solid #333; border-radius: 8px;
+  padding: 10px; cursor: pointer; transition: all 0.15s;
+  flex-shrink: 0;
+}
+.card:hover { border-color: #667eea; transform: translateY(-4px); box-shadow: 0 4px 12px rgba(102,126,234,0.3); }
+.card-name { font-size: 13px; font-weight: 700; color: #fff; }
+.card-name-cn { font-size: 11px; color: #aaa; }
+.card-type { font-size: 10px; color: #667eea; text-transform: uppercase; margin-top: 2px; }
+.card-cost { position: absolute; top: 6px; right: 8px; background: #f1c40f; color: #000; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.card { position: relative; }
+.card-text { font-size: 10px; color: #999; margin-top: 4px; line-height: 1.3; }
+.card-icons { font-size: 10px; color: #667eea; margin-top: 4px; }
+
+/* Class colors */
+.card.guardian { border-color: #2980b9; }
+.card.seeker { border-color: #d4a017; }
+.card.neutral { border-color: #666; }
+.card.event { background: #1a2040; }
+.card.skill { background: #1a1a30; border-style: dashed; }
+
+/* Play Area */
+.play-area-section { margin-bottom: 12px; }
+.play-area-section h3 { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; padding-left: 4px; }
+.play-area-cards { display: flex; gap: 8px; flex-wrap: wrap; padding: 4px; min-height: 40px; }
+.asset-in-play {
+  background: #0f3460; border: 2px solid #3282b8; border-radius: 8px;
+  padding: 8px 12px; font-size: 12px; cursor: pointer; transition: all 0.15s;
+}
+.asset-in-play:hover { border-color: #bbe1fa; }
+.asset-in-play.exhausted { opacity: 0.5; transform: rotate(5deg); border-style: dashed; }
+.asset-in-play .uses { color: #f1c40f; font-size: 11px; }
+.asset-in-play.selected { border-color: #e74c3c; box-shadow: 0 0 8px rgba(231,76,60,0.5); }
+
+/* Actions */
+.action-bar {
+  display: flex; gap: 8px; padding: 12px; background: #16213e;
+  border-radius: 8px; flex-wrap: wrap; justify-content: center;
+}
+.action-btn {
+  padding: 10px 18px; border: 2px solid #333; border-radius: 8px;
+  background: #1a1a2e; color: #e0e0e0; cursor: pointer;
+  font-size: 14px; font-weight: 600; transition: all 0.15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.action-btn:hover:not(:disabled) { border-color: #667eea; background: #2a2a4e; }
+.action-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.action-btn.danger { border-color: #c0392b; }
+.action-btn.danger:hover:not(:disabled) { border-color: #e74c3c; background: #3c1515; }
+.action-btn.success { border-color: #27ae60; }
+.action-btn.success:hover:not(:disabled) { border-color: #2ecc71; background: #153320; }
+.action-btn.end-turn { border-color: #e67e22; }
+.action-btn.end-turn:hover:not(:disabled) { border-color: #f39c12; background: #3c2a10; }
+
+/* Defeated overlay */
+.defeated-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+.defeated-overlay .message {
+  text-align: center; padding: 40px;
+  background: #2c1010; border: 2px solid #e74c3c; border-radius: 16px;
+}
+.defeated-overlay h1 { color: #e74c3c; font-size: 32px; margin-bottom: 16px; }
+.defeated-overlay p { color: #ccc; margin-bottom: 20px; }
+
+/* Toast */
+.toast {
+  position: fixed; top: 20px; right: 20px; padding: 12px 20px;
+  background: #333; border-radius: 8px; font-size: 14px;
+  z-index: 200; opacity: 0; transition: opacity 0.3s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; }
+.toast.error { background: #5c1a1a; border: 1px solid #e74c3c; }
+.toast.success { background: #1a3c1a; border: 1px solid #2ecc71; }
+
+/* Modal shared */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center;
+  z-index: 50;
+}
+.modal-inner {
+  background: #16213e; border: 2px solid #667eea; border-radius: 12px;
+  padding: 24px; min-width: 320px; max-width: 500px; max-height: 80vh; overflow-y: auto;
+}
+.modal-inner h3 { margin-bottom: 12px; }
+.modal-option {
+  padding: 10px 16px; border: 1px solid #333; border-radius: 6px;
+  margin-bottom: 8px; cursor: pointer; transition: all 0.15s;
+}
+.modal-option:hover { border-color: #667eea; background: #1a1a3e; }
+
+/* Commit cards modal */
+.commit-card {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border: 1px solid #333; border-radius: 6px;
+  margin-bottom: 6px; cursor: pointer; transition: all 0.15s;
+}
+.commit-card:hover { border-color: #667eea; }
+.commit-card.selected { border-color: #2ecc71; background: rgba(46,204,113,0.1); }
+.commit-card .card-info { flex: 1; }
+.commit-card .card-info .name { font-size: 13px; font-weight: 600; }
+.commit-card .card-info .detail { font-size: 11px; color: #888; }
+.commit-card .icons { color: #667eea; font-size: 12px; font-weight: 700; }
+.commit-card .check { width: 20px; text-align: center; color: #2ecc71; font-size: 16px; }
+.commit-summary { font-size: 12px; color: #aaa; margin: 8px 0; padding: 8px; background: #111; border-radius: 4px; }
+.commit-summary strong { color: #fff; }
+.modal-buttons { display: flex; gap: 8px; margin-top: 12px; }
+.modal-buttons button {
+  flex: 1; padding: 10px; border: 2px solid #333; border-radius: 8px;
+  background: #1a1a2e; color: #e0e0e0; cursor: pointer; font-size: 14px; font-weight: 600;
+}
+.modal-buttons .confirm { border-color: #27ae60; }
+.modal-buttons .confirm:hover { border-color: #2ecc71; background: #153320; }
+.modal-buttons .cancel:hover { border-color: #e74c3c; background: #3c1515; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="stat hp">
+      <span class="icon">&#10084;</span>
+      <span class="val" id="hp">7</span>/<span id="hp-max">7</span>
+    </div>
+    <div class="stat san">
+      <span class="icon">&#128065;</span>
+      <span class="val" id="san">7</span>/<span id="san-max">7</span>
+    </div>
+    <div class="stat res">
+      <span class="icon">&#9679;</span>
+      <span class="val" id="resources">5</span>
+      <span class="label">资源</span>
+    </div>
+    <div class="stat act">
+      <span class="icon">&#9654;</span>
+      <span class="val" id="actions">3</span>
+      <span class="label">行动</span>
+    </div>
+    <div class="stat clue">
+      <span class="icon">&#128270;</span>
+      <span class="val" id="clues">0</span>
+      <span class="label">线索</span>
+    </div>
+    <div class="stat" style="color:#aaa">
+      <span class="icon">&#127183;</span>
+      <span class="val" id="deck-count">0</span>
+      <span class="label">牌库</span>
+    </div>
+    <div class="round-info">
+      第<span id="round-num">1</span>轮 · <span id="phase-name">调查阶段</span>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="main">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <!-- Location -->
+      <div class="panel">
+        <h3>地点</h3>
+        <div class="location-info">
+          <div class="location-name" id="loc-name">书房</div>
+          <div class="location-stats">
+            <span>隐蔽 <strong id="loc-shroud">2</strong></span>
+            <span>线索 <strong id="loc-clues">3</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enemies -->
+      <div class="panel">
+        <h3>敌人</h3>
+        <div id="enemies-container">
+          <!-- Dynamic -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Log -->
+    <div class="panel log-panel" id="log-panel">
+      <h3>战斗日志</h3>
+      <div id="log-entries">
+        <!-- Dynamic -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Hand -->
+  <div class="hand-section">
+    <h3>手牌 (<span id="hand-count">0</span>)</h3>
+    <div class="hand-cards" id="hand-container">
+      <!-- Dynamic -->
+    </div>
+  </div>
+
+  <!-- Play Area -->
+  <div class="play-area-section">
+    <h3>装备区</h3>
+    <div class="play-area-cards" id="play-area-container">
+      <!-- Dynamic -->
+    </div>
+  </div>
+
+  <!-- Action Bar -->
+  <div class="action-bar">
+    <button class="action-btn danger" onclick="startFight()" id="btn-fight">&#9876; 战斗</button>
+    <button class="action-btn" onclick="startEvade()" id="btn-evade">&#128737; 闪避</button>
+    <button class="action-btn" onclick="startInvestigate()" id="btn-investigate">&#128269; 调查</button>
+    <button class="action-btn" onclick="doSimpleAction('RESOURCE')" id="btn-resource">&#128176; 资源</button>
+    <button class="action-btn" onclick="doSimpleAction('DRAW')" id="btn-draw">&#127183; 抽牌</button>
+    <button class="action-btn end-turn" onclick="endTurn()" id="btn-end">&#9193; 结束回合</button>
+    <button class="action-btn" onclick="resetGame()" style="margin-left:auto; font-size:12px; padding:8px 12px;">&#128260; 重置</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Defeated Overlay -->
+<div class="defeated-overlay" id="defeated-overlay" style="display:none">
+  <div class="message">
+    <h1>&#128128; 调查员被击败</h1>
+    <p>你被黑暗吞噬了...</p>
+    <button class="action-btn success" onclick="resetGame()">&#128260; 重新开始</button>
+  </div>
+</div>
+
+<!-- Weapon Select Modal -->
+<div class="modal-overlay" id="weapon-modal" style="display:none">
+  <div class="modal-inner">
+    <h3>选择武器</h3>
+    <div id="weapon-options"></div>
+    <div class="modal-option" onclick="selectWeapon(null)">&#9994; 徒手攻击</div>
+  </div>
+</div>
+
+<!-- Enemy Select Modal -->
+<div class="modal-overlay" id="enemy-modal" style="display:none">
+  <div class="modal-inner">
+    <h3 id="enemy-modal-title">选择目标</h3>
+    <div id="enemy-options"></div>
+    <div class="modal-option" onclick="closeModal('enemy-modal')" style="color:#888">取消</div>
+  </div>
+</div>
+
+<!-- Commit Cards Modal -->
+<div class="modal-overlay" id="commit-modal" style="display:none">
+  <div class="modal-inner">
+    <h3 id="commit-title">投入卡牌到检定</h3>
+    <div class="commit-summary" id="commit-summary"></div>
+    <div id="commit-cards-list"></div>
+    <div class="modal-buttons">
+      <button class="cancel" onclick="cancelCommit()">跳过</button>
+      <button class="confirm" onclick="confirmCommit()">确认投入</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let state = null;
+
+// Pending action state for commit flow
+let pendingAction = null; // { action, extra, skillType }
+let committedCardIds = [];
+
+async function api(path, data) {
+  const opts = data !== undefined
+    ? { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) }
+    : { method: 'GET' };
+  const res = await fetch(path, opts);
+  return res.json();
+}
+
+async function refreshState() {
+  const data = await api('/api/state');
+  state = data;
+  render(data);
+}
+
+async function resetGame() {
+  document.getElementById('defeated-overlay').style.display = 'none';
+  const data = await api('/api/setup', {});
+  state = data.state;
+  render(data.state);
+  showToast('游戏已重置', 'success');
+}
+
+// ========== Simple actions (no skill test) ==========
+
+async function doSimpleAction(action, extra = {}) {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  const payload = { action, ...extra };
+  const data = await api('/api/action', payload);
+  state = data.state;
+  render(data.state);
+  if (!data.success) {
+    showToast(data.message, 'error');
+  }
+}
+
+// ========== Skill test actions (Fight/Investigate/Evade) ==========
+
+// Skill type mapping for commit card filtering
+const ACTION_SKILL_MAP = {
+  'FIGHT': 'combat',
+  'INVESTIGATE': 'intellect',
+  'EVADE': 'agility',
+};
+
+function startFight() {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  const allEnemies = state.enemies;
+  if (allEnemies.length === 0) {
+    showToast('没有可攻击的敌人', 'error');
+    return;
+  }
+
+  // If only 1 enemy, skip target selection
+  if (allEnemies.length === 1) {
+    pickFightTarget(allEnemies[0].instance_id);
+    return;
+  }
+
+  // Show enemy selection
+  showEnemySelect('选择攻击目标', allEnemies, (enemyId) => {
+    pickFightTarget(enemyId);
+  });
+}
+
+function pickFightTarget(enemyId) {
+  // Now choose weapon
+  const weapons = state.play_area.filter(a =>
+    !a.exhausted && (a.name.includes('Machete') || a.name.includes('.45') || a.name.includes('Automatic'))
+  );
+  if (weapons.length > 0) {
+    showWeaponSelect(weapons, enemyId);
+  } else {
+    // Bare hands, go to commit
+    showCommitModal('FIGHT', { enemy_instance_id: enemyId }, 'combat');
+  }
+}
+
+function startEvade() {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  const engaged = state.enemies.filter(e => e.engaged);
+  if (engaged.length === 0) {
+    showToast('没有已交战的敌人可闪避', 'error');
+    return;
+  }
+  if (engaged.length === 1) {
+    showCommitModal('EVADE', { enemy_instance_id: engaged[0].instance_id }, 'agility');
+    return;
+  }
+  showEnemySelect('选择闪避目标', engaged, (enemyId) => {
+    showCommitModal('EVADE', { enemy_instance_id: enemyId }, 'agility');
+  });
+}
+
+function startInvestigate() {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  showCommitModal('INVESTIGATE', {}, 'intellect');
+}
+
+function startEngage(enemyId) {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  doSimpleAction('ENGAGE', { enemy_instance_id: enemyId });
+}
+
+function fightEnemy(enemyId) {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  pickFightTarget(enemyId);
+}
+
+// ========== Enemy Select Modal ==========
+
+let enemySelectCallback = null;
+
+function showEnemySelect(title, enemies, callback) {
+  enemySelectCallback = callback;
+  document.getElementById('enemy-modal-title').textContent = title;
+  const container = document.getElementById('enemy-options');
+  container.innerHTML = enemies.map(e => {
+    const label = e.engaged ? '交战中' : '未交战';
+    const hp = e.health - e.current_damage;
+    return `<div class="modal-option" onclick="selectEnemy('${e.instance_id}')">
+      ${e.name_cn} (${e.name}) — ${label} | HP:${hp}/${e.health}
+    </div>`;
+  }).join('');
+  document.getElementById('enemy-modal').style.display = 'flex';
+}
+
+function selectEnemy(instanceId) {
+  document.getElementById('enemy-modal').style.display = 'none';
+  if (enemySelectCallback) {
+    enemySelectCallback(instanceId);
+    enemySelectCallback = null;
+  }
+}
+
+// ========== Weapon Select Modal ==========
+
+let weaponEnemyId = null;
+
+function showWeaponSelect(weapons, enemyId) {
+  weaponEnemyId = enemyId;
+  const container = document.getElementById('weapon-options');
+  container.innerHTML = weapons.map(w => {
+    const uses = w.uses && w.uses.ammo !== undefined ? ` [弹药:${w.uses.ammo}]` : '';
+    return `<div class="modal-option" onclick="selectWeapon('${w.instance_id}')">${w.name_cn || w.name}${uses}</div>`;
+  }).join('');
+  document.getElementById('weapon-modal').style.display = 'flex';
+}
+
+function selectWeapon(instanceId) {
+  document.getElementById('weapon-modal').style.display = 'none';
+  const extra = { enemy_instance_id: weaponEnemyId };
+  if (instanceId) extra.weapon_instance_id = instanceId;
+  showCommitModal('FIGHT', extra, 'combat');
+}
+
+// ========== Commit Cards Modal ==========
+
+function showCommitModal(action, extra, skillType) {
+  pendingAction = { action, extra, skillType };
+  committedCardIds = [];
+
+  // Find eligible cards: any card with matching skill_icons or wild
+  const eligible = (state.hand || []).filter(c => {
+    if (!c.skill_icons) return false;
+    const matching = (c.skill_icons[skillType] || 0) + (c.skill_icons.wild || 0);
+    return matching > 0;
+  });
+
+  if (eligible.length === 0) {
+    // No cards to commit, execute directly
+    executeAction(action, extra, []);
+    return;
+  }
+
+  const skillCn = { combat: '战斗', intellect: '智力', agility: '敏捷', willpower: '意志' };
+  const testName = skillCn[skillType] || skillType;
+
+  document.getElementById('commit-title').textContent = `投入卡牌到${testName}检定`;
+  updateCommitSummary(skillType);
+
+  const list = document.getElementById('commit-cards-list');
+  list.innerHTML = eligible.map(c => {
+    const matching = (c.skill_icons[skillType] || 0) + (c.skill_icons.wild || 0);
+    const iconDetail = Object.entries(c.skill_icons)
+      .filter(([k, v]) => v > 0)
+      .map(([k, v]) => `${skillLabel(k)}x${v}`)
+      .join(' ');
+    return `<div class="commit-card" id="commit-${c.id}" onclick="toggleCommit('${c.id}')">
+      <div class="check"></div>
+      <div class="card-info">
+        <div class="name">${c.name_cn} (${c.name})</div>
+        <div class="detail">${typeLabel(c.type)} | ${iconDetail}</div>
+      </div>
+      <div class="icons">+${matching}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('commit-modal').style.display = 'flex';
+}
+
+function toggleCommit(cardId) {
+  const idx = committedCardIds.indexOf(cardId);
+  if (idx >= 0) {
+    committedCardIds.splice(idx, 1);
+  } else {
+    committedCardIds.push(cardId);
+  }
+
+  // Update UI
+  const el = document.getElementById('commit-' + cardId);
+  if (el) {
+    el.classList.toggle('selected', committedCardIds.includes(cardId));
+    el.querySelector('.check').textContent = committedCardIds.includes(cardId) ? '\u2713' : '';
+  }
+  updateCommitSummary(pendingAction.skillType);
+}
+
+function updateCommitSummary(skillType) {
+  let totalIcons = 0;
+  for (const cardId of committedCardIds) {
+    const card = state.hand.find(c => c.id === cardId);
+    if (card && card.skill_icons) {
+      totalIcons += (card.skill_icons[skillType] || 0) + (card.skill_icons.wild || 0);
+    }
+  }
+  const summary = document.getElementById('commit-summary');
+  summary.innerHTML = `已选 <strong>${committedCardIds.length}</strong> 张卡牌，提供 <strong>+${totalIcons}</strong> 图标加成`;
+}
+
+function confirmCommit() {
+  document.getElementById('commit-modal').style.display = 'none';
+  if (pendingAction) {
+    executeAction(pendingAction.action, pendingAction.extra, committedCardIds);
+    pendingAction = null;
+    committedCardIds = [];
+  }
+}
+
+function cancelCommit() {
+  document.getElementById('commit-modal').style.display = 'none';
+  if (pendingAction) {
+    executeAction(pendingAction.action, pendingAction.extra, []);
+    pendingAction = null;
+    committedCardIds = [];
+  }
+}
+
+async function executeAction(action, extra, committed) {
+  const payload = { action, ...extra };
+  if (committed && committed.length > 0) {
+    payload.committed_cards = committed;
+  }
+  const data = await api('/api/action', payload);
+  state = data.state;
+  render(data.state);
+  if (!data.success) {
+    showToast(data.message, 'error');
+  }
+}
+
+// ========== End Turn ==========
+
+async function endTurn() {
+  const data = await api('/api/end-turn', {});
+  state = data.state;
+  render(data.state);
+}
+
+// ========== Modals ==========
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// ========== Render ==========
+
+function render(s) {
+  if (!s) return;
+
+  // Status
+  const inv = s.investigator;
+  document.getElementById('hp').textContent = inv.health - inv.damage;
+  document.getElementById('hp-max').textContent = inv.health;
+  document.getElementById('san').textContent = inv.sanity - inv.horror;
+  document.getElementById('san-max').textContent = inv.sanity;
+  document.getElementById('resources').textContent = inv.resources;
+  document.getElementById('actions').textContent = inv.actions_remaining;
+  document.getElementById('clues').textContent = inv.clues;
+  document.getElementById('deck-count').textContent = inv.deck_count;
+  document.getElementById('round-num').textContent = s.round;
+  document.getElementById('phase-name').textContent = phaseLabel(s.phase);
+
+  // Location
+  document.getElementById('loc-name').textContent = s.location.name_cn;
+  document.getElementById('loc-shroud').textContent = s.location.shroud;
+  document.getElementById('loc-clues').textContent = s.location.clues;
+
+  // Enemies — with per-enemy action buttons
+  const noActions = inv.actions_remaining <= 0;
+  const enemiesHtml = s.enemies.map(e => {
+    const hpPct = e.health > 0 ? ((e.health - e.current_damage) / e.health * 100) : 0;
+    const exhaustClass = e.exhausted ? 'exhausted' : '';
+    const engagedLabel = e.engaged ? '交战中' : '未交战';
+
+    // Per-enemy action buttons
+    let actionsHtml = '';
+    if (!noActions) {
+      actionsHtml = '<div class="enemy-actions">';
+      actionsHtml += `<button class="enemy-action-btn fight" onclick="fightEnemy('${e.instance_id}')">&#9876; 攻击</button>`;
+      if (e.engaged) {
+        actionsHtml += `<button class="enemy-action-btn" onclick="startEvade()">&#128737; 闪避</button>`;
+      } else {
+        actionsHtml += `<button class="enemy-action-btn engage" onclick="startEngage('${e.instance_id}')">&#127919; 交战</button>`;
+      }
+      actionsHtml += '</div>';
+    }
+
+    return `
+      <div class="enemy-card ${exhaustClass}">
+        <div class="enemy-name">${e.name_cn} (${e.name})</div>
+        <div class="enemy-stats">
+          <span>&#9876; ${e.fight}</span>
+          <span>&#10084; ${e.health - e.current_damage}/${e.health}</span>
+          <span>&#128737; ${e.evade}</span>
+          <span>&#128128; ${e.damage_dealt}/${e.horror_dealt}</span>
+        </div>
+        <div class="enemy-hp-bar"><div class="enemy-hp-fill" style="width:${Math.max(0,hpPct)}%"></div></div>
+        <div class="enemy-status">${engagedLabel}${e.exhausted ? ' · 已消耗' : ''}</div>
+        ${actionsHtml}
+      </div>
+    `;
+  }).join('');
+  document.getElementById('enemies-container').innerHTML = enemiesHtml || '<div style="color:#666;font-size:13px">无敌人</div>';
+
+  // Hand
+  document.getElementById('hand-count').textContent = s.hand.length;
+  const handHtml = s.hand.map(c => {
+    const classColor = c.class || 'neutral';
+    const typeClass = c.type || '';
+    const costHtml = c.cost !== null && c.cost !== undefined ? `<div class="card-cost">${c.cost}</div>` : '';
+    const icons = c.skill_icons ? Object.entries(c.skill_icons).filter(([k,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ') : '';
+    return `
+      <div class="card ${classColor} ${typeClass}" onclick="playCard('${c.id}')">
+        ${costHtml}
+        <div class="card-name">${c.name}</div>
+        <div class="card-name-cn">${c.name_cn}</div>
+        <div class="card-type">${typeLabel(c.type)}${c.slots.length ? ' · ' + c.slots.join('/') : ''}</div>
+        <div class="card-text">${c.text || ''}</div>
+        ${icons ? `<div class="card-icons">${icons}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+  document.getElementById('hand-container').innerHTML = handHtml || '<div style="color:#666;font-size:13px;padding:8px">手牌为空</div>';
+
+  // Play Area
+  const playHtml = s.play_area.map(a => {
+    const exhaustClass = a.exhausted ? 'exhausted' : '';
+    const usesHtml = a.uses && Object.keys(a.uses).length > 0
+      ? `<div class="uses">${Object.entries(a.uses).map(([k,v])=>`${k}:${v}`).join(' ')}</div>`
+      : '';
+    return `
+      <div class="asset-in-play ${exhaustClass}" title="${a.name}">
+        <strong>${a.name_cn || a.name}</strong>
+        ${usesHtml}
+        ${a.slots.length ? `<div style="font-size:10px;color:#666">${a.slots.join('/')}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+  document.getElementById('play-area-container').innerHTML = playHtml || '<div style="color:#666;font-size:13px;padding:8px">无装备</div>';
+
+  // Log
+  const logHtml = s.log.map(entry => `<div class="log-entry">${entry}</div>`).join('');
+  document.getElementById('log-entries').innerHTML = logHtml;
+  const logPanel = document.getElementById('log-panel');
+  logPanel.scrollTop = logPanel.scrollHeight;
+
+  // Action buttons state
+  document.getElementById('btn-fight').disabled = noActions || s.enemies.length === 0;
+  document.getElementById('btn-evade').disabled = noActions || s.enemies.filter(e=>e.engaged).length === 0;
+  document.getElementById('btn-investigate').disabled = noActions;
+  document.getElementById('btn-resource').disabled = noActions;
+  document.getElementById('btn-draw').disabled = noActions;
+
+  // Defeated
+  if (inv.defeated) {
+    document.getElementById('defeated-overlay').style.display = 'flex';
+  }
+}
+
+function playCard(cardId) {
+  if (!state || state.investigator.actions_remaining <= 0) {
+    showToast('没有剩余行动点！', 'error');
+    return;
+  }
+  const card = state.hand.find(c => c.id === cardId);
+  if (!card) return;
+
+  if (card.type === 'skill') {
+    showToast('技能卡只能投入到检定中，不能直接打出', 'error');
+    return;
+  }
+
+  doSimpleAction('PLAY', { card_id: cardId });
+}
+
+function phaseLabel(phase) {
+  const map = { SETUP:'准备', MYTHOS:'神话', INVESTIGATION:'调查', ENEMY:'敌人', UPKEEP:'刷新' };
+  return map[phase] || phase;
+}
+
+function typeLabel(type) {
+  const map = { asset:'支援', event:'事件', skill:'技能' };
+  return map[type] || type;
+}
+
+function skillLabel(skill) {
+  const map = { willpower:'意', intellect:'智', combat:'战', agility:'敏', wild:'万' };
+  return map[skill] || skill;
+}
+
+function showToast(msg, type='') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + type;
+  setTimeout(() => el.className = 'toast', 2000);
+}
+
+// Init
+resetGame();
+</script>
+</body>
+</html>

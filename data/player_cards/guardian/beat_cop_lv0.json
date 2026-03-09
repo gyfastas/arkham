@@ -1,0 +1,17 @@
+{
+  "id": "beat_cop_lv0",
+  "name": "Beat Cop",
+  "name_cn": "巡警",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": ["ally", "police"],
+  "skill_icons": {"combat": 1},
+  "slots": ["ally"],
+  "text": "You get +1 combat. Discard Beat Cop: Deal 1 damage to an enemy at your location.",
+  "health": 2,
+  "sanity": 2,
+  "pack": "rcore",
+  "unique": false
+}

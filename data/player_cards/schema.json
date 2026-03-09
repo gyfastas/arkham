@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PlayerCard",
+  "description": "玩家卡牌数据格式",
+  "type": "object",
+  "required": ["id", "name", "name_cn", "class", "type", "cost", "level"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "name_cn": { "type": "string" },
+    "class": { "type": "string", "enum": ["guardian", "seeker", "rogue", "mystic", "survivor", "neutral"] },
+    "type": { "type": "string", "enum": ["asset", "event", "skill"] },
+    "cost": { "type": ["integer", "null"], "description": "资源费用, 技能卡为null" },
+    "level": { "type": "integer", "minimum": 0, "maximum": 5, "description": "经验等级 0-5" },
+    "traits": { "type": "array", "items": { "type": "string" }, "description": "特征标签" },
+    "skill_icons": {
+      "type": "object",
+      "properties": {
+        "willpower": { "type": "integer", "default": 0 },
+        "intellect": { "type": "integer", "default": 0 },
+        "combat": { "type": "integer", "default": 0 },
+        "agility": { "type": "integer", "default": 0 },
+        "wild": { "type": "integer", "default": 0 }
+      }
+    },
+    "slots": { "type": "array", "items": { "type": "string", "enum": ["hand", "hand_x2", "arcane", "arcane_x2", "accessory", "body", "ally", "tarot"] } },
+    "text": { "type": "string", "description": "卡牌效果文本" },
+    "flavor_text": { "type": "string" },
+    "health": { "type": ["integer", "null"] },
+    "sanity": { "type": ["integer", "null"] },
+    "pack": { "type": "string" },
+    "unique": { "type": "boolean", "default": false }
+  }
+}

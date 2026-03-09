@@ -1,0 +1,17 @@
+{
+  "id": "stray_cat_lv0",
+  "name": "Stray Cat",
+  "name_cn": "野猫",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["ally", "creature"],
+  "skill_icons": {"agility": 1},
+  "slots": ["ally"],
+  "text": "Discard Stray Cat: Automatically evade a non-Elite enemy engaged with you.",
+  "health": 1,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

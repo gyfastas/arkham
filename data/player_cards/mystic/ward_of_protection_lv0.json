@@ -1,0 +1,17 @@
+{
+  "id": "ward_of_protection_lv0",
+  "name": "Ward of Protection",
+  "name_cn": "守护结界",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": ["spell", "spirit"],
+  "skill_icons": {"wild": 1},
+  "slots": [],
+  "text": "Fast. Cancel a treachery's revelation. Take 1 horror.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "inquiring_mind_lv0",
+  "name": "Inquiring Mind",
+  "name_cn": "追根究底",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["innate"],
+  "skill_icons": {"wild": 3},
+  "slots": [],
+  "text": "Commit to a skill test only if there is a clue at your location.",
+  "health": null,
+  "sanity": null,
+  "pack": "dwl",
+  "unique": false
+}

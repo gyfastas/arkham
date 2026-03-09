@@ -1,0 +1,17 @@
+{
+  "id": "old_book_of_lore_lv0",
+  "name": "Old Book of Lore",
+  "name_cn": "智慧古书",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": ["item", "tome"],
+  "skill_icons": {"willpower": 1},
+  "slots": ["hand"],
+  "text": "Exhaust Old Book of Lore: Choose an investigator at your location. That investigator searches the top 3 cards of his or her deck for a card, draws it, and shuffles the remaining cards into his or her deck.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

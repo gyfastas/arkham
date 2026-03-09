@@ -1,0 +1,17 @@
+{
+  "id": "perception_lv0",
+  "name": "Perception",
+  "name_cn": "洞察力",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["practiced"],
+  "skill_icons": {"intellect": 2},
+  "slots": [],
+  "text": "If this test is successful, draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

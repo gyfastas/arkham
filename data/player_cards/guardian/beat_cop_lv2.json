@@ -1,0 +1,17 @@
+{
+  "id": "beat_cop_lv2",
+  "name": "Beat Cop",
+  "name_cn": "巡警",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 2,
+  "traits": ["ally", "police"],
+  "skill_icons": {"combat": 1, "agility": 1},
+  "slots": ["ally"],
+  "text": "+1 combat. Exhaust and deal 1 damage to it: Deal 1 damage to an enemy.",
+  "health": 3,
+  "sanity": 2,
+  "pack": "rcore",
+  "unique": false
+}

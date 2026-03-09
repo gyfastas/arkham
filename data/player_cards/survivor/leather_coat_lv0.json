@@ -1,0 +1,17 @@
+{
+  "id": "leather_coat_lv0",
+  "name": "Leather Coat",
+  "name_cn": "皮大衣",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": ["item", "armor"],
+  "skill_icons": {"combat": 1},
+  "slots": ["body"],
+  "text": "No ability. Leather Coat can soak up to 2 damage.",
+  "health": 2,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

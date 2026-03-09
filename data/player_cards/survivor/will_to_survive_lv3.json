@@ -1,0 +1,17 @@
+{
+  "id": "will_to_survive_lv3",
+  "name": "Will to Survive",
+  "name_cn": "生存意志",
+  "class": "survivor",
+  "type": "event",
+  "cost": 4,
+  "level": 3,
+  "traits": ["spirit"],
+  "skill_icons": {"combat": 1, "wild": 1},
+  "slots": [],
+  "text": "Fast. Until the end of the round, do not reveal chaos tokens for any skill tests you perform.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

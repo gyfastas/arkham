@@ -1,0 +1,17 @@
+{
+  "id": "ive_got_a_plan_lv0",
+  "name": "I've got a plan!",
+  "name_cn": "我有个计划！",
+  "class": "seeker",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": ["insight", "tactic"],
+  "skill_icons": {"intellect": 1, "combat": 1},
+  "slots": [],
+  "text": "Fight. This attack uses intellect. You deal +1 damage for this attack for each clue you have (max +3 damage).",
+  "health": null,
+  "sanity": null,
+  "pack": "dwl",
+  "unique": false
+}

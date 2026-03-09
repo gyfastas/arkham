@@ -1,0 +1,17 @@
+{
+  "id": "guts_lv0",
+  "name": "Guts",
+  "name_cn": "勇气",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": ["innate"],
+  "skill_icons": {"willpower": 2},
+  "slots": [],
+  "text": "If this test is successful, draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

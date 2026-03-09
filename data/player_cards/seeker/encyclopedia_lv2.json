@@ -1,0 +1,17 @@
+{
+  "id": "encyclopedia_lv2",
+  "name": "Encyclopedia",
+  "name_cn": "百科全书",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": ["item", "tome"],
+  "skill_icons": {"wild": 1},
+  "slots": ["hand"],
+  "text": "Exhaust Encyclopedia: Choose an investigator at your location. That investigator gets +2 to a skill of your choice until the end of the phase.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

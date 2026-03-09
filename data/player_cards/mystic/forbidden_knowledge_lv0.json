@@ -1,0 +1,17 @@
+{
+  "id": "forbidden_knowledge_lv0",
+  "name": "Forbidden Knowledge",
+  "name_cn": "禁忌知识",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": ["talent"],
+  "skill_icons": {"intellect": 1},
+  "slots": [],
+  "text": "Uses (4 secrets). Exhaust and take 1 horror: Move 1 secret to resource pool as resource.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

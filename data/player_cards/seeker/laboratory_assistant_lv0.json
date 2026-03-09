@@ -1,0 +1,17 @@
+{
+  "id": "laboratory_assistant_lv0",
+  "name": "Laboratory Assistant",
+  "name_cn": "实验室助手",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": ["ally", "miskatonic", "science"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["ally"],
+  "text": "Your maximum hand size is increased by 2. After Laboratory Assistant enters play: Draw 2 cards.",
+  "health": 1,
+  "sanity": 2,
+  "pack": "dwl",
+  "unique": false
+}

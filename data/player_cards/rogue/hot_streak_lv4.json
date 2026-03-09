@@ -1,0 +1,16 @@
+{
+  "id": "hot_streak_lv4",
+  "name": "Hot Streak",
+  "name_cn": "百战百胜",
+  "class": "rogue",
+  "type": "event",
+  "cost": 3,
+  "level": 4,
+  "traits": ["fortune"],
+  "skill_icons": {"wild": 1},
+  "text": "Gain 10 resources.",
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

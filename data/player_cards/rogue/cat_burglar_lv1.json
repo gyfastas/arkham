@@ -1,0 +1,17 @@
+{
+  "id": "cat_burglar_lv1",
+  "name": "Cat Burglar",
+  "name_cn": "飞贼",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 4,
+  "level": 1,
+  "traits": ["ally", "criminal"],
+  "skill_icons": {"willpower": 1, "agility": 1},
+  "slots": ["ally"],
+  "text": "You get +1 agility. Exhaust Cat Burglar: Disengage from an enemy engaged with you and move to a connecting location.",
+  "health": 2,
+  "sanity": 2,
+  "pack": "rcore",
+  "unique": false
+}

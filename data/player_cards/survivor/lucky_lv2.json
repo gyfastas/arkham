@@ -1,0 +1,17 @@
+{
+  "id": "lucky_lv2",
+  "name": "Lucky!",
+  "name_cn": "运气好！",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": ["fortune"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Fast. Play when you would fail a skill test. You get +2 to your skill value for this test. Draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

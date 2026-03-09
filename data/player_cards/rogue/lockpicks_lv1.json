@@ -1,0 +1,18 @@
+{
+  "id": "lockpicks_lv1",
+  "name": "Lockpicks",
+  "name_cn": "撬锁工具",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": ["item", "tool", "illicit"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["hand"],
+  "text": "Uses (3 supplies). Exhaust and spend 1 supply: Investigate. You may use your agility value instead of your intellect value for this investigation.",
+  "uses": {"supply": 3},
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

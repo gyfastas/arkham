@@ -1,0 +1,17 @@
+{
+  "id": "sure_gamble_lv3",
+  "name": "Sure Gamble",
+  "name_cn": "老千手法",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 3,
+  "traits": ["fortune", "insight"],
+  "skill_icons": {},
+  "text": "Fast. Play when a chaos token with a negative modifier is revealed during a skill test you are performing. Switch that token's modifier to its positive counterpart.",
+  "keywords": ["fast"],
+  "health": null,
+  "sanity": null,
+  "pack": "rcore",
+  "unique": false
+}

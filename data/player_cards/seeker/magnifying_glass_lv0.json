@@ -1,0 +1,17 @@
+{
+  "id": "magnifying_glass_lv0",
+  "name": "Magnifying Glass",
+  "name_cn": "放大镜",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["item", "tool"],
+  "skill_icons": {"intellect": 1},
+  "slots": ["hand"],
+  "text": "You get +1 intellect while investigating.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

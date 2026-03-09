@@ -1,0 +1,17 @@
+{
+  "id": "cryptic_research_lv4",
+  "name": "Cryptic Research",
+  "name_cn": "隐秘研究",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 4,
+  "traits": ["insight"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Fast. Play only during your turn. Choose an investigator at your location. That investigator draws 3 cards.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}

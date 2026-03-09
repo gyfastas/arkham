@@ -1,0 +1,17 @@
+{
+  "id": "rabbits_foot_lv0",
+  "name": "Rabbit's Foot",
+  "name_cn": "幸运兔脚",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": ["item", "charm"],
+  "skill_icons": {"wild": 1},
+  "slots": ["accessory"],
+  "text": "After you fail a skill test, exhaust Rabbit's Foot: Draw 1 card.",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false
+}
