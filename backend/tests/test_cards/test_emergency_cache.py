@@ -28,11 +28,8 @@ def game():
     g.add_investigator("inv1", inv_data, starting_location="test_location")
     g.add_location("test_location", loc, clues=0)
 
-    # Register the card implementation
+    # Register the card implementation (ActionResolver will activate it when played)
     g.card_registry.register_class(EmergencyCache)
-    # For events, we register a temporary instance to listen
-    impl = EmergencyCache("event_listener")
-    impl.register(g.event_bus, "event_listener")
 
     return g
 

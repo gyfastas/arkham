@@ -15,11 +15,10 @@ class DaisyWalker(CardImplementation):
         priority=TimingPriority.WHEN,
     )
     def grant_tome_action(self, ctx):
-        """Grant Daisy 1 extra action at the start of investigation phase.
+        """Grant Daisy 1 extra TOME action at the start of investigation phase.
 
         This bonus action can only be used for Tome abilities.
-        In the current engine, we grant +1 action. The Tome-only restriction
-        would need UI enforcement or an action type flag.
+        The Tome-only restriction is enforced by checking card traits.
         """
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
@@ -27,7 +26,8 @@ class DaisyWalker(CardImplementation):
         # Check this is Daisy's investigator
         if inv.card_data.id != "daisy_walker":
             return
-        inv.actions_remaining += 1
+        # Grant 1 tome-specific action
+        inv.tome_actions_remaining += 1
 
     @on_event(
         GameEvent.CHAOS_TOKEN_RESOLVED,

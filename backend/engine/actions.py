@@ -43,15 +43,21 @@ class ActionResolver:
     ) -> bool:
         """Perform an action, handling AoO and action cost. Returns success."""
         inv = self.game_state.get_investigator(investigator_id)
-        if inv is None or inv.actions_remaining <= 0:
+        if inv is None:
+            return False
+        
+        # Fast actions (e.g. playing a Fast card) do not cost an action
+        is_fast = kwargs.get("fast", False)
+        if not is_fast and inv.actions_remaining <= 0:
             return False
 
-        # Check attack of opportunity
-        if action not in AOO_EXEMPT_ACTIONS:
+        # Check attack of opportunity (only for non-fast actions)
+        if not is_fast and action not in AOO_EXEMPT_ACTIONS:
             self._resolve_attacks_of_opportunity(investigator_id)
 
-        # Spend action
-        inv.actions_remaining -= 1
+        # Spend action (only if not fast)
+        if not is_fast:
+            inv.actions_remaining -= 1
 
         # Emit action performed
         from backend.engine.event_bus import EventContext
@@ -73,6 +79,7 @@ class ActionResolver:
             Action.ENGAGE: self._engage,
             Action.EVADE: self._evade,
             Action.PLAY: self._play,
+            Action.TOME_ACTIVATE: self._tome_activate,
         }
 
         handler = handlers.get(action)
@@ -370,7 +377,14 @@ class ActionResolver:
         if card_data is None:
             return False
 
-        # Pay cost
+        # Check fast: fast cards don't cost an action
+        is_fast = card_data.fast
+
+        # For non-fast cards, check we have actions remaining
+        if not is_fast and inv.actions_remaining <= 0:
+            return False
+
+        # Pay cost (check BEFORE spending)
         cost = card_data.cost or 0
         if inv.resources < cost:
             return False
@@ -381,7 +395,8 @@ class ActionResolver:
         # Remove from hand
         inv.hand.remove(card_id)
 
-        if inv.resources + cost >= cost:  # cost was paid
+        # Spend resources event
+        if cost > 0:
             ctx = EventContext(
                 game_state=self.game_state,
                 event=GameEvent.RESOURCES_SPENT,
@@ -389,6 +404,10 @@ class ActionResolver:
                 amount=cost,
             )
             self.bus.emit(ctx)
+
+        # Spend action (only for non-fast cards)
+        if not is_fast:
+            inv.actions_remaining -= 1
 
         if card_data.type == CardType.ASSET:
             return self._play_asset(inv, card_id, card_data)
@@ -434,15 +453,90 @@ class ActionResolver:
         return True
 
     def _play_event(self, inv, card_id, card_data) -> bool:
+        """Play an event card.
+
+        Important: event/skill card implementations are not "in play", so we
+        activate a temporary CardImplementation instance here so its
+        `@on_event(GameEvent.CARD_PLAYED, ...)` handlers can run.
+
+        We keep the instance registered until `ROUND_ENDS` to support events
+        that create temporary lasting effects (e.g. Mind over Matter).
+        """
         from backend.engine.event_bus import EventContext
+        from backend.models.enums import TimingPriority
+
+        # Activate a temporary implementation instance (if available)
+        temp_instance_id = self.game_state.next_instance_id()
+        cleanup_entry = None
+        if self.card_registry:
+            self.card_registry.activate_card(card_id, temp_instance_id, self.bus)
+
+            # Auto-cleanup at end of round to avoid leaking handlers
+            def _cleanup(ctx):
+                # Deactivate the event instance
+                self.card_registry.deactivate_card(temp_instance_id, self.bus)
+                # Unregister this cleanup handler
+                if cleanup_entry is not None:
+                    self.bus.unregister(cleanup_entry)
+
+            cleanup_entry = self.bus.register(
+                event=GameEvent.ROUND_ENDS,
+                handler=_cleanup,
+                priority=TimingPriority.AFTER,
+                card_instance_id=temp_instance_id,
+            )
+
+        # Emit card played
         ctx = EventContext(
             game_state=self.game_state,
             event=GameEvent.CARD_PLAYED,
             investigator_id=inv.investigator_id,
+            source=temp_instance_id,
             extra={"card_id": card_id},
         )
         self.bus.emit(ctx)
 
         # Event goes to discard after resolution
         inv.discard.append(card_id)
+        return True
+
+    def _tome_activate(self, investigator_id: str, **kwargs) -> bool:
+        """Daisy Walker extra action: activate a Tome asset."""
+        inv = self.game_state.get_investigator(investigator_id)
+        if inv is None:
+            return False
+        # Must be Daisy and have tome action available
+        if inv.card_data.id != "daisy_walker" or inv.tome_actions_remaining <= 0:
+            return False
+        instance_id = kwargs.get("instance_id")
+        if not instance_id:
+            return False
+        ci = self.game_state.get_card_instance(instance_id)
+        if ci is None or ci.controller_id != investigator_id:
+            return False
+        cd = self.game_state.get_card_data(ci.card_id)
+        if cd is None or "tome" not in cd.traits:
+            return False
+        if ci.exhausted:
+            return False
+        # Consume tome action
+        inv.tome_actions_remaining -= 1
+        # Exhaust and trigger
+        ci.exhausted = True
+        # Dispatch to normal asset activation logic
+        return self._activate_asset_impl(investigator_id, instance_id, ci, cd)
+
+    def _activate_asset_impl(self, investigator_id: str, instance_id: str, ci: 'CardInstance', cd: 'CardData') -> bool:
+        """Shared logic for activating an asset (normal or tome action)."""
+        # Emit activation event
+        from backend.engine.event_bus import EventContext
+        ctx = EventContext(
+            game_state=self.game_state,
+            event=GameEvent.ASSET_ACTIVATED,
+            investigator_id=investigator_id,
+            source=instance_id,
+            extra={"card_id": cd.id},
+        )
+        self.bus.emit(ctx)
+        # Card-specific activation handled by card implementation via event bus
         return True

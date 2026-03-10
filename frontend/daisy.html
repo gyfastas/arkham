@@ -335,7 +335,27 @@ function startFight() {
 }
 
 function pickFightTarget(enemyId) {
-  const weapons = state.play_area.filter(a => !a.exhausted && a.traits && a.traits.includes('weapon'));
+  // CN-first backend: use traits/slots/card_id rather than EN name
+  function isWeaponAsset(a) {
+    const cid = (a.id || '').toLowerCase();
+    const slots = a.slots || [];
+    const traits = (a.traits || []).map(x => String(x).toLowerCase());
+    if (traits.includes('weapon')) return true;
+    if (!slots.includes('hand')) return false;
+    if (cid.includes('flashlight') || cid.includes('magnifying_glass')) return false;
+    if (a.uses && (a.uses.ammo !== undefined || a.uses.charge !== undefined)) return true;
+    return (
+      cid.includes('machete') ||
+      cid.includes('automatic') ||
+      cid.includes('derringer') ||
+      cid.includes('shotgun') ||
+      cid.includes('switchblade') ||
+      cid.includes('baseball_bat') ||
+      cid.includes('knife')
+    );
+  }
+
+  const weapons = (state.play_area || []).filter(a => !a.exhausted && isWeaponAsset(a));
   if (weapons.length > 0) { showWeaponSelect(weapons, enemyId); }
   else { showCommitModal('FIGHT', { enemy_instance_id: enemyId }, 'combat'); }
 }
@@ -363,6 +383,30 @@ function fightEnemy(enemyId) {
   pickFightTarget(enemyId);
 }
 
+// ======== 中文显示助手：不渲染英文 ========
+function _hasCn(s) { return !!(s && /[\u4E00-\u9FFF]/.test(String(s))); }
+function cnOrPlaceholder(s, placeholder) {
+  const v = (s == null ? '' : String(s)).trim();
+  if (_hasCn(v)) return v;
+  return placeholder || '（暂无中文）';
+}
+function slotLabel(v) {
+  const map = { hand:'手', body:'身体', accessory:'饰品', arcane:'奥术', ally:'盟友' };
+  return map[v] || '槽位';
+}
+function formatSlots(slots) {
+  if (!slots || slots.length === 0) return '';
+  return slots.map(s => slotLabel(s)).join('/');
+}
+function usesLabel(k) {
+  const map = { ammo:'弹药', charge:'充能', supply:'补给', secret:'秘密', resource:'资源', clue:'线索' };
+  return map[k] || '使用';
+}
+function formatUses(uses) {
+  if (!uses || Object.keys(uses).length === 0) return '';
+  return Object.entries(uses).map(([k,v]) => `${usesLabel(k)}:${v}`).join(' ');
+}
+
 // Enemy select
 let enemySelectCallback = null;
 function showEnemySelect(title, enemies, cb) {
@@ -382,7 +426,7 @@ function showWeaponSelect(weapons, eid) {
   weaponEnemyId = eid;
   document.getElementById('weapon-options').innerHTML = weapons.map(w => {
     const uses = w.uses?.ammo !== undefined ? ` [弹药:${w.uses.ammo}]` : '';
-    return `<div class="modal-option" onclick="selectWeapon('${w.instance_id}')">${w.name_cn||w.name}${uses}</div>`;
+    return `<div class="modal-option" onclick="selectWeapon('${w.instance_id}')">${cnOrPlaceholder(w.name_cn,'（未翻译卡牌）')}${uses}</div>`;
   }).join('');
   document.getElementById('weapon-modal').style.display = 'flex';
 }
@@ -404,7 +448,7 @@ function showCommitModal(action, extra, skillType) {
   document.getElementById('commit-cards-list').innerHTML = eligible.map(c => {
     const matching = (c.skill_icons[skillType]||0) + (c.skill_icons.wild||0);
     const detail = Object.entries(c.skill_icons).filter(([,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ');
-    return `<div class="commit-card" id="commit-${c.id}" onclick="toggleCommit('${c.id}')"><div class="check"></div><div class="card-info"><div class="name">${c.name_cn} (${c.name})</div><div class="detail">${typeLabel(c.type)} | ${detail}</div></div><div class="icons">+${matching}</div></div>`;
+    return `<div class="commit-card" id="commit-${c.id}" onclick="toggleCommit('${c.id}')"><div class="check"></div><div class="card-info"><div class="name">${cnOrPlaceholder(c.name_cn,'（未翻译卡牌）')}</div><div class="detail">${typeLabel(c.type)} | ${detail}</div></div><div class="icons">+${matching}</div></div>`;
   }).join('');
   document.getElementById('commit-modal').style.display = 'flex';
 }
@@ -463,7 +507,7 @@ function showSoakModal(totalDamage, totalHorror, source) {
     const hpInfo = t.remaining_health != null ? `HP:${t.remaining_health}/${t.health}` : '';
     const sanInfo = t.remaining_sanity != null ? `SAN:${t.remaining_sanity}/${t.sanity}` : '';
     html += `<div style="padding:8px;border:1px solid #333;border-radius:6px;margin-bottom:6px;">
-      <div style="font-weight:600;color:#2ecc71">${t.name_cn} (${t.name})</div>
+      <div style="font-weight:600;color:#2ecc71">${cnOrPlaceholder(t.name_cn,'（未翻译卡牌）')}</div>
       <div style="font-size:11px;color:#aaa">${hpInfo} ${sanInfo}</div>
       <div style="display:flex;gap:12px;margin-top:4px">`;
     if (t.remaining_health != null && t.remaining_health > 0 && totalDamage > 0) {
@@ -646,7 +690,7 @@ function render(s) {
       }
       return `<div class="threat-card" onclick="activateNecronomicon()">
         <div>
-          <div class="threat-name">${t.name_cn} (${t.name})</div>
+          <div class="threat-name">${cnOrPlaceholder(t.name_cn,'（未翻译卡牌）')}</div>
           <div class="threat-detail">自由行动：点击移除1恐惧到黛西</div>
         </div>
         <div class="horror-tokens">${tokens}</div>
@@ -672,7 +716,7 @@ function render(s) {
       actHtml += '</div>';
     }
     return `<div class="enemy-card ${e.exhausted?'exhausted':''}">
-      <div class="enemy-name">${e.name_cn} (${e.name})</div>
+      <div class="enemy-name">${cnOrPlaceholder(e.name_cn,'未知敌人')}</div>
       <div class="enemy-stats"><span>&#9876; ${e.fight}</span><span>&#10084; ${e.health-e.current_damage}/${e.health}</span><span>&#128737; ${e.evade}</span><span>&#128128; ${e.damage_dealt}/${e.horror_dealt}</span></div>
       <div class="enemy-hp-bar"><div class="enemy-hp-fill" style="width:${Math.max(0,hpPct)}%"></div></div>
       <div class="enemy-status">${e.engaged?'交战中':'未交战'}${e.exhausted?' · 已消耗':''}${keywords?' · '+keywords:''}</div>
@@ -686,21 +730,22 @@ function render(s) {
     const icons = c.skill_icons ? Object.entries(c.skill_icons).filter(([,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ') : '';
     const isTome = c.is_tome;
     const tomeClass = isTome ? 'tome-card' : '';
-    const tomeBadge = isTome ? '<div class="tome-badge">TOME</div>' : '';
-    const fastBadge = c.is_fast ? '<div class="fast-badge">FAST</div>' : '';
+    const tomeBadge = isTome ? '<div class="tome-badge">典籍</div>' : '';
+    const fastBadge = c.is_fast ? '<div class="fast-badge">快速</div>' : '';
     return `<div class="card ${c.class||'neutral'} ${c.type||''} ${tomeClass}" onclick="playCard('${c.id}')">
       ${tomeBadge}${fastBadge}
       ${c.cost!=null?`<div class="card-cost">${c.cost}</div>`:''}
-      <div class="card-name">${c.name}</div><div class="card-name-cn">${c.name_cn}</div>
-      <div class="card-type">${typeLabel(c.type)}${c.slots&&c.slots.length?' · '+c.slots.join('/'):''}</div>
-      <div class="card-text">${c.text||''}</div>
+      <div class="card-name">${cnOrPlaceholder(c.name_cn,'（未翻译卡牌）')}</div>
+      <div class="card-type">${typeLabel(c.type)}${c.slots&&c.slots.length?' · '+formatSlots(c.slots):''}</div>
+      <div class="card-text">${cnOrPlaceholder(c.text,'（暂无中文说明）')}</div>
       ${icons?`<div class="card-icons">${icons}</div>`:''}
     </div>`;
   }).join('') || '<div style="color:#666;font-size:12px;padding:8px">手牌为空</div>';
 
   // Play area
   document.getElementById('play-area-container').innerHTML = s.play_area.map(a => {
-    const usesHtml = a.uses && Object.keys(a.uses).length > 0 ? `<div class="uses">${Object.entries(a.uses).map(([k,v])=>`${k}:${v}`).join(' ')}</div>` : '';
+    const usesText = formatUses(a.uses);
+    const usesHtml = usesText ? `<div class="uses">${usesText}</div>` : '';
     const isTome = a.is_tome;
     const isAlly = a.is_ally;
     const tomeClass = isTome ? 'tome-asset' : '';
@@ -720,9 +765,10 @@ function render(s) {
       }
       allyHpHtml = `<div class="ally-hp-bar">${dots}</div>`;
     }
-    return `<div class="asset-in-play ${a.exhausted?'exhausted':''} ${tomeClass} ${allyClass}" title="${a.name}">
-      <strong>${a.name_cn||a.name}</strong>${usesHtml}
-      ${a.slots.length?`<div style="font-size:10px;color:#666">${a.slots.join('/')}</div>`:''}
+    const title = cnOrPlaceholder(a.name_cn,'（未翻译卡牌）');
+    return `<div class="asset-in-play ${a.exhausted?'exhausted':''} ${tomeClass} ${allyClass}" title="${title}">
+      <strong>${title}</strong>${usesHtml}
+      ${a.slots.length?`<div style="font-size:10px;color:#666">${formatSlots(a.slots)}</div>`:''}
       ${allyHpHtml}
       ${activateBtn}
     </div>`;

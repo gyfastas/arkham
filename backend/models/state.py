@@ -119,6 +119,8 @@ class InvestigatorState:
     clues: int = 0
     actions_remaining: int = 3
     has_taken_turn: bool = False
+    # Daisy Walker extra tome action
+    tome_actions_remaining: int = 0
     _investigator_card: Any = field(default=None, repr=False)
 
     @property
@@ -198,6 +200,12 @@ class ScenarioState:
     agenda_cards: dict[str, Any] = field(default_factory=dict)  # id -> AgendaCard
     act_cards: dict[str, Any] = field(default_factory=dict)     # id -> ActCard
     resolutions: dict[str, Any] = field(default_factory=dict)   # id -> Resolution
+
+    # Scenario runtime variables (campaign log, counters, flags)
+    vars: dict[str, Any] = field(default_factory=dict)
+
+    # Scenario reference card (for chaos token values, special rules)
+    scenario_card_id: str = ""
 
     @property
     def current_agenda(self) -> Any | None:

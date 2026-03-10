@@ -28,9 +28,8 @@ def game():
     g.add_investigator("inv1", inv_data, starting_location="test_location")
     g.add_location("test_location", loc, clues=0)
 
+    # ActionResolver will activate it when played
     g.card_registry.register_class(EmergencyCacheLv2)
-    impl = EmergencyCacheLv2("event_listener")
-    impl.register(g.event_bus, "event_listener")
 
     return g
 

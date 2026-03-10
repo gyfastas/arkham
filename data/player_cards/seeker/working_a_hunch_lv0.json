@@ -13,5 +13,6 @@
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "fast": true
 }
