@@ -1,0 +1,21 @@
+{
+  "id": "random_basic_weakness",
+  "name": "Random Basic Weakness",
+  "name_cn": "隨機基礎弱點",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [],
+  "skill_icons": {},
+  "slots": [],
+  "text_cn": "（佔位）隨機基礎弱點。實際遊玩時應從基礎弱點中隨機加入1張，或由你指定加入。",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false,
+  "weakness": true,
+  "placeholder": true,
+  "subtype": "basicweakness",
+  "deck_limit": 1
+}

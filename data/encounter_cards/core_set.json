@@ -1,0 +1,1678 @@
+{
+  "generated_at": "2026-03-09 23:22:42",
+  "source": "https://zh.arkhamdb.com/api/public/card/{code}",
+  "code_range": [
+    1100,
+    2000
+  ],
+  "cards": [
+    {
+      "id": "the_gathering",
+      "arkhamdb_code": "01104",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "scenario",
+      "name": "The Gathering",
+      "name_cn": "聚集於此",
+      "traits": null,
+      "text": "簡單 / 普通\n[skull] -X。X是你所在地點[[食屍鬼]]的數量。\n[cultist] -1。如果失敗，受到1點恐懼。\n[tablet] -2。如果你所在地點有[[食屍鬼]]，受到1點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "what_s_going_on",
+      "arkhamdb_code": "01105",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "agenda",
+      "name": "What's Going On?!",
+      "name_cn": "到底發生了什麼？！",
+      "traits": null,
+      "text": "",
+      "stats": {
+        "doom": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 2
+      }
+    },
+    {
+      "id": "rise_of_the_ghouls",
+      "arkhamdb_code": "01106",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "agenda",
+      "name": "Rise of the Ghouls",
+      "name_cn": "食屍鬼崛起",
+      "traits": null,
+      "text": "",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "they_re_getting_out",
+      "arkhamdb_code": "01107",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "agenda",
+      "name": "They're Getting Out!",
+      "name_cn": "他們爬出來了！",
+      "traits": null,
+      "text": "強制 - 當敵人階段結束時：每個未交戰的[[食屍鬼]]朝客廳移動一步。\n強制 - 當一輪結束時：走廊或客廳每有一個[[食屍鬼]]，在該密謀卡上放置1個毀滅標記。",
+      "stats": {
+        "doom": 10
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 4
+      }
+    },
+    {
+      "id": "trapped",
+      "arkhamdb_code": "01108",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "act",
+      "name": "Trapped",
+      "name_cn": "被困於此",
+      "traits": null,
+      "text": "",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 5
+      }
+    },
+    {
+      "id": "the_barrier",
+      "arkhamdb_code": "01109",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "act",
+      "name": "The Barrier",
+      "name_cn": "灼熱屏障",
+      "traits": null,
+      "text": "目標 - 在一輪結束時，走廊內的調查員能夠以團隊單位支付所需數量的線索來推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 6
+      }
+    },
+    {
+      "id": "what_have_you_done",
+      "arkhamdb_code": "01110",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "act",
+      "name": "What Have You Done?",
+      "name_cn": "瞧瞧你們做的好事！",
+      "traits": null,
+      "text": "目標 - 如果食屍鬼祭司被擊敗，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 7
+      }
+    },
+    {
+      "id": "study",
+      "arkhamdb_code": "01111",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "location",
+      "name": "Study",
+      "name_cn": "書房",
+      "traits": null,
+      "text": "",
+      "stats": {
+        "shroud": 2,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 8
+      }
+    },
+    {
+      "id": "hallway",
+      "arkhamdb_code": "01112",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "location",
+      "name": "Hallway",
+      "name_cn": "走廊",
+      "traits": null,
+      "text": "",
+      "stats": {
+        "shroud": 1,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 9
+      }
+    },
+    {
+      "id": "attic",
+      "arkhamdb_code": "01113",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "location",
+      "name": "Attic",
+      "name_cn": "閣樓",
+      "traits": null,
+      "text": "強制 - 在你進入閣樓後：受到1點恐懼。",
+      "stats": {
+        "shroud": 1,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 10
+      }
+    },
+    {
+      "id": "cellar",
+      "arkhamdb_code": "01114",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "location",
+      "name": "Cellar",
+      "name_cn": "地窖",
+      "traits": null,
+      "text": "強制 - 在你進入地窖後：受到1點傷害。",
+      "stats": {
+        "shroud": 4,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 11
+      }
+    },
+    {
+      "id": "parlor",
+      "arkhamdb_code": "01115",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "location",
+      "name": "Parlor",
+      "name_cn": "客廳",
+      "traits": null,
+      "text": "[action] 撤退。 \"我已經受夠了！\" 你衝出大門，落荒而逃。\n只要麗塔·錢德勒未被玩家控制，他獲得：\"[action]：談判。 檢定[intellect](4)。如果檢定成功，控制麗塔·錢德勒。\"",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 12
+      }
+    },
+    {
+      "id": "ghoul_priest",
+      "arkhamdb_code": "01116",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "enemy",
+      "name": "Ghoul Priest",
+      "name_cn": "食屍鬼祭司",
+      "traits": [
+        "類人",
+        "怪物",
+        "食屍鬼",
+        "精英"
+      ],
+      "text": "獵物 - 最高[combat]。\n獵手。 反擊。",
+      "stats": {
+        "fight": 4,
+        "health": 5,
+        "evade": 4,
+        "damage": 2,
+        "horror": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 13
+      }
+    },
+    {
+      "id": "lita_chantler",
+      "arkhamdb_code": "01117",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "asset",
+      "name": "Lita Chantler",
+      "name_cn": "麗塔·錢德勒",
+      "traits": [
+        "盟友"
+      ],
+      "text": "只要你控制麗塔·錢德勒，她獲得：\n\"你所在地點的每位調查員+1[combat]。\n[reaction]在你所在地點的一位調查員成功攻擊一名[[怪物]]敵人後：該調查員造成+1傷害。\"",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "狂熱者",
+        "position": 14
+      }
+    },
+    {
+      "id": "flesh_eater",
+      "arkhamdb_code": "01118",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "enemy",
+      "name": "Flesh-Eater",
+      "name_cn": "食肉者",
+      "traits": [
+        "類人",
+        "怪物",
+        "食屍鬼"
+      ],
+      "text": "生成 - 閣樓。",
+      "stats": {
+        "fight": 4,
+        "health": 4,
+        "evade": 1,
+        "damage": 1,
+        "horror": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 15
+      }
+    },
+    {
+      "id": "icy_ghoul",
+      "arkhamdb_code": "01119",
+      "encounter_code": "torch",
+      "encounter_name": "The Gathering",
+      "type": "enemy",
+      "name": "Icy Ghoul",
+      "name_cn": "冰封食屍鬼",
+      "traits": [
+        "類人",
+        "怪物",
+        "食屍鬼"
+      ],
+      "text": "生成 - 地窖。",
+      "stats": {
+        "fight": 3,
+        "health": 4,
+        "evade": 4,
+        "damage": 2,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 16
+      }
+    },
+    {
+      "id": "the_midnight_masks",
+      "arkhamdb_code": "01120",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "scenario",
+      "name": "The Midnight Masks",
+      "name_cn": "午夜假面",
+      "traits": null,
+      "text": "簡單 / 普通\n[skull]：-X。場上帶有最多毀滅標記的[[異教徒]]，其毀滅標記個數為X。\n[cultist]：-2。在最近的一個[[異教徒]]上放置1個毀滅標記。\n[tablet]：-3。如果失敗，將你的1線索放到所在地點。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "time_is_running_short",
+      "arkhamdb_code": "01122",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "agenda",
+      "name": "Time Is Running Short",
+      "name_cn": "時間飛逝",
+      "traits": null,
+      "text": "[action]：撤退。你可不想冒險做太多傻事，現在已經收集了不少信息，可以撤退了。",
+      "stats": {
+        "doom": 8
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "uncovering_the_conspiracy",
+      "arkhamdb_code": "01123",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "act",
+      "name": "Uncovering the Conspiracy",
+      "name_cn": "揭露陰謀",
+      "traits": null,
+      "text": "[action]：調查員以團隊為單位，支付等同於2倍調査員人數的線索：抽取異教徒牌堆頂部的卡牌。\n目標 - 盡可能多地找到獨特[[異教徒]]，並將其加入勝利牌區。如果勝利牌區有6個獨特[[異教徒]]，推進場景。(這些異教徒可以不來自異教徒牌堆。)",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 4
+      }
+    },
+    {
+      "id": "your_house",
+      "arkhamdb_code": "01124",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Your House",
+      "name_cn": "你的房子",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "強制 - 在食屍鬼祭司生成時：將其生成在這個地點，來代替其原有生成地點。\n[action]：抽取1張卡牌，並獲得1個資源。(每回合限制1次。)",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 5
+      }
+    },
+    {
+      "id": "rivertown",
+      "arkhamdb_code": "01125",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Rivertown",
+      "name_cn": "河岸城",
+      "traits": [
+        "阿卡姆",
+        "中心"
+      ],
+      "text": "",
+      "stats": {
+        "shroud": 1,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 6
+      }
+    },
+    {
+      "id": "southside",
+      "arkhamdb_code": "01126",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Southside",
+      "name_cn": "南區",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action]：抽取3張卡牌。(每次遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "歷史協會",
+        "position": 7
+      }
+    },
+    {
+      "id": "southside_arkham",
+      "arkhamdb_code": "01127",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Southside",
+      "name_cn": "南區",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action]：查找你的牌堆，將一張[[盟友]]支援卡加入你的手牌。然後混洗牌堆。(每次遊戲限制1次。)",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "老馬旅社",
+        "position": 8
+      }
+    },
+    {
+      "id": "st_mary_s_hospital",
+      "arkhamdb_code": "01128",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "St. Mary's Hospital",
+      "name_cn": "聖瑪麗醫院",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action]：治癒3點傷害。(每次遊戲限制1次。)",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 9
+      }
+    },
+    {
+      "id": "miskatonic_university",
+      "arkhamdb_code": "01129",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Miskatonic University",
+      "name_cn": "米斯卡塔尼克大學",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action]：在你牌堆頂部6張卡牌中查找1張[[書籍]]或[[法術]]卡，並加入你手牌。然後將剩餘卡牌與牌堆混洗。",
+      "stats": {
+        "shroud": 4,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 10
+      }
+    },
+    {
+      "id": "downtown",
+      "arkhamdb_code": "01130",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Downtown",
+      "name_cn": "商業區",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action]：獲得3個資源。(每次遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "阿卡姆第一銀行",
+        "position": 11
+      }
+    },
+    {
+      "id": "downtown_arkham",
+      "arkhamdb_code": "01131",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Downtown",
+      "name_cn": "商業區",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action]：治癒3點恐懼。(每次遊戲限制1次。)",
+      "stats": {
+        "shroud": 4,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "阿卡姆瘋人院",
+        "position": 12
+      }
+    },
+    {
+      "id": "easttown",
+      "arkhamdb_code": "01132",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Easttown",
+      "name_cn": "東城區",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "只要你在東城區，你打出的[[盟友]]支援卡費用降低2點。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 13
+      }
+    },
+    {
+      "id": "graveyard",
+      "arkhamdb_code": "01133",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Graveyard",
+      "name_cn": "墓地",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "強制 - 在你進入墓地後：檢定[willpower](3)。如果失敗，你必須選擇受到2點恐懼，或移動到河岸城。",
+      "stats": {
+        "shroud": 1,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 14
+      }
+    },
+    {
+      "id": "northside",
+      "arkhamdb_code": "01134",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "location",
+      "name": "Northside",
+      "name_cn": "北區",
+      "traits": [
+        "阿卡姆"
+      ],
+      "text": "[action] 花費5個資源：從供應堆獲得2個線索(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 15
+      }
+    },
+    {
+      "id": "hunting_shadow",
+      "arkhamdb_code": "01135",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "treachery",
+      "name": "Hunting Shadow",
+      "name_cn": "追獵鬼影",
+      "traits": [
+        "詛咒"
+      ],
+      "text": "禍害。\n顯現 - 你必須選擇其中一項：花費1個線索，或受到2點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 16
+      }
+    },
+    {
+      "id": "false_lead",
+      "arkhamdb_code": "01136",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "treachery",
+      "name": "False Lead",
+      "name_cn": "錯誤指示",
+      "traits": null,
+      "text": "顯現 - 如果你沒有線索，錯誤指示獲得湧動關鍵詞。如果你有至少1個線索，檢定[intellect](4)。你每低於難度1點，將你的一個線索放到當前地點。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 19
+      }
+    },
+    {
+      "id": "wolf_man_drew",
+      "arkhamdb_code": "01137",
+      "encounter_code": "cultists",
+      "encounter_name": "Cult of Umôrdhoth",
+      "type": "enemy",
+      "name": "\"Wolf-Man\" Drew",
+      "name_cn": "\"狼人\"德魯",
+      "traits": [
+        "類人",
+        "異教徒"
+      ],
+      "text": "生成 - 商業區。\n強制 - 在\"狼人\"德魯攻擊時：治癒自身1點傷害。",
+      "stats": {
+        "fight": 4,
+        "health": 4,
+        "evade": 2,
+        "damage": 2,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "食人狂",
+        "position": 1
+      }
+    },
+    {
+      "id": "herman_collins",
+      "arkhamdb_code": "01138",
+      "encounter_code": "cultists",
+      "encounter_name": "Cult of Umôrdhoth",
+      "type": "enemy",
+      "name": "Herman Collins",
+      "name_cn": "赫爾曼·柯林斯",
+      "traits": [
+        "類人",
+        "異教徒"
+      ],
+      "text": "生成 - 墓地。\n[action] 選擇你的4張手牌丢棄：談判。將赫爾曼·柯林斯加入勝利牌區。",
+      "stats": {
+        "fight": 3,
+        "health": 4,
+        "evade": 4,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "墓地管理員",
+        "position": 2
+      }
+    },
+    {
+      "id": "peter_warren",
+      "arkhamdb_code": "01139",
+      "encounter_code": "cultists",
+      "encounter_name": "Cult of Umôrdhoth",
+      "type": "enemy",
+      "name": "Peter Warren",
+      "name_cn": "彼得·沃倫",
+      "traits": [
+        "類人",
+        "異教徒",
+        "米斯卡塔尼克"
+      ],
+      "text": "生成 - 米斯卡塔尼克大學。\n[action] 花費2線索：談判。將彼得·沃倫加入勝利牌區。",
+      "stats": {
+        "fight": 2,
+        "health": 3,
+        "evade": 3,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "神秘學教授",
+        "position": 3
+      }
+    },
+    {
+      "id": "victoria_devereux",
+      "arkhamdb_code": "01140",
+      "encounter_code": "cultists",
+      "encounter_name": "Cult of Umôrdhoth",
+      "type": "enemy",
+      "name": "Victoria Devereux",
+      "name_cn": "維多利亞·德佛羅",
+      "traits": [
+        "類人",
+        "異教徒"
+      ],
+      "text": "生成 - 北區。\n[action] 花費5資源：談判。將維多利亞·德佛羅加入勝利牌區。",
+      "stats": {
+        "fight": 3,
+        "health": 3,
+        "evade": 2,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "收藏家",
+        "position": 4
+      }
+    },
+    {
+      "id": "ruth_turner",
+      "arkhamdb_code": "01141",
+      "encounter_code": "cultists",
+      "encounter_name": "Cult of Umôrdhoth",
+      "type": "enemy",
+      "name": "Ruth Turner",
+      "name_cn": "露絲·特納",
+      "traits": [
+        "類人",
+        "異教徒"
+      ],
+      "text": "生成 - 聖瑪麗醫院。\n強制 - 在躲避露絲·特納後：將其加入勝利牌區。",
+      "stats": {
+        "fight": 2,
+        "health": 4,
+        "evade": 5,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "殮葬師",
+        "position": 5
+      }
+    },
+    {
+      "id": "the_devourer_below",
+      "arkhamdb_code": "01142",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "scenario",
+      "name": "The Devourer Below",
+      "name_cn": "地底噬魔",
+      "traits": null,
+      "text": "簡單 / 普通\n[skull]：-X。X是場上[[怪物]]敵人數量。\n[cultist]：-2。在最近的敵人上放置1個毀滅標記。\n[tablet]：-3。如果你所在地點有一個[[怪物]]敵人，則你受到1點傷害。\n[elder_thing]：-5。如果場上有[[古神]]敵人，再抽取1個混亂標記。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "the_arkham_woods",
+      "arkhamdb_code": "01143",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "agenda",
+      "name": "The Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": null,
+      "text": "",
+      "stats": {
+        "doom": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 2
+      }
+    },
+    {
+      "id": "the_ritual_begins",
+      "arkhamdb_code": "01144",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "agenda",
+      "name": "The Ritual Begins",
+      "name_cn": "儀式開始",
+      "traits": null,
+      "text": "每名敵人獲得+1攻擊和+1躲避。",
+      "stats": {
+        "doom": 5
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "vengeance_awaits",
+      "arkhamdb_code": "01145",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "agenda",
+      "name": "Vengeance Awaits",
+      "name_cn": "復仇開始",
+      "traits": null,
+      "text": "強制 - 在該密謀推進時：\n- 如果調查員位於場景1，將放在一邊的儀式場地放置入場，並在此生成放在一邊的烏默爾多斯。\n- 如果調查員位於場景2或3，丟棄儀式場地上所有敵人，並在此生成放在一邊的烏默爾多斯。",
+      "stats": {
+        "doom": 5
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 4
+      }
+    },
+    {
+      "id": "investigating_the_trail",
+      "arkhamdb_code": "01146",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "act",
+      "name": "Investigating the Trail",
+      "name_cn": "順藤摸瓜",
+      "traits": null,
+      "text": "",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 5
+      }
+    },
+    {
+      "id": "into_the_darkness",
+      "arkhamdb_code": "01147",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "act",
+      "name": "Into the Darkness",
+      "name_cn": "深入黑暗",
+      "traits": null,
+      "text": "目標 - 如果一位調查員進入儀式場地，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 6
+      }
+    },
+    {
+      "id": "disrupting_the_ritual",
+      "arkhamdb_code": "01148",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "act",
+      "name": "Disrupting the Ritual",
+      "name_cn": "阻止計劃",
+      "traits": null,
+      "text": "[action]花費1個線索：檢定[willpower](3)或[agility](3)。如果成功，在該場景上放置1個線索。\n目標 - 如果該場景上有等同於2倍調查員人數的線索，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 7
+      }
+    },
+    {
+      "id": "main_path",
+      "arkhamdb_code": "01149",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Main Path",
+      "name_cn": "主道路",
+      "traits": [
+        "樹林"
+      ],
+      "text": "主道路與其他所有[[樹林]]地點相互連接。\n[action]：撤退。 \"我們不可能阻止他們的！\"你大喊著逃了出去，就讓那個該死的阿卡姆自生自滅去吧。",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 8
+      }
+    },
+    {
+      "id": "arkham_woods",
+      "arkhamdb_code": "01150",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": [
+        "樹林"
+      ],
+      "text": "強制 - 在你進入該地點後：檢定[willpower](4)。如果失敗，受到1點傷害和1點恐懼。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "邪惡之地",
+        "position": 9
+      }
+    },
+    {
+      "id": "arkham_woods_tentacles",
+      "arkhamdb_code": "01151",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": [
+        "樹林"
+      ],
+      "text": "強制 - 在離開該地點時：檢定[intellect](3)。如果失敗，取消這次移動。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "扭曲的道路",
+        "position": 10
+      }
+    },
+    {
+      "id": "arkham_woods_01152",
+      "arkhamdb_code": "01152",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": [
+        "樹林"
+      ],
+      "text": "在該地點調查時，不使用原本調查所需的技能，改為使用[willpower]。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "老屋",
+        "position": 11
+      }
+    },
+    {
+      "id": "arkham_woods_01153",
+      "arkhamdb_code": "01153",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": [
+        "樹林"
+      ],
+      "text": "該地點調查時，不使用原本調查所需的技能，改為使用[agility]。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "懸崖邊",
+        "position": 12
+      }
+    },
+    {
+      "id": "arkham_woods_01154",
+      "arkhamdb_code": "01154",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": [
+        "樹林"
+      ],
+      "text": "該地點調查時，不使用原本調查所需的技能，改為使用[combat]。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "一團亂麻",
+        "position": 13
+      }
+    },
+    {
+      "id": "arkham_woods_01155",
+      "arkhamdb_code": "01155",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Arkham Woods",
+      "name_cn": "阿卡姆密林",
+      "traits": [
+        "樹林"
+      ],
+      "text": "[action]：治癒1點傷害或1點恐懼。(每回合限制1次。)",
+      "stats": {
+        "shroud": 1,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "靜謚空地",
+        "position": 14
+      }
+    },
+    {
+      "id": "ritual_site",
+      "arkhamdb_code": "01156",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "location",
+      "name": "Ritual Site",
+      "name_cn": "儀式場所",
+      "traits": [
+        "洞穴"
+      ],
+      "text": "強制 - 當一輪結束時，如果儀式場所上線索數量少於2倍調查員人數，則在該地點放置線索，直到線索數量為2倍調查員人數為止。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 15
+      }
+    },
+    {
+      "id": "um_rdhoth",
+      "arkhamdb_code": "01157",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "enemy",
+      "name": "Umôrdhoth",
+      "name_cn": "烏默爾多斯",
+      "traits": [
+        "古神",
+        "精英"
+      ],
+      "text": "獵手。龐大。\n烏默爾多斯增加等同於調查員人數4倍的生命值。\n強制 - 當每位調查員回合結束時，準備烏默爾多斯。\n[action]如果你控制麗塔錢德勒：\"這都是她的錯！\"你把麗塔推向了那個怪物，希望它能饒了你一命。(→結局3)",
+      "stats": {
+        "fight": 5,
+        "health": 6,
+        "evade": 6,
+        "damage": 3,
+        "horror": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "地底噬魔",
+        "position": 16
+      }
+    },
+    {
+      "id": "um_rdhoth_s_wrath",
+      "arkhamdb_code": "01158",
+      "encounter_code": "tentacles",
+      "encounter_name": "The Devourer Below",
+      "type": "treachery",
+      "name": "Umôrdhoth's Wrath",
+      "name_cn": "烏默爾多斯的燲怒",
+      "traits": [
+        "詛咒"
+      ],
+      "text": "顯現 - 檢定[willpower](5)。你每低於難度1點，必須選擇其中一項：選擇1張你的手牌丢棄，或者受到1點傷害和1點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 17
+      }
+    },
+    {
+      "id": "swarm_of_rats",
+      "arkhamdb_code": "01159",
+      "encounter_code": "rats",
+      "encounter_name": "Rats",
+      "type": "enemy",
+      "name": "Swarm of Rats",
+      "name_cn": "鼠群",
+      "traits": [
+        "生物"
+      ],
+      "text": "獵手。",
+      "stats": {
+        "fight": 1,
+        "health": 1,
+        "evade": 3,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "ghoul_minion",
+      "arkhamdb_code": "01160",
+      "encounter_code": "ghouls",
+      "encounter_name": "Ghouls",
+      "type": "enemy",
+      "name": "Ghoul Minion",
+      "name_cn": "食屍鬼爪牙",
+      "traits": [
+        "類人",
+        "怪物",
+        "食屍鬼"
+      ],
+      "text": "",
+      "stats": {
+        "fight": 2,
+        "health": 2,
+        "evade": 2,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "ravenous_ghoul",
+      "arkhamdb_code": "01161",
+      "encounter_code": "ghouls",
+      "encounter_name": "Ghouls",
+      "type": "enemy",
+      "name": "Ravenous Ghoul",
+      "name_cn": "飢餓的食屍鬼",
+      "traits": [
+        "類人",
+        "怪物",
+        "食屍鬼"
+      ],
+      "text": "獵物 - 剩餘生命值最低。",
+      "stats": {
+        "fight": 3,
+        "health": 3,
+        "evade": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 4
+      }
+    },
+    {
+      "id": "grasping_hands",
+      "arkhamdb_code": "01162",
+      "encounter_code": "ghouls",
+      "encounter_name": "Ghouls",
+      "type": "treachery",
+      "name": "Grasping Hands",
+      "name_cn": "攫噬之手",
+      "traits": [
+        "危險"
+      ],
+      "text": "顯現 - 檢定[agility](3)。 你每低於難度1點，受到1點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 5
+      }
+    },
+    {
+      "id": "rotting_remains",
+      "arkhamdb_code": "01163",
+      "encounter_code": "striking_fear",
+      "encounter_name": "Striking Fear",
+      "type": "treachery",
+      "name": "Rotting Remains",
+      "name_cn": "腐爛的屍體",
+      "traits": [
+        "恐怖"
+      ],
+      "text": "顯現 - 檢定[willpower](3)。 你每低於難度1點，受到1點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "frozen_in_fear",
+      "arkhamdb_code": "01164",
+      "encounter_code": "striking_fear",
+      "encounter_name": "Striking Fear",
+      "type": "treachery",
+      "name": "Frozen in Fear",
+      "name_cn": "呆若木雞",
+      "traits": [
+        "恐怖"
+      ],
+      "text": "顯現 - 將呆若木雞放置入你的威脅區域。\n每輪你第一次執行以下行動之一時(移動、攻擊、躲避)，其額外花費1行動。\n強制 - 當你回合結束時：檢定[willpower](3)。如果成功，丟棄呆若木雞。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 4
+      }
+    },
+    {
+      "id": "dissonant_voices",
+      "arkhamdb_code": "01165",
+      "encounter_code": "striking_fear",
+      "encounter_name": "Striking Fear",
+      "type": "treachery",
+      "name": "Dissonant Voices",
+      "name_cn": "刺耳之聲",
+      "traits": [
+        "恐怖"
+      ],
+      "text": "顯現 - 將刺耳之聲放置入你的威脅區域。\n你不能打出支援或事件卡。\n強制 - 當本輪結束時：丟棄刺耳之聲。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 6
+      }
+    },
+    {
+      "id": "ancient_evils",
+      "arkhamdb_code": "01166",
+      "encounter_code": "ancient_evils",
+      "encounter_name": "Ancient Evils",
+      "type": "treachery",
+      "name": "Ancient Evils",
+      "name_cn": "遠古惡魔",
+      "traits": [
+        "徵兆"
+      ],
+      "text": "顯現 - 在當前密謀卡上放置1個毀滅標記。該效果可能導致當前密謀推進。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "crypt_chill",
+      "arkhamdb_code": "01167",
+      "encounter_code": "chilling_cold",
+      "encounter_name": "Chilling Cold",
+      "type": "treachery",
+      "name": "Crypt Chill",
+      "name_cn": "地窖寒風",
+      "traits": [
+        "危險"
+      ],
+      "text": "顯現 - 檢定[willpower](4)。 如果失敗，選擇1張你控制的支援卡丟棄(如果無法丟棄，改為受到2點傷害)。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "obscuring_fog",
+      "arkhamdb_code": "01168",
+      "encounter_code": "chilling_cold",
+      "encounter_name": "Chilling Cold",
+      "type": "treachery",
+      "name": "Obscuring Fog",
+      "name_cn": "朦朧之霧",
+      "traits": [
+        "危險"
+      ],
+      "text": "顯現 - 疊加到你所在地點。 每個地點限制1張。\n疊加地點隱藏值+2。\n強制 - 在疊加地點被成功調查後：丟棄朦朧之霧。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "acolyte",
+      "arkhamdb_code": "01169",
+      "encounter_code": "pentagram",
+      "encounter_name": "Dark Cult",
+      "type": "enemy",
+      "name": "Acolyte",
+      "name_cn": "祭司",
+      "traits": [
+        "類人",
+        "異教徒"
+      ],
+      "text": "生成 - 一個無人地點。\n強制 - 在祭司入場後：在該卡上放置1個毀滅標記。",
+      "stats": {
+        "fight": 3,
+        "health": 1,
+        "evade": 2,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "wizard_of_the_order",
+      "arkhamdb_code": "01170",
+      "encounter_code": "pentagram",
+      "encounter_name": "Dark Cult",
+      "type": "enemy",
+      "name": "Wizard of the Order",
+      "name_cn": "密會巫師",
+      "traits": [
+        "類人",
+        "異教徒"
+      ],
+      "text": "生成 - 一個無人地點。\n反擊。\n強制 - 當神秘階段結束時：在密會巫師上放置1個毀滅標記。",
+      "stats": {
+        "fight": 4,
+        "health": 2,
+        "evade": 2,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 4
+      }
+    },
+    {
+      "id": "mysterious_chanting",
+      "arkhamdb_code": "01171",
+      "encounter_code": "pentagram",
+      "encounter_name": "Dark Cult",
+      "type": "treachery",
+      "name": "Mysterious Chanting",
+      "name_cn": "神秘咏唱",
+      "traits": [
+        "巫術"
+      ],
+      "text": "顯現 - 在最近的[[異教徒]]上放置2個毀滅標記。如果場上沒有[[異教徒]]，查找遭遇牌堆和棄牌堆，將一張[[異教徒]]打出，然後混洗遭遇牌堆。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 5
+      }
+    },
+    {
+      "id": "hunting_nightgaunt",
+      "arkhamdb_code": "01172",
+      "encounter_code": "nightgaunts",
+      "encounter_name": "Nightgaunts",
+      "type": "enemy",
+      "name": "Hunting Nightgaunt",
+      "name_cn": "狩獵中的夜魘",
+      "traits": [
+        "怪物",
+        "夜魘"
+      ],
+      "text": "獵手。\n嘗試躲避狩獵中的夜魘時，抽出的混亂標記中，負數修正值加倍。",
+      "stats": {
+        "fight": 3,
+        "health": 4,
+        "evade": 1,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "on_wings_of_darkness",
+      "arkhamdb_code": "01173",
+      "encounter_code": "nightgaunts",
+      "encounter_name": "Nightgaunts",
+      "type": "treachery",
+      "name": "On Wings of Darkness",
+      "name_cn": "乘着黑暗之翼",
+      "traits": null,
+      "text": "顯現 - 檢定[agility](4)。如果失敗，受到1點傷害和1點恐懼。然後將與你交戰的所有非[[夜魘]]敵人解除交戰狀態，你移動到一個[[中心]]地點。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "locked_door",
+      "arkhamdb_code": "01174",
+      "encounter_code": "locked_doors",
+      "encounter_name": "Locked Doors",
+      "type": "treachery",
+      "name": "Locked Door",
+      "name_cn": "上鎖的門",
+      "traits": [
+        "障礙"
+      ],
+      "text": "顯現 - 疊加到線索最多，並且未疊加上鎖的門的地點。\n疊加地點不能被調查。\n[action]：檢定[combat](4)來砸開門，或檢定[agility](4)來開鎖。如果成功，丟棄上鎖的門。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "screeching_byakhee",
+      "arkhamdb_code": "01175",
+      "encounter_code": "agents_of_hastur",
+      "encounter_name": "Agents of Hastur",
+      "type": "enemy",
+      "name": "Screeching Byakhee",
+      "name_cn": "尖叫的拜亞基",
+      "traits": [
+        "怪物",
+        "拜亞基"
+      ],
+      "text": "獵物 - 剩餘神智值最低。\n獵手。\n與它交戰的調查員剩餘神智值小於等於4時，尖叫的拜亞基獲得+1戰鬥和+1躲避。",
+      "stats": {
+        "fight": 3,
+        "health": 4,
+        "evade": 3,
+        "damage": 1,
+        "horror": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "the_yellow_sign",
+      "arkhamdb_code": "01176",
+      "encounter_code": "agents_of_hastur",
+      "encounter_name": "Agents of Hastur",
+      "type": "treachery",
+      "name": "The Yellow Sign",
+      "name_cn": "黃色印記",
+      "traits": [
+        "徵兆"
+      ],
+      "text": "顯現 - 檢定[willpower](4)。如果失敗，受到2點恐懼，並查找你的牌堆，將一張[[瘋狂]]弱點卡加入手牌，然後混洗你的牌堆。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "yithian_observer",
+      "arkhamdb_code": "01177",
+      "encounter_code": "agents_of_yog",
+      "encounter_name": "Agents of Yog-Sothoth",
+      "type": "enemy",
+      "name": "Yithian Observer",
+      "name_cn": "伊斯觀測者",
+      "traits": [
+        "怪物",
+        "伊斯"
+      ],
+      "text": "獵物 - 手牌最少。\n強制 - 在伊斯觀測者攻擊你時：隨機丟棄1張手牌。如果你不能丢棄，伊斯觀測者這次攻擊中，造成+1傷害和+1恐懼。",
+      "stats": {
+        "fight": 4,
+        "health": 4,
+        "evade": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "offer_of_power",
+      "arkhamdb_code": "01178",
+      "encounter_code": "agents_of_yog",
+      "encounter_name": "Agents of Yog-Sothoth",
+      "type": "treachery",
+      "name": "Offer of Power",
+      "name_cn": "提供力量",
+      "traits": [
+        "契約"
+      ],
+      "text": "禍害。\n顯現 - 你必須從以下兩項中選擇一項：抽取2張卡牌並在當前密謀卡上放置2個毀滅標記(該效果可能導致密謀推進)，或者受到2點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    },
+    {
+      "id": "relentless_dark_young",
+      "arkhamdb_code": "01179",
+      "encounter_code": "agents_of_shub",
+      "encounter_name": "Agents of Shub-Niggurath",
+      "type": "enemy",
+      "name": "Relentless Dark Young",
+      "name_cn": "堅韌的黑山羊幼崽",
+      "traits": [
+        "怪物",
+        "黑山羊幼崽"
+      ],
+      "text": "獵物 - 最低[agility]。\n強制 - 當一輪結束時：治癒堅韌的黑山羊幼崽2點傷害。",
+      "stats": {
+        "fight": 4,
+        "health": 5,
+        "evade": 2,
+        "damage": 2,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "goat_spawn",
+      "arkhamdb_code": "01180",
+      "encounter_code": "agents_of_shub",
+      "encounter_name": "Agents of Shub-Niggurath",
+      "type": "enemy",
+      "name": "Goat Spawn",
+      "name_cn": "黑山羊眷族",
+      "traits": [
+        "類人",
+        "怪物"
+      ],
+      "text": "獵手。反擊。\n強制 - 在黑山羊眷族被擊敗時：所在地點的每位調查員受到1點恐懼。",
+      "stats": {
+        "fight": 3,
+        "health": 3,
+        "evade": 2,
+        "damage": 1,
+        "horror": null
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 2
+      }
+    },
+    {
+      "id": "young_deep_one",
+      "arkhamdb_code": "01181",
+      "encounter_code": "agents_of_cthulhu",
+      "encounter_name": "Agents of Cthulhu",
+      "type": "enemy",
+      "name": "Young Deep One",
+      "name_cn": "年幼的深潜者",
+      "traits": [
+        "類人",
+        "怪物",
+        "深潛者"
+      ],
+      "text": "獵物 - 最低[combat]。\n獵手。\n強制 - 在你與年幼的深潛者交戰後：受到1點恐懼。",
+      "stats": {
+        "fight": 3,
+        "health": 3,
+        "evade": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 1
+      }
+    },
+    {
+      "id": "dreams_of_r_lyeh",
+      "arkhamdb_code": "01182",
+      "encounter_code": "agents_of_cthulhu",
+      "encounter_name": "Agents of Cthulhu",
+      "type": "treachery",
+      "name": "Dreams of R'lyeh",
+      "name_cn": "拉萊耶之夢",
+      "traits": [
+        "徵兆"
+      ],
+      "text": "顯現 - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 3
+      }
+    }
+  ]
+}

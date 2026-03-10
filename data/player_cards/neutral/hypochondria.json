@@ -1,0 +1,20 @@
+{
+  "id": "hypochondria",
+  "name": "Hypochondria",
+  "name_cn": "憂鬱症",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": ["madness"],
+  "skill_icons": {},
+  "slots": [],
+  "text_cn": "<b>顯現</b> - 將憂鬱症放到你的威脅區域。\n<b>強制</b> - 在你受到至少1點傷害後：受到1點直接恐懼。\n[action][action]：丟棄憂鬱症。",
+  "health": null,
+  "sanity": null,
+  "pack": "core",
+  "unique": false,
+  "weakness": true,
+  "subtype": "basicweakness",
+  "deck_limit": 1
+}

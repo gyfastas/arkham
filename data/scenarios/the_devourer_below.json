@@ -1,0 +1,59 @@
+{
+  "id": "the_devourer_below",
+  "name": "The Devourer Below",
+  "name_cn": "吞噬星辰",
+  "type": "official",
+  "campaign": "core",
+  "sequence": 3,
+  "encounter_sets": [
+    "tentacles",
+    "cultists",
+    "ghouls",
+    "chilling_cold",
+    "rats",
+    "striking_fear",
+    "ancient_evils",
+    "pentagram",
+    "locked_doors",
+    "nightgaunts"
+  ],
+  "scenario_set": "tentacles",
+  "start_location": "main_path",
+  "connections": {
+    "main_path": [
+      "arkham_woods",
+      "ritual_site"
+    ],
+    "arkham_woods": [
+      "main_path",
+      "clearing"
+    ],
+    "clearing": [
+      "arkham_woods"
+    ],
+    "ritual_site": [
+      "main_path"
+    ]
+  },
+  "act_deck": [
+    "investigating_the_trail",
+    "into_the_darkness",
+    "disrupting_the_ritual"
+  ],
+  "agenda_deck": [
+    "the_arkham_woods",
+    "the_ritual_begins",
+    "vengeance_awaits"
+  ],
+  "locations": [
+    "main_path",
+    "arkham_woods",
+    "arkham_woods_tentacles",
+    "arkham_woods_01152",
+    "arkham_woods_01153",
+    "arkham_woods_01154",
+    "arkham_woods_01155",
+    "ritual_site"
+  ],
+  "story_assets": []
+}

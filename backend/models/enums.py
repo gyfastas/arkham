@@ -23,10 +23,11 @@ class Action(Enum):
     ACTIVATE = auto()
     PARLEY = auto()
     RESIGN = auto()
+    TOME_ACTIVATE = auto()  # Daisy extra action
 
 
 # Actions that do NOT provoke attacks of opportunity
-AOO_EXEMPT_ACTIONS = {Action.FIGHT, Action.EVADE, Action.PARLEY, Action.RESIGN}
+AOO_EXEMPT_ACTIONS = {Action.FIGHT, Action.EVADE, Action.PARLEY, Action.RESIGN, Action.TOME_ACTIVATE}
 
 
 class Skill(Enum):

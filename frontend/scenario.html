@@ -19,11 +19,39 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
 
 /* Map */
 .map-section { display: flex; gap: 12px; margin-bottom: 12px; }
+.map-edges { background: #111827; border: 1px solid #333; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
+.map-edges-title { font-size: 12px; color: #aaa; margin-bottom: 6px; }
+.map-edges-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.edge-pill { font-size: 12px; color: #cbd5e1; border: 1px solid #334155; border-radius: 999px; padding: 4px 10px; background: rgba(255,255,255,0.03); }
+.edge-pill.active { border-color: #22c55e; color: #bbf7d0; background: rgba(34,197,94,0.08); }
+.edge-pill .arrow { color: #94a3b8; margin: 0 6px; }
+.loc-conns { margin-top: 6px; font-size: 11px; color: #94a3b8; line-height: 1.4; }
+.loc-conns .tag { display: inline-block; margin-right: 6px; color: #a78bfa; }
+.loc-conns .conn { display: inline-block; margin-right: 6px; padding: 1px 6px; border: 1px solid #334155; border-radius: 999px; }
+.loc-conns .conn.reachable { border-color: #22c55e; color: #bbf7d0; }
+.loc-conns .conn.self { border-color: #667eea; color: #c7d2fe; }
 .location-card {
   flex: 1; padding: 12px; background: #16213e; border: 2px solid #333; border-radius: 8px;
   cursor: pointer; transition: all 0.15s;
 }
 .location-card.current { border-color: #667eea; box-shadow: 0 0 12px rgba(102,126,234,0.3); }
+.location-card.current { position: relative; }
+.location-card.current::before {
+  content: '🧑';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102,126,234,0.22);
+  border: 1px solid rgba(102,126,234,0.65);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  font-size: 14px;
+}
 .location-card:hover:not(.current) { border-color: #555; }
 .loc-header { display: flex; justify-content: space-between; align-items: center; }
 .loc-name { font-size: 16px; font-weight: 700; color: #fff; }
@@ -76,9 +104,12 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
 .play-area-section h3 { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; padding-left: 4px; }
 .play-area-cards { display: flex; gap: 8px; flex-wrap: wrap; padding: 4px; min-height: 40px; }
 .asset-in-play { background: #0f3460; border: 2px solid #3282b8; border-radius: 8px; padding: 8px 12px; font-size: 12px; cursor: pointer; transition: all 0.15s; }
+.asset-in-play { position: relative; }
 .asset-in-play:hover { border-color: #bbe1fa; }
 .asset-in-play.exhausted { opacity: 0.5; transform: rotate(5deg); border-style: dashed; }
 .asset-in-play .uses { color: #f1c40f; font-size: 11px; }
+.asset-activate-btn { margin-top: 6px; padding: 3px 10px; border: 1px solid #555; border-radius: 6px; background: rgba(0,0,0,0.15); color: #ddd; font-size: 11px; cursor: pointer; }
+.asset-activate-btn:hover { border-color: #667eea; color: #fff; background: rgba(102,126,234,0.18); }
 
 /* Actions */
 .action-bar { display: flex; gap: 8px; padding: 12px; background: #16213e; border-radius: 8px; flex-wrap: wrap; justify-content: center; }
@@ -118,6 +149,61 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
 .modal-buttons .confirm { border-color: #27ae60; } .modal-buttons .confirm:hover { border-color: #2ecc71; background: #153320; }
 .modal-buttons .cancel:hover { border-color: #e74c3c; background: #3c1515; }
 
+/* Pre-game setup */
+.setup-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.setup-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.setup-card { flex: 1; background: #111827; border: 1px solid #333; border-radius: 10px; padding: 12px; }
+.setup-card h4 { font-size: 12px; color: #aaa; margin-bottom: 8px; }
+.setup-radio { display: flex; gap: 8px; flex-wrap: wrap; }
+.setup-radio label { border: 1px solid #333; border-radius: 8px; padding: 8px 10px; cursor: pointer; user-select: none; }
+.setup-radio input { margin-right: 6px; }
+.setup-textarea { width: 100%; min-height: 120px; background: #0b1020; color: #e5e7eb; border: 1px solid #333; border-radius: 8px; padding: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; }
+.setup-hint { font-size: 12px; color: #888; line-height: 1.5; }
+
+/* Deck Builder */
+.deckbuilder { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.deckbuilder-col { background: #0b1020; border: 1px solid #222; border-radius: 10px; padding: 10px; min-height: 260px; display: flex; flex-direction: column; }
+.deckbuilder-toolbar { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; flex-wrap: wrap; }
+.deckbuilder-toolbar input, .deckbuilder-toolbar select {
+  background: #0f172a; color: #e5e7eb; border: 1px solid #333; border-radius: 8px; padding: 8px 10px; font-size: 12px;
+}
+.deckbuilder-toolbar input { flex: 1; min-width: 160px; }
+.deckbuilder-list { overflow: auto; max-height: 330px; padding-right: 4px; }
+.deckbuilder-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 10px; border: 1px solid #222; border-radius: 8px; margin-bottom: 6px; cursor: grab; background: rgba(255,255,255,0.03); }
+.deckbuilder-item:active { cursor: grabbing; }
+.deckbuilder-item .meta { flex: 1; }
+.deckbuilder-item .name { font-size: 12px; font-weight: 700; color: #fff; }
+.deckbuilder-item .sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+.deckbuilder-item .pill { font-size: 10px; color: #ddd; border: 1px solid #333; border-radius: 999px; padding: 2px 8px; }
+.deckbuilder-drop { border: 1px dashed #334155; border-radius: 10px; padding: 10px; min-height: 240px; }
+.deckbuilder-drop.dragover { border-color: #22c55e; background: rgba(34,197,94,0.07); }
+.deckbuilder-deck-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.deckbuilder-deck-header .count { font-size: 12px; color: #9ca3af; }
+.deckbuilder-btn { border: 1px solid #333; background: #0f172a; color: #e5e7eb; border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+.deckbuilder-btn:hover { border-color: #667eea; }
+.deckbuilder-qty { display: flex; gap: 6px; align-items: center; }
+.deckbuilder-qty button { width: 26px; height: 22px; padding: 0; }
+.deckbuilder-qty .num { min-width: 18px; text-align: center; font-weight: 700; }
+.deckbuilder-empty { color: #94a3b8; font-size: 12px; padding: 6px 2px; }
+
+/* Card tooltip */
+.card-tooltip {
+  position: fixed;
+  z-index: 300;
+  max-width: 360px;
+  background: rgba(10, 15, 30, 0.98);
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  pointer-events: none;
+  display: none;
+}
+.card-tooltip .t-name { font-size: 13px; font-weight: 800; color: #fff; }
+.card-tooltip .t-sub { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+.card-tooltip .t-meta { font-size: 11px; color: #cbd5e1; margin-top: 8px; }
+.card-tooltip .t-text { font-size: 11px; color: #e5e7eb; margin-top: 8px; line-height: 1.45; white-space: pre-wrap; }
+
 /* Doom progress */
 .doom-bar { height: 8px; background: #333; border-radius: 4px; margin-top: 4px; overflow: hidden; }
 .doom-fill { height: 100%; background: linear-gradient(90deg, #8b0000, #e74c3c); transition: width 0.5s; }
@@ -137,7 +223,17 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
     <div class="stat clue"><span class="icon">&#128270;</span> <span class="val" id="clues">0</span>/<span id="clues-needed">5</span> <span class="label">线索</span></div>
     <div class="stat doom-stat"><span class="icon">&#128128;</span> <span class="val" id="doom">0</span>/<span id="doom-max">5</span> <span class="label">毁灭</span></div>
     <div class="stat" style="color:#aaa"><span class="icon">&#127183;</span> <span class="val" id="deck-count">0</span> <span class="label">牌库</span></div>
-    <div class="round-info">第<span id="round-num">1</span>轮 · <span id="phase-name">调查阶段</span></div>
+    <div class="round-info">
+      <span id="scenario-name">核心剧本</span>
+      · 第<span id="round-num">1</span>轮 · <span id="phase-name">调查阶段</span>
+      <span style="margin-left:10px">
+        <select id="scenario-select" style="background:#111;color:#eee;border:1px solid #333;border-radius:6px;padding:4px 8px">
+          <option value="the_gathering">夜幕降临 (The Gathering)</option>
+          <option value="the_midnight_masks">午夜假面 (The Midnight Masks)</option>
+          <option value="the_devourer_below">吞噬星辰 (The Devourer Below)</option>
+        </select>
+      </span>
+    </div>
   </div>
 
   <!-- Doom Progress -->
@@ -145,6 +241,10 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
 
   <!-- Map -->
   <div class="map-section" id="map-container"></div>
+  <div class="map-edges" id="map-edges" style="display:none">
+    <div class="map-edges-title">地点连接（有边代表可连接，绿色表示从“当前地点”可直接移动）</div>
+    <div class="map-edges-list" id="map-edges-list"></div>
+  </div>
 
   <!-- Main Layout -->
   <div class="main">
@@ -167,12 +267,18 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
     <button class="action-btn" onclick="startInvestigate()" id="btn-investigate">&#128269; 调查</button>
     <button class="action-btn" onclick="doSimpleAction('RESOURCE')" id="btn-resource">&#128176; 资源</button>
     <button class="action-btn" onclick="doSimpleAction('DRAW')" id="btn-draw">&#127183; 抽牌</button>
+    <button class="action-btn success" onclick="doSimpleAction('ADVANCE_ACT')" id="btn-advance">&#9197; 推进事件</button>
+    <button class="action-btn" onclick="doSimpleAction('LOCKED_DOOR_TEST', {skill: 'combat'})" id="btn-door-combat">&#128682; 破门</button>
+    <button class="action-btn" onclick="doSimpleAction('LOCKED_DOOR_TEST', {skill: 'agility'})" id="btn-door-agility">&#128477; 撬锁</button>
+    <button class="action-btn danger" onclick="doSimpleAction('RESIGN')" id="btn-resign">&#127939; 撤退</button>
     <button class="action-btn end-turn" onclick="endTurn()" id="btn-end">&#9193; 结束回合</button>
-    <button class="action-btn" onclick="resetGame()" style="margin-left:auto; font-size:12px; padding:8px 12px;">&#128260; 重置</button>
+    <button class="action-btn" onclick="openSetup()" style="margin-left:auto; font-size:12px; padding:8px 12px;">&#128260; 重新选择</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<div class="card-tooltip" id="card-tooltip"></div>
 
 <div class="game-over-overlay" id="game-over-overlay" style="display:none">
   <div class="message" id="game-over-box">
@@ -199,10 +305,601 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1a1a2e; colo
   </div>
 </div>
 
+<div class="modal-overlay" id="choice-modal" style="display:none">
+  <div class="modal-inner">
+    <h3 id="choice-title">需要选择</h3>
+    <div class="commit-summary" id="choice-prompt"></div>
+    <div id="choice-options"></div>
+    <div class="modal-option" onclick="closeModal('choice-modal')" style="color:#888">取消</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="setup-modal" style="display:flex">
+  <div class="modal-inner" style="max-width:860px;">
+    <h3>冒险前准备</h3>
+    <div class="setup-grid">
+      <div class="setup-row">
+        <div class="setup-card" style="flex: 1.2">
+          <h4>1) 选择剧本</h4>
+          <div class="setup-radio" id="setup-scenario"></div>
+        </div>
+        <div class="setup-card" style="flex: 1.8">
+          <h4>2) 选择调查员</h4>
+          <div class="setup-radio" id="setup-investigator"></div>
+          <div class="setup-hint" id="setup-investigator-hint" style="margin-top:6px"></div>
+        </div>
+      </div>
+
+      <div class="setup-row">
+        <div class="setup-card" style="flex: 1.4">
+          <h4>3) 选择预组卡组</h4>
+          <div class="setup-radio" id="setup-deck"></div>
+          <div class="setup-hint" style="margin-top:6px">预组默认每张牌 2 张（共 30 张）。你也可以用右侧文本导入自定义卡组。</div>
+        </div>
+        <div class="setup-card" style="flex: 1.6">
+          <h4>4) 自定义卡组（拖拽构筑，可选）</h4>
+          <div class="deckbuilder">
+            <div class="deckbuilder-col">
+              <div class="deckbuilder-toolbar">
+                <input id="deckbuilder-search" placeholder="搜索卡牌中文名 / card_id" />
+                <select id="deckbuilder-class">
+                  <option value="">全部职业</option>
+                  <option value="guardian">守护者</option>
+                  <option value="seeker">探求者</option>
+                  <option value="rogue">流浪者</option>
+                  <option value="mystic">神秘学家</option>
+                  <option value="survivor">求生者</option>
+                  <option value="neutral">中立</option>
+                </select>
+              </div>
+              <div class="setup-hint" style="margin-bottom:8px">把左侧卡牌拖到右侧“当前牌组”即可加入 1 张；也可以用 +/− 调整数量。</div>
+              <div class="deckbuilder-list" id="deckbuilder-pool"></div>
+            </div>
+            <div class="deckbuilder-col">
+              <div class="deckbuilder-deck-header">
+                <div>
+                  <div style="font-size:12px;font-weight:700;color:#fff">当前牌组</div>
+                  <div class="count"><span id="deckbuilder-count">0</span>/30</div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+                  <button class="deckbuilder-btn" onclick="deckbuilderLoadPreset()">从预组载入</button>
+                  <button class="deckbuilder-btn" onclick="deckbuilderParseText()">从文本解析</button>
+                  <button class="deckbuilder-btn" onclick="deckbuilderClear()" style="border-color:#5c1a1a">清空</button>
+                </div>
+              </div>
+              <div class="deckbuilder-drop" id="deckbuilder-deck"></div>
+              <details style="margin-top:10px">
+                <summary style="cursor:pointer;color:#9ca3af;font-size:12px">卡组文本（可直接编辑，startGame 以此为准）</summary>
+                <textarea class="setup-textarea" id="setup-deck-text" placeholder="# 每行：
+# 2 machete_lv0
+# 或 machete_lv0 x2
+# 或直接写 card_id
+"></textarea>
+              </details>
+              <div class="setup-hint" style="margin-top:6px">留空则使用左侧预组卡组。未知 card_id 会被忽略；主卡组不足/超过 30 张会构筑失败（专属卡/弱点不计入 30 张）。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button class="cancel" onclick="closeModal('setup-modal')">取消</button>
+        <button class="confirm" onclick="startGameFromSetup()">开始冒险</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 let state = null;
 let pendingAction = null;
 let committedCardIds = [];
+
+const SETUP = {
+  scenarios: [
+    { id: 'the_gathering', label: '夜幕降临 (The Gathering)' },
+    { id: 'the_midnight_masks', label: '午夜假面 (The Midnight Masks)' },
+    { id: 'the_devourer_below', label: '吞噬星辰 (The Devourer Below)' },
+  ],
+  investigators: [
+    { id: 'roland_banks', label: '罗兰·班克斯', hint: '守护者：更擅长战斗（3/3/4/2，9/5）' },
+    { id: 'daisy_walker', label: '黛西·沃克', hint: '探求者：更擅长调查（3/5/2/2，5/9）' },
+    { id: 'skids_otoole', label: '斯基兹·奥图尔', hint: '流浪者：机动灵活（2/3/3/4，8/6）' },
+    { id: 'agnes_baker', label: '艾格尼丝·贝克', hint: '神秘学家：意志强（5/2/2/3，6/8）' },
+    { id: 'wendy_adams', label: '温蒂·亚当斯', hint: '求生者：高敏捷（4/3/1/4，7/7）' },
+  ],
+  decks: [
+    { id: 'roland_starter', label: '罗兰·班克斯（入门战斗）', investigator: 'roland_banks' },
+    { id: 'daisy_starter', label: '黛西·沃克（入门调查）', investigator: 'daisy_walker' },
+    { id: 'skids_starter', label: '斯基兹·奥图尔（入门机动）', investigator: 'skids_otoole' },
+    { id: 'agnes_starter', label: '艾格尼丝·贝克（入门法术）', investigator: 'agnes_baker' },
+    { id: 'wendy_starter', label: '温蒂·亚当斯（入门生存）', investigator: 'wendy_adams' },
+  ],
+};
+
+// ============================================================
+// 开局卡组构筑（拖拽）
+// ============================================================
+let _deckbuilderCards = [];
+let _deckbuilderCardMap = {};
+let _deckbuilderPresets = {};
+let _deckCounts = {}; // {card_id: n}
+let _deckSyncing = false;
+let _deckTextTimer = null;
+const DECK_CARD_MAX_COPIES = 2;
+const MAIN_DECK_SIZE = 30;
+
+function _deckRoleOf(cardId) {
+  return (_deckbuilderCardMap[cardId]?.deck_role) || 'normal';
+}
+
+function _deckLimitOf(cardId) {
+  const v = _deckbuilderCardMap[cardId]?.deck_limit;
+  const n = parseInt(v, 10);
+  return Number.isFinite(n) && n > 0 ? n : DECK_CARD_MAX_COPIES;
+}
+
+function _isMainDeckCard(cardId) {
+  return _deckRoleOf(cardId) === 'normal';
+}
+
+function _mainCountFromCounts(counts) {
+  let t = 0;
+  for (const [cid, n] of Object.entries(counts || {})) {
+    if (!_isMainDeckCard(cid)) continue;
+    t += (n || 0);
+  }
+  return t;
+}
+
+function _deckTotalCount() {
+  // 主卡组张数：不含专属卡/弱点
+  return _mainCountFromCounts(_deckCounts);
+}
+
+function _setDeckCount(cardId, n) {
+  if (!cardId) return;
+  const v0 = Math.max(0, parseInt(n||0, 10) || 0);
+  const lim = _deckLimitOf(cardId);
+  const v = Math.min(lim, v0);
+  if (v <= 0) delete _deckCounts[cardId];
+  else _deckCounts[cardId] = v;
+}
+
+function _deckAdd(cardId, delta) {
+  if (!cardId) return;
+  const cur = _deckCounts[cardId] || 0;
+  const next = cur + delta;
+  _setDeckCount(cardId, next);
+}
+
+function _countsToDeckText() {
+  const entries = Object.entries(_deckCounts).filter(([,n]) => (n||0) > 0);
+  entries.sort((a,b) => {
+    const ca = _deckbuilderCardMap[a[0]];
+    const cb = _deckbuilderCardMap[b[0]];
+    const na = (ca?.name_cn || '').toString();
+    const nb = (cb?.name_cn || '').toString();
+    if (na && nb && na !== nb) return na.localeCompare(nb, 'zh-Hans-CN');
+    return a[0].localeCompare(b[0]);
+  });
+  return entries.map(([cid,n]) => (n === 1 ? `${cid}` : `${n} ${cid}`)).join('\n');
+}
+
+function _parseDeckText(text) {
+  const out = {};
+  const lines = (text || '').split(/\r?\n/);
+  for (const raw of lines) {
+    const line0 = raw.trim();
+    if (!line0 || line0.startsWith('#')) continue;
+    const line = line0.replace(/\s+/g, ' ');
+    let m = line.match(/^(\d+)\s+([a-z0-9_]+)$/i);
+    if (m) {
+      out[m[2]] = (out[m[2]] || 0) + parseInt(m[1], 10);
+      continue;
+    }
+    m = line.match(/^([a-z0-9_]+)\s*[x\*]\s*(\d+)$/i);
+    if (m) {
+      out[m[1]] = (out[m[1]] || 0) + parseInt(m[2], 10);
+      continue;
+    }
+    const cid = line.split(' ', 1)[0];
+    if (/^[a-z0-9_]+$/i.test(cid)) out[cid] = (out[cid] || 0) + 1;
+  }
+  return out;
+}
+
+function _enforcePerCardLimit(counts) {
+  let truncated = false;
+  for (const [cid, n] of Object.entries(counts || {})) {
+    const lim = _deckLimitOf(cid);
+    if ((n || 0) > lim) {
+      counts[cid] = lim;
+      truncated = true;
+    }
+  }
+  if (truncated) showToast('存在超过上限的卡牌：已自动截断', 'error');
+  return counts;
+}
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function _cardClassCn(cls) {
+  return {guardian:'守护者',seeker:'探求者',rogue:'流浪者',mystic:'神秘学家',survivor:'求生者',neutral:'中立'}[cls] || '中立';
+}
+
+function _formatCardTooltip(card) {
+  if (!card) return '';
+  const name = (card.name_cn && /[\u4E00-\u9FFF]/.test(String(card.name_cn))) ? card.name_cn : '（未翻译卡牌）';
+  const sub = `${card.id || ''} · ${_cardClassCn(card.class)} · ${typeLabel(card.type)}`;
+  const cost = (card.cost == null ? '' : `费用：${card.cost}`);
+  const level = (card.level ? `等级：${card.level}` : '等级：0');
+  const slots = (card.slots && card.slots.length) ? `槽位：${[...new Set(card.slots)].map(s=>slotLabel(s)).join('/')}` : '';
+  const traits = (card.traits || []).filter(t => /[\u4E00-\u9FFF]/.test(String(t))).join('、');
+  const traitsText = traits ? `特性：${traits}` : '';
+  const meta = [cost, level, slots, traitsText].filter(Boolean).join(' · ');
+  const text = (card.text_cn && /[\u4E00-\u9FFF]/.test(String(card.text_cn))) ? card.text_cn : '（暂无中文说明）';
+
+  return `
+    <div class="t-name">${escapeHtml(name)}</div>
+    <div class="t-sub">${escapeHtml(sub)}</div>
+    ${meta ? `<div class="t-meta">${escapeHtml(meta)}</div>` : ''}
+    <div class="t-text">${escapeHtml(text)}</div>
+  `;
+}
+
+function showCardTooltipById(cardId, x, y) {
+  const tip = document.getElementById('card-tooltip');
+  if (!tip) return;
+  const c = _deckbuilderCardMap[cardId] || null;
+  if (!c) return;
+  tip.innerHTML = _formatCardTooltip(c);
+  tip.style.display = 'block';
+  const pad = 14;
+  const maxX = window.innerWidth - (tip.offsetWidth || 360) - pad;
+  const maxY = window.innerHeight - (tip.offsetHeight || 220) - pad;
+  const left = Math.max(pad, Math.min(maxX, (x || pad) + 14));
+  const top = Math.max(pad, Math.min(maxY, (y || pad) + 14));
+  tip.style.left = left + 'px';
+  tip.style.top = top + 'px';
+}
+
+function hideCardTooltip() {
+  const tip = document.getElementById('card-tooltip');
+  if (!tip) return;
+  tip.style.display = 'none';
+}
+
+// Hide tooltip if modal closes / click elsewhere
+document.addEventListener('scroll', hideCardTooltip, true);
+
+function _deckSyncToTextarea() {
+  const ta = document.getElementById('setup-deck-text');
+  if (!ta) return;
+  _deckSyncing = true;
+  ta.value = _countsToDeckText();
+  _deckSyncing = false;
+}
+
+function _deckRender() {
+  const countEl = document.getElementById('deckbuilder-count');
+  if (countEl) countEl.textContent = String(_deckTotalCount());
+
+  const deckEl = document.getElementById('deckbuilder-deck');
+  if (!deckEl) return;
+
+  const entries = Object.entries(_deckCounts).filter(([,n]) => (n||0) > 0);
+  if (entries.length === 0) {
+    deckEl.innerHTML = '<div class="deckbuilder-empty">把卡牌拖到这里，或点“从预组载入 / 从文本解析”。</div>';
+    return;
+  }
+
+  entries.sort((a,b) => {
+    const ca = _deckbuilderCardMap[a[0]];
+    const cb = _deckbuilderCardMap[b[0]];
+    const na = (ca?.name_cn || '').toString();
+    const nb = (cb?.name_cn || '').toString();
+    if (na && nb && na !== nb) return na.localeCompare(nb, 'zh-Hans-CN');
+    return a[0].localeCompare(b[0]);
+  });
+
+  deckEl.innerHTML = entries.map(([cid,n]) => {
+    const c = _deckbuilderCardMap[cid] || {};
+    const name = (c.name_cn && /[\u4E00-\u9FFF]/.test(String(c.name_cn))) ? c.name_cn : '（未翻译卡牌）';
+    const sub = `${cid}${c.type ? ' · ' + typeLabel(c.type) : ''}${c.class ? ' · ' + ( {guardian:'守护者',seeker:'探求者',rogue:'流浪者',mystic:'神秘学家',survivor:'求生者',neutral:'中立'}[c.class] || '中立' ) : ''}`;
+    return `<div class="deckbuilder-item" style="cursor:default" data-card-id="${cid}">
+      <div class="meta">
+        <div class="name">${name}</div>
+        <div class="sub">${sub}</div>
+      </div>
+      <div class="deckbuilder-qty">
+        <button class="deckbuilder-btn" onclick="deckbuilderDec('${cid}')">−</button>
+        <div class="num">${n}</div>
+        <button class="deckbuilder-btn" onclick="deckbuilderInc('${cid}')">+</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // tooltip bind
+  deckEl.querySelectorAll('.deckbuilder-item[data-card-id]').forEach(el => {
+    const cid = el.getAttribute('data-card-id');
+    if (!cid) return;
+    el.addEventListener('mouseenter', (ev) => showCardTooltipById(cid, ev.clientX, ev.clientY));
+    el.addEventListener('mousemove', (ev) => showCardTooltipById(cid, ev.clientX, ev.clientY));
+    el.addEventListener('mouseleave', () => hideCardTooltip());
+  });
+}
+
+function _renderPool() {
+  const poolEl = document.getElementById('deckbuilder-pool');
+  if (!poolEl) return;
+
+  const search = (document.getElementById('deckbuilder-search')?.value || '').trim().toLowerCase();
+  const cls = (document.getElementById('deckbuilder-class')?.value || '').trim();
+
+  const cards = (_deckbuilderCards || []).filter(c => {
+    if (cls && (c.class || '') !== cls) return false;
+    if (!search) return true;
+    const hay = `${c.name_cn || ''} ${c.id || ''}`.toLowerCase();
+    return hay.includes(search);
+  });
+
+  if (cards.length === 0) {
+    poolEl.innerHTML = '<div class="deckbuilder-empty">没有匹配的卡牌。</div>';
+    return;
+  }
+
+  poolEl.innerHTML = cards.map(c => {
+    const name = (c.name_cn && /[\u4E00-\u9FFF]/.test(String(c.name_cn))) ? c.name_cn : '（未翻译卡牌）';
+    const classCn = {guardian:'守护者',seeker:'探求者',rogue:'流浪者',mystic:'神秘学家',survivor:'求生者',neutral:'中立'}[c.class] || '中立';
+    const cost = (c.cost == null ? '' : `费用:${c.cost}`);
+    const lv = (c.level ? `等级:${c.level}` : '');
+    const line2 = [classCn, typeLabel(c.type), cost, lv].filter(Boolean).join(' · ');
+    return `<div class="deckbuilder-item" draggable="true" data-card-id="${c.id}" title="${name}" onclick="deckbuilderInc('${c.id}')">
+      <div class="meta">
+        <div class="name">${name}</div>
+        <div class="sub">${c.id} ${line2 ? '· ' + line2 : ''}</div>
+      </div>
+      <span class="pill">拖拽/点击</span>
+    </div>`;
+  }).join('');
+
+  poolEl.querySelectorAll('.deckbuilder-item[draggable="true"]').forEach(el => {
+    el.addEventListener('dragstart', (ev) => {
+      const cid = el.getAttribute('data-card-id');
+      if (!cid) return;
+      // Safari/Chrome compatibility
+      ev.dataTransfer.setData('text/plain', cid);
+      ev.dataTransfer.setData('text', cid);
+      ev.dataTransfer.effectAllowed = 'copy';
+    });
+
+    const cid = el.getAttribute('data-card-id');
+    if (cid) {
+      el.addEventListener('mouseenter', (ev) => showCardTooltipById(cid, ev.clientX, ev.clientY));
+      el.addEventListener('mousemove', (ev) => showCardTooltipById(cid, ev.clientX, ev.clientY));
+      el.addEventListener('mouseleave', () => hideCardTooltip());
+    }
+  });
+}
+
+function _bindDeckDropzone() {
+  const dz = document.getElementById('deckbuilder-deck');
+  if (!dz || dz._deckBindDone) return;
+  dz._deckBindDone = true;
+  dz.addEventListener('dragover', (ev) => { ev.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', (ev) => {
+    ev.preventDefault();
+    dz.classList.remove('dragover');
+    const cid = ev.dataTransfer.getData('text/plain') || ev.dataTransfer.getData('text');
+    if (!cid) return;
+    deckbuilderInc(cid);
+  });
+}
+
+async function deckbuilderInit() {
+  const poolEl = document.getElementById('deckbuilder-pool');
+  if (poolEl && _deckbuilderCards.length === 0) {
+    poolEl.innerHTML = '<div class="deckbuilder-empty">正在加载卡池…</div>';
+  }
+
+  if (_deckbuilderCards.length === 0) {
+    try {
+      const d = await api('/api/player-cards');
+      _deckbuilderCards = d.cards || [];
+      _deckbuilderCardMap = {};
+      _deckbuilderCards.forEach(c => { _deckbuilderCardMap[c.id] = c; });
+    } catch (e) {
+      _deckbuilderCards = [];
+      _deckbuilderCardMap = {};
+      if (poolEl) poolEl.innerHTML = '<div class="deckbuilder-empty">卡池加载失败（接口 /api/player-cards 访问异常）。请重启 `frontend/server_core.py` 后刷新页面。</div>';
+      showToast('卡池加载失败：请重启服务并刷新页面', 'error');
+    }
+  }
+  if (Object.keys(_deckbuilderPresets).length === 0) {
+    try {
+      const d = await api('/api/deck-presets');
+      _deckbuilderPresets = d.presets || {};
+    } catch (e) {
+      _deckbuilderPresets = {};
+    }
+  }
+
+  const searchEl = document.getElementById('deckbuilder-search');
+  if (searchEl && !searchEl._deckBindDone) {
+    searchEl._deckBindDone = true;
+    searchEl.addEventListener('input', () => _renderPool());
+  }
+  const clsEl = document.getElementById('deckbuilder-class');
+  if (clsEl && !clsEl._deckBindDone) {
+    clsEl._deckBindDone = true;
+    clsEl.addEventListener('change', () => _renderPool());
+  }
+
+  const ta = document.getElementById('setup-deck-text');
+  if (ta && !ta._deckBindDone) {
+    ta._deckBindDone = true;
+    ta.addEventListener('input', () => {
+      if (_deckSyncing) return;
+      if (_deckTextTimer) clearTimeout(_deckTextTimer);
+      _deckTextTimer = setTimeout(() => {
+        deckbuilderParseText();
+      }, 250);
+    });
+  }
+
+  _bindDeckDropzone();
+  _renderPool();
+  _deckRender();
+}
+
+function deckbuilderInc(cardId) {
+  if (!_deckbuilderCardMap[cardId]) { showToast('未知卡牌：' + cardId, 'error'); return; }
+  if (_isMainDeckCard(cardId) && _deckTotalCount() >= MAIN_DECK_SIZE) { showToast(`主卡组已满 ${MAIN_DECK_SIZE} 张（专属卡/弱点不计入）`, 'error'); return; }
+  const lim = _deckLimitOf(cardId);
+  if ((_deckCounts[cardId] || 0) >= lim) { showToast(`该卡牌最多 ${lim} 张`, 'error'); return; }
+  _deckAdd(cardId, 1);
+  _deckSyncToTextarea();
+  _deckRender();
+}
+
+function deckbuilderDec(cardId) {
+  if (!_deckCounts[cardId]) return;
+  _deckAdd(cardId, -1);
+  _deckSyncToTextarea();
+  _deckRender();
+}
+
+function deckbuilderClear() {
+  _deckCounts = {};
+  _deckSyncToTextarea();
+  _deckRender();
+}
+
+function deckbuilderParseText() {
+  const ta = document.getElementById('setup-deck-text');
+  if (!ta) return;
+  const parsed0 = _parseDeckText(ta.value || '');
+  const next = {};
+  for (const [cid, n] of Object.entries(parsed0)) {
+    if (!_deckbuilderCardMap[cid]) continue;
+    next[cid] = n;
+  }
+  _enforcePerCardLimit(next);
+
+  // Cap main deck to 30 (special cards excluded)
+  let mainTotal = _mainCountFromCounts(next);
+  if (mainTotal > MAIN_DECK_SIZE) {
+    const keys = Object.keys(next).sort();
+    for (const k of keys) {
+      if (mainTotal <= MAIN_DECK_SIZE) break;
+      if (!_isMainDeckCard(k)) continue;
+      const canDrop = Math.min(next[k], mainTotal - MAIN_DECK_SIZE);
+      next[k] -= canDrop;
+      if (next[k] <= 0) delete next[k];
+      mainTotal = _mainCountFromCounts(next);
+    }
+    showToast(`主卡组超过 ${MAIN_DECK_SIZE} 张：已自动截断（专属卡/弱点不计入）`, 'error');
+  }
+  _deckCounts = next;
+  _deckSyncToTextarea();
+  _deckRender();
+}
+
+function deckbuilderLoadPreset() {
+  const presetId = document.querySelector('input[name="setup-deck"]:checked')?.value || '';
+  const preset = _deckbuilderPresets[presetId];
+  if (!preset) { showToast('未找到预组卡组：' + presetId, 'error'); return; }
+  const copies = preset.default_copies || 2;
+  _deckCounts = {};
+  for (const cid of (preset.cards || [])) {
+    if (!_deckbuilderCardMap[cid]) continue;
+    _setDeckCount(cid, (_deckCounts[cid] || 0) + copies);
+  }
+  _deckCounts = _enforcePerCardLimit(_deckCounts);
+  // Ensure main deck size cap
+  let total = _deckTotalCount();
+  if (total > MAIN_DECK_SIZE) {
+    const keys = Object.keys(_deckCounts).sort();
+    for (const k of keys) {
+      if (total <= MAIN_DECK_SIZE) break;
+      if (!_isMainDeckCard(k)) continue;
+      const drop = Math.min(_deckCounts[k], total - MAIN_DECK_SIZE);
+      _deckCounts[k] -= drop;
+      if (_deckCounts[k] <= 0) delete _deckCounts[k];
+      total = _deckTotalCount();
+    }
+  }
+  _deckSyncToTextarea();
+  _deckRender();
+  showToast('已载入预组卡组到自定义区', 'success');
+}
+
+function openSetup() {
+  document.getElementById('setup-modal').style.display = 'flex';
+  // 初始化拖拽构筑器（首次进入或再次打开）
+  deckbuilderInit();
+}
+
+function _renderSetupRadios() {
+  const scenBox = document.getElementById('setup-scenario');
+  const invBox = document.getElementById('setup-investigator');
+  const deckBox = document.getElementById('setup-deck');
+  scenBox.innerHTML = SETUP.scenarios.map((s, idx) => (
+    `<label><input type="radio" name="setup-scenario" value="${s.id}" ${idx===0?'checked':''}/> ${s.label}</label>`
+  )).join('');
+  invBox.innerHTML = SETUP.investigators.map((s, idx) => (
+    `<label><input type="radio" name="setup-investigator" value="${s.id}" ${idx===1?'checked':''}/> ${s.label}</label>`
+  )).join('');
+
+  function renderDecksForInv(invId) {
+    deckBox.innerHTML = SETUP.decks
+      .filter(d => d.investigator === invId)
+      .map((d, idx) => (`<label><input type="radio" name="setup-deck" value="${d.id}" ${idx===0?'checked':''}/> ${d.label}</label>`))
+      .join('');
+  }
+
+  const defaultInv = SETUP.investigators[1].id;
+  renderDecksForInv(defaultInv);
+  document.getElementById('setup-investigator-hint').textContent = SETUP.investigators[1].hint;
+
+  invBox.querySelectorAll('input[name="setup-investigator"]').forEach(el => {
+    el.addEventListener('change', () => {
+      const invId = el.value;
+      const inv = SETUP.investigators.find(x => x.id === invId);
+      document.getElementById('setup-investigator-hint').textContent = inv?.hint || '';
+      renderDecksForInv(invId);
+      // deck radios 变更后，确保“从预组载入”能拿到最新选中项
+      deckbuilderInit();
+    });
+  });
+}
+
+async function startGameFromSetup() {
+  const scenarioId = document.querySelector('input[name="setup-scenario"]:checked')?.value || 'the_gathering';
+  const invId = document.querySelector('input[name="setup-investigator"]:checked')?.value || 'daisy_walker';
+  const deckPreset = document.querySelector('input[name="setup-deck"]:checked')?.value || '';
+  const deckText = document.getElementById('setup-deck-text')?.value || '';
+  const d = await api('/api/setup', { scenario_id: scenarioId, investigator_id: invId, deck_preset: deckPreset, deck_text: deckText });
+  if (d && d.success === false) {
+    showToast(d.message || '构筑失败', 'error');
+    return;
+  }
+  state = d.state;
+  render(d.state);
+  closeModal('setup-modal');
+  showToast('冒险开始！', 'success');
+  const sel = document.getElementById('scenario-select');
+  if (sel) sel.value = scenarioId;
+}
 
 async function api(path, data) {
   const opts = data !== undefined
@@ -215,13 +912,20 @@ async function refreshState() { const d = await api('/api/state'); state = d; re
 
 async function resetGame() {
   document.getElementById('game-over-overlay').style.display = 'none';
-  const d = await api('/api/setup', {}); state = d.state; render(d.state);
-  showToast('游戏已重置', 'success');
+  openSetup();
 }
 
 async function doSimpleAction(action, extra = {}) {
   if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
   const d = await api('/api/action', { action, ...extra }); state = d.state; render(d.state);
+  if (!d.success) showToast(d.message, 'error');
+}
+
+// Activate an asset (e.g. Old Book of Lore)
+async function activateAsset(instanceId) {
+  if (!state || state.investigator.actions_remaining <= 0) { showToast('没有剩余行动点！', 'error'); return; }
+  const d = await api('/api/action', { action: 'ACTIVATE_ASSET', instance_id: instanceId });
+  state = d.state; render(d.state);
   if (!d.success) showToast(d.message, 'error');
 }
 
@@ -241,7 +945,25 @@ function startFight() {
 }
 
 function pickFightTarget(enemyId) {
-  const weapons = state.play_area.filter(a => !a.exhausted && (a.name.includes('Machete') || a.name.includes('.45') || a.name.includes('Automatic')));
+  // CN-first backend may not provide EN names; use card_id/slots/uses
+  function isWeaponAsset(a) {
+    const cid = (a.id || '').toLowerCase();
+    const slots = a.slots || [];
+    if (!slots.includes('hand')) return false;
+    if (cid.includes('flashlight') || cid.includes('magnifying_glass')) return false;
+    if (a.uses && (a.uses.ammo !== undefined || a.uses.charge !== undefined)) return true;
+    return (
+      cid.includes('machete') ||
+      cid.includes('automatic') ||
+      cid.includes('derringer') ||
+      cid.includes('shotgun') ||
+      cid.includes('switchblade') ||
+      cid.includes('baseball_bat') ||
+      cid.includes('knife')
+    );
+  }
+
+  const weapons = (state.play_area || []).filter(a => !a.exhausted && isWeaponAsset(a));
   if (weapons.length > 0) { showWeaponSelect(weapons, enemyId); }
   else { showCommitModal('FIGHT', { enemy_instance_id: enemyId }, 'combat'); }
 }
@@ -269,6 +991,30 @@ function fightEnemy(enemyId) {
   pickFightTarget(enemyId);
 }
 
+// ======== 中文显示助手：不渲染英文 ========
+function _hasCn(s) { return !!(s && /[\u4E00-\u9FFF]/.test(String(s))); }
+function cnOrPlaceholder(s, placeholder) {
+  const v = (s == null ? '' : String(s)).trim();
+  if (_hasCn(v)) return v;
+  return placeholder || '（暂无中文）';
+}
+function slotLabel(v) {
+  const map = { hand:'手', body:'身体', accessory:'饰品', arcane:'奥术', ally:'盟友' };
+  return map[v] || '槽位';
+}
+function formatSlots(slots) {
+  if (!slots || slots.length === 0) return '';
+  return slots.map(s => slotLabel(s)).join('/');
+}
+function usesLabel(k) {
+  const map = { ammo:'弹药', charge:'充能', supply:'补给', secret:'秘密', resource:'资源', clue:'线索' };
+  return map[k] || '使用';
+}
+function formatUses(uses) {
+  if (!uses || Object.keys(uses).length === 0) return '';
+  return Object.entries(uses).map(([k,v]) => `${usesLabel(k)}:${v}`).join(' ');
+}
+
 // Enemy select
 let enemySelectCallback = null;
 function showEnemySelect(title, enemies, cb) {
@@ -288,7 +1034,7 @@ function showWeaponSelect(weapons, eid) {
   weaponEnemyId = eid;
   document.getElementById('weapon-options').innerHTML = weapons.map(w => {
     const uses = w.uses?.ammo !== undefined ? ` [弹药:${w.uses.ammo}]` : '';
-    return `<div class="modal-option" onclick="selectWeapon('${w.instance_id}')">${w.name_cn||w.name}${uses}</div>`;
+    return `<div class="modal-option" onclick="selectWeapon('${w.instance_id}')">${cnOrPlaceholder(w.name_cn,'（未翻译卡牌）')}${uses}</div>`;
   }).join('');
   document.getElementById('weapon-modal').style.display = 'flex';
 }
@@ -304,13 +1050,13 @@ function showCommitModal(action, extra, skillType) {
   pendingAction = { action, extra, skillType }; committedCardIds = [];
   const eligible = (state.hand || []).filter(c => c.skill_icons && ((c.skill_icons[skillType]||0) + (c.skill_icons.wild||0)) > 0);
   if (eligible.length === 0) { executeAction(action, extra, []); return; }
-  const skillCn = { combat:'战斗', intellect:'智���', agility:'敏捷', willpower:'意志' };
+  const skillCn = { combat:'战斗', intellect:'智力', agility:'敏捷', willpower:'意志' };
   document.getElementById('commit-title').textContent = `投入卡牌到${skillCn[skillType]||skillType}检定`;
   updateCommitSummary(skillType);
   document.getElementById('commit-cards-list').innerHTML = eligible.map(c => {
     const matching = (c.skill_icons[skillType]||0) + (c.skill_icons.wild||0);
     const detail = Object.entries(c.skill_icons).filter(([,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ');
-    return `<div class="commit-card" id="commit-${c.id}" onclick="toggleCommit('${c.id}')"><div class="check"></div><div class="card-info"><div class="name">${c.name_cn} (${c.name})</div><div class="detail">${typeLabel(c.type)} | ${detail}</div></div><div class="icons">+${matching}</div></div>`;
+    return `<div class="commit-card" id="commit-${c.id}" onclick="toggleCommit('${c.id}')"><div class="check"></div><div class="card-info"><div class="name">${cnOrPlaceholder(c.name_cn,'（未翻译卡牌）')}</div><div class="detail">${typeLabel(c.type)} | ${detail}</div></div><div class="icons">+${matching}</div></div>`;
   }).join('');
   document.getElementById('commit-modal').style.display = 'flex';
 }
@@ -338,6 +1084,12 @@ async function executeAction(action, extra, committed) {
 
 async function endTurn() { const d = await api('/api/end-turn', {}); state = d.state; render(d.state); }
 
+async function resolveChoice(choiceId) {
+  const d = await api('/api/action', { action: 'RESOLVE_CHOICE', choice_id: choiceId });
+  state = d.state; render(d.state);
+  closeModal('choice-modal');
+}
+
 function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
 // Render
@@ -359,22 +1111,65 @@ function render(s) {
   document.getElementById('deck-count').textContent = inv.deck_count;
   document.getElementById('round-num').textContent = s.round;
   document.getElementById('phase-name').textContent = phaseLabel(s.phase);
+  document.getElementById('scenario-name').textContent = cnOrPlaceholder(s.scenario?.name_cn, '核心剧本');
   document.getElementById('doom-bar-fill').style.width = (s.doom / s.doom_threshold * 100) + '%';
 
   // Map
+  const locNameById = {};
+  Object.entries(s.locations).forEach(([id, loc]) => { locNameById[id] = loc.name_cn || id; });
+  const currentConn = new Set((s.location?.connections || []) );
+
   const mapHtml = Object.entries(s.locations).map(([id, loc]) => {
     const current = loc.is_current ? 'current' : '';
-    const badge = loc.is_current ? '<span class="loc-badge">当前</span>' : '';
+    const badge = loc.is_current ? '<span class="loc-badge">当前位置</span>' : '';
     const canMove = !loc.is_current && s.location.connections.includes(id);
     const onclick = canMove ? `onclick="moveTo('${id}')"` : '';
+
+    const conns = (loc.connections || []).map(cid => {
+      const name = locNameById[cid] || cid;
+      const cls = cid === id ? 'conn self' : (currentConn.has(cid) ? 'conn reachable' : 'conn');
+      return `<span class="${cls}">${name}</span>`;
+    }).join('') || '<span style="color:#64748b">无</span>';
+
     return `<div class="location-card ${current}" ${onclick}>
       <div class="loc-header"><span class="loc-name">${loc.name_cn}</span>${badge}</div>
       <div class="loc-stats"><span>隐蔽 ${loc.shroud}</span><span>线索 ${loc.clues}</span></div>
       ${loc.enemies_here > 0 ? `<div class="loc-enemies">${loc.enemies_here} 个敌人</div>` : ''}
+      <div class="loc-conns"><span class="tag">连接：</span>${conns}</div>
       ${canMove ? '<div class="loc-connection">点击移动</div>' : ''}
     </div>`;
   }).join('');
   document.getElementById('map-container').innerHTML = mapHtml;
+
+  // Edges list (undirected)
+  const edges = [];
+  const seen = new Set();
+  for (const [a, loc] of Object.entries(s.locations)) {
+    for (const b of (loc.connections || [])) {
+      const x = String(a); const y = String(b);
+      if (!y || x === y) continue;
+      const key = x < y ? `${x}__${y}` : `${y}__${x}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      edges.push([x, y]);
+    }
+  }
+  const edgesWrap = document.getElementById('map-edges');
+  const edgesList = document.getElementById('map-edges-list');
+  if (edgesWrap && edgesList) {
+    if (edges.length === 0) {
+      edgesWrap.style.display = 'none';
+    } else {
+      edgesWrap.style.display = 'block';
+      edgesList.innerHTML = edges.map(([a,b]) => {
+        const active = currentConn.has(a) || currentConn.has(b);
+        const cls = active ? 'edge-pill active' : 'edge-pill';
+        const an = locNameById[a] || a;
+        const bn = locNameById[b] || b;
+        return `<span class="${cls}">${an}<span class="arrow">↔</span>${bn}</span>`;
+      }).join('');
+    }
+  }
 
   // Enemies
   const noActions = inv.actions_remaining <= 0;
@@ -390,7 +1185,7 @@ function render(s) {
       actHtml += '</div>';
     }
     return `<div class="enemy-card ${e.exhausted?'exhausted':''}">
-      <div class="enemy-name">${e.name_cn} (${e.name})</div>
+      <div class="enemy-name">${cnOrPlaceholder(e.name_cn,'未知敌人')}</div>
       <div class="enemy-stats"><span>&#9876; ${e.fight}</span><span>&#10084; ${e.health-e.current_damage}/${e.health}</span><span>&#128737; ${e.evade}</span><span>&#128128; ${e.damage_dealt}/${e.horror_dealt}</span></div>
       <div class="enemy-hp-bar"><div class="enemy-hp-fill" style="width:${Math.max(0,hpPct)}%"></div></div>
       <div class="enemy-status">${e.engaged?'交战中':'未交战'}${e.exhausted?' · 已消耗':''}</div>
@@ -404,17 +1199,23 @@ function render(s) {
     const icons = c.skill_icons ? Object.entries(c.skill_icons).filter(([,v])=>v>0).map(([k,v])=>`${skillLabel(k)}x${v}`).join(' ') : '';
     return `<div class="card ${c.class||'neutral'} ${c.type||''}" onclick="playCard('${c.id}')">
       ${c.cost!=null?`<div class="card-cost">${c.cost}</div>`:''}
-      <div class="card-name">${c.name}</div><div class="card-name-cn">${c.name_cn}</div>
-      <div class="card-type">${typeLabel(c.type)}${c.slots.length?' · '+c.slots.join('/'):''}</div>
-      <div class="card-text">${c.text||''}</div>
+      <div class="card-name">${cnOrPlaceholder(c.name_cn,'（未翻译卡牌）')}</div>
+      <div class="card-type">${typeLabel(c.type)}${c.slots.length?' · '+formatSlots(c.slots):''}</div>
+      <div class="card-text">${cnOrPlaceholder(c.text,'（暂无中文说明）')}</div>
       ${icons?`<div class="card-icons">${icons}</div>`:''}
     </div>`;
   }).join('') || '<div style="color:#666;font-size:13px;padding:8px">手牌为空</div>';
 
   // Play area
   document.getElementById('play-area-container').innerHTML = s.play_area.map(a => {
-    const usesHtml = a.uses && Object.keys(a.uses).length > 0 ? `<div class="uses">${Object.entries(a.uses).map(([k,v])=>`${k}:${v}`).join(' ')}</div>` : '';
-    return `<div class="asset-in-play ${a.exhausted?'exhausted':''}" title="${a.name}"><strong>${a.name_cn||a.name}</strong>${usesHtml}${a.slots.length?`<div style="font-size:10px;color:#666">${a.slots.join('/')}</div>`:''}</div>`;
+    const usesText = formatUses(a.uses);
+    const usesHtml = usesText ? `<div class="uses">${usesText}</div>` : '';
+    const title = cnOrPlaceholder(a.name_cn,'（未翻译卡牌）');
+    const canActivate = !noActions && !a.exhausted && a.id === 'old_book_of_lore_lv0';
+    const actBtn = canActivate
+      ? `<button class="asset-activate-btn" onclick="event.stopPropagation();activateAsset('${a.instance_id}')">📖 激活</button>`
+      : '';
+    return `<div class="asset-in-play ${a.exhausted?'exhausted':''}" title="${title}"><strong>${title}</strong>${usesHtml}${a.slots.length?`<div style="font-size:10px;color:#666">${formatSlots(a.slots)}</div>`:''}${actBtn}</div>`;
   }).join('') || '<div style="color:#666;font-size:13px;padding:8px">无装备</div>';
 
   // Log
@@ -427,6 +1228,20 @@ function render(s) {
   document.getElementById('btn-investigate').disabled = noActions;
   document.getElementById('btn-resource').disabled = noActions;
   document.getElementById('btn-draw').disabled = noActions;
+  document.getElementById('btn-advance').disabled = noActions || !(s.scenario?.act?.clues > 0 && inv.clues >= s.scenario.act.clues);
+  const hasLockedDoor = (s.treacheries||[]).some(t => t.id === 'locked_door');
+  document.getElementById('btn-door-combat').disabled = noActions || !hasLockedDoor;
+  document.getElementById('btn-door-agility').disabled = noActions || !hasLockedDoor;
+  document.getElementById('btn-resign').disabled = !!s.game_over;
+
+  // Pending choice modal
+  if (s.pending_choice) {
+    document.getElementById('choice-title').textContent = '需要选择';
+    document.getElementById('choice-prompt').innerHTML = s.pending_choice.prompt || '';
+    document.getElementById('choice-options').innerHTML = (s.pending_choice.options||[])
+      .map(o => `<div class="modal-option" onclick="resolveChoice('${o.id}')">${o.label}</div>`).join('');
+    document.getElementById('choice-modal').style.display = 'flex';
+  }
 
   // Game over
   if (s.game_over || inv.defeated) {
@@ -452,7 +1267,8 @@ function typeLabel(t) { return { asset:'支援', event:'事件', skill:'技能' 
 function skillLabel(s) { return { willpower:'意', intellect:'智', combat:'战', agility:'敏', wild:'万' }[s] || s; }
 function showToast(msg, type='') { const el = document.getElementById('toast'); el.textContent = msg; el.className = 'toast show ' + type; setTimeout(() => el.className = 'toast', 2000); }
 
-resetGame();
+_renderSetupRadios();
+openSetup();
 </script>
 </body>
 </html>

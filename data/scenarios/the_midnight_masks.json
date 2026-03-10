@@ -1,0 +1,77 @@
+{
+  "id": "the_midnight_masks",
+  "name": "The Midnight Masks",
+  "name_cn": "午夜假面",
+  "type": "official",
+  "campaign": "core",
+  "sequence": 2,
+  "encounter_sets": [
+    "arkham",
+    "chilling_cold",
+    "nightgaunts",
+    "striking_fear",
+    "ancient_evils",
+    "pentagram",
+    "locked_doors",
+    "agents_of_cthulhu",
+    "agents_of_hastur",
+    "agents_of_shub",
+    "agents_of_yog"
+  ],
+  "scenario_set": "arkham",
+  "start_location": "rivertown",
+  "connections": {
+    "rivertown": [
+      "downtown",
+      "miskatonic_university"
+    ],
+    "downtown": [
+      "rivertown",
+      "easttown",
+      "merchant_district"
+    ],
+    "easttown": [
+      "downtown",
+      "st_marys_hospital",
+      "southside"
+    ],
+    "southside": [
+      "easttown",
+      "northside"
+    ],
+    "northside": [
+      "southside",
+      "merchant_district"
+    ],
+    "merchant_district": [
+      "northside",
+      "downtown"
+    ],
+    "miskatonic_university": [
+      "rivertown"
+    ],
+    "st_marys_hospital": [
+      "easttown"
+    ]
+  },
+  "act_deck": [
+    "uncovering_the_conspiracy"
+  ],
+  "agenda_deck": [
+    "time_is_running_short"
+  ],
+  "locations": [
+    "your_house",
+    "rivertown",
+    "southside",
+    "southside_arkham",
+    "st_mary_s_hospital",
+    "miskatonic_university",
+    "downtown",
+    "downtown_arkham",
+    "easttown",
+    "graveyard",
+    "northside"
+  ],
+  "story_assets": []
+}

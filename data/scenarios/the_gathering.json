@@ -1,0 +1,60 @@
+{
+  "id": "the_gathering",
+  "name": "The Gathering",
+  "name_cn": "夜幕降临",
+  "type": "official",
+  "campaign": "core",
+  "sequence": 1,
+  "encounter_sets": [
+    "torch",
+    "ghouls",
+    "chilling_cold",
+    "rats",
+    "striking_fear",
+    "ancient_evils",
+    "pentagram",
+    "locked_doors"
+  ],
+  "scenario_set": "torch",
+  "start_location": "study",
+  "connections": {
+    "study": [
+      "hallway"
+    ],
+    "hallway": [
+      "study",
+      "attic",
+      "cellar",
+      "parlor"
+    ],
+    "attic": [
+      "hallway"
+    ],
+    "cellar": [
+      "hallway"
+    ],
+    "parlor": [
+      "hallway"
+    ]
+  },
+  "act_deck": [
+    "trapped",
+    "the_barrier",
+    "what_have_you_done"
+  ],
+  "agenda_deck": [
+    "what_s_going_on",
+    "rise_of_the_ghouls",
+    "they_re_getting_out"
+  ],
+  "locations": [
+    "study",
+    "hallway",
+    "attic",
+    "cellar",
+    "parlor"
+  ],
+  "story_assets": [
+    "lita_chantler"
+  ]
+}

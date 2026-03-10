@@ -1,0 +1,18 @@
+{
+  "id": "crack_the_case_lv0",
+  "name": "Crack the Case",
+  "name_cn": "水落石出",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": ["insight"],
+  "skill_icons": {"intellect": 1},
+  "slots": [],
+  "text_cn": "快速。在一位調查員發現你所在地點的最後一個線索後打出。\n位於該地點的調查員獲得總計X資源，由你自行分配，X為該地點的隱藏值。",
+  "health": null,
+  "sanity": null,
+  "pack": "tsn",
+  "unique": false,
+  "deck_limit": 2
+}

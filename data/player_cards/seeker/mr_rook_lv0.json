@@ -1,0 +1,18 @@
+{
+  "id": "mr_rook_lv0",
+  "name": "Mr. \"Rook\"",
+  "name_cn": "\"老千\"先生",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": ["ally"],
+  "skill_icons": {"willpower": 1},
+  "slots": ["ally"],
+  "text_cn": "使用(3秘密)。\n[free]消耗\"老千\"先生並花費1秘密：在你牌堆頂部3張、6張、或9張卡牌中查找並抽取任意一張卡牌。如果查找的卡牌中有至少1張弱點，也抽取其中1張。混洗你的牌堆。",
+  "health": 2,
+  "sanity": 2,
+  "pack": "tcu",
+  "unique": false,
+  "deck_limit": 2
+}

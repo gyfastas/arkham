@@ -1,0 +1,18 @@
+{
+  "id": "preposterous_sketches_lv2",
+  "name": "Preposterous Sketches",
+  "name_cn": "荒唐的素描像",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": ["insight"],
+  "skill_icons": {"willpower": 1, "intellect": 1},
+  "slots": [],
+  "text_cn": "只能在你所在地點有線索時打出。\n抽取3張卡牌。",
+  "health": null,
+  "sanity": null,
+  "pack": "rtdwl",
+  "unique": false,
+  "deck_limit": 2
+}
