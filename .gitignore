@@ -27,6 +27,12 @@ dist/
 # Local agent/tooling dirs
 .coco/
 
+# Node.js
+node_modules/
+
+# Client build output
+client/dist/
+
 # Generated data / scraping outputs
 cards_infos/
 all_cards.json

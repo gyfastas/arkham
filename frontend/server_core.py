@@ -26,6 +26,7 @@ from backend.engine.game import Game
 from backend.models.enums import Action, CardType, Phase, PlayerClass, SlotType
 from backend.models.state import CardData, SkillValues
 from backend.scenarios.official_core import apply_scenario_to_game, load_scenario_definition, ScenarioController
+from server.state_serializer import serialize_game_state as _serialize_game_state
 
 
 # Global state
@@ -1082,162 +1083,15 @@ def create_game(
     return g
 
 
-def _enemy_dict(ci, cd, engaged: bool) -> dict:
-    return {
-        "instance_id": ci.instance_id,
-        "id": ci.card_id,
-        "name": cd.name if cd else ci.card_id,
-        "name_cn": cd.name_cn if cd else "",
-        "fight": cd.enemy_fight if cd else 0,
-        "health": cd.enemy_health if cd else 0,
-        "evade": cd.enemy_evade if cd else 0,
-        "damage_dealt": cd.enemy_damage if cd else 0,
-        "horror_dealt": cd.enemy_horror if cd else 0,
-        "current_damage": ci.damage,
-        "exhausted": ci.exhausted,
-        "engaged": engaged,
-    }
-
-
 def serialize_state(g: Game) -> dict:
-    inv = g.state.get_investigator("player")
-    cur_loc = g.state.get_location(inv.location_id) if inv else None
-    scenario = g.state.scenario
-    scen_def = load_scenario_definition(scenario.scenario_id)
-
-    # Locations
-    locations = {}
-    for loc_id, loc in g.state.locations.items():
-        locations[loc_id] = {
-            "name": loc.card_data.name,
-            "name_cn": loc.card_data.name_cn,
-            "shroud": loc.shroud,
-            "clues": loc.clues,
-            "connections": loc.connections,
-            "enemies_here": len(loc.enemies),
-            "is_current": inv and loc_id == inv.location_id,
-        }
-
-    # Hand
-    hand = []
-    if inv:
-        for card_id in inv.hand:
-            cd = g.state.get_card_data(card_id)
-            if cd:
-                hand.append(
-                    {
-                        "id": cd.id,
-                        "name": cd.name,
-                        "name_cn": cd.name_cn,
-                        "type": cd.type.value,
-                        "cost": cd.cost,
-                        "text": cd.text,
-                        "class": cd.card_class.value if cd.card_class else "neutral",
-                        "slots": [s.value for s in cd.slots],
-                        "skill_icons": cd.skill_icons,
-                        "traits": cd.traits,
-                    }
-                )
-
-    # Play area
-    play_area = []
-    if inv:
-        for iid in inv.play_area:
-            ci = g.state.get_card_instance(iid)
-            if not ci:
-                continue
-            cd = g.state.get_card_data(ci.card_id)
-            play_area.append(
-                {
-                    "instance_id": ci.instance_id,
-                    "id": ci.card_id,
-                    "name": cd.name if cd else ci.card_id,
-                    "name_cn": cd.name_cn if cd else "",
-                    "exhausted": ci.exhausted,
-                    "uses": ci.uses,
-                    "slots": [s.value for s in ci.slot_used],
-                    "traits": list(cd.traits) if cd else [],
-                }
-            )
-
-    # Enemies (engaged + at location)
-    enemies = []
-    if inv:
-        for iid in list(inv.threat_area):
-            ci = g.state.get_card_instance(iid)
-            if ci:
-                cd = g.state.get_card_data(ci.card_id)
-                enemies.append(_enemy_dict(ci, cd, engaged=True))
-    if cur_loc:
-        for iid in list(cur_loc.enemies):
-            ci = g.state.get_card_instance(iid)
-            if ci:
-                cd = g.state.get_card_data(ci.card_id)
-                enemies.append(_enemy_dict(ci, cd, engaged=False))
-
-    # Act / Agenda display
-    act = scenario.current_act
-    agenda = scenario.current_agenda
-    act_need = act.clue_threshold if act and act.clue_threshold is not None else 0
-    doom_threshold = agenda.doom_threshold if agenda else scenario.doom_threshold
-
-    # Treacheries / pending choice
-    tre = scenario.vars.get("treacheries", {})
-    tre_list = sorted(list(tre.values()), key=lambda x: x.get("id", ""))
-    pending_choice = scenario.vars.get("pending_choice")
-
+    """Serialize game state using the shared serializer."""
     _clear_game_over_if_needed()
-
-    return {
-        "investigator": {
-            "id": inv.card_data.id,
-            "name": inv.card_data.name,
-            "name_cn": inv.card_data.name_cn,
-            "class": inv.card_data.card_class.value,
-            "health": inv.health,
-            "sanity": inv.sanity,
-            "damage": inv.damage,
-            "horror": inv.horror,
-            "resources": inv.resources,
-            "clues": inv.clues,
-            "actions_remaining": inv.actions_remaining,
-            "tome_actions_remaining": inv.tome_actions_remaining,
-            "hand_count": len(inv.hand),
-            "deck_count": len(inv.deck),
-            "discard_count": len(inv.discard),
-            "defeated": inv.is_defeated,
-            "location_id": inv.location_id,
-        },
-        "location": {
-            "id": inv.location_id,
-            "name": cur_loc.card_data.name if cur_loc else "",
-            "name_cn": cur_loc.card_data.name_cn if cur_loc else "",
-            "shroud": cur_loc.shroud if cur_loc else 0,
-            "clues": cur_loc.clues if cur_loc else 0,
-            "connections": cur_loc.connections if cur_loc else [],
-        },
-        "locations": locations,
-        "hand": hand,
-        "play_area": play_area,
-        "enemies": enemies,
-        "log": action_log[-200:],
-        "round": scenario.round_number,
-        "phase": scenario.current_phase.name,
-        "doom": scenario.doom_on_agenda,
-        "doom_threshold": doom_threshold,
-        "total_clues_needed": act_need,
-        "scenario": {
-            "id": scenario.scenario_id,
-            "name": scen_def.get("name"),
-            "name_cn": scen_def.get("name_cn"),
-            "act": {"id": act.id, "name": act.name, "name_cn": act.name_cn, "clues": act_need} if act else None,
-            "agenda": {"id": agenda.id, "name": agenda.name, "name_cn": agenda.name_cn, "doom": doom_threshold} if agenda else None,
-            "resolution_id": scenario.vars.get("resolution_id"),
-        },
-        "treacheries": tre_list,
-        "pending_choice": pending_choice,
-        "game_over": game_over,
-    }
+    return _serialize_game_state(
+        g,
+        action_log=action_log,
+        game_over=game_over,
+        viewer_investigator_id="player",
+    )
 
 
 def handle_action(data: dict) -> dict:
