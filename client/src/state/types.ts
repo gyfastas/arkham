@@ -98,6 +98,7 @@ export interface GameState {
   }
   locations: Record<string, LocationDisplay>
   hand: CardDisplay[]
+  discard: CardDisplay[]
   play_area: CardInstanceDisplay[]
   enemies: EnemyDisplay[]
   log: string[]

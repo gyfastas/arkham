@@ -76,7 +76,7 @@ class TestResearchLibrarian:
         assert "ancient_tome" not in inv.deck
 
     def test_no_tome_in_deck(self, setup):
-        """If no Tome in deck, nothing changes."""
+        """If no Tome in deck, nothing changes and a message is recorded."""
         state, bus, inv, impl = setup
         # Remove the tome from the deck
         inv.deck = ["card_a", "card_b", "card_c"]
@@ -91,3 +91,20 @@ class TestResearchLibrarian:
 
         assert len(inv.hand) == 0
         assert inv.deck == ["card_a", "card_b", "card_c"]
+        msgs = state.scenario.vars.get("action_messages", [])
+        assert any("没有典籍" in m for m in msgs)
+
+    def test_search_writes_message(self, setup):
+        """When a Tome is found, a success message is recorded."""
+        state, bus, inv, impl = setup
+
+        ctx = EventContext(
+            game_state=state,
+            event=GameEvent.CARD_ENTERS_PLAY,
+            investigator_id="inv1",
+            target="inst_librarian",
+        )
+        bus.emit(ctx)
+
+        msgs = state.scenario.vars.get("action_messages", [])
+        assert any("研究图书馆员" in m and "加入手牌" in m for m in msgs)

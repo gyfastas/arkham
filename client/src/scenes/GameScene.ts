@@ -50,6 +50,9 @@ export class GameScene extends Phaser.Scene {
   private actionBar!: Phaser.GameObjects.Container
   private modalContainer!: Phaser.GameObjects.Container
 
+  // Discard pile button (near deck area)
+  private discardContainer!: Phaser.GameObjects.Container
+
   // Drag state
   private dragCard: { card: CardDisplay; ghost: Phaser.GameObjects.Rectangle } | null = null
 
@@ -81,6 +84,7 @@ export class GameScene extends Phaser.Scene {
     this.createLogPanel()
     this.createActionBar()
     this.createModalContainer()
+    this.discardContainer = this.add.container(0, 0)
 
     // Initialize systems
     this.animationMgr = new AnimationManager(this)
@@ -747,6 +751,7 @@ export class GameScene extends Phaser.Scene {
     this.renderEnemies(state.enemies)
     this.renderPlayArea(state.play_area)
     this.renderLog(state.log)
+    this.renderDiscardButton(state.discard || [])
 
     if (state.pending_choice) {
       this.showChoiceModal(state.pending_choice)
@@ -836,6 +841,65 @@ export class GameScene extends Phaser.Scene {
             committed_cards: committed,
           })
         })
+      },
+      onCancel: () => {},
+      allowSkip: true,
+    })
+  }
+
+  // ===== Discard pile button =====
+  private renderDiscardButton(discard: CardDisplay[]) {
+    this.discardContainer.removeAll(true)
+    const { height } = this.scale
+    // Place near bottom-right of hand area label
+    const x = LOG_WIDTH + 10
+    const y = height - HAND_HEIGHT - 18
+
+    const btn = this.add.text(x, y, `🗑️ 弃牌堆 (${discard.length})`, {
+      fontSize: '11px', color: '#667788', fontFamily: 'sans-serif',
+      backgroundColor: '#111122',
+      padding: { x: 6, y: 3 },
+    }).setInteractive({ useHandCursor: true })
+
+    btn.on('pointerover', () => btn.setColor('#aabbcc'))
+    btn.on('pointerout', () => btn.setColor('#667788'))
+    btn.on('pointerdown', () => {
+      if (discard.length === 0) {
+        this.showToast('弃牌堆为空')
+        return
+      }
+      this.showDiscardModal(discard)
+    })
+
+    this.discardContainer.add(btn)
+  }
+
+  private showDiscardModal(discard: CardDisplay[]) {
+    const ICON_CN: Record<string, string> = {
+      willpower: '意', intellect: '智', combat: '战', agility: '敏', wild: '万',
+    }
+    const TYPE_CN: Record<string, string> = { asset: '支援', event: '事件', skill: '技能' }
+
+    this.modalUI.show({
+      title: `弃牌堆（${discard.length} 张）`,
+      options: discard.map(c => {
+        const icons = c.skill_icons || {}
+        const iconStr = Object.entries(icons)
+          .filter(([, v]) => v > 0)
+          .map(([k, v]) => `${ICON_CN[k] || k}×${v}`)
+          .join(' ')
+        const typeCn = TYPE_CN[c.type] || c.type
+        const costStr = c.cost !== null && c.cost !== undefined ? ` [${c.cost}资]` : ''
+        return {
+          id: c.id,
+          label: c.name_cn || c.name,
+          sublabel: `${typeCn}${costStr}${iconStr ? ' | ' + iconStr : ''}`,
+          color: 0x1a1a2e,
+        }
+      }),
+      onSelect: (_id) => {
+        // Discard is read-only — reopen after selection so user can keep browsing
+        this.showDiscardModal(discard)
       },
       onCancel: () => {},
       allowSkip: true,

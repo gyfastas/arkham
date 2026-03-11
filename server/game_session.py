@@ -646,6 +646,9 @@ class GameSession:
                 if loc:
                     loc.card_data.shroud = max(0, (loc.card_data.shroud or 0) - 2)
 
+        # Flush any card-generated messages (e.g. search results) to the action log
+        self._flush_action_messages()
+
         if not ok:
             return {"success": False, "message": "行动失败"}
 
@@ -660,3 +663,10 @@ class GameSession:
             self.action_log.append(f"🃏 打出：{name_cn}（手牌{delta_hand:+d}，牌库{delta_deck:+d}，弃牌{delta_discard:+d}）")
 
         return {"success": True, "message": "行动成功"}
+
+    def _flush_action_messages(self) -> None:
+        """Move card-generated messages from scenario.vars to the action log."""
+        msgs = self.game.state.scenario.vars.pop("action_messages", None)
+        if msgs:
+            for msg in msgs:
+                self.action_log.append(msg)

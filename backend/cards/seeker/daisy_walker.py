@@ -26,8 +26,9 @@ class DaisyWalker(CardImplementation):
         # Check this is Daisy's investigator
         if inv.card_data.id != "daisy_walker":
             return
-        # Grant 1 tome-specific action
+        # Grant 1 tome-specific action (also adds to the action pool)
         inv.tome_actions_remaining += 1
+        inv.actions_remaining += 1
 
     @on_event(
         GameEvent.CHAOS_TOKEN_RESOLVED,

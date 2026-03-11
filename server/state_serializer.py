@@ -192,8 +192,16 @@ def serialize_private_state(game: Game, investigator_id: str) -> dict:
         if cd:
             hand.append(_serialize_card(cd))
 
+    # Discard pile
+    discard = []
+    for card_id in inv.discard:
+        cd = game.state.get_card_data(card_id)
+        if cd:
+            discard.append(_serialize_card(cd))
+
     return {
         "hand": hand,
+        "discard": discard,
     }
 
 
@@ -247,6 +255,14 @@ def serialize_game_state(
             cd = game.state.get_card_data(card_id)
             if cd:
                 hand.append(_serialize_card(cd))
+
+    # Discard pile (visible to owner)
+    discard: list[dict] = []
+    if inv:
+        for card_id in inv.discard:
+            cd = game.state.get_card_data(card_id)
+            if cd:
+                discard.append(_serialize_card(cd))
 
     # Play area
     play_area: list[dict] = []
@@ -312,6 +328,7 @@ def serialize_game_state(
         },
         "locations": locations,
         "hand": hand,
+        "discard": discard,
         "play_area": play_area,
         "enemies": enemies,
         "log": (action_log or [])[-200:],

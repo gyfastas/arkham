@@ -29,7 +29,13 @@ class ResearchLibrarian(CardImplementation):
             if card_def and "tome" in getattr(card_def, "traits", []):
                 tome_idx = i
                 break
+        msgs = ctx.game_state.scenario.vars.setdefault("action_messages", [])
         if tome_idx is not None:
-            tome_card = inv.deck.pop(tome_idx)
-            inv.hand.append(tome_card)
+            tome_card_id = inv.deck.pop(tome_idx)
+            cd = ctx.game_state.get_card_data(tome_card_id)
+            name = cd.name_cn or cd.name if cd else tome_card_id
+            inv.hand.append(tome_card_id)
             random.shuffle(inv.deck)
+            msgs.append(f"📚 研究图书馆员：从牌库搜索到《{name}》加入手牌，然后洗牌")
+        else:
+            msgs.append("📚 研究图书馆员：牌库中没有典籍（Tome）牌")
