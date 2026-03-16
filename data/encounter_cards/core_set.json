@@ -33,6 +33,9 @@
       "name_cn": "到底發生了什麼？！",
       "traits": null,
       "text": "",
+      "text_cn": "",
+      "back_text": "The lead investigator must decide (choose one): Either each investigator discards 1 card at random from his or her hand, or the lead investigator takes 2 horror.",
+      "back_text_cn": "隊長必須選擇其中一項：每位調查員隨機丟棄1張手牌，或者隊長受到2點恐懼。",
       "stats": {
         "doom": 3
       },
@@ -52,6 +55,9 @@
       "name_cn": "食屍鬼崛起",
       "traits": null,
       "text": "",
+      "text_cn": "",
+      "back_text": "Shuffle the encounter discard pile into the encounter deck. Discard cards from the top of the encounter deck until a Ghoul enemy is discarded. The lead investigator draws that enemy.",
+      "back_text_cn": "將遭遇棄牌堆與遭遇牌堆混洗。從遭遇牌堆棄牌，直到棄掉一個[[食屍鬼]]敵人，隊長抽取該敵人。",
       "stats": {
         "doom": 7
       },
@@ -70,7 +76,10 @@
       "name": "They're Getting Out!",
       "name_cn": "他們爬出來了！",
       "traits": null,
-      "text": "強制 - 當敵人階段結束時：每個未交戰的[[食屍鬼]]朝客廳移動一步。\n強制 - 當一輪結束時：走廊或客廳每有一個[[食屍鬼]]，在該密謀卡上放置1個毀滅標記。",
+      "text": "<b>Forced</b> - At the end of the enemy phase: Each unengaged [[Ghoul]] enemy moves once toward the Parlor.\n<b>Forced</b> - At the end of the round: Place 1 doom on this agenda for each [[Ghoul]] enemy in the Hallway or Parlor.",
+      "text_cn": "強制 - 當敵人階段結束時：每個未交戰的[[食屍鬼]]朝客廳移動一步。\n強制 - 當一輪結束時：走廊或客廳每有一個[[食屍鬼]]，在該密謀卡上放置1個毀滅標記。",
+      "back_text": "If the investigators are at Act 1 or 2, they are trapped inside the house as the ghouls tear them apart. (→R3)\nIf the investigators are at Act 3, they barely escape with their lives, allowing the ghouls to run rampant. Each investigator that has not resigned is defeated and suffers 1 physical trauma.",
+      "back_text_cn": "如果調查員位於場景1或2：他們被困在了房屋之中，食屍鬼們瞬間將他們撕碎。(→結局3)\n如果調查員位於場景3：他們總算活著逃了出來，食屍鬼們一下子湧出房屋。當前未撤退的調查員都被擊敗，並受到1點肉體創傷。",
       "stats": {
         "doom": 10
       },
@@ -90,7 +99,13 @@
       "name_cn": "被困於此",
       "traits": null,
       "text": "",
-      "stats": {},
+      "text_cn": "",
+      "back_text": "Put into play the set-aside Hallway, Cellar, Attic, and Parlor. Discard each enemy in the Study. Place each investigator in the Hallway. Remove the Study from the game.",
+      "back_text_cn": "將放在一邊的走廊、地窖、閣樓和客廳放置入場。棄掉書房中的所有敵人。將每位調查員放置到走廊。將書房移出遊戲。",
+      "stats": {
+        "clues": 2,
+        "clues_fixed": true
+      },
       "meta": {
         "subname": "",
         "subname_cn": "",
@@ -106,8 +121,13 @@
       "name": "The Barrier",
       "name_cn": "灼熱屏障",
       "traits": null,
-      "text": "目標 - 在一輪結束時，走廊內的調查員能夠以團隊單位支付所需數量的線索來推進場景。",
-      "stats": {},
+      "text": "<b>Objective</b> - Only investigators in the Hallway may spend the requisite number of clues, as a group, to advance.",
+      "text_cn": "目標 - 在一輪結束時，走廊內的調查員能夠以團隊單位支付所需數量的線索來推進場景。",
+      "back_text": "Reveal the Parlor. Put the set-aside Lita Chantler into play in the Parlor. Spawn the set-aside Ghoul Priest in the Hallway.",
+      "back_text_cn": "將客廳翻到已進入面。將放在一邊的麗塔·錢德勒放置入客廳。在走廊生成放在一邊的食屍鬼祭司。",
+      "stats": {
+        "clues": 3
+      },
       "meta": {
         "subname": "",
         "subname_cn": "",
@@ -123,7 +143,10 @@
       "name": "What Have You Done?",
       "name_cn": "瞧瞧你們做的好事！",
       "traits": null,
-      "text": "目標 - 如果食屍鬼祭司被擊敗，推進場景。",
+      "text": "<b>Objective</b> - If the Ghoul Priest is defeated, advance.",
+      "text_cn": "目標 - 如果食屍鬼祭司被擊敗，推進場景。",
+      "back_text": "The lead investigator must decide (choose one):\n- It was never much of a home. Burn it down! (→R1)\n- This is my home! No way are we burning it! (→R2)",
+      "back_text_cn": "隊長必須選擇其中一項：\n- 這兒從來就算不上一個家。燒了它！(→結��1)\n- 這個鬼地方可是我的家啊！我們絕對不能把這兒燒了！(→結局2)",
       "stats": {},
       "meta": {
         "subname": "",
@@ -350,6 +373,28 @@
       }
     },
     {
+      "id": "predator_or_prey",
+      "arkhamdb_code": "01121",
+      "encounter_code": "arkham",
+      "encounter_name": "The Midnight Masks",
+      "type": "agenda",
+      "name": "Predator or Prey?",
+      "name_cn": "孰獵孰獵物？",
+      "traits": null,
+      "text": "",
+      "text_cn": "",
+      "back_text": "Spawn The Masked Hunter engaged with the investigator with the most clues. The Masked Hunter gets +2 health per investigator.",
+      "back_text_cn": "生成假面獵手，與擁有最多線索的調查員交戰。假面獵手增加等同於調查員人數2倍的生命值。",
+      "stats": {
+        "doom": 6
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 2
+      }
+    },
+    {
       "id": "time_is_running_short",
       "arkhamdb_code": "01122",
       "encounter_code": "arkham",
@@ -359,6 +404,9 @@
       "name_cn": "時間飛逝",
       "traits": null,
       "text": "[action]：撤退。你可不想冒險做太多傻事，現在已經收集了不少信息，可以撤退了。",
+      "text_cn": "[action]：撤退。你可不想冒險做太多傻事，現在已經收集了不少信息，可以撤退了。",
+      "back_text": "(→R2)",
+      "back_text_cn": "(→結局2)",
       "stats": {
         "doom": 8
       },
@@ -378,6 +426,9 @@
       "name_cn": "揭露陰謀",
       "traits": null,
       "text": "[action]：調查員以團隊為單位，支付等同於2倍調査員人數的線索：抽取異教徒牌堆頂部的卡牌。\n目標 - 盡可能多地找到獨特[[異教徒]]，並將其加入勝利牌區。如果勝利牌區有6個獨特[[異教徒]]，推進場景。(這些異教徒可以不來自異教徒牌堆。)",
+      "text_cn": "[action]：調查員以團隊為單位，支付等同於2倍調査員人數的線索：抽取異教徒牌堆頂部的卡牌。\n目標 - 盡可能多地找到獨特[[異教徒]]，並將其加入勝利牌區。如果勝利牌區有6個獨特[[異教徒]]，推進場景。(這些異教徒可以不來自異教徒牌堆。)",
+      "back_text": "(→R1)",
+      "back_text_cn": "(→結局1)",
       "stats": {},
       "meta": {
         "subname": "",
@@ -822,6 +873,9 @@
       "name_cn": "阿卡姆密林",
       "traits": null,
       "text": "",
+      "text_cn": "",
+      "back_text": "Shuffle the encounter discard pile into the encounter deck and discard cards from the top until a [[Monster]] enemy is discarded. Spawn that enemy in the Main Path. Then, place 1 doom on that enemy.",
+      "back_text_cn": "將遭遇棄牌��與遭遇牌堆混洗，並且從牌堆頂棄牌，直到棄掉1張[[怪物]]敵人，將其生成在主道路上。然後，在該敵人上放置1個毀滅標記。",
       "stats": {
         "doom": 4
       },
@@ -840,7 +894,10 @@
       "name": "The Ritual Begins",
       "name_cn": "儀式開始",
       "traits": null,
-      "text": "每名敵人獲得+1攻擊和+1躲避。",
+      "text": "Each enemy gets +1 fight and +1 evade.",
+      "text_cn": "每名敵人獲得+1攻擊和+1躲避。",
+      "back_text": "In player order, each investigator must test [willpower] (6). Each investigator who fails must search his or her collection for a random basic [[Madness]] weakness and add it to his or her hand.",
+      "back_text_cn": "按玩家順序，每位調查員必須檢定[willpower](6)。失敗的調查員必須查找基礎弱點卡收藏，將一張隨機的基礎[[瘋狂]]弱點卡加入手牌。",
       "stats": {
         "doom": 5
       },
@@ -859,7 +916,10 @@
       "name": "Vengeance Awaits",
       "name_cn": "復仇開始",
       "traits": null,
-      "text": "強制 - 在該密謀推進時：\n- 如果調查員位於場景1，將放在一邊的儀式場地放置入場，並在此生成放在一邊的烏默爾多斯。\n- 如果調查員位於場景2或3，丟棄儀式場地上所有敵人，並在此生成放在一邊的烏默爾多斯。",
+      "text": "Forced - When this agenda advances:\n- If the investigators are at Act 1, put the set-aside Ritual Site into play and spawn the set-aside Umôrdhoth there.\n- If the investigators are at Act 2 or 3, discard all enemies at the Ritual Site and spawn the set-aside Umôrdhoth there.",
+      "text_cn": "強制 - 在該密謀推進時：\n- 如果調查員位於場景1，將放在一邊的儀式場地放置入場，並在此生成放在一邊的烏默爾多斯。\n- 如果調查員位於場景2或3，丟棄儀式場地上所有敵人，並在此生成放在一邊的烏默爾多斯。",
+      "back_text": "Revelation - Replace the current Act and Agenda with The Devourer Below. This card is both the current Act and the current Agenda. Objective - If Umôrdhoth is defeated, (→R2)",
+      "back_text_cn": "顯現 - 將當前密謀卡和場景卡替換為地底噬魔。該卡既是當前場景，也是當前密謀。目標 - 如果擊敗烏默爾多斯，(→結局2)。",
       "stats": {
         "doom": 5
       },
@@ -879,6 +939,9 @@
       "name_cn": "順藤摸瓜",
       "traits": null,
       "text": "",
+      "text_cn": "",
+      "back_text": "Put the set-aside Ritual Site into play if it is not already in play. Search the collection for each enemy recorded in your Campaign Log under \"Cultists Who Got Away,\" and spawn those enemies at the Main Path.",
+      "back_text_cn": "如果儀式場地尚未入場���將放在一邊的該卡放置入場。查找你冒險日誌中記錄的\"逃跑的異教徒\"，將這些敵人生成在主道路。",
       "stats": {},
       "meta": {
         "subname": "",
@@ -895,7 +958,10 @@
       "name": "Into the Darkness",
       "name_cn": "深入黑暗",
       "traits": null,
-      "text": "目標 - 如果一位調查員進入儀式場地，推進場景。",
+      "text": "Objective - If an investigator enters the Ritual Site, advance.",
+      "text_cn": "目標 - 如果一位調查員進入儀式場地，推進場景。",
+      "back_text": "Shuffle the encounter discard pile into the encounter deck. Discard cards from the top of the encounter deck until 1 enemy is discarded (2 enemies instead if there are 3 or more players in the game). Spawn each discarded enemy at the Ritual Site.",
+      "back_text_cn": "將遭遇��牌堆與遭遇牌堆混洗，然後從遭遇牌堆棄牌，直到棄掉1張敵人，將其生成在儀式場地上(玩家人數為3人及以上時，改為生成2張敵人)。",
       "stats": {},
       "meta": {
         "subname": "",
@@ -912,7 +978,10 @@
       "name": "Disrupting the Ritual",
       "name_cn": "阻止計劃",
       "traits": null,
-      "text": "[action]花費1個線索：檢定[willpower](3)或[agility](3)。如果成功，在該場景上放置1個線索。\n目標 - 如果該場景上有等同於2倍調查員人數的線索，推進場景。",
+      "text": "[action] Spend 1 clue: Test [willpower](3) or [agility](3). If successful, place 1 clue on this act.\nObjective - If this act has clues equal to twice the number of investigators, advance.",
+      "text_cn": "[action]花費1個線索：檢定[willpower](3)或[agility](3)。如果成功，在該場景上放置1個線索。\n目標 - 如果該場景上有等同於2倍調查員人數的線索，推進場景。",
+      "back_text": "(→R1)",
+      "back_text_cn": "(→結局1)",
       "stats": {},
       "meta": {
         "subname": "",

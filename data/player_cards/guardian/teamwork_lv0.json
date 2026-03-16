@@ -1,0 +1,23 @@
+{
+  "id": "teamwork_lv0",
+  "arkhamdb_code": "02018",
+  "name": "Teamwork",
+  "name_cn": "團隊合作",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Investigators at your location may give or trade any number of [[Item]] assets, [[Ally]] assets, or resources among one another.",
+  "text_cn": "你所在地點的調查員，可以自由給予或交易任意數量的[[道具]]支援卡、[[盟友]]支援卡和資源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

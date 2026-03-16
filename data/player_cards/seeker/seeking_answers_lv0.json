@@ -1,17 +1,24 @@
 {
   "id": "seeking_answers_lv0",
+  "arkhamdb_code": "02023",
   "name": "Seeking Answers",
-  "name_cn": "寻找答案",
+  "name_cn": "尋找答案",
   "class": "seeker",
   "type": "event",
   "cost": 1,
   "level": 0,
-  "traits": ["insight"],
-  "skill_icons": {"intellect": 1, "agility": 1},
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
   "slots": [],
-  "text": "Investigate. If you succeed, instead of discovering a clue at your location, discover a clue at a connecting location.",
+  "text": "<b>Investigate.</b> If you succeed, instead of discovering a clue at your location, discover a clue at a connecting location.",
+  "text_cn": "<b>調查</b>。如果你成功，不發現所在地點的一個線索，改為發現連接地點的一個線索。",
   "health": null,
   "sanity": null,
-  "pack": "dwl",
-  "unique": false
+  "unique": false,
+  "pack": "dunwich_legacy"
 }

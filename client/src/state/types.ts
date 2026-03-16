@@ -7,10 +7,41 @@ export interface CardDisplay {
   type: string
   cost: number | null
   text: string
+  text_cn: string
   class: string
   slots: string[]
   skill_icons: Record<string, number>
   traits: string[]
+  level?: number
+  unique?: boolean
+  health?: number | null
+  sanity?: number | null
+  victory?: number
+  allowed?: boolean
+}
+
+export interface InvestigatorDetail {
+  id: string
+  name: string
+  name_cn: string
+  title_cn: string
+  class: string
+  health: number
+  sanity: number
+  skills: { willpower: number; intellect: number; combat: number; agility: number }
+  ability_cn: string
+  deck_requirements: {
+    size: number
+    cards: Record<string, { min_level: number; max_level: number }>
+  } | null
+  signature_cards: string[]
+  weakness: string
+}
+
+export interface DeckPreset {
+  id: string
+  name: string
+  cards: string[]
 }
 
 export interface CardInstanceDisplay {
@@ -18,9 +49,19 @@ export interface CardInstanceDisplay {
   id: string
   name: string
   name_cn: string
+  type: string
+  cost: number | null
+  text: string
+  text_cn: string
+  class: string
   exhausted: boolean
+  damage: number
+  horror: number
+  health: number | null
+  sanity: number | null
   uses: Record<string, number> | null
   slots: string[]
+  skill_icons: Record<string, number>
   traits: string[]
 }
 
@@ -73,8 +114,8 @@ export interface ScenarioDisplay {
   id: string
   name: string
   name_cn: string
-  act: { id: string; name: string; name_cn: string; clues: number } | null
-  agenda: { id: string; name: string; name_cn: string; doom: number } | null
+  act: { id: string; name: string; name_cn: string; clues: number; text_cn: string; sequence: number; total: number } | null
+  agenda: { id: string; name: string; name_cn: string; doom: number; text_cn: string; sequence: number; total: number } | null
   resolution_id: string | null
 }
 
@@ -111,6 +152,18 @@ export interface GameState {
   treacheries: unknown[]
   pending_choice: PendingChoice | null
   game_over: { type: string; message: string } | null
+  encounter_deck_count?: number
+  encounter_discard_count?: number
+  last_encounter?: EncounterCardDisplay | null
+}
+
+export interface EncounterCardDisplay {
+  id: string
+  name: string
+  name_cn: string
+  type: string
+  text: string
+  traits: string[]
 }
 
 export interface GameEventData {
@@ -135,6 +188,19 @@ export interface ActionResult {
   message: string
   events: GameEventData[]
   state: GameState
+}
+
+export interface CampaignStateData {
+  investigator_id: string
+  campaign_id: string
+  scenario_index: number
+  xp: number
+  xp_earned: number
+  xp_spent: number
+  deck: string[]
+  victory_display: string[]
+  trauma_physical: number
+  trauma_mental: number
 }
 
 export interface RoomState {

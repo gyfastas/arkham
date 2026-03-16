@@ -1,0 +1,32 @@
+{
+  "id": "skids_otoole",
+  "name": "\"Skids\" O'Toole",
+  "name_cn": "\"倒霉蛋\"奥图尔",
+  "title": "The Ex-Con",
+  "title_cn": "前科犯",
+  "class": "rogue",
+  "health": 8,
+  "sanity": 6,
+  "skills": {
+    "willpower": 2,
+    "intellect": 3,
+    "combat": 3,
+    "agility": 4
+  },
+  "ability": "During your turn, spend 2 resources: You may take an additional action this turn. (Limit once per turn.)",
+  "ability_cn": "在你的回合中，花费2资源：你在本回合可以执行1个额外行动。（每回合限制1次。）",
+  "elder_sign": "+2. If you succeed, gain 2 resources.",
+  "elder_sign_cn": "+2。如果此次检定成功，获得2资源。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "rogue": {"min_level": 0, "max_level": 5},
+      "guardian": {"min_level": 0, "max_level": 2},
+      "neutral": {"min_level": 0, "max_level": 5}
+    }
+  },
+  "signature_cards": ["on_the_lam"],
+  "weakness": "hospital_debts",
+  "flavor_text": "\"I didn't get out of the joint just to watch the world end.\"",
+  "pack": "core"
+}

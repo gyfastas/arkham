@@ -1,0 +1,27 @@
+{
+  "id": "fire_axe_lv0",
+  "arkhamdb_code": "02032",
+  "name": "Fire Axe",
+  "name_cn": "消防斧",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Fight.</b> If you have no resources in your resource pool, this attack deals +1 damage.\n[fast] During an attack using Fire Axe, spend 1 resource: You get +2 [combat] for this skill test. (Limit three times per attack.)",
+  "text_cn": "[action]：<b>攻擊</b>。如果你未持有任何資源，這次攻擊造成+1傷害。\n[free]在使用消防斧的攻擊中，花費1資源：這次技能檢定中你+2[combat]。 (每次攻擊限制3次。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

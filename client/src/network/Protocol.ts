@@ -18,4 +18,8 @@ export const ClientEvent = {
   END_TURN: 'end_turn',
   RESOLVE_CHOICE: 'resolve_choice',
   CHAT: 'chat',
+  LIST_CARDS: 'list_cards',
+  GET_INVESTIGATOR: 'get_investigator',
+  CAMPAIGN_UPGRADE: 'campaign_upgrade',
+  CAMPAIGN_STATE: 'campaign_state',
 } as const

@@ -1,0 +1,22 @@
+{
+  "id": "indebted_lv0",
+  "arkhamdb_code": "02037",
+  "name": "Indebted",
+  "name_cn": "負債",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent.\nYou start each game with 2 fewer resources.",
+  "text_cn": "永久。\n每次遊戲開始時，你少獲得2個資源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "basic_weakness"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "agnes_baker",
+  "name": "Agnes Baker",
+  "name_cn": "阿格尼丝·贝克",
+  "title": "The Waitress",
+  "title_cn": "女招待",
+  "class": "mystic",
+  "health": 6,
+  "sanity": 8,
+  "skills": {
+    "willpower": 5,
+    "intellect": 2,
+    "combat": 2,
+    "agility": 3
+  },
+  "ability": "After 1 or more horror is placed on Agnes Baker: Deal 1 damage to an enemy at your location. (Limit once per phase.)",
+  "ability_cn": "在阿格尼丝·贝克被放置1点或以上恐惧后：对你所在地点的一名敌人造成1点伤害。（每阶段限制1次。）",
+  "elder_sign": "+1 for each horror on Agnes Baker.",
+  "elder_sign_cn": "+1（阿格尼丝·贝克身上每有1点恐惧，+1）。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "mystic": {"min_level": 0, "max_level": 5},
+      "survivor": {"min_level": 0, "max_level": 2},
+      "neutral": {"min_level": 0, "max_level": 5}
+    }
+  },
+  "signature_cards": ["heirloom_of_hyperborea"],
+  "weakness": "dark_memory",
+  "flavor_text": "\"I remember another life, one of sorcery and conquest.\"",
+  "pack": "core"
+}

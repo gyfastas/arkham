@@ -1,0 +1,22 @@
+{
+  "id": "duke_lv0",
+  "arkhamdb_code": "02014",
+  "name": "Duke",
+  "name_cn": "杜克",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "ally",
+    "creature"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "\"Ashcan\" Pete deck only.\n[action] Exhaust Duke: <b>Fight.</b> You attack with a base [combat] skill of 4. This attack deals +1 damage.\n[action] Exhaust Duke: <b>Investigate.</b> You investigate with a base [intellect] skill of 4. You may move to a connecting location immediately before investigating with this effect.",
+  "text_cn": "\"灰堆\"皮特牌組專用。\n[action]消耗杜克：<b>攻擊</b>。你該次攻擊[combat]基礎值視為4。這次攻擊造成+1傷害。\n[action]消耗杜克：<b>調查</b>。你該次調查[intellect]基礎值視為4。在使用該效果調查前，你可以立刻移動到一個連接地點。",
+  "health": 2,
+  "sanity": 3,
+  "unique": true,
+  "pack": "dunwich_legacy"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dunwich_legacy",
+  "name": "The Dunwich Legacy",
+  "name_cn": "敦威治遗产",
+  "type": "official",
+  "scenarios": [
+    "extracurricular_activity",
+    "the_house_always_wins",
+    "the_miskatonic_museum",
+    "essex_county_express",
+    "blood_on_the_altar",
+    "undimensioned_and_unseen",
+    "where_doom_awaits",
+    "lost_in_time_and_space"
+  ],
+  "investigators": [
+    "zoey_samaras",
+    "rex_murphy",
+    "jenny_barnes",
+    "jim_culver",
+    "ashcan_pete"
+  ]
+}

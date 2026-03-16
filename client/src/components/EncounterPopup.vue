@@ -1,0 +1,119 @@
+<script setup lang="ts">
+import { watch, ref } from 'vue'
+import type { EncounterCardDisplay } from '../state/types'
+
+const props = defineProps<{ encounter: EncounterCardDisplay | null }>()
+
+const emit = defineEmits<{
+  dismiss: []
+}>()
+
+const visible = ref(false)
+let timer: ReturnType<typeof setTimeout> | null = null
+
+watch(() => props.encounter, (enc) => {
+  if (timer) clearTimeout(timer)
+  if (enc) {
+    visible.value = true
+    timer = setTimeout(() => {
+      visible.value = false
+      emit('dismiss')
+    }, 4000)
+  } else {
+    visible.value = false
+  }
+})
+
+function dismiss() {
+  if (timer) clearTimeout(timer)
+  visible.value = false
+  emit('dismiss')
+}
+
+const TYPE_LABELS: Record<string, string> = {
+  enemy: '敌人',
+  treachery: '诡计',
+}
+</script>
+
+<template>
+  <Teleport to="body">
+    <Transition name="encounter">
+      <div v-if="visible && encounter" class="encounter-overlay" @click.self="dismiss">
+        <div class="encounter-card">
+          <div class="encounter-type">{{ TYPE_LABELS[encounter.type] || encounter.type }}</div>
+          <div class="encounter-name">{{ encounter.name_cn || encounter.name }}</div>
+          <div v-if="encounter.traits && encounter.traits.length" class="encounter-traits">
+            {{ encounter.traits.join(' · ') }}
+          </div>
+          <div v-if="encounter.text" class="encounter-text">{{ encounter.text }}</div>
+          <button class="dismiss-btn" @click="dismiss">关闭</button>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
+</template>
+
+<style scoped>
+.encounter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+}
+.encounter-card {
+  background: #2a1a2a;
+  border: 2px solid #9b59b6;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 380px;
+  width: 85%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(155, 89, 182, 0.3);
+}
+.encounter-type {
+  font-size: 11px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.encounter-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e0e0e0;
+  margin-bottom: 8px;
+}
+.encounter-traits {
+  font-size: 12px;
+  color: #c0a060;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.encounter-text {
+  font-size: 13px;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.dismiss-btn {
+  padding: 6px 20px;
+  border: 1px solid #9b59b6;
+  border-radius: 4px;
+  background: transparent;
+  color: #9b59b6;
+  cursor: pointer;
+  font-size: 12px;
+}
+.dismiss-btn:hover {
+  background: #9b59b6;
+  color: #fff;
+}
+
+.encounter-enter-active { transition: opacity 0.3s, transform 0.3s; }
+.encounter-leave-active { transition: opacity 0.2s, transform 0.2s; }
+.encounter-enter-from { opacity: 0; transform: scale(0.8); }
+.encounter-leave-to { opacity: 0; transform: scale(0.9); }
+</style>

@@ -1,0 +1,16 @@
+{
+  "investigator_id": "daisy_walker",
+  "presets": [
+    {
+      "name": "黛西·沃克（入门调查）",
+      "cards": [
+        "magnifying_glass_lv0", "old_book_of_lore_lv0", "medical_texts_lv0",
+        "dr_milan_christopher_lv0", "research_librarian_lv0",
+        "working_a_hunch_lv0", "deduction_lv0", "perception_lv0",
+        "guts_lv0", "unexpected_courage_lv0", "preposterous_sketches_lv0",
+        "inquiring_mind_lv0", "mind_over_matter_lv0", "shortcut_lv0",
+        "knife_lv0"
+      ]
+    }
+  ]
+}

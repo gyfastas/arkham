@@ -1,0 +1,28 @@
+{
+  "id": "jennys_twin_45s_lv0",
+  "arkhamdb_code": "02010",
+  "name": "Jenny's Twin .45s",
+  "name_cn": "珍妮的.45雙槍",
+  "class": "neutral",
+  "type": "asset",
+  "cost": -2,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "agility": 2,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Jenny Barnes deck only. Uses (X ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. This attack deals +1 damage.",
+  "text_cn": "珍妮·巴恩斯牌組專用。使用 (X子彈).\n[action]花費1子彈：<b>攻擊</b>。這次攻擊中你+2[combat]。這次攻擊造成+1傷害。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "dunwich_legacy"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "bait_and_switch_lv0",
+  "arkhamdb_code": "02034",
+  "name": "Bait and Switch",
+  "name_cn": "偷樑換柱",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Evade.</b> If you succeed, if the enemy is non-[[Elite]], evade the enemy and move it to a connecting location.",
+  "text_cn": "<b>躲避</b>。如果成功並且該敵人為非[[精英]]，躲避並將該敵人移動到一個連接地點。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

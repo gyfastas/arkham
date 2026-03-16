@@ -51,6 +51,7 @@ def _serialize_card(cd: CardData) -> dict:
         "type": cd.type.value,
         "cost": cd.cost,
         "text": cd.text,
+        "text_cn": cd.text_cn,
         "class": cd.card_class.value if cd.card_class else "neutral",
         "slots": [s.value for s in cd.slots],
         "skill_icons": cd.skill_icons,
@@ -66,9 +67,19 @@ def _serialize_card_instance(game: Game, ci: Any) -> dict:
         "id": ci.card_id,
         "name": cd.name if cd else ci.card_id,
         "name_cn": cd.name_cn if cd else "",
+        "type": cd.type.value if cd else "asset",
+        "cost": cd.cost if cd else None,
+        "text": cd.text if cd else "",
+        "text_cn": cd.text_cn if cd else "",
+        "class": cd.card_class.value if cd and cd.card_class else "neutral",
         "exhausted": ci.exhausted,
+        "damage": ci.damage,
+        "horror": ci.horror,
+        "health": cd.health if cd else None,
+        "sanity": cd.sanity if cd else None,
         "uses": ci.uses,
         "slots": [s.value for s in ci.slot_used],
+        "skill_icons": cd.skill_icons if cd else {},
         "traits": list(cd.traits) if cd else [],
     }
 
@@ -120,12 +131,22 @@ def serialize_public_state(game: Game) -> dict:
                 "name": act.name,
                 "name_cn": act.name_cn,
                 "clues": act_need,
+                "text_cn": act.text_cn or act.text or "",
+                "back_text": act.back_text or "",
+                "back_text_cn": act.back_text_cn or "",
+                "sequence": act.sequence,
+                "total": len(scenario.act_cards),
             } if act else None,
             "agenda": {
                 "id": agenda.id,
                 "name": agenda.name,
                 "name_cn": agenda.name_cn,
                 "doom": doom_threshold,
+                "text_cn": agenda.text_cn or agenda.text or "",
+                "back_text": agenda.back_text or "",
+                "back_text_cn": agenda.back_text_cn or "",
+                "sequence": agenda.sequence,
+                "total": len(scenario.agenda_cards),
             } if agenda else None,
             "resolution_id": scenario.vars.get("resolution_id"),
         },
@@ -293,10 +314,11 @@ def serialize_game_state(
     act_need = act.clue_threshold if act and act.clue_threshold is not None else 0
     doom_threshold = agenda.doom_threshold if agenda else scenario.doom_threshold
 
-    # Treacheries / pending choice
+    # Treacheries / pending choice / encounter info
     tre = scenario.vars.get("treacheries", {})
     tre_list = sorted(list(tre.values()), key=lambda x: x.get("id", ""))
     pending_choice = scenario.vars.get("pending_choice")
+    last_encounter = scenario.vars.get("last_encounter")
 
     return {
         "investigator": {
@@ -346,16 +368,29 @@ def serialize_game_state(
                 "name": act.name,
                 "name_cn": act.name_cn,
                 "clues": act_need,
+                "text_cn": act.text_cn or act.text or "",
+                "back_text": act.back_text or "",
+                "back_text_cn": act.back_text_cn or "",
+                "sequence": act.sequence,
+                "total": len(scenario.act_cards),
             } if act else None,
             "agenda": {
                 "id": agenda.id,
                 "name": agenda.name,
                 "name_cn": agenda.name_cn,
                 "doom": doom_threshold,
+                "text_cn": agenda.text_cn or agenda.text or "",
+                "back_text": agenda.back_text or "",
+                "back_text_cn": agenda.back_text_cn or "",
+                "sequence": agenda.sequence,
+                "total": len(scenario.agenda_cards),
             } if agenda else None,
             "resolution_id": scenario.vars.get("resolution_id"),
         },
         "treacheries": tre_list,
         "pending_choice": pending_choice,
         "game_over": game_over,
+        "encounter_deck_count": len(scenario.encounter_deck),
+        "encounter_discard_count": len(scenario.encounter_discard),
+        "last_encounter": last_encounter,
     }

@@ -1,0 +1,15 @@
+{
+  "investigator_id": "skids_otoole",
+  "presets": [
+    {
+      "name": "斯基兹·奥图尔（入门机动）",
+      "cards": [
+        "switchblade_lv0", "forty_one_derringer_lv0", "burglary_lv0",
+        "pickpocketing_lv0", "sneak_attack_lv0", "elusive_lv0",
+        "opportunist_lv0", "hard_knocks_lv0", "leo_de_luca_lv0",
+        "emergency_cache_lv0", "manual_dexterity_lv0", "overpower_lv0",
+        "perception_lv0", "unexpected_courage_lv0", "knife_lv0"
+      ]
+    }
+  ]
+}

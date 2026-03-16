@@ -1,0 +1,27 @@
+{
+  "id": "zoeys_cross_lv0",
+  "arkhamdb_code": "02006",
+  "name": "Zoey's Cross",
+  "name_cn": "佐伊的十字架",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "item",
+    "charm"
+  ],
+  "skill_icons": {
+    "combat": 2,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Zoey Samaras deck only.\n[reaction] After an enemy becomes engaged with you, exhaust Zoey's Cross and spend 1 resource: Deal 1 damage to that enemy.",
+  "text_cn": "佐伊·薩馬拉斯牌組專用。\n[reaction]在一名敵人與你交戰後，消耗佐伊的十字架並花費1資源：對該敵人造成1點傷害。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "dunwich_legacy"
+}

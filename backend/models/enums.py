@@ -147,6 +147,7 @@ class GameEvent(Enum):
 
     # Defeat
     INVESTIGATOR_DEFEATED = auto()
+    ASSET_ACTIVATED = auto()
     ASSET_DEFEATED = auto()
 
     # Resources

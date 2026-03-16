@@ -1,0 +1,79 @@
+{
+  "id": "blood_on_the_altar",
+  "name": "Blood on the Altar",
+  "name_cn": "祭坛之血",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 5,
+  "encounter_sets": [
+    "blood_on_the_altar",
+    "dunwich",
+    "whippoorwills",
+    "beast_thralls",
+    "nightgaunts"
+  ],
+  "scenario_set": "blood_on_the_altar",
+  "start_location": "village_commons",
+  "connections": {
+    "village_commons": [
+      "bishops_brook_a",
+      "burned_ruins_a",
+      "osborns_general_store_a",
+      "congregational_church_a"
+    ],
+    "bishops_brook_a": [
+      "village_commons",
+      "burned_ruins_a"
+    ],
+    "burned_ruins_a": [
+      "village_commons",
+      "bishops_brook_a",
+      "osborns_general_store_a"
+    ],
+    "osborns_general_store_a": [
+      "village_commons",
+      "burned_ruins_a",
+      "congregational_church_a"
+    ],
+    "congregational_church_a": [
+      "village_commons",
+      "osborns_general_store_a",
+      "house_in_the_reeds_a"
+    ],
+    "house_in_the_reeds_a": [
+      "congregational_church_a",
+      "schoolhouse_a"
+    ],
+    "schoolhouse_a": [
+      "house_in_the_reeds_a"
+    ],
+    "the_hidden_chamber": [
+      "village_commons"
+    ]
+  },
+  "act_deck": [
+    "searching_for_answers",
+    "the_chamber_of_the_beast"
+  ],
+  "agenda_deck": [
+    "strange_disappearances",
+    "the_old_ones_hunger",
+    "feed_the_beast"
+  ],
+  "locations": [
+    "village_commons",
+    "bishops_brook_a",
+    "burned_ruins_a",
+    "osborns_general_store_a",
+    "congregational_church_a",
+    "house_in_the_reeds_a",
+    "schoolhouse_a",
+    "the_hidden_chamber"
+  ],
+  "story_assets": [
+    "key_to_the_chamber",
+    "zebulon_whateley",
+    "earl_sawyer",
+    "powder_of_ibn_ghazi"
+  ]
+}

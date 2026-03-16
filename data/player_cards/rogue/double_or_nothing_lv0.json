@@ -1,0 +1,23 @@
+{
+  "id": "double_or_nothing_lv0",
+  "arkhamdb_code": "02026",
+  "name": "Double or Nothing",
+  "name_cn": "賭一把",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice.",
+  "text_cn": "每次技能檢定最多投入1張。\n將該次檢定難度加倍。如果檢定成功，結算勝利效果兩次。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

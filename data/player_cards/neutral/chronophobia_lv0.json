@@ -1,0 +1,22 @@
+{
+  "id": "chronophobia_lv0",
+  "arkhamdb_code": "02039",
+  "name": "Chronophobia",
+  "name_cn": "時間恐懼症",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Place Chronophobia into play in your threat area.\n<b>Forced</b> - At the end of your turn: Take 1 direct horror.\n[action] [action]: Discard Chronophobia.",
+  "text_cn": "<b>顯現</b> - 將時間恐懼症放置入你的威脅區域。\n<b>強制</b> - 當你的回合結束時：受到1點直接恐懼。\n[action][action]：丟棄時間恐懼症。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "basic_weakness"
+}

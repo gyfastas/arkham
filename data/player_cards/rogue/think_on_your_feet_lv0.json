@@ -1,0 +1,24 @@
+{
+  "id": "think_on_your_feet_lv0",
+  "arkhamdb_code": "02025",
+  "name": "Think on Your Feet",
+  "name_cn": "逃跑本能",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an enemy would spawn at your location.\nImmediately move to a connecting location. (The enemy still spawns at your previous location.)",
+  "text_cn": "快速。在敵人將要在你所在地點生成時打出。\n立刻移動到一個連接地點。(該敵人依然在原本地點生成。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

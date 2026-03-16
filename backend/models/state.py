@@ -56,6 +56,7 @@ class CardData:
     skill_icons: dict[str, int] = field(default_factory=dict)
     slots: list[SlotType] = field(default_factory=list)
     text: str = ""
+    text_cn: str = ""
     health: int | None = None
     sanity: int | None = None
     keywords: list[str] = field(default_factory=list)
@@ -63,6 +64,7 @@ class CardData:
     uses: dict[str, int] | None = None  # e.g. {"ammo": 4}
     fast: bool = False
     pack: str = ""
+    victory: int = 0
 
     # Investigator-specific fields
     skills: SkillValues | None = None

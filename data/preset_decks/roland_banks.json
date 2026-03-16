@@ -1,0 +1,15 @@
+{
+  "investigator_id": "roland_banks",
+  "presets": [
+    {
+      "name": "罗兰·班克斯（入门战斗）",
+      "cards": [
+        "machete_lv0", "45_automatic_lv0", "flashlight_lv0",
+        "emergency_cache_lv0", "beat_cop_lv0", "guard_dog_lv0",
+        "first_aid_lv0", "dodge_lv0", "evidence_lv0", "vicious_blow_lv0",
+        "guts_lv0", "overpower_lv0", "perception_lv0",
+        "manual_dexterity_lv0", "unexpected_courage_lv0"
+      ]
+    }
+  ]
+}

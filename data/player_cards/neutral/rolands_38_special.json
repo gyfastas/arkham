@@ -1,0 +1,24 @@
+{
+  "id": "rolands_38_special",
+  "arkhamdb_code": "01006",
+  "name": "Roland's .38 Special",
+  "name_cn": "罗兰的.38特种手枪",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": null,
+  "traits": ["item", "weapon", "firearm"],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": ["hand"],
+  "text": "Roland Banks deck only. Uses (4 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +1 [combat] for this attack (if there are 1 or more clues on your location, you get +3 [combat] instead). This attack deals +1 damage.",
+  "text_cn": "罗兰·班克斯牌组专用。使用（4弹药）。\n[action]花费1弹药：<b>战斗。</b>这次攻击中你+1[combat]（如果你所在地点有1个或以上线索，改为+3[combat]）。这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "signature": "roland_banks",
+  "pack": "core"
+}

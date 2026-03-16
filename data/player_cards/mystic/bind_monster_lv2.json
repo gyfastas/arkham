@@ -1,0 +1,24 @@
+{
+  "id": "bind_monster_lv2",
+  "arkhamdb_code": "02031",
+  "name": "Bind Monster",
+  "name_cn": "困獸之籠",
+  "class": "mystic",
+  "type": "event",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "<b>Evade.</b> This evasion attempt uses [willpower] instead of [agility]. If you succeed and the enemy is non‑[[Elite]], evade it and attach Bind Monster to it.\n[reaction] When attached enemy would ready: Test [willpower] (3). If you succeed, attached enemy does not ready. If you fail, discard Bind Monster.",
+  "text_cn": "<b>躲避</b>。這次躲避嘗試不使用[agility]，改為使用[willpower]。如果成功並且該敵人為非[[精英]]，躲避並將困獸之籠疊加到該敵人。\n[reaction]在被疊加的敵人要準備時：檢定[willpower](3)。如果成功，疊加敵人不準備。如果失敗，丟棄困獸之籠。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

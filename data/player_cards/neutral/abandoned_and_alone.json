@@ -1,0 +1,21 @@
+{
+  "id": "abandoned_and_alone",
+  "arkhamdb_code": "01015",
+  "name": "Abandoned and Alone",
+  "name_cn": "被遗弃的孤独",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": null,
+  "traits": [],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Take 2 direct horror. Remove all cards in your discard pile from the game.",
+  "text_cn": "<b>揭示</b> - 受到2点直接恐惧。将你弃牌堆中的所有牌移出游戏。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "signature": "wendy_adams",
+  "weakness": true,
+  "pack": "core"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "wracked_by_nightmares_lv0",
+  "arkhamdb_code": "02015",
+  "name": "Wracked by Nightmares",
+  "name_cn": "噩夢來襲",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Exhaust all assets you control and put Wracked by Nightmares into play in your threat area.\nAssets you control cannot ready.\n[action] [action]: Discard Wracked by Nightmares.",
+  "text_cn": "<b>顯現</b> - 消耗你控制的所有支援卡，並將噩夢來襲放置入你的威脅區域。\n你控制的支援卡不能準備。\n[action][action]：丟棄噩夢來襲。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "weakness"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "cover_up",
+  "arkhamdb_code": "01007",
+  "name": "Cover Up",
+  "name_cn": "掩盖真相",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": null,
+  "traits": ["task"],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Cover Up into play in your threat area, with 3 clues on it.\n<b>Forced</b> - When you would discover 1 or more clues at your location: Discard that many clues from Cover Up instead.\n<b>Forced</b> - At the end of the game, if Cover Up still has clues on it: You suffer 1 mental trauma.",
+  "text_cn": "<b>揭示</b> - 将掩盖真相放入你的威胁区域，上面放置3个线索。\n<b>强制</b> - 当你将要从所在地点发现1个或以上线索时：改为从掩盖真相上弃掉等量线索。\n<b>强制</b> - 在游戏结束时，如果掩盖真相上仍有线索：你受到1点精神创伤。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "signature": "roland_banks",
+  "weakness": true,
+  "pack": "core"
+}

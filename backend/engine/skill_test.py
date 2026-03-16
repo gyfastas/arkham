@@ -37,6 +37,7 @@ class SkillTestEngine:
         self.bus = event_bus
         self.chaos_bag = chaos_bag
         self._current_test: SkillTestResult | None = None
+        self._last_result: SkillTestResult | None = None
 
     @property
     def current_test(self) -> SkillTestResult | None:
@@ -95,6 +96,7 @@ class SkillTestEngine:
             self._st8_end(result, committed_card_ids or [])
 
         finally:
+            self._last_result = result
             self._current_test = None
 
         return result

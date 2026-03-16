@@ -1,0 +1,32 @@
+{
+  "id": "roland_banks",
+  "name": "Roland Banks",
+  "name_cn": "罗兰·班克斯",
+  "title": "The Fed",
+  "title_cn": "联邦探员",
+  "class": "guardian",
+  "health": 9,
+  "sanity": 5,
+  "skills": {
+    "willpower": 3,
+    "intellect": 3,
+    "combat": 4,
+    "agility": 2
+  },
+  "ability": "After you defeat an enemy: Discover 1 clue at your location. (Limit once per round.)",
+  "ability_cn": "在你击败一名敌人后：发现你所在地点的1个线索。（每轮限制1次。）",
+  "elder_sign": "+1 for each clue on your location.",
+  "elder_sign_cn": "+1（你所在地点每有1个线索，+1）。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "guardian": {"min_level": 0, "max_level": 5},
+      "seeker": {"min_level": 0, "max_level": 2},
+      "neutral": {"min_level": 0, "max_level": 5}
+    }
+  },
+  "signature_cards": ["rolands_38_special"],
+  "weakness": "cover_up",
+  "flavor_text": "\"Everything by the book: every \"i\" dotted, every \"t\" crossed. It has kept me sane.\"",
+  "pack": "core"
+}

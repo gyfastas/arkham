@@ -34,6 +34,10 @@ class ClientEvent(str, Enum):
     END_TURN = "end_turn"
     RESOLVE_CHOICE = "resolve_choice"
     CHAT = "chat"
+    LIST_CARDS = "list_cards"
+    GET_INVESTIGATOR = "get_investigator"
+    CAMPAIGN_UPGRADE = "campaign_upgrade"  # Purchase/upgrade cards with XP
+    CAMPAIGN_STATE = "campaign_state"  # Request campaign state
 
 
 # ---------------------------------------------------------------------------

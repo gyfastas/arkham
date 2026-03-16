@@ -30,10 +30,28 @@ def test_parse_deck_text_formats():
 def test_create_game_accepts_investigator_and_deck_text():
     from frontend.server_core import create_game
 
+    # Build a 30-card deck (required now that roland_banks has deck_requirements)
+    deck_lines = [
+        "2 machete_lv0",
+        "2 emergency_cache_lv0",
+        "2 guard_dog_lv0",
+        "2 beat_cop_lv0",
+        "2 dodge_lv0",
+        "2 evidence_lv0",
+        "2 vicious_blow_lv0",
+        "2 guts_lv0",
+        "2 overpower_lv0",
+        "2 manual_dexterity_lv0",
+        "2 unexpected_courage_lv0",
+        "2 perception_lv0",
+        "2 knife_lv0",
+        "2 flashlight_lv0",
+        "2 working_a_hunch_lv0",
+    ]
     g = create_game(
         scenario_id="the_gathering",
         investigator_id="roland_banks",
-        deck_text="2 machete_lv0\n2 emergency_cache_lv0\nunknown_card\n",
+        deck_text="\n".join(deck_lines),
     )
     inv = g.state.get_investigator("player")
     assert inv is not None

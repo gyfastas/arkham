@@ -1,0 +1,25 @@
+{
+  "id": "ritual_candles_lv0",
+  "arkhamdb_code": "02029",
+  "name": "Ritual Candles",
+  "name_cn": "儀式蠟燭",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "item"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[reaction] After a [skull], [cultist], [tablet], or [elder_thing] symbol is revealed during a test you are performing: You get +1 skill value for this test.",
+  "text_cn": "[reaction]在技能檢定期間，你抽出[skull]、[cultist]、[tablet]或[elder_thing]標記後：你這次檢定技能值+1。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

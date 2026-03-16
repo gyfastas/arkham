@@ -1,0 +1,26 @@
+{
+  "id": "peter_sylvestre_lv2",
+  "arkhamdb_code": "02035",
+  "name": "Peter Sylvestre",
+  "name_cn": "彼得·希爾維斯特",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "ally",
+    "miskatonic"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [agility] and +1 [willpower].\n[reaction] After your turn ends: Heal 1 horror from Peter Sylvestre.",
+  "text_cn": "你獲得+1[agility]和+1[willpower]。\n[reaction]在你回合結束後：治癒彼得·希爾維斯特1點恐懼。",
+  "health": 1,
+  "sanity": 3,
+  "unique": true,
+  "pack": "dunwich_legacy"
+}

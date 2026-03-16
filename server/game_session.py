@@ -74,70 +74,194 @@ INVESTIGATORS: dict[str, dict] = {
     },
 }
 
-DECK_PRESETS: dict[str, dict] = {
-    "roland_starter": {
-        "name_cn": "罗兰·班克斯（入门战斗）",
-        "investigator_id": "roland_banks",
-        "cards": [
-            "machete_lv0", "45_automatic_lv0", "flashlight_lv0",
-            "emergency_cache_lv0", "beat_cop_lv0", "guard_dog_lv0",
-            "first_aid_lv0", "dodge_lv0", "evidence_lv0", "vicious_blow_lv0",
-            "guts_lv0", "overpower_lv0", "perception_lv0",
-            "manual_dexterity_lv0", "unexpected_courage_lv0",
-        ],
-    },
-    "daisy_starter": {
-        "name_cn": "黛西·沃克（入门调查）",
-        "investigator_id": "daisy_walker",
-        "cards": [
-            "magnifying_glass_lv0", "old_book_of_lore_lv0", "medical_texts_lv0",
-            "dr_milan_christopher_lv0", "research_librarian_lv0",
-            "working_a_hunch_lv0", "deduction_lv0", "perception_lv0",
-            "guts_lv0", "unexpected_courage_lv0", "preposterous_sketches_lv0",
-            "inquiring_mind_lv0", "mind_over_matter_lv0", "shortcut_lv0",
-            "knife_lv0",
-        ],
-    },
-    "skids_starter": {
-        "name_cn": "斯基兹·奥图尔（入门机动）",
-        "investigator_id": "skids_otoole",
-        "cards": [
-            "switchblade_lv0", "forty_one_derringer_lv0", "burglary_lv0",
-            "pickpocketing_lv0", "sneak_attack_lv0", "elusive_lv0",
-            "opportunist_lv0", "hard_knocks_lv0", "leo_de_luca_lv0",
-            "emergency_cache_lv0", "manual_dexterity_lv0", "overpower_lv0",
-            "perception_lv0", "unexpected_courage_lv0", "knife_lv0",
-        ],
-    },
-    "agnes_starter": {
-        "name_cn": "艾格尼丝·贝克（入门法术）",
-        "investigator_id": "agnes_baker",
-        "cards": [
-            "shrivelling_lv0", "holy_rosary_lv0", "arcane_studies_lv0",
-            "ward_of_protection_lv0", "forbidden_knowledge_lv0",
-            "drawn_to_the_flame_lv0", "fearless_lv0", "blinding_light_lv0",
-            "guts_lv0", "unexpected_courage_lv0", "emergency_cache_lv0",
-            "perception_lv0", "manual_dexterity_lv0", "knife_lv0",
-            "flashlight_lv0",
-        ],
-    },
-    "wendy_starter": {
-        "name_cn": "温蒂·亚当斯（入门生存）",
-        "investigator_id": "wendy_adams",
-        "cards": [
-            "baseball_bat_lv0", "rabbits_foot_lv0", "leather_coat_lv0",
-            "lucky_lv0", "look_what_i_found_lv0", "stray_cat_lv0",
-            "scavenging_lv0", "survival_instinct_lv0", "dig_deep_lv0",
-            "manual_dexterity_lv0", "guts_lv0", "overpower_lv0",
-            "perception_lv0", "unexpected_courage_lv0", "emergency_cache_lv0",
-        ],
-    },
-}
+def _load_preset_decks() -> dict[str, dict]:
+    """Load preset decks from data/preset_decks/*.json files."""
+    import json as _json
+    presets: dict[str, dict] = {}
+    preset_dir = PROJECT_ROOT / "data" / "preset_decks"
+    if not preset_dir.exists():
+        return presets
+    for p in sorted(preset_dir.glob("*.json")):
+        try:
+            data = _json.loads(p.read_text(encoding="utf-8"))
+            inv_id = data.get("investigator_id", p.stem)
+            for i, preset in enumerate(data.get("presets", [])):
+                preset_id = f"{inv_id}_preset_{i}" if i > 0 else f"{inv_id}_starter"
+                presets[preset_id] = {
+                    "name_cn": preset.get("name", inv_id),
+                    "investigator_id": inv_id,
+                    "cards": preset.get("cards", []),
+                }
+        except (ValueError, KeyError):
+            continue
+    return presets
+
+
+DECK_PRESETS: dict[str, dict] = _load_preset_decks()
+
+
+def _lookup_encounter_card(card_id: str, campaign: str = "core") -> dict | None:
+    """Look up encounter card data from JSON for client display."""
+    from backend.scenarios.official_core import load_encounter_db_for_campaign
+    db = load_encounter_db_for_campaign(campaign)
+    rec = db.get(card_id)
+    if not rec:
+        return {"id": card_id, "name": card_id, "name_cn": "", "type": "treachery", "text": "", "traits": []}
+    return {
+        "id": card_id,
+        "name": rec.get("name", card_id),
+        "name_cn": rec.get("name_cn", ""),
+        "type": rec.get("type", "treachery"),
+        "text": rec.get("text", ""),
+        "traits": rec.get("traits") or [],
+    }
 
 
 # ---------------------------------------------------------------------------
 # Card loading helpers
 # ---------------------------------------------------------------------------
+
+def _load_investigator_json(inv_id: str) -> dict | None:
+    """Load investigator JSON from data/investigators/."""
+    import json as _json
+    p = PROJECT_ROOT / "data" / "investigators" / f"{inv_id}.json"
+    if p.exists():
+        return _json.loads(p.read_text(encoding="utf-8"))
+    return None
+
+
+def get_investigator_detail(inv_id: str) -> dict | None:
+    """Return full investigator detail for client display."""
+    data = _load_investigator_json(inv_id)
+    if data:
+        return {
+            "id": data["id"],
+            "name": data.get("name", ""),
+            "name_cn": data.get("name_cn", ""),
+            "title_cn": data.get("title_cn", ""),
+            "class": data.get("class", "neutral"),
+            "health": data.get("health", 5),
+            "sanity": data.get("sanity", 5),
+            "skills": data.get("skills", {}),
+            "ability_cn": data.get("ability_cn", ""),
+            "deck_requirements": data.get("deck_requirements"),
+            "signature_cards": data.get("signature_cards", []),
+            "weakness": data.get("weakness", ""),
+        }
+    # Fallback to hardcoded INVESTIGATORS dict
+    inv_def = INVESTIGATORS.get(inv_id)
+    if not inv_def:
+        return None
+    skills = inv_def.get("skills")
+    return {
+        "id": inv_id,
+        "name": inv_def.get("name", ""),
+        "name_cn": inv_def.get("name_cn", ""),
+        "title_cn": "",
+        "class": inv_def["class"].value,
+        "health": inv_def.get("health", 5),
+        "sanity": inv_def.get("sanity", 5),
+        "skills": {
+            "willpower": skills.willpower if skills else 0,
+            "intellect": skills.intellect if skills else 0,
+            "combat": skills.combat if skills else 0,
+            "agility": skills.agility if skills else 0,
+        },
+        "ability_cn": inv_def.get("ability_cn", ""),
+        "deck_requirements": None,
+        "signature_cards": [],
+        "weakness": "",
+    }
+
+
+def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> dict:
+    """Return player cards + presets for deck building.
+
+    Returns: {"cards": [...], "presets": [...], "deck_requirements": {...}}
+    """
+    import json as _json
+
+    # Load deck requirements from investigator JSON
+    deck_req: dict | None = None
+    allowed_classes: dict[str, tuple[int, int]] = {}  # class -> (min_level, max_level)
+
+    inv_json = _load_investigator_json(investigator_id) if investigator_id else None
+    if inv_json and inv_json.get("deck_requirements"):
+        deck_req = inv_json["deck_requirements"]
+        for cls, levels in deck_req.get("cards", {}).items():
+            allowed_classes[cls] = (levels.get("min_level", 0), levels.get("max_level", 5))
+    elif investigator_id:
+        # Fallback: investigator's class + neutral
+        inv_def = INVESTIGATORS.get(investigator_id)
+        if inv_def:
+            inv_class = inv_def["class"].value
+            allowed_classes[inv_class] = (0, 5)
+            allowed_classes["neutral"] = (0, 5)
+
+    cards: list[dict] = []
+    base = PROJECT_ROOT / "data" / "player_cards"
+    for p in base.rglob("*.json"):
+        if p.name == "schema.json":
+            continue
+        data = _json.loads(p.read_text(encoding="utf-8"))
+        card_id = data.get("id")
+        if not card_id:
+            continue
+        card_class = data.get("class", "neutral")
+        card_type = data.get("type", "")
+        if card_type not in ("asset", "event", "skill"):
+            continue
+        card_level = data.get("level") or 0
+
+        # Check deck building rules
+        if allowed_classes:
+            if card_class not in allowed_classes:
+                continue
+            min_lv, max_lv = allowed_classes[card_class]
+            if not (min_lv <= card_level <= max_lv):
+                continue
+
+        # XP check: card is "allowed" if player can afford it
+        # Level 0 cards are always allowed; level N costs N XP
+        allowed = card_level == 0 or card_level <= xp_available
+
+        cards.append({
+            "id": card_id,
+            "name": data.get("name", card_id),
+            "name_cn": data.get("name_cn", ""),
+            "type": card_type,
+            "class": card_class,
+            "cost": data.get("cost"),
+            "level": card_level,
+            "text": data.get("text", ""),
+            "text_cn": data.get("text_cn", ""),
+            "slots": data.get("slots", []),
+            "skill_icons": data.get("skill_icons", {}),
+            "traits": data.get("traits", []),
+            "health": data.get("health"),
+            "sanity": data.get("sanity"),
+            "unique": data.get("unique", False),
+            "victory": data.get("victory", 0),
+            "allowed": allowed,
+        })
+    cards.sort(key=lambda c: (c["class"], c["level"], c["type"], c.get("cost") or 0, c["id"]))
+
+    # Collect presets for this investigator
+    presets = []
+    for preset_id, preset in DECK_PRESETS.items():
+        if not investigator_id or preset.get("investigator_id") == investigator_id:
+            presets.append({
+                "id": preset_id,
+                "name": preset.get("name_cn", preset_id),
+                "cards": preset.get("cards", []),
+            })
+
+    return {
+        "cards": cards,
+        "presets": presets,
+        "deck_requirements": deck_req,
+    }
+
 
 def _load_player_cards(g: Game) -> None:
     """Load ``data/player_cards/**/*.json`` into ``card_database``."""
@@ -175,12 +299,14 @@ def _load_player_cards(g: Game) -> None:
                 traits=list(data.get("traits") or []),
                 skill_icons=dict(data.get("skill_icons") or {}),
                 slots=to_slots(list(data.get("slots") or [])),
-                text=data.get("text_cn") or data.get("text") or "",
+                text=data.get("text") or "",
+                text_cn=data.get("text_cn") or "",
                 health=data.get("health"),
                 sanity=data.get("sanity"),
                 pack=data.get("pack") or "",
                 unique=bool(data.get("unique") or False),
                 fast=bool(data.get("fast") or False),
+                victory=int(data.get("victory") or 0),
             )
         except Exception:
             continue
@@ -225,6 +351,7 @@ class GameSession:
         scenario_id: str = "the_gathering",
         investigator_id: str = "daisy_walker",
         deck_preset: str = "",
+        deck_cards: list[str] | None = None,
         seed: int = 42,
     ) -> dict:
         """Initialize a single-player game (multi-player setup in Phase 4)."""
@@ -244,24 +371,62 @@ class GameSession:
         )
         g.register_card_data(filler)
 
-        # Investigator
-        inv_def = INVESTIGATORS.get(investigator_id) or INVESTIGATORS["daisy_walker"]
-        inv_data = CardData(
-            id=investigator_id,
-            name=inv_def["name"],
-            name_cn=inv_def["name_cn"],
-            type=CardType.INVESTIGATOR,
-            card_class=inv_def["class"],
-            health=inv_def["health"],
-            sanity=inv_def["sanity"],
-            skills=inv_def["skills"],
-            ability=inv_def.get("ability_cn") or "",
-        )
+        # Investigator — try JSON first, then hardcoded fallback
+        inv_json = _load_investigator_json(investigator_id)
+        inv_def = INVESTIGATORS.get(investigator_id)
+        if inv_json:
+            cls_str = inv_json.get("class", "neutral")
+            try:
+                pc = PlayerClass(cls_str)
+            except ValueError:
+                pc = PlayerClass.NEUTRAL
+            sk = inv_json.get("skills", {})
+            inv_data = CardData(
+                id=investigator_id,
+                name=inv_json.get("name", investigator_id),
+                name_cn=inv_json.get("name_cn", ""),
+                type=CardType.INVESTIGATOR,
+                card_class=pc,
+                health=inv_json.get("health", 5),
+                sanity=inv_json.get("sanity", 5),
+                skills=SkillValues(
+                    willpower=sk.get("willpower", 1),
+                    intellect=sk.get("intellect", 1),
+                    combat=sk.get("combat", 1),
+                    agility=sk.get("agility", 1),
+                ),
+                ability=inv_json.get("ability_cn", ""),
+            )
+        elif inv_def:
+            inv_data = CardData(
+                id=investigator_id,
+                name=inv_def["name"],
+                name_cn=inv_def["name_cn"],
+                type=CardType.INVESTIGATOR,
+                card_class=inv_def["class"],
+                health=inv_def["health"],
+                sanity=inv_def["sanity"],
+                skills=inv_def["skills"],
+                ability=inv_def.get("ability_cn") or "",
+            )
+        else:
+            # Ultimate fallback
+            fb = INVESTIGATORS["daisy_walker"]
+            inv_data = CardData(
+                id="daisy_walker",
+                name=fb["name"], name_cn=fb["name_cn"],
+                type=CardType.INVESTIGATOR, card_class=fb["class"],
+                health=fb["health"], sanity=fb["sanity"],
+                skills=fb["skills"], ability=fb.get("ability_cn") or "",
+            )
         g.register_card_data(inv_data)
 
-        # Deck
+        # Deck — build base 30 cards
         deck_ids: list[str] = []
-        if deck_preset and deck_preset in DECK_PRESETS:
+        if deck_cards:
+            # Custom deck from deck builder
+            deck_ids = list(deck_cards)
+        elif deck_preset and deck_preset in DECK_PRESETS:
             for cid in DECK_PRESETS[deck_preset]["cards"]:
                 deck_ids.extend([cid, cid])
         else:
@@ -276,6 +441,17 @@ class GameSession:
             deck_ids += ["filler"] * (30 - len(deck_ids))
         elif len(deck_ids) > 30:
             deck_ids = deck_ids[:30]
+
+        # Add signature cards and weakness (don't count toward 30-card limit)
+        sig_cards: list[str] = []
+        if inv_json:
+            for sig_id in inv_json.get("signature_cards", []):
+                if g.state.get_card_data(sig_id) is not None and sig_id not in deck_ids:
+                    sig_cards.append(sig_id)
+            weakness_id = inv_json.get("weakness", "")
+            if weakness_id and g.state.get_card_data(weakness_id) is not None and weakness_id not in deck_ids and weakness_id not in sig_cards:
+                sig_cards.append(weakness_id)
+        deck_ids.extend(sig_cards)
 
         random.shuffle(deck_ids)
 
@@ -332,6 +508,17 @@ class GameSession:
             viewer_investigator_id=viewer,
         )
 
+    def get_victory_xp(self) -> int:
+        """Calculate total XP from victory display cards."""
+        if self.game is None:
+            return 0
+        total = 0
+        for card_id in self.game.state.scenario.victory_display:
+            cd = self.game.state.card_database.get(card_id)
+            if cd and hasattr(cd, 'victory'):
+                total += cd.victory
+        return total
+
     def handle_action(self, player_id: str, data: dict) -> dict:
         """Process a player action. Returns result dict with events."""
         if self.game is None:
@@ -346,6 +533,9 @@ class GameSession:
         act = data.get("action")
         if not act:
             return {"success": False, "message": "缺少 action"}
+
+        # Clear previous encounter card display
+        self.game.state.scenario.vars.pop("last_encounter", None)
 
         # Flush any previous events
         if self.event_logger:
@@ -450,11 +640,15 @@ class GameSession:
         if scen.encounter_deck:
             enc_id = scen.encounter_deck.pop(0)
             scen.encounter_discard.append(enc_id)
+            # Store encounter card info for client display
+            scen.vars["last_encounter"] = _lookup_encounter_card(enc_id, scen.vars.get("campaign", "core"))
             res = self.controller.resolve_encounter_card(enc_id)
             if res.get("surge"):
                 if scen.encounter_deck:
                     enc2 = scen.encounter_deck.pop(0)
                     scen.encounter_discard.append(enc2)
+                    # Update last_encounter to show the surge card
+                    scen.vars["last_encounter"] = _lookup_encounter_card(enc2, scen.vars.get("campaign", "core"))
                     self.controller.resolve_encounter_card(enc2)
             if res.get("pending"):
                 events = self.event_logger.flush() if self.event_logger else []
@@ -512,6 +706,75 @@ class GameSession:
             self.action_log.append(f"📚 智慧古书：你选择抽取【{chosen_name}】（其余{len(rest)}张置于牌库底）")
             return {"success": True, "message": "已抽牌"}
 
+        # --- Mr. "Rook" step 1: search depth chosen → show cards ---
+        if kind == "asset_mr_rook_depth":
+            inv = self.game.state.get_investigator("player")
+            depth = int(choice_id) if choice_id and choice_id.isdigit() else 3
+            depth = min(depth, len(inv.deck))
+            peek_cards = [inv.deck[i] for i in range(depth)]
+
+            def card_label(cid: str) -> str:
+                cd = self.game.state.get_card_data(cid)
+                nm = (cd.name_cn or "").strip() if cd else "（未翻译卡牌）"
+                return nm if nm else "（未翻译卡牌）"
+
+            # Check for weaknesses
+            weaknesses = []
+            normals = []
+            for cid in peek_cards:
+                cd = self.game.state.get_card_data(cid)
+                if cd and cd.type == CardType.TREACHERY:
+                    weaknesses.append(cid)
+                else:
+                    normals.append(cid)
+
+            options = [{"id": cid, "label": card_label(cid)} for cid in normals]
+            self.game.state.scenario.vars["pending_choice"] = {
+                "kind": "asset_mr_rook_pick",
+                "peek_cards": peek_cards,
+                "weaknesses": weaknesses,
+                "prompt": f"<b>\"老千\"先生</b>：从牌库顶{depth}张中选择1张加入手牌",
+                "options": options,
+            }
+            self.action_log.append(f"🔍 \"老千\"先生：查看牌库顶{depth}张，选择1张…")
+            return {"success": True, "message": "需要做出选择"}
+
+        # --- Mr. "Rook" step 2: card picked ---
+        if kind == "asset_mr_rook_pick":
+            inv = self.game.state.get_investigator("player")
+            peek_cards: list[str] = list(pc.get("peek_cards") or [])
+            weaknesses: list[str] = list(pc.get("weaknesses") or [])
+            if not peek_cards:
+                return {"success": False, "message": "没有可选卡牌"}
+            chosen = choice_id if choice_id in peek_cards else peek_cards[0]
+            # Remove chosen from deck
+            if chosen in inv.deck:
+                inv.deck.remove(chosen)
+            inv.hand.append(chosen)
+            cd = self.game.state.get_card_data(chosen)
+            chosen_name = (cd.name_cn or chosen) if cd else chosen
+
+            # Also draw 1 weakness if found
+            weakness_drawn = None
+            for w in weaknesses:
+                if w != chosen and w in inv.deck:
+                    inv.deck.remove(w)
+                    inv.hand.append(w)
+                    weakness_drawn = w
+                    break
+
+            # Shuffle deck
+            random.shuffle(inv.deck)
+
+            msg = f"\"老千\"先生：你选择抽取【{chosen_name}】"
+            if weakness_drawn:
+                wcd = self.game.state.get_card_data(weakness_drawn)
+                wname = (wcd.name_cn or weakness_drawn) if wcd else weakness_drawn
+                msg += f"，同时被迫抽取弱点【{wname}】"
+            msg += "（牌库已洗牌）"
+            self.action_log.append(f"🔍 {msg}")
+            return {"success": True, "message": "已抽牌"}
+
         return {"success": False, "message": f"未知选择类型：{kind}"}
 
     def _advance_act(self, inv) -> dict:
@@ -556,9 +819,62 @@ class GameSession:
         )
         return {"success": ok["success"], "message": "开锁成功" if ok["success"] else "开锁失败"}
 
+    def _discard_asset(self, inv, instance_id: str):
+        """Remove an asset from play area and move its card_id to discard."""
+        if instance_id in inv.play_area:
+            inv.play_area.remove(instance_id)
+        ci = self.game.state.get_card_instance(instance_id)
+        if ci:
+            inv.discard.append(ci.card_id)
+
+    def _is_tome_asset(self, card_id: str) -> bool:
+        """Check if a card has the Tome trait."""
+        cd = self.game.state.get_card_data(card_id)
+        if cd and hasattr(cd, 'traits') and cd.traits:
+            return "tome" in [t.lower() for t in cd.traits]
+        return False
+
+    def _spend_activate_action(self, inv, card_id: str) -> bool:
+        """Spend an action to activate an asset. Returns False if no actions available.
+
+        For Tome assets, prefer using tome_actions_remaining (Daisy's free tome action).
+        """
+        is_tome = self._is_tome_asset(card_id)
+        if is_tome and inv.tome_actions_remaining > 0:
+            inv.tome_actions_remaining -= 1
+            return True
+        if inv.actions_remaining > 0:
+            inv.actions_remaining -= 1
+            return True
+        return False
+
+    # Cards whose effects are passive / reactive (no activated ability).
+    _PASSIVE_CARDS: dict[str, str] = {
+        "dr_milan_christopher_lv0": "被动：+1智力；调查成功后+1资源",
+        "magnifying_glass_lv0": "被动：调查时+1智力",
+        "beat_cop_lv0": "被动：+1战斗；可弃掉对敌人造成1伤害",
+        "guard_dog_lv0": "被动：受到攻击时对敌人造成1伤害",
+        "holy_rosary_lv0": "被动：+1意志",
+        "leather_coat_lv0": "被动：+2生命值",
+        "research_librarian_lv0": "被动：入场时搜索1张典籍",
+        "laboratory_assistant_lv0": "被动：手牌上限+2；入场时抽2张",
+        "arcane_studies_lv0": "花费资源：+1意志或+1智力",
+        "hard_knocks_lv0": "花费资源：+1战斗或+1敏捷",
+        "physical_training_lv0": "花费资源：+1意志或+1战斗",
+        "dig_deep_lv0": "花费资源：+1意志或+1敏捷",
+        "forbidden_knowledge_lv0": "被动：用秘密换取资源",
+        "rabbits_foot_lv0": "被动：检定失败后抽1张",
+        "scavenging_lv0": "被动：调查成功+2时回收弃牌堆支援",
+        "pickpocketing_lv0": "被动：闪避成功后抽1张",
+        "leo_de_luca_lv0": "被动：每回合+1行动",
+        "leo_de_luca_lv1": "被动：每回合+1行动",
+        "stray_cat_lv0": "被动：闪避时可弃掉自动成功",
+        "arcane_initiate_lv0": "被动：刷新阶段搜索1张法术",
+        "kukri_lv0": "武器：+1战斗",
+        "ritual_candles_lv0": "被动：技能检定时+1",
+    }
+
     def _activate_asset(self, inv, data: dict) -> dict:
-        if inv.actions_remaining <= 0:
-            return {"success": False, "message": "没有行动点"}
         instance_id = data.get("instance_id")
         if not instance_id:
             return {"success": False, "message": "缺少 instance_id"}
@@ -567,14 +883,27 @@ class GameSession:
         ci = self.game.state.get_card_instance(instance_id)
         if not ci:
             return {"success": False, "message": "未找到支援实例"}
+
+        card_id = ci.card_id
+
+        # Passive-only cards: show status instead of trying to activate
+        if card_id in self._PASSIVE_CARDS:
+            cd = self.game.state.get_card_data(card_id)
+            name_cn = (cd.name_cn or cd.name) if cd else card_id
+            desc = self._PASSIVE_CARDS[card_id]
+            status = "（已横置）" if ci.exhausted else ""
+            return {"success": True, "message": f"{name_cn}{status}：{desc}"}
+
         if ci.exhausted:
             return {"success": False, "message": "该支援已消耗"}
 
-        card_id = ci.card_id
+        # Check action availability (tome actions preferred for Tome assets)
+        if not self._spend_activate_action(inv, card_id):
+            return {"success": False, "message": "没有行动点"}
+
         if card_id == "old_book_of_lore_lv0":
             if not inv.deck:
                 return {"success": False, "message": "牌库为空，无法使用智慧古书"}
-            inv.actions_remaining -= 1
             ci.exhausted = True
             peek_n = min(3, len(inv.deck))
             peek_cards = [inv.deck.pop(0) for _ in range(peek_n)]
@@ -595,6 +924,127 @@ class GameSession:
             }
             self.action_log.append("📚 智慧古书：查看牌库顶3张，等待选择…")
             return {"success": True, "message": "需要做出选择"}
+
+        # --- Mr. "Rook" (free action: exhaust + spend 1 secret) ---
+        if card_id == "mr_rook_lv0":
+            # Free action — refund the action we just spent
+            inv.actions_remaining += 1
+            if ci.uses.get("secrets", 0) <= 0:
+                return {"success": False, "message": "\"老千\"先生没有剩余秘密"}
+            if not inv.deck:
+                return {"success": False, "message": "牌库为空"}
+            ci.exhausted = True
+            ci.uses["secrets"] = ci.uses.get("secrets", 0) - 1
+            # Step 1: choose search depth (3/6/9)
+            options = []
+            for n in [3, 6, 9]:
+                if len(inv.deck) >= n or n == 3:
+                    options.append({"id": str(n), "label": f"查看牌库顶{n}张"})
+            self.game.state.scenario.vars["pending_choice"] = {
+                "kind": "asset_mr_rook_depth",
+                "asset_instance_id": instance_id,
+                "prompt": "<b>\"老千\"先生</b>：选择搜索深度",
+                "options": options,
+            }
+            self.action_log.append("🔍 \"老千\"先生：选择搜索深度…")
+            return {"success": True, "message": "需要做出选择"}
+
+        # --- Clarity of Mind (spend 1 charge: heal 1 horror) ---
+        if card_id == "clarity_of_mind_lv0":
+            if ci.uses.get("charges", 0) <= 0:
+                return {"success": False, "message": "清明之心没有剩余充能"}
+            ci.exhausted = True
+            ci.uses["charges"] = ci.uses.get("charges", 0) - 1
+            healed = min(1, inv.horror)
+            inv.horror -= healed
+            msg = f"清明之心：治愈{healed}点恐惧" if healed else "清明之心：当前没有恐惧可治愈"
+            self.action_log.append(f"💜 {msg}")
+            # Discard if no charges left
+            if ci.uses.get("charges", 0) <= 0:
+                self._discard_asset(inv, instance_id)
+                self.action_log.append("💜 清明之心充能耗尽，弃置")
+            return {"success": True, "message": msg}
+
+        # --- Rite of Seeking (spend 1 charge: investigate with willpower) ---
+        if card_id == "rite_of_seeking_lv0":
+            if ci.uses.get("charges", 0) <= 0:
+                return {"success": False, "message": "寻秘仪式没有剩余充能"}
+            ci.exhausted = True
+            ci.uses["charges"] = ci.uses.get("charges", 0) - 1
+            loc = self.game.state.get_location(inv.location_id)
+            if not loc:
+                return {"success": False, "message": "当前地点无效"}
+            difficulty = loc.card_data.shroud or 2
+            result_ok = {"success": False}
+
+            def on_success(_r):
+                result_ok["success"] = True
+                clues_to_gain = min(2, loc.clues)
+                loc.clues -= clues_to_gain
+                inv.clues += clues_to_gain
+                self.action_log.append(f"🔮 寻秘仪式成功！发现{clues_to_gain}条线索")
+
+            def on_failure(_r):
+                self.action_log.append("🔮 寻秘仪式失败")
+
+            self.game.skill_test_engine.run_test(
+                investigator_id="player",
+                skill_type=Skill.WILLPOWER,
+                difficulty=difficulty,
+                committed_card_ids=[],
+                on_success=on_success,
+                on_failure=on_failure,
+            )
+            if ci.uses.get("charges", 0) <= 0:
+                self._discard_asset(inv, instance_id)
+                self.action_log.append("🔮 寻秘仪式充能耗尽，弃置")
+            return {"success": result_ok["success"],
+                    "message": "调查成功" if result_ok["success"] else "调查失败"}
+
+        # --- Liquid Courage (spend 1 supply: heal 1 horror + test) ---
+        if card_id == "liquid_courage_lv0":
+            if ci.uses.get("supplies", 0) <= 0:
+                return {"success": False, "message": "液体勇气没有剩余补给"}
+            ci.uses["supplies"] = ci.uses.get("supplies", 0) - 1
+            healed = min(1, inv.horror)
+            inv.horror -= healed
+            result_ok = {"extra_heal": False}
+
+            def on_success(_r):
+                result_ok["extra_heal"] = True
+                extra = min(1, inv.horror)
+                inv.horror -= extra
+                self.action_log.append(f"🍺 液体勇气：意志检定成功，额外治愈{extra}点恐惧")
+
+            def on_failure(_r):
+                if inv.hand:
+                    discarded = inv.hand.pop(random.randint(0, len(inv.hand) - 1))
+                    inv.discard.append(discarded)
+                    cd = self.game.state.get_card_data(discarded)
+                    nm = (cd.name_cn or discarded) if cd else discarded
+                    self.action_log.append(f"🍺 液体勇气：意志检定失败，随机弃置【{nm}】")
+                else:
+                    self.action_log.append("🍺 液体勇气：意志检定失败（手牌为空）")
+
+            self.game.skill_test_engine.run_test(
+                investigator_id="player",
+                skill_type=Skill.WILLPOWER,
+                difficulty=2,
+                committed_card_ids=[],
+                on_success=on_success,
+                on_failure=on_failure,
+            )
+            msg = f"液体勇气：治愈{healed}点恐惧"
+            self.action_log.append(f"🍺 {msg}")
+            if ci.uses.get("supplies", 0) <= 0:
+                self._discard_asset(inv, instance_id)
+                self.action_log.append("🍺 液体勇气补给耗尽，弃置")
+            return {"success": True, "message": msg}
+
+        # Weapons: use in FIGHT action, not direct activation
+        cd = self.game.state.get_card_data(card_id)
+        if cd and "weapon" in [t.lower() for t in (cd.traits or [])]:
+            return {"success": True, "message": f"武器请通过攻击敌人时选择使用"}
 
         return {"success": False, "message": "该支援暂不支持激活"}
 
@@ -652,6 +1102,7 @@ class GameSession:
         if not ok:
             return {"success": False, "message": "行动失败"}
 
+        # --- Detailed action logging ---
         if played_card_id:
             cd = self.game.state.get_card_data(played_card_id)
             name_cn = (cd.name_cn or "").strip() if cd else "（未翻译卡牌）"
@@ -661,8 +1112,64 @@ class GameSession:
             delta_deck = len(inv.deck) - before_deck
             delta_discard = len(inv.discard) - before_discard
             self.action_log.append(f"🃏 打出：{name_cn}（手牌{delta_hand:+d}，牌库{delta_deck:+d}，弃牌{delta_discard:+d}）")
+        elif enum_act == Action.MOVE:
+            loc_id = data.get("location_id", "")
+            loc = self.game.state.get_location(loc_id)
+            loc_name = (loc.card_data.name_cn or loc.card_data.name) if loc else loc_id
+            self.action_log.append(f"🚶 移动到：{loc_name}")
+        elif enum_act == Action.INVESTIGATE:
+            self._log_skill_test("🔍 调查")
+        elif enum_act == Action.FIGHT:
+            eid = data.get("enemy_instance_id", "")
+            ci = self.game.state.get_card_instance(eid) if eid else None
+            cd = self.game.state.get_card_data(ci.card_id) if ci else None
+            enemy_name = (cd.name_cn or cd.name) if cd else "敌人"
+            self._log_skill_test(f"⚔️ 攻击 {enemy_name}")
+        elif enum_act == Action.EVADE:
+            eid = data.get("enemy_instance_id", "")
+            ci = self.game.state.get_card_instance(eid) if eid else None
+            cd = self.game.state.get_card_data(ci.card_id) if ci else None
+            enemy_name = (cd.name_cn or cd.name) if cd else "敌人"
+            self._log_skill_test(f"🏃 闪避 {enemy_name}")
+        elif enum_act == Action.ENGAGE:
+            self.action_log.append("🎯 交战")
+        elif enum_act == Action.DRAW:
+            self.action_log.append("🃏 抽牌")
+        elif enum_act == Action.RESOURCE:
+            self.action_log.append(f"◆ 获取资源 → {inv.resources}")
 
         return {"success": True, "message": "行动成功"}
+
+    def _log_skill_test(self, prefix: str) -> None:
+        """Log the most recent skill test result with chaos token details."""
+        st = self.game.skill_test_engine.current_test if self.game else None
+        # The test already completed, so check the event logger for the result
+        # We read from the last SkillTestResult stored on the engine
+        result = getattr(self.game.skill_test_engine, '_last_result', None) if self.game else None
+        if result is None:
+            # Try to get from the action resolver's last test
+            result = getattr(self.game.action_resolver, '_last_skill_test_result', None) if self.game else None
+        if result is None:
+            self.action_log.append(prefix)
+            return
+
+        token_name = result.token.value if result.token else "?"
+        TOKEN_NAMES = {
+            "+1": "+1", "0": "0", "-1": "-1", "-2": "-2", "-3": "-3",
+            "-4": "-4", "-5": "-5", "-6": "-6", "-7": "-7", "-8": "-8",
+            "skull": "💀骷髅", "cultist": "👤邪���徒", "tablet": "📋石板",
+            "elder_thing": "🐙远古", "auto_fail": "❌自动失败",
+            "elder_sign": "✡长老印记", "bless": "🙏祝福", "curse": "💀诅咒",
+        }
+        token_display = TOKEN_NAMES.get(token_name, token_name)
+        mod = result.token_modifier
+        mod_str = f"{mod:+d}" if mod != 0 else "0"
+        result_str = "✅成功" if result.success else "❌失败"
+        if result.auto_fail:
+            result_str = "❌自动失败"
+
+        detail = f"[{token_display}({mod_str})] 技能{result.modified_skill} vs 难度{result.difficulty} → {result_str}"
+        self.action_log.append(f"{prefix} {detail}")
 
     def _flush_action_messages(self) -> None:
         """Move card-generated messages from scenario.vars to the action log."""

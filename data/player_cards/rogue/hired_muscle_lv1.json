@@ -1,0 +1,26 @@
+{
+  "id": "hired_muscle_lv1",
+  "arkhamdb_code": "02027",
+  "name": "Hired Muscle",
+  "name_cn": "雇傭打手",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "ally",
+    "criminal"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [combat].\n<b>Forced</b> - At the end of the upkeep phase: You must either pay 1 resource or discard Hired Muscle.",
+  "text_cn": "你獲得+1[combat]。\n<b>強制</b> - 當補給階段結束時：你必須選擇丟棄1資源，或丟棄雇傭打手。",
+  "health": 3,
+  "sanity": 1,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

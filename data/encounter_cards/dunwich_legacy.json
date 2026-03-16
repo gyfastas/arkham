@@ -1,0 +1,5168 @@
+{
+  "generated_at": "2026-03-11 19:38:30",
+  "source": "https://arkhamdb.com/api/public/cards/dwlc + zh.arkhamdb.com",
+  "code_range": [
+    2040,
+    2333
+  ],
+  "cards": [
+    {
+      "id": "dr_henry_armitage",
+      "arkhamdb_code": "02040",
+      "encounter_code": "armitages_fate",
+      "encounter_name": "Armitage's Fate",
+      "type": "asset",
+      "name": "Dr. Henry Armitage",
+      "name_cn": "亨利·阿米蒂奇博士",
+      "traits": [
+        "ally",
+        "miskatonic"
+      ],
+      "text": "[reaction] After you draw a non-weakness card, discard that card and exhaust Dr. Henry Armitage: Gain 3 resources.",
+      "text_cn": "[reaction]在你抽取一張非弱點卡牌後，丟棄那張卡牌並消耗亨利·阿米蒂奇博士：獲得3個資源。",
+      "stats": {
+        "cost": 2,
+        "health": 2,
+        "sanity": 2
+      },
+      "meta": {
+        "subname": "The Head Librarian",
+        "subname_cn": "圖書館負責人",
+        "position": 40,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "extracurricular_activity",
+      "arkhamdb_code": "02041",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "scenario",
+      "name": "Extracurricular Activity",
+      "name_cn": "課外活動",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -1. If you fail, discard the top 3 cards of your deck.\n[cultist]: -1 (-3 instead if there are 10 or more cards in your discard pile).\n[elder_thing]: -X. Discard the top 2 cards of your deck. X is the total printed cost of those discarded cards.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]：-1。如果失敗，丟棄你牌堆頂部3張卡牌。\n[cultist]：-1(如果你棄牌堆中至少有10張卡牌，改為-3)。\n[elder_thing]：-X。丟棄你牌堆頂部2張卡牌。X為這2張棄牌的打印費用之和。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 41,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "quiet_halls",
+      "arkhamdb_code": "02042",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "agenda",
+      "name": "Quiet Halls",
+      "name_cn": "寧靜的走廊",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "back_text": "Each investigator with 5 or more cards in his or her discard pile takes 1 horror. Each investigator with 10 or more cards in his or her discard pile takes 2 horror, instead.\nIf the players have completed The House Always Wins, advance directly to agenda 2b. If Extracurricular Activity is the first scenario in the campaign, advance to agenda 2a.",
+      "back_text_cn": "每位棄牌堆至少有5張卡牌的調查員，受到1點恐懼。每位棄牌堆至少有10張卡牌的調查員，改為受到2點恐懼。\n如果玩家完成了\"百賭百勝\"冒險，直接推進至密謀2b。如果\"課外活動\"是玩家的第一場冒險，則推進至密謀2a。",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 42,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dead_of_night",
+      "arkhamdb_code": "02043",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "agenda",
+      "name": "Dead of Night",
+      "name_cn": "死寂之夜",
+      "traits": [],
+      "text": "Each investigator's maximum hand size is reduced by 3 while checking his or her hand size during the upkeep phase.",
+      "text_cn": "在補給階段中，檢查手牌上限時，每位調查員手牌上限減少3張。",
+      "back_text": "If the Dormitories is not in play, put it into play. If The Experiment is in play, move it once toward the Dormitories. If The Experiment is not in play, spawn it at the Science Building.",
+      "back_text_cn": "如果宿舍不在場上，將該地點卡放置入場。如果實驗���在場上，將其朝宿舍移動一次。如果實驗體不在場上，將其生成在科學大樓。",
+      "stats": {
+        "doom": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 43,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_beast_unleashed",
+      "arkhamdb_code": "02044",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "agenda",
+      "name": "The Beast Unleashed",
+      "name_cn": "野獸出籠",
+      "traits": [],
+      "text": "<b>Forced</b> - When this agenda would advance by reaching its doom threshold: Instead, remove all doom in play and move The Experiment 1 location toward the Dormitories.\n<b>Objective</b> - If The Experiment enters the Dormitories, advance.",
+      "text_cn": "<b>強制</b> - 在該密謀毀滅標記足夠，將要推進時：改為將所有毀滅標記移除，並將實驗體朝宿舍移動一次。\n<b>目標</b> - 如果實驗體進入宿舍，推進密謀。",
+      "back_text": "Each investigator immediately takes 3 horror. Then, proceed to (→R4).",
+      "back_text_cn": "每位調查員立刻受到3點恐懼。然後，進入(→結局4)。",
+      "stats": {
+        "doom": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 44,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "after_hours",
+      "arkhamdb_code": "02045",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "act",
+      "name": "After Hours",
+      "name_cn": "下班時間",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "back_text": "Shuffle the encounter discard pile and the set-aside \"Jazz\" Mulligan into the encounter deck.",
+      "back_text_cn": "將遭遇棄牌堆和放在一邊的\"爵士\"馬利根一同混洗入遭遇牌堆。",
+      "stats": {
+        "clues": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 45,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "rices_whereabouts",
+      "arkhamdb_code": "02046",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "act",
+      "name": "Rice's Whereabouts",
+      "name_cn": "萊斯的下落",
+      "traits": [],
+      "text": "[action] Spend 1 clue: Discard the top 5 cards of the encounter deck (top 10 instead if there is only 1 player in the game).\n<b>Forced</b> - If you discard \"Jazz\" Mulligan for any reason, resolve his revelation effect.\n<b>Objective</b> - When you take control of \"Jazz\" Mulligan, advance.",
+      "text_cn": "[action]花費1線索：丟棄遭遇牌堆頂部5張卡牌(1人遊戲時改為丟棄10張)。\n<b>強制</b> - 如果有任何效果丟棄了\"爵士\"馬利根，立刻結算該卡的顯現效果。\n<b>目標</b> - 在你控制\"爵士\"馬利根時，推進場景。",
+      "back_text": "If the Alchemy Labs location is not in play, put it into play. If you are at Agenda 1 or 2, spawn The Experiment in the Alchemy Labs.\nIf you have completed The House Always Wins, put the set-aside Alchemical Concoction into play underneath the Alchemy Labs. If Extracurricular Activity is the first scenario of the campaign, remove the set-aside Alchemical Concoction from the game, instead.",
+      "back_text_cn": "如果煉金實驗室不在場上，將該地點卡放置入場。如果你處於密謀1或2，將放在一邊的實驗體生成在煉金實驗室。\n如果你完成了\"百賭百勝\"冒險，將放在一邊的煉金試劑放置在煉金實驗室底下。如果\"課外活動\"是玩家的第一場冒險，將放在一邊的煉金試劑移出遊戲。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 46,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "campus_safety",
+      "arkhamdb_code": "02047",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "act",
+      "name": "Campus Safety",
+      "name_cn": "校園安全",
+      "traits": [],
+      "text": "<b>Objective</b> - Find and complete an objective on another encounter card.",
+      "text_cn": "<b>目標</b> - 找到一張帶有目標的遭遇卡，並完成卡牌上的目標。",
+      "back_text": "The creature lets out a horrible shriek and collapses. (→R3)",
+      "back_text_cn": "那個大怪物疼痛地大聲喊叫，然後便無力地倒在地上。(→結局3)",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 47,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "miskatonic_quad",
+      "arkhamdb_code": "02048",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Miskatonic Quad",
+      "name_cn": "大學廣場",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "[action]: <b>Resign.</b> \"We can't find Rice anywhere...\" You leave the campus, hoping Armitage will forgive you.",
+      "text_cn": "[action]：<b>撤退</b>。\"我們到處都找不到萊斯……\"你離開了校園，希望阿米蒂奇會原諒你們。",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 48,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "humanities_building",
+      "arkhamdb_code": "02049",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Humanities Building",
+      "name_cn": "人文學大樓",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "<b>Forced</b> - At the end of your turn, if you are in the Humanities Building: Discard the top X cards of your deck, where X is the amount of horror on you.",
+      "text_cn": "<b>強制</b> - 當你回合結束時，如果你在人文學大樓：丟棄你牌堆頂部X張卡牌，X為你的恐懼數量。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 49,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "orne_library",
+      "arkhamdb_code": "02050",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Orne Library",
+      "name_cn": "奧恩圖書館",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "You must spend 1 additional action to investigate the Orne Library.",
+      "text_cn": "調查奧恩圖書館時，必須額外花費1個行動。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 50,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "student_union",
+      "arkhamdb_code": "02051",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Student Union",
+      "name_cn": "學生會",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "<b>Forced</b> - After Student Union is revealed: Put the set-aside Dormitories into play.\n[action] [action]: Heal 1 damage and 1 horror.",
+      "text_cn": "<b>強制</b> - 在翻開學生會後：將放在一邊的宿舍放置入場。\n[action][action]：治癒1點傷害和1點恐懼。",
+      "stats": {
+        "shroud": 1,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 51,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dormitories",
+      "arkhamdb_code": "02052",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Dormitories",
+      "name_cn": "宿舍",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "<b>Objective</b> - If investigators in the Dormitories spend 3 [per_investigator] clues, as a group: <b>(→R2)</b>",
+      "text_cn": "<b>目標</b> - 如果在宿舍的調查員，以團隊為單位花費3[per_investigator]個線索：<b>(→結局2)</b>",
+      "stats": {
+        "shroud": 1,
+        "clues": 3,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 52,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "administration_building",
+      "arkhamdb_code": "02053",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Administration Building",
+      "name_cn": "管理大樓",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "<b>Forced</b> - After Administration Building is revealed: Put the set-aside Faculty Offices into play.\n<b>Forced</b> - At the end of your turn, if you are in the Administration Building: Discard the top card of your deck.",
+      "text_cn": "<b>強制</b> - 在翻開管理大樓後：將放在一邊的教師辦公室放置入場。\n<b>強制</b> - 當你回合結束時，如果你在管理大樓：丟棄你牌堆頂部的1張卡牌。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 53,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "faculty_offices_a",
+      "arkhamdb_code": "02054",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Faculty Offices",
+      "name_cn": "教師辦公室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "<b>Forced</b> - After Faculty Offices is revealed: Search the encounter deck and discard pile for a [[Humanoid]] enemy and spawn it here. Shuffle the encounter deck.\n<b>Objective</b> - If investigators in the Faculty Offices spend 2 [per_investigator] clues, as a group: <b>(→R1)</b>",
+      "text_cn": "<b>強制</b> - 在翻開教師辦公室後：查找遭遇牌堆和棄牌堆，將一名[[類人]]敵人生成在該地點，然後混洗遭遇牌堆。\n<b>目標</b> - 如果在教師辦公室的調查員，以團隊為單位花費2[per_investigator]個線索：<b>(→結局1)</b>",
+      "stats": {
+        "shroud": 2,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "The Night is Still Young",
+        "subname_cn": "夜色未深",
+        "position": 54,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "faculty_offices_b",
+      "arkhamdb_code": "02055",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Faculty Offices",
+      "name_cn": "教師辦公室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "The Hour is Late",
+        "subname_cn": "夜色已深",
+        "position": 55,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "science_building",
+      "arkhamdb_code": "02056",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Science Building",
+      "name_cn": "科學大樓",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "<b>Forced</b> - After Science Building is revealed: Put the set-aside Alchemy Labs into play.\n<b>Forced</b> - When you fail a [willpower] test in the Science Building: Take 1 damage.",
+      "text_cn": "<b>強制</b> - 在翻開科學大樓後：將放在一邊的煉金實驗室放置入場。\n<b>強制</b> - 當你在科學大樓進行[willpower]檢定失敗時：受到1點傷害。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 56,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "alchemy_labs",
+      "arkhamdb_code": "02057",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "location",
+      "name": "Alchemy Labs",
+      "name_cn": "煉金實驗室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "[action]: <b>Investigate.</b> If you are successful, instead of discovering clues, take the Alchemical Concoction from underneath this location if able.",
+      "text_cn": "[action]：<b>調查</b>。如果成功，不發現線索，改為拿取該卡下的煉金試劑。",
+      "stats": {
+        "shroud": 5,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 57,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_experiment",
+      "arkhamdb_code": "02058",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "enemy",
+      "name": "The Experiment",
+      "name_cn": "實驗體",
+      "traits": [
+        "monster",
+        "abomination",
+        "elite"
+      ],
+      "text": "Massive.\nThe Experiment gets +3 [per_investigator] health.\n<b>Forced</b> - When the enemy phase begins: Ready The Experiment.\n<b>Objective</b> - If The Experiment is defeated, advance to act 3b.",
+      "text_cn": "龐大。\n實驗體獲得+3[per_investigator]的生命值。\n<b>強制</b> - 在敵軍階段開始時：準備實驗體。\n<b>目標</b> - 如果實驗體被擊敗，推進到場景3b。",
+      "stats": {
+        "fight": 4,
+        "evade": 2,
+        "health": 7,
+        "damage": 2,
+        "horror": 2,
+        "victory": 2
+      },
+      "meta": {
+        "subname": "Something Went Terribly Wrong",
+        "subname_cn": "看來實驗失敗了",
+        "position": 58,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "alchemical_concoction",
+      "arkhamdb_code": "02059",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "asset",
+      "name": "Alchemical Concoction",
+      "name_cn": "煉金試劑",
+      "traits": [
+        "item",
+        "science"
+      ],
+      "text": "[action]: <b>Fight.</b> This attack uses [intellect] instead of [combat]. If used to attack The Experiment, this attack deals +6 damage. If you succeed, remove Alchemical Concoction from the game.",
+      "text_cn": "[action]：<b>攻擊</b>。這次攻擊不使用[combat]，改為使用[intellect]。如果攻擊對象為實驗體，這次攻擊造成+6傷害。如果成功，將煉金試劑移出遊戲。",
+      "stats": {
+        "cost": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 59,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "jazz_mulligan",
+      "arkhamdb_code": "02060",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "asset",
+      "name": "\"Jazz\" Mulligan",
+      "name_cn": "\"爵士\"馬利根",
+      "traits": [
+        "ally",
+        "miskatonic"
+      ],
+      "text": "<b>Revelation</b> - Put \"Jazz\" Mulligan into play at your location.\nWhile \"Jazz\" Mulligan is not controlled by a player, he gains: \"[action]: <b>Parley.</b> Test [intellect] (3). If successful, take control of \"Jazz\" Mulligan.\"\nWhile you control \"Jazz\" Mulligan, you ignore the text on each unrevealed [[Miskatonic]] location.",
+      "text_cn": "<b>顯現</b> - 將\"爵士\"馬利根放置入你的所在地點。\n只要\"爵士\"馬利根未被調查員控制，他獲得：\"[action]：<b>談判</b>。檢定[intellect](3)。如果成功，控制\"爵士\"馬利根。\"\n只要你控制\"爵士\"馬利根，你無視所有未進入的[[米斯卡塔尼克]]地點的文字。",
+      "stats": {
+        "cost": 0,
+        "health": 2,
+        "sanity": 2
+      },
+      "meta": {
+        "subname": "The Head Janitor",
+        "subname_cn": "清潔工工頭",
+        "position": 60,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "professor_warren_rice",
+      "arkhamdb_code": "02061",
+      "encounter_code": "extracurricular_activity",
+      "encounter_name": "Extracurricular Activity",
+      "type": "asset",
+      "name": "Professor Warren Rice",
+      "name_cn": "沃倫·萊斯教授",
+      "traits": [
+        "ally",
+        "miskatonic"
+      ],
+      "text": "You get +1 [intellect].\n[reaction] After you discover the last remaining clue in your location, exhaust Professor Warren Rice: Draw 1 card.",
+      "text_cn": "你獲得+1[intellect]。\n[reaction]在你發現所在地點的最後一個線索後，消耗沃倫·萊斯教授：抽取1張卡牌。",
+      "stats": {
+        "cost": 3,
+        "health": 2,
+        "sanity": 3
+      },
+      "meta": {
+        "subname": "Professor of Languages",
+        "subname_cn": "語言學教授",
+        "position": 61,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_house_always_wins",
+      "arkhamdb_code": "02062",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "scenario",
+      "name": "The House Always Wins",
+      "name_cn": "百賭百勝",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -2. You may spend 2 resources to treat this token as a 0, instead.\n[cultist]: -3. If you succeed, gain 3 resources.\n[tablet]: -2. If you fail, discard 3 resources.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]：-2。你可以花費2個資源，將這個標記視為0。\n[cultist]：-3。如果成功，獲得3個資源。\n[tablet]：-2。如果失敗，丟棄3個資源。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 62,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_clover_club",
+      "arkhamdb_code": "02063",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "agenda",
+      "name": "The Clover Club",
+      "name_cn": "四葉草俱樂部",
+      "traits": [],
+      "text": "Each [[Criminal]] enemy gains Aloof.\n<b>Forced</b> - If an investigator deals damage to a [[Criminal]] enemy: Immediately advance.",
+      "text_cn": "所有[[罪犯]]獲得冷漠關鍵詞。\n如果一名調查員對[[罪犯]]敵人造成傷害：立刻推進密謀。",
+      "stats": {
+        "doom": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 63,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "underground_muscle",
+      "arkhamdb_code": "02064",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "agenda",
+      "name": "Underground Muscle",
+      "name_cn": "地下打手",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 64,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "chaos_in_the_clover_club",
+      "arkhamdb_code": "02065",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "agenda",
+      "name": "Chaos in the Clover Club",
+      "name_cn": "混亂俱樂部",
+      "traits": [],
+      "text": "<b>Forced</b> - At the start of the enemy phase: Discard each [[Criminal]] enemy in the same location as an [[Abomination]] enemy.",
+      "text_cn": "<b>強制</b> - 當敵軍階段開始時：丟棄與[[異形]]敵人在同一地點的所有[[罪犯]]敵人。",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 65,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "beginners_luck",
+      "arkhamdb_code": "02066",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "act",
+      "name": "Beginner's Luck",
+      "name_cn": "歪打正著",
+      "traits": [],
+      "text": "[reaction] When you reveal a chaos token: You may treat that token as if it were any other token in the chaos bag. If you do, remember that you have \"cheated.\" (Group limit once per round.)\n<b>Objective</b> - When the investigators have collected the requisite number of clues, they must immediately spend them and advance.",
+      "text_cn": "[reaction]在你抽出混亂標記時：你可以將該標記視為混亂袋中任意一個其他標記。如果你這麼做，請記住你\"作弊\"了。(團隊每輪限制1次。)\n<b>目標</b> - 在調查員收集到所需數量的線索時，必須立刻花費這些線索，並推進場景。",
+      "stats": {
+        "clues": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 66,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "skin_game",
+      "arkhamdb_code": "02067",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "act",
+      "name": "Skin Game",
+      "name_cn": "賭場騙局",
+      "traits": [],
+      "text": "<b>Objective</b> - Only investigators in the VIP Area may spend the requisite number of clues, as a group, to advance.",
+      "text_cn": "<b>目標</b> - 只有在VIP區的調查員能夠以團隊為單位，花費所需線索來推進場景。",
+      "stats": {
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 67,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "all_in",
+      "arkhamdb_code": "02068",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "act",
+      "name": "All In",
+      "name_cn": "孤注一擲",
+      "traits": [],
+      "text": "While Dr. Morgan is not controlled by a player, he gains \"[action]: <b>Parley.</b> Test [willpower] (3) to shake Dr. Morgan out of his daze. If you succeed, place 1 clue from the token bank on him. If there are 1 [per_investigator] clues on Dr. Morgan, take control of him.\"\n<b>Objective</b> - If each undefeated investigator has resigned, advance.",
+      "text_cn": "只要摩爾根未被玩家控制，他獲得：\"[action]：<b>談判</b>。檢定[willpower](3)來猛搖摩爾根，讓他清醒過來。如果成功，從供應堆拿取1個線索放置到摩爾根上。如果摩爾根博士有1[per_investigator]個線索，控制他。\"\n<b>目標</b> - 如果所有未被擊敗的調查員都已撤退，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 68,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "fold",
+      "arkhamdb_code": "02069",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "act",
+      "name": "Fold",
+      "name_cn": "收牌認輸",
+      "traits": [],
+      "text": "While Peter Clover is not controlled by a player, he gains \"[action]: <b>Parley.</b> Test [willpower] (3) to convince Peter to follow you. If you succeed, place 1 clue from the token bank on him. If there are 1 [per_investigator] clues on Peter Clover, take control of him.\"\n<b>Objective</b> - If each undefeated investigator has resigned, advance.",
+      "text_cn": "只要彼得·克勞佛未被玩家控制，他獲得：\"[action]：<b>談判</b>。檢定[willpower](3)來說服彼得跟你們走。如果成功，從供應堆拿取1個線索放置到摩爾根上。如果彼得·克勞佛有1[per_investigator]個線索，控制他。\"\n<b>目標</b> - 如果所有未被擊敗的調查員都已撤退，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 69,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "la_bella_luna",
+      "arkhamdb_code": "02070",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "La Bella Luna",
+      "name_cn": "月下美人",
+      "traits": [
+        "arkham"
+      ],
+      "text": "[action]: <b>Resign.</b> This was a bust.",
+      "text_cn": "[action]：<b>撤退。</b>簡直吵死人，我要走了。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 70,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "clover_club_lounge",
+      "arkhamdb_code": "02071",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "Clover Club Lounge",
+      "name_cn": "俱樂部大廳",
+      "traits": [
+        "clover club"
+      ],
+      "text": "While it is Act 1, Clover Club Lounge gains:\n\"[action] Discard an [[Ally]] asset from your hand: Gain 2 clues from the token pool. (Limit once per game.)\"",
+      "text_cn": "只要處於場景1，俱樂部大廳獲得：\"[action]丟棄一張你手中的[[盟友]]支援卡：從供應堆獲得2個線索。(每場遊戲限制1次。)\"",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 71,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "clover_club_bar",
+      "arkhamdb_code": "02072",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "Clover Club Bar",
+      "name_cn": "俱樂部酒吧",
+      "traits": [
+        "clover club"
+      ],
+      "text": "While it is Act 1, Clover Club Bar gains:\n\"[action] Spend 2 resources: Gain 2 clues from the token pool and draw 2 cards. Remember that you have 'had a drink.' (Limit once per game.)\"",
+      "text_cn": "只要處於場景1，俱樂部酒吧獲得：\"[action]花費2資源：從供應堆獲得2個線索，並抽取2張卡牌。請記住你\"喝酒\"了。(每場遊戲限制1次。)\"",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 72,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "clover_club_cardroom",
+      "arkhamdb_code": "02073",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "Clover Club Cardroom",
+      "name_cn": "俱樂部卡牌室",
+      "traits": [
+        "clover club"
+      ],
+      "text": "While it is Act 1, Clover Club Cardroom gains:\n\"[action] Spend 2 resources: Reveal a random chaos token.\nIf it is a [elder_sign] symbol, gain 2 clues and 2 resources from the token bank.\nIf it is an even number, gain 2 clues from the token bank.\nIf it is an odd number or a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol, nothing happens.\"",
+      "text_cn": "只要處於場景1，俱樂部卡牌室獲得：\"[action]花費2資源：隨機抽出一個混亂標記。\n如果是[elder_sign]標記，從供應堆獲得2個線索和2個資源。\n如果是偶數，從供應堆獲得2個線索。\n如果是奇數或[skull]、[cultist]、[tablet]、[elder_thing]、[auto_fail]標記，無事發生。\"",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 73,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "darkened_hall",
+      "arkhamdb_code": "02074",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "Darkened Hall",
+      "name_cn": "黑暗走廊",
+      "traits": [
+        "clover club"
+      ],
+      "text": "<b>Forced</b> - When Darkened Hall is revealed: Put into play the 3 set-aside Back Hall Doorway locations.",
+      "text_cn": "<b>強制</b> - 在黑暗走廊被翻開時：將3張放在一邊的走廊後門地點卡放置入場。",
+      "stats": {
+        "shroud": 4,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 74,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "art_gallery",
+      "arkhamdb_code": "02075",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "Art Gallery",
+      "name_cn": "藝術館",
+      "traits": [
+        "clover club"
+      ],
+      "text": "<b>Forced</b> - After you fail a skill test while investigating the Art Gallery: Lose 2 resources.",
+      "text_cn": "<b>強制</b> - 在你調查藝術館檢定失敗後：失去2個資源。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 75,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "vip_area",
+      "arkhamdb_code": "02076",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "VIP Area",
+      "name_cn": "VIP區",
+      "traits": [
+        "clover club"
+      ],
+      "text": "While you are in the VIP Area, you cannot draw cards or gain resources during the upkeep phase.",
+      "text_cn": "只要你在VIP區，你在補給階段不能抽取卡牌或獲得資源。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 76,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "back_alley",
+      "arkhamdb_code": "02077",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "location",
+      "name": "Back Alley",
+      "name_cn": "後巷",
+      "traits": [
+        "clover club"
+      ],
+      "text": "[action]: <b>Resign.</b> We can get out this way!",
+      "text_cn": "[action]：<b>撤退</b>。我們可以從這兒逃走！",
+      "stats": {
+        "shroud": 1,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 77,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "clover_club_pit_boss",
+      "arkhamdb_code": "02078",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "enemy",
+      "name": "Clover Club Pit Boss",
+      "name_cn": "俱樂部賭場管理員",
+      "traits": [
+        "humanoid",
+        "criminal",
+        "elite"
+      ],
+      "text": "<b>Prey</b> - Highest [intellect].\nHunter.\n<b>Forced</b> - After an investigator at Clover Club Pit Boss's location gains any number of clues: Clover Club Pit Boss readies, engages that investigator, and makes an immediate attack.",
+      "text_cn": "<b>獵物</b> - 最高[intellect]。\n獵手。\n<b>強制</b> - 在一位調查員在俱樂部賭場管理員所在地點獲得至少1個線索後：準備俱樂部賭場管理員，並且與該調查員交戰，立刻攻擊該調查員。<i>(FAQ, v1.2)</i>",
+      "stats": {
+        "fight": 3,
+        "evade": 3,
+        "health": 4,
+        "damage": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 78,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "peter_clover",
+      "arkhamdb_code": "02079",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "asset",
+      "name": "Peter Clover",
+      "name_cn": "彼得·克勞佛",
+      "traits": [
+        "humanoid",
+        "criminal"
+      ],
+      "text": "<b>Forced</b> - At the start of the enemy phase, if no investigator controls Peter Clover: Deal 1 damage to him.\n[fast] Exhaust Peter Clover: Automatically evade a [[Criminal]] enemy in your location.",
+      "text_cn": "<b>強制</b> - 當敵軍階段開始時，如果沒有調查員控制彼得·克勞佛：對該卡造成1點傷害。\n[free]消耗彼得·克勞佛：自動躲避你所在地點的一名[[罪犯]]敵人。<i>(FAQ, v1.2)</i>",
+      "stats": {
+        "cost": 0,
+        "health": 3,
+        "sanity": 2
+      },
+      "meta": {
+        "subname": "Holding All the Cards",
+        "subname_cn": "總有好牌",
+        "position": 79,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dr_francis_morgan",
+      "arkhamdb_code": "02080",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "asset",
+      "name": "Dr. Francis Morgan",
+      "name_cn": "佛朗西斯·摩爾根博士",
+      "traits": [
+        "ally",
+        "miskatonic"
+      ],
+      "text": "You get +1 [combat].\n[reaction] After you defeat an enemy, exhaust Dr. Francis Morgan: Draw 1 card.",
+      "text_cn": "你獲得+1[combat]。\n[reaction]在你擊敗一名敵人後，消耗佛朗西斯·摩爾根博士：抽取1張卡牌。",
+      "stats": {
+        "cost": 3,
+        "health": 4,
+        "sanity": 1
+      },
+      "meta": {
+        "subname": "Professor of Archaeology",
+        "subname_cn": "考古學教授",
+        "position": 80,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "something_in_the_drinks",
+      "arkhamdb_code": "02081",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "treachery",
+      "name": "Something in the Drinks",
+      "name_cn": "酒裡有毒",
+      "traits": [
+        "poison",
+        "illicit"
+      ],
+      "text": "Surge.\n<b>Revelation</b> - Each player who has \"had a drink\" loses 1 action.",
+      "text_cn": "湧動。\n<b>顯現</b> - 所有\"喝酒\"的玩家失去1個行動。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 81,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "arousing_suspicions",
+      "arkhamdb_code": "02082",
+      "encounter_code": "the_house_always_wins",
+      "encounter_name": "The House Always Wins",
+      "type": "treachery",
+      "name": "Arousing Suspicions",
+      "name_cn": "引起懷疑",
+      "traits": [],
+      "text": "<b>Revelation</b> - Place 1 doom on each [[Criminal]] enemy at your location. If no doom was placed by this effect, lose 2 resources.",
+      "text_cn": "<b>顯現</b> - 在你所在地點的所有[[罪犯]]敵人上，各放置一個毀滅標記。如果該效果未放置任何毀滅標記，失去2個資源。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 82,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "visions_of_futures_past",
+      "arkhamdb_code": "02083",
+      "encounter_code": "sorcery",
+      "encounter_name": "Sorcery",
+      "type": "treachery",
+      "name": "Visions of Futures Past",
+      "name_cn": "穿越時間的幻覺",
+      "traits": [
+        "hex"
+      ],
+      "text": "<b>Revelation</b> - Test [willpower] (5). For each point you fail by, discard the top card of your deck.",
+      "text_cn": "<b>顯現</b> - 檢定[willpower](5)。你每低於難度1點，丟棄你牌堆頂部一張卡牌。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 83,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "beyond_the_veil",
+      "arkhamdb_code": "02084",
+      "encounter_code": "sorcery",
+      "encounter_name": "Sorcery",
+      "type": "treachery",
+      "name": "Beyond the Veil",
+      "name_cn": "轉生幻象",
+      "traits": [
+        "hex"
+      ],
+      "text": "Surge.\n<b>Revelation</b> - Put Beyond the Veil into play in your threat area if there is no copy of Beyond the Veil in your threat area.\n<b>Forced</b> - If your deck has no cards in it: Take 10 damage and discard Beyond the Veil.",
+      "text_cn": "湧動。\n<b>顯現</b> - 如果你的威脅區域沒有轉生幻象，將轉生幻象放置入你的威脅區域。\n<b>強制</b> - 如果你的牌堆沒有卡牌：受到10點傷害，並丟棄轉生幻象。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 84,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "light_of_aforgomon",
+      "arkhamdb_code": "02085",
+      "encounter_code": "bishops_thralls",
+      "encounter_name": "Bishop's Thralls",
+      "type": "treachery",
+      "name": "Light of Aforgomon",
+      "name_cn": "亞弗戈蒙之光",
+      "traits": [
+        "pact",
+        "power"
+      ],
+      "text": "Peril.\n<b>Revelation</b> - You must attach Light of Aforgomon to either the current agenda or the current act.\nLimit 1 per agenda/act. Treat all damage as direct damage and all horror as direct horror.",
+      "text_cn": "禍害。\n<b>顯現</b> - 你必須將亞弗戈蒙之光疊加到當前密謀或當前場景。\n每張密謀或場景限制1張。將所有傷害視為直接傷害，所有恐懼視為直接恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 85,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "thrall",
+      "arkhamdb_code": "02086",
+      "encounter_code": "bishops_thralls",
+      "encounter_name": "Bishop's Thralls",
+      "type": "enemy",
+      "name": "Thrall",
+      "name_cn": "奴僕",
+      "traits": [
+        "humanoid",
+        "monster",
+        "abomination"
+      ],
+      "text": "<b>Spawn</b> - Location with the most clues.\nRetaliate.",
+      "text_cn": "<b>生成</b> - 線索最多的地點。\n反擊。",
+      "stats": {
+        "fight": 2,
+        "evade": 2,
+        "health": 2,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 86,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "wizard_of_yog_sothoth",
+      "arkhamdb_code": "02087",
+      "encounter_code": "bishops_thralls",
+      "encounter_name": "Bishop's Thralls",
+      "type": "enemy",
+      "name": "Wizard of Yog-Sothoth",
+      "name_cn": "猶格·索托斯的法師",
+      "traits": [
+        "humanoid",
+        "sorcerer"
+      ],
+      "text": "<b>Prey</b> - Least cards in hand.\nHunter.\n<b>Forced</b> - When the engaged investigator draws a [[Hex]] or [[Pact]] card: Wizard of Yog-Sothoth attacks that investigator.",
+      "text_cn": "<b>獵物</b> - 手牌最少。\n獵手。\n<b>強制</b> - 在交戰中的調查員抽到一張[[巫術]]或[[契約]]卡牌時：猶格·索托斯的法師立刻攻擊該調查員。",
+      "stats": {
+        "fight": 4,
+        "evade": 3,
+        "health": 3,
+        "damage": 1,
+        "horror": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 87,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "unhallowed_country",
+      "arkhamdb_code": "02088",
+      "encounter_code": "dunwich",
+      "encounter_name": "Dunwich",
+      "type": "treachery",
+      "name": "Unhallowed Country",
+      "name_cn": "不潔之地",
+      "traits": [
+        "terror"
+      ],
+      "text": "<b>Revelation</b> - Put Unhallowed Country into play in your threat area.\nYou cannot play [[Ally]] assets. Treat the printed text box of each [[Ally]] asset you control as if it were blank.\n<b>Forced</b> - At the end of your turn: Test [willpower] (3). If you succeed, discard Unhallowed Country.",
+      "text_cn": "<b>顯現</b> - 將不潔之地放置入你的威脅區域。\n你不能打出[[盟友]]支援卡。將你控制的[[盟友]]支援卡的文字視為空白。\n<b>強制</b> - 當你回合結束時：檢定[willpower](3)。如果成功，丟棄不潔之地。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 88,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "sordid_and_silent",
+      "arkhamdb_code": "02089",
+      "encounter_code": "dunwich",
+      "encounter_name": "Dunwich",
+      "type": "treachery",
+      "name": "Sordid and Silent",
+      "name_cn": "忍氣吞聲",
+      "traits": [
+        "terror"
+      ],
+      "text": "<b>Revelation</b> - Attach Sordid and Silent to your location.\n<b>Forced</b> - At the end of the round: Each investigator at attached location takes 1 horror.\n<b>Forced</b> - When the agenda advances: Discard Sordid and Silent.",
+      "text_cn": "<b>顯現</b> - 將忍氣吞聲疊加到你的所在地點。\n<b>強制</b> - 當一輪結束時：在疊加地點的調查員受到1點恐懼。\n<b>強制</b> - 在推進密謀時：丟棄忍氣吞聲。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 89,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "whippoorwill",
+      "arkhamdb_code": "02090",
+      "encounter_code": "whippoorwills",
+      "encounter_name": "Whippoorwills",
+      "type": "enemy",
+      "name": "Whippoorwill",
+      "name_cn": "夜鷹",
+      "traits": [
+        "creature"
+      ],
+      "text": "Aloof. Hunter.\nEach investigator at Whippoorwill's location gets -1 [willpower], -1 [intellect], -1 [combat], and -1 [agility].",
+      "text_cn": "冷漠。獵手。\n位於夜鷹所在地點的調查員獲得-1[willpower]、-1[intellect]、-1[combat]和-1[agility]。",
+      "stats": {
+        "fight": 2,
+        "evade": 4,
+        "health": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 90,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "eager_for_death",
+      "arkhamdb_code": "02091",
+      "encounter_code": "whippoorwills",
+      "encounter_name": "Whippoorwills",
+      "type": "treachery",
+      "name": "Eager for Death",
+      "name_cn": "渴望死亡",
+      "traits": [
+        "omen"
+      ],
+      "text": "<b>Revelation</b> - Test [willpower] (2). Increase this skill test's difficulty by 1 for each damage on you. If you fail, take 2 horror.",
+      "text_cn": "<b>顯現</b> - 檢定[willpower](2)。你身上每有1點傷害，本次技能檢定難度提升1點。如果你失敗，受到2點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 91,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "cursed_luck",
+      "arkhamdb_code": "02092",
+      "encounter_code": "bad_luck",
+      "encounter_name": "Bad Luck",
+      "type": "treachery",
+      "name": "Cursed Luck",
+      "name_cn": "厄運連連",
+      "traits": [
+        "omen"
+      ],
+      "text": "<b>Revelation</b> - Put Cursed Luck into play in your threat area.\nYou get -1 skill value during skill tests.\n<b>Forced</b> - After you succeed at a skill test by 1 or more: Discard Cursed Luck.",
+      "text_cn": "<b>顯現</b> - 將厄運連連放置入你的威脅區域。\n你進行技能檢定時，技能值-1。\n<b>強制</b> - 在你技能檢定時，如果超過難度至少1點：丟棄厄運連連。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 92,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "twist_of_fate",
+      "arkhamdb_code": "02093",
+      "encounter_code": "bad_luck",
+      "encounter_name": "Bad Luck",
+      "type": "treachery",
+      "name": "Twist of Fate",
+      "name_cn": "扭轉命運",
+      "traits": [
+        "omen"
+      ],
+      "text": "<b>Revelation</b> - Reveal a random token from the chaos bag.\nIf you reveal a [elder_sign] symbol or positive number, nothing happens.\nIf you reveal any other number, take 1 damage.\nIf you reveal a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol, take 2 horror.",
+      "text_cn": "<b>顯現</b> - 從混亂袋中隨機抽取1個標記。\n如果抽出[elder_sign]或正數，無事發生。\n如果抽出其他數字，受到1點傷害。\n如果抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]標記，受到2點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 93,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "avian_thrall",
+      "arkhamdb_code": "02094",
+      "encounter_code": "beast_thralls",
+      "encounter_name": "Beast Thralls",
+      "type": "enemy",
+      "name": "Avian Thrall",
+      "name_cn": "鳥之奴僕",
+      "traits": [
+        "creature",
+        "monster",
+        "abomination"
+      ],
+      "text": "<b>Prey</b> - Lowest [intellect].\nHunter.\nWhile Avian Thrall is being attacked using a [[Ranged]], [[Firearm]], or [[Spell]] asset, it gets -3 fight.",
+      "text_cn": "<b>獵物</b> - 最低[intellect]。\n獵手。\n使用[[遠程]]、[[槍械]]、[[法術]]支援卡攻擊鳥之奴僕時，該敵人-3攻擊。",
+      "stats": {
+        "fight": 5,
+        "evade": 3,
+        "health": 4,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 94,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "lupine_thrall",
+      "arkhamdb_code": "02095",
+      "encounter_code": "beast_thralls",
+      "encounter_name": "Beast Thralls",
+      "type": "enemy",
+      "name": "Lupine Thrall",
+      "name_cn": "狼之奴僕",
+      "traits": [
+        "creature",
+        "monster",
+        "abomination"
+      ],
+      "text": "<b>Spawn</b> - Farthest location from you.\n<b>Prey</b> - Lowest [agility].\nHunter. Retaliate.",
+      "text_cn": "<b>生成</b> - 離你最遠的地點。\n<b>獵物</b> - 最低[agility]。\n獵手。反擊。",
+      "stats": {
+        "fight": 4,
+        "evade": 4,
+        "health": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 95,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "altered_beast",
+      "arkhamdb_code": "02096",
+      "encounter_code": "beast_thralls",
+      "encounter_name": "Beast Thralls",
+      "type": "treachery",
+      "name": "Altered Beast",
+      "name_cn": "變異野獸",
+      "traits": [
+        "power"
+      ],
+      "text": "<b>Revelation</b> - If there are no [[Abomination]] enemies in play, Altered Beast gains surge. Otherwise, choose an [[Abomination]] enemy. Heal all damage from that enemy and attached Altered Beast to it.\n<b>Forced</b> - When you enter attached enemy's location (or vice-versa): Take 1 horror.",
+      "text_cn": "<b>顯現</b> - 如果場上沒有[[異形]]敵人，變異野獸獲得湧動關鍵詞。否則，選擇一名[[異形]]敵人。治癒該敵人所有傷害，並將變異野獸疊加到該敵人。\n<b>強制</b> - 在你進入疊加敵人所在地點時(反之亦然)：受到1點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 96,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "obannions_thug",
+      "arkhamdb_code": "02097",
+      "encounter_code": "naomis_crew",
+      "encounter_name": "Naomi's Crew",
+      "type": "enemy",
+      "name": "O'Bannion's Thug",
+      "name_cn": "歐巴尼恩暴徒",
+      "traits": [
+        "humanoid",
+        "criminal",
+        "syndicate"
+      ],
+      "text": "While O'Bannion's Thug is engaged with you, you cannot gain resources.",
+      "text_cn": "歐巴尼恩暴徒與你交戰時，你不能獲得資源。<i>(FAQ, v1.2)</i>",
+      "stats": {
+        "fight": 4,
+        "evade": 2,
+        "health": 2,
+        "damage": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 97,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "mobster",
+      "arkhamdb_code": "02098",
+      "encounter_code": "naomis_crew",
+      "encounter_name": "Naomi's Crew",
+      "type": "enemy",
+      "name": "Mobster",
+      "name_cn": "匪徒",
+      "traits": [
+        "humanoid",
+        "criminal",
+        "syndicate"
+      ],
+      "text": "Retaliate.\n<b>Forced</b> - After Mobster attacks you: Lose 1 resource.",
+      "text_cn": "反擊。\n<b>強制</b> - 在匪徒攻擊你後：你失去1個資源。<i>(FAQ, v1.2)</i>",
+      "stats": {
+        "fight": 2,
+        "evade": 2,
+        "health": 2,
+        "damage": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 98,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "hunted_down",
+      "arkhamdb_code": "02099",
+      "encounter_code": "naomis_crew",
+      "encounter_name": "Naomi's Crew",
+      "type": "treachery",
+      "name": "Hunted Down",
+      "name_cn": "緊追不捨",
+      "traits": [
+        "tactic"
+      ],
+      "text": "<b>Revelation</b> - If there are no unengaged [[Criminal]] enemies in play, Hunted Down gains surge. If there are 1 or more unengaged [[Criminal]] enemies in play, each of them moves 1 location toward you. Each [[Criminal]] enemy that engages you as a result of this effect makes an immediate attack.",
+      "text_cn": "<b>顯現</b> - 如果場上沒有未交戰的[[罪犯]]敵人，緊追不捨獲得湧動關鍵詞。如果場上至少有一名未交戰的[[罪犯]]敵人，這些敵人向你移動一次。所有由於這個效果而與你交戰的[[罪犯]]敵人，立刻攻擊你。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 99,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "pushed_into_the_beyond",
+      "arkhamdb_code": "02100",
+      "encounter_code": "the_beyond",
+      "encounter_name": "The Beyond",
+      "type": "treachery",
+      "name": "Pushed into the Beyond",
+      "name_cn": "異界放逐",
+      "traits": [
+        "hex"
+      ],
+      "text": "<b>Revelation</b> - Choose and shuffle a non-story asset you control into your deck and discard the top 3 cards of your deck. If a copy of that asset is discarded, take 2 horror.",
+      "text_cn": "<b>顯現</b> - 選擇一張你控制的非劇情支援卡，與你的牌堆混洗，然後丟棄你牌堆頂部3張卡牌。如果你所選卡牌的同名卡被丟棄，受到2點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 100,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "terror_from_beyond",
+      "arkhamdb_code": "02101",
+      "encounter_code": "the_beyond",
+      "encounter_name": "The Beyond",
+      "type": "treachery",
+      "name": "Terror from Beyond",
+      "name_cn": "世外詭影",
+      "traits": [
+        "hex",
+        "terror"
+      ],
+      "text": "Peril.\n<b>Revelation</b> - Choose one of the following cardtypes (asset, event, or skill). Each player must discard each card in his or her hand that is of the chosen cardtype. If this is not the first copy of Terror from Beyond drawn this phase, choose two cardtypes instead.",
+      "text_cn": "禍害。\n<b>顯現</b> - 選擇以下卡牌種類之一(支援，事件，技能)。每位玩家必須丟棄被選類型的所有手牌。如果該卡不是本階段第一次抽出的世外詭影，改為選擇兩個種類。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 101,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "arcane_barrier",
+      "arkhamdb_code": "02102",
+      "encounter_code": "the_beyond",
+      "encounter_name": "The Beyond",
+      "type": "treachery",
+      "name": "Arcane Barrier",
+      "name_cn": "奧術屏障",
+      "traits": [
+        "hex",
+        "obstacle"
+      ],
+      "text": "<b>Revelation</b> - Attach to your location.\nAs an additional cost to move into or out of attached location, test [willpower] (4). If successful, discard Arcane Barrier. Otherwise, you must either cancel the effects of the move or discard the top 5 cards of your deck.",
+      "text_cn": "<b>顯現</b> - 疊加到你所在地點。\n當進入或離開疊加地點時，檢定[willpower](4)。如果成功，丟棄奧術屏障。 如果失敗，必須選擇取消移動，或者丟棄牌堆頂部5張卡牌。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 102,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "conglomeration_of_spheres",
+      "arkhamdb_code": "02103",
+      "encounter_code": "hideous_abominations",
+      "encounter_name": "Hideous Abominations",
+      "type": "enemy",
+      "name": "Conglomeration of Spheres",
+      "name_cn": "球之群",
+      "traits": [
+        "monster",
+        "abomination"
+      ],
+      "text": "<b>Prey</b> - Lowest [willpower].\nHunter.\n<b>Forced</b> - After you perform an attack against the Conglomeration of Spheres using a [[Melee]] card: Discard that card.",
+      "text_cn": "<b>獵物</b> - 最低[willpower]。\n獵手。\n<b>強制</b> - 在你使用[[近戰]]支援卡攻擊球之群後：丟棄那張支援卡。",
+      "stats": {
+        "fight": 1,
+        "evade": 4,
+        "health": 6,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 103,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "servant_of_the_lurker",
+      "arkhamdb_code": "02104",
+      "encounter_code": "hideous_abominations",
+      "encounter_name": "Hideous Abominations",
+      "type": "enemy",
+      "name": "Servant of the Lurker",
+      "name_cn": "居於戶口之物的僕人",
+      "traits": [
+        "monster",
+        "abomination"
+      ],
+      "text": "<b>Prey</b> - Lowest [agility].\nHunter.\n<b>Forced</b> - When Servant of the Lurker attacks you: Discard the top 2 cards of your deck.",
+      "text_cn": "<b>獵物</b> - 最低[agility]。\n獵手。\n<b>強制</b> - 在居於戶口之物的僕人攻擊你時：丟棄你牌堆頂部2張卡牌。",
+      "stats": {
+        "fight": 4,
+        "evade": 2,
+        "health": 5,
+        "damage": 2,
+        "horror": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 104,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_miskatonic_museum",
+      "arkhamdb_code": "02118",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "scenario",
+      "name": "The Miskatonic Museum",
+      "name_cn": "博物館之夜",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -1 (-3 instead if Hunting Horror is at your location.)\n[cultist]: -1. If you fail, search the encounter deck, discard pile, and the void for Hunting Horror and spawn it at your location, if able.\n[tablet]: -2. Return 1 of your clues to your current location.\n[elder_thing]: -3. If you fail, discard an asset you control.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]：-1(如果你和追獵恐魔在同一個地點，改為-3)。\n[cultist]：-1。如果失敗，查找遭遇牌堆、棄牌堆和混沌，將追獵恐魔生成在你所在地點。\n[tablet]：-2。將你的1個線索，放回你所在地點。\n[elder_thing]：-3。如果失敗，丟棄1張你控制的支援卡。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 118,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "restricted_access",
+      "arkhamdb_code": "02119",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "agenda",
+      "name": "Restricted Access",
+      "name_cn": "禁止通行",
+      "traits": [],
+      "text": "<b>Forced</b> - When Hunting Horror enters play: Attach the set-aside copy of Shadow-spawned to it, or add 1 resource to Shadow-spawned if it is already attached.",
+      "text_cn": "<b>強制</b> - 在追獵恐魔入場時，將放在一邊的暗影之子疊加到該敵人。如果暗影之子已經處於疊加狀態，則在該卡上放置1個資源。",
+      "stats": {
+        "doom": 5
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 119,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "shadows_deepen",
+      "arkhamdb_code": "02120",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "agenda",
+      "name": "Shadows Deepen",
+      "name_cn": "濃厚之影",
+      "traits": [],
+      "text": "<b>Forced</b> - When Hunting Horror enters play: Attach the set-aside copy of Shadow-spawned to it, or add 1 resource to Shadow-spawned if it is already attached.",
+      "text_cn": "<b>強制</b> - 在追獵恐魔入場時，將放在一邊的暗影之子疊加到該敵人。如果暗影之子已經處於疊加狀態，則在該卡上放置1個資源。",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 120,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "in_every_shadow",
+      "arkhamdb_code": "02121",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "agenda",
+      "name": "In Every Shadow",
+      "name_cn": "無處不在",
+      "traits": [],
+      "text": "<b>Forced</b> - When Hunting Horror enters play: Attach the set-aside copy of Shadow-spawned to it, or add 1 resource to Shadow-spawned if it is already attached.",
+      "text_cn": "<b>強制</b> - 在追獵恐魔入場時，將放在一邊的暗影之子疊加到該敵人。如果暗影之子已經處於疊加狀態，則在該卡上放置1個資源。",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 121,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "finding_a_way_inside",
+      "arkhamdb_code": "02122",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "act",
+      "name": "Finding A Way Inside",
+      "name_cn": "尋找入口",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 122,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "night_at_the_museum",
+      "arkhamdb_code": "02123",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "act",
+      "name": "Night at the Museum",
+      "name_cn": "博物館之夜",
+      "traits": [],
+      "text": "<b>Objective</b> - If an investigator enters the Exhibit Hall (<i>Restricted Hall</i>), advance.",
+      "text_cn": "<b>目標</b> - 如果有調查員進入展廳(禁止入內)，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 123,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "breaking_and_entering",
+      "arkhamdb_code": "02124",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "act",
+      "name": "Breaking and Entering",
+      "name_cn": "強行闖入",
+      "traits": [],
+      "text": "<b>Objective</b> - If an investigator enters the Exhibit Hall (<i>Restricted Hall</i>), advance.",
+      "text_cn": "<b>目標</b> - 如果有調查員進入展廳(禁止入內)，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 124,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "searching_for_the_tome",
+      "arkhamdb_code": "02125",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "act",
+      "name": "Searching for the Tome",
+      "name_cn": "查找古書",
+      "traits": [],
+      "text": "<b>Objective</b> - If there are no clues remaining in the Exhibit Hall <i>(Restricted Hall)</i>, advance.",
+      "text_cn": "<b>目標</b> - 如果展廳(禁止入內)沒有線索剩餘，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 125,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "museum_entrance",
+      "arkhamdb_code": "02126",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Museum Entrance",
+      "name_cn": "博物館大門",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "Investigators at the Museum Entrance cannot gain resources.\n[action] <b>Resign.</b> \"Eh. How important can a book really be, anyway?\"",
+      "text_cn": "在博物館大門的調查員不能獲得資源。\n[action]：<b>撤退</b>。\"不就是本書嘛，到處都有，何必在這兒浪費時間。\"",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 126,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "museum_halls",
+      "arkhamdb_code": "02127",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Museum Halls",
+      "name_cn": "博物館大廳",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "Museum Halls is connected to each copy of Exhibit Hall.\n[action] Investigators in the Museum Halls spend 1 [per_investigator] clues, as a group: Put the top card of the Exhibit deck into play, unrevealed.",
+      "text_cn": "博物館大廳與其他所有展廳相互連接。\n[action]在博物館大廳的調查員以團隊為單位，花費1[per_investigator]個線索：將展廳牌堆頂部的卡牌以未揭示狀態放置入場。",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 127,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "security_office_a",
+      "arkhamdb_code": "02128",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Security Office",
+      "name_cn": "保安室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "[action] [action]: Search the top 6 cards of your deck for a card and add it to your hand. Shuffle the rest back into your deck. (Limit once per turn.)",
+      "text_cn": "[action][action]：查找你牌堆頂部6張牌，從中選擇一張加入你的手牌中。將剩餘卡牌與牌堆混洗。(每回合限制1次。)",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 128,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "security_office_b",
+      "arkhamdb_code": "02129",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Security Office",
+      "name_cn": "保安室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "[action] [action]: Look at the revealed side of an Exhibit Hall in play, or the top card of the Exhibit deck. (Limit once per turn.)",
+      "text_cn": "[action][action]：查看場上，或展廳牌堆頂部一張展廳的已揭示面。(每回合限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 129,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "administration_office_a",
+      "arkhamdb_code": "02130",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Administration Office",
+      "name_cn": "管理辦公室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "You cannot investigate Administration Office while you have 4 or fewer resources.",
+      "text_cn": "只要你持有資源數小於等於4個，不能調查管理辦公室",
+      "stats": {
+        "shroud": 1,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 130,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "administration_office_b",
+      "arkhamdb_code": "02131",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Administration Office",
+      "name_cn": "管理辦公室",
+      "traits": [
+        "miskatonic"
+      ],
+      "text": "You cannot investigate Administration Office while you have 4 or fewer cards in your hand.",
+      "text_cn": "只要你持有手牌數小於等於4張，不能調查管理辦公室",
+      "stats": {
+        "shroud": 2,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 131,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "exhibit_hall_a",
+      "arkhamdb_code": "02132",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Exhibit Hall",
+      "name_cn": "展廳",
+      "traits": [
+        "miskatonic",
+        "exhibit"
+      ],
+      "text": "<b>Forced</b> - After you enter this location: Lose all of your remaining actions and immediately end your turn.\nWhile you are in this location, you get +2 [agility].",
+      "text_cn": "<b>強制</b> - 在你進入這個地點後：失去所有剩餘行動，並立刻結束你的回合。\n你在這個地點時，你獲得+2[agility]。",
+      "stats": {
+        "shroud": 1,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "Athabaskan Exhibit",
+        "subname_cn": "阿薩帕斯卡爾展區",
+        "position": 132,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "exhibit_hall_b",
+      "arkhamdb_code": "02133",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Exhibit Hall",
+      "name_cn": "展廳",
+      "traits": [
+        "miskatonic",
+        "exhibit"
+      ],
+      "text": "<b>Forced</b> - After you fail a skill test while investigating this location: Discard an asset you control.",
+      "text_cn": "<b>強制</b> - 在你調查該地點時進行技能檢定失敗後：丟棄一張你控制的支援卡。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "Medusa Exhibit",
+        "subname_cn": "美杜莎藝術展",
+        "position": 133,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "exhibit_hall_c",
+      "arkhamdb_code": "02134",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Exhibit Hall",
+      "name_cn": "展廳",
+      "traits": [
+        "miskatonic",
+        "exhibit"
+      ],
+      "text": "<b>Forced</b> - After you enter this location: Discard 2 cards from your hand at random.",
+      "text_cn": "<b>強制</b> - 在你進入這個地點後：隨機丟棄2張你的手牌。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "Nature Exhibit",
+        "subname_cn": "自然標本",
+        "position": 134,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "exhibit_hall_d",
+      "arkhamdb_code": "02135",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Exhibit Hall",
+      "name_cn": "展廳",
+      "traits": [
+        "miskatonic",
+        "exhibit"
+      ],
+      "text": "<b>Forced</b> - After you fail a skill test while investigating this location: Lose 1 action.",
+      "text_cn": "<b>強制</b> - 在你調查該地點時進行技能檢定失敗後：失去1個行動。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "Egyptian Exhibit",
+        "subname_cn": "埃及展",
+        "position": 135,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "exhibit_hall_e",
+      "arkhamdb_code": "02136",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Exhibit Hall",
+      "name_cn": "展廳",
+      "traits": [
+        "miskatonic",
+        "exhibit"
+      ],
+      "text": "<b>Forced</b> - After you fail a skill test while investigating this location: Take 1 horror.",
+      "text_cn": "<b>強制</b> - 在你調查該地點時進行技能檢定失敗後：受到1點恐懼。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "Hall of the Dead",
+        "subname_cn": "死者之殿",
+        "position": 136,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "exhibit_hall_f",
+      "arkhamdb_code": "02137",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "location",
+      "name": "Exhibit Hall",
+      "name_cn": "展廳",
+      "traits": [
+        "miskatonic",
+        "exhibit"
+      ],
+      "text": "While Hunting Horror is at this location, this location cannot be investigated.",
+      "text_cn": "只要追獵恐魔在這個地點，該地點不能被調查。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "Restricted Hall",
+        "subname_cn": "禁止入內",
+        "position": 137,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "harold_walsted",
+      "arkhamdb_code": "02138",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "asset",
+      "name": "Harold Walsted",
+      "name_cn": "哈羅德·維爾斯特",
+      "traits": [
+        "ally",
+        "miskatonic"
+      ],
+      "text": "You get +2 [intellect] while investigating [[Miskatonic]] locations.\n<b>Forced</b> - When Harold Walsted leaves play: Remove him from the game and add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+      "text_cn": "你在調查[[米斯卡塔尼克]]地點時，獲得+2[intellect]。\n<b>強制</b> - 在哈羅德·維爾斯特離場時：將該卡移出遊戲，並向混亂袋中加入一個[tablet]標記，持續到劇本結束。",
+      "stats": {
+        "cost": 0,
+        "health": 1,
+        "sanity": 1
+      },
+      "meta": {
+        "subname": "Curator of the Museum",
+        "subname_cn": "博物館館長",
+        "position": 138,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "adam_lynch",
+      "arkhamdb_code": "02139",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "asset",
+      "name": "Adam Lynch",
+      "name_cn": "亞當·林奇",
+      "traits": [
+        "ally",
+        "miskatonic"
+      ],
+      "text": "While you control Adam Lynch, treat the \"[action] [action]\" ability on the Security Office as if it were an \"[action]\" ability.\n<b>Forced</b> - When Adam Lynch leaves play: Remove him from the game and add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+      "text_cn": "只要你控制亞當·林奇，將保安室的\"[action] [action]\"能力視為\"[action]\"能力。\n<b>強制</b> - 在亞當·林奇離場時：將該卡移出遊戲，並向混亂袋中加入一個[tablet]標記，持續到劇本結束。",
+      "stats": {
+        "cost": 0,
+        "health": 1,
+        "sanity": 1
+      },
+      "meta": {
+        "subname": "Museum Security",
+        "subname_cn": "博物館保安",
+        "position": 139,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_necronomicon",
+      "arkhamdb_code": "02140",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "asset",
+      "name": "The Necronomicon",
+      "name_cn": "死靈之書",
+      "traits": [
+        "item",
+        "tome"
+      ],
+      "text": "You get +1 [intellect].\n[action]: Gain 2 resources.",
+      "text_cn": "你獲得+1[intellect]。\n[action]：獲得2個資源。",
+      "stats": {
+        "cost": 2
+      },
+      "meta": {
+        "subname": "Olaus Wormius Translation",
+        "subname_cn": "奧洛斯·沃爾密烏斯譯本",
+        "position": 140,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "hunting_horror",
+      "arkhamdb_code": "02141",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "enemy",
+      "name": "Hunting Horror",
+      "name_cn": "追獵恐魔",
+      "traits": [
+        "monster",
+        "elite"
+      ],
+      "text": "Hunter. Retaliate.\n<b>Forced</b> - At the start of the enemy phase: Reveal a random token from the chaos bag. If the revealed token has a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol, ready Hunting Horror.\n<b>Forced</b> - When Hunting Horror leaves play, place it in the void.",
+      "text_cn": "獵手。反擊。\n<b>強制</b> - 當敵軍階段開始時：從混亂袋中隨機抽出1個標記。如果抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]標記，準備追獵恐魔。\n<b>強制</b> - 在追獵恐魔離場時，將其放置入混沌中。",
+      "stats": {
+        "fight": 2,
+        "evade": 2,
+        "health": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "Spawned from the Void",
+        "subname_cn": "從混沌中誕生",
+        "position": 141,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "shadow_spawned",
+      "arkhamdb_code": "02142",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "treachery",
+      "name": "Shadow-spawned",
+      "name_cn": "暗影之子",
+      "traits": [
+        "power"
+      ],
+      "text": "Shadow-spawned remains attached to Hunting Horror if it enters the void.\nHunting Horror gets +1 fight, +1 health, and +1 evade for each resource on Shadow-spawned. If there are 3 resources on Shadow-spawned, Hunting Horror also gains Massive.",
+      "text_cn": "當追獵恐魔進入混沌時，暗影之子持續疊加在該卡。\n暗影之子上每有一個資源，追獵恐魔獲得+1攻擊值、+1生命值和+1躲避值。如果暗影之子上有至少3個資源，追獵恐魔獲得龐大關鍵字。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 142,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "stalked_in_the_dark",
+      "arkhamdb_code": "02143",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "treachery",
+      "name": "Stalked in the Dark",
+      "name_cn": "暗影潛隨",
+      "traits": [
+        "tactic"
+      ],
+      "text": "<b>Revelation</b> - If Hunting Horror is in play, it readies, engages you, and attacks each investigator at your location. Otherwise, Stalked in the Dark gains surge.",
+      "text_cn": "<b>顯現</b> - 如果追獵恐魔在場上，將其準備並與你交戰，攻擊你所在地點的所有調查員。否則，暗影潛隨獲得湧動關鍵詞。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 143,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "passage_into_the_veil",
+      "arkhamdb_code": "02144",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "treachery",
+      "name": "Passage into the Veil",
+      "name_cn": "通往異界的道路",
+      "traits": [
+        "power"
+      ],
+      "text": "<b>Revelation</b> - Test [willpower] (3). This test has +2 difficulty if Hunting Horror is at your location. If you fail you must either (choose one): discard the top 5 cards of your deck, or take 1 direct damage and deal 1 damage to each of your [[Ally]] assets.",
+      "text_cn": "<b>顯現</b> - 檢定[willpower](3)。如果追獵恐魔與你在同一個地點，該次檢定+2難度。如果失敗，你必須選擇(一項)：丟棄你牌堆頂部5張卡牌，或受到1點直接傷害，並對你的每張[[盟友]]支援卡造成1點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 144,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "ephemeral_exhibits",
+      "arkhamdb_code": "02145",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "treachery",
+      "name": "Ephemeral Exhibits",
+      "name_cn": "短暫的展覽",
+      "traits": [
+        "terror"
+      ],
+      "text": "<b>Revelation</b> - Test [intellect] (3). If you fail, lose 1 action for each point you failed by.",
+      "text_cn": "<b>顯現</b> - 檢定[intellect](3)。如果失敗，每低於難度1點，失去1個行動。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 145,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "slithering_behind_you",
+      "arkhamdb_code": "02146",
+      "encounter_code": "the_miskatonic_museum",
+      "encounter_name": "The Miskatonic Museum",
+      "type": "treachery",
+      "name": "Slithering Behind You",
+      "name_cn": "尾隨之蛇",
+      "traits": [],
+      "text": "<b>Revelation</b> - If Hunting Horror is in play, add 1 doom to it. If Hunting Horror is not in play, search the encounter deck, discard pile, and the void for Hunting Horror and spawn it at your location, engaged with you. Shuffle the encounter deck.",
+      "text_cn": "<b>顯現</b> - 如果追獵恐魔在場上，將1個毀滅標記放在該卡上。如果追獵恐魔不在場上，查找遭遇牌堆、棄牌堆和混沌，將追獵恐魔生成在你所在地點，並與你交戰。混洗遭遇牌堆。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 146,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "essex_county_express",
+      "arkhamdb_code": "02159",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "scenario",
+      "name": "Essex County Express",
+      "name_cn": "瘋狂列車",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -X. X is the current Agenda #.\n[cultist]: -1. If you fail and it is your turn, lose all remaining actions and end your turn immediately.\n[tablet]: -2. Add 1 doom token to the nearest Cultist enemy.\n[elder_thing]: -3. If you fail, choose and discard a card from your hand.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]-X。X為當前密謀編號。\n[cultist]-1。如果失敗並且是你的回合，失去所有剩餘行動，並立刻結束你的回合。\n[tablet]-2。給最近的一名[[異教徒]]敵人放置1個毀滅標記。\n[elder_thing]-3。如果失敗，選擇1張手牌並丟棄。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 159,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "a_tear_in_reality",
+      "arkhamdb_code": "02160",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "agenda",
+      "name": "A Tear in Reality",
+      "name_cn": "現實的裂口",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 160,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_maw_widens",
+      "arkhamdb_code": "02161",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "agenda",
+      "name": "The Maw Widens",
+      "name_cn": "裂縫擴張",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 161,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "rolling_backwards",
+      "arkhamdb_code": "02162",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "agenda",
+      "name": "Rolling Backwards",
+      "name_cn": "後退",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 162,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "drawn_in",
+      "arkhamdb_code": "02163",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "agenda",
+      "name": "Drawn In",
+      "name_cn": "淹沒",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 163,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "out_of_time",
+      "arkhamdb_code": "02164",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "agenda",
+      "name": "Out of Time",
+      "name_cn": "時間耗盡",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 164,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "run",
+      "arkhamdb_code": "02165",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "act",
+      "name": "Run!",
+      "name_cn": "大家快跑！",
+      "traits": [],
+      "text": "<b>Objective</b> - If an investigator enters the Engine Car, immediately advance.",
+      "text_cn": "<b>目標</b> - 如果有調查員進入車頭，立刻推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 165,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "get_the_engine_running",
+      "arkhamdb_code": "02166",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "act",
+      "name": "Get the Engine Running!",
+      "name_cn": "列車快跑！",
+      "traits": [],
+      "text": "<b>Objective</b> - If there are no clues in the Engine Car, immediately advance.",
+      "text_cn": "<b>目標</b> - 如果車頭上沒有線索，立刻推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 166,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "passenger_car_a",
+      "arkhamdb_code": "02167",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Passenger Car",
+      "name_cn": "客車",
+      "traits": [
+        "train"
+      ],
+      "text": "Passenger Car is connected to the locations to the left and right of it.\n<b>Forced</b> - After you enter Passenger Car: You must either discard cards from your hand with at least 2 total [agility] icons or take 2 damage.",
+      "text_cn": "客車與其左邊和右邊的地點相互連接。\n<b>強制</b> - 在你進入客車後：你必須丟棄合計帶有至少2個[agility]圖標的手牌，或受到2點傷害。",
+      "stats": {
+        "shroud": 1,
+        "clues": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 167,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "passenger_car_b",
+      "arkhamdb_code": "02168",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Passenger Car",
+      "name_cn": "客車",
+      "traits": [
+        "train"
+      ],
+      "text": "Passenger Car is connected to the locations to the left and right of it.\n<b>Forced</b> - After you enter Passenger Car: You must either discard cards from your hand with at least 2 total [combat] icons or take 2 damage.",
+      "text_cn": "客車與其左邊和右邊的地點相互連接。\n<b>強制</b> - 在你進入客車後：你必須丟棄合計帶有至少2個[combat]圖標的手牌，或受到2點傷害。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 168,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "passenger_car_c",
+      "arkhamdb_code": "02169",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Passenger Car",
+      "name_cn": "客車",
+      "traits": [
+        "train"
+      ],
+      "text": "Passenger Car is connected to the locations to the left and right of it.\n<b>Forced</b> - After you enter Passenger Car: You must either discard cards from your hand with at least 2 total [willpower] icons or take 2 horror.",
+      "text_cn": "客車與其左邊和右邊的地點相互連接。\n<b>強制</b> - 在你進入客車後：你必須丟棄合計帶有至少2個[willpower]圖標的手牌，或受到2點恐懼。",
+      "stats": {
+        "shroud": 2,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 169,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "passenger_car_d",
+      "arkhamdb_code": "02170",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Passenger Car",
+      "name_cn": "客車",
+      "traits": [
+        "train"
+      ],
+      "text": "Passenger Car is connected to the locations to the left and right of it.\n<b>Forced</b> - After you enter Passenger Car: You must either discard cards from your hand with at least 2 total [intellect] icons or take 2 horror.",
+      "text_cn": "客車與其左邊和右邊的地點相互連接。\n<b>強制</b> - 在你進入客車後：你必須丟棄合計帶有至少2個[intellect]圖標的手牌，或受到2點恐懼。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 170,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "passenger_car_e",
+      "arkhamdb_code": "02171",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Passenger Car",
+      "name_cn": "客車",
+      "traits": [
+        "train"
+      ],
+      "text": "Passenger Car is connected to the locations to the left and right of it.\n<b>Forced</b> - After you enter Passenger Car: You must either discard a card from your hand with at least 1 [wild] icon or take 1 damage and 1 horror.",
+      "text_cn": "客車與其左邊和右邊的地點相互連接。\n<b>強制</b> - 在你進入客車後：你必須丟棄合計帶有至少1個[wild]圖標的手牌，或受到1點傷害和1點恐懼。",
+      "stats": {
+        "shroud": 1,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 171,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "sleeping_car",
+      "arkhamdb_code": "02172",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Sleeping Car",
+      "name_cn": "臥車",
+      "traits": [
+        "train"
+      ],
+      "text": "Sleeping Car is connected to the locations to the left and right of it.\n[action]: Gain 3 resources. Remember that you have \"stolen a passenger's luggage.\" (Group limit once per game).",
+      "text_cn": "臥車與其左邊和右邊的地點相互連接。\n[action]：獲得3個資源。請記住你\"偷拿旅客行李。\"(團隊每場遊戲限制1次。)\n",
+      "stats": {
+        "shroud": 4,
+        "clues": 1,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 172,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dining_car",
+      "arkhamdb_code": "02173",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Dining Car",
+      "name_cn": "餐車",
+      "traits": [
+        "train"
+      ],
+      "text": "Dining Car is connected to the locations to the left and right of it.\n<b>Forced</b> - After you reveal Dining Car: Search the encounter deck and discard pile for a Grappling Horror and draw it.",
+      "text_cn": "餐車與其左邊和右邊的地點相互連接。\n<b>強制</b> - 在你翻開餐車後：查找遭遇牌堆和棄牌堆，將一張黏液恐魔打出。",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 173,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "parlor_car",
+      "arkhamdb_code": "02174",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Parlor Car",
+      "name_cn": "特等車",
+      "traits": [
+        "train"
+      ],
+      "text": "Parlor Car is connected to the locations to the left and right of it.\nParlor Car cannot be investigated.\n[action] Spend 3 resources: Discover 1 clue in the Parlor Car.",
+      "text_cn": "特等車與其左邊和右邊的地點相互連接。\n特等車不能被調查。\n[action]花費3資源：發現特等車的1個線索。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 174,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "engine_car_a",
+      "arkhamdb_code": "02175",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Engine Car",
+      "name_cn": "車頭",
+      "traits": [
+        "train"
+      ],
+      "text": "Engine Car is connected to the location to the left of it.",
+      "text_cn": "車頭與其左邊的地點相互連接。",
+      "stats": {
+        "shroud": 4,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 175,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "engine_car_b",
+      "arkhamdb_code": "02176",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Engine Car",
+      "name_cn": "車頭",
+      "traits": [
+        "train"
+      ],
+      "text": "Engine Car is connected to the location to the left of it.\n<b>Forced</b> - After you reveal Engine Car: Search the encounter deck and discard pile for a Grappling Horror and draw it. Shuffle the encounter deck.",
+      "text_cn": "車頭與其左邊的地點相互連接。\n<b>強制</b> - 在你翻開車頭後：查找遭遇牌堆和棄牌堆，將一張黏液恐魔打出。然後混洗遭遇牌堆。",
+      "stats": {
+        "shroud": 2,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 176,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "engine_car_c",
+      "arkhamdb_code": "02177",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "location",
+      "name": "Engine Car",
+      "name_cn": "車頭",
+      "traits": [
+        "train"
+      ],
+      "text": "Engine Car is connected to the location to the left of it.\n<b>Forced</b> - After you reveal Engine Car: Draw the top 3 cards of the encounter deck.",
+      "text_cn": "車頭與其左邊的地點相互連接。\n<b>強制</b> - 在你翻開車頭後：抽取遭遇牌堆頂部3張卡牌。",
+      "stats": {
+        "shroud": 1,
+        "clues": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 177,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "across_space_and_time",
+      "arkhamdb_code": "02178",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "treachery",
+      "name": "Across Space and Time",
+      "name_cn": "跨越時空",
+      "traits": [
+        "madness"
+      ],
+      "text": "<b>Revelation</b> - Discard the top 3 cards of your deck.",
+      "text_cn": "<b>顯現</b> - 丟棄你牌堆頂部3張卡牌。",
+      "stats": {
+        "cost": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 178,
+        "quantity": 4
+      }
+    },
+    {
+      "id": "helpless_passenger",
+      "arkhamdb_code": "02179",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "asset",
+      "name": "Helpless Passenger",
+      "name_cn": "無助的旅客",
+      "traits": [
+        "ally",
+        "bystander"
+      ],
+      "text": "Surge.\n<b>Revelation</b> - Put Helpless Passenger into play at the location to your left (or at your location if you cannot).\n[action] <b>Parley.</b> Take control of Helpless Passenger.\n<b>Forced</b> - If Helpless Passenger leaves play: Each investigator takes 1 horror.",
+      "text_cn": "湧動。\n<b>顯現</b> - 將無助的旅客放置入你的左邊地點(如果你的左邊無法放置，則放在你所在地點)。\n[action]<b>談判</b>。控制無助的旅客。\n<b>強制</b> - 如果無助的旅客離場：每位調查員受到1點恐懼。",
+      "stats": {
+        "cost": 0,
+        "health": 1,
+        "sanity": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 179,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "claws_of_steam",
+      "arkhamdb_code": "02180",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "treachery",
+      "name": "Claws of Steam",
+      "name_cn": "蒸氣之爪",
+      "traits": [
+        "power"
+      ],
+      "text": "<b>Revelation</b> - Test [willpower] (3). If you fail, take 2 damage and you cannot move from this location this round. Damage from this effect must be assigned to your assets first, if able.",
+      "text_cn": "<b>顯現</b> - 檢定[willpower](3)。如果失敗，受到2點傷害，你這輪中不能從該地點離開。如果你有盟友，則必須先將傷害分配給盟友。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 180,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "broken_rails",
+      "arkhamdb_code": "02181",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "treachery",
+      "name": "Broken Rails",
+      "name_cn": "鐵軌斷裂",
+      "traits": [
+        "hazard"
+      ],
+      "text": "<b>Revelation</b> - Each investigator at your location loses 1 action. Each investigator at your location with 4 or more damage must also discard an asset he or she controls.",
+      "text_cn": "<b>顯現</b> - 你所在地點的所有調查員各失去1個行動。你所在地點的，帶有至少4點傷害的調查員，各丟棄1張其控制的支援卡。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 181,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "grappling_horror",
+      "arkhamdb_code": "02182",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "enemy",
+      "name": "Grappling Horror",
+      "name_cn": "黏液恐魔",
+      "traits": [
+        "monster",
+        "abomination"
+      ],
+      "text": "Hunter.\nWhile you are engaged with Grappling Horror, you cannot move.",
+      "text_cn": "獵手。\n黏液恐魔與你交戰時，你不能移動。",
+      "stats": {
+        "fight": 3,
+        "evade": 2,
+        "health": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 182,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "emergent_monstrosity",
+      "arkhamdb_code": "02183",
+      "encounter_code": "essex_county_express",
+      "encounter_name": "The Essex County Express",
+      "type": "enemy",
+      "name": "Emergent Monstrosity",
+      "name_cn": "突然出現的巨獸",
+      "traits": [
+        "monster",
+        "abomination"
+      ],
+      "text": "<b>Spawn</b> - The location to your right (or your location if there is no location to your right).\nEmergent Monstrosity enters play exhausted.",
+      "text_cn": "<b>生成</b> - 你右邊的地點(如果你右邊的地點無法放置，則生成在你所在地點)。\n突然出現的巨獸以消耗狀態入場。",
+      "stats": {
+        "fight": 4,
+        "evade": 3,
+        "health": 5,
+        "damage": 2,
+        "horror": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 183,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "blood_on_the_altar",
+      "arkhamdb_code": "02195",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "scenario",
+      "name": "Blood on the Altar",
+      "name_cn": "血色祭壇",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -1 for each location in play with no encounter card underneath it (max -4).\n[cultist]: -2. If you fail, add 1 clue from the token pool to your location.\n[tablet]: -2. If you are in the Hidden Chamber, reveal another token.\n[elder_thing]: -3. If you fail, place 1 doom on the current agenda.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]：場上每個底下無遭遇卡的地點，-1(最大-4)。\n[cultist]：-2。如果失敗，從供應堆中拿取1個線索，放置到你所在地點上。\n[tablet]：-2。如果你在隱藏密室，再抽取一個標記。\n[elder_thing]：-3。如果失敗，在當前密謀卡上放置1個毀滅標記。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 195,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "strange_disappearances",
+      "arkhamdb_code": "02196",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "agenda",
+      "name": "Strange Disappearances",
+      "name_cn": "奇怪的失蹤案",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 6
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 196,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_old_ones_hunger",
+      "arkhamdb_code": "02197",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "agenda",
+      "name": "The Old Ones Hunger",
+      "name_cn": "它餓了",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 6
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 197,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "feed_the_beast",
+      "arkhamdb_code": "02198",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "agenda",
+      "name": "Feed the Beast",
+      "name_cn": "怪獸的美餐",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 198,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "searching_for_answers",
+      "arkhamdb_code": "02199",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "act",
+      "name": "Searching for Answers",
+      "name_cn": "尋找答案",
+      "traits": [],
+      "text": "<b>Objective</b> - When an investigator enters The Hidden Chamber, advance.",
+      "text_cn": "<b>目標</b> - 在有任何調查員進入隱藏密室時，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 199,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_chamber_of_the_beast",
+      "arkhamdb_code": "02200",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "act",
+      "name": "The Chamber of the Beast",
+      "name_cn": "野獸的牢籠",
+      "traits": [],
+      "text": "<b>Objective</b> - If Silas Bishop is defeated: <b>(→R1)\nObjective</b> - If there are no clues in the Hidden Chamber, advance.",
+      "text_cn": "<b>目標</b> - 如果塞拉斯·畢曉普被擊敗：<b>(→結局1)\n目標</b> - 如果隱藏密室中沒有線索，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 200,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "village_commons",
+      "arkhamdb_code": "02201",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Village Commons",
+      "name_cn": "公共空地",
+      "traits": [
+        "dunwich",
+        "central"
+      ],
+      "text": "[action] <b>Resign.</b> \"This is suicide! We're better off hiding out the night.\"",
+      "text_cn": "[action] <b>撤退</b>。\"我還不想死！我要找個地方躲起來！\"",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 201,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "bishops_brook_a",
+      "arkhamdb_code": "02202",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Bishop's Brook",
+      "name_cn": "畢曉普河",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "Each enemy at Bishop's Brook deals +1 horror while it is attacking.\n[fast] If there are no clues here: Draw the encounter card underneath Bishop's Brook. (Group limit once per game).",
+      "text_cn": "在畢曉普河的敵人攻擊時：造成+1恐懼。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 202,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "bishops_brook_b",
+      "arkhamdb_code": "02203",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Bishop's Brook",
+      "name_cn": "畢曉普河",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "If there is an investigator at Bishop's Brook, other investigators cannot enter Bishop's Brook.\n[fast] If there are no clues here: Draw the encounter card underneath Bishop's Brook. (Group limit once per game).",
+      "text_cn": "如果畢曉普河有調查員，其他調查員不能進入畢曉普河。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 203,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "burned_ruins_a",
+      "arkhamdb_code": "02204",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Burned Ruins",
+      "name_cn": "火災廢墟",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "Each enemy in the Burned Ruins gets +1 evade.\n[fast] If there are no clues here: Draw the encounter card underneath Burned Ruins. (Group limit once per game).",
+      "text_cn": "在火災廢墟的敵人獲得+1躲避值。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 3,
+        "clues": 3,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 204,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "burned_ruins_b",
+      "arkhamdb_code": "02205",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Burned Ruins",
+      "name_cn": "火災廢墟",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "<b>Forced</b> - After you fail a skill test while investigating the Burned Ruins: Flip 1 clue token on the Burned Ruins to its doom side.\n[fast] If there are no clues here: Draw the encounter card underneath Burned Ruins. (Group limit once per game).",
+      "text_cn": "<b>強制</b> - 在你調查該地點時進行技能檢定失敗後：將火災廢墟上1個線索標記翻面為毀滅標記。<i>(FAQ. v1.1)</i>\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 2,
+        "clues": 3,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 205,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "osborns_general_store_a",
+      "arkhamdb_code": "02206",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Osborn's General Store",
+      "name_cn": "奧斯本雜貨店",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "You cannot gain resources while you are in Osborn's General Store.\n[fast] If there are no clues here: Draw the encounter card underneath Osborn's General Store. (Group limit once per game).",
+      "text_cn": "你在奧斯本雜貨店時，你不能獲得資源。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 206,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "osborns_general_store_b",
+      "arkhamdb_code": "02207",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Osborn's General Store",
+      "name_cn": "奧斯本雜貨店",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[action]Spend 1 resource: Search the top 3 cards of your deck for an [[Item]] card and add it to your hand. Shuffle your deck.\n[fast] If there are no clues here: Draw the encounter card underneath Osborn's General Store. (Group limit once per game).",
+      "text_cn": "[action]花費1資源：查找你牌堆頂部的3張卡牌，從中選擇1張[[道具]]卡加入手牌。混洗你的牌堆。 \n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 207,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "congregational_church_a",
+      "arkhamdb_code": "02208",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Congregational Church",
+      "name_cn": "自治教堂",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "<b>Forced</b> - After Congregational Church is revealed: Search the encounter deck for a [[Humanoid]] enemy and spawn it at the Village Commons. Shuffle the encounter deck.\n[fast] If there are no clues here: Draw the encounter card underneath Congregational Church. (Group limit once per game).",
+      "text_cn": "<b>強制</b> - 在自治教堂被翻開後：查找遭遇牌堆，將1張[[類人]]敵人生成在公共空地。混洗遭遇牌堆。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 1,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 208,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "congregational_church_b",
+      "arkhamdb_code": "02209",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Congregational Church",
+      "name_cn": "自治教堂",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[action] Choose and discard a card from your hand: Gain 2 resources.\n[fast] If there are no clues here: Draw the encounter card underneath Congregational Church. (Group limit once per game).",
+      "text_cn": "[action]選擇1張你的手牌並丟棄：獲得2個資源。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 209,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "house_in_the_reeds_a",
+      "arkhamdb_code": "02210",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "House in the Reeds",
+      "name_cn": "蘆葦屋",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "While you are in the House in the Reeds, you cannot play events.\n[fast] If there are no clues here: Draw the encounter card underneath House in the Reeds. (Group limit once per game).",
+      "text_cn": "你在蘆葦屋時，你不能打出事件卡。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 210,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "house_in_the_reeds_b",
+      "arkhamdb_code": "02211",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "House in the Reeds",
+      "name_cn": "蘆葦屋",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "<b>Forced</b> - After House in the Reeds is revealed: Search the encounter deck for a [[Nightgaunt]] enemy and spawn it in the Village Commons. Shuffle the encounter deck.\n[fast] If there are no clues here: Draw the encounter card underneath House in the Reeds. (Group limit once per game).",
+      "text_cn": "<b>強制</b> - 在蘆葦屋被翻開後：查找遭遇牌堆，將1張[[夜魘]]敵人生成在公共空地。混洗遭遇牌堆。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 1,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 211,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "schoolhouse_a",
+      "arkhamdb_code": "02212",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Schoolhouse",
+      "name_cn": "學校",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "While you are in the Schoolhouse, you cannot commit skill cards to skill tests.\n[fast] If there are no clues here: Draw the encounter card underneath Schoolhouse. (Group limit once per game).",
+      "text_cn": "你在學校時，你不能在技能檢定中投入技能卡。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 212,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "schoolhouse_b",
+      "arkhamdb_code": "02213",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "Schoolhouse",
+      "name_cn": "學校",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "You cannot discover clues here except by investigating.\n[fast] If there are no clues here: Draw the encounter card underneath Schoolhouse. (Group limit once per game).",
+      "text_cn": "你不能以調查外的方式發現這個地點的線索。\n[free]如果該地點沒有線索：抽取該地點下的遭遇卡(團隊每場遊戲限制1次)。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 213,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_hidden_chamber",
+      "arkhamdb_code": "02214",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "location",
+      "name": "The Hidden Chamber",
+      "name_cn": "隱藏密室",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "<b>Revelation</b> - Put The Hidden Chamber into play.\nThe Hidden Chamber and the location from which it was drawn are connected to one another.\nThe door to The Hidden Chamber is locked. You cannot enter The Hidden Chamber unless Key to the Chamber is attached to The Hidden Chamber.",
+      "text_cn": "<b>顯現</b> - 將隱藏密室放置入場。\n隱藏密室與抽出該卡的地點相互連接。\n通往隱藏密室的門鎖上了，你無法移動進入隱藏密室。當密室的鑰匙被疊加到該地點時，你可以進入該地點。",
+      "stats": {
+        "shroud": 3,
+        "clues": 0,
+        "victory": 2
+      },
+      "meta": {
+        "subname": "Prison of the Beast",
+        "subname_cn": "野獸的牢籠",
+        "position": 214,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "key_to_the_chamber",
+      "arkhamdb_code": "02215",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "asset",
+      "name": "Key to the Chamber",
+      "name_cn": "密室的鑰匙",
+      "traits": [
+        "item",
+        "key"
+      ],
+      "text": "<b>Revelation</b> - Take control of Key to the Chamber.\n[fast] If The Hidden Chamber is connected to your location: Attach Key to the Chamber to The Hidden Chamber.",
+      "text_cn": "<b>顯現</b> - 控制密室的鑰匙。\n[free]如果隱藏密室與你所在地點相互連接：將密室的鑰匙疊加到隱藏密室。",
+      "stats": {
+        "cost": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 215,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "silas_bishop",
+      "arkhamdb_code": "02216",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "enemy",
+      "name": "Silas Bishop",
+      "name_cn": "塞拉斯·畢曉普",
+      "traits": [
+        "monster",
+        "abomination",
+        "elite"
+      ],
+      "text": "Massive.\nSilas Bishop cannot make attacks of opportunity.",
+      "text_cn": "龐大。\n塞拉斯·畢曉普不會趁亂攻擊。",
+      "stats": {
+        "fight": 3,
+        "evade": 7,
+        "health": 6,
+        "damage": 2,
+        "horror": 2,
+        "victory": 2
+      },
+      "meta": {
+        "subname": "Infused With Evil",
+        "subname_cn": "注入邪惡",
+        "position": 216,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "zebulon_whateley",
+      "arkhamdb_code": "02217",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "asset",
+      "name": "Zebulon Whateley",
+      "name_cn": "西布倫·沃特雷",
+      "traits": [
+        "ally",
+        "dunwich"
+      ],
+      "text": "You get +1 [willpower].\n[reaction] After you succeed at a [willpower] test on a treachery card, exhaust Zebulon Whateley: Draw 1 card.",
+      "text_cn": "你獲得+1[willpower]。\n[reaction]在你成功完成詭計卡的[willpower]檢定後，消耗西布倫·沃特雷：抽取1張卡牌。",
+      "stats": {
+        "cost": 3,
+        "health": 1,
+        "sanity": 4
+      },
+      "meta": {
+        "subname": "Recalling Ancient Things",
+        "subname_cn": "召喚遠古之物",
+        "position": 217,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "earl_sawyer",
+      "arkhamdb_code": "02218",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "asset",
+      "name": "Earl Sawyer",
+      "name_cn": "厄爾·索耶",
+      "traits": [
+        "ally",
+        "dunwich"
+      ],
+      "text": "You get +1 [agility].\n[reaction] After you evade an enemy, exhaust Earl Sawyer: Draw 1 card.",
+      "text_cn": "你獲得+1[agility]。\n[reaction]在你躲避一名敵人後，消耗厄爾·索耶：抽取1張卡牌。",
+      "stats": {
+        "cost": 3,
+        "health": 3,
+        "sanity": 2
+      },
+      "meta": {
+        "subname": "Smarter Than He Lets On",
+        "subname_cn": "大智若愚",
+        "position": 218,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "powder_of_ibn_ghazi",
+      "arkhamdb_code": "02219",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "asset",
+      "name": "Powder of Ibn Ghazi",
+      "name_cn": "伊本巴奇之粉末",
+      "traits": [
+        "item"
+      ],
+      "text": "Powder of Ibn Ghazi enters play with X clues on it, where X is the number of characters who \"survived the Dunwich Legacy\" in your Campaign Log.\n[fast]: Move 1 clue from Powder of Ibn Ghazi to an exhausted Brood of Yog-Sothoth at your location.",
+      "text_cn": "伊本巴奇之粉末入場時：在該卡上放置X個線索，X為冒險日誌中，\"在敦威治事件中存活\"的角色數量。\n[free]：將1個線索從伊本巴奇之粉末轉移到你所在地點消耗狀態的猶格·索托斯之子。",
+      "stats": {
+        "cost": 0
+      },
+      "meta": {
+        "subname": "Seeing Things Unseen",
+        "subname_cn": "顯形魔粉",
+        "position": 219,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "kidnapped",
+      "arkhamdb_code": "02220",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "treachery",
+      "name": "Kidnapped!",
+      "name_cn": "綁架！",
+      "traits": [],
+      "text": "<b>Revelation</b> - Test [willpower] (4) or [agility] (4). If you fail, add an [[Ally]] asset you control to the pool of potential sacrifices. Then, attach Kidnapped! to the current agenda. If you have no [[Ally]] assets, take 2 damage and discard Kidnapped! instead.\n<b>Forced</b> - When attached agenda advances: Choose a potential sacrifice at random and place it underneath the agenda deck.",
+      "text_cn": "<b>顯現</b> - 檢定[willpower](4)或[agility](4)。如果失敗，將1張你控制的[[盟友]]支援卡，放入候選犧牲者牌堆。然後，將\"綁架！\"疊加到當前密謀。如果你沒有[[盟友]]支援卡，改為受到2點傷害並丟棄\"綁架！\"。\n<b>強制</b> - 在疊加密謀推進時：隨機選擇一位候選犧牲者，放到密謀牌堆底部。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 220,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "psychopomps_song",
+      "arkhamdb_code": "02221",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "treachery",
+      "name": "Psychopomp's Song",
+      "name_cn": "靈魂之歌",
+      "traits": [
+        "omen"
+      ],
+      "text": "Surge. Peril.\n<b>Revelation</b> - Add Psychopomp's Song to any investigator's threat area.\n<b>Forced</b> - When you would take 1 or more damage: Take 2 additional damage and discard Psychopomp's Song.",
+      "text_cn": "湧動。禍害。\n<b>顯現</b> - 將靈魂之歌放置入任意一位調查員的威脅區域。\n<b>強制</b> - 在你將要受到至少1點傷害時：額外受到2點傷害，並丟棄靈魂之歌。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 221,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "strange_signs",
+      "arkhamdb_code": "02222",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "treachery",
+      "name": "Strange Signs",
+      "name_cn": "怪異標記",
+      "traits": [
+        "omen"
+      ],
+      "text": "<b>Revelation</b> - Test [intellect] (3). If you fail, add 1 clue from the token pool to your location (2 clues instead if there are 3 or 4 investigators in the game).",
+      "text_cn": "<b>顯現</b> - 檢定[intellect](3)。如果失敗，從供應堆中拿取1個線索放置到你所在地點(3-4人遊戲時改為放置2個線索)。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 222,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "rotting_remains",
+      "arkhamdb_code": "02223",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "treachery",
+      "name": "Rotting Remains",
+      "name_cn": "腐爛的屍體",
+      "traits": [
+        "terror"
+      ],
+      "text": "<b>Revelation</b> - Test [willpower] (3). For each point you fail by, take 1 horror.\n",
+      "text_cn": "<b>顯現</b> - 檢定[willpower](3)。你每低於難度1點，受到1點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 223,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "servant_of_many_mouths",
+      "arkhamdb_code": "02224",
+      "encounter_code": "blood_on_the_altar",
+      "encounter_name": "Blood on the Altar",
+      "type": "enemy",
+      "name": "Servant of Many Mouths",
+      "name_cn": "百口之物的僕人",
+      "traits": [
+        "humanoid"
+      ],
+      "text": "<b>Spawn</b> - Any empty location.\nRetaliate.\n[reaction] After you defeat Servant of Many Mouths: Discover 1 clue at any location.",
+      "text_cn": "<b>生成</b> - 任意一個無人地點。\n反擊。\n[reaction]在你擊敗百口之物的僕人後：發現任意地點的1個線索。",
+      "stats": {
+        "fight": 3,
+        "evade": 1,
+        "health": 2,
+        "damage": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 224,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "undimensioned_and_unseen",
+      "arkhamdb_code": "02236",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "scenario",
+      "name": "Undimensioned and Unseen",
+      "name_cn": "無人知曉",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -1 for each Brood of Yog-Sothoth in play.\n[cultist]: Reveal another token. If you fail this test, take 1 horror.\n[tablet]: 0. You must either remove all clue tokens from a Brood of Yog-Sothoth in play, or this token's modifier is -4 instead.\n[elder_thing]: -3. If this token is revealed during an attack or evasion attempt against a Brood of Yog-Sothoth, it immediately attacks you.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]：場上每隻猶格·索托斯之子，-1。\n[cultist]：再抽取1個標記。如果失敗，受到1點恐懼。\n[tablet]：0。你必須選擇將一隻猶格·索托斯之子上的線索標記全部移除，或者將這個標記視為-4。\n[elder_thing]：-3。如果該標記在對抗猶格·索托斯之子的攻擊或躲避嘗試期間抽出，該敵人立刻攻擊你。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 236,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "rampaging_creatures",
+      "arkhamdb_code": "02237",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "agenda",
+      "name": "Rampaging Creatures",
+      "name_cn": "橫衝直撞",
+      "traits": [],
+      "text": "<b>Forced</b> - At the end of the enemy phase: Move each Brood of Yog-Sothoth enemy once toward a random location.",
+      "text_cn": "<b>強制</b> - 當敵軍階段結束時：將場上所有猶格·索托斯之子向一個隨機地點移動一次。",
+      "stats": {
+        "doom": 5
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 237,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "biding_its_time",
+      "arkhamdb_code": "02238",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "agenda",
+      "name": "Biding Its Time",
+      "name_cn": "等待時機",
+      "traits": [],
+      "text": "<b>Forced</b> - At the end of the enemy phase: Move each Brood of Yog-Sothoth enemy once toward a random location.",
+      "text_cn": "<b>強制</b> - 當敵軍階段結束時：將場上所有猶格·索托斯之子向一個隨機地點移動一次。",
+      "stats": {
+        "doom": 6
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 238,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "horrors_unleashed",
+      "arkhamdb_code": "02239",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "agenda",
+      "name": "Horrors Unleashed",
+      "name_cn": "恐懼爆發",
+      "traits": [],
+      "text": "Each [[Abomination]] enemy gets +1 fight and +1 evade.\n<b>Forced</b> - At the end of the enemy phase: Move each Brood of Yog-Sothoth enemy once toward a random location.",
+      "text_cn": "所有[[異形]]敵人獲得+1攻擊值和+1躲避值。\n<b>強制</b> - 當敵軍階段結束時：將場上所有猶格·索托斯之子向一個隨機地點移動一次。",
+      "stats": {
+        "doom": 7
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 239,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "saracenic_script",
+      "arkhamdb_code": "02240",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "act",
+      "name": "Saracenic Script",
+      "name_cn": "古阿拉伯手稿",
+      "traits": [],
+      "text": "<b>Objective</b> - Only investigators at Whateley Ruins may spend the requisite number of clues, as a group, to advance.",
+      "text_cn": "<b>目標</b> - 只有在沃特雷家的廢墟的調查員能夠以團隊為單位，花費所需線索來推進場景。",
+      "stats": {
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 240,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "they_must_be_destroyed",
+      "arkhamdb_code": "02241",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "act",
+      "name": "They Must Be Destroyed!",
+      "name_cn": "消滅它們！",
+      "traits": [],
+      "text": "<b>Objective</b> - Defeat as many Brood of Yog-Sothoth enemies as you can. If there are no copies of Brood of Yog-Sothoth in play or set aside, advance.",
+      "text_cn": "<b>目標</b> - 擊敗盡量多的猶格·索托斯之子。如果猶格·索托斯之子不在場上，也沒有放在一邊，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 241,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dunwich_village_a",
+      "arkhamdb_code": "02242",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Dunwich Village",
+      "name_cn": "敦威治村",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[action]: <b>Resign.</b> You hide from the rampaging creatures.\n[fast]: You borrow some hounds to track the creatures by scent. An investigator in Dunwich Village may place 1 of his or her clues on any [[Abomination]] enemy in play. (Group limit once per game).",
+      "text_cn": "[action]：<b>撤退</b>。你找了個地洞躲了起來。\n[free]：你向農家借來一條狗，想通過味道尋找怪物的蹤跡。在敦威治村的一位調查員，可以將其1個線索放置在場上任意一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 1,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 242,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dunwich_village_b",
+      "arkhamdb_code": "02243",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Dunwich Village",
+      "name_cn": "敦威治村",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[action]: <b>Resign.</b> You hide from the rampaging creatures.\n[action]: Move a Brood of Yog-Sothoth enemy once toward Dunwich Village.",
+      "text_cn": "[action]：<b>撤退</b>。你找了個地洞躲了起來。\n[action]：將一隻猶格·索托斯之子向敦威治村移動一次。",
+      "stats": {
+        "shroud": 2,
+        "clues": 3,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 243,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "cold_spring_glen_a",
+      "arkhamdb_code": "02244",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Cold Spring Glen",
+      "name_cn": "冷泉幽谷",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "Each enemy in Cold Spring Glen gets -1 evade.\n[fast]: You lure the creature into the dense tree cover, and it becomes tangled. Investigators in Cold Spring Glen may, as a group, place up to 2 of their clues on an [[Abomination]] enemy in Cold Spring Glen. (Group limit once per game).",
+      "text_cn": "在冷泉幽谷的敵人獲得-1躲避值。\n[free]：你把怪物吸引到一片藤蔓中，很快，它就被纏住了。在冷泉幽谷的調查員，可以以團隊為單位，支付2個線索，並放置在冷泉幽谷的一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 244,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "cold_spring_glen_b",
+      "arkhamdb_code": "02245",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Cold Spring Glen",
+      "name_cn": "冷泉幽谷",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "Each enemy in Cold Spring Glen gets -1 evade.\n[reaction] After Cold Spring Glen is chosen as a random location: An investigator in Cold Spring Glen tests [agility] (3). If successful, choose a different random location.",
+      "text_cn": "在冷泉幽谷的敵人獲得-1躲避值。\n[reaction]在冷泉幽谷被選中為隨機地點後：在冷泉幽谷的一位調查員檢定[agility](3)。如果成功，選擇一個不同的隨機地點。",
+      "stats": {
+        "shroud": 2,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 245,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ten_acre_meadow_a",
+      "arkhamdb_code": "02246",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Ten-Acre Meadow",
+      "name_cn": "十里牧場",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[fast]: You lure the monster into the rain. Place 1 clue from the token bank on an [[Abomination]] enemy in Ten-Acre Meadow. At the end of the round, remove 1 clue from that enemy. (Group limit once per game).",
+      "text_cn": "[free]：你把怪物引到雨中。從供應堆拿取1個線索標記，放到十里牧場的一名[[異形]]敵人上。當本輪結束時，移除該敵人上1個線索標記。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 1,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 246,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ten_acre_meadow_b",
+      "arkhamdb_code": "02247",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Ten-Acre Meadow",
+      "name_cn": "十里牧場",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[fast]: You set a bait using a live animal. Each investigator in Ten-Acre Meadow may place 1 of his or her clues on an [[Abomination]] enemy in Ten-Acre Meadow. (Group limit once per game).",
+      "text_cn": "[free]：你把牲畜當作誘餌。在十里牧場的調查員，可以各將其持有的1個線索放到該地點的一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 2,
+        "clues": 3,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 247,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "blasted_heath_a",
+      "arkhamdb_code": "02248",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Blasted Heath",
+      "name_cn": "憎惡荒野",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[fast]: You lure the creature into a patch of sand. Investigators in Blasted Heath may, as a group, place up to 2 of their clues on an [[Abomination]] enemy in Blasted Heath. (Group limit once per game).",
+      "text_cn": "[free]：你將那頭怪物引到一條沙子覆蓋的小徑上。在憎惡荒野的調查員，可以以團隊為單位，支付2個線索，並放置在憎惡荒野的一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 4,
+        "clues": 3,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 248,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "blasted_heath_b",
+      "arkhamdb_code": "02249",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Blasted Heath",
+      "name_cn": "憎惡荒野",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "<b>Forced</b> - At the end of your turn, if you are in Blasted Heath: Take 1 damage.",
+      "text_cn": "<b>強制</b> - 當你回合結束時，如果你在憎惡荒野：受到1點傷害。",
+      "stats": {
+        "shroud": 3,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 249,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "whateley_ruins_a",
+      "arkhamdb_code": "02250",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Whateley Ruins",
+      "name_cn": "沃特雷家的廢墟",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "Each investigator in Whateley Ruins gets -1 [willpower].\n[fast]: You hurl a nearby canister of paint at the monster. An investigator in Whateley Ruins may place up to 3 of his or her clues on an [[Abomination]] enemy in Whateley Ruins. (Group limit once per game).",
+      "text_cn": "在沃特雷家的廢墟的調查員獲得-1[willpower]。\n[free]：你隨手拿起一罐顏料桶，扔向了怪物。在沃特雷家的廢墟的一位調查員，可以將其最多3個線索，放置在該地點的一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 250,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "whateley_ruins_b",
+      "arkhamdb_code": "02251",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Whateley Ruins",
+      "name_cn": "沃特雷家的廢墟",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "Each investigator in Whateley Ruins gets -1 [willpower].\n[action]: Test [intellect] (4). If you are successful, move a Brood of Yog-Sothoth enemy 1 location in any direction.",
+      "text_cn": "在沃特雷家的廢墟的調查員獲得-1[willpower]。\n[action]：檢定[intellect](4)。如果成功，將一隻猶格·索托斯之子向任意方向移動一個地點。",
+      "stats": {
+        "shroud": 2,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 251,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "devils_hop_yard_a",
+      "arkhamdb_code": "02252",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Devil's Hop Yard",
+      "name_cn": "惡魔花園",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[fast]: You lure the creature into the thick fog. An investigator in Devil's Hop Yard may place up to 2 of his or her clues on an [[Abomination]] enemy in Devil's Hop Yard. (Group limit once per game).",
+      "text_cn": "[free]：你把怪物引到了迷霧之中。在惡魔花園的調查員，可以以團隊為單位，支付2個線索，並放置在惡魔花園的一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 1,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 252,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "devils_hop_yard_b",
+      "arkhamdb_code": "02253",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "location",
+      "name": "Devil's Hop Yard",
+      "name_cn": "惡魔花園",
+      "traits": [
+        "dunwich"
+      ],
+      "text": "[fast]: The creature follows you into the mud. Each investigator in Devil's Hop Yard may place 1 of his or her clues on an [[Abomination]] enemy in Devil's Hop Yard. (Group limit once per game).",
+      "text_cn": "[free]：那個怪物跟著你走進了泥地裡。在惡魔花園的調查員，可以各將其持有的1個線索放到該地點的一名[[異形]]敵人上。(團隊每場遊戲限制1次。)",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 253,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "esoteric_formula",
+      "arkhamdb_code": "02254",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "asset",
+      "name": "Esoteric Formula",
+      "name_cn": "深奧的咒文",
+      "traits": [
+        "spell"
+      ],
+      "text": "[action] <b>Fight.</b> This attack uses [willpower] instead of [combat]. You get +2 [willpower] for this attack for each clue on the attacked enemy. Use this ability only on an [[Abomination]] enemy.",
+      "text_cn": "[action] <b>攻擊</b>。這次攻擊不使用[combat]，改為使用[willpower]。目標敵人每有1個線索，這次攻擊中你+2[willpower]。該能力只對[[異形]]敵人有效。",
+      "stats": {
+        "cost": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 254,
+        "quantity": 4
+      }
+    },
+    {
+      "id": "brood_of_yog_sothoth",
+      "arkhamdb_code": "02255",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "enemy",
+      "name": "Brood of Yog-Sothoth",
+      "name_cn": "猶格·索托斯之子",
+      "traits": [
+        "monster",
+        "abomination"
+      ],
+      "text": "Massive.\nBrood of Yog-Sothoth gets +1 [per_investigator] health and cannot be damaged or attacked except using the ability on Esoteric Formula.",
+      "text_cn": "龐大。\n猶格·索托斯之子得到+1[per_investigator]生命值，且不能因深奧的咒文以外的能力被傷害或攻擊。",
+      "stats": {
+        "fight": 6,
+        "evade": 3,
+        "health": 1,
+        "damage": 2,
+        "horror": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 255,
+        "quantity": 5
+      }
+    },
+    {
+      "id": "towering_beasts",
+      "arkhamdb_code": "02256",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "treachery",
+      "name": "Towering Beasts",
+      "name_cn": "高聳的野獸",
+      "traits": [],
+      "text": "Peril.\n<b>Revelation</b> - Attach to a Brood of Yog-Sothoth enemy in play. If that enemy is at your location, take 1 damage.\nAttached enemy gets +1 fight and +1 health.",
+      "text_cn": "禍害。\n<b>顯現</b> - 疊加到場上的一張猶格·索托斯之子。如果該敵人與你在同一個地點，受到1點傷害。\n被疊加敵人獲得+1攻擊值和+1生命值。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 256,
+        "quantity": 4
+      }
+    },
+    {
+      "id": "ruin_and_destruction",
+      "arkhamdb_code": "02257",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "treachery",
+      "name": "Ruin and Destruction",
+      "name_cn": "破壞與毀滅",
+      "traits": [
+        "hazard"
+      ],
+      "text": "<b>Revelation</b> - If there are no investigators at the same location as a Brood of Yog-Sothoth, Ruin and Destruction gains surge. Otherwise, each investigator at the same location as a Brood of Yog-Sothoth tests [agility] (3). For each point he or she fails by, he or she takes 1 damage.",
+      "text_cn": "<b>顯現</b> - 如果所有猶格·索托斯之子都不與調查員在同個地點，破壞與毀滅獲得湧動關鍵詞。否則，與猶格·索托斯之子在同一地點的每位調查員都必須檢定[agility](3)。每低於難度1點，該調查員受到1點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 257,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "attracting_attention",
+      "arkhamdb_code": "02258",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "treachery",
+      "name": "Attracting Attention",
+      "name_cn": "吸引注意",
+      "traits": [],
+      "text": "Surge.\n<b>Revelation</b> - Each Brood of Yog-Sothoth enemy in play moves once toward you.",
+      "text_cn": "湧動。\n<b>顯現</b> - 場上所有猶格·索托斯之子向你移動一次。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 258,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "the_creatures_tracks",
+      "arkhamdb_code": "02259",
+      "encounter_code": "undimensioned_and_unseen",
+      "encounter_name": "Undimensioned and Unseen",
+      "type": "treachery",
+      "name": "The Creatures' Tracks",
+      "name_cn": "怪物的蹤跡",
+      "traits": [
+        "terror"
+      ],
+      "text": "Peril.\n<b>Revelation</b> - You must either (choose one): Take 2 horror, or spawn a set aside Brood of Yog-Sothoth at a random location.",
+      "text_cn": "禍害。\n<b>顯現</b> - 你必須選擇(一項)：受到2點恐懼，或將一張放在一邊的猶格·索托斯之子生成在一個隨機地點。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 259,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "where_doom_awaits",
+      "arkhamdb_code": "02274",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "scenario",
+      "name": "Where Doom Awaits",
+      "name_cn": "毀滅之地",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -1 (-3 instead if you are at an [[Altered]] location).\n[cultist]: Reveal another token. Cancel the effects and icons of each skill card committed to this test.\n[tablet]: -2 (-4 instead if it is Agenda 2).\n[elder_thing]: -X. Discard the top 2 cards of your deck. X is the total printed cost of those discarded cards.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull] -1 (如果你在[[幻境]]地點，改為-3)。\n[cultist] 再抽取1個標記。該次檢定中，投入的所有技能卡的效果和圖標無效化。\n[tablet] -2 (如果處於密謀2，改為-4)。\n[elder_thing] -X。 丟棄你牌堆頂部2張卡牌，X為這2張卡牌的打印費用之和。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 274,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "calling_forth_the_old_ones",
+      "arkhamdb_code": "02275",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "agenda",
+      "name": "Calling Forth the Old Ones",
+      "name_cn": "呼喚遠古之神",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 12
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 275,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "beckoning_for_power",
+      "arkhamdb_code": "02276",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "agenda",
+      "name": "Beckoning for Power",
+      "name_cn": "渴望魔力",
+      "traits": [],
+      "text": "",
+      "text_cn": "",
+      "stats": {
+        "doom": 10
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 276,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_path_to_the_hill",
+      "arkhamdb_code": "02277",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "act",
+      "name": "The Path to the Hill",
+      "name_cn": "通往山頂的道路",
+      "traits": [],
+      "text": "<b>Objective</b> - When the investigators have collected the requisite number of clues, they must immediately spend them and advance.",
+      "text_cn": "<b>目標</b> - 在調查員收集到足夠的線索時，必須立刻花費這些線索並推進場景。",
+      "stats": {
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 277,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ascending_the_hill_v_i",
+      "arkhamdb_code": "02278",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "act",
+      "name": "Ascending the Hill (v. I)",
+      "name_cn": "登山路途(I)",
+      "traits": [],
+      "text": "Clues cannot be placed on non-[[Altered]] locations.\n<b>Objective</b> - When an investigator enters Sentinel Peak, advance.",
+      "text_cn": "非[[幻境]]地點卡上不能放置線索。\n<b>目標</b> - 在一名調查員進入哨兵峰時，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 278,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ascending_the_hill_v_ii",
+      "arkhamdb_code": "02279",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "act",
+      "name": "Ascending the Hill (v. II)",
+      "name_cn": "登山路途(II)",
+      "traits": [],
+      "text": "Clues cannot be placed on non-[[Altered]] locations.\n<b>Objective</b> - When an investigator enters Sentinel Peak, advance.",
+      "text_cn": "非[[幻境]]地點卡上不能放置線索。\n<b>目標</b> - 在一名調查員進入哨兵峰時，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 279,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ascending_the_hill_v_iii",
+      "arkhamdb_code": "02280",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "act",
+      "name": "Ascending the Hill (v. III)",
+      "name_cn": "登山路途(III)",
+      "traits": [],
+      "text": "Clues cannot be placed on non-[[Altered]] locations.\n<b>Objective</b> - When an investigator enters Sentinel Peak, advance.",
+      "text_cn": "非[[幻境]]地點卡上不能放置線索。\n<b>目標</b> - 在一名調查員進入哨兵峰時，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 280,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_gate_opens",
+      "arkhamdb_code": "02281",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "act",
+      "name": "The Gate Opens",
+      "name_cn": "大門打開",
+      "traits": [],
+      "text": "<b>Objective</b> - Only investigators at Sentinel Peak may spend the requisite number of clues, as a group, to advance.",
+      "text_cn": "<b>目標</b> - 只有在哨兵峰的調查員能夠以團隊為單位，花費所需線索來推進場景。",
+      "stats": {
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 281,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "base_of_the_hill",
+      "arkhamdb_code": "02282",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Base of the Hill",
+      "name_cn": "山腳",
+      "traits": [
+        "dunwich",
+        "sentinel hill"
+      ],
+      "text": "Base of the Hill is connected to each copy of Diverging Path.\n[action]: <b>Investigate.</b> If you succeed, instead of discovering clues, put a random set-aside Diverging Path into play. (Limit once per round.)\n[action]: <b>Resign.</b> \"This is more than I signed up for!\"",
+      "text_cn": "山腳與其他所有分岔路相互連接。\n[action]：<b>調查</b>。如果成功，不發現線索，改為隨機抽取一張放在一邊的分岔路，並放置入場。(每輪限制1次。)\n[action]：<b>撤退</b>。\"我們不是說好不上山的嗎？我要回家！\"",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 282,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ascending_path",
+      "arkhamdb_code": "02283",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Ascending Path",
+      "name_cn": "上山道路",
+      "traits": [
+        "dunwich",
+        "sentinel hill"
+      ],
+      "text": "Ascending Path is connected to each copy of Altered Path.\n[action]: <b>Investigate.</b> If you succeed, instead of discovering clues, put a random set-aside Altered Path into play. (Limit once per round.)",
+      "text_cn": "上山道路與其他所有迷幻小路相互連接。\n[action]：<b>調查</b>。如果成功，不發現線索，改為隨機抽取一張放在一邊的迷幻小路，並放置入場。(每輪限制1次。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 283,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "sentinel_peak",
+      "arkhamdb_code": "02284",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Sentinel Peak",
+      "name_cn": "哨兵峰",
+      "traits": [
+        "dunwich",
+        "sentinel hill"
+      ],
+      "text": "<b>Forced</b> - When an investigator at this location draws a [[Hex]] card: That investigator takes 1 damage.",
+      "text_cn": "<b>強制</b> - 在此處的調查員抽出[[巫術]]卡牌時：該調查員受到1點傷害。",
+      "stats": {
+        "shroud": 4,
+        "clues": 2,
+        "victory": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 284,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "slaughtered_woods",
+      "arkhamdb_code": "02285",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Slaughtered Woods",
+      "name_cn": "屠殺之森",
+      "traits": [
+        "dunwich",
+        "woods"
+      ],
+      "text": "<b>Forced</b> - After you reveal Slaughtered Woods: Take 2 horror if you have no actions remaining.",
+      "text_cn": "<b>強制</b> - 在你翻開屠殺之森後：如果你沒有行動剩餘，受到2點恐懼。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 285,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "eerie_glade",
+      "arkhamdb_code": "02286",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Eerie Glade",
+      "name_cn": "詭異空地",
+      "traits": [
+        "dunwich",
+        "woods"
+      ],
+      "text": "<b>Forced</b> - After you reveal Eerie Glade: Discard the top 2 cards of your deck for each action you have remaining.",
+      "text_cn": "<b>強制</b> - 在你翻開詭異空地後：你每剩餘1個行動，丟棄你牌堆頂部2張卡牌。",
+      "stats": {
+        "shroud": 4,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 286,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "destroyed_path",
+      "arkhamdb_code": "02287",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Destroyed Path",
+      "name_cn": "被毀的道路",
+      "traits": [
+        "dunwich",
+        "woods"
+      ],
+      "text": "<b>Forced</b> - After you reveal Destroyed Path: Place 1 [per_investigator] doom on it.\n[action]: <b>Investigate.</b> If you succeed, instead of discovering clues, remove 1 doom from Destroyed Path.",
+      "text_cn": "<b>強制</b> - 在你翻開被毀的道路後：在該卡上放置1[per_investigator]個毀滅標記。\n[action]：<b>調查</b>。如果成功，不發現線索，改為移除被毀的道路上1個毀滅標記。",
+      "stats": {
+        "shroud": 3,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 287,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "frozen_spring",
+      "arkhamdb_code": "02288",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Frozen Spring",
+      "name_cn": "冷凍泉",
+      "traits": [
+        "dunwich",
+        "woods"
+      ],
+      "text": "<b>Forced</b> - After you reveal Frozen Spring: Lose the remainder of your actions and immediately end your turn.",
+      "text_cn": "<b>強制</b> - 在你翻開冷凍泉後：失去所有剩餘行動，並立刻結束你的回合。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 288,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dimensional_gap",
+      "arkhamdb_code": "02289",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Dimensional Gap",
+      "name_cn": "空間裂縫",
+      "traits": [
+        "dunwich",
+        "woods",
+        "altered"
+      ],
+      "text": "<b>Forced</b> - After you reveal Dimensional Gap: Discard cards from the top of the encounter deck until an enemy is discarded. Spawn that enemy here (instead of its normal spawn location).",
+      "text_cn": "<b>強制</b> - 在你翻開空間裂縫後：從遭遇牌堆頂部棄牌，直到棄掉1張敵人卡，將其生成於此。(無視其原有生成地點。)",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 289,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "a_tear_in_the_path",
+      "arkhamdb_code": "02290",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "A Tear in the Path",
+      "name_cn": "世界之傷",
+      "traits": [
+        "dunwich",
+        "woods",
+        "altered"
+      ],
+      "text": "<b>Forced</b> - After you reveal A Tear in the Path: Take 2 damage if you have no actions remaining.",
+      "text_cn": "<b>強制</b> - 在你翻開世界之傷後：如果你沒有行動剩餘，受到2點傷害。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 290,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "uprooted_woods",
+      "arkhamdb_code": "02291",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Uprooted Woods",
+      "name_cn": "漂浮之森",
+      "traits": [
+        "dunwich",
+        "woods",
+        "altered"
+      ],
+      "text": "<b>Forced</b> - After you reveal Uprooted Woods: Discard the top 5 cards of your deck if you have no actions remaining.",
+      "text_cn": "<b>強制</b> - 在你翻開漂浮之森後：如果你沒有行動剩餘，丟棄你牌堆頂部5張卡牌。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 291,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "lost_memories",
+      "arkhamdb_code": "02292",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "location",
+      "name": "Lost Memories",
+      "name_cn": "回憶迷宮",
+      "traits": [
+        "dunwich",
+        "woods",
+        "altered"
+      ],
+      "text": "<b>Forced</b> - After you reveal Lost Memories: Take 1 horror for each action you have remaining.",
+      "text_cn": "<b>強制</b> - 在你翻開回憶迷宮後：你每剩餘1個行動，受到1點恐懼。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 292,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "seth_bishop",
+      "arkhamdb_code": "02293",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "enemy",
+      "name": "Seth Bishop",
+      "name_cn": "賽斯·畢曉普",
+      "traits": [
+        "humanoid",
+        "sorcerer",
+        "elite"
+      ],
+      "text": "Retaliate.",
+      "text_cn": "反擊。",
+      "stats": {
+        "fight": 5,
+        "evade": 5,
+        "health": 3,
+        "damage": 1,
+        "horror": 1,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "Sorcerer of Dunwich",
+        "subname_cn": "敦威治法師",
+        "position": 293,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "devotee_of_the_key",
+      "arkhamdb_code": "02294",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "enemy",
+      "name": "Devotee of the Key",
+      "name_cn": "虔誠的獻身者",
+      "traits": [
+        "humanoid",
+        "sorcerer"
+      ],
+      "text": "<b>Spawn</b> - Base of the Hill.\n<b>Forced</b> - At the end of the enemy phase, Devotee of the Key moves once toward Sentinel Peak. If Devotee of the Key is already at Sentinel Peak, discard it and add 2 doom to the current agenda, instead.",
+      "text_cn": "<b>生成</b> - 山腳。\n<b>強制</b> - 當敵軍階段結束時，將虔誠的獻身者向哨兵峰移動一次。如果虔誠的獻身者已經在哨兵峰，改為將其丟棄，並在當前密謀上放置2個毀滅標記。",
+      "stats": {
+        "fight": 3,
+        "evade": 3,
+        "health": 3,
+        "damage": 1,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 294,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "crazed_shoggoth",
+      "arkhamdb_code": "02295",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "enemy",
+      "name": "Crazed Shoggoth",
+      "name_cn": "瘋狂的修格斯",
+      "traits": [
+        "monster",
+        "shoggoth"
+      ],
+      "text": "<b>Spawn</b> - Nearest [[Altered]] location.\n<b>Forced</b> - When Crazed Shoggoth attacks: If this attack would defeat an investigator, that investigator is instead killed.",
+      "text_cn": "<b>生成</b> - 最近的[[幻境]]地點。\n<b>強制</b> - 在瘋狂的修格斯攻擊時：如果該次攻擊將要擊敗調查員，改為該調查員陣亡。",
+      "stats": {
+        "fight": 3,
+        "evade": 4,
+        "health": 6,
+        "damage": 2,
+        "horror": 2,
+        "victory": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 295,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "rites_howled",
+      "arkhamdb_code": "02296",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "treachery",
+      "name": "Rites Howled",
+      "name_cn": "哭號儀式",
+      "traits": [
+        "hex"
+      ],
+      "text": "<b>Revelation</b> - Discard the top 3 cards of each investigator's deck. Each investigator at an [[Altered]] location shuffles each weakness in his or her discard pile into his or her deck.",
+      "text_cn": "<b>顯現</b> - 丟棄每位調查員牌堆頂部3張卡牌。所有在[[幻境]]地點的調查員，將其棄牌堆中的所有弱點卡與牌堆混洗。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 296,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "spaces_between",
+      "arkhamdb_code": "02297",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "treachery",
+      "name": "Spaces Between",
+      "name_cn": "縫隙空間",
+      "traits": [
+        "hex",
+        "hazard"
+      ],
+      "text": "<b>Revelation</b> - Flip each non-[[Sentinel Hill]] location in play to its unrevealed side, removing all clues from it. Each investigator and enemy at a location flipped in this way immediately moves to the nearest [[Sentinel Hill]] location. Shuffle each non-<i>Sentinel Hill </i>location, so the players do not know which is which.",
+      "text_cn": "<b>顯現</b> - 將場上所有非[[哨兵山]]地點翻到未揭示面，並丟棄這些地點上所有線索。在這些地點上的調查員和敵人，立刻移動到最近的[[哨兵山]]地點。將所有非[[哨兵山]]地點混洗至無法分辨。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 297,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "vortex_of_time",
+      "arkhamdb_code": "02298",
+      "encounter_code": "where_doom_awaits",
+      "encounter_name": "Where Doom Awaits",
+      "type": "treachery",
+      "name": "Vortex of Time",
+      "name_cn": "時間漩渦",
+      "traits": [
+        "hex",
+        "hazard"
+      ],
+      "text": "<b>Revelation</b> - Each investigator at a [[Sentinel Hill]] location tests [willpower] (4). Each investigator who fails takes 2 damage.",
+      "text_cn": "<b>顯現</b> - 所有在[[哨兵山]]地點的調查員檢定[willpower](4)。失敗的調查員各受到2點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 298,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "lost_in_time_and_space",
+      "arkhamdb_code": "02311",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "scenario",
+      "name": "Lost in Time and Space",
+      "name_cn": "迷失時空",
+      "traits": [],
+      "text": "Easy / Standard\n[skull]: -1 for each [[Extradimensional]] location in play (max -5).\n[cultist]: Reveal another token. If you fail, after this skill test, discard cards from the top of the encounter deck until a location is discarded. Put that location into play and move there.\n[tablet]: -3. If Yog-Sothoth is in play, it attacks you after this skill test.\n[elder_thing]: -X. X is the shroud value of your location. If you fail and your location is [[Extradimensional]], discard it.",
+      "text_cn": "<b>簡單 / 普通</b>\n[skull]場上每個[[異次元]]地點-1(最大-5)。\n[cultist]再抽取一個標記。如果失敗，在檢定結束後，從遭遇牌堆頂部棄牌，直到棄掉一張地點卡。將該地點放置入場，並移動到該地點。\n[tablet]-3。如果猶格·索托斯在場，在檢定結束後，它立刻攻擊你。\n[elder_thing]-X。X為你所在地點的隱藏值。如果失敗，並且你的所在地點為[[異次元]]，將其丟棄。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 311,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "all_is_one",
+      "arkhamdb_code": "02312",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "agenda",
+      "name": "All is One",
+      "name_cn": "一生萬物",
+      "traits": [],
+      "text": "<b>Forced</b> - After you are moved to a location by an encounter card effect: Take 1 horror.",
+      "text_cn": "<b>強制</b> - 在你因為遭遇卡效果移動後：受到1點恐懼。",
+      "stats": {
+        "doom": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 312,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "past_present_and_future",
+      "arkhamdb_code": "02313",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "agenda",
+      "name": "Past, Present and Future",
+      "name_cn": "過去，現在，將來",
+      "traits": [],
+      "text": "<b>Forced</b> - After you are moved to a location by an encounter card effect: Take 1 horror.",
+      "text_cn": "<b>強制</b> - 在你因為遭遇卡效果移動後：受到1點恐懼。",
+      "stats": {
+        "doom": 4
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 313,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "breaking_through",
+      "arkhamdb_code": "02314",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "agenda",
+      "name": "Breaking Through",
+      "name_cn": "突破",
+      "traits": [],
+      "text": "<b>Forced</b> - After you are moved to a location by an encounter card effect: Take 1 horror.",
+      "text_cn": "<b>強制</b> - 在你因為遭遇卡效果移動後：受到1點恐懼。",
+      "stats": {
+        "doom": 6
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 314,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_end_of_all_things",
+      "arkhamdb_code": "02315",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "agenda",
+      "name": "The End of All Things",
+      "name_cn": "萬物歸一",
+      "traits": [],
+      "text": "<b>Forced</b> - After you are moved by an encounter card effect: Take 1 horror.\n<b>Forced</b> - If Yog-Sothoth is defeated, <b>(→R3)</b>.",
+      "text_cn": "<b>強制</b> - 在你因為遭遇卡效果移動後：受到1點恐懼。\n<b>強制</b> - 如果猶格·索托斯被擊敗，<b>(→結局3)</b>。",
+      "stats": {
+        "doom": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 315,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "out_of_this_world",
+      "arkhamdb_code": "02316",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "act",
+      "name": "Out of this World",
+      "name_cn": "世界之外",
+      "traits": [],
+      "text": "[action]: Discard the top 3 cards of the encounter deck. Choose a location discarded by this effect and resolve its 'revelation' ability.",
+      "text_cn": "[action]：丟棄遭遇牌堆頂部3張卡牌。選擇該效果丟棄的卡牌中的1張地點卡，結算其顯現能力。",
+      "stats": {
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 316,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "into_the_beyond",
+      "arkhamdb_code": "02317",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "act",
+      "name": "Into the Beyond",
+      "name_cn": "超越領域",
+      "traits": [],
+      "text": "[action]: Discard the top 3 cards of the encounter deck. Choose a location discarded by this effect and resolve its 'revelation' ability.\n<b>Objective</b> - If an investigator enters The Edge of the Universe, advance.",
+      "text_cn": "[action]：丟棄遭遇牌堆頂部3張卡牌。選擇該效果丟棄的卡牌中的1張地點卡，結算其顯現能力。\n<b>目標</b> - 如果有調查員進入宇宙的邊緣，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 317,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "close_the_rift",
+      "arkhamdb_code": "02318",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "act",
+      "name": "Close the Rift",
+      "name_cn": "關閉裂縫",
+      "traits": [],
+      "text": "[action]: Discard the top 3 cards of the encounter deck. Choose a location discarded by this effect and resolve its 'revelation' ability.\n<b>Objective</b> - Only investigators at The Edge of the Universe may spend the requisite number of clues, as a group, to advance.",
+      "text_cn": "[action]：丟棄遭遇牌堆頂部3張卡牌。選擇該效果丟棄的卡牌中的1張地點卡，結算其顯現能力。\n<b>目標</b> - 只有在宇宙的邊緣的調查員能夠以團隊為單位，花費所需線索來推進場景。",
+      "stats": {
+        "clues": 3
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 318,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "finding_a_new_way",
+      "arkhamdb_code": "02319",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "act",
+      "name": "Finding a New Way",
+      "name_cn": "尋找新的道路",
+      "traits": [],
+      "text": "[action]: Discard the top 3 cards of the encounter deck. Choose a location discarded by this effect and resolve its 'revelation' ability.\n<b>Objective</b> - If each undefeated investigator has resigned, advance.",
+      "text_cn": "[action]：丟棄遭遇牌堆頂部3張卡牌。選擇該效果丟棄的卡牌中的1張地點卡，結算其顯現能力。\n<b>目標</b> - 如果所有未被擊敗的調查員都已撤退，推進場景。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 319,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "another_dimension",
+      "arkhamdb_code": "02320",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Another Dimension",
+      "name_cn": "另一個次元",
+      "traits": [
+        "otherworld"
+      ],
+      "text": "<b>Forced</b> - When a location leaves play: Move each investigator and unengaged enemy at that location to Another Dimension. Cannot be canceled.",
+      "text_cn": "<b>強制</b> - 在一張地點卡離場時：將該地點的調查員和未交戰狀態的敵人移動到另一個次元。該效果不能被取消。",
+      "stats": {
+        "shroud": 6,
+        "clues": 0
+      },
+      "meta": {
+        "subname": "Unfettered by Reality",
+        "subname_cn": "現實之外的桃源",
+        "position": 320,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "the_edge_of_the_universe",
+      "arkhamdb_code": "02321",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "The Edge of the Universe",
+      "name_cn": "宇宙的邊緣",
+      "traits": [
+        "otherworld"
+      ],
+      "text": "You must have at least 2 clues in order to move to The Edge of the Universe.\nInvestigators at The Edge of the Universe cannot draw cards during the upkeep phase.",
+      "text_cn": "你必須持有至少2個線索，才能移動進入宇宙的邊緣。\n在宇宙的邊緣的調查員，補給階段中不能抽取卡牌。",
+      "stats": {
+        "shroud": 2,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 321,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "tear_through_time",
+      "arkhamdb_code": "02322",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Tear Through Time",
+      "name_cn": "時間縫隙",
+      "traits": [
+        "otherworld"
+      ],
+      "text": "[action] Spend 2 clues: <b>Resign.</b> You find a new path and hope that it leads back to safety.",
+      "text_cn": "[action]花費2線索：<b>撤退</b>。你找到一條路徑，希望能安全返回。",
+      "stats": {
+        "shroud": 2,
+        "clues": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 322,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "yog_sothoth",
+      "arkhamdb_code": "02323",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "enemy",
+      "name": "Yog-Sothoth",
+      "name_cn": "猶格·索托斯",
+      "traits": [
+        "ancient one",
+        "elite"
+      ],
+      "text": "Massive. Hunter. Retaliate.\nYog-Sothoth gets +6 [per_investigator] health.\nYog-Sothoth cannot be evaded and cannot make attacks of opportunity.\n[reaction] When Yog-Sothoth attacks you: Instead of taking up to X horror, you may discard the top X cards from your deck. Then, if you have no cards in your deck, you are driven insane.",
+      "text_cn": "龐大。獵手。反擊。\n猶格·索托斯獲得+6[per_investigator]生命值。\n猶格·索托斯不能被躲避，也不會趁亂攻擊。\n[reaction]在猶格·索托斯攻擊你時：你可以將牌堆頂部X張牌丟棄，來減少受到的X點恐懼。然後，如果你的牌堆中沒有卡牌，你立刻發瘋。",
+      "stats": {
+        "fight": 4,
+        "health": 4,
+        "damage": 1,
+        "horror": 5
+      },
+      "meta": {
+        "subname": "The Lurker Beyond the Threshold",
+        "subname_cn": "居於戶口之物",
+        "position": 323,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "tear_through_space",
+      "arkhamdb_code": "02324",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Tear Through Space",
+      "name_cn": "空間裂縫",
+      "traits": [
+        "otherworld",
+        "extradimensional"
+      ],
+      "text": "Surge.\n<b>Revelation</b> - Put Tear Through Space into play.\n<b>Forced</b> - At the end of the round: Either place 1 doom on Tear Through Space, or discard it.",
+      "text_cn": "湧動。\n<b>顯現</b> - 將空間裂縫放置入場。\n<b>強制</b> - 當一輪結束時：在空間裂縫上放置1個毀滅標記，或將該卡丟棄。",
+      "stats": {
+        "shroud": 1,
+        "clues": 1,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 324,
+        "quantity": 4
+      }
+    },
+    {
+      "id": "prismatic_cascade",
+      "arkhamdb_code": "02325",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Prismatic Cascade",
+      "name_cn": "菱柱瀑布",
+      "traits": [
+        "otherworld",
+        "extradimensional"
+      ],
+      "text": "<b>Revelation</b> - Put Prismatic Cascade into play and discard a random card from your hand.\n<b>Forced</b> - After the last clue on Prismatic Cascade is removed: Discard Prismatic Cascade.",
+      "text_cn": "<b>顯現</b> - 將菱柱瀑布放置入場，並隨機丟棄1張你的手牌。\n<b>強制</b> - 在菱柱瀑布上最後1個線索被移除後：丟棄菱柱瀑布。",
+      "stats": {
+        "shroud": 2,
+        "clues": 3,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 325,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "endless_bridge",
+      "arkhamdb_code": "02326",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Endless Bridge",
+      "name_cn": "無盡之橋",
+      "traits": [
+        "otherworld",
+        "extradimensional"
+      ],
+      "text": "<b>Revelation</b> - Put Endless Bridge into play and lose 2 resources.\n<b>Forced</b> - After an investigator leaves Endless Bridge: Either place 1 doom on Endless Bridge, or discard it.",
+      "text_cn": "<b>顯現</b> - 將無盡之橋放置入場，並失去2個資源。\n<b>強制</b> - 在一位調查員離開無盡之橋後：在無盡之橋上放置1個毀滅標記，或丟棄該地點。",
+      "stats": {
+        "shroud": 4,
+        "clues": 2,
+        "clues_fixed": true
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 326,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "steps_of_yhagharl",
+      "arkhamdb_code": "02327",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Steps of Y'hagharl",
+      "name_cn": "伊哈格爾的階梯",
+      "traits": [
+        "otherworld",
+        "extradimensional"
+      ],
+      "text": "<b>Revelation</b> - Put Steps of Y'hagharl into play. Then, draw the topmost [[Madness]] card in your discard pile.\n<b>Forced</b> - When you would leave Steps of Y'hagharl: Test [willpower] (2). If you fail, shuffle Steps of Y'hagharl into the encounter deck instead of moving to your original destination.",
+      "text_cn": "<b>顯現</b> - 將伊哈格爾的階梯放置入場。然後，抽取你棄牌堆中最上方的[[瘋狂]]卡牌。\n<b>強制</b> - 在你將要離開伊哈格爾的階梯時：檢定[willpower](2)。如果失敗，將伊哈格爾的階梯與遭遇牌堆混洗，來代替你原本的移動行動。",
+      "stats": {
+        "shroud": 3,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 327,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "dimensional_doorway",
+      "arkhamdb_code": "02328",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "location",
+      "name": "Dimensional Doorway",
+      "name_cn": "次元之門",
+      "traits": [
+        "otherworld",
+        "extradimensional"
+      ],
+      "text": "<b>Revelation</b> - Put Dimensional Doorway into play. Then, draw the topmost [[Hex]] card in the encounter discard pile.\n<b>Forced</b> - At the end of your turn, if you are at Dimensional Doorway: You must either spend 2 resources or shuffle Dimensional Doorway into the encounter deck.",
+      "text_cn": "<b>顯現</b> - 將次元之門放置入場。然後，抽取遭遇棄牌堆中最上方的[[巫術]]卡牌。\n<b>強制</b> - 當你回合結束時，如果你在次元之門：你必須花費2個資源，或者將次元之門與遭遇牌堆混洗。",
+      "stats": {
+        "shroud": 2,
+        "clues": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 328,
+        "quantity": 1
+      }
+    },
+    {
+      "id": "interstellar_traveler",
+      "arkhamdb_code": "02329",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "enemy",
+      "name": "Interstellar Traveler",
+      "name_cn": "星際旅行者",
+      "traits": [
+        "monster",
+        "yithian"
+      ],
+      "text": "<b>Spawn</b> - Any [[Extradimensional]] location.\nHunter.\n<b>Forced</b> - When Interstellar Traveler enters a location: Flip 1 clue on that location to its doom side and place it on Interstellar Traveler, or place 1 doom on Interstellar Traveler if there are no clues on that location.",
+      "text_cn": "<b>生成</b> - 任意一個[[異次元]]地點。\n獵手。\n<b>強制</b> - 在星際旅行者進入一個地點時：將該地點1個線索翻面為毀滅標記，並放在星際旅行者上；如果該地點沒有線索，改從供應堆拿取1個毀滅標記放在星際旅行者上。",
+      "stats": {
+        "fight": 4,
+        "evade": 2,
+        "health": 3,
+        "damage": 1,
+        "horror": 2
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 329,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "yithian_starseeker",
+      "arkhamdb_code": "02330",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "enemy",
+      "name": "Yithian Starseeker",
+      "name_cn": "伊斯尋星者",
+      "traits": [
+        "monster",
+        "yithian"
+      ],
+      "text": "<b>Spawn</b> - Another Dimension.\nRetaliate.\n<b>Forced</b> - When Yithian Starseeker attacks an investigator with more than 10 cards in his or her discard pile: Place 1 doom on Yithian Starseeker.",
+      "text_cn": "<b>生成</b> - 另一個次元。\n反擊。\n<b>強制</b> - 在伊斯尋星者攻擊棄牌堆牌數超過10張的調查員時：在伊斯尋星者上放置1個毀滅標記。",
+      "stats": {
+        "fight": 3,
+        "evade": 5,
+        "health": 4,
+        "damage": 2,
+        "horror": 1
+      },
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 330,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "collapsing_reality",
+      "arkhamdb_code": "02331",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "treachery",
+      "name": "Collapsing Reality",
+      "name_cn": "現實崩塌",
+      "traits": [
+        "hazard"
+      ],
+      "text": "<b>Revelation</b> - If you are at an [[Extradimensional]] location, discard it and take 1 damage. Otherwise, take 2 damage.",
+      "text_cn": "<b>顯現</b> - 如果你在[[異次元]]地點，丟棄該地點卡並受到1點傷害。否則，受到2點傷害。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 331,
+        "quantity": 3
+      }
+    },
+    {
+      "id": "wormhole",
+      "arkhamdb_code": "02332",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "treachery",
+      "name": "Wormhole",
+      "name_cn": "蟲洞",
+      "traits": [
+        "hazard"
+      ],
+      "text": "<b>Revelation</b> - Discard cards from the top of the encounter deck until a location is discarded. Resolve that location's 'revelation' ability, then move to that location.",
+      "text_cn": "<b>顯現</b> - 從遭遇牌堆頂部棄牌，直到棄掉1張地點卡。立刻結算該地點卡的顯現能力，然後移動到該地點。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 332,
+        "quantity": 2
+      }
+    },
+    {
+      "id": "vast_expanse",
+      "arkhamdb_code": "02333",
+      "encounter_code": "lost_in_time_and_space",
+      "encounter_name": "Lost in Time and Space",
+      "type": "treachery",
+      "name": "Vast Expanse",
+      "name_cn": "遼闊無邊",
+      "traits": [
+        "terror"
+      ],
+      "text": "<b>Revelation</b> - If there are no [[Extradimensional]] locations in play, Vast Expanse gains surge. Otherwise, test [willpower] (X), where X is the number of [[Extradimensional]] locations in play (max 5). For each point you fail by, take 1 horror.",
+      "text_cn": "<b>顯現</b> - 如果場上沒有[[異次元]]地點，遼闊無邊獲得湧動關鍵詞。否則，檢定[willpower](X)，X為場上[[異次元]]地點數量(最大5)。你每低於難度1點，受到1點恐懼。",
+      "stats": {},
+      "meta": {
+        "subname": "",
+        "subname_cn": "",
+        "position": 333,
+        "quantity": 3
+      }
+    }
+  ]
+}

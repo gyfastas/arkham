@@ -1,0 +1,69 @@
+{
+  "id": "undimensioned_and_unseen",
+  "name": "Undimensioned and Unseen",
+  "name_cn": "无形无踪",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 6,
+  "encounter_sets": [
+    "undimensioned_and_unseen",
+    "whippoorwills",
+    "beast_thralls",
+    "dunwich",
+    "striking_fear"
+  ],
+  "scenario_set": "undimensioned_and_unseen",
+  "start_location": "dunwich_village_a",
+  "connections": {
+    "dunwich_village_a": [
+      "cold_spring_glen_a",
+      "ten_acre_meadow_a",
+      "whateley_ruins_a"
+    ],
+    "cold_spring_glen_a": [
+      "dunwich_village_a",
+      "ten_acre_meadow_a",
+      "blasted_heath_a"
+    ],
+    "ten_acre_meadow_a": [
+      "dunwich_village_a",
+      "cold_spring_glen_a",
+      "whateley_ruins_a",
+      "devils_hop_yard_a"
+    ],
+    "blasted_heath_a": [
+      "cold_spring_glen_a",
+      "whateley_ruins_a",
+      "devils_hop_yard_a"
+    ],
+    "whateley_ruins_a": [
+      "dunwich_village_a",
+      "ten_acre_meadow_a",
+      "blasted_heath_a"
+    ],
+    "devils_hop_yard_a": [
+      "ten_acre_meadow_a",
+      "blasted_heath_a"
+    ]
+  },
+  "act_deck": [
+    "saracenic_script",
+    "they_must_be_destroyed"
+  ],
+  "agenda_deck": [
+    "rampaging_creatures",
+    "biding_its_time",
+    "horrors_unleashed"
+  ],
+  "locations": [
+    "dunwich_village_a",
+    "cold_spring_glen_a",
+    "ten_acre_meadow_a",
+    "blasted_heath_a",
+    "whateley_ruins_a",
+    "devils_hop_yard_a"
+  ],
+  "story_assets": [
+    "esoteric_formula"
+  ]
+}

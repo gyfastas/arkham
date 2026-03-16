@@ -1,0 +1,77 @@
+{
+  "id": "essex_county_express",
+  "name": "Essex County Express",
+  "name_cn": "埃塞克斯县快车",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 4,
+  "encounter_sets": [
+    "essex_county_express",
+    "dunwich",
+    "the_beyond",
+    "striking_fear"
+  ],
+  "scenario_set": "essex_county_express",
+  "start_location": "engine_car_a",
+  "connections": {
+    "engine_car_a": [
+      "parlor_car"
+    ],
+    "parlor_car": [
+      "engine_car_a",
+      "dining_car"
+    ],
+    "dining_car": [
+      "parlor_car",
+      "sleeping_car"
+    ],
+    "sleeping_car": [
+      "dining_car",
+      "passenger_car_a"
+    ],
+    "passenger_car_a": [
+      "sleeping_car",
+      "passenger_car_b"
+    ],
+    "passenger_car_b": [
+      "passenger_car_a",
+      "passenger_car_c"
+    ],
+    "passenger_car_c": [
+      "passenger_car_b",
+      "passenger_car_d"
+    ],
+    "passenger_car_d": [
+      "passenger_car_c",
+      "passenger_car_e"
+    ],
+    "passenger_car_e": [
+      "passenger_car_d"
+    ]
+  },
+  "act_deck": [
+    "run",
+    "get_the_engine_running"
+  ],
+  "agenda_deck": [
+    "a_tear_in_reality",
+    "the_maw_widens",
+    "rolling_backwards",
+    "drawn_in",
+    "out_of_time"
+  ],
+  "locations": [
+    "engine_car_a",
+    "parlor_car",
+    "dining_car",
+    "sleeping_car",
+    "passenger_car_a",
+    "passenger_car_b",
+    "passenger_car_c",
+    "passenger_car_d",
+    "passenger_car_e"
+  ],
+  "story_assets": [
+    "helpless_passenger"
+  ]
+}

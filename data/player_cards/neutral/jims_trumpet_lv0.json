@@ -1,0 +1,28 @@
+{
+  "id": "jims_trumpet_lv0",
+  "arkhamdb_code": "02012",
+  "name": "Jim's Trumpet",
+  "name_cn": "吉姆的小號",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "instrument",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Jim Culver deck only.\n[reaction] When a [skull] token is revealed during a skill test, exhaust Jim's Trumpet: Heal 1 horror from an investigator at your location or a connecting location.",
+  "text_cn": "吉姆·卡爾弗牌組專用。\n[reaction]在技能檢定期間抽出[skull]標記時，消耗吉姆的小號：治癒你所在地點或連接地點一位調查員的1點恐懼。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "dunwich_legacy"
+}

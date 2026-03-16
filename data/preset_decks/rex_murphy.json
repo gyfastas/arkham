@@ -1,0 +1,15 @@
+{
+  "investigator_id": "rex_murphy",
+  "presets": [
+    {
+      "name": "雷克斯·墨菲（线索猎人）",
+      "cards": [
+        "magnifying_glass_lv0", "dr_milan_christopher_lv0", "research_librarian_lv0",
+        "old_book_of_lore_lv0", "laboratory_assistant_lv0", "hyperawareness_lv0",
+        "working_a_hunch_lv0", "deduction_lv0", "barricade_lv0",
+        "shortcut_lv0", "seeking_answers_lv0", "crack_the_case_lv0",
+        "perception_lv0", "guts_lv0", "unexpected_courage_lv0"
+      ]
+    }
+  ]
+}

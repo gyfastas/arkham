@@ -1,0 +1,24 @@
+{
+  "id": "search_for_the_truth_lv0",
+  "arkhamdb_code": "02008",
+  "name": "Search for the Truth",
+  "name_cn": "尋找真相",
+  "class": "neutral",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Rex Murphy deck only.\nDraw X cards, where X is the number of clues on Rex Murphy (to a maximum of 5).",
+  "text_cn": "雷克斯·墨菲牌組專用。\n抽取X張卡牌，X為雷克斯·墨菲持有的線索數(最多5張)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

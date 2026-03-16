@@ -25,6 +25,7 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 SCENARIO_DIR = PROJECT_ROOT / "data" / "scenarios"
 ENCOUNTER_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "core_set.json"
+DUNWICH_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "dunwich_legacy.json"
 
 
 def _load_json(path: Path) -> Any:
@@ -40,6 +41,26 @@ def load_core_encounter_db() -> dict[str, dict[str, Any]]:
     return {c["id"]: c for c in cards}
 
 
+def load_dunwich_encounter_db() -> dict[str, dict[str, Any]]:
+    """Return Dunwich Legacy encounter card records keyed by `id`."""
+    payload = _load_json(DUNWICH_DB_PATH)
+    cards: list[dict[str, Any]] = payload.get("cards", [])
+    return {c["id"]: c for c in cards}
+
+
+def load_encounter_db_for_campaign(campaign: str) -> dict[str, dict[str, Any]]:
+    """Load the appropriate encounter DB(s) based on campaign.
+
+    Dunwich scenarios reference some core encounter sets (ancient_evils, etc.),
+    so we merge both databases when loading Dunwich content.
+    """
+    if campaign == "dunwich_legacy":
+        db = load_core_encounter_db()
+        db.update(load_dunwich_encounter_db())
+        return db
+    return load_core_encounter_db()
+
+
 def load_scenario_definition(scenario_id: str) -> dict[str, Any]:
     path = SCENARIO_DIR / f"{scenario_id}.json"
     return _load_json(path)
@@ -52,13 +73,15 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
     from backend.models.state import CardData
 
     scenario_def = load_scenario_definition(scenario_id)
-    db = load_core_encounter_db()
+    campaign = scenario_def.get("campaign", "core")
+    db = load_encounter_db_for_campaign(campaign)
 
     s = game.state.scenario
     s.scenario_id = scenario_id
     s.vars.setdefault("scenario_id", scenario_id)
     s.vars.setdefault("scenario_name", scenario_def.get("name"))
     s.vars.setdefault("resolution_id", None)
+    s.vars.setdefault("campaign", campaign)
     # Scenario-specific counters
     if scenario_id == "the_midnight_masks":
         s.vars.setdefault("cultists_defeated", 0)
@@ -109,6 +132,40 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
         "the_devourer_below": 2,
         "searching_for_the_ritual": 4,
         "into_the_dark": 0,
+        # Extracurricular Activity
+        "after_hours": 3,
+        "rices_whereabouts": 0,
+        "campus_safety": 0,
+        # The House Always Wins
+        "beginners_luck": 4,
+        "skin_game": 2,
+        "all_in": 0,
+        "fold": 0,
+        # The Miskatonic Museum
+        "finding_a_way_inside": 0,
+        "night_at_the_museum": 0,
+        "breaking_and_entering": 0,
+        "searching_for_the_tome": 0,
+        # Essex County Express
+        "run": 0,
+        "get_the_engine_running": 0,
+        # Blood on the Altar
+        "searching_for_answers": 0,
+        "the_chamber_of_the_beast": 0,
+        # Undimensioned and Unseen
+        "saracenic_script": 0,
+        "they_must_be_destroyed": 0,
+        # Where Doom Awaits
+        "the_path_to_the_hill": 3,
+        "ascending_the_hill_v_i": 0,
+        "ascending_the_hill_v_ii": 0,
+        "ascending_the_hill_v_iii": 0,
+        "the_gate_opens": 0,
+        # Lost in Time and Space
+        "out_of_this_world": 0,
+        "into_the_beyond": 0,
+        "close_the_rift": 0,
+        "finding_a_new_way": 0,
     }
 
     s.act_cards = {}
@@ -123,6 +180,9 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
             sequence=int((rec.get("meta") or {}).get("position") or 1),
             clue_threshold=clue_thresholds.get(act_id),
             text=rec.get("text") or "",
+            text_cn=rec.get("text_cn") or "",
+            back_text=rec.get("back_text") or "",
+            back_text_cn=rec.get("back_text_cn") or "",
         )
 
     s.agenda_cards = {}
@@ -138,6 +198,9 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
             doom_threshold=int(doom) if doom is not None else s.doom_threshold,
             sequence=int((rec.get("meta") or {}).get("position") or 1),
             text=rec.get("text") or "",
+            text_cn=rec.get("text_cn") or "",
+            back_text=rec.get("back_text") or "",
+            back_text_cn=rec.get("back_text_cn") or "",
         )
 
     # --- Encounter deck ---

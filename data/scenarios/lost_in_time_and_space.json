@@ -1,0 +1,74 @@
+{
+  "id": "lost_in_time_and_space",
+  "name": "Lost in Time and Space",
+  "name_cn": "迷失于时空",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 8,
+  "encounter_sets": [
+    "lost_in_time_and_space",
+    "the_beyond",
+    "hideous_abominations",
+    "sorcery",
+    "ancient_evils"
+  ],
+  "scenario_set": "lost_in_time_and_space",
+  "start_location": "another_dimension",
+  "connections": {
+    "another_dimension": [
+      "the_edge_of_the_universe",
+      "tear_through_time"
+    ],
+    "the_edge_of_the_universe": [
+      "another_dimension",
+      "tear_through_space"
+    ],
+    "tear_through_time": [
+      "another_dimension",
+      "prismatic_cascade"
+    ],
+    "tear_through_space": [
+      "the_edge_of_the_universe",
+      "endless_bridge"
+    ],
+    "prismatic_cascade": [
+      "tear_through_time",
+      "steps_of_yhagharl"
+    ],
+    "endless_bridge": [
+      "tear_through_space",
+      "steps_of_yhagharl"
+    ],
+    "steps_of_yhagharl": [
+      "prismatic_cascade",
+      "endless_bridge",
+      "dimensional_doorway"
+    ],
+    "dimensional_doorway": [
+      "steps_of_yhagharl"
+    ]
+  },
+  "act_deck": [
+    "out_of_this_world",
+    "into_the_beyond",
+    "close_the_rift",
+    "finding_a_new_way"
+  ],
+  "agenda_deck": [
+    "all_is_one",
+    "past_present_and_future",
+    "breaking_through",
+    "the_end_of_all_things"
+  ],
+  "locations": [
+    "another_dimension",
+    "the_edge_of_the_universe",
+    "tear_through_time",
+    "tear_through_space",
+    "prismatic_cascade",
+    "endless_bridge",
+    "steps_of_yhagharl",
+    "dimensional_doorway"
+  ],
+  "story_assets": []
+}

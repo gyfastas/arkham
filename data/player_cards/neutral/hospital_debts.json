@@ -1,0 +1,21 @@
+{
+  "id": "hospital_debts",
+  "arkhamdb_code": "01011",
+  "name": "Hospital Debts",
+  "name_cn": "医院欠债",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": null,
+  "traits": [],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Hospital Debts into play in your threat area.\n[free] Move 1 resource from your resource pool to Hospital Debts. (Limit twice per round.)\n<b>Forced</b> - At the end of the game, if Hospital Debts has fewer than 6 resources on it: You earn 2 fewer experience for this scenario.",
+  "text_cn": "<b>揭示</b> - 将医院欠债放入你的威胁区域。\n[free]将你资源池中的1个资源移到医院欠债上。（每轮限制2次。）\n<b>强制</b> - 在游戏结束时，如果医院欠债上的资源少于6个：你在本次冒险中少获得2点经验。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "signature": "skids_otoole",
+  "weakness": true,
+  "pack": "core"
+}

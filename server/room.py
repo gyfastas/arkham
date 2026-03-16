@@ -6,6 +6,7 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Literal
 
+from server.campaign import CampaignState
 from server.game_session import GameSession
 from server.player import PlayerSession
 
@@ -17,6 +18,7 @@ class Seat:
     player_id: str | None = None
     investigator_id: str = "daisy_walker"
     deck_preset: str = ""
+    deck_cards: list[str] = field(default_factory=list)
     ready: bool = False
 
 
@@ -31,6 +33,7 @@ class Room:
             i: Seat(seat_num=i) for i in range(4)  # Max 4 players
         }
         self.session: GameSession | None = None
+        self.campaign: CampaignState | None = None  # Set for campaign mode
 
     @property
     def players(self) -> list[str]:
@@ -62,6 +65,13 @@ class Room:
                 return True
         return False
 
+    def set_deck_cards(self, player_id: str, deck_cards: list[str]) -> bool:
+        for seat in self.seats.values():
+            if seat.player_id == player_id:
+                seat.deck_cards = list(deck_cards)
+                return True
+        return False
+
     def set_ready(self, player_id: str, ready: bool = True) -> bool:
         for seat in self.seats.values():
             if seat.player_id == player_id:
@@ -89,6 +99,7 @@ class Room:
             scenario_id=scenario_id,
             investigator_id=seat.investigator_id,
             deck_preset=seat.deck_preset,
+            deck_cards=seat.deck_cards or None,
         )
         if result["success"]:
             self.status = "in_game"

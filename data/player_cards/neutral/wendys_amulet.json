@@ -1,0 +1,22 @@
+{
+  "id": "wendys_amulet",
+  "arkhamdb_code": "01014",
+  "name": "Wendy's Amulet",
+  "name_cn": "温蒂的护身符",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": null,
+  "traits": ["item", "relic"],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": ["accessory"],
+  "text": "Wendy Adams deck only.\nYou may play the topmost event card in your discard pile as if it were in your hand.\n<b>Forced</b> - After you play an event: Place it on the bottom of your deck instead of in your discard pile.",
+  "text_cn": "温蒂·亚当斯牌组专用。\n你可以将弃牌堆最上面的事件牌当作手牌来打出。\n<b>强制</b> - 在你打出一张事件牌后：将其放到你的牌堆底部，而非弃牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "signature": "wendy_adams",
+  "pack": "core"
+}

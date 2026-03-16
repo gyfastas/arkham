@@ -139,6 +139,29 @@ async def on_leave_room(sid: str, data: dict = None):
 # Game setup and play
 # ---------------------------------------------------------------------------
 
+@sio.on(ClientEvent.LIST_CARDS.value)
+async def on_list_cards(sid: str, data: dict = None):
+    """Return available player cards for deck building."""
+    from server.game_session import list_available_cards
+    investigator_id = (data or {}).get("investigator_id", "")
+    xp = (data or {}).get("xp", 0)
+    result = list_available_cards(investigator_id, xp_available=xp)
+    await sio.emit("card_list", result, to=sid)
+
+
+@sio.on(ClientEvent.GET_INVESTIGATOR.value)
+async def on_get_investigator(sid: str, data: dict = None):
+    """Return investigator detail for client display."""
+    from server.game_session import get_investigator_detail
+    inv_id = (data or {}).get("investigator_id", "")
+    detail = get_investigator_detail(inv_id)
+    if detail:
+        await sio.emit("investigator_detail", detail, to=sid)
+    else:
+        await sio.emit(ServerEvent.ERROR.value,
+                       {"message": f"未找到调查员: {inv_id}", "code": "inv_not_found"}, to=sid)
+
+
 @sio.on(ClientEvent.SETUP_GAME.value)
 async def on_setup_game(sid: str, data: dict):
     player = players.get(sid)
@@ -157,6 +180,10 @@ async def on_setup_game(sid: str, data: dict):
         data.get("investigator_id", "daisy_walker"),
         data.get("deck_preset", ""),
     )
+    # Store custom deck cards if provided
+    deck_cards = data.get("deck_cards")
+    if deck_cards:
+        room.set_deck_cards(player.player_id, deck_cards)
     room.set_ready(player.player_id, True)
 
     try:
@@ -249,6 +276,80 @@ async def on_resolve_choice(sid: str, data: dict):
     """Shortcut for RESOLVE_CHOICE action."""
     data["action"] = "RESOLVE_CHOICE"
     await on_player_action(sid, data)
+
+
+@sio.on(ClientEvent.CAMPAIGN_STATE.value)
+async def on_campaign_state(sid: str, data: dict = None):
+    """Return current campaign state to client."""
+    player = players.get(sid)
+    if not player or not player.room_id:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "不在房间中", "code": "not_in_room"}, to=sid)
+        return
+
+    room = room_manager.get_room(player.room_id)
+    if not room:
+        return
+
+    if room.campaign:
+        await sio.emit("campaign_state", room.campaign.to_dict(), to=sid)
+    else:
+        await sio.emit("campaign_state", None, to=sid)
+
+
+@sio.on(ClientEvent.CAMPAIGN_UPGRADE.value)
+async def on_campaign_upgrade(sid: str, data: dict):
+    """Handle deck upgrade actions between scenarios.
+
+    data: {
+        "action": "purchase" | "upgrade" | "remove",
+        "card_id": str,            # card to add (purchase) or new card (upgrade)
+        "old_card_id"?: str,       # card to replace (upgrade only)
+        "card_level"?: int,        # level of card being purchased
+        "old_level"?: int,         # level of old card (upgrade only)
+    }
+    """
+    player = players.get(sid)
+    if not player or not player.room_id:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "不在房间中", "code": "not_in_room"}, to=sid)
+        return
+
+    room = room_manager.get_room(player.room_id)
+    if not room or not room.campaign:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "非战役模式", "code": "not_campaign"}, to=sid)
+        return
+
+    campaign = room.campaign
+    action = data.get("action", "")
+
+    if action == "purchase":
+        card_id = data.get("card_id", "")
+        card_level = data.get("card_level", 0)
+        if campaign.purchase_card(card_id, card_level):
+            await sio.emit("campaign_state", campaign.to_dict(), to=sid)
+        else:
+            await sio.emit(ServerEvent.ERROR.value,
+                           {"message": f"经验不足 (需要 {campaign.card_purchase_cost(card_level)} XP)", "code": "xp_insufficient"}, to=sid)
+
+    elif action == "upgrade":
+        old_card_id = data.get("old_card_id", "")
+        new_card_id = data.get("card_id", "")
+        old_level = data.get("old_level", 0)
+        new_level = data.get("card_level", 0)
+        if campaign.upgrade_card(old_card_id, new_card_id, old_level, new_level):
+            await sio.emit("campaign_state", campaign.to_dict(), to=sid)
+        else:
+            cost = campaign.card_upgrade_cost(old_level, new_level)
+            await sio.emit(ServerEvent.ERROR.value,
+                           {"message": f"无法升级 (需要 {cost} XP)", "code": "xp_insufficient"}, to=sid)
+
+    elif action == "remove":
+        card_id = data.get("card_id", "")
+        campaign.remove_card(card_id)
+        await sio.emit("campaign_state", campaign.to_dict(), to=sid)
+
+    else:
+        await sio.emit(ServerEvent.ERROR.value,
+                       {"message": f"未知操作: {action}", "code": "unknown_action"}, to=sid)
 
 
 # ---------------------------------------------------------------------------

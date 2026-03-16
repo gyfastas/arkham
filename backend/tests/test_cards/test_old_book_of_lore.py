@@ -69,3 +69,74 @@ class TestOldBookOfLore:
         state, bus, inv, impl = setup
         card_data = state.card_database["old_book_of_lore_lv0"]
         assert card_data.skill_icons.get("willpower") == 1
+
+    def test_tome_activate_uses_tome_action_not_regular(self, setup):
+        """TOME_ACTIVATE should deduct tome_actions_remaining, NOT actions_remaining."""
+        from backend.engine.actions import ActionResolver
+        from backend.engine.skill_test import SkillTestEngine
+        from backend.engine.damage import DamageEngine
+        from backend.models.enums import Action
+        from backend.cards.registry import CardRegistry
+
+        state, bus, inv, impl = setup
+        inv.actions_remaining = 3
+        inv.tome_actions_remaining = 1
+
+        from backend.models.chaos import ChaosBag
+        st = SkillTestEngine(state, bus, ChaosBag())
+        de = DamageEngine(state, bus)
+        registry = CardRegistry()
+        resolver = ActionResolver(state, bus, st, de, {}, registry)
+
+        ok = resolver.perform_action("inv1", Action.TOME_ACTIVATE, instance_id="inst_book")
+        assert ok is True
+        # Tome action used, not regular action
+        assert inv.tome_actions_remaining == 0
+        assert inv.actions_remaining == 3  # unchanged!
+        # Card should be exhausted
+        ci = state.get_card_instance("inst_book")
+        assert ci.exhausted is True
+
+    def test_play_then_activate_costs(self, setup):
+        """Playing Old Book of Lore costs 1 action, activating it costs 1 action (or tome action)."""
+        state, bus, inv, impl = setup
+        inv.actions_remaining = 3
+        inv.tome_actions_remaining = 1
+        inv.resources = 5
+
+        # Put book in hand for playing
+        inv.hand.append("old_book_of_lore_lv0")
+        inv.play_area.remove("inst_book")
+        del state.cards_in_play["inst_book"]
+
+        from backend.engine.actions import ActionResolver
+        from backend.engine.skill_test import SkillTestEngine
+        from backend.engine.damage import DamageEngine
+        from backend.models.enums import Action
+        from backend.cards.registry import CardRegistry
+
+        from backend.models.chaos import ChaosBag
+        st = SkillTestEngine(state, bus, ChaosBag())
+        de = DamageEngine(state, bus)
+        registry = CardRegistry()
+        resolver = ActionResolver(state, bus, st, de, {}, registry)
+
+        # Play the card (1 action)
+        ok = resolver.perform_action("inv1", Action.PLAY, card_id="old_book_of_lore_lv0")
+        assert ok is True
+        assert inv.actions_remaining == 2  # 3 - 1 = 2
+
+        # Now activate via tome action (should use tome_actions, not regular)
+        # Find the new instance
+        new_inst = None
+        for iid in inv.play_area:
+            ci = state.get_card_instance(iid)
+            if ci and ci.card_id == "old_book_of_lore_lv0":
+                new_inst = iid
+                break
+
+        if new_inst:
+            ok = resolver.perform_action("inv1", Action.TOME_ACTIVATE, instance_id=new_inst)
+            assert ok is True
+            assert inv.tome_actions_remaining == 0
+            assert inv.actions_remaining == 2  # still 2, tome action was free

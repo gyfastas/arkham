@@ -1,0 +1,24 @@
+{
+  "id": "taunt_lv0",
+  "arkhamdb_code": "02017",
+  "name": "Taunt",
+  "name_cn": "嘲諷",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nEngage any number of enemies at your location.",
+  "text_cn": "快速。只能在你回合中打出。\n與你所在地點的任意數量敵人交戰。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy"
+}

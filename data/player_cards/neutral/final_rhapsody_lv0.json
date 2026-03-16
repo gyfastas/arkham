@@ -1,0 +1,22 @@
+{
+  "id": "final_rhapsody_lv0",
+  "arkhamdb_code": "02013",
+  "name": "Final Rhapsody",
+  "name_cn": "最後的狂想曲",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "endtimes"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Reveal 5 chaos tokens from the chaos bag. For each [skull] and [auto_fail] token revealed, take 1 damage and 1 horror.",
+  "text_cn": "<b>顯現</b> - 從混亂袋中抽取5個混亂標記。每抽出1個[skull]或[auto_fail]，受到1點傷害和1點恐懼。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "weakness"
+}

@@ -1,0 +1,87 @@
+{
+  "id": "the_miskatonic_museum",
+  "name": "The Miskatonic Museum",
+  "name_cn": "米斯卡塔尼克博物馆",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 3,
+  "encounter_sets": [
+    "the_miskatonic_museum",
+    "bad_luck",
+    "sorcery",
+    "the_beyond",
+    "chilling_cold"
+  ],
+  "scenario_set": "the_miskatonic_museum",
+  "start_location": "museum_entrance",
+  "connections": {
+    "museum_entrance": [
+      "museum_halls"
+    ],
+    "museum_halls": [
+      "museum_entrance",
+      "security_office_a",
+      "administration_office_a",
+      "exhibit_hall_a"
+    ],
+    "security_office_a": [
+      "museum_halls"
+    ],
+    "administration_office_a": [
+      "museum_halls"
+    ],
+    "exhibit_hall_a": [
+      "museum_halls",
+      "exhibit_hall_b",
+      "exhibit_hall_c"
+    ],
+    "exhibit_hall_b": [
+      "exhibit_hall_a",
+      "exhibit_hall_d"
+    ],
+    "exhibit_hall_c": [
+      "exhibit_hall_a",
+      "exhibit_hall_e"
+    ],
+    "exhibit_hall_d": [
+      "exhibit_hall_b",
+      "exhibit_hall_f"
+    ],
+    "exhibit_hall_e": [
+      "exhibit_hall_c",
+      "exhibit_hall_f"
+    ],
+    "exhibit_hall_f": [
+      "exhibit_hall_d",
+      "exhibit_hall_e"
+    ]
+  },
+  "act_deck": [
+    "finding_a_way_inside",
+    "night_at_the_museum",
+    "breaking_and_entering",
+    "searching_for_the_tome"
+  ],
+  "agenda_deck": [
+    "restricted_access",
+    "shadows_deepen",
+    "in_every_shadow"
+  ],
+  "locations": [
+    "museum_entrance",
+    "museum_halls",
+    "security_office_a",
+    "administration_office_a",
+    "exhibit_hall_a",
+    "exhibit_hall_b",
+    "exhibit_hall_c",
+    "exhibit_hall_d",
+    "exhibit_hall_e",
+    "exhibit_hall_f"
+  ],
+  "story_assets": [
+    "harold_walsted",
+    "adam_lynch",
+    "the_necronomicon"
+  ]
+}

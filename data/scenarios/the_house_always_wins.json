@@ -1,0 +1,73 @@
+{
+  "id": "the_house_always_wins",
+  "name": "The House Always Wins",
+  "name_cn": "百赌百胜",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 2,
+  "encounter_sets": [
+    "the_house_always_wins",
+    "bad_luck",
+    "naomis_crew",
+    "rats",
+    "striking_fear"
+  ],
+  "scenario_set": "the_house_always_wins",
+  "start_location": "la_bella_luna",
+  "connections": {
+    "la_bella_luna": [
+      "clover_club_lounge"
+    ],
+    "clover_club_lounge": [
+      "la_bella_luna",
+      "clover_club_bar",
+      "clover_club_cardroom"
+    ],
+    "clover_club_bar": [
+      "clover_club_lounge"
+    ],
+    "clover_club_cardroom": [
+      "clover_club_lounge"
+    ],
+    "darkened_hall": [
+      "clover_club_lounge",
+      "art_gallery",
+      "vip_area",
+      "back_alley"
+    ],
+    "art_gallery": [
+      "darkened_hall"
+    ],
+    "vip_area": [
+      "darkened_hall"
+    ],
+    "back_alley": [
+      "darkened_hall"
+    ]
+  },
+  "act_deck": [
+    "beginners_luck",
+    "skin_game",
+    "all_in",
+    "fold"
+  ],
+  "agenda_deck": [
+    "the_clover_club",
+    "underground_muscle",
+    "chaos_in_the_clover_club"
+  ],
+  "locations": [
+    "la_bella_luna",
+    "clover_club_lounge",
+    "clover_club_bar",
+    "clover_club_cardroom",
+    "darkened_hall",
+    "art_gallery",
+    "vip_area",
+    "back_alley"
+  ],
+  "story_assets": [
+    "dr_francis_morgan",
+    "peter_clover"
+  ]
+}

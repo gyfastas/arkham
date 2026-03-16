@@ -1,0 +1,22 @@
+{
+  "id": "internal_injury_lv0",
+  "arkhamdb_code": "02038",
+  "name": "Internal Injury",
+  "name_cn": "內傷",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "injury"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Place Internal Injury into play in your threat area.\n<b>Forced</b> - At the end of your turn: Take 1 direct damage.\n[action] [action]: Discard Internal Injury.",
+  "text_cn": "<b>顯現</b> - 將內傷放置入你的威脅區域。\n<b>強制</b> - 當你的回合結束時：受到1點直接傷害。\n[action][action]：丟棄內傷。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "basic_weakness"
+}

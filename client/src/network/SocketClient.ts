@@ -2,7 +2,7 @@
 
 import { io, Socket } from 'socket.io-client'
 import { ServerEvent, ClientEvent } from './Protocol'
-import type { GameState, ActionResult, RoomState, GameEventData } from '../state/types'
+import type { GameState, ActionResult, RoomState, GameEventData, CardDisplay, InvestigatorDetail, DeckPreset, CampaignStateData } from '../state/types'
 
 export type ConnectionState = 'disconnected' | 'connecting' | 'connected'
 
@@ -64,6 +64,18 @@ export class SocketClient {
       this.socket.on(ServerEvent.ERROR, (data: { message: string; code: string }) => {
         this.onError?.(data)
       })
+
+      this.socket.on('card_list', (data: { cards: CardDisplay[]; presets?: DeckPreset[]; deck_requirements?: any }) => {
+        this.onCardList?.(data.cards, data.presets || [], data.deck_requirements || null)
+      })
+
+      this.socket.on('investigator_detail', (data: InvestigatorDetail) => {
+        this.onInvestigatorDetail?.(data)
+      })
+
+      this.socket.on('campaign_state', (data: CampaignStateData | null) => {
+        this.onCampaignState?.(data)
+      })
     })
   }
 
@@ -85,12 +97,36 @@ export class SocketClient {
     this.socket?.emit(ClientEvent.LEAVE_ROOM, {})
   }
 
-  setupGame(scenarioId: string, investigatorId: string, deckPreset?: string): void {
-    this.socket?.emit(ClientEvent.SETUP_GAME, {
+  setupGame(scenarioId: string, investigatorId: string, deckPreset?: string, deckCards?: string[]): void {
+    const payload: Record<string, unknown> = {
       scenario_id: scenarioId,
       investigator_id: investigatorId,
       deck_preset: deckPreset || '',
-    })
+    }
+    if (deckCards && deckCards.length > 0) {
+      payload.deck_cards = deckCards
+    }
+    this.socket?.emit(ClientEvent.SETUP_GAME, payload)
+  }
+
+  listCards(investigatorId: string, xp: number = 0): void {
+    this.socket?.emit(ClientEvent.LIST_CARDS, { investigator_id: investigatorId, xp })
+  }
+
+  getInvestigator(investigatorId: string): void {
+    this.socket?.emit(ClientEvent.GET_INVESTIGATOR, { investigator_id: investigatorId })
+  }
+
+  onCardList: ((cards: CardDisplay[], presets: DeckPreset[], deckReq: any) => void) | null = null
+  onInvestigatorDetail: ((detail: InvestigatorDetail) => void) | null = null
+  onCampaignState: ((state: CampaignStateData | null) => void) | null = null
+
+  getCampaignState(): void {
+    this.socket?.emit(ClientEvent.CAMPAIGN_STATE, {})
+  }
+
+  campaignUpgrade(data: { action: string; card_id?: string; old_card_id?: string; card_level?: number; old_level?: number }): void {
+    this.socket?.emit(ClientEvent.CAMPAIGN_UPGRADE, data)
   }
 
   sendAction(action: string, params: Record<string, unknown> = {}): void {

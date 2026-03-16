@@ -1,0 +1,23 @@
+{
+  "id": "on_the_lam",
+  "arkhamdb_code": "01010",
+  "name": "On the Lam",
+  "name_cn": "亡命天涯",
+  "class": "neutral",
+  "type": "event",
+  "cost": 1,
+  "level": null,
+  "traits": ["tactic"],
+  "skill_icons": {
+    "intellect": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "\"Skids\" O'Toole deck only. Fast. Play after your turn begins. Until the end of the round, non-Elite enemies cannot attack you.",
+  "text_cn": "\"倒霉蛋\"奥图尔牌组专用。快速。在你回合开始后打出。直到本轮结束，非精英敌人不能攻击你。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "signature": "skids_otoole",
+  "pack": "core"
+}

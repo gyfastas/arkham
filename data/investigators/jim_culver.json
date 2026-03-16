@@ -1,0 +1,38 @@
+{
+  "id": "jim_culver",
+  "arkhamdb_code": "02004",
+  "name": "Jim Culver",
+  "name_cn": "吉姆·卡爾弗",
+  "title": "The Musician",
+  "title_cn": "音樂家",
+  "class": "mystic",
+  "health": 7,
+  "sanity": 8,
+  "skills": {
+    "willpower": 4,
+    "intellect": 3,
+    "combat": 3,
+    "agility": 2
+  },
+  "ability": "Treat the modifier on [skull] tokens you reveal as \"0.\"\nAnytime you reveal a [elder_sign] token, you may choose to instead treat it as a [skull] token.\n[elder_sign] effect: +1.",
+  "ability_cn": "將你抽出的[skull]標記的修正值視為0。\n每次你抽出[elder_sign]標記時，你可以選擇將其視為[skull]標記。\n[elder_sign]效果：+1。",
+  "elder_sign": "",
+  "elder_sign_cn": "",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "mystic": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      }
+    }
+  },
+  "signature_cards": [],
+  "weakness": "",
+  "flavor_text": "\"No, not quiet at all. Dead folks get downright rambunctious when I play my horn.\"",
+  "pack": "dunwich_legacy"
+}

@@ -1,0 +1,16 @@
+{
+  "investigator_id": "agnes_baker",
+  "presets": [
+    {
+      "name": "艾格尼丝·贝克（入门法术）",
+      "cards": [
+        "shrivelling_lv0", "holy_rosary_lv0", "arcane_studies_lv0",
+        "ward_of_protection_lv0", "forbidden_knowledge_lv0",
+        "drawn_to_the_flame_lv0", "fearless_lv0", "blinding_light_lv0",
+        "guts_lv0", "unexpected_courage_lv0", "emergency_cache_lv0",
+        "perception_lv0", "manual_dexterity_lv0", "knife_lv0",
+        "flashlight_lv0"
+      ]
+    }
+  ]
+}

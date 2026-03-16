@@ -1,0 +1,87 @@
+{
+  "id": "extracurricular_activity",
+  "name": "Extracurricular Activity",
+  "name_cn": "课外活动",
+  "type": "official",
+  "campaign": "dunwich_legacy",
+  "sequence": 1,
+  "encounter_sets": [
+    "extracurricular_activity",
+    "sorcery",
+    "bishops_thralls",
+    "whippoorwills",
+    "ancient_evils",
+    "locked_doors"
+  ],
+  "scenario_set": "extracurricular_activity",
+  "start_location": "miskatonic_quad",
+  "connections": {
+    "miskatonic_quad": [
+      "humanities_building",
+      "orne_library",
+      "student_union",
+      "administration_building",
+      "science_building"
+    ],
+    "humanities_building": [
+      "miskatonic_quad",
+      "student_union"
+    ],
+    "orne_library": [
+      "miskatonic_quad",
+      "student_union"
+    ],
+    "student_union": [
+      "miskatonic_quad",
+      "humanities_building",
+      "orne_library",
+      "dormitories",
+      "administration_building"
+    ],
+    "dormitories": [
+      "student_union"
+    ],
+    "administration_building": [
+      "miskatonic_quad",
+      "student_union",
+      "faculty_offices_a"
+    ],
+    "faculty_offices_a": [
+      "administration_building"
+    ],
+    "science_building": [
+      "miskatonic_quad",
+      "alchemy_labs"
+    ],
+    "alchemy_labs": [
+      "science_building"
+    ]
+  },
+  "act_deck": [
+    "after_hours",
+    "rices_whereabouts",
+    "campus_safety"
+  ],
+  "agenda_deck": [
+    "quiet_halls",
+    "dead_of_night",
+    "the_beast_unleashed"
+  ],
+  "locations": [
+    "miskatonic_quad",
+    "humanities_building",
+    "orne_library",
+    "student_union",
+    "dormitories",
+    "administration_building",
+    "faculty_offices_a",
+    "science_building",
+    "alchemy_labs"
+  ],
+  "story_assets": [
+    "dr_henry_armitage",
+    "professor_warren_rice",
+    "jazz_mulligan",
+    "alchemical_concoction"
+  ]
+}

@@ -48,28 +48,20 @@ class ActionResolver:
         
         # Fast actions (e.g. playing a Fast card) do not cost an action
         is_fast = kwargs.get("fast", False)
+        # Auto-detect fast for PLAY action based on card data
+        if not is_fast and action == Action.PLAY:
+            card_id = kwargs.get("card_id")
+            if card_id:
+                cd = self.game_state.get_card_data(card_id)
+                if cd and cd.fast:
+                    is_fast = True
+        # TOME_ACTIVATE uses tome_actions_remaining, not regular actions
+        if action == Action.TOME_ACTIVATE:
+            is_fast = True  # Don't deduct regular actions; _tome_activate handles tome actions
         if not is_fast and inv.actions_remaining <= 0:
             return False
 
-        # Check attack of opportunity (only for non-fast actions)
-        if not is_fast and action not in AOO_EXEMPT_ACTIONS:
-            self._resolve_attacks_of_opportunity(investigator_id)
-
-        # Spend action (only if not fast)
-        if not is_fast:
-            inv.actions_remaining -= 1
-
-        # Emit action performed
-        from backend.engine.event_bus import EventContext
-        ctx = EventContext(
-            game_state=self.game_state,
-            event=GameEvent.ACTION_PERFORMED,
-            investigator_id=investigator_id,
-            action=action,
-        )
-        self.bus.emit(ctx)
-
-        # Dispatch to specific action
+        # Dispatch to specific action handler
         handlers = {
             Action.INVESTIGATE: self._investigate,
             Action.MOVE: self._move,
@@ -84,7 +76,28 @@ class ActionResolver:
 
         handler = handlers.get(action)
         if handler:
-            return handler(investigator_id, **kwargs)
+            # Handler validates (costs, legality) but does NOT deduct actions
+            success = handler(investigator_id, **kwargs)
+            if not success:
+                return False
+
+        # Action validated — now spend the action and trigger AoO
+        if not is_fast:
+            inv.actions_remaining -= 1
+
+        if not is_fast and action not in AOO_EXEMPT_ACTIONS:
+            self._resolve_attacks_of_opportunity(investigator_id)
+
+        # Emit action performed
+        from backend.engine.event_bus import EventContext
+        ctx = EventContext(
+            game_state=self.game_state,
+            event=GameEvent.ACTION_PERFORMED,
+            investigator_id=investigator_id,
+            action=action,
+        )
+        self.bus.emit(ctx)
+
         return True
 
     def _resolve_attacks_of_opportunity(self, investigator_id: str) -> None:
@@ -156,7 +169,7 @@ class ActionResolver:
 
     def _move(self, investigator_id: str, **kwargs) -> bool:
         inv = self.game_state.get_investigator(investigator_id)
-        destination = kwargs.get("destination")
+        destination = kwargs.get("destination") or kwargs.get("location_id")
         if inv is None or destination is None:
             return False
 
@@ -377,14 +390,7 @@ class ActionResolver:
         if card_data is None:
             return False
 
-        # Check fast: fast cards don't cost an action
-        is_fast = card_data.fast
-
-        # For non-fast cards, check we have actions remaining
-        if not is_fast and inv.actions_remaining <= 0:
-            return False
-
-        # Pay cost (check BEFORE spending)
+        # Pay cost (check BEFORE spending — fail early if can't afford)
         cost = card_data.cost or 0
         if inv.resources < cost:
             return False
@@ -404,10 +410,6 @@ class ActionResolver:
                 amount=cost,
             )
             self.bus.emit(ctx)
-
-        # Spend action (only for non-fast cards)
-        if not is_fast:
-            inv.actions_remaining -= 1
 
         if card_data.type == CardType.ASSET:
             return self._play_asset(inv, card_id, card_data)
@@ -501,12 +503,12 @@ class ActionResolver:
         return True
 
     def _tome_activate(self, investigator_id: str, **kwargs) -> bool:
-        """Daisy Walker extra action: activate a Tome asset."""
+        """Extra action: activate a Tome asset using tome_actions_remaining."""
         inv = self.game_state.get_investigator(investigator_id)
         if inv is None:
             return False
-        # Must be Daisy and have tome action available
-        if inv.card_data.id != "daisy_walker" or inv.tome_actions_remaining <= 0:
+        # Must have tome action available
+        if inv.tome_actions_remaining <= 0:
             return False
         instance_id = kwargs.get("instance_id")
         if not instance_id:

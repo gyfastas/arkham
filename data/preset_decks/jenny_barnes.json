@@ -1,0 +1,15 @@
+{
+  "investigator_id": "jenny_barnes",
+  "presets": [
+    {
+      "name": "珍妮·巴恩斯（万金油）",
+      "cards": [
+        "switchblade_lv0", "forty_one_derringer_lv0", "leo_de_luca_lv0",
+        "hard_knocks_lv0", "burglary_lv0", "pickpocketing_lv0",
+        "sneak_attack_lv0", "elusive_lv0", "backstab_lv0",
+        "liquid_courage_lv0", "think_on_your_feet_lv0", "double_or_nothing_lv0",
+        "perception_lv0", "manual_dexterity_lv0", "unexpected_courage_lv0"
+      ]
+    }
+  ]
+}

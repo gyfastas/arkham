@@ -1,0 +1,22 @@
+{
+  "id": "smite_the_wicked_lv0",
+  "arkhamdb_code": "02007",
+  "name": "Smite the Wicked",
+  "name_cn": "擊退邪惡",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "task"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Discard cards from the top of the encounter deck until an enemy is discarded. Attach Smite the Wicked to that enemy and spawn it at the location farthest from you.\n<b>Forced</b> - When the game ends, if attached enemy is in play: Zoey Samaras suffers 1 mental trauma.",
+  "text_cn": "<b>顯現</b> - 從遭遇牌堆頂棄牌，直到棄掉1張敵人，將其生成在離你最遠的地點上，並將擊退邪惡疊加到該敵人卡。\n<b>強制</b> - 在遊戲結束時，如果被疊加的敵人在場：佐伊·薩馬拉斯受到1點精神創傷。<i>(FAQ, v1.0)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "weakness"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "rexs_curse_lv0",
+  "arkhamdb_code": "02009",
+  "name": "Rex's Curse",
+  "name_cn": "雷克斯的詛咒",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Rex's Curse into play in your threat area.\n<b>Forced</b> - When you would succeed at a skill test: Return the revealed chaos token to the bag and reveal a new chaos token. If this effect causes you to fail the test, shuffle Rex's Curse into your deck. (Limit once per test.)",
+  "text_cn": "<b>顯現</b> - 將雷克斯的詛咒放置入你的威脅區域。\n<b>強制</b> - 在你將要技能檢定成功時：將抽出的混亂標記放回袋中，再抽取1個新標記。如果這個效果導致你檢定失敗，將雷克斯的詛咒與你的牌堆混洗。(每次檢定限制1次。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "dunwich_legacy",
+  "subtype": "weakness"
+}

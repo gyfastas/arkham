@@ -1,0 +1,132 @@
+<script setup lang="ts">
+import type { GameState } from '../state/types'
+
+defineProps<{ state: GameState }>()
+
+const CLASS_COLORS: Record<string, string> = {
+  guardian: '#2980b9',
+  seeker: '#d4a017',
+  rogue: '#27ae60',
+  mystic: '#8e44ad',
+  survivor: '#c0392b',
+  neutral: '#666666',
+}
+
+const PHASE_LABELS: Record<string, string> = {
+  mythos: '神话阶段',
+  investigation: '调查阶段',
+  enemy: '敌人阶段',
+  upkeep: '整理阶段',
+}
+</script>
+
+<template>
+  <div class="hud">
+    <div class="hud-left">
+      <span
+        class="inv-name"
+        :style="{ color: CLASS_COLORS[state.investigator.class] || '#ccc' }"
+      >{{ state.investigator.name_cn }}</span>
+    </div>
+    <div class="hud-stats">
+      <div class="stat" title="生命">
+        <span class="stat-icon hp">♥</span>
+        <span>{{ state.investigator.health - state.investigator.damage }}/{{ state.investigator.health }}</span>
+      </div>
+      <div class="stat" title="理智">
+        <span class="stat-icon san">☽</span>
+        <span>{{ state.investigator.sanity - state.investigator.horror }}/{{ state.investigator.sanity }}</span>
+      </div>
+      <div class="stat" title="资源">
+        <span class="stat-icon res">◆</span>
+        <span>{{ state.investigator.resources }}</span>
+      </div>
+      <div class="stat" title="线索">
+        <span class="stat-icon clue">✦</span>
+        <span>{{ state.investigator.clues }}</span>
+      </div>
+      <div class="stat" title="行动">
+        <span class="stat-icon act">▶</span>
+        <span>{{ state.investigator.actions_remaining }}</span>
+      </div>
+      <div class="divider" />
+      <div class="stat" title="毁灭">
+        <span class="stat-icon doom">☠</span>
+        <span>{{ state.doom }}/{{ state.doom_threshold }}</span>
+      </div>
+      <div class="stat" title="牌组">
+        <span class="stat-icon deck">▤</span>
+        <span>{{ state.investigator.deck_count }}</span>
+      </div>
+      <div v-if="state.encounter_deck_count != null" class="stat" title="遭遇牌组">
+        <span class="stat-icon enc">▧</span>
+        <span>{{ state.encounter_deck_count }}</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <span class="round">第{{ state.round }}轮</span>
+      <span class="phase">{{ PHASE_LABELS[state.phase] || state.phase }}</span>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a1a2e;
+  border-bottom: 1px solid #333344;
+  padding: 8px 16px;
+  gap: 16px;
+}
+.inv-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+.hud-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+.stat-icon {
+  font-size: 16px;
+}
+.stat-icon.hp { color: #e74c3c; }
+.stat-icon.san { color: #3498db; }
+.stat-icon.res { color: #c0a060; }
+.stat-icon.clue { color: #f1c40f; }
+.stat-icon.act { color: #2ecc71; }
+.stat-icon.doom { color: #e74c3c; }
+.stat-icon.deck { color: #aaa; }
+.stat-icon.enc { color: #9b59b6; }
+.divider {
+  width: 1px;
+  height: 20px;
+  background: #333344;
+}
+.hud-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.round {
+  color: #c0a060;
+  font-weight: bold;
+}
+.phase {
+  background: #2a2a44;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #e0e0e0;
+}
+</style>

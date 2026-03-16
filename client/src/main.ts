@@ -1,30 +1,59 @@
-/** Phaser game bootstrap. */
-
-import Phaser from 'phaser'
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+import router from './router'
 import { SocketClient } from './network/SocketClient'
-import { GameStore } from './state/GameStore'
-import { BootScene } from './scenes/BootScene'
-import { LobbyScene } from './scenes/LobbyScene'
-import { GameScene } from './scenes/GameScene'
-import { GameOverScene } from './scenes/GameOverScene'
+import { SOCKET_KEY } from './composables/useSocket'
+import { useGameStore } from './stores/game'
 
+const app = createApp(App)
+const pinia = createPinia()
+
+app.use(pinia)
+app.use(router)
+
+// Create and provide socket client
 const client = new SocketClient()
-const store = new GameStore()
+app.provide(SOCKET_KEY, client)
 
-const config: Phaser.Types.Core.GameConfig = {
-  type: Phaser.AUTO,
-  parent: 'game-container',
-  width: 1280,
-  height: 720,
-  backgroundColor: '#0a0a1a',
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  scene: [BootScene, LobbyScene, GameScene, GameOverScene],
+// Wire socket events to store
+const store = useGameStore()
+
+client.connect().then(() => {
+  store.connected = true
+  store.playerId = (client as any)._playerId || ''
+}).catch(() => {
+  store.addToast('无法连接到服务器', 'error')
+})
+
+client.onStateUpdate = (state, events) => {
+  store.updateState(state, events)
+}
+client.onActionResult = (result) => {
+  store.lastActionResult = result
+  if (!result.success) {
+    store.addToast(result.message, 'error')
+  }
+  if (result.state) {
+    store.updateState(result.state, result.events)
+  }
+}
+client.onCardList = (cards, presets, deckReq) => {
+  store.availableCards = cards
+  store.deckPresets = presets
+  store.deckRequirements = deckReq
+}
+client.onInvestigatorDetail = (detail) => {
+  store.investigatorDetail = detail
+}
+client.onCampaignState = (cs) => {
+  store.campaignState = cs
+}
+client.onError = (err) => {
+  store.addToast(err.message || '发生错误', 'error')
+}
+client.onDisconnect = () => {
+  store.connected = false
 }
 
-const game = new Phaser.Game(config)
-
-// Pass shared instances to the first scene
-game.scene.start('BootScene', { client, store })
+app.mount('#app')

@@ -1,17 +1,27 @@
 {
   "id": "laboratory_assistant_lv0",
+  "arkhamdb_code": "02020",
   "name": "Laboratory Assistant",
-  "name_cn": "实验室助手",
+  "name_cn": "實驗室助理",
   "class": "seeker",
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["ally", "miskatonic", "science"],
-  "skill_icons": {"intellect": 1},
-  "slots": ["ally"],
-  "text": "Your maximum hand size is increased by 2. After Laboratory Assistant enters play: Draw 2 cards.",
+  "traits": [
+    "ally",
+    "miskatonic",
+    "science"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Your maximum hand size is increased by 2.\n[reaction] After Laboratory Assistant enters play: Draw 2 cards.",
+  "text_cn": "你手牌上限+2。\n[reaction]在實驗室助理入場後：抽取2張卡牌。",
   "health": 1,
   "sanity": 2,
-  "pack": "dwl",
-  "unique": false
+  "unique": false,
+  "pack": "dunwich_legacy"
 }
