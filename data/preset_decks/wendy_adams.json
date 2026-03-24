@@ -4,11 +4,36 @@
     {
       "name": "温蒂·亚当斯（入门生存）",
       "cards": [
-        "baseball_bat_lv0", "rabbits_foot_lv0", "leather_coat_lv0",
-        "lucky_lv0", "look_what_i_found_lv0", "stray_cat_lv0",
-        "scavenging_lv0", "survival_instinct_lv0", "dig_deep_lv0",
-        "manual_dexterity_lv0", "guts_lv0", "overpower_lv0",
-        "perception_lv0", "unexpected_courage_lv0", "emergency_cache_lv0"
+        "baseball_bat_lv0",
+        "baseball_bat_lv0",
+        "rabbits_foot_lv0",
+        "rabbits_foot_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "lucky_lv0",
+        "lucky_lv0",
+        "look_what_i_found_lv0",
+        "look_what_i_found_lv0",
+        "stray_cat_lv0",
+        "stray_cat_lv0",
+        "scavenging_lv0",
+        "scavenging_lv0",
+        "survival_instinct_lv0",
+        "survival_instinct_lv0",
+        "dig_deep_lv0",
+        "dig_deep_lv0",
+        "manual_dexterity_lv0",
+        "manual_dexterity_lv0",
+        "guts_lv0",
+        "guts_lv0",
+        "overpower_lv0",
+        "overpower_lv0",
+        "perception_lv0",
+        "perception_lv0",
+        "unexpected_courage_lv0",
+        "unexpected_courage_lv0",
+        "emergency_cache_lv0",
+        "emergency_cache_lv0"
       ]
     }
   ]

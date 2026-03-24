@@ -177,7 +177,8 @@ def get_investigator_detail(inv_id: str) -> dict | None:
 def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> dict:
     """Return player cards + presets for deck building.
 
-    Returns: {"cards": [...], "presets": [...], "deck_requirements": {...}}
+    Returns: {"cards": [...], "presets": [...], "deck_requirements": {...},
+              "signature_cards": [...], "weakness_cards": [...]}
     """
     import json as _json
 
@@ -198,7 +199,21 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
             allowed_classes[inv_class] = (0, 5)
             allowed_classes["neutral"] = (0, 5)
 
+    # Gather signature/weakness IDs to exclude from the buildable pool
+    sig_ids: set[str] = set()
+    weak_ids: set[str] = set()
+    if inv_json:
+        for s in inv_json.get("signature_cards", []):
+            sig_ids.add(s)
+        w = inv_json.get("weakness", "")
+        if w:
+            weak_ids.add(w)
+
     cards: list[dict] = []
+    # Also collect full data for signature/weakness cards
+    sig_card_data: list[dict] = []
+    weak_card_data: list[dict] = []
+
     base = PROJECT_ROOT / "data" / "player_cards"
     for p in base.rglob("*.json"):
         if p.name == "schema.json":
@@ -209,23 +224,9 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
             continue
         card_class = data.get("class", "neutral")
         card_type = data.get("type", "")
-        if card_type not in ("asset", "event", "skill"):
-            continue
         card_level = data.get("level") or 0
 
-        # Check deck building rules
-        if allowed_classes:
-            if card_class not in allowed_classes:
-                continue
-            min_lv, max_lv = allowed_classes[card_class]
-            if not (min_lv <= card_level <= max_lv):
-                continue
-
-        # XP check: card is "allowed" if player can afford it
-        # Level 0 cards are always allowed; level N costs N XP
-        allowed = card_level == 0 or card_level <= xp_available
-
-        cards.append({
+        card_info = {
             "id": card_id,
             "name": data.get("name", card_id),
             "name_cn": data.get("name_cn", ""),
@@ -242,8 +243,34 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
             "sanity": data.get("sanity"),
             "unique": data.get("unique", False),
             "victory": data.get("victory", 0),
-            "allowed": allowed,
-        })
+            "allowed": True,
+        }
+
+        # Signature/weakness cards go to separate lists, not the buildable pool
+        if card_id in sig_ids:
+            sig_card_data.append(card_info)
+            continue
+        if card_id in weak_ids:
+            weak_card_data.append(card_info)
+            continue
+
+        # Only allow playable card types in the buildable pool
+        if card_type not in ("asset", "event", "skill"):
+            continue
+
+        # Check deck building rules
+        if allowed_classes:
+            if card_class not in allowed_classes:
+                continue
+            min_lv, max_lv = allowed_classes[card_class]
+            if not (min_lv <= card_level <= max_lv):
+                continue
+
+        # XP check: card is "allowed" if player can afford it
+        # Level 0 cards are always allowed; level N costs N XP
+        card_info["allowed"] = card_level == 0 or card_level <= xp_available
+        cards.append(card_info)
+
     cards.sort(key=lambda c: (c["class"], c["level"], c["type"], c.get("cost") or 0, c["id"]))
 
     # Collect presets for this investigator
@@ -260,6 +287,8 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
         "cards": cards,
         "presets": presets,
         "deck_requirements": deck_req,
+        "signature_cards": sig_card_data,
+        "weakness_cards": weak_card_data,
     }
 
 
@@ -427,13 +456,11 @@ class GameSession:
             # Custom deck from deck builder
             deck_ids = list(deck_cards)
         elif deck_preset and deck_preset in DECK_PRESETS:
-            for cid in DECK_PRESETS[deck_preset]["cards"]:
-                deck_ids.extend([cid, cid])
+            deck_ids = list(DECK_PRESETS[deck_preset]["cards"])
         else:
             for preset_id, preset in DECK_PRESETS.items():
                 if preset.get("investigator_id") == investigator_id:
-                    for cid in preset["cards"]:
-                        deck_ids.extend([cid, cid])
+                    deck_ids = list(preset["cards"])
                     break
 
         deck_ids = [cid for cid in deck_ids if g.state.get_card_data(cid) is not None]
@@ -474,6 +501,11 @@ class GameSession:
 
         g.state.scenario.current_phase = Phase.INVESTIGATION
         g.state.scenario.round_number = 1
+
+        # Initialize investigator actions for first turn
+        inv = g.state.get_investigator("player")
+        if inv:
+            inv.actions_remaining = 3
 
         self.action_log.append(f"=== 核心剧本：{scen.get('name_cn', scenario_id)} ===")
         self.action_log.append(f"调查员：{inv_data.name_cn}")

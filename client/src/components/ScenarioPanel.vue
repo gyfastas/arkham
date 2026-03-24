@@ -1,11 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { GameState } from '../state/types'
 
-defineProps<{ state: GameState }>()
+const props = defineProps<{ state: GameState }>()
 
 const agendaExpanded = ref(true)
 const actExpanded = ref(true)
+
+const agendaText = computed(() => {
+  const a = props.state.scenario.agenda
+  return a?.text_cn || a?.text_cn === '' ? (a.text_cn || '') : ''
+})
+const agendaBackText = computed(() => {
+  const a = props.state.scenario.agenda
+  return a?.back_text_cn || a?.back_text || ''
+})
+const actText = computed(() => {
+  const a = props.state.scenario.act
+  return a?.text_cn || a?.text_cn === '' ? (a.text_cn || '') : ''
+})
+const actBackText = computed(() => {
+  const a = props.state.scenario.act
+  return a?.back_text_cn || a?.back_text || ''
+})
 </script>
 
 <template>
@@ -28,8 +45,12 @@ const actExpanded = ref(true)
           </span>
         </div>
       </div>
-      <div v-if="agendaExpanded && state.scenario.agenda.text_cn" class="card-body">
-        <div class="card-text">{{ state.scenario.agenda.text_cn }}</div>
+      <div v-if="agendaExpanded" class="card-body">
+        <div v-if="agendaText" class="card-text">{{ agendaText }}</div>
+        <div v-if="agendaBackText" class="card-back-text">
+          <span class="back-label">▶ 推进效果</span>
+          <div>{{ agendaBackText }}</div>
+        </div>
       </div>
     </div>
 
@@ -49,8 +70,12 @@ const actExpanded = ref(true)
           </span>
         </div>
       </div>
-      <div v-if="actExpanded && state.scenario.act.text_cn" class="card-body">
-        <div class="card-text">{{ state.scenario.act.text_cn }}</div>
+      <div v-if="actExpanded" class="card-body">
+        <div v-if="actText" class="card-text">{{ actText }}</div>
+        <div v-if="actBackText" class="card-back-text">
+          <span class="back-label">▶ 推进效果</span>
+          <div>{{ actBackText }}</div>
+        </div>
       </div>
     </div>
 
@@ -181,6 +206,25 @@ const actExpanded = ref(true)
   border-radius: 4px;
   margin-top: 6px;
   white-space: pre-line;
+}
+.card-back-text {
+  font-size: 12px;
+  color: #a89060;
+  line-height: 1.6;
+  padding: 8px;
+  background: #15130e;
+  border: 1px solid #332a18;
+  border-radius: 4px;
+  margin-top: 6px;
+  white-space: pre-line;
+}
+.back-label {
+  font-size: 10px;
+  color: #887040;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
 }
 .game-info {
   padding: 8px 12px;

@@ -2,9 +2,9 @@
   "id": "zoey_samaras",
   "arkhamdb_code": "02001",
   "name": "Zoey Samaras",
-  "name_cn": "佐伊·薩馬拉斯",
+  "name_cn": "佐伊·萨马拉斯",
   "title": "The Chef",
-  "title_cn": "主廚",
+  "title_cn": "主厨",
   "class": "guardian",
   "health": 9,
   "sanity": 6,
@@ -15,7 +15,7 @@
     "agility": 2
   },
   "ability": "[reaction] After you become engaged with an enemy: Gain 1 resource.\n[elder_sign] effect: +1. If this skill test is successful during an attack, that attack deals +1 damage.",
-  "ability_cn": "[reaction]在你與一名敵人交戰後：獲得1個資源。\n[elder_sign]效果：+1。如果攻擊中的這次技能檢定成功，這次攻擊造成+1傷害。",
+  "ability_cn": "[reaction]在你与一名敌人交战后：获得1个资源。\n[elder_sign]效果：+1。如果攻击中的这次技能检定成功，这次攻击造成+1伤害。",
   "elder_sign": "",
   "elder_sign_cn": "",
   "deck_requirements": {
@@ -31,8 +31,8 @@
       }
     }
   },
-  "signature_cards": [],
-  "weakness": "",
+  "signature_cards": ["zoeys_cross_lv0"],
+  "weakness": "smite_the_wicked_lv0",
   "flavor_text": "\"God has spoken. I will do His work without hesitation.\"",
   "pack": "dunwich_legacy"
 }

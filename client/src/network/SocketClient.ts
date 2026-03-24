@@ -65,8 +65,8 @@ export class SocketClient {
         this.onError?.(data)
       })
 
-      this.socket.on('card_list', (data: { cards: CardDisplay[]; presets?: DeckPreset[]; deck_requirements?: any }) => {
-        this.onCardList?.(data.cards, data.presets || [], data.deck_requirements || null)
+      this.socket.on('card_list', (data: { cards: CardDisplay[]; presets?: DeckPreset[]; deck_requirements?: any; signature_cards?: CardDisplay[]; weakness_cards?: CardDisplay[] }) => {
+        this.onCardList?.(data.cards, data.presets || [], data.deck_requirements || null, data.signature_cards || [], data.weakness_cards || [])
       })
 
       this.socket.on('investigator_detail', (data: InvestigatorDetail) => {
@@ -117,7 +117,7 @@ export class SocketClient {
     this.socket?.emit(ClientEvent.GET_INVESTIGATOR, { investigator_id: investigatorId })
   }
 
-  onCardList: ((cards: CardDisplay[], presets: DeckPreset[], deckReq: any) => void) | null = null
+  onCardList: ((cards: CardDisplay[], presets: DeckPreset[], deckReq: any, signatureCards: CardDisplay[], weaknessCards: CardDisplay[]) => void) | null = null
   onInvestigatorDetail: ((detail: InvestigatorDetail) => void) | null = null
   onCampaignState: ((state: CampaignStateData | null) => void) | null = null
 

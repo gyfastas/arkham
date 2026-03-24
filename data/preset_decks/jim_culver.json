@@ -4,11 +4,36 @@
     {
       "name": "吉姆·卡尔弗（灵媒法师）",
       "cards": [
-        "shrivelling_lv0", "holy_rosary_lv0", "arcane_studies_lv0",
-        "arcane_initiate_lv0", "forbidden_knowledge_lv0", "scrying_lv0",
-        "ward_of_protection_lv0", "drawn_to_the_flame_lv0", "fearless_lv0",
-        "rite_of_seeking_lv0", "clarity_of_mind_lv0", "ritual_candles_lv0",
-        "guts_lv0", "perception_lv0", "unexpected_courage_lv0"
+        "shrivelling_lv0",
+        "shrivelling_lv0",
+        "holy_rosary_lv0",
+        "holy_rosary_lv0",
+        "arcane_studies_lv0",
+        "arcane_studies_lv0",
+        "arcane_initiate_lv0",
+        "arcane_initiate_lv0",
+        "forbidden_knowledge_lv0",
+        "forbidden_knowledge_lv0",
+        "scrying_lv0",
+        "scrying_lv0",
+        "ward_of_protection_lv0",
+        "ward_of_protection_lv0",
+        "drawn_to_the_flame_lv0",
+        "drawn_to_the_flame_lv0",
+        "fearless_lv0",
+        "fearless_lv0",
+        "rite_of_seeking_lv0",
+        "rite_of_seeking_lv0",
+        "clarity_of_mind_lv0",
+        "clarity_of_mind_lv0",
+        "ritual_candles_lv0",
+        "ritual_candles_lv0",
+        "guts_lv0",
+        "guts_lv0",
+        "perception_lv0",
+        "perception_lv0",
+        "unexpected_courage_lv0",
+        "unexpected_courage_lv0"
       ]
     }
   ]

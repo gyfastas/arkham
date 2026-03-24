@@ -120,16 +120,44 @@ function onDeckBack() {
 function startGame() {
   if (!canStart.value) return
 
-  client.createRoom()
-  // Wait for room creation, then setup game
+  // Set up the callback before creating room to avoid race condition
+  const prevRoomCb = client.onRoomUpdate
   client.onRoomUpdate = (_room) => {
+    client.onRoomUpdate = prevRoomCb
+
+    // Determine deck preset and custom deck cards
+    // If user built custom deck in deck builder, send deck_cards
+    // Otherwise use first available preset for this investigator
+    const hasCustomDeck = customDeckCards.value.length > 0
+    let deckPreset: string | undefined = undefined
+    let deckCards: string[] | undefined = undefined
+
+    if (hasCustomDeck) {
+      // User built a custom deck - send the card list, no preset
+      deckCards = customDeckCards.value
+      deckPreset = undefined
+    } else {
+      // Use preset - find the first preset for this investigator
+      // The preset ID format is "{investigator_id}_starter"
+      deckPreset = `${store.selectedInvestigator}_starter`
+    }
+
     client.setupGame(
       store.selectedScenario,
       store.selectedInvestigator,
-      customDeckCards.value.length > 0 ? undefined : 'default',
-      customDeckCards.value.length > 0 ? customDeckCards.value : undefined,
+      deckPreset,
+      deckCards,
     )
   }
+
+  // Also set up error handler
+  const prevErrCb = client.onError
+  client.onError = (err) => {
+    store.addToast(err.message || '连接错误', 'error')
+    client.onError = prevErrCb
+  }
+
+  client.createRoom()
 }
 
 // --- Socket callbacks ---

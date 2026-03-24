@@ -114,8 +114,8 @@ export interface ScenarioDisplay {
   id: string
   name: string
   name_cn: string
-  act: { id: string; name: string; name_cn: string; clues: number; text_cn: string; sequence: number; total: number } | null
-  agenda: { id: string; name: string; name_cn: string; doom: number; text_cn: string; sequence: number; total: number } | null
+  act: { id: string; name: string; name_cn: string; clues: number; text_cn: string; back_text: string; back_text_cn: string; sequence: number; total: number } | null
+  agenda: { id: string; name: string; name_cn: string; doom: number; text_cn: string; back_text: string; back_text_cn: string; sequence: number; total: number } | null
   resolution_id: string | null
 }
 

@@ -38,10 +38,12 @@ client.onActionResult = (result) => {
     store.updateState(result.state, result.events)
   }
 }
-client.onCardList = (cards, presets, deckReq) => {
+client.onCardList = (cards, presets, deckReq, sigCards, weakCards) => {
   store.availableCards = cards
   store.deckPresets = presets
   store.deckRequirements = deckReq
+  store.signatureCards = sigCards || []
+  store.weaknessCards = weakCards || []
 }
 client.onInvestigatorDetail = (detail) => {
   store.investigatorDetail = detail

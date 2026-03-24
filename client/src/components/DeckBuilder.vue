@@ -113,10 +113,12 @@ function confirm() {
 
 // --- Socket ---
 
-function handleCardList(cards: CardDisplay[], presets: any[], deckReq: any) {
+function handleCardList(cards: CardDisplay[], presets: any[], deckReq: any, sigCards: CardDisplay[], weakCards: CardDisplay[]) {
   store.availableCards = cards
   store.deckPresets = presets
   store.deckRequirements = deckReq
+  store.signatureCards = sigCards || []
+  store.weaknessCards = weakCards || []
 }
 
 onMounted(() => {
@@ -192,6 +194,29 @@ onUnmounted(() => {
         </div>
 
         <div class="deck-list">
+          <!-- Auto-included signature cards -->
+          <div v-if="store.signatureCards.length > 0 || store.weaknessCards.length > 0" class="auto-section">
+            <div class="auto-label">自动加入（专属卡/弱点）</div>
+            <div
+              v-for="card in store.signatureCards"
+              :key="'sig_' + card.id"
+              class="deck-entry auto-entry"
+              :style="{ borderLeftColor: '#d4a017' }"
+            >
+              <span class="entry-name">{{ card.name_cn || card.name }}</span>
+              <span class="entry-tag sig-tag">专属</span>
+            </div>
+            <div
+              v-for="card in store.weaknessCards"
+              :key="'weak_' + card.id"
+              class="deck-entry auto-entry"
+              :style="{ borderLeftColor: '#c0392b' }"
+            >
+              <span class="entry-name">{{ card.name_cn || card.name }}</span>
+              <span class="entry-tag weak-tag">弱点</span>
+            </div>
+          </div>
+          <!-- User-selected cards -->
           <div
             v-for="entry in deckEntries"
             :key="entry.card.id"
@@ -493,6 +518,41 @@ onUnmounted(() => {
   font-size: 13px;
   text-align: center;
   padding: 30px 0;
+}
+
+.auto-section {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #2a2a3e;
+}
+
+.auto-label {
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.auto-entry {
+  opacity: 0.8;
+}
+
+.entry-tag {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.sig-tag {
+  background: #3a3010;
+  color: #d4a017;
+}
+
+.weak-tag {
+  background: #3a1010;
+  color: #e74c3c;
 }
 
 /* Presets */

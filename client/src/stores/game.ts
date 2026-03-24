@@ -18,6 +18,8 @@ export const useGameStore = defineStore('game', () => {
   const availableCards = ref<CardDisplay[]>([])
   const deckPresets = ref<DeckPreset[]>([])
   const deckRequirements = ref<Record<string, any> | null>(null)
+  const signatureCards = ref<CardDisplay[]>([])
+  const weaknessCards = ref<CardDisplay[]>([])
 
   // Game state
   const state = ref<GameState | null>(null)
@@ -62,7 +64,7 @@ export const useGameStore = defineStore('game', () => {
   return {
     connected, playerId,
     selectedScenario, selectedInvestigator,
-    investigatorDetail, availableCards, deckPresets, deckRequirements,
+    investigatorDetail, availableCards, deckPresets, deckRequirements, signatureCards, weaknessCards,
     state, gameOver, lastActionResult, pendingEvents,
     campaignState,
     toasts, addToast,
