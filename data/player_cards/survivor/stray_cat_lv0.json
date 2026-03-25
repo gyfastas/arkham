@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["ally", "creature"],
-  "skill_icons": {"agility": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "creature"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "Discard Stray Cat: Automatically evade a non-Elite enemy engaged with you.",
   "health": 1,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。弃置野猫：自动成功躲避一个与你交战的非精英敌人。"
 }

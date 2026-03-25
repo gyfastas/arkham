@@ -6,12 +6,15 @@
   "type": "event",
   "cost": 1,
   "level": 2,
-  "traits": ["insight"],
+  "traits": [
+    "insight"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "Investigate. If you succeed, instead of discovering 1 clue at your location, discover a total of 2 clues at your location and connected locations.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你成功调查超过难度2点或以上后打出。发现并消耗该地点的一个线索，发现一个相邻地点的线索。"
 }

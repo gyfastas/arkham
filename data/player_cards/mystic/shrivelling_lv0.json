@@ -6,12 +6,19 @@
   "type": "asset",
   "cost": 3,
   "level": 0,
-  "traits": ["spell"],
-  "skill_icons": {"combat": 1},
-  "slots": ["arcane"],
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "arcane"
+  ],
   "text": "Uses (4 charges). Fight using willpower instead of combat. +1 damage. If skull/cultist/tablet/elder_thing/auto_fail revealed, take 1 horror.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(4充能）。消耗皱缩术并花费1充能：<b>攻击</b>。本次攻击使用意志代替战斗。你获得+1战斗，本次攻击造成+1伤害。如果这次攻击揭示一个负面混沌标记，受到1点恐惧。"
 }

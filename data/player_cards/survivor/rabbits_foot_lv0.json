@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["item", "charm"],
-  "skill_icons": {"wild": 1},
-  "slots": ["accessory"],
+  "traits": [
+    "item",
+    "charm"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
   "text": "After you fail a skill test, exhaust Rabbit's Foot: Draw 1 card.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>强制</b> - 在你检定失败后：抽取1张牌。"
 }

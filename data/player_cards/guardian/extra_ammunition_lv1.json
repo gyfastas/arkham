@@ -6,12 +6,17 @@
   "type": "event",
   "cost": 2,
   "level": 1,
-  "traits": ["supply"],
-  "skill_icons": {"intellect": 1},
+  "traits": [
+    "supply"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
   "slots": [],
   "text": "Place 3 ammo on a Firearm asset.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "你每控制一把占用2个手槽位的武器，手槽位上限+1。\n<b>反应</b> - 在你打出一张有'使用(弹药)'的支援卡后：在其上放置2弹药。"
 }

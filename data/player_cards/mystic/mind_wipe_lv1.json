@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 1,
   "level": 1,
-  "traits": ["spell"],
-  "skill_icons": {"willpower": 1, "combat": 1},
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
   "slots": [],
   "text": "Fast. Blank a non-Elite enemy's text until end of phase.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。选择你所在地点或一个连接地点的一个非精英敌人。取消该敌人直到本阶段结束的所有文本效果。"
 }

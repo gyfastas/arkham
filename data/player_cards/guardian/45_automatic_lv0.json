@@ -6,12 +6,21 @@
   "type": "asset",
   "cost": 4,
   "level": 0,
-  "traits": ["item", "weapon", "firearm"],
-  "skill_icons": {"agility": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Uses (4 ammo). Spend 1 ammo: Fight. You get +1 combat for this attack. This attack deals +1 damage.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(4弹药)。消耗.45自动手枪并花费1弹药：<b>攻击</b>。你获得+1战斗，本次攻击造成+1伤害。"
 }

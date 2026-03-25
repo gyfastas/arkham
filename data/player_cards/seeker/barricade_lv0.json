@@ -6,12 +6,20 @@
   "type": "event",
   "cost": 0,
   "level": 0,
-  "traits": ["insight", "tactic"],
-  "skill_icons": {"willpower": 1, "intellect": 1, "agility": 1},
+  "traits": [
+    "insight",
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "agility": 1
+  },
   "slots": [],
   "text": "Attach to your location. Non-Elite enemies cannot move to attached location. Forced - When an investigator leaves attached location: Discard Barricade.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "将屏障附加到你所在地点。\n被附加的地点不能生成非精英敌人。"
 }

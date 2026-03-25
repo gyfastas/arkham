@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 2,
   "level": 3,
-  "traits": ["fortune", "insight"],
+  "traits": [
+    "fortune",
+    "insight"
+  ],
   "skill_icons": {},
   "text": "Fast. Play when a chaos token with a negative modifier is revealed during a skill test you are performing. Switch that token's modifier to its positive counterpart.",
-  "keywords": ["fast"],
+  "keywords": [
+    "fast"
+  ],
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你揭示一个混沌标记后打出。无视该混沌标记，改为揭示另一个混沌标记。"
 }

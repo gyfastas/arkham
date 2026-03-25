@@ -6,12 +6,21 @@
   "type": "asset",
   "cost": 4,
   "level": 1,
-  "traits": ["ally", "criminal"],
-  "skill_icons": {"willpower": 1, "agility": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "criminal"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "You get +1 agility. Exhaust Cat Burglar: Disengage from an enemy engaged with you and move to a connecting location.",
   "health": 2,
   "sanity": 2,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "你获得+1敏捷。\n<b>反应</b> - 在你成功躲避后：消耗飞贼并获得2资源。"
 }

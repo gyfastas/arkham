@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["item", "tome"],
-  "skill_icons": {"combat": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Choose an investigator at your location and test intellect (2). If you succeed, heal 1 damage from that investigator. If you fail, deal 1 damage to that investigator.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "消耗医学教科书：你获得+2智力。"
 }

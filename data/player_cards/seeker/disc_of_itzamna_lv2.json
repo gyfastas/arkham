@@ -6,12 +6,22 @@
   "type": "asset",
   "cost": 3,
   "level": 2,
-  "traits": ["item", "relic"],
-  "skill_icons": {"willpower": 1, "intellect": 1, "combat": 1},
-  "slots": ["accessory"],
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "accessory"
+  ],
   "text": "When a non-Elite enemy spawns at your location, discard Disc of Itzamna: Discard that enemy.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": true
+  "unique": true,
+  "text_cn": "<b>反应</b> - 当一个非精英敌人将在你的地点生成时：弃置伊察姆纳圆盘，改为将该敌人弃置（不生成）。"
 }

@@ -6,13 +6,25 @@
   "type": "asset",
   "cost": 3,
   "level": 0,
-  "traits": ["item", "weapon", "firearm", "illicit"],
-  "skill_icons": {"combat": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Uses (2 ammo). Spend 1 ammo: Fight. You get +2 combat and deal +1 damage. If you fail, place 1 ammo on .18 Derringer.",
-  "uses": {"ammo": 2},
+  "uses": {
+    "ammo": 2
+  },
   "health": null,
   "sanity": null,
   "pack": "stella_clark",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(3弹药）。消耗.18大口径短口手枪并花费1弹药：<b>攻击</b>。你获得+2战斗，本次攻击造成+1伤害。"
 }

@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["ally", "sorcerer"],
-  "skill_icons": {"willpower": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "sorcerer"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "Forced: Place 1 doom on enter. Exhaust: Search top 3 for Spell, draw it.",
   "health": 1,
   "sanity": 2,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>强制</b> - 在刷新阶段开始时：弃置新晋术士或在其上放置1点恐惧。\n<b>反应</b> - 在新晋术士进场时或在其上有恐惧放置时：搜索你的牌库，将一张<b>法术</b>支援卡加入手牌，然后洗牌。"
 }

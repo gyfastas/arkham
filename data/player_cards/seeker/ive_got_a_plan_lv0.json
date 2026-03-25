@@ -6,12 +6,19 @@
   "type": "event",
   "cost": 3,
   "level": 0,
-  "traits": ["insight", "tactic"],
-  "skill_icons": {"intellect": 1, "combat": 1},
+  "traits": [
+    "insight",
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
   "slots": [],
   "text": "Fight. This attack uses intellect. You deal +1 damage for this attack for each clue you have (max +3 damage).",
   "health": null,
   "sanity": null,
   "pack": "dwl",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在进行一次智力检定时打出。你获得+2智力，本次检定造成+1伤害。"
 }

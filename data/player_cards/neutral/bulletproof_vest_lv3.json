@@ -6,12 +6,21 @@
   "type": "asset",
   "cost": 2,
   "level": 3,
-  "traits": ["item", "armor"],
-  "skill_icons": {"combat": 1, "wild": 1},
-  "slots": ["body"],
+  "traits": [
+    "item",
+    "armor"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [
+    "body"
+  ],
   "text": "No ability. Bulletproof Vest can soak up to 4 damage.",
   "health": 4,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "你获得+4生命值。"
 }

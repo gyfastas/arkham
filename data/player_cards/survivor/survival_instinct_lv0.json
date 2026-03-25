@@ -6,12 +6,17 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["innate"],
-  "skill_icons": {"agility": 1},
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
   "slots": [],
   "text": "If this test is successful during an evasion attempt, you may immediately disengage from each enemy engaged with you and move to a connecting location.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你躲避检定失败时打出。改为成功，然后你可以移动到一个连接地点。"
 }

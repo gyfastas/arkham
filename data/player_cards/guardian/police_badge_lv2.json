@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 3,
   "level": 2,
-  "traits": ["item"],
-  "skill_icons": {"willpower": 1, "wild": 1},
-  "slots": ["accessory"],
+  "traits": [
+    "item"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
   "text": "+1 willpower. Discard: investigator gets 2 additional actions.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "你获得+1意志。\n<b>反应</b> - 弃置警徽：你获得2个额外行动。"
 }

@@ -6,12 +6,19 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["spell"],
-  "skill_icons": {"intellect": 1},
-  "slots": ["arcane"],
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
   "text": "Uses (3 charges). Look at top 3 cards of any deck, reorder them.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(3充能）。消耗探知术并花费1充能：查看一名调查员牌库顶的3张牌。该调查员可以将其中任意张置于其牌库底，其余以任意顺序置于其牌库顶。"
 }

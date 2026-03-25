@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 0,
   "level": 4,
-  "traits": ["spirit"],
-  "skill_icons": {"willpower": 2, "agility": 1},
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "agility": 1
+  },
   "slots": [],
   "text": "Fast. Cancel up to 5 damage/horror. Gain resources equal to amount canceled.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你将受到3点或更多伤害或恐惧时打出。取消最多3点该伤害或恐惧。"
 }

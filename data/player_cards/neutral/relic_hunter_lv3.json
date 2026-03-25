@@ -6,13 +6,18 @@
   "type": "asset",
   "cost": null,
   "level": 3,
-  "traits": ["talent"],
+  "traits": [
+    "talent"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "Permanent. You may have 2 accessories in play (instead of the normal maximum of 1).",
-  "keywords": ["permanent"],
+  "keywords": [
+    "permanent"
+  ],
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "你获得2个额外的饰品槽位。"
 }

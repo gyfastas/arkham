@@ -6,12 +6,15 @@
   "type": "event",
   "cost": 1,
   "level": 2,
-  "traits": ["fortune"],
+  "traits": [
+    "fortune"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "Fast. Play when you would fail a skill test. You get +2 to your skill value for this test. Draw 1 card.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你检定失败后打出。获得+2本次技能。如果你成功，返回运气好！到你的手中。"
 }

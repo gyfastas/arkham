@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 5,
   "level": 1,
-  "traits": ["ally", "criminal"],
-  "skill_icons": {"intellect": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "criminal"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "You may take an additional action during your turn.",
   "health": 2,
   "sanity": 2,
   "pack": "rcore",
-  "unique": true
+  "unique": true,
+  "text_cn": "里奥·德·卢卡进场时带有2个行动指示物。\n每轮你可以花费里奥·德·卢卡上的行动指示物，如同那是你的额外行动。"
 }

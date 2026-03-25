@@ -6,12 +6,17 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["practiced"],
-  "skill_icons": {"intellect": 1},
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
   "slots": [],
   "text": "If this test is successful, discover 1 additional clue at your location.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "如果你成功超过难度2点或以上，你发现额外1条线索。"
 }

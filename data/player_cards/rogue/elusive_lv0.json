@@ -6,12 +6,20 @@
   "type": "event",
   "cost": 2,
   "level": 0,
-  "traits": ["tactic"],
-  "skill_icons": {"intellect": 1, "agility": 1},
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
   "text": "Fast. Disengage from each enemy engaged with you and move to a revealed location with no enemies.",
-  "keywords": ["fast"],
+  "keywords": [
+    "fast"
+  ],
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。与所有敌人脱离交战，移动到一个没有敌人的已揭示地点。"
 }

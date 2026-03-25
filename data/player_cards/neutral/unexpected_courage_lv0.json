@@ -6,12 +6,17 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["innate"],
-  "skill_icons": {"wild": 2},
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
   "slots": [],
   "text": "",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": ""
 }

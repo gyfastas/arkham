@@ -6,12 +6,18 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["talent"],
-  "skill_icons": {"intellect": 1, "agility": 1},
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
   "slots": [],
   "text": "Spend 1 resource: You get +1 intellect for this skill test. Spend 1 resource: You get +1 agility for this skill test.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "花费1资源：+1智力。花费1资源：+1敏捷。"
 }

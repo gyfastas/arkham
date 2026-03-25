@@ -6,12 +6,22 @@
   "type": "asset",
   "cost": 5,
   "level": 4,
-  "traits": ["item", "weapon", "firearm"],
-  "skill_icons": {"combat": 2},
-  "slots": ["hand", "hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [
+    "hand",
+    "hand"
+  ],
   "text": "Uses (2 ammo). Fight. +3 combat. Damage = points succeeded by (min 1, max 5).",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(2弹药)。消耗霰弹枪并花费1弹药：<b>攻击</b>。本次攻击造成+2伤害。如果你成功且超过难度2点以上，本次攻击造成额外+1伤害。"
 }

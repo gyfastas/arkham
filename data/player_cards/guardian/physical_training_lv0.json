@@ -6,12 +6,18 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["talent"],
-  "skill_icons": {"willpower": 1, "combat": 1},
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
   "slots": [],
   "text": "Spend 1 resource: +1 willpower for this skill test. Spend 1 resource: +1 combat for this skill test.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "花费1资源：本次技能检定+1意志。花费1资源：本次技能检定+1战斗。"
 }

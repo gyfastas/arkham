@@ -6,12 +6,21 @@
   "type": "asset",
   "cost": 2,
   "level": 3,
-  "traits": ["item", "relic"],
-  "skill_icons": {"willpower": 1, "wild": 1},
-  "slots": ["accessory"],
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
   "text": "No ability. Elder Sign Amulet can soak up to 4 horror.",
   "health": null,
   "sanity": 4,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "你获得+4理智。"
 }

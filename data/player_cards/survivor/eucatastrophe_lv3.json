@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 2,
   "level": 3,
-  "traits": ["fortune", "blessed"],
-  "skill_icons": {"wild": 2},
+  "traits": [
+    "fortune",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
   "slots": [],
   "text": "Fast. Play when a chaos token would reduce your skill value to 0 during a skill test. Cancel that chaos token and treat it as an elder sign token instead.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你将要被击败时打出。改为弃置你手牌中所有的弱点，恢复所有生命和理智，获得3资源，结束你本回合。"
 }

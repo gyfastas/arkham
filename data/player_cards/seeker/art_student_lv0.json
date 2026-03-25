@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["ally", "miskatonic"],
-  "skill_icons": {"intellect": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "miskatonic"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "After Art Student enters play: Discover 1 clue at your location.",
   "health": 1,
   "sanity": 2,
   "pack": "dwl",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>强制</b> - 当艺术生入场时：在你的地点发现1条线索。"
 }

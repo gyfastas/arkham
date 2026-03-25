@@ -6,11 +6,16 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["innate"],
-  "skill_icons": {"wild": 1},
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
   "text": "If this test is successful by 3 or more, return Opportunist to your hand instead of discarding it.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "如果你成功，返回机会主义者到你的手中。"
 }

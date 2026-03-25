@@ -6,12 +6,19 @@
   "type": "asset",
   "cost": 5,
   "level": 1,
-  "traits": ["ally"],
-  "skill_icons": {"willpower": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "When an enemy attacks you, exhaust Aquinnah and take 1 horror: Deal that enemy's damage to another enemy at your location instead.",
   "health": 1,
   "sanity": 4,
   "pack": "core",
-  "unique": true
+  "unique": true,
+  "text_cn": "<b>反应</b> - 当你受到敌人伤害时：弃置安奎娜。取消该伤害，改为对该敌人造成1点伤害。"
 }

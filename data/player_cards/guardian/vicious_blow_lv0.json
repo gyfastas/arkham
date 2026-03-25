@@ -6,12 +6,17 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["practiced"],
-  "skill_icons": {"combat": 1},
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
   "slots": [],
   "text": "If successful during attack, +1 damage.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "如果你成功，本次攻击造成+1伤害。"
 }

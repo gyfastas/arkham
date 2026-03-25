@@ -6,11 +6,17 @@
   "type": "event",
   "cost": 2,
   "level": 0,
-  "traits": ["tactic"],
-  "skill_icons": {"intellect": 1, "combat": 1},
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
   "text": "Deal 2 damage to an exhausted enemy at your location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "对一个与你交战的敌人造成2点伤害。"
 }

@@ -6,12 +6,17 @@
   "type": "event",
   "cost": 2,
   "level": 0,
-  "traits": ["fortune"],
-  "skill_icons": {"intellect": 2},
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
   "slots": [],
   "text": "Fast. Play after you fail a skill test while investigating by 2 or less. Discover 2 clues at your location.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你检定失败后打出。在你所在地点发现2条线索。"
 }

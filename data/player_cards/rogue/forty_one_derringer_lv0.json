@@ -6,13 +6,25 @@
   "type": "asset",
   "cost": 3,
   "level": 0,
-  "traits": ["item", "weapon", "firearm", "illicit"],
-  "skill_icons": {"combat": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Uses (3 ammo). Fight. You get +2 combat for this attack. If you succeed by 2 or more, this attack deals +1 damage.",
-  "uses": {"ammo": 3},
+  "uses": {
+    "ammo": 3
+  },
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(3弹药)。消耗.41短口手枪并花费1弹药：<b>攻击</b>。你获得+2战斗。如果这次攻击击败该敌人，发现你所在地点1条线索。"
 }

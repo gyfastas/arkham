@@ -6,12 +6,18 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["talent"],
-  "skill_icons": {"willpower": 1, "intellect": 1},
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
   "slots": [],
   "text": "Spend 1 resource: +1 willpower. Spend 1 resource: +1 intellect.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "花费1资源：+1意志。花费1资源：+1智力。"
 }

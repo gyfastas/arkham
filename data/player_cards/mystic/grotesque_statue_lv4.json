@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 2,
   "level": 4,
-  "traits": ["item", "relic"],
-  "skill_icons": {"wild": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Uses (4 charges). Reveal 2 chaos tokens, choose 1.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "使用(4充能）。<b>快速</b>。在你揭示一个混沌标记时：花费1充能。取消该标记，改为揭示另一个混沌标记。"
 }

@@ -6,12 +6,21 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["item", "weapon", "melee"],
-  "skill_icons": {"combat": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Fight. You get +1 combat for this attack. Discard Knife: Fight. You get +2 combat and deal +1 damage for this attack.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "消耗刀子：<b>攻击</b>。你获得+1战斗。"
 }

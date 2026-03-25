@@ -6,12 +6,15 @@
   "type": "event",
   "cost": 0,
   "level": 0,
-  "traits": ["supply"],
+  "traits": [
+    "supply"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "Gain 3 resources.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "获得3资源。"
 }

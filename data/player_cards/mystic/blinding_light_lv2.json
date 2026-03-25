@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 1,
   "level": 2,
-  "traits": ["spell"],
-  "skill_icons": {"willpower": 1, "agility": 1},
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
   "slots": [],
   "text": "Evade using willpower. If succeed, deal 2 damage.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>法术</b>。消耗眩光一闪并花费1充能：<b>躲避</b>。本次躲避使用意志代替敏捷。你获得+4敏捷。"
 }

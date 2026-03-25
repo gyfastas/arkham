@@ -6,12 +6,22 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["item", "weapon", "melee"],
-  "skill_icons": {"combat": 1},
-  "slots": ["hand", "hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand",
+    "hand"
+  ],
   "text": "Fight. You get +2 combat and deal +1 damage for this attack. If a skull or auto_fail chaos token is revealed during this attack, discard Baseball Bat after the attack resolves.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "消耗球棒：<b>攻击</b>。你获得+2战斗，本次攻击造成+1伤害。如果这次攻击揭示一个负面混沌标记，弃置球棒。"
 }

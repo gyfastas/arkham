@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["ally", "miskatonic"],
-  "skill_icons": {"agility": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "miskatonic"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "After Research Librarian enters play: Search your deck for a Tome asset and add it to your hand. Shuffle your deck.",
   "health": 1,
   "sanity": 1,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>强制</b> - 当研究馆员入场时：搜索你的牌库，将一张<b>典籍</b>支援卡加入手牌，然后洗牌。"
 }

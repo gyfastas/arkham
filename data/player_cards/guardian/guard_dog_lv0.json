@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 3,
   "level": 0,
-  "traits": ["ally", "creature"],
-  "skill_icons": {"combat": 1},
-  "slots": ["ally"],
+  "traits": [
+    "ally",
+    "creature"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "ally"
+  ],
   "text": "When an enemy attack deals damage to Guard Dog: Deal 1 damage to the attacking enemy.",
   "health": 3,
   "sanity": 1,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>强制</b> - 在你受到敌人伤害后：对攻击者造成1点伤害。"
 }

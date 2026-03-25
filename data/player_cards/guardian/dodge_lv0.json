@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 1,
   "level": 0,
-  "traits": ["tactic"],
-  "skill_icons": {"willpower": 1, "agility": 1},
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
   "slots": [],
   "text": "Fast. Play when an enemy attacks. Cancel that attack.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你所在地点的敌人攻击时打出。取消本次攻击。"
 }

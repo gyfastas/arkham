@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 0,
   "level": 1,
-  "traits": ["insight"],
-  "skill_icons": {"intellect": 1, "combat": 2},
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 2
+  },
   "slots": [],
   "text": "Fast. Choose an enemy at your location. Test intellect (X), where X is that enemy's fight value. For each point you succeed by, reduce that enemy's fight value by 1 for the next attack this phase.",
   "health": null,
   "sanity": null,
   "pack": "dwl",
-  "unique": false
+  "unique": false,
+  "text_cn": "选择一个在你地点的敌人。查看该敌人的牌面文字。发现1条线索（如果该敌人是精英，则改为发现2条线索）。"
 }

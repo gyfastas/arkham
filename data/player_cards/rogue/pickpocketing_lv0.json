@@ -6,12 +6,18 @@
   "type": "asset",
   "cost": 2,
   "level": 0,
-  "traits": ["talent", "illicit"],
-  "skill_icons": {"agility": 1},
+  "traits": [
+    "talent",
+    "illicit"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
   "slots": [],
   "text": "After you evade an enemy, exhaust Pickpocketing: Draw 1 card.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>反应</b> - 在你成功躲避一次攻击后：抽取1张牌。"
 }

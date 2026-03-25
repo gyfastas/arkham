@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 0,
   "level": 0,
-  "traits": ["item", "armor"],
-  "skill_icons": {"combat": 1},
-  "slots": ["body"],
+  "traits": [
+    "item",
+    "armor"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "body"
+  ],
   "text": "No ability. Leather Coat can soak up to 2 damage.",
   "health": 2,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "你获得+2生命值。"
 }

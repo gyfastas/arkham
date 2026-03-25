@@ -6,12 +6,17 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["talent"],
-  "skill_icons": {"intellect": 1},
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
   "slots": [],
   "text": "After you successfully investigate by 2 or more, exhaust Scavenging: Choose an Item card in your discard pile and add it to your hand.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>反应</b> - 在你成功调查并超过难度2点或以上后：弃置拾荒，从你的弃牌堆中将一张<b>道具</b>支援卡加入你的手牌。"
 }

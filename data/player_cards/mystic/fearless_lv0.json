@@ -6,12 +6,17 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["innate"],
-  "skill_icons": {"willpower": 1},
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
   "slots": [],
   "text": "If successful, heal 1 horror.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "如果你成功，治愈1点恐惧。"
 }

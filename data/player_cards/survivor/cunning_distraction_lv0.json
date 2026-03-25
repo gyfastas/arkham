@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 5,
   "level": 0,
-  "traits": ["tactic"],
-  "skill_icons": {"willpower": 1, "wild": 1},
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
   "slots": [],
   "text": "Automatically evade each enemy at your location.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "所有与你交战的敌人失去交战，移动到一个你选择的已揭示地点。"
 }

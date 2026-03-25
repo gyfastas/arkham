@@ -6,12 +6,15 @@
   "type": "event",
   "cost": 0,
   "level": 4,
-  "traits": ["insight"],
+  "traits": [
+    "insight"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "Fast. Play only during your turn. Choose an investigator at your location. That investigator draws 3 cards.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "抽取3张牌。"
 }

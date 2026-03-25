@@ -6,12 +6,17 @@
   "type": "skill",
   "cost": null,
   "level": 0,
-  "traits": ["innate"],
-  "skill_icons": {"wild": 3},
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "wild": 3
+  },
   "slots": [],
   "text": "Commit to a skill test only if there is a clue at your location.",
   "health": null,
   "sanity": null,
   "pack": "dwl",
-  "unique": false
+  "unique": false,
+  "text_cn": "在进行一次检定以躲避敌人或调查时打出。你获得+2本次技能类型。"
 }

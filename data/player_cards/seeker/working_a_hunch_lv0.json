@@ -6,13 +6,18 @@
   "type": "event",
   "cost": 2,
   "level": 0,
-  "traits": ["insight"],
-  "skill_icons": {"intellect": 2},
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
   "slots": [],
   "text": "Fast. Play only during your turn. Discover 1 clue at your location.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "fast": true
+  "fast": true,
+  "text_cn": "<b>洞察</b>。发现并消耗你所在地点的一个线索。"
 }

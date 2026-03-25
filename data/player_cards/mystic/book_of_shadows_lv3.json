@@ -6,12 +6,21 @@
   "type": "asset",
   "cost": 4,
   "level": 3,
-  "traits": ["item", "tome"],
-  "skill_icons": {"willpower": 1, "intellect": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "+1 arcane slot. Exhaust: Add 1 charge to a Spell.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "你每控制一张<b>法术</b>支援卡，你获得+1意志和+1智力。"
 }

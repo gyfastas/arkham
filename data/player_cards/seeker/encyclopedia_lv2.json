@@ -6,12 +6,20 @@
   "type": "asset",
   "cost": 2,
   "level": 2,
-  "traits": ["item", "tome"],
-  "skill_icons": {"wild": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Exhaust Encyclopedia: Choose an investigator at your location. That investigator gets +2 to a skill of your choice until the end of the phase.",
   "health": null,
   "sanity": null,
   "pack": "core",
-  "unique": false
+  "unique": false,
+  "text_cn": "消耗百科全书并花费1资源：你选择一名调查员。该调查员在你所在地点，获得+2你选择的技能值，直到本阶段结束。"
 }

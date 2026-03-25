@@ -6,12 +6,17 @@
   "type": "event",
   "cost": 1,
   "level": 0,
-  "traits": ["insight"],
-  "skill_icons": {"intellect": 2},
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
   "slots": [],
   "text": "Fast. Play after you defeat an enemy. Discover 1 clue at your location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。在你击败一名敌人后打出。在你的地点发现1条线索。"
 }

@@ -6,13 +6,20 @@
   "type": "event",
   "cost": 0,
   "level": 0,
-  "traits": ["trick"],
-  "skill_icons": {"agility": 1},
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
   "slots": [],
   "text": "Fast. Play after you draw a non-peril encounter card. Choose another investigator. That investigator is considered to have drawn that card instead. Gain 1 resource.",
-  "keywords": ["fast"],
+  "keywords": [
+    "fast"
+  ],
   "health": null,
   "sanity": null,
   "pack": "the_forgotten_age",
-  "unique": false
+  "unique": false,
+  "text_cn": "选择一名调查员。该调查员与你交战一个在你地点的敌人。"
 }

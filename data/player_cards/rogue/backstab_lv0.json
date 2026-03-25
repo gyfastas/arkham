@@ -6,11 +6,17 @@
   "type": "event",
   "cost": 3,
   "level": 0,
-  "traits": ["tactic"],
-  "skill_icons": {"combat": 1, "agility": 1},
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
   "text": "Fight. Use agility instead of combat for this attack. This attack deals +2 damage.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>攻击</b>。本次攻击使用敏捷代替战斗。你获得+2敏捷，本次攻击造成+1伤害。"
 }

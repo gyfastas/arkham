@@ -6,13 +6,25 @@
   "type": "asset",
   "cost": 1,
   "level": 0,
-  "traits": ["item", "weapon", "melee", "illicit"],
-  "skill_icons": {"agility": 1},
-  "slots": ["hand"],
+  "traits": [
+    "item",
+    "weapon",
+    "melee",
+    "illicit"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "hand"
+  ],
   "text": "Fast. Fight. If you succeed by 2 or more, this attack deals +1 damage.",
-  "keywords": ["fast"],
+  "keywords": [
+    "fast"
+  ],
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。消耗弹簧刀：<b>攻击</b>。你获得+1战斗，本次攻击造成+1伤害。"
 }

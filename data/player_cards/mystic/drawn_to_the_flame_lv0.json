@@ -6,12 +6,18 @@
   "type": "event",
   "cost": 0,
   "level": 0,
-  "traits": ["insight"],
-  "skill_icons": {"willpower": 1, "intellect": 1},
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
   "slots": [],
   "text": "Draw top encounter card. Discover 2 clues at your location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "<b>快速</b>。发现并消耗你所在地点的所有线索。然后，从遭遇牌堆顶抽取一张牌。"
 }

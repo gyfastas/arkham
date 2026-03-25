@@ -6,12 +6,15 @@
   "type": "event",
   "cost": 0,
   "level": 2,
-  "traits": ["supply"],
+  "traits": [
+    "supply"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "Gain 3 resources. Draw 1 card.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
-  "unique": false
+  "unique": false,
+  "text_cn": "获得3资源，抽取1张牌。"
 }
