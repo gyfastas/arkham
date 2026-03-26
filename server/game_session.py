@@ -722,6 +722,48 @@ class GameSession:
             self._clear_game_over()
             return {"success": True, "message": "已选择"}
 
+        # --- Zoey Samaras reactions on engage ---
+        if kind == "zoey_reactions_on_engage":
+            inv = self.game.state.get_investigator(pc.get("investigator_id"))
+            if inv is None:
+                return {"success": False, "message": "调查员不存在"}
+
+            enemy_id = pc.get("enemy_id")
+            cross_instance_id = pc.get("cross_instance_id")
+            messages = []
+
+            if choice_id == "none":
+                self.action_log.append("🛡️ 佐伊·萨马拉斯：选择不触发Reaction能力")
+                return {"success": True, "message": "未触发任何能力"}
+
+            if choice_id in ("resource", "both"):
+                # Gain 1 resource
+                inv.resources += 1
+                messages.append("获得1资源")
+                self.action_log.append("💰 佐伊·萨马拉斯：获得1资源")
+
+            if choice_id in ("cross", "both"):
+                # Use cross: exhaust and spend 1 resource to deal 1 damage
+                cross_instance = self.game.state.get_card_instance(cross_instance_id) if cross_instance_id else None
+                if cross_instance and not cross_instance.exhausted and inv.resources >= 1:
+                    inv.resources -= 1
+                    cross_instance.exhausted = True
+
+                    # Deal damage to the engaged enemy
+                    enemy = self.game.state.get_card_instance(enemy_id)
+                    if enemy:
+                        enemy.damage += 1
+                        enemy_data = self.game.state.get_card_data(enemy.card_id)
+                        enemy_name = (enemy_data.name_cn or enemy_data.name) if enemy_data else "敌人"
+                        messages.append(f"对{enemy_name}造成1伤害")
+                        self.action_log.append(f"✝️ 佐伊的十字架：花费1资源，对【{enemy_name}】造成1伤害")
+                    else:
+                        messages.append("敌人已消失，无法造成伤害")
+                else:
+                    messages.append("十字架无法使用")
+
+            return {"success": True, "message": "；".join(messages) if messages else "未触发效果"}
+
         if kind == "asset_old_book_of_lore":
             peek_cards: list[str] = list(pc.get("peek_cards") or [])
             if not peek_cards:

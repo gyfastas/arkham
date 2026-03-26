@@ -58,7 +58,7 @@ def game():
 
 class TestZoeySamaras:
     def test_ability_gains_resource_when_engaged(self, game):
-        """Zoey gains 1 resource when she becomes engaged with an enemy."""
+        """Zoey gains 1 resource when she becomes engaged with an enemy (via pending choice)."""
         inv = game.state.get_investigator("zoey")
         initial_resources = inv.resources
 
@@ -83,6 +83,17 @@ class TestZoeySamaras:
             enemy_id=enemy_iid,
         )
         game.event_bus.emit(ctx)
+
+        # Should set up pending choice instead of auto-triggering
+        pending = game.state.scenario.vars.get("pending_choice")
+        assert pending is not None
+        assert pending["kind"] == "zoey_reactions_on_engage"
+        assert pending["investigator_id"] == "zoey"
+        assert pending["enemy_id"] == enemy_iid
+
+        # Simulate player choosing to gain resource
+        game.state.scenario.vars.pop("pending_choice", None)
+        inv.resources += 1
 
         # Should gain 1 resource
         assert inv.resources == initial_resources + 1

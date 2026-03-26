@@ -4,7 +4,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, TimingPriority
+from backend.models.enums import GameEvent, TimingPriority, CardType
 
 
 class ZoeySamaras(CardImplementation):
@@ -31,8 +31,64 @@ class ZoeySamaras(CardImplementation):
         if card_data.id != "zoey_samaras":
             return
 
-        # Gain 1 resource
-        inv.resources += 1
+        # Check if there's already a pending choice for this engagement
+        scenario = getattr(ctx.game_state, 'scenario', None)
+        if scenario is None:
+            return
+
+        existing = scenario.vars.get("pending_choice", {})
+        if existing.get("kind") == "zoey_reactions_on_engage":
+            # Already handling this engagement
+            return
+
+        # Get the enemy for this engagement
+        enemy_id = getattr(ctx, 'enemy_id', None) or ctx.extra.get('enemy_id')
+        if not enemy_id:
+            return
+
+        enemy = ctx.game_state.get_card_instance(enemy_id)
+        if enemy is None:
+            return
+
+        enemy_data = ctx.game_state.get_card_data(enemy.card_id)
+        if enemy_data is None or enemy_data.type != CardType.ENEMY:
+            return
+
+        # Check if Zoey's Cross is in play and usable
+        cross_usable = False
+        cross_instance = None
+        for inst_id in inv.play_area:
+            inst = ctx.game_state.get_card_instance(inst_id)
+            if inst and inst.card_id == "zoeys_cross_lv0":
+                cross_instance = inst
+                break
+
+        if cross_instance and not cross_instance.exhausted and inv.resources >= 1:
+            cross_usable = True
+
+        enemy_name = getattr(enemy_data, 'name_cn', None) or getattr(enemy_data, 'name', '敌人')
+
+        # Build options based on what's available
+        options = [{"id": "none", "label": "不触发任何能力"}]
+
+        if cross_usable:
+            options.insert(0, {"id": "both", "label": "获得1资源 + 使用十字架（花费1资源造成1伤害）"})
+            options.insert(0, {"id": "cross", "label": "使用佐伊的十字架（花费1资源造成1伤害）"})
+            options.insert(0, {"id": "resource", "label": "获得1资源"})
+        else:
+            options.insert(0, {"id": "resource", "label": "获得1资源"})
+
+        # Set pending choice for player to decide
+        scenario.vars["pending_choice"] = {
+            "kind": "zoey_reactions_on_engage",
+            "enemy_id": enemy_id,
+            "enemy_name": enemy_name,
+            "investigator_id": ctx.investigator_id,
+            "cross_usable": cross_usable,
+            "cross_instance_id": cross_instance.instance_id if cross_instance else None,
+            "prompt": f"<b>佐伊·萨马拉斯</b>：你与【{enemy_name}】交战，是否触发Reaction能力？",
+            "options": options,
+        }
 
     @on_event(
         GameEvent.CHAOS_TOKEN_RESOLVED,
@@ -88,7 +144,7 @@ class ZoeySamaras(CardImplementation):
             return
 
         enemy_data = ctx.game_state.get_card_data(enemy.card_id)
-        if enemy_data is None or enemy_data.type_str != "enemy":
+        if enemy_data is None or enemy_data.type != CardType.ENEMY:
             return
 
         # Deal +1 damage to the enemy
