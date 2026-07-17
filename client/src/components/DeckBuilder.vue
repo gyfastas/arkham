@@ -19,6 +19,40 @@ const store = useGameStore()
 const filterTab = ref<'all' | 'asset' | 'event' | 'skill'>('all')
 const deck = ref<string[]>([])
 
+// --- 卡牌悬浮预览 ---
+const previewCard = ref<CardDisplay | null>(null)
+const previewStyle = ref<Record<string, string>>({})
+
+function showPreview(card: CardDisplay, event: MouseEvent) {
+  previewCard.value = card
+  const el = event.currentTarget as HTMLElement
+  const rect = el.getBoundingClientRect()
+  const spaceRight = window.innerWidth - rect.right
+  const top = Math.min(Math.max(8, rect.top), window.innerHeight - 320)
+  if (spaceRight > 320) {
+    previewStyle.value = { left: `${rect.right + 8}px`, top: `${top}px` }
+  } else {
+    previewStyle.value = { right: `${window.innerWidth - rect.left + 8}px`, top: `${top}px` }
+  }
+}
+
+function hidePreview() {
+  previewCard.value = null
+}
+
+const TYPE_LABELS: Record<string, string> = {
+  asset: '支援', event: '事件', skill: '技能', treachery: '诡计', enemy: '敌人',
+}
+
+const SKILL_ICON_LABELS: Record<string, string> = {
+  willpower: '意', intellect: '智', combat: '战', agility: '敏', wild: '★',
+}
+
+const SLOT_LABELS: Record<string, string> = {
+  hand: '手部', 'hand x2': '双手', body: '身体', accessory: '配件',
+  ally: '盟友', arcane: '奥秘', 'arcane x2': '双奥秘',
+}
+
 const CLASS_COLORS: Record<string, string> = {
   guardian: '#2980b9',
   seeker: '#d4a017',
@@ -168,6 +202,8 @@ onUnmounted(() => {
             }"
             :style="{ borderColor: CLASS_COLORS[card.class] || '#333' }"
             @click="addCard(card)"
+            @mouseenter="showPreview(card, $event)"
+            @mouseleave="hidePreview"
           >
             <div class="card-top">
               <span class="card-name">{{ card.name_cn }}</span>
@@ -183,6 +219,32 @@ onUnmounted(() => {
             <div class="card-locked" v-if="card.allowed === false">
               需要{{ card.level || 0 }}经验
             </div>
+          </div>
+        </div>
+
+        <!-- 悬浮预览 tooltip -->
+        <div v-if="previewCard" class="card-preview" :style="previewStyle">
+          <div class="pv-header" :style="{ borderBottomColor: CLASS_COLORS[previewCard.class] || '#333' }">
+            <span v-if="previewCard.cost !== null" class="pv-cost">{{ previewCard.cost }}</span>
+            <span class="pv-name">{{ previewCard.name_cn || previewCard.name }}</span>
+            <span v-if="previewCard.level != null && previewCard.level > 0" class="pv-level">Lv.{{ previewCard.level }}</span>
+          </div>
+          <div class="pv-meta">
+            <span>{{ TYPE_LABELS[previewCard.type] || previewCard.type }}</span>
+            <span v-if="previewCard.slots?.length"> · {{ previewCard.slots.map(s => SLOT_LABELS[s] || s).join('、') }}</span>
+            <span v-if="previewCard.unique"> · 唯一</span>
+          </div>
+          <div v-if="previewCard.traits?.length" class="pv-traits">{{ previewCard.traits.join(' · ') }}</div>
+          <div v-if="Object.keys(previewCard.skill_icons || {}).length" class="pv-icons">
+            <span v-for="(n, k) in previewCard.skill_icons" :key="k" class="pv-icon">
+              {{ SKILL_ICON_LABELS[k] || k }}×{{ n }}
+            </span>
+          </div>
+          <div v-if="previewCard.text_cn" class="pv-text" v-html="previewCard.text_cn"></div>
+          <div v-else-if="previewCard.text" class="pv-text" v-html="previewCard.text"></div>
+          <div v-if="previewCard.health != null || previewCard.sanity != null" class="pv-stats">
+            <span v-if="previewCard.health != null">♥{{ previewCard.health }}</span>
+            <span v-if="previewCard.sanity != null">☽{{ previewCard.sanity }}</span>
           </div>
         </div>
       </div>
@@ -301,6 +363,97 @@ onUnmounted(() => {
   flex: 1;
   display: flex;
   overflow: hidden;
+}
+
+/* Card Preview Tooltip */
+.card-preview {
+  position: fixed;
+  z-index: 1000;
+  width: 280px;
+  max-height: 420px;
+  overflow-y: auto;
+  background: #14142b;
+  border: 1px solid #333355;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.pv-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.pv-cost {
+  background: #2c3e50;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.pv-name {
+  font-weight: bold;
+  color: #e8e8e8;
+  font-size: 14px;
+}
+
+.pv-level {
+  margin-left: auto;
+  color: #d4a017;
+  font-size: 11px;
+}
+
+.pv-meta {
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.pv-traits {
+  color: #7fb3d3;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.pv-icons {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.pv-icon {
+  background: #1f2b3a;
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: #9fc5e8;
+}
+
+.pv-text {
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.pv-text :deep(b) {
+  color: #e0c070;
+}
+
+.pv-stats {
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+  color: #d98880;
 }
 
 /* Catalog Panel */

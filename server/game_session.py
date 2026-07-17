@@ -381,11 +381,15 @@ class GameSession:
         investigator_id: str = "daisy_walker",
         deck_preset: str = "",
         deck_cards: list[str] | None = None,
-        seed: int = 42,
+        seed: int | None = None,
     ) -> dict:
         """Initialize a single-player game (multi-player setup in Phase 4)."""
         self.action_log = []
         self.game_over = None
+
+        if seed is None:
+            import random as _random
+            seed = _random.SystemRandom().randrange(2**31)
 
         g = Game(scenario_id)
         g.chaos_bag.seed(seed)

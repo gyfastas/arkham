@@ -327,6 +327,22 @@ def serialize_game_state(
     tre_list = sorted(list(tre.values()), key=lambda x: x.get("id", ""))
     pending_choice = scenario.vars.get("pending_choice")
     last_encounter = scenario.vars.get("last_encounter")
+    # Normalize: some code paths store only the card_id string; the client
+    # popup expects a full card dict (name_cn/type/text/traits).
+    if isinstance(last_encounter, str):
+        cd = game.state.get_card_data(last_encounter)
+        if cd is not None:
+            last_encounter = {
+                "id": cd.id,
+                "name": cd.name,
+                "name_cn": cd.name_cn,
+                "type": cd.type.value if hasattr(cd.type, "value") else cd.type,
+                "text": getattr(cd, "text", "") or "",
+                "traits": getattr(cd, "traits", []) or [],
+            }
+        else:
+            last_encounter = {"id": last_encounter, "name": last_encounter,
+                              "name_cn": "", "type": "", "text": "", "traits": []}
 
     return {
         "investigator": {
