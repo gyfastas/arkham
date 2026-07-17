@@ -238,6 +238,11 @@ class ActionResolver:
         enemy_data = self.game_state.get_card_data(enemy.card_id) if enemy else None
         if enemy is None or enemy_data is None:
             return False
+        # Target must actually be an enemy (weakness cards attached in the
+        # threat area are not valid fight targets).
+        from backend.models.enums import CardType
+        if enemy_data.type != CardType.ENEMY:
+            return False
 
         from backend.engine.event_bus import EventContext
         ctx = EventContext(

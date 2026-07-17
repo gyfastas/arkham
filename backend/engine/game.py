@@ -132,7 +132,10 @@ class Game:
                     inv_card_id, f"investigator_{inv_id}", self.event_bus
                 )
 
-        # Give each investigator 5 resources and draw 5 cards
+        # Give each investigator 5 resources and draw 5 cards.
+        # Draws go through the draw hook so weakness revelations in the
+        # opening hand fire (per official rules).
+        from backend.engine.draw_hooks import emit_card_drawn
         for inv_id in self.state.player_order:
             inv = self.state.get_investigator(inv_id)
             if inv:
@@ -140,6 +143,7 @@ class Game:
                 for _ in range(min(5, len(inv.deck))):
                     card_id = inv.deck.pop(0)
                     inv.hand.append(card_id)
+                    emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id)
 
     def run_round(self, action_callback=None, discard_callback=None) -> None:
         """Execute one full game round."""

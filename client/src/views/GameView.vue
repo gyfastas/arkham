@@ -182,11 +182,18 @@ function handleChoice(optionId: string) {
   flex: 1;
   display: grid;
   grid-template-columns: 220px 1fr 240px;
+  grid-template-rows: minmax(0, 1fr);
   overflow: hidden;
+}
+
+.game-main > * {
+  min-height: 0;
+  min-width: 0;
 }
 
 .game-log {
   min-width: 0;
+  overflow-y: auto;
 }
 
 .game-center {

@@ -369,3 +369,29 @@ class TestInternalInjury:
         _emit(game, GameEvent.INVESTIGATOR_TURN_ENDS)
         assert inv.damage == 1
         assert impl.activate_discard(game.state, "test_investigator") is True
+
+
+class TestSetupWeaknessRevelation:
+    def test_opening_hand_weakness_triggers_revelation(self):
+        """开局手牌中的弱点应立即触发 revelation（官方规则）。"""
+        from backend.engine.game import Game
+        from backend.tests.conftest import make_investigator_data, make_location_data
+
+        g = Game("test_setup_weakness")
+        inv_data = make_investigator_data()
+        g.register_card_data(inv_data)
+        loc_data = make_location_data()
+        g.register_card_data(loc_data)
+        deck = ["cover_up", "card_a", "card_b", "card_c", "card_d"]
+        g.add_investigator("p1", inv_data, deck=deck, starting_location="test_location")
+        g.add_location("test_location", loc_data)
+        g.setup()
+
+        inv = g.state.get_investigator("p1")
+        assert "cover_up" not in inv.hand
+        threat_cards = [
+            g.state.get_card_instance(iid).card_id
+            for iid in inv.threat_area
+            if g.state.get_card_instance(iid)
+        ]
+        assert "cover_up" in threat_cards

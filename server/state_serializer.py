@@ -17,6 +17,7 @@ from __future__ import annotations
 from typing import Any
 
 from backend.engine.game import Game
+from backend.models.enums import CardType
 from backend.models.state import CardData
 from backend.scenarios.official_core import load_scenario_definition
 
@@ -170,12 +171,15 @@ def serialize_investigator_public(game: Game, investigator_id: str) -> dict:
         if ci:
             play_area.append(_serialize_card_instance(game, ci))
 
-    # Threat area (engaged enemies)
+    # Threat area (engaged enemies) — only actual enemies; weakness cards
+    # attached in the threat area (e.g. Smite the Wicked) are excluded.
     threat_area = []
     for iid in list(inv.threat_area):
         ci = game.state.get_card_instance(iid)
         if ci:
             cd = game.state.get_card_data(ci.card_id)
+            if cd is not None and cd.type != CardType.ENEMY:
+                continue
             threat_area.append(_enemy_dict(game, ci, cd, engaged=True))
 
     return {
@@ -300,12 +304,16 @@ def serialize_game_state(
             ci = game.state.get_card_instance(iid)
             if ci:
                 cd = game.state.get_card_data(ci.card_id)
+                if cd is not None and cd.type != CardType.ENEMY:
+                    continue  # skip weakness cards attached in threat area
                 enemies.append(_enemy_dict(game, ci, cd, engaged=True))
     if cur_loc:
         for iid in list(cur_loc.enemies):
             ci = game.state.get_card_instance(iid)
             if ci:
                 cd = game.state.get_card_data(ci.card_id)
+                if cd is not None and cd.type != CardType.ENEMY:
+                    continue
                 enemies.append(_enemy_dict(game, ci, cd, engaged=False))
 
     # Act / Agenda

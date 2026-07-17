@@ -363,7 +363,15 @@ def create_app() -> web.Application:
     # Serve static files from client/dist if present
     client_dist = PROJECT_ROOT / "client" / "dist"
     if client_dist.is_dir():
-        app.router.add_static("/", client_dist, show_index=True)
+        index_file = client_dist / "index.html"
+
+        async def index(_request: web.Request) -> web.FileResponse:
+            return web.FileResponse(index_file)
+
+        # Exact route for "/" must be registered before the static prefix,
+        # otherwise aiohttp shows a directory listing instead of the app.
+        app.router.add_get("/", index)
+        app.router.add_static("/", client_dist, show_index=False)
 
     return app
 
