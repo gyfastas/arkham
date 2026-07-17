@@ -42,6 +42,10 @@ class CardImplementation:
     Subclasses define card_id and use @on_event to register handlers.
     """
     card_id: str = ""
+    # If True, a draw-time activation (see engine/draw_hooks.py) stays
+    # registered while the card remains in the owner's hand. Used by cards
+    # with ongoing "while in hand" effects (e.g. Dark Memory).
+    persistent_in_hand: bool = False
 
     def __init__(self, instance_id: str = "") -> None:
         self.instance_id = instance_id

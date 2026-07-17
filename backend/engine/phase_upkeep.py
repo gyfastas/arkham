@@ -14,9 +14,10 @@ HAND_SIZE_LIMIT = 8
 
 
 class UpkeepPhase:
-    def __init__(self, game_state: GameState, event_bus: EventBus) -> None:
+    def __init__(self, game_state: GameState, event_bus: EventBus, card_registry=None) -> None:
         self.game_state = game_state
         self.bus = event_bus
+        self.card_registry = card_registry
 
     def resolve(self, discard_callback=None) -> None:
         """Execute the Upkeep phase (4.1-4.6).
@@ -62,11 +63,8 @@ class UpkeepPhase:
             if inv.deck:
                 card_id = inv.deck.pop(0)
                 inv.hand.append(card_id)
-                self._emit(
-                    GameEvent.CARD_DRAWN,
-                    investigator_id=inv_id,
-                    extra={"card_id": card_id},
-                )
+                from backend.engine.draw_hooks import emit_card_drawn
+                emit_card_drawn(self.game_state, self.bus, self.card_registry, inv, card_id)
 
             # Gain 1 resource
             inv.resources += 1

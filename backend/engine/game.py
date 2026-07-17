@@ -46,7 +46,7 @@ class Game:
             self.state, self.event_bus, self.action_resolver,
         )
         self.enemy_phase = EnemyPhase(self.state, self.event_bus, self.damage_engine)
-        self.upkeep_phase = UpkeepPhase(self.state, self.event_bus)
+        self.upkeep_phase = UpkeepPhase(self.state, self.event_bus, self.card_registry)
 
     def register_card_data(self, card_data: CardData) -> None:
         self.state.card_database[card_data.id] = card_data
@@ -118,6 +118,19 @@ class Game:
         """Run game setup."""
         self.state.scenario.current_phase = Phase.SETUP
         self.card_registry.discover_cards()
+
+        # Activate investigator ability implementations (registered under the
+        # investigator's card_id, e.g. "zoey_samaras"). Uses a stable
+        # instance_id so handlers can be correlated with the investigator.
+        for inv_id in self.state.player_order:
+            inv = self.state.get_investigator(inv_id)
+            if not inv:
+                continue
+            inv_card_id = getattr(getattr(inv, "card_data", None), "id", None)
+            if inv_card_id and self.card_registry.get_implementation(inv_card_id):
+                self.card_registry.activate_card(
+                    inv_card_id, f"investigator_{inv_id}", self.event_bus
+                )
 
         # Give each investigator 5 resources and draw 5 cards
         for inv_id in self.state.player_order:

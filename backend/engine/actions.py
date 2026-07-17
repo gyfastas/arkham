@@ -198,14 +198,8 @@ class ActionResolver:
             card_id = inv.deck.pop(0)
             inv.hand.append(card_id)
 
-            from backend.engine.event_bus import EventContext
-            ctx = EventContext(
-                game_state=self.game_state,
-                event=GameEvent.CARD_DRAWN,
-                investigator_id=investigator_id,
-                extra={"card_id": card_id},
-            )
-            self.bus.emit(ctx)
+            from backend.engine.draw_hooks import emit_card_drawn
+            emit_card_drawn(self.game_state, self.bus, self.card_registry, inv, card_id)
         elif inv.discard:
             # Shuffle discard into deck, draw, take 1 horror
             inv.deck = list(inv.discard)

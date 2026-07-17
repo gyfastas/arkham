@@ -1,38 +1,38 @@
 {
-  "id": "rex_murphy",
-  "arkhamdb_code": "02002",
-  "name": "Rex Murphy",
-  "name_cn": "雷克斯·墨菲",
-  "title": "The Reporter",
-  "title_cn": "記者",
-  "class": "seeker",
-  "health": 6,
-  "sanity": 9,
-  "skills": {
-    "willpower": 3,
-    "intellect": 4,
-    "combat": 2,
-    "agility": 3
-  },
-  "ability": "[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location.\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards.",
-  "ability_cn": "[reaction]在調查時技能檢定成功後，如果你超過難度至少2點：發現所在地點1個線索。\n[elder_sign]效果：+2。你可以選擇讓這次檢定自動失敗，來抽取3張卡牌。",
-  "elder_sign": "",
-  "elder_sign_cn": "",
-  "deck_requirements": {
-    "size": 30,
-    "cards": {
-      "seeker": {
-        "min_level": 0,
-        "max_level": 5
-      },
-      "neutral": {
-        "min_level": 0,
-        "max_level": 5
-      }
-    }
-  },
-  "signature_cards": [],
-  "weakness": "",
-  "flavor_text": "\"This time, nothing will stop me from getting at the truth!\"",
-  "pack": "dunwich_legacy"
+ "id": "rex_murphy",
+ "arkhamdb_code": "02002",
+ "name": "Rex Murphy",
+ "name_cn": "雷克斯·墨菲",
+ "title": "The Reporter",
+ "title_cn": "記者",
+ "class": "seeker",
+ "health": 6,
+ "sanity": 9,
+ "skills": {
+  "willpower": 3,
+  "intellect": 4,
+  "combat": 2,
+  "agility": 3
+ },
+ "ability": "[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location.\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards.",
+ "ability_cn": "[reaction]在調查時技能檢定成功後，如果你超過難度至少2點：發現所在地點1個線索。\n[elder_sign]效果：+2。你可以選擇讓這次檢定自動失敗，來抽取3張卡牌。",
+ "elder_sign": "",
+ "elder_sign_cn": "",
+ "deck_requirements": {
+  "size": 30,
+  "cards": {
+   "seeker": {
+    "min_level": 0,
+    "max_level": 5
+   },
+   "neutral": {
+    "min_level": 0,
+    "max_level": 5
+   }
+  }
+ },
+ "signature_cards": [],
+ "weakness": "rexs_curse_lv0",
+ "flavor_text": "\"This time, nothing will stop me from getting at the truth!\"",
+ "pack": "dunwich_legacy"
 }

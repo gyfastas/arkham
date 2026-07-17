@@ -12,7 +12,7 @@
 
 ## 快速启动
 
-### 方式一：Phaser 客户端 + Socket.IO 服务端（推荐）
+### 方式一：Vue 3 客户端 + Socket.IO 服务端（推荐）
 
 ```bash
 # 1. 构建前端（首次或前端有改动时执行）
@@ -25,7 +25,7 @@ python3 server/main.py --port 8910
 open http://localhost:8910
 ```
 
-> 服务端同时托管 Socket.IO 和 Phaser 前端，只需启动一个进程。
+> 服务端同时托管 Socket.IO 和 Vue 3 前端（构建产物），只需启动一个进程。
 
 #### 开发模式（前端热更新）
 
@@ -58,7 +58,7 @@ python3 frontend/server.py              # → http://localhost:8907
 ### 运行测试
 
 ```bash
-python3 -m pytest backend/tests/ -v    # 333 tests
+python3 -m pytest backend/tests/ -v    # 494 tests
 python3 -m pytest backend/tests/ -q    # 简洁输出
 ```
 
@@ -76,25 +76,21 @@ python3 -m pytest backend/tests/ -q    # 简洁输出
 - 调查员模型：InvestigatorCard（经验/创伤/构筑要求）
 
 ### 卡牌数据（data/）
-- **105 张**核心玩家卡牌（守卫者/探求者/流浪者/潜修者/求生者/中立）
-- **5 位**调查员：罗兰·班克斯、黛西·沃克、老无赖、阿格尼丝·贝克、温蒂·亚当斯
-- **3 个**官方剧本：夜幕降临 / 午夜假面 / 吞噬星辰
+- **149 张**玩家卡牌（核心 105 + 敦威治扩展），**引擎实现覆盖率 100%**
+- **10 位**调查员（核心 5 + 敦威治 5），**能力全部引擎实现**（含远古印记效果）
+- **11 个**官方剧本：核心 3（夜幕降临/午夜假面/吞噬星辰）+ 敦威治 8
+- **弱点系统**：13 张弱点卡（签名弱点 + 基础弱点），抽到时自动触发 revelation
+- **战役系统**：敦威治遗产战役 + XP 经验
 
-### 新版 Phaser 客户端（client/ + server/）
+### 新版 Vue 3 客户端（client/ + server/）
 - **Socket.IO 实时通信**：服务端主动推送，无轮询
-- **Phaser 3 + TypeScript**：游戏场景渲染（地图/手牌/敌人/日志）
-- **动画系统**：混沌标记飞出、检定结果闪光、伤害浮字、敌人碎裂等 12 种动画
-- **交互系统**：
-  - 卡牌悬停 tooltip（名称/类型/费用/图标/效果文本）
-  - 拖拽打出手牌
-  - 检定前弹出**投入卡牌**面板（按技能类型筛选）
-  - 武器选择 / 敌人选择 Modal
-  - 弃牌堆浏览（点击查看全部弃牌）
+- **Vue 3 + TypeScript + Vite + Pinia**：大厅/游戏/结算页面
+- **牌组构筑器**：等级限制 / 预设牌组 / JSON 导入导出
+- **交互系统**：卡牌 tooltip、拖拽打牌、检定投入卡牌、武器/敌人选择 Modal、弃牌堆浏览
 - **房间/大厅系统**：创建房间 → 选择调查员和剧本 → 开始游戏
-- **弃牌堆**：事件卡打出后入弃牌、技能卡提交后入弃牌、资产击败后入弃牌，客户端可查阅
 
 ### 测试
-- **333 tests passed**（含研究图书馆员搜索消息、黛西 tome 行动修复）
+- **494 tests passed**
 
 ---
 
@@ -105,23 +101,23 @@ arkham/
 ├── backend/
 │   ├── models/            # 数据模型 (state, investigator, scenario, chaos)
 │   ├── engine/            # 游戏引擎 (phases, skill_test, damage, actions)
-│   ├── cards/             # 卡牌实现 ({class}/*.py)
-│   └── tests/             # 333 tests passed
+│   ├── cards/             # 卡牌实现 ({class}/*.py，158 个已注册实现)
+│   └── tests/             # 494 tests passed
 ├── server/                # Socket.IO 游戏服务端
 │   ├── main.py            # 入口：aiohttp + Socket.IO，托管静态文件
 │   ├── game_session.py    # 游戏会话，包装 backend 引擎
 │   ├── room.py            # 房间/大厅管理
+│   ├── campaign.py        # 战役状态
 │   ├── state_serializer.py# 状态序列化（供新旧服务共用）
 │   ├── event_logger.py    # 捕获可动画化事件
 │   ├── player.py          # 玩家会话
 │   └── protocol.py        # Socket.IO 消息类型定义
-├── client/                # Phaser 3 + TypeScript 客户端
+├── client/                # Vue 3 + TypeScript 客户端
 │   ├── src/
-│   │   ├── scenes/        # Boot / Lobby / Game / GameOver
-│   │   ├── objects/       # AnimationManager
-│   │   ├── ui/            # Modal / Tooltip / SkillCommitModal
-│   │   ├── network/       # SocketClient / Protocol
-│   │   └── state/         # GameStore / types
+│   │   ├── views/         # Lobby / Game / GameOver 页面
+│   │   ├── components/    # Card / DeckBuilder 等组件
+│   │   ├── stores/        # Pinia 状态管理
+│   │   └── network/       # Socket.IO 通信层
 │   ├── package.json
 │   └── vite.config.ts     # 开发代理: /socket.io → :8910
 ├── frontend/              # 旧版 HTML 前端（仍可用）
@@ -146,14 +142,15 @@ arkham/
 ### ✅ 已完成
 - **Phase 0**：状态序列化提取（`server/state_serializer.py`，供新旧服务共用）
 - **Phase 1**：Socket.IO 游戏服务端（房间系统、实时推送、EventLogger）
-- **Phase 2**：Phaser 3 核心渲染（4 个场景、完整 HUD、地图、手牌、敌人）
-- **Phase 3**：动画与交互（12 种动画、拖拽、投入卡牌、Tooltip、弃牌堆查看）
+- **Phase 2**：Vue 3 客户端（大厅 / 游戏 / 结算页面）
+- **Phase 3**：交互与体验（拖拽、投入卡牌、Tooltip、弃牌堆查看）
+- **内容扩展**：敦威治遗产——10 调查员能力、149 张玩家卡 100% 引擎实现、弱点系统、战役 XP
 
 ### 🚧 进行中
 - **Phase 4**：多人游戏（回合制执行、信息隔离、多调查员 HUD）
 
 ### 📋 计划中
-- **Phase 5**：打磨与迁移（牌组构建器、3 个剧本端到端验证、响应式缩放）
+- **Phase 5**：打磨与验证（11 个剧本端到端验证、响应式缩放）
 
 ---
 

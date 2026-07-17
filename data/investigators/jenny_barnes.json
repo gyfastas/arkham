@@ -1,38 +1,40 @@
 {
-  "id": "jenny_barnes",
-  "arkhamdb_code": "02003",
-  "name": "Jenny Barnes",
-  "name_cn": "珍妮·巴恩斯",
-  "title": "The Dilettante",
-  "title_cn": "普通人",
-  "class": "rogue",
-  "health": 8,
-  "sanity": 7,
-  "skills": {
-    "willpower": 3,
-    "intellect": 3,
-    "combat": 3,
-    "agility": 3
-  },
-  "ability": "You collect 1 additional resource during each upkeep phase.\n[elder_sign] effect: +1 for each resource you have.",
-  "ability_cn": "每個補給階段額外獲得1個資源。\n[elder_sign]效果：你每持有1個資源，+1。",
-  "elder_sign": "",
-  "elder_sign_cn": "",
-  "deck_requirements": {
-    "size": 30,
-    "cards": {
-      "rogue": {
-        "min_level": 0,
-        "max_level": 5
-      },
-      "neutral": {
-        "min_level": 0,
-        "max_level": 5
-      }
-    }
-  },
-  "signature_cards": [],
-  "weakness": "",
-  "flavor_text": "\"No more 'Miss Barnes' from you. My friends call me Jenny.\"",
-  "pack": "dunwich_legacy"
+ "id": "jenny_barnes",
+ "arkhamdb_code": "02003",
+ "name": "Jenny Barnes",
+ "name_cn": "珍妮·巴恩斯",
+ "title": "The Dilettante",
+ "title_cn": "普通人",
+ "class": "rogue",
+ "health": 8,
+ "sanity": 7,
+ "skills": {
+  "willpower": 3,
+  "intellect": 3,
+  "combat": 3,
+  "agility": 3
+ },
+ "ability": "You collect 1 additional resource during each upkeep phase.\n[elder_sign] effect: +1 for each resource you have.",
+ "ability_cn": "每個補給階段額外獲得1個資源。\n[elder_sign]效果：你每持有1個資源，+1。",
+ "elder_sign": "",
+ "elder_sign_cn": "",
+ "deck_requirements": {
+  "size": 30,
+  "cards": {
+   "rogue": {
+    "min_level": 0,
+    "max_level": 5
+   },
+   "neutral": {
+    "min_level": 0,
+    "max_level": 5
+   }
+  }
+ },
+ "signature_cards": [
+  "jennys_twin_45s_lv0"
+ ],
+ "weakness": "searching_for_izzie_lv0",
+ "flavor_text": "\"No more 'Miss Barnes' from you. My friends call me Jenny.\"",
+ "pack": "dunwich_legacy"
 }

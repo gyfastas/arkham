@@ -221,6 +221,10 @@ class SkillTestEngine:
             committed_cards=list(self._committed_card_ids or []),
         )
         self.bus.emit(ctx)
+        # Allow handlers (e.g. Rex's Curse) to flip the outcome by mutating
+        # ctx.success. Handlers leave it untouched in the normal case.
+        if ctx.success is not None and ctx.success != result.success:
+            result.success = ctx.success
 
     def _st7_apply(self, result: SkillTestResult, on_success, on_failure) -> None:
         from backend.engine.event_bus import EventContext
