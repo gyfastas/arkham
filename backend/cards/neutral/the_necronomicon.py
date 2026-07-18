@@ -9,6 +9,7 @@ from backend.models.enums import GameEvent, TimingPriority
 
 class TheNecronomicon(CardImplementation):
     card_id = "the_necronomicon"
+    activations = [{"id": "horror", "label": "自由行动：移1恐惧到自己身上", "method": "activate"}]
 
     @on_event(
         GameEvent.CARD_DRAWN,

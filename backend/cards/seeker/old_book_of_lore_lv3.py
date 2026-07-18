@@ -12,6 +12,7 @@ from backend.cards.base import CardImplementation
 
 class OldBookOfLoreLv3(CardImplementation):
     card_id = "old_book_of_lore_lv3"
+    activations = [{"id": "look", "label": "消耗：查看顶3张取1张", "method": "activate"}]
 
     def activate(self, game_state, investigator_id: str, pick_index: int = 0) -> bool:
         """消耗：查看顶3张，1张加入手牌，其余置于牌库底。"""

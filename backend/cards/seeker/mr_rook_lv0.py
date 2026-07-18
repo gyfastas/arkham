@@ -14,6 +14,7 @@ from backend.cards.base import CardImplementation
 
 class MrRook(CardImplementation):
     card_id = "mr_rook_lv0"
+    activations = [{"id": "search", "label": "消耗+1秘密：查找顶3张牌", "method": "activate"}]
 
     def activate(self, game_state, investigator_id: str, depth: int = 3) -> bool:
         """花费1秘密：查找牌堆顶 depth 张并抽取。"""

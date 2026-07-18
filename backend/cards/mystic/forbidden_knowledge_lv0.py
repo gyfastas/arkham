@@ -9,6 +9,7 @@ from backend.models.enums import GameEvent, TimingPriority
 
 class ForbiddenKnowledge(CardImplementation):
     card_id = "forbidden_knowledge_lv0"
+    activations = [{"id": "secret", "label": "花1秘密受1恐惧：获得2资源", "method": "activate"}]
 
     @on_event(GameEvent.CARD_ENTERS_PLAY, priority=TimingPriority.AFTER)
     def enter_play(self, ctx):

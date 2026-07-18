@@ -10,6 +10,7 @@ from backend.models.enums import GameEvent, TimingPriority
 
 class Chronophobia(CardImplementation):
     card_id = "chronophobia_lv0"
+    activations = [{"id": "discard", "label": "[行动×2] 丢弃时间恐惧症", "method": "activate_discard", "actions": 2}]
 
     @on_event(GameEvent.CARD_DRAWN, priority=TimingPriority.WHEN)
     def revelation(self, ctx):

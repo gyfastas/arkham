@@ -46,6 +46,13 @@ class CardImplementation:
     # registered while the card remains in the owner's hand. Used by cards
     # with ongoing "while in hand" effects (e.g. Dark Memory).
     persistent_in_hand: bool = False
+    # Declarative activation abilities exposed to the UI. Each entry:
+    #   {"id": str, "label": str, "method": str,
+    #    "actions": int (optional action cost),
+    #    "target": "enemy" (optional target requirement)}
+    # The serializer ships these to clients; the session routes
+    # ACTIVATE_CARD to the named method.
+    activations: list[dict] = []
 
     def __init__(self, instance_id: str = "") -> None:
         self.instance_id = instance_id

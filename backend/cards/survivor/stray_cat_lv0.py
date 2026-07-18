@@ -7,6 +7,7 @@ from backend.cards.base import CardImplementation
 
 class StrayCat(CardImplementation):
     card_id = "stray_cat_lv0"
+    activations = [{"id": "evade", "label": "快速：弃置野猫自动躲避", "method": "activate", "target": "enemy"}]
 
     def activate(self, game_state, investigator_id: str, enemy_instance_id: str) -> bool:
         """弃置野猫：自动成功躲避一个交战的非精英敌人。"""

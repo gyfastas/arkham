@@ -7,6 +7,7 @@ from backend.cards.base import CardImplementation
 
 class FirstAid(CardImplementation):
     card_id = "first_aid_lv0"
+    activations = [{"id": "heal", "label": "消耗+1资源：治愈2伤害", "method": "activate"}]
     heal_amount = 2
 
     def activate(self, game_state, investigator_id: str,

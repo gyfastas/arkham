@@ -66,8 +66,9 @@ class TestRexMurphy:
         assert inv.clues == 1
         assert loc.clues == 2
 
-        # 检定结束后跟踪状态清除；新回合限次重置
+        # 检定结束后跟踪状态清除；新一轮限次重置（Taboo：每轮限1次）
         _emit(game, GameEvent.SKILL_TEST_ENDS, investigator_id="rex")
+        _emit(game, GameEvent.ROUND_BEGINS)
         _emit(game, GameEvent.INVESTIGATOR_TURN_BEGINS, investigator_id="rex")
         _investigate_success(game, modified_skill=4, difficulty=2)
         assert inv.clues == 2

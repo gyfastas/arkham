@@ -594,6 +594,8 @@ class GameSession:
             result = self._locked_door_test(inv, data)
         elif act == "ACTIVATE_ASSET":
             result = self._activate_asset(inv, data)
+        elif act == "ACTIVATE_CARD":
+            result = self._activate_card(inv, data)
         else:
             result = self._normal_action(inv, act, data)
 
@@ -963,6 +965,68 @@ class GameSession:
         "kukri_lv0": "武器：+1战斗",
         "ritual_candles_lv0": "被动：技能检定时+1",
     }
+
+    def _activate_card(self, inv, data: dict) -> dict:
+        """Generic activation channel: routes ACTIVATE_CARD to a card's
+        declared activation method (CardImplementation.activations)."""
+        instance_id = data.get("instance_id")
+        activation_id = data.get("activation_id")
+        if not instance_id or not activation_id:
+            return {"success": False, "message": "缺少 instance_id / activation_id"}
+
+        owned = instance_id in inv.play_area or instance_id in inv.threat_area
+        if not owned:
+            return {"success": False, "message": "该卡不在你的场上"}
+        ci = self.game.state.get_card_instance(instance_id)
+        if ci is None:
+            return {"success": False, "message": "未找到卡牌实例"}
+
+        impl_cls = self.game.card_registry.get_implementation(ci.card_id)
+        if impl_cls is None:
+            return {"success": False, "message": "该卡没有可用实现"}
+        decl = next((a for a in getattr(impl_cls, "activations", [])
+                     if a.get("id") == activation_id), None)
+        if decl is None:
+            return {"success": False, "message": "该卡没有此启动能力"}
+
+        # Action cost
+        actions_cost = int(decl.get("actions", 0) or 0)
+        if actions_cost > inv.actions_remaining:
+            return {"success": False, "message": f"需要{actions_cost}个行动"}
+
+        # Get or create the impl instance
+        impl = self.game.card_registry.active_instances.get(instance_id)
+        if impl is None:
+            impl = impl_cls(instance_id)
+        method = getattr(impl, decl["method"], None)
+        if method is None:
+            return {"success": False, "message": "实现缺少方法"}
+
+        cd = self.game.state.get_card_data(ci.card_id)
+        name_cn = (cd.name_cn or cd.name) if cd else ci.card_id
+
+        # Invoke with optional enemy target
+        if decl.get("target") == "enemy":
+            target_id = data.get("target_instance_id")
+            if not target_id:
+                engaged = [e for e in inv.threat_area]
+                if len(engaged) == 1:
+                    target_id = engaged[0]
+                else:
+                    return {"success": False, "message": "请指定目标敌人"}
+            ok = method(self.game.state, inv.investigator_id, target_id)
+        else:
+            ok = method(self.game.state, inv.investigator_id)
+
+        if not ok:
+            return {"success": False, "message": f"{name_cn}：无法启动（条件不满足）"}
+
+        if actions_cost:
+            inv.actions_remaining -= actions_cost
+
+        label = decl.get("label", activation_id)
+        self.action_log.append(f"⚡ {name_cn}：{label}")
+        return {"success": True, "message": f"{name_cn}：{label}"}
 
     def _activate_asset(self, inv, data: dict) -> dict:
         instance_id = data.get("instance_id")

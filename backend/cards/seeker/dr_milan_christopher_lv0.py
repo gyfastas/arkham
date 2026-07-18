@@ -39,7 +39,7 @@ class DrMilanChristopher(CardImplementation):
 
     @on_event(GameEvent.SKILL_TEST_SUCCESSFUL, priority=TimingPriority.REACTION)
     def gain_resource_on_investigate(self, ctx):
-        """成功调查（investigate action 的智力检定）后：获得1资源。"""
+        """成功调查后：消耗米兰博士，获得1资源（Taboo errata：需消耗，等效每轮限1次）。"""
         if ctx.skill_type != Skill.INTELLECT:
             return
         if self._investigating != ctx.investigator_id:
@@ -49,5 +49,9 @@ class DrMilanChristopher(CardImplementation):
             return
         if self.instance_id not in inv.play_area:
             return
+        inst = ctx.game_state.get_card_instance(self.instance_id)
+        if inst is None or inst.exhausted:
+            return  # 已消耗（每轮限1次）
+        inst.exhausted = True
         inv.resources += 1
         ctx.extra["dr_milan_resource"] = True

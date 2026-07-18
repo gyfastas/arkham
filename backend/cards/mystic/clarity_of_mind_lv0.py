@@ -7,6 +7,7 @@ from backend.cards.base import CardImplementation
 
 class ClarityOfMind(CardImplementation):
     card_id = "clarity_of_mind_lv0"
+    activations = [{"id": "heal_horror", "label": "花1充能：治愈1恐惧", "method": "activate"}]
 
     def activate(self, game_state, investigator_id: str,
                  target_investigator_id: str | None = None) -> bool:

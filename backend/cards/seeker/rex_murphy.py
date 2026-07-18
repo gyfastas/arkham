@@ -35,11 +35,10 @@ class RexMurphy(CardImplementation):
             return None
         return inv
 
-    @on_event(GameEvent.INVESTIGATOR_TURN_BEGINS, priority=TimingPriority.WHEN)
+    @on_event(GameEvent.ROUND_BEGINS, priority=TimingPriority.WHEN)
     def reset_turn_limit(self, ctx):
-        """Rex 的回合开始时重置限次。"""
-        if self._get_rex(ctx.game_state, ctx.investigator_id) is not None:
-            self._used_this_turn = False
+        """每轮开始时重置限次（Taboo errata：Limit once per round.）。"""
+        self._used_this_turn = False
 
     @on_event(GameEvent.INVESTIGATE_ACTION_INITIATED, priority=TimingPriority.AFTER)
     def track_investigate(self, ctx):

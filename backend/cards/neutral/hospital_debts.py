@@ -14,6 +14,7 @@ from backend.models.enums import GameEvent, TimingPriority
 
 class HospitalDebts(CardImplementation):
     card_id = "hospital_debts"
+    activations = [{"id": "pay", "label": "放1资源到医院欠债（每轮限2）", "method": "activate"}]
 
     def __init__(self, instance_id: str = "") -> None:
         super().__init__(instance_id)

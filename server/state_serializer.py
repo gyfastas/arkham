@@ -63,6 +63,8 @@ def _serialize_card(cd: CardData) -> dict:
 def _serialize_card_instance(game: Game, ci: Any) -> dict:
     """Serialize a CardInstance in play area."""
     cd = game.state.get_card_data(ci.card_id)
+    impl_cls = game.card_registry.get_implementation(ci.card_id)
+    activations = [dict(a) for a in getattr(impl_cls, "activations", [])] if impl_cls else []
     return {
         "instance_id": ci.instance_id,
         "id": ci.card_id,
@@ -82,6 +84,7 @@ def _serialize_card_instance(game: Game, ci: Any) -> dict:
         "slots": [s.value for s in ci.slot_used],
         "skill_icons": cd.skill_icons if cd else {},
         "traits": list(cd.traits) if cd else [],
+        "activations": activations,
     }
 
 
@@ -352,6 +355,19 @@ def serialize_game_state(
                 last_encounter = {"id": last_encounter, "name": last_encounter,
                                   "name_cn": "", "type": "", "text": "", "traits": []}
 
+    # Threat-area non-enemy cards (weaknesses like Hospital Debts, Cover Up)
+    # so the client can display them and offer their activations.
+    threat_cards: list[dict] = []
+    if inv:
+        for iid in list(inv.threat_area):
+            ci = game.state.get_card_instance(iid)
+            if ci is None:
+                continue
+            cd = game.state.get_card_data(ci.card_id)
+            if cd is not None and cd.type == CardType.ENEMY:
+                continue  # enemies are serialized in the enemies list
+            threat_cards.append(_serialize_card_instance(game, ci))
+
     return {
         "investigator": {
             "id": inv.card_data.id if inv else "",
@@ -384,6 +400,7 @@ def serialize_game_state(
         "hand": hand,
         "discard": discard,
         "play_area": play_area,
+        "threat_cards": threat_cards,
         "enemies": enemies,
         "log": (action_log or [])[-200:],
         "round": scenario.round_number,

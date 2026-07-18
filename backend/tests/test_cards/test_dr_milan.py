@@ -52,6 +52,34 @@ class TestDrMilan:
         assert inv.resources == 1
         assert ctx.extra["dr_milan_resource"] is True
 
+    def test_exhausts_after_reaction_once_per_round(self, game, milan):
+        """Taboo errata：反应需消耗米兰（等效每轮限1次）。"""
+        inv = game.state.get_investigator("test_investigator")
+        inv.resources = 0
+        inst = game.state.get_card_instance("milan_1")
+
+        # 第一次成功调查：+1资源并消耗
+        _emit(game, GameEvent.INVESTIGATE_ACTION_INITIATED)
+        _emit(game, GameEvent.SKILL_TEST_SUCCESSFUL,
+              skill_type=Skill.INTELLECT, success=True)
+        assert inv.resources == 1
+        assert inst.exhausted is True
+
+        # 第二次成功调查：米兰已消耗，不再发资源
+        _emit(game, GameEvent.SKILL_TEST_ENDS)
+        _emit(game, GameEvent.INVESTIGATE_ACTION_INITIATED)
+        _emit(game, GameEvent.SKILL_TEST_SUCCESSFUL,
+              skill_type=Skill.INTELLECT, success=True)
+        assert inv.resources == 1
+
+        # 就绪后恢复
+        inst.exhausted = False
+        _emit(game, GameEvent.SKILL_TEST_ENDS)
+        _emit(game, GameEvent.INVESTIGATE_ACTION_INITIATED)
+        _emit(game, GameEvent.SKILL_TEST_SUCCESSFUL,
+              skill_type=Skill.INTELLECT, success=True)
+        assert inv.resources == 2
+
     def test_no_resource_for_non_investigate_intellect_test(self, game, milan):
         """普通智力检定（非调查行动）成功不发资源。"""
         inv = game.state.get_investigator("test_investigator")

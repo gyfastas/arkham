@@ -14,6 +14,7 @@ from backend.models.enums import GameEvent, TimingPriority
 
 class WrackedByNightmares(CardImplementation):
     card_id = "wracked_by_nightmares_lv0"
+    activations = [{"id": "discard", "label": "[行动×2] 丢弃噩梦来袭", "method": "activate_discard", "actions": 2}]
 
     @on_event(GameEvent.CARD_DRAWN, priority=TimingPriority.WHEN)
     def revelation(self, ctx):

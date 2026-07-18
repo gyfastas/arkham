@@ -129,6 +129,13 @@ function handleActivate(instanceId: string) {
   socket.sendAction('ACTIVATE_ASSET', { instance_id: instanceId })
 }
 
+function handleActivateCard(instanceId: string, activationId: string) {
+  socket.sendAction('ACTIVATE_CARD', {
+    instance_id: instanceId,
+    activation_id: activationId,
+  })
+}
+
 function handleChoice(optionId: string) {
   socket.resolveChoice(optionId)
 }
@@ -155,8 +162,10 @@ function handleChoice(optionId: string) {
         <div class="game-bottom">
           <PlayArea
             :assets="state.play_area"
+            :threat-cards="state.threat_cards || []"
             class="game-play-area"
             @activate="handleActivate"
+            @activate-card="handleActivateCard"
           />
           <div class="game-hand-actions">
             <HandArea

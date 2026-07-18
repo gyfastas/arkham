@@ -44,6 +44,14 @@ export interface DeckPreset {
   cards: string[]
 }
 
+export interface ActivationDef {
+  id: string
+  label: string
+  method: string
+  actions?: number
+  target?: string
+}
+
 export interface CardInstanceDisplay {
   instance_id: string
   id: string
@@ -63,6 +71,7 @@ export interface CardInstanceDisplay {
   slots: string[]
   skill_icons: Record<string, number>
   traits: string[]
+  activations?: ActivationDef[]
 }
 
 export interface EnemyDisplay {
@@ -141,6 +150,7 @@ export interface GameState {
   hand: CardDisplay[]
   discard: CardDisplay[]
   play_area: CardInstanceDisplay[]
+  threat_cards: CardInstanceDisplay[]
   enemies: EnemyDisplay[]
   log: string[]
   round: number

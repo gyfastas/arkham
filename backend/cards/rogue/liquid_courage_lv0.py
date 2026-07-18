@@ -14,6 +14,7 @@ from backend.cards.base import CardImplementation
 
 class LiquidCourage(CardImplementation):
     card_id = "liquid_courage_lv0"
+    activations = [{"id": "heal", "label": "花1补给：治愈1恐惧", "method": "activate"}]
 
     def __init__(self, instance_id: str = "") -> None:
         super().__init__(instance_id)
