@@ -36,7 +36,7 @@ class Game:
         self.state.slot_managers = self.slot_managers
 
         # Engine components
-        self.skill_test_engine = SkillTestEngine(self.state, self.event_bus, self.chaos_bag)
+        self.skill_test_engine = SkillTestEngine(self.state, self.event_bus, self.chaos_bag, self.card_registry)
         self.damage_engine = DamageEngine(self.state, self.event_bus)
         self.action_resolver = ActionResolver(
             self.state, self.event_bus, self.skill_test_engine,

@@ -15,6 +15,7 @@ import ScenarioPanel from '../components/ScenarioPanel.vue'
 import ActionBar from '../components/ActionBar.vue'
 import ChoiceModal from '../components/ChoiceModal.vue'
 import EncounterPopup from '../components/EncounterPopup.vue'
+import SkillCommitModal from '../components/SkillCommitModal.vue'
 
 const router = useRouter()
 const store = useGameStore()
@@ -23,6 +24,30 @@ const socket = useSocket()
 const state = computed(() => store.state)
 const pendingChoice = computed(() => state.value?.pending_choice ?? null)
 const lastEncounter = ref<EncounterCardDisplay | null>(null)
+
+// 技能检定投入卡牌面板
+interface CommitRequest {
+  skillType: string
+  actionLabel: string
+  actionType: string
+  params: Record<string, unknown>
+}
+const commitRequest = ref<CommitRequest | null>(null)
+
+function openCommitModal(skillType: string, actionLabel: string, actionType: string, params: Record<string, unknown> = {}) {
+  commitRequest.value = { skillType, actionLabel, actionType, params }
+}
+
+function handleCommitConfirm(committed: string[]) {
+  const req = commitRequest.value
+  commitRequest.value = null
+  if (!req) return
+  socket.sendAction(req.actionType, { ...req.params, committed_cards: committed })
+}
+
+function handleCommitCancel() {
+  commitRequest.value = null
+}
 
 // Navigate to game over screen
 watch(() => store.gameOver, (go) => {
@@ -46,10 +71,12 @@ function dismissEncounter() {
 function handleAction(type: string) {
   if (type === 'END_TURN') {
     socket.endTurn()
+  } else if (type === 'INVESTIGATE') {
+    openCommitModal('intellect', '调查', 'INVESTIGATE')
   } else if (type === 'FIGHT') {
     const engaged = state.value?.enemies.filter(e => e.engaged) || []
     if (engaged.length === 1) {
-      socket.sendAction('FIGHT', { enemy_instance_id: engaged[0].instance_id })
+      openCommitModal('combat', '战斗', 'FIGHT', { enemy_instance_id: engaged[0].instance_id })
     } else if (engaged.length > 1) {
       store.addToast('请在敌人面板选择攻击目标', 'info')
     } else {
@@ -58,7 +85,7 @@ function handleAction(type: string) {
   } else if (type === 'EVADE') {
     const engaged = state.value?.enemies.filter(e => e.engaged) || []
     if (engaged.length === 1) {
-      socket.sendAction('EVADE', { enemy_instance_id: engaged[0].instance_id })
+      openCommitModal('agility', '闪避', 'EVADE', { enemy_instance_id: engaged[0].instance_id })
     } else if (engaged.length > 1) {
       store.addToast('请在敌人面板选择闪避目标', 'info')
     } else {
@@ -87,11 +114,11 @@ function handleMove(locationId: string) {
 }
 
 function handleAttack(enemyInstanceId: string) {
-  socket.sendAction('FIGHT', { enemy_instance_id: enemyInstanceId })
+  openCommitModal('combat', '战斗', 'FIGHT', { enemy_instance_id: enemyInstanceId })
 }
 
 function handleEvade(enemyInstanceId: string) {
-  socket.sendAction('EVADE', { enemy_instance_id: enemyInstanceId })
+  openCommitModal('agility', '闪避', 'EVADE', { enemy_instance_id: enemyInstanceId })
 }
 
 function handleEngage(enemyInstanceId: string) {
@@ -156,6 +183,14 @@ function handleChoice(optionId: string) {
     <!-- Modals -->
     <ChoiceModal :choice="pendingChoice" @choose="handleChoice" />
     <EncounterPopup :encounter="lastEncounter" @dismiss="dismissEncounter" />
+    <SkillCommitModal
+      v-if="commitRequest"
+      :skill-type="commitRequest.skillType"
+      :action-label="commitRequest.actionLabel"
+      :hand="state.hand"
+      @confirm="handleCommitConfirm"
+      @cancel="handleCommitCancel"
+    />
   </div>
 
   <!-- Loading state -->

@@ -32,12 +32,15 @@ class SkillTestResult:
 
 
 class SkillTestEngine:
-    def __init__(self, game_state: GameState, event_bus: EventBus, chaos_bag: ChaosBag) -> None:
+    def __init__(self, game_state: GameState, event_bus: EventBus, chaos_bag: ChaosBag,
+                 card_registry=None) -> None:
         self.game_state = game_state
         self.bus = event_bus
         self.chaos_bag = chaos_bag
+        self.card_registry = card_registry
         self._current_test: SkillTestResult | None = None
         self._last_result: SkillTestResult | None = None
+        self._committed_temp_ids: list[str] = []
 
     @property
     def current_test(self) -> SkillTestResult | None:
@@ -127,6 +130,15 @@ class SkillTestEngine:
                 total_icons += card_data.skill_icons.get("wild", 0)
 
         result.committed_icons = total_icons
+
+        # Temporarily activate committed cards' implementations so their
+        # effects (Guts draw, Perception, Opportunist, ...) fire during the test.
+        if self.card_registry:
+            for card_id in committed_card_ids:
+                if self.card_registry.get_implementation(card_id):
+                    temp_id = self.game_state.next_instance_id()
+                    self.card_registry.activate_card(card_id, temp_id, self.bus)
+                    self._committed_temp_ids.append(temp_id)
 
         ctx = EventContext(
             game_state=self.game_state,
@@ -263,3 +275,9 @@ class SkillTestEngine:
             source=result.source_instance_id,
         )
         self.bus.emit(ctx)
+
+        # Deactivate committed cards' temporary implementations
+        if self.card_registry:
+            for temp_id in self._committed_temp_ids:
+                self.card_registry.deactivate_card(temp_id, self.bus)
+            self._committed_temp_ids.clear()
