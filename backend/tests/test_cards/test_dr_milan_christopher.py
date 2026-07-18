@@ -66,11 +66,19 @@ class TestDrMilanChristopher:
         assert result.success
 
     def test_resource_on_investigate_success(self, setup):
-        """After a successful intellect test, gain 1 resource."""
+        """After a successful investigate action, gain 1 resource."""
         state, bus, bag, engine, inv, loc = setup
         bag.tokens = [ChaosTokenType.PLUS_1]
         initial_resources = inv.resources
 
+        # 米兰的资源奖励只对“调查行动”生效（官方规则）
+        from backend.engine.event_bus import EventContext
+        from backend.models.enums import GameEvent
+        bus.emit(EventContext(
+            game_state=state,
+            event=GameEvent.INVESTIGATE_ACTION_INITIATED,
+            investigator_id="inv1",
+        ))
         engine.run_test(
             investigator_id="inv1",
             skill_type=Skill.INTELLECT,
