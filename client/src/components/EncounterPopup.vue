@@ -43,6 +43,13 @@ const TYPE_LABELS: Record<string, string> = {
         <div class="encounter-card">
           <div class="encounter-type">{{ TYPE_LABELS[encounter.type] || encounter.type }}</div>
           <div class="encounter-name">{{ encounter.name_cn || encounter.name }}</div>
+          <div v-if="encounter.type === 'enemy'" class="encounter-stats">
+            <span v-if="encounter.fight != null" class="stat" title="战斗">⚔ {{ encounter.fight }}</span>
+            <span v-if="encounter.health != null" class="stat" title="生命">♥ {{ encounter.health }}</span>
+            <span v-if="encounter.evade != null" class="stat" title="闪避">🏃 {{ encounter.evade }}</span>
+            <span v-if="encounter.damage != null" class="stat dmg" title="伤害">🗡 {{ encounter.damage }}</span>
+            <span v-if="encounter.horror != null" class="stat hor" title="恐惧">🧠 {{ encounter.horror }}</span>
+          </div>
           <div v-if="encounter.traits && encounter.traits.length" class="encounter-traits">
             {{ encounter.traits.join(' · ') }}
           </div>
@@ -92,6 +99,26 @@ const TYPE_LABELS: Record<string, string> = {
   font-style: italic;
   margin-bottom: 8px;
 }
+.encounter-stats {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 6px 0;
+  font-size: 13px;
+}
+
+.encounter-stats .stat {
+  color: #c0c0d8;
+}
+
+.encounter-stats .stat.dmg {
+  color: #d98880;
+}
+
+.encounter-stats .stat.hor {
+  color: #af7ac5;
+}
+
 .encounter-text {
   font-size: 13px;
   color: #ccc;

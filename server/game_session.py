@@ -107,7 +107,7 @@ def _lookup_encounter_card(card_id: str, campaign: str = "core") -> dict | None:
     rec = db.get(card_id)
     if not rec:
         return {"id": card_id, "name": card_id, "name_cn": "", "type": "treachery", "text": "", "traits": []}
-    return {
+    result = {
         "id": card_id,
         "name": rec.get("name", card_id),
         "name_cn": rec.get("name_cn", ""),
@@ -115,6 +115,12 @@ def _lookup_encounter_card(card_id: str, campaign: str = "core") -> dict | None:
         "text": rec.get("text", ""),
         "traits": rec.get("traits") or [],
     }
+    # Enemy stats for popup display (fight/health/evade/damage/horror)
+    stats = rec.get("stats") or {}
+    for key in ("fight", "health", "evade", "damage", "horror"):
+        if stats.get(key) is not None:
+            result[key] = stats[key]
+    return result
 
 
 # ---------------------------------------------------------------------------

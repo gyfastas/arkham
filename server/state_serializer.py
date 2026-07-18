@@ -341,8 +341,16 @@ def serialize_game_state(
                 "traits": getattr(cd, "traits", []) or [],
             }
         else:
-            last_encounter = {"id": last_encounter, "name": last_encounter,
-                              "name_cn": "", "type": "", "text": "", "traits": []}
+            # Encounter cards are usually not in the card database — look up
+            # the encounter JSON DB instead.
+            try:
+                from server.game_session import _lookup_encounter_card
+                last_encounter = _lookup_encounter_card(
+                    last_encounter, scenario.vars.get("campaign", "core")
+                )
+            except Exception:
+                last_encounter = {"id": last_encounter, "name": last_encounter,
+                                  "name_cn": "", "type": "", "text": "", "traits": []}
 
     return {
         "investigator": {

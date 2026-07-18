@@ -164,6 +164,11 @@ export interface EncounterCardDisplay {
   type: string
   text: string
   traits: string[]
+  fight?: number
+  health?: number
+  evade?: number
+  damage?: number
+  horror?: number
 }
 
 export interface GameEventData {

@@ -454,8 +454,9 @@ class ScenarioController:
         if inv is None:
             return {"pending": False, "message": ""}
 
-        # Store last encounter for UI
-        self.s.vars["last_encounter"] = card_id
+        # Store last encounter for UI (only if the session layer hasn't
+        # already stored the full card dict — don't clobber it with a bare id)
+        self.s.vars.setdefault("last_encounter", card_id)
 
         # --- Treacheries (all used by core scenarios) ---
         if card_id == "ancient_evils":
