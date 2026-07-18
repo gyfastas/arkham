@@ -112,6 +112,9 @@ class SkillTestEngine:
             source=result.source_instance_id,
         )
         self.bus.emit(ctx)
+        # Allow handlers (e.g. Flashlight lowering shroud) to modify difficulty.
+        if ctx.difficulty is not None and ctx.difficulty != result.difficulty:
+            result.difficulty = max(0, ctx.difficulty)
 
     def _st2_commit(self, result: SkillTestResult, committed_card_ids: list[str]) -> None:
         from backend.engine.event_bus import EventContext

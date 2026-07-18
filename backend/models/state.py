@@ -118,6 +118,9 @@ class InvestigatorState:
     threat_area: list[str] = field(default_factory=list)    # enemy instance_id list
     damage: int = 0
     horror: int = 0
+    # Max health/sanity modifiers from assets (Leather Coat, Bulletproof Vest, ...)
+    health_bonus: int = 0
+    sanity_bonus: int = 0
     clues: int = 0
     actions_remaining: int = 3
     has_taken_turn: bool = False
@@ -135,15 +138,17 @@ class InvestigatorState:
 
     @property
     def health(self) -> int:
+        bonus = getattr(self, "health_bonus", 0)
         if self._investigator_card is not None:
-            return self._investigator_card.effective_health
-        return self.card_data.health or 0
+            return self._investigator_card.effective_health + bonus
+        return (self.card_data.health or 0) + bonus
 
     @property
     def sanity(self) -> int:
+        bonus = getattr(self, "sanity_bonus", 0)
         if self._investigator_card is not None:
-            return self._investigator_card.effective_sanity
-        return self.card_data.sanity or 0
+            return self._investigator_card.effective_sanity + bonus
+        return (self.card_data.sanity or 0) + bonus
 
     @property
     def remaining_health(self) -> int:

@@ -1,21 +1,26 @@
 """Barricade (Level 0) — Seeker Event.
-附着于你所在地点。非精英敌人无法移动到该地点。
+将屏障附加到你所在地点。被附加的地点不能生成非精英敌人。
+
+简化说明：
+- 附加关系记录在 scenario.vars["barricaded_locations"]；
+  敌人生成逻辑（official_core._spawn_enemy_from_encounter）已接入检查。
 """
 
-from backend.cards.base import CardImplementation
+from backend.cards.base import CardImplementation, on_event
 from backend.models.enums import GameEvent, TimingPriority
 
 
 class Barricade(CardImplementation):
     card_id = "barricade_lv0"
 
-    # Barricade attaches to a location and prevents non-Elite enemies
-    # from moving to that location. This requires:
-    # 1. Attachment system (card attaching to location)
-    # 2. Enemy movement restriction checks
-    # 3. "If any investigator leaves, discard Barricade" rule
-    #
-    # Skeleton — complex attachment/restriction logic not yet implemented.
-    # Would need MOVE_ACTION_INITIATED handler to block enemy movement
-    # and CARD_LEAVES_PLAY / investigator move tracking for auto-discard.
-    pass
+    @on_event(GameEvent.CARD_PLAYED, priority=TimingPriority.WHEN)
+    def attach_to_location(self, ctx):
+        if ctx.extra.get("card_id") != "barricade_lv0":
+            return
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None:
+            return
+        locations = ctx.game_state.scenario.vars.setdefault("barricaded_locations", [])
+        if inv.location_id not in locations:
+            locations.append(inv.location_id)
+        ctx.extra["barricaded_location"] = inv.location_id

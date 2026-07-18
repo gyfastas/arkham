@@ -1,13 +1,10 @@
 """Aquinnah (Level 3) — Survivor Asset, Ally slot.
-安奎娜（升级版）。敌人攻击时，疲倦并承受1恐惧：将伤害和恐惧转给另一个敌人。
+反应 - 当你受到敌人伤害时：弃置安奎娜。取消该伤害，改为对该敌人造成2点伤害。
 """
 
-from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, TimingPriority
+from backend.cards.survivor.aquinnah_lv1 import AquinnahLv1
 
 
-class AquinnahLv3(CardImplementation):
+class AquinnahLv3(AquinnahLv1):
     card_id = "aquinnah_lv3"
-
-    # TODO: Implement enemy attack redirect — exhaust + 1 horror,
-    # redirect damage AND horror to another enemy at your location
+    reflect_damage = 2

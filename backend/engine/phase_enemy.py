@@ -51,6 +51,9 @@ class EnemyPhase:
                     continue
                 if "hunter" not in (enemy_data.keywords or []):
                     continue
+                # Mind Wipe: blanked enemies lose their text (incl. hunter) this phase
+                if self.game_state.scenario.vars.get("mind_wiped", {}).get(enemy_iid):
+                    continue
 
                 # Find nearest investigator (simple: check connected locations)
                 target_inv = self._find_nearest_investigator(loc.location_id)
@@ -124,23 +127,25 @@ class EnemyPhase:
                 if enemy_data is None:
                     continue
 
-                self._emit(
+                ctx = self._emit(
                     GameEvent.ENEMY_ATTACKS,
                     investigator_id=inv_id,
                     enemy_id=enemy_iid,
                 )
 
-                dmg = enemy_data.enemy_damage or 0
-                hor = enemy_data.enemy_horror or 0
-                self.damage.deal_damage(
-                    inv_id, damage=dmg, horror=hor,
-                    source=enemy_iid,
-                )
+                # Dodge / On the Lam etc. may cancel the attack entirely
+                if not getattr(ctx, "cancelled", False):
+                    dmg = enemy_data.enemy_damage or 0
+                    hor = enemy_data.enemy_horror or 0
+                    self.damage.deal_damage(
+                        inv_id, damage=dmg, horror=hor,
+                        source=enemy_iid,
+                    )
 
                 # Enemy exhausts after attack
                 enemy.exhausted = True
 
-    def _emit(self, event: GameEvent, **kwargs) -> None:
+    def _emit(self, event: GameEvent, **kwargs):
         from backend.engine.event_bus import EventContext
         ctx = EventContext(
             game_state=self.game_state,
@@ -148,3 +153,4 @@ class EnemyPhase:
             **kwargs,
         )
         self.bus.emit(ctx)
+        return ctx

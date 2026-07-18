@@ -1,5 +1,6 @@
 """Forbidden Knowledge (Level 0) — Mystic Asset.
-使用（4秘密）。消耗并承受1点恐惧：将1个秘密移至资源池作为资源。
+禁忌知识进场时带有4个秘密。
+反应 - 在禁忌知识上有秘密时：花费1秘密并受到1点恐惧，获得2资源。
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -9,13 +10,24 @@ from backend.models.enums import GameEvent, TimingPriority
 class ForbiddenKnowledge(CardImplementation):
     card_id = "forbidden_knowledge_lv0"
 
-    @on_event(
-        GameEvent.CARD_PLAYED,
-        priority=TimingPriority.WHEN,
-    )
-    def convert_secret(self, ctx):
-        """Exhaust and take 1 horror: Move 1 secret to resource pool as resource.
+    @on_event(GameEvent.CARD_ENTERS_PLAY, priority=TimingPriority.AFTER)
+    def enter_play(self, ctx):
+        """进场时：放置4个秘密。"""
+        if ctx.target != self.instance_id:
+            return
+        inst = ctx.game_state.get_card_instance(self.instance_id)
+        if inst is not None:
+            inst.uses["secret"] = 4
 
-        Skeleton — requires exhaust/uses tracking and horror assignment.
-        """
-        pass
+    def activate(self, game_state, investigator_id: str) -> bool:
+        """花费1秘密并受到1点恐惧，获得2资源。"""
+        inv = game_state.get_investigator(investigator_id)
+        if inv is None:
+            return False
+        inst = game_state.get_card_instance(self.instance_id)
+        if inst is None or inst.uses.get("secret", 0) <= 0:
+            return False
+        inst.uses["secret"] -= 1
+        inv.horror += 1
+        inv.resources += 2
+        return True

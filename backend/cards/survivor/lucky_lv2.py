@@ -1,13 +1,10 @@
 """Lucky! (Level 2) — Survivor Event.
-运气好！快速。检定失败时+2技能值，然后抽1张牌。
+快速。当你即将检定失败时，技能值+2。如果你成功，返回运气好！到你的手中。
 """
 
-from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, TimingPriority
+from backend.cards.survivor.lucky_lv0 import Lucky
 
 
-class LuckyLv2(CardImplementation):
+class LuckyLv2(Lucky):
     card_id = "lucky_lv2"
-
-    # TODO: Implement fast play when failing skill test
-    # +2 skill value, draw 1 card
+    return_on_success = True

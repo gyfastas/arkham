@@ -18,12 +18,24 @@ class SlotManager:
     slots: dict[SlotType, list[str]] = field(default_factory=lambda: {
         st: [] for st in SlotType
     })
+    # Extra slots granted by cards (Charisma, Relic Hunter, ...)
+    bonus_slots: dict[SlotType, int] = field(default_factory=dict)
+
+    def add_bonus(self, slot_type: SlotType, count: int) -> None:
+        self.bonus_slots[slot_type] = self.bonus_slots.get(slot_type, 0) + count
+
+    def remove_bonus(self, slot_type: SlotType, count: int) -> None:
+        remaining = self.bonus_slots.get(slot_type, 0) - count
+        if remaining > 0:
+            self.bonus_slots[slot_type] = remaining
+        else:
+            self.bonus_slots.pop(slot_type, None)
 
     def count_used(self, slot_type: SlotType) -> int:
         return len(self.slots.get(slot_type, []))
 
     def available(self, slot_type: SlotType) -> int:
-        limit = SLOT_LIMITS.get(slot_type, 0)
+        limit = SLOT_LIMITS.get(slot_type, 0) + self.bonus_slots.get(slot_type, 0)
         return max(0, limit - self.count_used(slot_type))
 
     def can_play(self, required_slots: list[SlotType]) -> bool:

@@ -31,6 +31,9 @@ class Game:
         self.chaos_bag = ChaosBag()
         self.card_registry = CardRegistry()
         self.slot_managers: dict[str, SlotManager] = {}
+        # Expose slot managers on state so card implementations (which only
+        # receive EventContext.game_state) can grant bonus slots (Charisma etc.)
+        self.state.slot_managers = self.slot_managers
 
         # Engine components
         self.skill_test_engine = SkillTestEngine(self.state, self.event_bus, self.chaos_bag)

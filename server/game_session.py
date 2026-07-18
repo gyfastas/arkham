@@ -678,7 +678,13 @@ class GameSession:
             scen.encounter_discard.append(enc_id)
             # Store encounter card info for client display
             scen.vars["last_encounter"] = _lookup_encounter_card(enc_id, scen.vars.get("campaign", "core"))
-            res = self.controller.resolve_encounter_card(enc_id)
+            # Ward of Protection may have cancelled this encounter
+            if scen.vars.get("cancelled_encounter") == enc_id:
+                scen.vars.pop("cancelled_encounter", None)
+                self.action_log.append("🛡️ 守护结界：取消遭遇")
+                res = {"pending": False, "message": "cancelled"}
+            else:
+                res = self.controller.resolve_encounter_card(enc_id)
             if res.get("surge"):
                 if scen.encounter_deck:
                     enc2 = scen.encounter_deck.pop(0)

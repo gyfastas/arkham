@@ -760,6 +760,29 @@ class ScenarioController:
         if loc_id is None:
             loc_id = inv.location_id
 
+        svars = self.game.state.scenario.vars
+        is_elite = bool(cd and "elite" in (getattr(cd, "traits", []) or []))
+
+        # Barricade: non-elite enemies cannot spawn at barricaded locations
+        if not is_elite and loc_id in svars.get("barricaded_locations", []):
+            self.game.state.cards_in_play.pop(instance_id, None)
+            self.game.state.scenario.encounter_discard.append(card_id)
+            self.log("🚧 屏障：敌人无法在该地点生成")
+            return
+
+        # Disc of Itzamna: reaction — cancel non-elite spawn at your location
+        if not is_elite and loc_id == inv.location_id:
+            for disc_iid in list(inv.play_area):
+                disc = self.game.state.get_card_instance(disc_iid)
+                if disc is not None and disc.card_id == "disc_of_itzamna_lv2":
+                    inv.play_area.remove(disc_iid)
+                    self.game.state.cards_in_play.pop(disc_iid, None)
+                    inv.discard.append("disc_of_itzamna_lv2")
+                    self.game.state.cards_in_play.pop(instance_id, None)
+                    self.game.state.scenario.encounter_discard.append(card_id)
+                    self.log("💿 伊察姆纳圆盘：取消敌人生成")
+                    return
+
         if loc_id == inv.location_id:
             # Spawn at investigator location -> engage
             inv.threat_area.append(instance_id)

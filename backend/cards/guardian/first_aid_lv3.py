@@ -1,11 +1,10 @@
 """First Aid (Level 3) — Guardian Asset.
-使用（4补给）。花费1补给：治疗1点伤害和1点恐惧。
+消耗急救并花费1资源：治愈你所在地点的一名调查员或盟友3点伤害。
 """
-from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, Skill, TimingPriority
+
+from backend.cards.guardian.first_aid_lv0 import FirstAid
 
 
-class FirstAidLv3(CardImplementation):
+class FirstAidLv3(FirstAid):
     card_id = "first_aid_lv3"
-    # Skeleton — requires activated ability framework for spend-supply actions.
-    # Upgraded version heals both 1 damage AND 1 horror (not "or").
+    heal_amount = 3

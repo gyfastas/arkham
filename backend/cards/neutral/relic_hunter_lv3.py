@@ -1,11 +1,12 @@
-"""Relic Hunter (Level 3) — Neutral Asset, Permanent.
-宝物猎人。永久卡。+1配件栏位。
+"""Relic Hunter (Level 3) — Neutral Asset (Permanent).
+你获得2个额外的饰品槽位。
 """
 
-from backend.cards.base import CardImplementation
+from backend.cards.neutral.charisma_lv3 import Charisma
+from backend.models.enums import SlotType
 
 
-class RelicHunter(CardImplementation):
+class RelicHunter(Charisma):
     card_id = "relic_hunter_lv3"
-    # Permanent — provides +1 accessory slot.
-    # TODO: Implement slot modification in deck-building / setup phase
+    slot_type = SlotType.ACCESSORY
+    bonus = 2
