@@ -152,6 +152,7 @@ export interface GameState {
   play_area: CardInstanceDisplay[]
   threat_cards: CardInstanceDisplay[]
   enemies: EnemyDisplay[]
+  mulligan_available?: boolean
   log: string[]
   round: number
   phase: string

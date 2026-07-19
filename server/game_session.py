@@ -100,6 +100,14 @@ def _load_preset_decks() -> dict[str, dict]:
 DECK_PRESETS: dict[str, dict] = _load_preset_decks()
 
 
+def _card_name_cn(g: Game, card_id: str) -> str:
+    """Display name for a card (Chinese preferred)."""
+    cd = g.state.get_card_data(card_id)
+    if cd is None:
+        return card_id
+    return cd.name_cn or cd.name or card_id
+
+
 def _lookup_encounter_card(card_id: str, campaign: str = "core") -> dict | None:
     """Look up encounter card data from JSON for client display."""
     from backend.scenarios.official_core import load_encounter_db_for_campaign
@@ -488,15 +496,31 @@ class GameSession:
             weakness_id = inv_json.get("weakness", "")
             if weakness_id and g.state.get_card_data(weakness_id) is not None and weakness_id not in deck_ids and weakness_id not in sig_cards:
                 sig_cards.append(weakness_id)
+
+        # Official setup rule: each deck also includes 1 random basic weakness
+        basic_weakness_pool = [
+            "chronophobia_lv0", "hypochondria", "indebted_lv0", "internal_injury_lv0",
+        ]
+        basic_weakness_pool = [
+            w for w in basic_weakness_pool
+            if g.state.get_card_data(w) is not None and w not in deck_ids and w not in sig_cards
+        ]
+        if basic_weakness_pool:
+            bw = random.choice(basic_weakness_pool)
+            sig_cards.append(bw)
+            self.action_log.append(f"🃏 随机基础弱点：{_card_name_cn(g, bw)}")
         deck_ids.extend(sig_cards)
 
         random.shuffle(deck_ids)
+
 
         # Scenario
         apply_scenario_to_game(g, scenario_id, seed=seed)
         scen = load_scenario_definition(scenario_id)
         g.add_investigator("player", inv_data, deck=deck_ids, starting_location=scen["start_location"])
         g.setup()
+        # Official rule: opening hand mulligan (redraw any number of cards, once)
+        g.state.scenario.vars["mulligan_available"] = True
 
         if scenario_id == "the_midnight_masks":
             g.state.scenario.vars["central_location"] = "downtown"
@@ -586,6 +610,8 @@ class GameSession:
         # Resolve pending choice
         if act == "RESOLVE_CHOICE":
             result = self._resolve_choice(data)
+        elif act == "MULLIGAN":
+            result = self._mulligan(inv, data)
         elif act == "ADVANCE_ACT":
             result = self._advance_act(inv)
         elif act == "RESIGN":
@@ -965,6 +991,27 @@ class GameSession:
         "kukri_lv0": "武器：+1战斗",
         "ritual_candles_lv0": "被动：技能检定时+1",
     }
+
+    def _mulligan(self, inv, data: dict) -> dict:
+        """Opening hand mulligan: shuffle chosen cards back and redraw (once)."""
+        scen = self.game.state.scenario
+        if not scen.vars.get("mulligan_available"):
+            return {"success": False, "message": "调度已不可用"}
+        scen.vars.pop("mulligan_available", None)
+
+        card_ids = [c for c in (data.get("card_ids") or []) if c in inv.hand]
+        if card_ids:
+            for cid in card_ids:
+                inv.hand.remove(cid)
+            inv.deck.extend(card_ids)
+            random.shuffle(inv.deck)
+            for _ in range(len(card_ids)):
+                if inv.deck:
+                    inv.hand.append(inv.deck.pop(0))
+            self.action_log.append(f"🔁 调度：重抽 {len(card_ids)} 张手牌")
+            return {"success": True, "message": f"调度：重抽 {len(card_ids)} 张"}
+        self.action_log.append("🔁 保留初始手牌")
+        return {"success": True, "message": "保留初始手牌"}
 
     def _activate_card(self, inv, data: dict) -> dict:
         """Generic activation channel: routes ACTIVATE_CARD to a card's

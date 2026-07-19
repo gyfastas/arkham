@@ -44,3 +44,11 @@
 - ArkhamDB 中文: https://zh.arkhamdb.com
 - ArkhamDB 英文: https://arkhamdb.com
 - ArkhamDB API: https://arkhamdb.com/api/
+
+## 规则核实原则
+
+实现卡牌/机制效果时，**必须先对照官方来源核实规则**，不要凭记忆或数据文件的翻译文本：
+- 官方 FAQ / Taboo List：https://images-cdn.fantasyflightgames.com/filer_public/c1/d0/c1d0fab6-7fa6-4ce2-af6a-16416381a19b/ahc_faq_v25_february_2026-web.pdf
+- 官方 Rules Reference：https://arkham606.com/rules
+- ArkhamDB 卡面原文：https://arkhamdb.com （中文：https://zh.arkhamdb.com）
+数据文件（data/*.json）的中文翻译可能有错漏，以官方英文原文+FAQ 为准。

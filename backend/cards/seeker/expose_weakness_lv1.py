@@ -6,6 +6,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.scenarios.official_core import is_elite_enemy
 from backend.models.enums import GameEvent, TimingPriority
 
 
@@ -38,7 +39,7 @@ class ExposeWeakness(CardImplementation):
             return
 
         cd = ctx.game_state.get_card_data(enemy.card_id)
-        is_elite = bool(cd and "elite" in (cd.traits or []))
+        is_elite = bool(cd and is_elite_enemy(cd))
         clues = 2 if is_elite else 1
         inv.clues += clues
         ctx.extra["expose_weakness_clues"] = clues

@@ -3,6 +3,7 @@
 """
 
 from backend.cards.base import CardImplementation
+from backend.scenarios.official_core import is_elite_enemy
 
 
 class StrayCat(CardImplementation):
@@ -20,7 +21,7 @@ class StrayCat(CardImplementation):
         if enemy is None:
             return False
         cd = game_state.get_card_data(enemy.card_id)
-        if cd is not None and "elite" in (cd.traits or []):
+        if cd is not None and is_elite_enemy(cd):
             return False
 
         # 弃置野猫

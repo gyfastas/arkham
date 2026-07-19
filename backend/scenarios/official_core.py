@@ -237,7 +237,7 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
                     enemy_damage=stats.get("damage"),
                     enemy_horror=stats.get("horror"),
                     traits=(rec.get("traits") or []),
-                    keywords=[],
+                    keywords=_derive_enemy_keywords(rec),
                     text=rec.get("text") or "",
                 )
                 game.register_card_data(cd)
@@ -320,6 +320,52 @@ def _is_nightgaunt(card_id: str) -> bool:
     return card_id in {"nightgaunt"} or "nightgaunt" in (card_id or "")
 
 
+# Chinese trait → English keyword (encounter DB traits are Chinese)
+_TRAIT_TO_KEYWORD = {
+    "精英": "elite",
+    "食屍鬼": "ghoul",
+    "怪物": "monster",
+    "異教徒": "cultist",
+    "古神": "ancient_one",
+    "夜魘": "nightgaunt",
+    "類人": "humanoid",
+}
+
+# Text keyword (Chinese/English) → engine keyword
+_TEXT_KEYWORDS = [
+    ("獵手", "hunter"), ("Hunter", "hunter"),
+    ("警覺", "alert"), ("Alert", "alert"),
+    ("巨大", "massive"), ("Massive", "massive"),
+    ("冷漠", "aloof"), ("Aloof", "aloof"),
+    ("報復", "retaliate"), ("Retaliate", "retaliate"),
+]
+
+
+def _derive_enemy_keywords(rec: dict) -> list[str]:
+    """Populate engine keywords from encounter DB record (traits + text).
+
+    Without this, enemy CardData.keywords is always empty and hunter/alert/
+    elite checks silently never match.
+    """
+    keywords: list[str] = []
+    for trait in rec.get("traits") or []:
+        kw = _TRAIT_TO_KEYWORD.get(trait)
+        if kw and kw not in keywords:
+            keywords.append(kw)
+    text = (rec.get("text") or "")
+    for marker, kw in _TEXT_KEYWORDS:
+        if marker in text and kw not in keywords:
+            keywords.append(kw)
+    return keywords
+
+
+def is_elite_enemy(card_data) -> bool:
+    """Check elite status across Chinese traits and English keywords."""
+    traits = getattr(card_data, "traits", None) or []
+    keywords = getattr(card_data, "keywords", None) or []
+    return "elite" in keywords or "精英" in traits
+
+
 def _is_cultist_enemy_id(card_id: str) -> bool:
     # For core set, treat encounter sets 'cultists' and 'pentagram' as cultist enemies.
     # (Dark Cult has cultists; Cult of Umôrdhoth are cultists)
@@ -359,6 +405,24 @@ class ScenarioController:
         self.game.event_bus.register(GameEvent.CLUE_DISCOVERED, self._on_clue_discovered)
         self.game.event_bus.register(GameEvent.ENEMY_DEFEATED, self._on_enemy_defeated)
         self.game.event_bus.register(GameEvent.AGENDA_ADVANCED, self._on_agenda_advanced)
+
+        # Scenario-specific chaos token effects (skull/cultist/tablet/elder_thing)
+        self._token_pending: dict[str, set[str]] = {}
+        self.game.event_bus.register(
+            GameEvent.CHAOS_TOKEN_RESOLVED,
+            self._scenario_token_effects,
+            priority=TimingPriority.WHEN,
+        )
+        self.game.event_bus.register(
+            GameEvent.SKILL_TEST_FAILED,
+            self._scenario_token_fail_effects,
+            priority=TimingPriority.AFTER,
+        )
+        self.game.event_bus.register(
+            GameEvent.SKILL_TEST_ENDS,
+            self._clear_token_pending,
+            priority=TimingPriority.AFTER,
+        )
 
     # ---------------------
     # Helpers
@@ -439,6 +503,178 @@ class ScenarioController:
         # Midnight Masks: time is running out (single-agenda scenario)
         if s.scenario_id == "the_midnight_masks":
             self.set_resolution("R4", message="午夜已过，你被迫撤离阿卡姆。")
+
+    # ---------------------
+    # Scenario chaos token effects
+    # ---------------------
+    def _enemy_keyword(self, instance_id: str) -> list[str]:
+        inst = self.game.state.get_card_instance(instance_id)
+        if inst is None:
+            return []
+        cd = self.game.state.get_card_data(inst.card_id)
+        return list(getattr(cd, "keywords", None) or []) if cd else []
+
+    def _enemies_at(self, location_id: str, keyword: str) -> int:
+        loc = self.game.state.get_location(location_id)
+        if loc is None:
+            return 0
+        count = 0
+        for iid in loc.enemies:
+            if keyword in self._enemy_keyword(iid):
+                count += 1
+        # 交战敌人也算在该地点
+        for inv in self.game.state.investigators.values():
+            if inv.location_id != location_id:
+                continue
+            for iid in inv.threat_area:
+                if keyword in self._enemy_keyword(iid):
+                    count += 1
+        return count
+
+    def _enemies_in_play(self, keyword: str) -> int:
+        count = 0
+        for iid, inst in self.game.state.cards_in_play.items():
+            cd = self.game.state.get_card_data(inst.card_id)
+            if cd is None or cd.type.value != "enemy":
+                continue
+            if keyword in (getattr(cd, "keywords", None) or []):
+                count += 1
+        return count
+
+    def _max_doom_on_cultists(self) -> int:
+        best = 0
+        for iid, inst in self.game.state.cards_in_play.items():
+            cd = self.game.state.get_card_data(inst.card_id)
+            if cd is None or cd.type.value != "enemy":
+                continue
+            if "cultist" in (getattr(cd, "keywords", None) or []):
+                best = max(best, inst.doom)
+        return best
+
+    def _nearest_enemy_with(self, inv, keyword: str | None) -> str | None:
+        """最近的敌人（交战 > 同地点 > 任意）。"""
+        for iid in inv.threat_area:
+            if keyword is None or keyword in self._enemy_keyword(iid):
+                return iid
+        loc = self.game.state.get_location(inv.location_id)
+        if loc:
+            for iid in loc.enemies:
+                if keyword is None or keyword in self._enemy_keyword(iid):
+                    return iid
+        for iid in self.game.state.cards_in_play:
+            inst = self.game.state.get_card_instance(iid)
+            cd = self.game.state.get_card_data(inst.card_id) if inst else None
+            if cd is None or cd.type.value != "enemy":
+                continue
+            if keyword is None or keyword in (getattr(cd, "keywords", None) or []):
+                return iid
+        return None
+
+    def _scenario_token_effects(self, ctx) -> None:
+        """Apply scenario-specific symbol token modifiers/effects (Standard)."""
+        from backend.models.enums import ChaosTokenType
+
+        token = ctx.chaos_token
+        if token not in (ChaosTokenType.SKULL, ChaosTokenType.CULTIST,
+                         ChaosTokenType.TABLET, ChaosTokenType.ELDER_THING):
+            return
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None:
+            return
+        sid = self.s.scenario_id
+        pending = self._token_pending.setdefault(ctx.investigator_id, set())
+
+        if sid == "the_gathering":
+            if token == ChaosTokenType.SKULL:
+                x = self._enemies_at(inv.location_id, "ghoul")
+                if x:
+                    ctx.modify_amount(-x, "gathering_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（食屍鬼×{x}）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-1, "gathering_cultist")
+                pending.add("gathering_cultist_horror")
+                ctx.extra["token_text"] = "异教徒 -1，若失败受1恐惧"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-2, "gathering_tablet")
+                if self._enemies_at(inv.location_id, "ghoul") > 0:
+                    inv.damage += 1
+                    ctx.extra["token_text"] = "石板 -2，地点有食屍鬼：受1伤害"
+                else:
+                    ctx.extra["token_text"] = "石板 -2"
+
+        elif sid == "the_midnight_masks":
+            if token == ChaosTokenType.SKULL:
+                x = self._max_doom_on_cultists()
+                if x:
+                    ctx.modify_amount(-x, "midnight_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（异教徒最多毁灭×{x}）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-2, "midnight_cultist")
+                target = self._find_nearest_cultist(inv.location_id)
+                if target:
+                    inst = self.game.state.get_card_instance(target)
+                    if inst is not None:
+                        inst.doom += 1
+                ctx.extra["token_text"] = "异教徒 -2，最近异教徒+1毁灭"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-3, "midnight_tablet")
+                pending.add("midnight_tablet_clue")
+                ctx.extra["token_text"] = "石板 -3，若失败：放1线索到地点"
+
+        elif sid == "the_devourer_below":
+            if token == ChaosTokenType.SKULL:
+                x = self._enemies_in_play("monster")
+                if x:
+                    ctx.modify_amount(-x, "devourer_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（怪物×{x}）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-2, "devourer_cultist")
+                target = self._nearest_enemy_with(inv, None)
+                if target:
+                    inst = self.game.state.get_card_instance(target)
+                    if inst is not None:
+                        inst.doom += 1
+                ctx.extra["token_text"] = "异教徒 -2，最近敌人+1毁灭"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-3, "devourer_tablet")
+                if self._enemies_at(inv.location_id, "monster") > 0:
+                    inv.damage += 1
+                    ctx.extra["token_text"] = "石板 -3，地点有怪物：受1伤害"
+                else:
+                    ctx.extra["token_text"] = "石板 -3"
+            elif token == ChaosTokenType.ELDER_THING:
+                ctx.modify_amount(-5, "devourer_elder_thing")
+                text = "古老存在 -5"
+                if self._enemies_in_play("ancient_one") > 0:
+                    # 再揭示1个标记（只取数值修正，不再触发符号效果）
+                    extra_token = self.game.chaos_bag.draw()
+                    from backend.models.enums import CHAOS_TOKEN_VALUES
+                    extra_val = CHAOS_TOKEN_VALUES.get(extra_token) or 0
+                    ctx.modify_amount(extra_val, "devourer_elder_thing_extra")
+                    text += f"，古神在场：再揭示[{getattr(extra_token, 'value', extra_token)}]"
+                ctx.extra["token_text"] = text
+
+    def _scenario_token_fail_effects(self, ctx) -> None:
+        """Conditional effects when the test fails."""
+        pending = self._token_pending.get(ctx.investigator_id)
+        if not pending:
+            return
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None:
+            return
+        if "gathering_cultist_horror" in pending:
+            inv.horror += 1
+            pending.discard("gathering_cultist_horror")
+        if "midnight_tablet_clue" in pending:
+            if inv.clues > 0:
+                inv.clues -= 1
+                loc = ctx.game_state.get_location(inv.location_id)
+                if loc is not None:
+                    loc.clues += 1
+            pending.discard("midnight_tablet_clue")
+
+    def _clear_token_pending(self, ctx) -> None:
+        self._token_pending.pop(ctx.investigator_id, None)
 
     # ---------------------
     # Encounter resolution
@@ -762,7 +998,7 @@ class ScenarioController:
             loc_id = inv.location_id
 
         svars = self.game.state.scenario.vars
-        is_elite = bool(cd and "elite" in (getattr(cd, "traits", []) or []))
+        is_elite = bool(cd and is_elite_enemy(cd))
 
         # Barricade: non-elite enemies cannot spawn at barricaded locations
         if not is_elite and loc_id in svars.get("barricaded_locations", []):

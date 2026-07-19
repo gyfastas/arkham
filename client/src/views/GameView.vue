@@ -16,6 +16,7 @@ import ActionBar from '../components/ActionBar.vue'
 import ChoiceModal from '../components/ChoiceModal.vue'
 import EncounterPopup from '../components/EncounterPopup.vue'
 import SkillCommitModal from '../components/SkillCommitModal.vue'
+import MulliganModal from '../components/MulliganModal.vue'
 
 const router = useRouter()
 const store = useGameStore()
@@ -47,6 +48,10 @@ function handleCommitConfirm(committed: string[]) {
 
 function handleCommitCancel() {
   commitRequest.value = null
+}
+
+function handleMulligan(cardIds: string[]) {
+  socket.sendAction('MULLIGAN', { card_ids: cardIds })
 }
 
 // Navigate to game over screen
@@ -192,6 +197,11 @@ function handleChoice(optionId: string) {
     <!-- Modals -->
     <ChoiceModal :choice="pendingChoice" @choose="handleChoice" />
     <EncounterPopup :encounter="lastEncounter" @dismiss="dismissEncounter" />
+    <MulliganModal
+      v-if="state.mulligan_available"
+      :hand="state.hand"
+      @confirm="handleMulligan"
+    />
     <SkillCommitModal
       v-if="commitRequest"
       :skill-type="commitRequest.skillType"

@@ -402,6 +402,7 @@ def serialize_game_state(
         "play_area": play_area,
         "threat_cards": threat_cards,
         "enemies": enemies,
+        "mulligan_available": bool(scenario.vars.get("mulligan_available")),
         "log": (action_log or [])[-200:],
         "round": scenario.round_number,
         "phase": scenario.current_phase.name,

@@ -11,6 +11,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.scenarios.official_core import is_elite_enemy
 from backend.models.enums import GameEvent, TimingPriority
 
 
@@ -23,7 +24,7 @@ class BindMonster(CardImplementation):
         if enemy is None:
             return False
         enemy_data = game_state.get_card_data(enemy.card_id)
-        if enemy_data is not None and "elite" in (getattr(enemy_data, "traits", []) or []):
+        if enemy_data is not None and is_elite_enemy(enemy_data):
             return False
         scenario = getattr(game_state, "scenario", None)
         if scenario is None:

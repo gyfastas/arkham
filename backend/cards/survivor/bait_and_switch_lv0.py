@@ -7,6 +7,7 @@
 """
 
 from backend.cards.base import CardImplementation
+from backend.scenarios.official_core import is_elite_enemy
 
 
 class BaitAndSwitch(CardImplementation):
@@ -20,7 +21,7 @@ class BaitAndSwitch(CardImplementation):
         if inv is None or enemy is None:
             return False
         enemy_data = game_state.get_card_data(enemy.card_id)
-        if enemy_data is not None and "elite" in (getattr(enemy_data, "traits", []) or []):
+        if enemy_data is not None and is_elite_enemy(enemy_data):
             return False
 
         # 躲避：横置并脱离交战

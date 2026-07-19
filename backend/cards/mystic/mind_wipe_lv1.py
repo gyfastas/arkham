@@ -8,6 +8,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.scenarios.official_core import is_elite_enemy
 from backend.models.enums import GameEvent, TimingPriority
 
 
@@ -38,7 +39,7 @@ class MindWipe(CardImplementation):
                 if inst is None:
                     continue
                 cd = ctx.game_state.get_card_data(inst.card_id)
-                if cd is not None and "elite" not in (cd.traits or []):
+                if cd is not None and not is_elite_enemy(cd):
                     enemy = inst
                     enemy_iid = iid
                     break
@@ -46,7 +47,7 @@ class MindWipe(CardImplementation):
         if enemy is None or enemy_iid is None:
             return
         cd = ctx.game_state.get_card_data(enemy.card_id)
-        if cd is not None and "elite" in (cd.traits or []):
+        if cd is not None and is_elite_enemy(cd):
             return
 
         ctx.game_state.scenario.vars.setdefault("mind_wiped", {})[enemy_iid] = True
