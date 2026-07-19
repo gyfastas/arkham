@@ -29,3 +29,4 @@ class GuardDog(CardImplementation):
             return
         attacker.damage += 1
         ctx.extra["guard_dog_retaliate"] = attacker_id
+        ctx.game_state.log_effect("🐕 看门狗：对攻击者造成1点伤害")

@@ -23,3 +23,5 @@ class ManualDexterity(CardImplementation):
         if inv and inv.deck:
             card_id = inv.deck.pop(0)
             inv.hand.append(card_id)
+            ctx.game_state.log_effect(
+                f"📥 心灵手巧：检定成功，抽到【{ctx.game_state.card_name(card_id)}】")

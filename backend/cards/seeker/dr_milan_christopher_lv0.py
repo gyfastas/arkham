@@ -55,3 +55,4 @@ class DrMilanChristopher(CardImplementation):
         inst.exhausted = True
         inv.resources += 1
         ctx.extra["dr_milan_resource"] = True
+        ctx.game_state.log_effect("💰 米兰博士：成功调查，消耗米兰获得1资源")

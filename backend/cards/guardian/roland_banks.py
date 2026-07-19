@@ -70,6 +70,7 @@ class RolandBanks(CardImplementation):
         location.clues -= 1
         inv.clues += 1
         self._used_this_round = True
+        ctx.game_state.log_effect("🔍 罗兰·班克斯：击败敌人，发现1个线索")
 
     @on_event(GameEvent.CHAOS_TOKEN_RESOLVED, priority=TimingPriority.WHEN)
     def elder_sign_effect(self, ctx):

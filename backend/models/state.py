@@ -288,3 +288,17 @@ class GameState:
         for loc in self.locations.values():
             total += loc.doom
         return total
+
+    # ---- Effect logging (drained by the session layer into the action log) ----
+    effect_log: list[str] = field(default_factory=list)
+
+    def log_effect(self, msg: str) -> None:
+        """Card implementations call this to narrate their effects."""
+        self.effect_log.append(msg)
+
+    def card_name(self, card_id: str) -> str:
+        """Display name for a card id (Chinese preferred)."""
+        cd = self.card_database.get(card_id)
+        if cd is None:
+            return card_id
+        return cd.name_cn or cd.name or card_id

@@ -20,3 +20,4 @@ class Opportunist(CardImplementation):
             inv.discard.remove("opportunist_lv0")
             inv.hand.append("opportunist_lv0")
             ctx.extra["opportunist_returned"] = True
+            ctx.game_state.log_effect("🔁 机会主义者：返回手牌")

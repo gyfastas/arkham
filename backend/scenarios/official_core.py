@@ -656,6 +656,10 @@ class ScenarioController:
                     text += f"，古神在场：再揭示[{getattr(extra_token, 'value', extra_token)}]"
                 ctx.extra["token_text"] = text
 
+        # 记录符号标记的场景效果到行动日志
+        if ctx.extra.get("token_text"):
+            ctx.game_state.log_effect(f"🎲 标记效果：{ctx.extra['token_text']}")
+
     def _scenario_token_fail_effects(self, ctx) -> None:
         """Conditional effects when the test fails."""
         pending = self._token_pending.get(ctx.investigator_id)

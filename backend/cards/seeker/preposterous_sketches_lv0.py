@@ -24,6 +24,11 @@ class PreposterousSketches(CardImplementation):
             return
         if ctx.extra.get("card_id") != "preposterous_sketches_lv0":
             return
+        drawn = []
         for _ in range(3):
             if inv.deck:
-                inv.hand.append(inv.deck.pop(0))
+                cid = inv.deck.pop(0)
+                inv.hand.append(cid)
+                drawn.append(ctx.game_state.card_name(cid))
+        if drawn:
+            ctx.game_state.log_effect(f"📥 荒唐的素描：抽到【{'】【'.join(drawn)}】")

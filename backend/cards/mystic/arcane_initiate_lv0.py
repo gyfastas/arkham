@@ -40,6 +40,8 @@ class ArcaneInitiate(CardImplementation):
         found = self._search_spell(ctx.game_state, inv)
         if found:
             ctx.extra["arcane_initiate_found"] = found
+            ctx.game_state.log_effect(
+                f"🔮 新晋术士：搜索牌库，找到【{ctx.game_state.card_name(found)}】")
 
     @on_event(GameEvent.UPKEEP_PHASE_BEGINS, priority=TimingPriority.WHEN)
     def upkeep_horror(self, ctx):

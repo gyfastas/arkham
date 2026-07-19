@@ -32,6 +32,7 @@ class Lucky(CardImplementation):
         # +2 技能值并翻转结果
         ctx.success = True
         ctx.extra["lucky_turned_success"] = True
+        ctx.game_state.log_effect("🍀 运气好！：检定失败转为成功")
 
         if self.return_on_success:
             # lv2：如果成功，返回运气好！到手中

@@ -34,3 +34,5 @@ class AquinnahLv1(CardImplementation):
         # 反弹伤害
         attacker.damage += self.reflect_damage
         ctx.extra["aquinnah_reflected"] = self.reflect_damage
+        ctx.game_state.log_effect(
+            f"🛡️ 安奎娜：弃置并取消伤害，反弹{self.reflect_damage}点伤害")

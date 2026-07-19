@@ -37,3 +37,5 @@ class Scavenging(CardImplementation):
         # 拾荒自身进入弃牌堆（在取回之后，避免被立即取回）
         inv.discard.append("scavenging_lv0")
         ctx.extra["scavenging_recovered"] = found
+        ctx.game_state.log_effect(
+            f"♻️ 拾荒：从弃牌堆取回【{ctx.game_state.card_name(found)}】")

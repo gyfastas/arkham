@@ -627,6 +627,7 @@ class GameSession:
 
         # Capture events for animation
         events = self.event_logger.flush() if self.event_logger else []
+        self._drain_effect_log()
         result["events"] = events
         self._clear_game_over()
         return result
@@ -679,6 +680,7 @@ class GameSession:
         self.action_log.append("--- 刷新阶段 ---")
         self.game.upkeep_phase.resolve()
         self.action_log.append("♻️ 就绪、抽1牌、+1资源")
+        self._drain_effect_log()
 
         # Dissonant Voices cleanup
         if self.controller and self.controller.has_treachery("dissonant_voices"):
@@ -746,7 +748,17 @@ class GameSession:
         self.action_log.append(f"=== 第{self.game.state.scenario.round_number}轮 调查阶段 ===")
 
         events = self.event_logger.flush() if self.event_logger else []
+        self._drain_effect_log()
         return {"success": True, "message": "进入下一轮", "events": events}
+
+    def _drain_effect_log(self) -> None:
+        """Move card effect messages (GameState.effect_log) into the action log."""
+        if self.game is None:
+            return
+        logs = self.game.state.effect_log
+        if logs:
+            self.action_log.extend(logs)
+            logs.clear()
 
     # -------------------------------------------------------------------
     # Action handlers (ported from server_core.py)
@@ -1367,8 +1379,15 @@ class GameSession:
         if result.auto_fail:
             result_str = "❌自动失败"
 
+        # 投入的技能卡（名称 + 图标数）
+        committed = getattr(self.game.skill_test_engine, '_committed_card_ids', None) or []
+        commit_str = ""
+        if committed:
+            names = "、".join(self.game.state.card_name(c) for c in committed)
+            commit_str = f"（投入：{names}，+{result.committed_icons}）"
+
         detail = f"[{token_display}({mod_str})] 技能{result.modified_skill} vs 难度{result.difficulty} → {result_str}"
-        self.action_log.append(f"{prefix} {detail}")
+        self.action_log.append(f"{prefix}{commit_str} {detail}")
 
     def _flush_action_messages(self) -> None:
         """Move card-generated messages from scenario.vars to the action log."""

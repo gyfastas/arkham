@@ -33,3 +33,4 @@ class Dodge(CardImplementation):
         inv.discard.append("dodge_lv0")
         ctx.cancel()
         ctx.extra["dodge_cancelled_attack"] = True
+        ctx.game_state.log_effect("🌀 闪躲：取消敌人的攻击")
