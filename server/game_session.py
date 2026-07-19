@@ -896,10 +896,8 @@ class GameSession:
         return {"success": False, "message": f"未知选择类型：{kind}"}
 
     def _advance_act(self, inv) -> dict:
-        if inv.actions_remaining <= 0:
-            return {"success": False, "message": "没有行动点"}
+        # 官方规则：推进事件是自由触发能力（free trigger），不消耗行动点
         if self.controller.advance_act("player"):
-            inv.actions_remaining -= 1
             self._clear_game_over()
             return {"success": True, "message": "事件推进"}
         return {"success": False, "message": "不满足推进条件（线索不足或无事件）"}

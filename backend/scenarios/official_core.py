@@ -239,6 +239,7 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
                     traits=(rec.get("traits") or []),
                     keywords=_derive_enemy_keywords(rec),
                     text=rec.get("text") or "",
+                    victory=int(rec.get("victory") or 0),
                 )
                 game.register_card_data(cd)
 
@@ -338,6 +339,7 @@ _TEXT_KEYWORDS = [
     ("巨大", "massive"), ("Massive", "massive"),
     ("冷漠", "aloof"), ("Aloof", "aloof"),
     ("報復", "retaliate"), ("Retaliate", "retaliate"),
+    ("反擊", "retaliate"),
 ]
 
 

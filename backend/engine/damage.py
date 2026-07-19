@@ -273,6 +273,12 @@ class DamageEngine:
             target=instance_id,
         )
         self.bus.emit(ctx)
+
+        # Enemies with victory points go to the victory display (XP scoring)
+        enemy_data = self.game_state.get_card_data(enemy.card_id)
+        if enemy_data is not None and getattr(enemy_data, "victory", 0):
+            self.game_state.scenario.victory_display.append(enemy.card_id)
+
         self._remove_enemy_from_play(instance_id)
 
     def _remove_card_from_play(self, instance_id: str) -> None:

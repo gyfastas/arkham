@@ -153,6 +153,7 @@ export interface GameState {
   threat_cards: CardInstanceDisplay[]
   enemies: EnemyDisplay[]
   mulligan_available?: boolean
+  can_advance_act?: boolean
   log: string[]
   round: number
   phase: string

@@ -4,6 +4,10 @@ import type { GameState } from '../state/types'
 
 const props = defineProps<{ state: GameState }>()
 
+const emit = defineEmits<{
+  advanceAct: []
+}>()
+
 const agendaExpanded = ref(true)
 const actExpanded = ref(true)
 
@@ -69,6 +73,11 @@ const actBackText = computed(() => {
             <span class="clue-icon">✦</span> {{ state.investigator.clues }} / {{ state.total_clues_needed }}
           </span>
         </div>
+        <button
+          v-if="state.can_advance_act"
+          class="advance-btn"
+          @click.stop="emit('advanceAct')"
+        >⏩ 推进事件</button>
       </div>
       <div v-if="actExpanded" class="card-body">
         <div v-if="actText" class="card-text">{{ actText }}</div>
@@ -240,4 +249,20 @@ const actBackText = computed(() => {
 }
 .info-label { color: #777; }
 .info-val { color: #ccc; font-weight: 600; }
+
+.advance-btn {
+  margin-top: 6px;
+  width: 100%;
+  background: #2c5f2e;
+  border: 1px solid #3d8b40;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.advance-btn:hover {
+  background: #357a38;
+}
 </style>

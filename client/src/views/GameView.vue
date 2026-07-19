@@ -54,6 +54,10 @@ function handleMulligan(cardIds: string[]) {
   socket.sendAction('MULLIGAN', { card_ids: cardIds })
 }
 
+function handleAdvanceAct() {
+  socket.sendAction('ADVANCE_ACT')
+}
+
 // Navigate to game over screen
 watch(() => store.gameOver, (go) => {
   if (go) {
@@ -190,7 +194,7 @@ function handleChoice(optionId: string) {
           @evade="handleEvade"
           @engage="handleEngage"
         />
-        <ScenarioPanel :state="state" />
+        <ScenarioPanel :state="state" @advance-act="handleAdvanceAct" />
       </div>
     </div>
 

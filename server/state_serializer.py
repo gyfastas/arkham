@@ -118,6 +118,11 @@ def serialize_public_state(game: Game) -> dict:
     agenda = scenario.current_agenda
     act_need = act.clue_threshold if act and act.clue_threshold is not None else 0
     doom_threshold = agenda.doom_threshold if agenda else scenario.doom_threshold
+    # Can the lead investigator advance the act? (clues >= threshold)
+    can_advance_act = bool(
+        act is not None and act.clue_threshold is not None and inv is not None
+        and inv.clues >= act.clue_threshold
+    )
 
     return {
         "locations": locations,
@@ -126,6 +131,7 @@ def serialize_public_state(game: Game) -> dict:
         "doom": scenario.doom_on_agenda,
         "doom_threshold": doom_threshold,
         "total_clues_needed": act_need,
+        "can_advance_act": can_advance_act,
         "scenario": {
             "id": scenario.scenario_id,
             "name": scen_def.get("name"),
