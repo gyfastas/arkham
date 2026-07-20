@@ -8,12 +8,17 @@ const emit = defineEmits<{
   confirm: [cardIds: string[]]
 }>()
 
-const selected = ref<string[]>([])
+// 按手牌下标选择（卡牌 id 含下划线，不能拼进 key 再解析）
+const selected = ref<number[]>([])
 
-function toggle(id: string) {
-  const idx = selected.value.indexOf(id)
+function toggle(i: number) {
+  const idx = selected.value.indexOf(i)
   if (idx !== -1) selected.value.splice(idx, 1)
-  else selected.value.push(id)
+  else selected.value.push(i)
+}
+
+function redraw() {
+  emit('confirm', selected.value.map(i => props.hand[i].id))
 }
 </script>
 
@@ -25,14 +30,14 @@ function toggle(id: string) {
       <div class="m-cards">
         <div
           v-for="(card, i) in hand"
-          :key="card.id + '_' + i"
+          :key="i"
           class="m-card"
-          :class="{ selected: selected.includes(card.id + '_' + i) }"
-          @click="toggle(card.id + '_' + i)"
+          :class="{ selected: selected.includes(i) }"
+          @click="toggle(i)"
         >
           <div class="m-name">{{ card.name_cn || card.name }}</div>
           <div class="m-type">{{ card.type }}</div>
-          <div class="m-check" v-if="selected.includes(card.id + '_' + i)">✓</div>
+          <div class="m-check" v-if="selected.includes(i)">✓</div>
         </div>
       </div>
       <div class="m-footer">
@@ -40,7 +45,7 @@ function toggle(id: string) {
         <button
           class="btn btn-redraw"
           :disabled="!selected.length"
-          @click="emit('confirm', selected.map(k => hand[Number(k.split('_')[1])].id))"
+          @click="redraw"
         >
           重抽 {{ selected.length }} 张
         </button>
