@@ -357,6 +357,8 @@ def serialize_game_state(
                 last_encounter = _lookup_encounter_card(
                     last_encounter, scenario.vars.get("campaign", "core")
                 )
+                if isinstance(last_encounter.get("traits"), str):
+                    last_encounter["traits"] = [last_encounter["traits"]]
             except Exception:
                 last_encounter = {"id": last_encounter, "name": last_encounter,
                                   "name_cn": "", "type": "", "text": "", "traits": []}

@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from backend.engine.game import Game
-from backend.models.enums import Action, CardType, Phase, PlayerClass, SlotType, Skill
+from backend.models.enums import Action, CardType, GameEvent, Phase, PlayerClass, SlotType, Skill
 from backend.models.state import CardData, SkillValues
 from backend.scenarios.official_core import (
     apply_scenario_to_game,
@@ -115,13 +115,16 @@ def _lookup_encounter_card(card_id: str, campaign: str = "core") -> dict | None:
     rec = db.get(card_id)
     if not rec:
         return {"id": card_id, "name": card_id, "name_cn": "", "type": "treachery", "text": "", "traits": []}
+    traits = rec.get("traits") or []
+    if isinstance(traits, str):  # 敦威治库部分 traits 是字符串
+        traits = [traits]
     result = {
         "id": card_id,
         "name": rec.get("name", card_id),
         "name_cn": rec.get("name_cn", ""),
         "type": rec.get("type", "treachery"),
         "text": rec.get("text", ""),
-        "traits": rec.get("traits") or [],
+        "traits": traits,
     }
     # Enemy stats for popup display (fight/health/evade/damage/horror)
     stats = rec.get("stats") or {}
@@ -541,6 +544,15 @@ class GameSession:
         if inv:
             inv.actions_remaining = 3
 
+        # 第1轮调查阶段开始事件（黛西典籍行动授予等，须在行动点重置之后）
+        from backend.engine.event_bus import EventContext
+        for inv_id in g.state.player_order:
+            g.event_bus.emit(EventContext(
+                game_state=g.state,
+                event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+                investigator_id=inv_id,
+            ))
+
         self.action_log.append(f"=== 核心剧本：{scen.get('name_cn', scenario_id)} ===")
         self.action_log.append(f"调查员：{inv_data.name_cn}")
         self.action_log.append("第1轮 调查阶段")
@@ -746,6 +758,14 @@ class GameSession:
         inv.actions_remaining = 3
         self.game.state.scenario.current_phase = Phase.INVESTIGATION
         self.action_log.append(f"=== 第{self.game.state.scenario.round_number}轮 调查阶段 ===")
+        # 调查阶段开始事件（黛西的典籍行动授予等）
+        from backend.engine.event_bus import EventContext
+        for inv_id in self.game.state.player_order:
+            self.game.event_bus.emit(EventContext(
+                game_state=self.game.state,
+                event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+                investigator_id=inv_id,
+            ))
 
         events = self.event_logger.flush() if self.event_logger else []
         self._drain_effect_log()
