@@ -216,8 +216,9 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
             continue
         t = rec.get("type")
         if t in ("enemy", "treachery", "location"):
-            # Keep map locations out of encounter deck
-            if t == "location" and rec.get("id") in scenario_def.get("locations", []):
+            # Location cards never belong in the encounter deck (previously
+            # only scenario_def.locations were excluded, leaking _b variants)
+            if t == "location":
                 continue
             if rec.get("id") in set_aside:
                 continue
@@ -923,6 +924,12 @@ class ScenarioController:
             self.log(f"👾 遭遇：生成敌人 {cd.name_cn or cd.name}")
             self._spawn_enemy_from_encounter(card_id, investigator_id)
             return {"pending": False, "message": "enemy"}
+
+        # Dunwich Legacy treacheries
+        from backend.scenarios.dunwich_encounters import resolve_dunwich_treachery
+        result = resolve_dunwich_treachery(self, card_id, investigator_id=investigator_id)
+        if result is not None:
+            return result
 
         # Unknown/unsupported encounter card (location/etc) is ignored for now
         self.log(f"(未实现) 遭遇牌：{card_id}")

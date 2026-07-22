@@ -33,8 +33,9 @@ class Backstab(CardImplementation):
             return
         if not getattr(inv, "active_effects", {}).get("backstab_lv0"):
             return
+        base_val = inv.get_skill(ctx.skill_type)
         agility = inv.get_skill(Skill.AGILITY)
-        ctx.modify_amount(agility - ctx.amount + 2, "backstab_substitute")
+        ctx.modify_amount(agility - base_val + 2, "backstab_substitute")
 
     @on_event(GameEvent.DAMAGE_DEALT, priority=TimingPriority.WHEN)
     def bonus_damage(self, ctx):

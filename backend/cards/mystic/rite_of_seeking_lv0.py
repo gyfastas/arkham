@@ -51,8 +51,9 @@ class RiteOfSeeking(CardImplementation):
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
             return
+        base_val = inv.get_skill(ctx.skill_type)
         willpower = inv.get_skill(Skill.WILLPOWER)
-        ctx.modify_amount(willpower - ctx.amount, f"{self.card_id}_substitute")
+        ctx.modify_amount(willpower - base_val, f"{self.card_id}_substitute")
 
     @on_event(GameEvent.CHAOS_TOKEN_RESOLVED, priority=TimingPriority.AFTER)
     def track_bad_token(self, ctx):

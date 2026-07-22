@@ -30,8 +30,9 @@ class Burglary(CardImplementation):
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
             return
+        base_val = inv.get_skill(ctx.skill_type)
         agility = inv.get_skill(Skill.AGILITY)
-        ctx.modify_amount(agility - ctx.amount, "burglary_substitute")
+        ctx.modify_amount(agility - base_val, "burglary_substitute")
 
     @on_event(GameEvent.CLUE_DISCOVERED, priority=TimingPriority.WHEN)
     def resources_instead(self, ctx):

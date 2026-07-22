@@ -37,8 +37,9 @@ class BlindingLight(CardImplementation):
             return
         if not getattr(inv, "active_effects", {}).get(self.card_id):
             return
+        base_val = inv.get_skill(ctx.skill_type)
         willpower = inv.get_skill(Skill.WILLPOWER)
-        ctx.modify_amount(willpower - ctx.amount + self.bonus, f"{self.card_id}_substitute")
+        ctx.modify_amount(willpower - base_val + self.bonus, f"{self.card_id}_substitute")
 
     @on_event(GameEvent.SKILL_TEST_SUCCESSFUL, priority=TimingPriority.AFTER)
     def return_to_hand(self, ctx):

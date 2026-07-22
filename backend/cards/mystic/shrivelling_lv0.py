@@ -49,8 +49,9 @@ class Shrivelling(CardImplementation):
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
             return
+        base_val = inv.get_skill(ctx.skill_type)
         willpower = inv.get_skill(Skill.WILLPOWER)
-        ctx.modify_amount(willpower - ctx.amount + 1, "shrivelling_substitute")
+        ctx.modify_amount(willpower - base_val + 1, "shrivelling_substitute")
 
     @on_event(GameEvent.DAMAGE_DEALT, priority=TimingPriority.WHEN)
     def bonus_damage(self, ctx):

@@ -39,10 +39,10 @@ class MindOverMatter(CardImplementation):
         active = getattr(inv, "active_effects", {})
         if not active.get("mind_over_matter"):
             return
-        # Replace the skill value with intellect
+        # Replace the BASE skill value with intellect (icons/token still apply)
         intellect_val = inv.get_skill(Skill.INTELLECT)
-        original_val = ctx.amount
-        diff = intellect_val - original_val
+        base_val = inv.get_skill(ctx.skill_type)
+        diff = intellect_val - base_val
         if diff != 0:
             ctx.modify_amount(diff, "mind_over_matter_substitution")
 
