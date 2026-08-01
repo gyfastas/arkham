@@ -170,11 +170,29 @@ function onImportFile(event: Event) {
   reader.readAsText(file)
 }
 
+// --- 保存弹窗 ---
+const showSaveModal = ref(false)
+const saveFileName = ref('')
+
 function saveDeck() {
   if (deck.value.length === 0) {
     store.addToast('卡组为空，无法保存', 'error')
     return
   }
+  const date = new Date().toISOString().slice(0, 10)
+  saveFileName.value = `deck_${props.investigatorId}_${date}`
+  showSaveModal.value = true
+}
+
+function confirmSave() {
+  let name = saveFileName.value.trim()
+  if (!name) {
+    store.addToast('请输入文件名', 'error')
+    return
+  }
+  // 去掉路径分隔符，防止非法文件名
+  name = name.replace(/[\\/:*?"<>|]/g, '_')
+  if (!name.toLowerCase().endsWith('.json')) name += '.json'
   const payload = {
     investigator: props.investigatorId,
     saved_at: new Date().toISOString(),
@@ -183,12 +201,12 @@ function saveDeck() {
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
-  const date = new Date().toISOString().slice(0, 10)
   a.href = url
-  a.download = `deck_${props.investigatorId}_${date}.json`
+  a.download = name
   a.click()
   URL.revokeObjectURL(url)
-  store.addToast(`已保存卡组（${deck.value.length} 张）`, 'info')
+  showSaveModal.value = false
+  store.addToast(`已保存卡组（${deck.value.length} 张）为 ${name}`, 'info')
 }
 
 function confirm() {
@@ -389,6 +407,27 @@ onUnmounted(() => {
             style="display: none"
             @change="onImportFile"
           />
+        </div>
+      </div>
+    </div>
+
+    <!-- 保存卡组：文件名弹窗 -->
+    <div v-if="showSaveModal" class="modal-overlay" @click.self="showSaveModal = false">
+      <div class="save-modal">
+        <div class="save-title">保存卡组</div>
+        <div class="save-desc">将当前卡组（{{ deckSize }} 张）保存为 JSON 文件</div>
+        <input
+          v-model="saveFileName"
+          class="save-input"
+          type="text"
+          placeholder="文件名"
+          autofocus
+          @keyup.enter="confirmSave"
+          @keyup.esc="showSaveModal = false"
+        />
+        <div class="save-btns">
+          <button class="btn btn-import" @click="showSaveModal = false">取消</button>
+          <button class="btn btn-confirm" @click="confirmSave">保存</button>
         </div>
       </div>
     </div>
@@ -923,6 +962,62 @@ onUnmounted(() => {
 
 .btn-save:hover:not(:disabled) {
   background: #252540;
+}
+
+/* Save Deck Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.save-modal {
+  background: #14142b;
+  border: 1px solid #333355;
+  border-radius: 8px;
+  padding: 20px;
+  width: 360px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.save-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #eee;
+  margin-bottom: 6px;
+}
+
+.save-desc {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.save-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #0d0d20;
+  border: 1px solid #2a2a4e;
+  color: #eee;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.save-input:focus {
+  outline: none;
+  border-color: #4a4a8e;
+}
+
+.save-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .btn-confirm {
