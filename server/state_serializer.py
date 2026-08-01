@@ -1,12 +1,10 @@
 """Game state serialization for server-client communication.
 
-Extracted from ``frontend/server_core.py`` so that both the legacy HTTP
-servers and the new Socket.IO server share one canonical serializer.
+The canonical serializer used by the Socket.IO server.
 
 Three levels of serialization:
 
-* ``serialize_game_state(game, ...)`` — full state (backward-compatible
-  with the old ``serialize_state``).
+* ``serialize_game_state(game, ...)`` — full state.
 * ``serialize_public_state(game)`` — board state visible to all players.
 * ``serialize_private_state(game, investigator_id)`` — hand / deck info
   for one investigator.
@@ -248,7 +246,7 @@ def serialize_private_state(game: Game, investigator_id: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Full state (backward compatible with server_core.serialize_state)
+# Full state
 # ---------------------------------------------------------------------------
 
 def serialize_game_state(

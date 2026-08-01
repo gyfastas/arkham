@@ -28,7 +28,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 # ---------------------------------------------------------------------------
-# Investigator / deck definitions (extracted from server_core.py)
+# Investigator / deck definitions
 # ---------------------------------------------------------------------------
 
 INVESTIGATORS: dict[str, dict] = {
@@ -781,7 +781,7 @@ class GameSession:
             logs.clear()
 
     # -------------------------------------------------------------------
-    # Action handlers (ported from server_core.py)
+    # Action handlers
     # -------------------------------------------------------------------
 
     def _resolve_choice(self, data: dict) -> dict:

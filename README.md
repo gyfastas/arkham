@@ -12,7 +12,7 @@
 
 ## 快速启动
 
-### 方式一：Vue 3 客户端 + Socket.IO 服务端（推荐）
+### 启动游戏（Vue 3 客户端 + Socket.IO 服务端）
 
 ```bash
 # 1. 构建前端（首次或前端有改动时执行）
@@ -40,25 +40,10 @@ open http://localhost:5173
 
 ---
 
-### 方式二：传统 HTML 前端（旧版，仍可用）
-
-```bash
-# 黛西·沃克关卡（失落知识的图书馆）
-python3 frontend/server_daisy.py        # → http://localhost:8909
-
-# 完整场景（夜幕降临）
-python3 frontend/server_full.py         # → http://localhost:8908
-
-# 简单战斗测试
-python3 frontend/server.py              # → http://localhost:8907
-```
-
----
-
 ### 运行测试
 
 ```bash
-python3 -m pytest backend/tests/ -v    # 494 tests
+python3 -m pytest backend/tests/ -v    # 558 tests
 python3 -m pytest backend/tests/ -q    # 简洁输出
 ```
 
@@ -82,15 +67,15 @@ python3 -m pytest backend/tests/ -q    # 简洁输出
 - **弱点系统**：13 张弱点卡（签名弱点 + 基础弱点），抽到时自动触发 revelation
 - **战役系统**：敦威治遗产战役 + XP 经验
 
-### 新版 Vue 3 客户端（client/ + server/）
+### 客户端与服务端（client/ + server/）
 - **Socket.IO 实时通信**：服务端主动推送，无轮询
 - **Vue 3 + TypeScript + Vite + Pinia**：大厅/游戏/结算页面
 - **牌组构筑器**：等级限制 / 预设牌组 / JSON 导入导出
-- **交互系统**：卡牌 tooltip、拖拽打牌、检定投入卡牌、武器/敌人选择 Modal、弃牌堆浏览
+- **交互系统**：卡牌 tooltip、拖拽打牌、检定投入卡牌、武器/敌人选择 Modal、弃牌堆浏览、槽位指示条
 - **房间/大厅系统**：创建房间 → 选择调查员和剧本 → 开始游戏
 
 ### 测试
-- **494 tests passed**
+- **558 tests passed**
 
 ---
 
@@ -102,13 +87,13 @@ arkham/
 │   ├── models/            # 数据模型 (state, investigator, scenario, chaos)
 │   ├── engine/            # 游戏引擎 (phases, skill_test, damage, actions)
 │   ├── cards/             # 卡牌实现 ({class}/*.py，158 个已注册实现)
-│   └── tests/             # 494 tests passed
+│   └── tests/             # 558 tests passed
 ├── server/                # Socket.IO 游戏服务端
 │   ├── main.py            # 入口：aiohttp + Socket.IO，托管静态文件
 │   ├── game_session.py    # 游戏会话，包装 backend 引擎
 │   ├── room.py            # 房间/大厅管理
 │   ├── campaign.py        # 战役状态
-│   ├── state_serializer.py# 状态序列化（供新旧服务共用）
+│   ├── state_serializer.py# 状态序列化
 │   ├── event_logger.py    # 捕获可动画化事件
 │   ├── player.py          # 玩家会话
 │   └── protocol.py        # Socket.IO 消息类型定义
@@ -120,10 +105,8 @@ arkham/
 │   │   └── network/       # Socket.IO 通信层
 │   ├── package.json
 │   └── vite.config.ts     # 开发代理: /socket.io → :8910
-├── frontend/              # 旧版 HTML 前端（仍可用）
-│   ├── server_daisy.py    # 黛西测试关卡 (port 8909)
-│   ├── server_full.py     # 完整场景测试 (port 8908)
-│   └── server_core.py     # 旧版 HTTP 服务（复用 state_serializer）
+├── tests/
+│   └── playtest_video.py  # Playwright 自动试玩冒烟脚本
 ├── data/
 │   ├── investigators/     # 调查员 JSON
 │   ├── player_cards/      # 玩家卡牌（支援/事件/技能）
@@ -140,11 +123,12 @@ arkham/
 ## Roadmap
 
 ### ✅ 已完成
-- **Phase 0**：状态序列化提取（`server/state_serializer.py`，供新旧服务共用）
+- **Phase 0**：状态序列化提取（`server/state_serializer.py`）
 - **Phase 1**：Socket.IO 游戏服务端（房间系统、实时推送、EventLogger）
 - **Phase 2**：Vue 3 客户端（大厅 / 游戏 / 结算页面）
-- **Phase 3**：交互与体验（拖拽、投入卡牌、Tooltip、弃牌堆查看）
+- **Phase 3**：交互与体验（拖拽、投入卡牌、Tooltip、弃牌堆查看、槽位系统）
 - **内容扩展**：敦威治遗产——10 调查员能力、149 张玩家卡 100% 引擎实现、弱点系统、战役 XP
+- **旧版清理**：legacy `frontend/`（HTTP 服务 + 静态 HTML）已移除，唯一入口为 `server/main.py`
 
 ### 🚧 进行中
 - **Phase 4**：多人游戏（回合制执行、信息隔离、多调查员 HUD）
