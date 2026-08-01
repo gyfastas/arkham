@@ -242,3 +242,77 @@ class TestTheNecronomicon:
         assert inst_id not in inv.threat_area
         assert inst_id not in game.state.cards_in_play
         assert "the_necronomicon" in inv.discard
+
+
+class TestNecronomiconActionCost:
+    """Necronomicon activation costs 1 action (official: [action], not free).
+    Daisy may use her bonus Tome action since it has the Tome trait."""
+
+    def _necro_in_threat(self, game):
+        necro_data = CardData(
+            id="the_necronomicon", name="The Necronomicon", name_cn="死灵之书",
+            type=CardType.ASSET, card_class=PlayerClass.NEUTRAL,
+            slots=[SlotType.HAND], traits=["item", "tome"],
+        )
+        game.register_card_data(necro_data)
+        inv = game.state.get_investigator("daisy")
+        inst_id = game.state.next_instance_id()
+        ci = CardInstance(
+            instance_id=inst_id, card_id="the_necronomicon",
+            owner_id="daisy", controller_id="daisy",
+        )
+        ci.uses = {"horror": 3}
+        game.state.cards_in_play[inst_id] = ci
+        inv.threat_area.append(inst_id)
+        game.card_registry.activate_card("the_necronomicon", inst_id, game.event_bus)
+        return inst_id
+
+    def _session(self, game):
+        from server.game_session import GameSession
+        s = GameSession.__new__(GameSession)
+        s.game = game
+        s.action_log = []
+        s.controller = None
+        s.game_over = None
+        s.event_logger = None
+        return s
+
+    def test_activation_spends_tome_action_first(self, game):
+        inst_id = self._necro_in_threat(game)
+        inv = game.state.get_investigator("daisy")
+        inv.actions_remaining = 3
+        inv.tome_actions_remaining = 1
+
+        s = self._session(game)
+        result = s._activate_card(inv, {"instance_id": inst_id, "activation_id": "horror"})
+
+        assert result["success"] is True
+        assert inv.tome_actions_remaining == 0   # tome action used first
+        assert inv.actions_remaining == 3        # regular actions untouched
+        assert inv.horror == 1
+
+    def test_activation_spends_regular_action_when_no_tome(self, game):
+        inst_id = self._necro_in_threat(game)
+        inv = game.state.get_investigator("daisy")
+        inv.actions_remaining = 2
+        inv.tome_actions_remaining = 0
+
+        s = self._session(game)
+        result = s._activate_card(inv, {"instance_id": inst_id, "activation_id": "horror"})
+
+        assert result["success"] is True
+        assert inv.actions_remaining == 1
+        assert inv.horror == 1
+
+    def test_activation_rejected_without_actions(self, game):
+        inst_id = self._necro_in_threat(game)
+        inv = game.state.get_investigator("daisy")
+        inv.actions_remaining = 0
+        inv.tome_actions_remaining = 0
+
+        s = self._session(game)
+        result = s._activate_card(inv, {"instance_id": inst_id, "activation_id": "horror"})
+
+        assert result["success"] is False
+        assert "行动" in result["message"]
+        assert inv.horror == 0  # no horror moved

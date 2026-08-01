@@ -1087,8 +1087,13 @@ class GameSession:
 
         # Action cost
         actions_cost = int(decl.get("actions", 0) or 0)
-        if actions_cost > inv.actions_remaining:
-            return {"success": False, "message": f"需要{actions_cost}个行动"}
+        if actions_cost > 0:
+            is_tome = self._is_tome_asset(ci.card_id)
+            available = inv.actions_remaining + (
+                inv.tome_actions_remaining if is_tome else 0
+            )
+            if actions_cost > available:
+                return {"success": False, "message": f"需要{actions_cost}个行动"}
 
         # Get or create the impl instance
         impl = self.game.card_registry.active_instances.get(instance_id)
@@ -1117,7 +1122,10 @@ class GameSession:
         if not ok:
             return {"success": False, "message": f"{name_cn}：无法启动（条件不满足）"}
 
-        if actions_cost:
+        if actions_cost == 1:
+            # Prefer Daisy's tome bonus action for Tome cards
+            self._spend_activate_action(inv, ci.card_id)
+        elif actions_cost > 1:
             inv.actions_remaining -= actions_cost
 
         label = decl.get("label", activation_id)

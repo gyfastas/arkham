@@ -28,14 +28,16 @@ const SKILL_ICONS: Record<string, string> = {
   agility: '🏃',
 }
 
-const selected = ref<string[]>([])
+const selected = ref<number[]>([])  // hand 数组下标（同名卡有多张，不能用 card.id）
 
 // 可投入的卡：含有本次技能类型图标或万能图标的卡
 const eligibleCards = computed(() =>
-  props.hand.filter(c => {
-    const icons = c.skill_icons || {}
-    return (icons[props.skillType] || 0) > 0 || (icons['wild'] || 0) > 0
-  })
+  props.hand
+    .map((card, index) => ({ card, index }))
+    .filter(({ card }) => {
+      const icons = card.skill_icons || {}
+      return (icons[props.skillType] || 0) > 0 || (icons['wild'] || 0) > 0
+    })
 )
 
 function iconCount(card: CardDisplay): number {
@@ -44,23 +46,31 @@ function iconCount(card: CardDisplay): number {
 }
 
 // 每种卡限投1张（官方规则：同名卡每次检定只能投入1张）
-function toggle(card: CardDisplay) {
-  const idx = selected.value.indexOf(card.id)
-  if (idx !== -1) {
-    selected.value.splice(idx, 1)
-  } else {
-    selected.value.push(card.id)
+function toggle(index: number, card: CardDisplay) {
+  const i = selected.value.indexOf(index)
+  if (i !== -1) {
+    selected.value.splice(i, 1)
+    return
   }
+  // 同名卡互斥：选中这张时，取消已选中的同名卡
+  const dup = eligibleCards.value.find(
+    ({ index: idx, card: c }) =>
+      idx !== index && c.id === card.id && selected.value.includes(idx)
+  )
+  if (dup) {
+    selected.value.splice(selected.value.indexOf(dup.index), 1)
+  }
+  selected.value.push(index)
 }
 
 const totalIcons = computed(() =>
   eligibleCards.value
-    .filter(c => selected.value.includes(c.id))
-    .reduce((sum, c) => sum + iconCount(c), 0)
+    .filter(({ index }) => selected.value.includes(index))
+    .reduce((sum, { card }) => sum + iconCount(card), 0)
 )
 
 function confirm() {
-  emit('confirm', [...selected.value])
+  emit('confirm', selected.value.map(i => props.hand[i].id))
 }
 </script>
 
@@ -75,11 +85,11 @@ function confirm() {
 
       <div v-if="eligibleCards.length" class="commit-cards">
         <div
-          v-for="card in eligibleCards"
-          :key="card.id"
+          v-for="{ card, index } in eligibleCards"
+          :key="index"
           class="commit-card"
-          :class="{ selected: selected.includes(card.id) }"
-          @click="toggle(card)"
+          :class="{ selected: selected.includes(index) }"
+          @click="toggle(index, card)"
         >
           <div class="cc-name">{{ card.name_cn || card.name }}</div>
           <div class="cc-icons">
@@ -87,8 +97,8 @@ function confirm() {
               {{ SKILL_LABELS[k] || k }}×{{ n }}
             </span>
           </div>
-          <div v-if="card.text_cn" class="cc-text">{{ card.text_cn }}</div>
-          <div class="cc-check" v-if="selected.includes(card.id)">✓</div>
+          <div v-if="card.text_cn" class="cc-text" v-html="card.text_cn"></div>
+          <div class="cc-check" v-if="selected.includes(index)">✓</div>
         </div>
       </div>
       <div v-else class="commit-empty">手中没有可投入的技能卡</div>

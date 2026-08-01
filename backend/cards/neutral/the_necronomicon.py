@@ -1,6 +1,7 @@
 """The Necronomicon: John Dee Translation — Neutral Asset (Signature Weakness).
 揭示：放入威胁区域，上面放3个恐惧。有恐惧时不能离场。
-自由行动：将1个恐惧从死灵之书移到黛西身上。
+[行动]：将1个恐惧从死灵之书移到黛西身上。若无恐惧则弃掉。
+（官方：该启动能力消耗1个行动，不是自由行动）
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -9,7 +10,7 @@ from backend.models.enums import GameEvent, TimingPriority
 
 class TheNecronomicon(CardImplementation):
     card_id = "the_necronomicon"
-    activations = [{"id": "horror", "label": "自由行动：移1恐惧到自己身上", "method": "activate"}]
+    activations = [{"id": "horror", "label": "移1恐惧到自己身上", "method": "activate", "actions": 1}]
 
     @on_event(
         GameEvent.CARD_DRAWN,

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { CardInstanceDisplay, SlotStatusEntry } from '../state/types'
+import { usesLabel } from '../utils/labels'
 
 const props = defineProps<{
   assets: CardInstanceDisplay[]
@@ -93,7 +94,7 @@ const slotBar = computed(() => {
         </div>
         <div v-if="asset.uses" class="asset-uses">
           <span v-for="(count, useType) in asset.uses" :key="useType" class="use-badge">
-            {{ useType }}: {{ count }}
+            {{ usesLabel(useType as string) }}: {{ count }}
           </span>
         </div>
         <div v-if="asset.exhausted" class="exhausted-label">已消耗</div>
@@ -123,7 +124,7 @@ const slotBar = computed(() => {
           <div class="asset-name">{{ card.name_cn || card.name }}</div>
           <div v-if="card.uses" class="asset-uses">
             <span v-for="(count, useType) in card.uses" :key="useType" class="use-badge">
-              {{ useType }}: {{ count }}
+              {{ usesLabel(useType as string) }}: {{ count }}
             </span>
           </div>
           <div v-if="card.activations?.length" class="asset-actions">

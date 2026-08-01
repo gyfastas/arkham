@@ -12,7 +12,7 @@ const emit = defineEmits<{
   <Teleport to="body">
     <div v-if="choice" class="modal-overlay">
       <div class="modal-content">
-        <div class="modal-prompt">{{ choice.prompt }}</div>
+        <div class="modal-prompt" v-html="choice.prompt"></div>
         <div class="modal-options">
           <button
             v-for="opt in choice.options"

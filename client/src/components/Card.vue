@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { CardDisplay } from '../state/types'
+import { traitsLabel } from '../utils/labels'
 
 const props = withDefaults(defineProps<{
   card: CardDisplay
@@ -99,9 +100,9 @@ function onLeave() {
     </div>
     <div class="card-name">{{ card.name_cn || card.name }}</div>
     <div v-if="!small && card.traits && card.traits.length" class="card-traits">
-      {{ card.traits.join(' · ') }}
+      {{ traitsLabel(card.traits) }}
     </div>
-    <div v-if="!small && card.text_cn" class="card-text-brief">{{ card.text_cn }}</div>
+    <div v-if="!small && card.text_cn" class="card-text-brief" v-html="card.text_cn"></div>
     <div v-if="card.skill_icons && Object.keys(card.skill_icons).length" class="card-skills">
       <span
         v-for="(count, skill) in card.skill_icons"
@@ -130,10 +131,9 @@ function onLeave() {
         <span v-if="card.unique" class="tt-unique">唯一</span>
       </div>
       <div v-if="card.traits && card.traits.length" class="tt-traits">
-        {{ card.traits.join(' · ') }}
+        {{ traitsLabel(card.traits) }}
       </div>
-      <div v-if="card.text_cn || card.text" class="tt-text">
-        {{ card.text_cn || card.text }}
+      <div v-if="card.text_cn || card.text" class="tt-text" v-html="card.text_cn || card.text">
       </div>
       <div class="tt-bottom">
         <div v-if="card.skill_icons && Object.keys(card.skill_icons).length" class="tt-skills">

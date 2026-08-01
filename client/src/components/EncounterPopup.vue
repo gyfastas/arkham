@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue'
 import type { EncounterCardDisplay } from '../state/types'
+import { traitsLabel } from '../utils/labels'
 
 const props = defineProps<{ encounter: EncounterCardDisplay | null }>()
 
@@ -51,9 +52,9 @@ const TYPE_LABELS: Record<string, string> = {
             <span v-if="encounter.horror != null" class="stat hor" title="恐惧">🧠 {{ encounter.horror }}</span>
           </div>
           <div v-if="encounter.traits && encounter.traits.length" class="encounter-traits">
-            {{ encounter.traits.join(' · ') }}
+            {{ traitsLabel(encounter.traits) }}
           </div>
-          <div v-if="encounter.text" class="encounter-text">{{ encounter.text }}</div>
+          <div v-if="encounter.text" class="encounter-text" v-html="encounter.text"></div>
           <button class="dismiss-btn" @click="dismiss">关闭</button>
         </div>
       </div>
