@@ -798,6 +798,25 @@ class GameSession:
             self._clear_game_over()
             return {"success": True, "message": "已选择"}
 
+        # --- Shortcut: choose a connecting location to move to ---
+        if kind == "shortcut_move":
+            target_id = pc.get("investigator_id") or "player"
+            tinv = self.game.state.get_investigator(target_id)
+            if tinv is None:
+                return {"success": False, "message": "调查员不存在"}
+            valid = {opt.get("id") for opt in pc.get("options") or []}
+            if choice_id not in valid:
+                return {"success": False, "message": "无效的目的地"}
+            tinv.location_id = choice_id
+            loc = self.game.state.get_location(choice_id)
+            loc_name = (
+                (loc.card_data.name_cn or loc.card_data.name)
+                if loc is not None and loc.card_data is not None
+                else choice_id
+            )
+            self.action_log.append(f"🛣️ 捷径：移动到【{loc_name}】")
+            return {"success": True, "message": f"捷径：移动到{loc_name}"}
+
         # --- Zoey Samaras reactions on engage ---
         if kind == "zoey_reactions_on_engage":
             inv = self.game.state.get_investigator(pc.get("investigator_id"))
