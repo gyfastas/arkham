@@ -138,20 +138,57 @@ function applyPreset(cards: string[]) {
   deck.value = [...cards]
 }
 
+// --- 卡组文件：导入（本地文件选择） / 保存（下载 JSON） ---
+const fileInput = ref<HTMLInputElement | null>(null)
+
 function importDeck() {
-  const input = window.prompt('粘贴卡组JSON (卡牌ID数组):')
-  if (!input) return
-  try {
-    const parsed = JSON.parse(input)
-    if (Array.isArray(parsed) && parsed.every((x: unknown) => typeof x === 'string')) {
-      deck.value = parsed
-      store.addToast(`导入 ${parsed.length} 张卡牌`, 'info')
-    } else {
-      store.addToast('格式错误: 需要字符串数组', 'error')
+  fileInput.value?.click()
+}
+
+function onImportFile(event: Event) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  input.value = '' // 允许重复选择同一文件
+  if (!file) return
+  const reader = new FileReader()
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(String(reader.result))
+      // 兼容两种格式：纯卡牌ID数组，或保存时导出的 { cards: [...] }
+      const cards: unknown = Array.isArray(parsed) ? parsed : parsed?.cards
+      if (Array.isArray(cards) && cards.every((x: unknown) => typeof x === 'string')) {
+        deck.value = [...cards]
+        store.addToast(`导入 ${cards.length} 张卡牌`, 'info')
+      } else {
+        store.addToast('格式错误：需要卡牌ID数组或 { "cards": [...] }', 'error')
+      }
+    } catch {
+      store.addToast('JSON 解析失败', 'error')
     }
-  } catch {
-    store.addToast('JSON 解析失败', 'error')
   }
+  reader.onerror = () => store.addToast('文件读取失败', 'error')
+  reader.readAsText(file)
+}
+
+function saveDeck() {
+  if (deck.value.length === 0) {
+    store.addToast('卡组为空，无法保存', 'error')
+    return
+  }
+  const payload = {
+    investigator: props.investigatorId,
+    saved_at: new Date().toISOString(),
+    cards: [...deck.value],
+  }
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  const date = new Date().toISOString().slice(0, 10)
+  a.href = url
+  a.download = `deck_${props.investigatorId}_${date}.json`
+  a.click()
+  URL.revokeObjectURL(url)
+  store.addToast(`已保存卡组（${deck.value.length} 张）`, 'info')
 }
 
 function confirm() {
@@ -343,7 +380,15 @@ onUnmounted(() => {
         <!-- Actions -->
         <div class="deck-actions">
           <button class="btn btn-import" @click="importDeck">导入卡组</button>
+          <button class="btn btn-save" :disabled="deckSize === 0" @click="saveDeck">保存卡组</button>
           <button class="btn btn-confirm" :disabled="!canConfirm" @click="confirm">确认</button>
+          <input
+            ref="fileInput"
+            type="file"
+            accept=".json,application/json"
+            style="display: none"
+            @change="onImportFile"
+          />
         </div>
       </div>
     </div>
@@ -867,6 +912,16 @@ onUnmounted(() => {
 }
 
 .btn-import:hover {
+  background: #252540;
+}
+
+.btn-save {
+  background: #1a1a2e;
+  color: #ccc;
+  border: 1px solid #333;
+}
+
+.btn-save:hover:not(:disabled) {
   background: #252540;
 }
 
