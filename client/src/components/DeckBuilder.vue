@@ -3,6 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useSocket } from '../composables/useSocket'
 import { useGameStore } from '../stores/game'
 import type { CardDisplay } from '../state/types'
+import { localizeDisplayHtml, localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{
   investigatorId: string
@@ -206,7 +207,7 @@ onUnmounted(() => {
             @mouseleave="hidePreview"
           >
             <div class="card-top">
-              <span class="card-name">{{ card.name_cn }}</span>
+              <span class="card-name">{{ localizeDisplayText(card.name_cn, store.language) }}</span>
               <span class="card-cost" v-if="card.cost !== null">{{ card.cost }}</span>
             </div>
             <div class="card-meta">
@@ -226,7 +227,7 @@ onUnmounted(() => {
         <div v-if="previewCard" class="card-preview" :style="previewStyle">
           <div class="pv-header" :style="{ borderBottomColor: CLASS_COLORS[previewCard.class] || '#333' }">
             <span v-if="previewCard.cost !== null" class="pv-cost">{{ previewCard.cost }}</span>
-            <span class="pv-name">{{ previewCard.name_cn || previewCard.name }}</span>
+            <span class="pv-name">{{ localizeDisplayText(previewCard.name_cn || previewCard.name, store.language) }}</span>
             <span v-if="previewCard.level != null && previewCard.level > 0" class="pv-level">Lv.{{ previewCard.level }}</span>
           </div>
           <div class="pv-meta">
@@ -240,8 +241,8 @@ onUnmounted(() => {
               {{ SKILL_ICON_LABELS[k] || k }}×{{ n }}
             </span>
           </div>
-          <div v-if="previewCard.text_cn" class="pv-text" v-html="previewCard.text_cn"></div>
-          <div v-else-if="previewCard.text" class="pv-text" v-html="previewCard.text"></div>
+          <div v-if="previewCard.text_cn" class="pv-text" v-html="localizeDisplayHtml(previewCard.text_cn, store.language)"></div>
+          <div v-else-if="previewCard.text" class="pv-text" v-html="localizeDisplayHtml(previewCard.text, store.language)"></div>
           <div v-if="previewCard.health != null || previewCard.sanity != null" class="pv-stats">
             <span v-if="previewCard.health != null">♥{{ previewCard.health }}</span>
             <span v-if="previewCard.sanity != null">☽{{ previewCard.sanity }}</span>
@@ -265,7 +266,7 @@ onUnmounted(() => {
               class="deck-entry auto-entry"
               :style="{ borderLeftColor: '#d4a017' }"
             >
-              <span class="entry-name">{{ card.name_cn || card.name }}</span>
+              <span class="entry-name">{{ localizeDisplayText(card.name_cn || card.name, store.language) }}</span>
               <span class="entry-tag sig-tag">专属</span>
             </div>
             <div
@@ -274,7 +275,7 @@ onUnmounted(() => {
               class="deck-entry auto-entry"
               :style="{ borderLeftColor: '#c0392b' }"
             >
-              <span class="entry-name">{{ card.name_cn || card.name }}</span>
+              <span class="entry-name">{{ localizeDisplayText(card.name_cn || card.name, store.language) }}</span>
               <span class="entry-tag weak-tag">弱点</span>
             </div>
           </div>
@@ -285,7 +286,7 @@ onUnmounted(() => {
             class="deck-entry"
             :style="{ borderLeftColor: CLASS_COLORS[entry.card.class] || '#333' }"
           >
-            <span class="entry-name">{{ entry.card.name_cn }}</span>
+            <span class="entry-name">{{ localizeDisplayText(entry.card.name_cn, store.language) }}</span>
             <span class="entry-count">x{{ entry.count }}</span>
             <button class="entry-remove" @click="removeCard(entry.card.id)" title="移除一张">-</button>
           </div>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { GameState } from '../state/types'
+import { useGameStore } from '../stores/game'
 
 const props = defineProps<{
   state: GameState
 }>()
+const store = useGameStore()
 
 const emit = defineEmits<{
   action: [type: string]
@@ -23,21 +25,21 @@ interface ActionDef {
 }
 
 const actions = computed<ActionDef[]>(() => [
-  { type: 'INVESTIGATE', label: '调查', icon: '🔍', show: hasActionsLeft.value },
-  { type: 'FIGHT', label: '战斗', icon: '⚔️', show: hasActionsLeft.value && hasEnemies.value },
-  { type: 'EVADE', label: '闪避', icon: '🏃', show: hasActionsLeft.value && hasEnemies.value },
-  { type: 'ENGAGE', label: '交战', icon: '🎯', show: hasActionsLeft.value },
-  { type: 'DRAW', label: '抽牌', icon: '🃏', show: hasActionsLeft.value },
-  { type: 'RESOURCE', label: '资源', icon: '◆', show: hasActionsLeft.value },
-  { type: 'END_TURN', label: '结束回合', icon: '⏭', show: true, highlight: true },
+  { type: 'INVESTIGATE', label: store.language === 'zh-Hant' ? '調查' : '调查', icon: '🔍', show: hasActionsLeft.value },
+  { type: 'FIGHT', label: store.language === 'zh-Hant' ? '戰鬥' : '战斗', icon: '⚔️', show: hasActionsLeft.value && hasEnemies.value },
+  { type: 'EVADE', label: store.language === 'zh-Hant' ? '閃避' : '闪避', icon: '🏃', show: hasActionsLeft.value && hasEnemies.value },
+  { type: 'ENGAGE', label: store.language === 'zh-Hant' ? '交戰' : '交战', icon: '🎯', show: hasActionsLeft.value },
+  { type: 'DRAW', label: store.language === 'zh-Hant' ? '抽牌' : '抽牌', icon: '🃏', show: hasActionsLeft.value },
+  { type: 'RESOURCE', label: store.language === 'zh-Hant' ? '資源' : '资源', icon: '◆', show: hasActionsLeft.value },
+  { type: 'END_TURN', label: store.language === 'zh-Hant' ? '結束回合' : '结束回合', icon: '⏭', show: true, highlight: true },
 ])
 </script>
 
 <template>
   <div class="action-bar">
     <div class="action-info">
-      <span class="action-count">行动: {{ state.investigator.actions_remaining }}</span>
-      <span class="tome-count" v-if="hasTomeActions">典籍: {{ state.investigator.tome_actions_remaining }}</span>
+      <span class="action-count">{{ store.language === 'zh-Hant' ? '行動' : '行动' }}: {{ state.investigator.actions_remaining }}</span>
+      <span class="tome-count" v-if="hasTomeActions">{{ store.language === 'zh-Hant' ? '典籍' : '典籍' }}: {{ state.investigator.tome_actions_remaining }}</span>
     </div>
     <div class="action-buttons">
       <button

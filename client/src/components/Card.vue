@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { CardDisplay } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayHtml, localizeDisplayText } from '../utils/displayText'
 
 const props = withDefaults(defineProps<{
   card: CardDisplay
   small?: boolean
   showTooltip?: boolean
 }>(), { small: false, showTooltip: true })
+const store = useGameStore()
 
 const CLASS_COLORS: Record<string, string> = {
   guardian: '#2980b9',
@@ -24,6 +27,10 @@ const CLASS_LABELS: Record<string, string> = {
   mystic: '潜修者',
   survivor: '求生者',
   neutral: '中立',
+}
+
+const CLASS_LABELS_HANT: Record<string, string> = {
+  guardian: '守衛者', seeker: '探求者', rogue: '流浪者', mystic: '潛修者', survivor: '求生者', neutral: '中立',
 }
 
 const SKILL_LABELS: Record<string, string> = {
@@ -52,6 +59,10 @@ const SLOT_LABELS: Record<string, string> = {
   'arcane x2': '双奥秘',
 }
 
+const SLOT_LABELS_HANT: Record<string, string> = {
+  hand: '手部', 'hand x2': '雙手', body: '身體', accessory: '配件', ally: '盟友', arcane: '奧秘', 'arcane x2': '雙奧秘',
+}
+
 function borderColor(): string {
   return CLASS_COLORS[props.card.class] || CLASS_COLORS.neutral
 }
@@ -65,8 +76,12 @@ const hovered = ref(false)
 const tooltipStyle = ref<Record<string, string>>({})
 const cardEl = ref<HTMLElement | null>(null)
 
+const displayName = computed(() => localizeDisplayText(props.card.name_cn || props.card.name, store.language))
+const displayTraits = computed(() => (props.card.traits || []).map(trait => localizeDisplayText(trait, store.language)).join(' · '))
+const displayText = computed(() => localizeDisplayHtml(props.card.text_cn || props.card.text, store.language))
+
 function onEnter() {
-  if (!props.showTooltip || props.small) return
+  if (!props.showTooltip) return
   hovered.value = true
   if (cardEl.value) {
     const rect = cardEl.value.getBoundingClientRect()
@@ -97,11 +112,10 @@ function onLeave() {
       <span v-if="card.cost !== null" class="card-cost">{{ card.cost }}</span>
       <span class="card-type">{{ typeLabel(card.type) }}</span>
     </div>
-    <div class="card-name">{{ card.name_cn || card.name }}</div>
+    <div class="card-name">{{ displayName }}</div>
     <div v-if="!small && card.traits && card.traits.length" class="card-traits">
-      {{ card.traits.join(' · ') }}
+      {{ displayTraits }}
     </div>
-    <div v-if="!small && card.text_cn" class="card-text-brief">{{ card.text_cn }}</div>
     <div v-if="card.skill_icons && Object.keys(card.skill_icons).length" class="card-skills">
       <span
         v-for="(count, skill) in card.skill_icons"
@@ -112,7 +126,7 @@ function onLeave() {
     <div v-if="!small" class="card-footer">
       <span v-if="card.health != null" class="hp">♥{{ card.health }}</span>
       <span v-if="card.sanity != null" class="san">☽{{ card.sanity }}</span>
-      <span v-if="card.slots && card.slots.length" class="slots">{{ card.slots.map(s => SLOT_LABELS[s] || s).join(', ') }}</span>
+      <span v-if="card.slots && card.slots.length" class="slots">{{ card.slots.map(s => (store.language === 'zh-Hant' ? SLOT_LABELS_HANT[s] : SLOT_LABELS[s]) || s).join(', ') }}</span>
     </div>
   </div>
 
@@ -121,20 +135,18 @@ function onLeave() {
     <div v-if="hovered && showTooltip" class="card-tooltip" :style="tooltipStyle">
       <div class="tt-header" :style="{ borderBottomColor: borderColor() }">
         <span class="tt-cost" v-if="card.cost !== null">{{ card.cost }}</span>
-        <span class="tt-name">{{ card.name_cn || card.name }}</span>
+        <span class="tt-name">{{ displayName }}</span>
         <span class="tt-level" v-if="card.level != null && card.level > 0">Lv.{{ card.level }}</span>
       </div>
       <div class="tt-subtitle">
-        <span class="tt-class" :style="{ color: borderColor() }">{{ CLASS_LABELS[card.class] || card.class }}</span>
+        <span class="tt-class" :style="{ color: borderColor() }">{{ (store.language === 'zh-Hant' ? CLASS_LABELS_HANT : CLASS_LABELS)[card.class] || card.class }}</span>
         <span class="tt-type">{{ typeLabel(card.type) }}</span>
         <span v-if="card.unique" class="tt-unique">唯一</span>
       </div>
       <div v-if="card.traits && card.traits.length" class="tt-traits">
-        {{ card.traits.join(' · ') }}
+        {{ displayTraits }}
       </div>
-      <div v-if="card.text_cn || card.text" class="tt-text">
-        {{ card.text_cn || card.text }}
-      </div>
+      <div v-if="card.text_cn || card.text" class="tt-text" v-html="displayText"></div>
       <div class="tt-bottom">
         <div v-if="card.skill_icons && Object.keys(card.skill_icons).length" class="tt-skills">
           <span v-for="(count, skill) in card.skill_icons" :key="skill" class="tt-skill">
@@ -145,7 +157,7 @@ function onLeave() {
           <span v-if="card.health != null" class="hp">♥ {{ card.health }}</span>
           <span v-if="card.sanity != null" class="san">☽ {{ card.sanity }}</span>
           <span v-if="card.slots && card.slots.length" class="tt-slots">
-            栏位: {{ card.slots.map(s => SLOT_LABELS[s] || s).join(', ') }}
+            {{ store.language === 'zh-Hant' ? '欄位' : '栏位' }}: {{ card.slots.map(s => (store.language === 'zh-Hant' ? SLOT_LABELS_HANT[s] : SLOT_LABELS[s]) || s).join(', ') }}
           </span>
         </div>
       </div>
@@ -210,15 +222,6 @@ function onLeave() {
   text-align: center;
   font-style: italic;
   margin-bottom: 4px;
-}
-.card-text-brief {
-  font-size: 10px;
-  color: #ccc;
-  line-height: 1.3;
-  margin-bottom: 4px;
-  max-height: 40px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .card-skills {
   display: flex;
@@ -320,6 +323,7 @@ function onLeave() {
   background: #0a0a18;
   border-radius: 4px;
   border-left: 3px solid #333;
+  white-space: pre-line;
 }
 .tt-bottom {
   display: flex;

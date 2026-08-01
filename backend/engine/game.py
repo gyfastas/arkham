@@ -139,6 +139,9 @@ class Game:
         # Draws go through the draw hook so weakness revelations in the
         # opening hand fire (per official rules).
         from backend.engine.draw_hooks import emit_card_drawn
+        defer_opening_revelations = bool(
+            self.state.scenario.vars.get("opening_mulligan_pending")
+        )
         for inv_id in self.state.player_order:
             inv = self.state.get_investigator(inv_id)
             if inv:
@@ -146,7 +149,8 @@ class Game:
                 for _ in range(min(5, len(inv.deck))):
                     card_id = inv.deck.pop(0)
                     inv.hand.append(card_id)
-                    emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id)
+                    if not defer_opening_revelations:
+                        emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id)
 
     def run_round(self, action_callback=None, discard_callback=None) -> None:
         """Execute one full game round."""

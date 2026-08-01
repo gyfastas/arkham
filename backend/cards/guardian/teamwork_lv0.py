@@ -8,6 +8,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.engine.slots import vacate_asset_slots
 from backend.models.enums import GameEvent, TimingPriority
 
 
@@ -57,8 +58,12 @@ class Teamwork(CardImplementation):
         traits = set(getattr(data, "traits", []) or []) if data else set()
         if data is not None and not ({"item", "ally"} & traits):
             return False
+        vacate_asset_slots(game_state, asset_instance_id)
         giver.play_area.remove(asset_instance_id)
         receiver.play_area.append(asset_instance_id)
         inst.controller_id = to_investigator_id
         inst.owner_id = to_investigator_id
+        manager = getattr(game_state, "slot_managers", {}).get(to_investigator_id)
+        if manager:
+            manager.occupy(asset_instance_id, inst.slot_used)
         return True

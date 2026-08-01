@@ -6,6 +6,15 @@ import type {
   EncounterCardDisplay,
 } from '../state/types'
 
+export type GameLanguage = 'zh-Hans' | 'zh-Hant'
+
+const LANGUAGE_STORAGE_KEY = 'arkham-language'
+
+function loadLanguage(): GameLanguage {
+  const saved = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+  return saved === 'zh-Hans' || saved === 'zh-Hant' ? saved : 'zh-Hant'
+}
+
 export const useGameStore = defineStore('game', () => {
   // Connection
   const connected = ref(false)
@@ -14,6 +23,9 @@ export const useGameStore = defineStore('game', () => {
   // Lobby state
   const selectedScenario = ref('')
   const selectedInvestigator = ref('')
+  // Keep the original card data untouched; this preference controls display
+  // language and can be expanded when translated fields are added later.
+  const language = ref<GameLanguage>(loadLanguage())
   const investigatorDetail = ref<InvestigatorDetail | null>(null)
   const availableCards = ref<CardDisplay[]>([])
   const deckPresets = ref<DeckPreset[]>([])
@@ -42,6 +54,11 @@ export const useGameStore = defineStore('game', () => {
     }, 3000)
   }
 
+  function setLanguage(next: GameLanguage) {
+    language.value = next
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next)
+  }
+
   function updateState(newState: GameState, events?: GameEventData[]) {
     state.value = newState
     if (events) pendingEvents.value = events
@@ -64,6 +81,7 @@ export const useGameStore = defineStore('game', () => {
   return {
     connected, playerId,
     selectedScenario, selectedInvestigator,
+    language, setLanguage,
     investigatorDetail, availableCards, deckPresets, deckRequirements, signatureCards, weaknessCards,
     state, gameOver, lastActionResult, pendingEvents,
     campaignState,

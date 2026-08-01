@@ -3,6 +3,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.engine.slots import vacate_asset_slots
 from backend.models.enums import GameEvent, Skill, TimingPriority
 
 
@@ -39,5 +40,6 @@ class MagnifyingGlassLv1(CardImplementation):
         location = ctx.game_state.get_location(inv.location_id)
         if location and location.clues == 0:
             # Return to hand
+            vacate_asset_slots(ctx.game_state, self.instance_id)
             inv.play_area.remove(self.instance_id)
             inv.hand.append(self.instance_id)

@@ -17,7 +17,7 @@ from __future__ import annotations
 from typing import Any
 
 from backend.engine.game import Game
-from backend.models.enums import CardType
+from backend.models.enums import CardType, SLOT_LIMITS, SlotType
 from backend.models.state import CardData
 from backend.scenarios.official_core import load_scenario_definition
 
@@ -43,9 +43,9 @@ def _enemy_dict(game: Game, ci: Any, cd: CardData | None, engaged: bool) -> dict
     }
 
 
-def _serialize_card(cd: CardData) -> dict:
+def _serialize_card(cd: CardData, game: Game | None = None) -> dict:
     """Serialize a CardData for hand / catalog display."""
-    return {
+    result = {
         "id": cd.id,
         "name": cd.name,
         "name_cn": cd.name_cn,
@@ -58,6 +58,15 @@ def _serialize_card(cd: CardData) -> dict:
         "skill_icons": cd.skill_icons,
         "traits": cd.traits,
     }
+    if game is not None and cd.type == CardType.SKILL:
+        impl_cls = game.card_registry.get_implementation(cd.id)
+        if impl_cls is not None:
+            result["has_commit_effect"] = True
+            result["commit_effect_cost"] = max(0, int(getattr(impl_cls, "commit_effect_cost", 0) or 0))
+            result["commit_effect_label"] = getattr(
+                impl_cls, "commit_effect_label", "成功后触发牌面效果"
+            )
+    return result
 
 
 def _serialize_card_instance(game: Game, ci: Any) -> dict:
@@ -86,6 +95,23 @@ def _serialize_card_instance(game: Game, ci: Any) -> dict:
         "traits": list(cd.traits) if cd else [],
         "activations": activations,
     }
+
+
+def _serialize_slot_summary(game: Game, investigator_id: str) -> list[dict]:
+    """Expose live slot usage, including bonus slots granted by assets."""
+    manager = game.slot_managers.get(investigator_id)
+    summary = []
+    for slot_type in SlotType:
+        used = manager.count_used(slot_type) if manager else 0
+        bonus = manager.bonus_slots.get(slot_type, 0) if manager else 0
+        limit = SLOT_LIMITS.get(slot_type, 0) + bonus
+        summary.append({
+            "type": slot_type.value,
+            "used": used,
+            "limit": limit,
+            "available": max(0, limit - used),
+        })
+    return summary
 
 
 # ---------------------------------------------------------------------------
@@ -209,6 +235,7 @@ def serialize_investigator_public(game: Game, investigator_id: str) -> dict:
         "discard_count": len(inv.discard),
         "defeated": inv.is_defeated,
         "location_id": inv.location_id,
+        "slot_summary": _serialize_slot_summary(game, investigator_id),
         "play_area": play_area,
         "threat_area": threat_area,
     }
@@ -224,7 +251,7 @@ def serialize_private_state(game: Game, investigator_id: str) -> dict:
     for card_id in inv.hand:
         cd = game.state.get_card_data(card_id)
         if cd:
-            hand.append(_serialize_card(cd))
+            hand.append(_serialize_card(cd, game))
 
     # Discard pile
     discard = []
@@ -288,7 +315,7 @@ def serialize_game_state(
         for card_id in inv.hand:
             cd = game.state.get_card_data(card_id)
             if cd:
-                hand.append(_serialize_card(cd))
+                hand.append(_serialize_card(cd, game))
 
     # Discard pile (visible to owner)
     discard: list[dict] = []
@@ -335,6 +362,7 @@ def serialize_game_state(
     tre = scenario.vars.get("treacheries", {})
     tre_list = sorted(list(tre.values()), key=lambda x: x.get("id", ""))
     pending_choice = scenario.vars.get("pending_choice")
+    pending_skill_test = scenario.vars.get("pending_skill_test")
     last_encounter = scenario.vars.get("last_encounter")
     # Normalize: some code paths store only the card_id string; the client
     # popup expects a full card dict (name_cn/type/text/traits).
@@ -395,6 +423,7 @@ def serialize_game_state(
             "discard_count": len(inv.discard) if inv else 0,
             "defeated": inv.is_defeated if inv else False,
             "location_id": inv.location_id if inv else "",
+            "slot_summary": _serialize_slot_summary(game, viewer_investigator_id) if inv else [],
         },
         "location": {
             "id": inv.location_id if inv else "",
@@ -447,6 +476,7 @@ def serialize_game_state(
         },
         "treacheries": tre_list,
         "pending_choice": pending_choice,
+        "pending_skill_test": pending_skill_test,
         "game_over": game_over,
         "encounter_deck_count": len(scenario.encounter_deck),
         "encounter_discard_count": len(scenario.encounter_discard),

@@ -7,6 +7,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.engine.slots import vacate_asset_slots
 from backend.models.enums import GameEvent, Skill, TimingPriority
 
 
@@ -31,6 +32,7 @@ class HiredMuscle(CardImplementation):
             if inv.resources >= 1:
                 inv.resources -= 1
             else:
+                vacate_asset_slots(ctx.game_state, self.instance_id)
                 inv.play_area.remove(self.instance_id)
                 ctx.game_state.cards_in_play.pop(self.instance_id, None)
                 inv.discard.append("hired_muscle_lv1")

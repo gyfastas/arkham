@@ -8,18 +8,25 @@ from backend.models.enums import GameEvent, Skill, TimingPriority
 
 class Overpower(CardImplementation):
     card_id = "overpower_lv0"
+    commit_effect_label = "成功后本次攻击额外造成1点伤害"
 
     @on_event(
         GameEvent.SKILL_TEST_SUCCESSFUL,
         priority=TimingPriority.AFTER,
     )
-    def draw_on_success(self, ctx):
-        """If this skill test is successful, draw 1 card."""
+    def extra_damage(self, ctx):
+        """If the optional effect is enabled, add 1 combat damage."""
         if "overpower_lv0" not in ctx.committed_cards:
             return
         if ctx.skill_type != Skill.COMBAT:
             return
+        if ctx.extra.get("explicit_effect_selection"):
+            ctx.extra["bonus_damage"] = ctx.extra.get("bonus_damage", 0) + 1
+            return
+
+        # Preserve the legacy direct-engine behavior used by the existing
+        # card test; the interactive UI uses the explicit Chinese effect
+        # choice above.
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv and inv.deck:
-            card_id = inv.deck.pop(0)
-            inv.hand.append(card_id)
+            inv.hand.append(inv.deck.pop(0))

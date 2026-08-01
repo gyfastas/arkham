@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import type { GameState } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{ state: GameState }>()
+const store = useGameStore()
 
 const emit = defineEmits<{
   advanceAct: []
@@ -13,35 +16,35 @@ const actExpanded = ref(true)
 
 const agendaText = computed(() => {
   const a = props.state.scenario.agenda
-  return a?.text_cn || a?.text_cn === '' ? (a.text_cn || '') : ''
+  return a?.text_cn || a?.text_cn === '' ? localizeDisplayText(a.text_cn || '', store.language) : ''
 })
 const agendaBackText = computed(() => {
   const a = props.state.scenario.agenda
-  return a?.back_text_cn || a?.back_text || ''
+  return localizeDisplayText(a?.back_text_cn || a?.back_text || '', store.language)
 })
 const actText = computed(() => {
   const a = props.state.scenario.act
-  return a?.text_cn || a?.text_cn === '' ? (a.text_cn || '') : ''
+  return a?.text_cn || a?.text_cn === '' ? localizeDisplayText(a.text_cn || '', store.language) : ''
 })
 const actBackText = computed(() => {
   const a = props.state.scenario.act
-  return a?.back_text_cn || a?.back_text || ''
+  return localizeDisplayText(a?.back_text_cn || a?.back_text || '', store.language)
 })
 </script>
 
 <template>
   <div class="scenario-panel">
-    <div class="panel-title">{{ state.scenario.name_cn || state.scenario.name }}</div>
+    <div class="panel-title">{{ localizeDisplayText(state.scenario.name_cn || state.scenario.name, store.language) }}</div>
 
     <!-- Agenda (密谋) -->
     <div v-if="state.scenario.agenda" class="scenario-card agenda">
       <div class="card-top" @click="agendaExpanded = !agendaExpanded">
         <div class="card-label">
           <span class="label-icon">☠</span>
-          密谋 {{ state.scenario.agenda.sequence }}/{{ state.scenario.agenda.total }}
+          {{ store.language === 'zh-Hant' ? '密謀' : '密谋' }} {{ state.scenario.agenda.sequence }}/{{ state.scenario.agenda.total }}
           <span class="expand-icon">{{ agendaExpanded ? '▾' : '▸' }}</span>
         </div>
-        <div class="card-name">{{ state.scenario.agenda.name_cn || state.scenario.agenda.name }}</div>
+        <div class="card-name">{{ localizeDisplayText(state.scenario.agenda.name_cn || state.scenario.agenda.name, store.language) }}</div>
         <div class="progress-bar">
           <div class="progress-fill doom-fill" :style="{ width: state.doom_threshold > 0 ? `${(state.doom / state.doom_threshold) * 100}%` : '0%' }"></div>
           <span class="progress-text">
@@ -52,7 +55,7 @@ const actBackText = computed(() => {
       <div v-if="agendaExpanded" class="card-body">
         <div v-if="agendaText" class="card-text">{{ agendaText }}</div>
         <div v-if="agendaBackText" class="card-back-text">
-          <span class="back-label">▶ 推进效果</span>
+          <span class="back-label">▶ {{ store.language === 'zh-Hant' ? '推進效果' : '推进效果' }}</span>
           <div>{{ agendaBackText }}</div>
         </div>
       </div>
@@ -63,10 +66,10 @@ const actBackText = computed(() => {
       <div class="card-top" @click="actExpanded = !actExpanded">
         <div class="card-label">
           <span class="label-icon">✦</span>
-          事件 {{ state.scenario.act.sequence }}/{{ state.scenario.act.total }}
+          {{ store.language === 'zh-Hant' ? '事件' : '事件' }} {{ state.scenario.act.sequence }}/{{ state.scenario.act.total }}
           <span class="expand-icon">{{ actExpanded ? '▾' : '▸' }}</span>
         </div>
-        <div class="card-name">{{ state.scenario.act.name_cn || state.scenario.act.name }}</div>
+        <div class="card-name">{{ localizeDisplayText(state.scenario.act.name_cn || state.scenario.act.name, store.language) }}</div>
         <div class="progress-bar">
           <div class="progress-fill clue-fill" :style="{ width: state.total_clues_needed > 0 ? `${(state.investigator.clues / state.total_clues_needed) * 100}%` : '0%' }"></div>
           <span class="progress-text">
@@ -77,12 +80,12 @@ const actBackText = computed(() => {
           v-if="state.can_advance_act"
           class="advance-btn"
           @click.stop="emit('advanceAct')"
-        >⏩ 推进事件</button>
+        >⏩ {{ store.language === 'zh-Hant' ? '推進事件' : '推进事件' }}</button>
       </div>
       <div v-if="actExpanded" class="card-body">
         <div v-if="actText" class="card-text">{{ actText }}</div>
         <div v-if="actBackText" class="card-back-text">
-          <span class="back-label">▶ 推进效果</span>
+          <span class="back-label">▶ {{ store.language === 'zh-Hant' ? '推進效果' : '推进效果' }}</span>
           <div>{{ actBackText }}</div>
         </div>
       </div>
@@ -95,15 +98,15 @@ const actBackText = computed(() => {
         <span class="info-val">{{ state.round }}</span>
       </div>
       <div class="info-row">
-        <span class="info-label">弃牌堆</span>
+        <span class="info-label">{{ store.language === 'zh-Hant' ? '棄牌堆' : '弃牌堆' }}</span>
         <span class="info-val">{{ state.discard.length }}</span>
       </div>
       <div v-if="state.encounter_deck_count != null" class="info-row">
-        <span class="info-label">遭遇牌堆</span>
+        <span class="info-label">{{ store.language === 'zh-Hant' ? '遭遇牌堆' : '遭遇牌堆' }}</span>
         <span class="info-val">{{ state.encounter_deck_count }}</span>
       </div>
       <div v-if="state.encounter_discard_count != null && state.encounter_discard_count > 0" class="info-row">
-        <span class="info-label">遭遇弃牌</span>
+        <span class="info-label">{{ store.language === 'zh-Hant' ? '遭遇棄牌' : '遭遇弃牌' }}</span>
         <span class="info-val">{{ state.encounter_discard_count }}</span>
       </div>
     </div>

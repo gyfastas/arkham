@@ -67,9 +67,15 @@ def _serialize_event(ctx: EventContext) -> dict[str, Any]:
     if ctx.modified_skill is not None:
         data["modified_skill"] = ctx.modified_skill
     if ctx.extra:
-        # Include card_id from extra if present
-        if "card_id" in ctx.extra:
-            data["card_id"] = ctx.extra["card_id"]
+        # Include display metadata used by the skill-test animation. Keep
+        # this explicit so unrelated internal event data is not exposed.
+        for key in (
+            "card_id", "possible_tokens", "base_skill", "committed_icons",
+            "token_modifier", "auto_fail", "auto_success",
+            "rexs_curse_redrawn_token", "rexs_curse_redrawn_modifier",
+        ):
+            if key in ctx.extra:
+                data[key] = ctx.extra[key]
     return data
 
 

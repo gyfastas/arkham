@@ -10,6 +10,7 @@ export class SocketClient {
   private socket: Socket | null = null
   private _playerId: string = ''
   private _state: ConnectionState = 'disconnected'
+  private connectionPromise: Promise<void> | null = null
 
   // Callbacks
   onStateUpdate: ((state: GameState, events?: GameEventData[]) => void) | null = null
@@ -23,7 +24,14 @@ export class SocketClient {
   get state(): ConnectionState { return this._state }
 
   connect(url?: string): Promise<void> {
-    return new Promise((resolve, reject) => {
+    if (this._state === 'connected' && this.socket) {
+      return Promise.resolve()
+    }
+    if (this.connectionPromise) {
+      return this.connectionPromise
+    }
+
+    this.connectionPromise = new Promise((resolve, reject) => {
       this._state = 'connecting'
       this.socket = io(url || window.location.origin, {
         transports: ['websocket', 'polling'],
@@ -77,12 +85,23 @@ export class SocketClient {
         this.onCampaignState?.(data)
       })
     })
+
+    this.connectionPromise = this.connectionPromise.finally(() => {
+      this.connectionPromise = null
+    })
+    return this.connectionPromise
+  }
+
+  async ensureConnected(): Promise<void> {
+    if (this._state === 'connected' && this.socket) return
+    await this.connect()
   }
 
   disconnect(): void {
     this.socket?.disconnect()
     this.socket = null
     this._state = 'disconnected'
+    this.connectionPromise = null
   }
 
   createRoom(): void {

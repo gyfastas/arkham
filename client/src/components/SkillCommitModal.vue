@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { CardDisplay } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{
   skillType: string
@@ -12,6 +14,7 @@ const emit = defineEmits<{
   confirm: [committed: string[]]
   cancel: []
 }>()
+const store = useGameStore()
 
 const SKILL_LABELS: Record<string, string> = {
   willpower: '意志',
@@ -81,13 +84,13 @@ function confirm() {
           :class="{ selected: selected.includes(card.id) }"
           @click="toggle(card)"
         >
-          <div class="cc-name">{{ card.name_cn || card.name }}</div>
+          <div class="cc-name">{{ localizeDisplayText(card.name_cn || card.name, store.language) }}</div>
           <div class="cc-icons">
             <span v-for="(n, k) in card.skill_icons" :key="k" class="cc-icon">
               {{ SKILL_LABELS[k] || k }}×{{ n }}
             </span>
           </div>
-          <div v-if="card.text_cn" class="cc-text">{{ card.text_cn }}</div>
+          <div v-if="card.text_cn" class="cc-text">{{ localizeDisplayText(card.text_cn, store.language) }}</div>
           <div class="cc-check" v-if="selected.includes(card.id)">✓</div>
         </div>
       </div>

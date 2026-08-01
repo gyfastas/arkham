@@ -29,6 +29,7 @@ class SkillTestResult:
     auto_fail: bool = False
     auto_success: bool = False
     source_instance_id: str | None = None
+    extra: dict = field(default_factory=dict)
 
 
 class SkillTestEngine:
@@ -41,6 +42,8 @@ class SkillTestEngine:
         self._current_test: SkillTestResult | None = None
         self._last_result: SkillTestResult | None = None
         self._committed_temp_ids: list[str] = []
+        self._effect_card_ids: list[str] = []
+        self._explicit_effect_selection = False
 
     @property
     def current_test(self) -> SkillTestResult | None:
@@ -55,6 +58,7 @@ class SkillTestEngine:
         on_success: callable = None,
         on_failure: callable = None,
         committed_card_ids: list[str] | None = None,
+        effect_card_ids: list[str] | None = None,
     ) -> SkillTestResult:
         """Execute a complete skill test (ST.1 through ST.8)."""
         inv = self.game_state.get_investigator(investigator_id)
@@ -71,7 +75,13 @@ class SkillTestEngine:
             source_instance_id=source_instance_id,
         )
         self._current_test = result
-        self._committed_card_ids = committed_card_ids
+        self._committed_card_ids = list(committed_card_ids or [])
+        self._explicit_effect_selection = effect_card_ids is not None
+        self._effect_card_ids = self._prepare_effect_cards(
+            inv,
+            self._committed_card_ids,
+            effect_card_ids,
+        )
 
         try:
             # ST.1: Determine skill type and begin
@@ -101,8 +111,45 @@ class SkillTestEngine:
         finally:
             self._last_result = result
             self._current_test = None
+            self._effect_card_ids = []
+            self._explicit_effect_selection = False
 
         return result
+
+    def _prepare_effect_cards(
+        self,
+        inv,
+        committed_card_ids: list[str],
+        requested_effect_card_ids: list[str] | None,
+    ) -> list[str]:
+        """Validate optional effects and pay their costs.
+
+        ``None`` preserves legacy direct engine calls where every committed
+        card implementation is active. The client sends an explicit list,
+        including an empty list, so a normal commit cannot trigger an effect
+        accidentally.
+        """
+        if requested_effect_card_ids is None:
+            return list(committed_card_ids)
+
+        remaining: dict[str, int] = {}
+        for card_id in committed_card_ids:
+            remaining[card_id] = remaining.get(card_id, 0) + 1
+
+        selected: list[str] = []
+        for card_id in requested_effect_card_ids:
+            if remaining.get(card_id, 0) <= 0 or not self.card_registry:
+                continue
+            impl_cls = self.card_registry.get_implementation(card_id)
+            if impl_cls is None:
+                continue
+            cost = max(0, int(getattr(impl_cls, "commit_effect_cost", 0) or 0))
+            if inv.resources < cost:
+                continue
+            inv.resources -= cost
+            selected.append(card_id)
+            remaining[card_id] -= 1
+        return selected
 
     def _st1_begin(self, result: SkillTestResult) -> None:
         from backend.engine.event_bus import EventContext
@@ -134,7 +181,7 @@ class SkillTestEngine:
         # Temporarily activate committed cards' implementations so their
         # effects (Guts draw, Perception, Opportunist, ...) fire during the test.
         if self.card_registry:
-            for card_id in committed_card_ids:
+            for card_id in self._effect_card_ids:
                 if self.card_registry.get_implementation(card_id):
                     temp_id = self.game_state.next_instance_id()
                     self.card_registry.activate_card(card_id, temp_id, self.bus)
@@ -162,7 +209,19 @@ class SkillTestEngine:
             event=GameEvent.CHAOS_TOKEN_REVEALED,
             investigator_id=result.investigator_id,
             chaos_token=token,
+            skill_type=result.skill_type,
+            difficulty=result.difficulty,
             source=result.source_instance_id,
+            extra={
+                # The client uses this snapshot to animate the reveal without
+                # changing the authoritative result calculated by the engine.
+                "possible_tokens": [
+                    getattr(item, "value", str(item))
+                    for item in self.chaos_bag.tokens
+                ],
+                "base_skill": result.base_skill,
+                "committed_icons": result.committed_icons,
+            },
         )
         self.bus.emit(ctx)
 
@@ -185,6 +244,8 @@ class SkillTestEngine:
             investigator_id=result.investigator_id,
             chaos_token=token,
             amount=result.token_modifier,
+            skill_type=result.skill_type,
+            difficulty=result.difficulty,
             source=result.source_instance_id,
         )
         self.bus.emit(ctx)
@@ -209,6 +270,11 @@ class SkillTestEngine:
             difficulty=result.difficulty,
             amount=result.modified_skill,
             source=result.source_instance_id,
+            extra={
+                "base_skill": result.base_skill,
+                "committed_icons": result.committed_icons,
+                "token_modifier": result.token_modifier,
+            },
         )
         self.bus.emit(ctx)
         result.modified_skill = max(0, ctx.amount)
@@ -233,9 +299,20 @@ class SkillTestEngine:
             modified_skill=result.modified_skill,
             difficulty=result.difficulty,
             source=result.source_instance_id,
+            amount=result.token_modifier,
             committed_cards=list(self._committed_card_ids or []),
+            extra={
+                "base_skill": result.base_skill,
+                "committed_icons": result.committed_icons,
+                "token_modifier": result.token_modifier,
+                "auto_fail": result.auto_fail,
+                "auto_success": result.auto_success,
+                "enabled_effect_cards": list(self._effect_card_ids),
+                "explicit_effect_selection": self._explicit_effect_selection,
+            },
         )
         self.bus.emit(ctx)
+        result.extra = dict(ctx.extra)
         # Allow handlers (e.g. Rex's Curse) to flip the outcome by mutating
         # ctx.success. Handlers leave it untouched in the normal case.
         if ctx.success is not None and ctx.success != result.success:

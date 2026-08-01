@@ -82,3 +82,12 @@ class SlotManager:
             slots.remove(instance_id)
             return True
         return False
+
+
+def vacate_asset_slots(game_state, instance_id: str) -> None:
+    """Keep slot accounting in sync when a card leaves play outside Actions."""
+    manager = getattr(game_state, "slot_managers", {}).get(
+        getattr(game_state.get_card_instance(instance_id), "owner_id", ""),
+    )
+    if manager:
+        manager.vacate(instance_id)

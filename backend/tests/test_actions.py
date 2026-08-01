@@ -193,6 +193,47 @@ class TestPlay:
         result = game.action_resolver.perform_action("inv1", Action.PLAY, card_id="expensive")
         assert not result
 
+    def test_cannot_play_asset_beyond_slot_limit(self, game):
+        first = make_asset_data(id="knife_a", cost=0, slots=[SlotType.HAND])
+        second = make_asset_data(id="knife_b", cost=0, slots=[SlotType.HAND])
+        third = make_asset_data(id="knife_c", cost=0, slots=[SlotType.HAND])
+        game.register_card_data(first)
+        game.register_card_data(second)
+        game.register_card_data(third)
+
+        inv = game.state.get_investigator("inv1")
+        inv.hand.extend(["knife_a", "knife_b", "knife_c"])
+        inv.actions_remaining = 3
+
+        assert game.action_resolver.perform_action("inv1", Action.PLAY, card_id="knife_a")
+        assert game.action_resolver.perform_action("inv1", Action.PLAY, card_id="knife_b")
+        assert not game.action_resolver.perform_action("inv1", Action.PLAY, card_id="knife_c")
+        assert "knife_c" in inv.hand
+        assert game.slot_managers["inv1"].count_used(SlotType.HAND) == 2
+
+    def test_replace_asset_frees_slots_before_playing(self, game):
+        old = make_asset_data(id="old_knife", cost=0, slots=[SlotType.HAND])
+        new = make_asset_data(id="new_knife", cost=0, slots=[SlotType.HAND])
+        game.register_card_data(old)
+        game.register_card_data(new)
+
+        inv = game.state.get_investigator("inv1")
+        inv.hand.extend(["old_knife", "new_knife"])
+        inv.actions_remaining = 3
+        assert game.action_resolver.perform_action("inv1", Action.PLAY, card_id="old_knife")
+        old_instance_id = inv.play_area[0]
+
+        assert game.action_resolver.perform_action(
+            "inv1",
+            Action.PLAY,
+            card_id="new_knife",
+            replace_instance_ids=[old_instance_id],
+        )
+        assert old_instance_id not in inv.play_area
+        assert "old_knife" in inv.discard
+        assert [game.state.get_card_instance(i).card_id for i in inv.play_area] == ["new_knife"]
+        assert game.slot_managers["inv1"].count_used(SlotType.HAND) == 1
+
 
 class TestAttackOfOpportunity:
     def test_draw_provokes_aoo(self, game):

@@ -80,15 +80,23 @@ class RexsCurse(CardImplementation):
 
         # 用新标记重新计算检定结果
         if token == ChaosTokenType.AUTO_FAIL:
+            value = 0
             new_total = -999
         else:
             value = CHAOS_TOKEN_VALUES.get(token) or 0  # 特殊标记视为0
-            # ctx.amount 为原标记修正值；换成新标记的修正值
-            new_total = (ctx.modified_skill or 0) - (ctx.amount or 0) + value
+            old_value = ctx.extra.get("token_modifier", ctx.amount or 0)
+            new_total = (ctx.modified_skill or 0) - old_value + value
 
-        if new_total < (ctx.difficulty or 0):
-            # 导致失败：翻结果（依赖引擎回读 ctx.success），并把诅咒洗回牌堆
-            ctx.success = False
+        # The first successful event is still being processed, so update the
+        # event context to the redrawn token's actual value before the engine
+        # reads ctx.success back. This keeps the result and UI in sync.
+        ctx.modified_skill = max(0, new_total)
+        ctx.amount = value
+        ctx.extra["rexs_curse_redrawn_token"] = token.value
+        ctx.extra["rexs_curse_redrawn_modifier"] = value
+        ctx.success = token != ChaosTokenType.AUTO_FAIL and new_total >= (ctx.difficulty or 0)
+
+        if not ctx.success:
             ctx.extra["rexs_curse_caused_failure"] = True
             self._shuffle_back_into_deck(ctx.game_state, inv)
 

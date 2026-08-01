@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { LocationDisplay } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{
   locations: Record<string, LocationDisplay>
@@ -10,6 +12,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   move: [locationId: string]
 }>()
+const store = useGameStore()
 
 /** Check if a location ID is connected to the current location */
 function isConnectedById(locId: string): boolean {
@@ -23,7 +26,7 @@ function isConnectedById(locId: string): boolean {
 const nameById = computed(() => {
   const m: Record<string, string> = {}
   for (const [id, loc] of Object.entries(props.locations)) {
-    m[id] = loc.name_cn || loc.name
+    m[id] = localizeDisplayText(loc.name_cn || loc.name, store.language)
   }
   return m
 })
@@ -37,7 +40,7 @@ function handleClick(locId: string, loc: LocationDisplay) {
 
 <template>
   <div class="map-area">
-    <div class="map-title">地图</div>
+    <div class="map-title">{{ store.language === 'zh-Hant' ? '地圖' : '地图' }}</div>
     <div class="map-grid">
       <div
         v-for="(loc, locId) in locations"
@@ -51,17 +54,17 @@ function handleClick(locId: string, loc: LocationDisplay) {
         @click="handleClick(String(locId), loc)"
       >
         <div class="loc-header">
-          <div class="loc-name">{{ loc.name_cn || loc.name }}</div>
-          <div class="loc-badge current-badge" v-if="loc.is_current">当前</div>
-          <div class="loc-badge move-badge" v-else-if="isConnectedById(String(locId))">可移动</div>
+          <div class="loc-name">{{ localizeDisplayText(loc.name_cn || loc.name, store.language) }}</div>
+          <div class="loc-badge current-badge" v-if="loc.is_current">{{ store.language === 'zh-Hant' ? '當前' : '当前' }}</div>
+          <div class="loc-badge move-badge" v-else-if="isConnectedById(String(locId))">{{ store.language === 'zh-Hant' ? '可移動' : '可移动' }}</div>
         </div>
         <div class="loc-stats">
           <span class="shroud" title="帷幕值 (调查难度)">
-            <span class="stat-label">帷幕</span>
+            <span class="stat-label">{{ store.language === 'zh-Hant' ? '帷幕' : '帷幕' }}</span>
             <span class="stat-val">{{ loc.shroud }}</span>
           </span>
           <span class="clues" title="剩余线索数">
-            <span class="stat-label">线索</span>
+            <span class="stat-label">{{ store.language === 'zh-Hant' ? '線索' : '线索' }}</span>
             <span class="stat-val">{{ loc.clues }}</span>
           </span>
         </div>
@@ -69,7 +72,7 @@ function handleClick(locId: string, loc: LocationDisplay) {
           👹×{{ loc.enemies_here }}
         </div>
         <div v-if="loc.connections.length" class="loc-connections">
-          <span class="conn-label">连接:</span>
+            <span class="conn-label">{{ store.language === 'zh-Hant' ? '連接:' : '连接:' }}</span>
           <span
             v-for="connId in loc.connections"
             :key="connId"

@@ -58,8 +58,10 @@ class PlayerActionPayload(TypedDict, total=False):
     weapon_instance_id: str
     location_id: str
     instance_id: str
+    target_instance_id: str
     skill: str
     committed_cards: list[str]
+    effect_card_ids: list[str]
     choice_id: str
 
 

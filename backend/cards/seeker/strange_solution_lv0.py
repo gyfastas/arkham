@@ -8,6 +8,7 @@
 """
 
 from backend.cards.base import CardImplementation
+from backend.engine.slots import vacate_asset_slots
 
 
 class StrangeSolution(CardImplementation):
@@ -22,6 +23,7 @@ class StrangeSolution(CardImplementation):
             return False
 
         # 丢弃奇怪的溶液
+        vacate_asset_slots(game_state, self.instance_id)
         if self.instance_id in inv.play_area:
             inv.play_area.remove(self.instance_id)
         inst = game_state.get_card_instance(self.instance_id)
