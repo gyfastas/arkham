@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useSocket } from '../composables/useSocket'
 import { useGameStore } from '../stores/game'
+import { CLASS_ORDER, CLASS_COLORS, classLabel } from '../utils/labels'
 import type { CardDisplay } from '../state/types'
 
 const props = defineProps<{
@@ -17,6 +18,9 @@ const client = useSocket()
 const store = useGameStore()
 
 const filterTab = ref<'all' | 'asset' | 'event' | 'skill'>('all')
+const levelMin = ref(0)
+const levelMax = ref(5)
+const LEVEL_OPTIONS = [0, 1, 2, 3, 4, 5]
 const deck = ref<string[]>([])
 
 // --- 卡牌悬浮预览 ---
@@ -53,15 +57,6 @@ const SLOT_LABELS: Record<string, string> = {
   ally: '盟友', arcane: '奥秘', 'arcane x2': '双奥秘',
 }
 
-const CLASS_COLORS: Record<string, string> = {
-  guardian: '#2980b9',
-  seeker: '#d4a017',
-  rogue: '#27ae60',
-  mystic: '#8e44ad',
-  survivor: '#c0392b',
-  neutral: '#888',
-}
-
 const FILTER_LABELS: { key: 'all' | 'asset' | 'event' | 'skill'; label: string }[] = [
   { key: 'all', label: '全部' },
   { key: 'asset', label: '支援' },
@@ -72,9 +67,28 @@ const FILTER_LABELS: { key: 'all' | 'asset' | 'event' | 'skill'; label: string }
 // --- Computed ---
 
 const filteredCards = computed(() => {
-  const cards = store.availableCards
-  if (filterTab.value === 'all') return cards
-  return cards.filter(c => c.type.toLowerCase() === filterTab.value)
+  let cards = store.availableCards
+  if (filterTab.value !== 'all') {
+    cards = cards.filter(c => c.type.toLowerCase() === filterTab.value)
+  }
+  const lo = Math.min(levelMin.value, levelMax.value)
+  const hi = Math.max(levelMin.value, levelMax.value)
+  return cards.filter(c => {
+    const lv = c.level ?? 0
+    return lv >= lo && lv <= hi
+  })
+})
+
+/** 按职业分区的卡牌列表 */
+const groupedCards = computed(() => {
+  const groups: { key: string; label: string; color: string; cards: CardDisplay[] }[] = []
+  for (const cls of CLASS_ORDER) {
+    const cards = filteredCards.value.filter(c => c.class === cls)
+    if (cards.length > 0) {
+      groups.push({ key: cls, label: classLabel(cls), color: CLASS_COLORS[cls] || '#888', cards })
+    }
+  }
+  return groups
 })
 
 const deckSize = computed(() => deck.value.length)
@@ -177,7 +191,7 @@ onUnmounted(() => {
     <div class="db-body">
       <!-- Left: Card Catalog -->
       <div class="catalog-panel">
-        <!-- Filter Tabs -->
+        <!-- Filter Tabs + Level Range -->
         <div class="filter-tabs">
           <button
             v-for="f in FILTER_LABELS"
@@ -188,37 +202,56 @@ onUnmounted(() => {
           >
             {{ f.label }}
           </button>
+          <div class="level-filter">
+            <span class="level-label">等级</span>
+            <select v-model.number="levelMin" class="level-select">
+              <option v-for="n in LEVEL_OPTIONS" :key="'min' + n" :value="n">{{ n }}</option>
+            </select>
+            <span class="level-sep">-</span>
+            <select v-model.number="levelMax" class="level-select">
+              <option v-for="n in LEVEL_OPTIONS" :key="'max' + n" :value="n">{{ n }}</option>
+            </select>
+          </div>
         </div>
 
-        <!-- Card Grid -->
+        <!-- Card Grid（按职业分区） -->
         <div class="card-grid">
-          <div
-            v-for="card in filteredCards"
-            :key="card.id"
-            class="card-item"
-            :class="{
-              disabled: card.allowed === false,
-              maxed: countInDeck(card.id) >= maxCopies(card),
-            }"
-            :style="{ borderColor: CLASS_COLORS[card.class] || '#333' }"
-            @click="addCard(card)"
-            @mouseenter="showPreview(card, $event)"
-            @mouseleave="hidePreview"
-          >
-            <div class="card-top">
-              <span class="card-name">{{ card.name_cn }}</span>
-              <span class="card-cost" v-if="card.cost !== null">{{ card.cost }}</span>
+          <template v-for="group in groupedCards" :key="group.key">
+            <div class="class-section" :style="{ borderLeftColor: group.color }">
+              <span class="class-name" :style="{ color: group.color }">{{ group.label }}</span>
+              <span class="class-count">{{ group.cards.length }} 张</span>
             </div>
-            <div class="card-meta">
-              <span class="card-type">{{ card.type }}</span>
-              <span class="card-level" v-if="card.level != null && card.level > 0">Lv.{{ card.level }}</span>
+            <div
+              v-for="card in group.cards"
+              :key="card.id"
+              class="card-item"
+              :class="{
+                disabled: card.allowed === false,
+                maxed: countInDeck(card.id) >= maxCopies(card),
+              }"
+              :style="{ borderColor: CLASS_COLORS[card.class] || '#333' }"
+              @click="addCard(card)"
+              @mouseenter="showPreview(card, $event)"
+              @mouseleave="hidePreview"
+            >
+              <div class="card-top">
+                <span class="card-name">{{ card.name_cn }}</span>
+                <span class="card-cost" v-if="card.cost !== null">{{ card.cost }}</span>
+              </div>
+              <div class="card-meta">
+                <span class="card-type">{{ TYPE_LABELS[card.type] || card.type }}</span>
+                <span class="card-level" v-if="card.level != null && card.level > 0">Lv.{{ card.level }}</span>
+              </div>
+              <div class="card-count" v-if="countInDeck(card.id) > 0">
+                x{{ countInDeck(card.id) }}
+              </div>
+              <div class="card-locked" v-if="card.allowed === false">
+                需要{{ card.level || 0 }}经验
+              </div>
             </div>
-            <div class="card-count" v-if="countInDeck(card.id) > 0">
-              x{{ countInDeck(card.id) }}
-            </div>
-            <div class="card-locked" v-if="card.allowed === false">
-              需要{{ card.level || 0 }}经验
-            </div>
+          </template>
+          <div v-if="groupedCards.length === 0" class="no-cards">
+            没有符合筛选条件的卡牌
           </div>
         </div>
 
@@ -469,6 +502,38 @@ onUnmounted(() => {
   gap: 4px;
   padding: 10px 16px;
   border-bottom: 1px solid #1a1a2e;
+  align-items: center;
+}
+
+.level-filter {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.level-label {
+  color: #999;
+  font-size: 13px;
+}
+
+.level-sep {
+  color: #555;
+}
+
+.level-select {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4e;
+  color: #ddd;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.level-select:focus {
+  outline: none;
+  border-color: #4a4a8e;
 }
 
 .tab-btn {
@@ -500,6 +565,40 @@ onUnmounted(() => {
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 10px;
   align-content: start;
+}
+
+.class-section {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 10px;
+  margin-top: 6px;
+  border-left: 3px solid #888;
+  background: #101024;
+  border-radius: 4px;
+}
+
+.class-section:first-child {
+  margin-top: 0;
+}
+
+.class-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.class-count {
+  font-size: 12px;
+  color: #666;
+}
+
+.no-cards {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #555;
+  padding: 40px 0;
+  font-size: 14px;
 }
 
 .card-item {

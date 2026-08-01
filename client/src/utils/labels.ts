@@ -141,3 +141,43 @@ export function traitsLabel(traits: string[] | undefined | null): string {
 export function usesLabel(key: string): string {
   return USES_LABELS[key] || key
 }
+
+/** 职业/派系 → 官方中文名 */
+export const CLASS_LABELS: Record<string, string> = {
+  guardian: '守卫者',
+  seeker: '探求者',
+  rogue: '流浪者',
+  mystic: '潜修者',
+  survivor: '求生者',
+  neutral: '中立',
+}
+
+/** 职业 → 玩家俗称（颜色家） */
+export const CLASS_NICKNAMES: Record<string, string> = {
+  guardian: '蓝家',
+  seeker: '黄家',
+  rogue: '绿家',
+  mystic: '紫家',
+  survivor: '红家',
+  neutral: '',
+}
+
+/** 职业主题色 */
+export const CLASS_COLORS: Record<string, string> = {
+  guardian: '#2980b9',
+  seeker: '#d4a017',
+  rogue: '#27ae60',
+  mystic: '#8e44ad',
+  survivor: '#c0392b',
+  neutral: '#888',
+}
+
+/** 职业分区展示顺序 */
+export const CLASS_ORDER = ['guardian', 'seeker', 'rogue', 'mystic', 'survivor', 'neutral']
+
+/** 职业标签：官方名（俗称），如「潜修者（紫家）」 */
+export function classLabel(cls: string): string {
+  const name = CLASS_LABELS[cls] || cls
+  const nick = CLASS_NICKNAMES[cls]
+  return nick ? `${name}（${nick}）` : name
+}

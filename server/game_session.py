@@ -353,6 +353,7 @@ def _load_player_cards(g: Game) -> None:
                 unique=bool(data.get("unique") or False),
                 fast=bool(data.get("fast") or False),
                 victory=int(data.get("victory") or 0),
+                subtype=str(data.get("subtype") or ""),
             )
         except Exception:
             continue
@@ -524,6 +525,10 @@ class GameSession:
         g.setup()
         # Official rule: opening hand mulligan (redraw any number of cards, once)
         g.state.scenario.vars["mulligan_available"] = True
+        for _inv_id, _cards in (g.state.scenario.vars.get("setup_set_aside") or {}).items():
+            if _cards:
+                _names = "、".join(_card_name_cn(g, c) for c in _cards)
+                self.action_log.append(f"🃏 开局抽到弱点已搁置：{_names}（调度后洗回牌库）")
 
         if scenario_id == "the_midnight_masks":
             g.state.scenario.vars["central_location"] = "downtown"
@@ -611,6 +616,10 @@ class GameSession:
         act = data.get("action")
         if not act:
             return {"success": False, "message": "缺少 action"}
+
+        # 玩家在调度窗口内直接行动 → 视为放弃调度，搁置卡洗回牌库
+        if act != "MULLIGAN":
+            self._close_mulligan_window()
 
         # Clear previous encounter card display
         self.game.state.scenario.vars.pop("last_encounter", None)
@@ -1041,26 +1050,55 @@ class GameSession:
         "ritual_candles_lv0": "被动：技能检定时+1",
     }
 
+    def _close_mulligan_window(self) -> None:
+        """玩家跳过调度直接开始行动 → 关闭调度窗口，把开局搁置的卡牌
+        （弱点）洗回牌库（官方规则：调度步骤完成后洗回）。"""
+        scen = self.game.state.scenario
+        if not scen.vars.pop("mulligan_available", None) and not scen.vars.get("setup_set_aside"):
+            return
+        shuffled = self.game.shuffle_set_aside_into_decks()
+        if shuffled:
+            names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
+            self.action_log.append(f"🃏 开局搁置的弱点洗回牌库：{names}")
+
     def _mulligan(self, inv, data: dict) -> dict:
-        """Opening hand mulligan: shuffle chosen cards back and redraw (once)."""
+        """官方调度规则：选定卡牌搁置 → 等量补抽（补抽中的弱点同样搁置再补）
+        → 调度结束后所有搁置卡牌洗回牌库。每局一次。"""
+        from backend.models.state import is_weakness_card
+
         scen = self.game.state.scenario
         if not scen.vars.get("mulligan_available"):
             return {"success": False, "message": "调度已不可用"}
         scen.vars.pop("mulligan_available", None)
 
         card_ids = [c for c in (data.get("card_ids") or []) if c in inv.hand]
+        inv_set_aside = scen.vars.setdefault("setup_set_aside", {}).setdefault(
+            inv.investigator_id, []
+        )
+        for cid in card_ids:
+            inv.hand.remove(cid)
+            inv_set_aside.append(cid)
+
+        # 补抽：弱点搁置并继续补抽，不触发揭示
+        need = len(card_ids)
+        drawn = 0
+        while drawn < need and inv.deck:
+            cid = inv.deck.pop(0)
+            if is_weakness_card(self.game.state.get_card_data(cid)):
+                inv_set_aside.append(cid)
+                continue
+            inv.hand.append(cid)
+            drawn += 1
+
+        shuffled = self.game.shuffle_set_aside_into_decks()
         if card_ids:
-            for cid in card_ids:
-                inv.hand.remove(cid)
-            inv.deck.extend(card_ids)
-            random.shuffle(inv.deck)
-            for _ in range(len(card_ids)):
-                if inv.deck:
-                    inv.hand.append(inv.deck.pop(0))
             self.action_log.append(f"🔁 调度：重抽 {len(card_ids)} 张手牌")
-            return {"success": True, "message": f"调度：重抽 {len(card_ids)} 张"}
-        self.action_log.append("🔁 保留初始手牌")
-        return {"success": True, "message": "保留初始手牌"}
+        else:
+            self.action_log.append("🔁 保留初始手牌")
+        if shuffled:
+            names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
+            self.action_log.append(f"🃏 搁置卡牌洗回牌库：{names}")
+        return {"success": True, "message": "调度完成"}
 
     def _activate_card(self, inv, data: dict) -> dict:
         """Generic activation channel: routes ACTIVATE_CARD to a card's

@@ -132,6 +132,49 @@ class TestEnemyPhase:
         assert "hunter_1" in inv.threat_area
         assert "hunter_1" not in loc2.enemies
 
+    def test_hunter_moves_one_step_along_shortest_path(self, game):
+        """官方规则：猎手沿最短路径每敌人阶段只移动一个地点（距离>1时分多轮逼近）。"""
+        loc3 = make_location_data(id="loc3", shroud=1, clue_value=1, connections=["loc2"])
+        game.register_card_data(loc3)
+        game.add_location("loc3", loc3)
+        game.state.get_location("loc2").connections.append("loc3")
+
+        enemy_data = make_enemy_data(id="hunter_enemy", keywords=["hunter"])
+        game.register_card_data(enemy_data)
+        enemy = CardInstance(
+            instance_id="hunter_1", card_id="hunter_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play["hunter_1"] = enemy
+        game.state.get_location("loc3").enemies.append("hunter_1")
+
+        # inv1 at loc1 (loc1-loc2-loc3)：第一轮只走到 loc2，尚未交战
+        game.enemy_phase.resolve()
+        inv = game.state.get_investigator("inv1")
+        assert "hunter_1" in game.state.get_location("loc2").enemies
+        assert "hunter_1" not in inv.threat_area
+
+        # 第二轮：loc2 → loc1 并交战
+        game.enemy_phase.resolve()
+        assert "hunter_1" in inv.threat_area
+
+    def test_hunter_at_investigator_location_engages_without_moving(self, game):
+        """猎手与调查员同地点时不移动，直接交战。"""
+        enemy_data = make_enemy_data(id="hunter_enemy", keywords=["hunter"])
+        game.register_card_data(enemy_data)
+        enemy = CardInstance(
+            instance_id="hunter_1", card_id="hunter_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play["hunter_1"] = enemy
+        loc1 = game.state.get_location("loc1")
+        loc1.enemies.append("hunter_1")
+
+        game.enemy_phase.resolve()
+        inv = game.state.get_investigator("inv1")
+        assert "hunter_1" in inv.threat_area
+        assert "hunter_1" not in loc1.enemies
+
 
 class TestUpkeepPhase:
     def test_ready_exhausted_cards(self, game):

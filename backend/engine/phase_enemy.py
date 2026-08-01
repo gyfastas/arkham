@@ -40,7 +40,13 @@ class EnemyPhase:
         self._emit(GameEvent.ENEMY_PHASE_ENDS)
 
     def _resolve_hunter_movement(self) -> None:
-        """Ready unengaged hunter enemies move toward nearest investigator."""
+        """Ready unengaged hunter enemies move toward nearest investigator.
+
+        Official rule (framework step 3.2): each ready, unengaged enemy with
+        the hunter keyword moves to a connecting location, along the shortest
+        path towards the nearest investigator — one location per enemy phase.
+        Enemies at a location with one or more investigators do not move.
+        """
         for loc in self.game_state.locations.values():
             for enemy_iid in list(loc.enemies):
                 enemy = self.game_state.get_card_instance(enemy_iid)
@@ -55,14 +61,12 @@ class EnemyPhase:
                 if self.game_state.scenario.vars.get("mind_wiped", {}).get(enemy_iid):
                     continue
 
-                # Find nearest investigator (simple: check connected locations)
-                target_inv = self._find_nearest_investigator(loc.location_id)
+                target_inv, first_hop = self._hunter_first_step(loc.location_id)
                 if target_inv is None:
                     continue
 
-                target_loc = target_inv.location_id
-                if target_loc == loc.location_id:
-                    # Same location: engage
+                if first_hop is None:
+                    # Same location as an investigator: do not move, engage
                     loc.enemies.remove(enemy_iid)
                     target_inv.threat_area.append(enemy_iid)
                     self._emit(
@@ -70,33 +74,39 @@ class EnemyPhase:
                         investigator_id=target_inv.investigator_id,
                         enemy_id=enemy_iid,
                     )
-                elif target_loc in loc.connections:
-                    # Move to connected location
-                    loc.enemies.remove(enemy_iid)
-                    dest = self.game_state.get_location(target_loc)
-                    if dest:
-                        # Check if investigator is there, engage
-                        investigators_at_dest = self.game_state.get_investigators_at_location(target_loc)
-                        if investigators_at_dest:
-                            inv = investigators_at_dest[0]
-                            inv.threat_area.append(enemy_iid)
-                            self._emit(
-                                GameEvent.ENEMY_ENGAGED,
-                                investigator_id=inv.investigator_id,
-                                enemy_id=enemy_iid,
-                            )
-                        else:
-                            dest.enemies.append(enemy_iid)
+                    continue
 
-    def _find_nearest_investigator(self, from_location_id: str):
-        """Simple BFS to find nearest investigator."""
-        # Check current location first
+                # Move one location along the shortest path
+                dest = self.game_state.get_location(first_hop)
+                if dest is None:
+                    continue
+                loc.enemies.remove(enemy_iid)
+                investigators_at_dest = self.game_state.get_investigators_at_location(first_hop)
+                if investigators_at_dest:
+                    inv = investigators_at_dest[0]
+                    inv.threat_area.append(enemy_iid)
+                    self._emit(
+                        GameEvent.ENEMY_ENGAGED,
+                        investigator_id=inv.investigator_id,
+                        enemy_id=enemy_iid,
+                    )
+                else:
+                    dest.enemies.append(enemy_iid)
+
+    def _hunter_first_step(self, from_location_id: str):
+        """BFS shortest path to the nearest investigator.
+
+        Returns ``(investigator, first_hop)`` where ``first_hop`` is the
+        connecting location the enemy should move to, or ``None`` when the
+        nearest investigator is already at ``from_location_id``. Returns
+        ``(None, None)`` when no investigator is reachable.
+        """
         at_loc = self.game_state.get_investigators_at_location(from_location_id)
         if at_loc:
-            return at_loc[0]
+            return at_loc[0], None
 
-        # BFS through connections
         visited = {from_location_id}
+        parent: dict[str, str] = {}
         queue = [from_location_id]
         while queue:
             current = queue.pop(0)
@@ -107,11 +117,16 @@ class EnemyPhase:
                 if conn_id in visited:
                     continue
                 visited.add(conn_id)
+                parent[conn_id] = current
                 investigators = self.game_state.get_investigators_at_location(conn_id)
                 if investigators:
-                    return investigators[0]
+                    # Backtrack to the first hop from the enemy's location
+                    node = conn_id
+                    while parent.get(node) != from_location_id:
+                        node = parent[node]
+                    return investigators[0], node
                 queue.append(conn_id)
-        return None
+        return None, None
 
     def _resolve_enemy_attacks(self) -> None:
         for inv_id in self.game_state.player_order:

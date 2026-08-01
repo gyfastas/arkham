@@ -5,6 +5,7 @@
   "name_cn": "医院欠债",
   "class": "neutral",
   "type": "treachery",
+  "subtype": "weakness",
   "cost": null,
   "level": null,
   "traits": [],
