@@ -1331,6 +1331,18 @@ class GameSession:
         self._flush_action_messages()
 
         if not ok:
+            # Slot conflict: the client can prompt the player to discard
+            # in-play assets, then retry PLAY with slot_discards.
+            conflict = getattr(
+                self.game.action_resolver, "last_slot_conflict", None
+            )
+            if enum_act == Action.PLAY and conflict:
+                return {
+                    "success": False,
+                    "code": "slots_full",
+                    "message": f"槽位不足：打出【{conflict.get('card_name', '')}】需要腾出槽位",
+                    "slot_conflict": conflict,
+                }
             return {"success": False, "message": "行动失败"}
 
         # --- Detailed action logging ---

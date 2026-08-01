@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import type { CardInstanceDisplay } from '../state/types'
+import { computed } from 'vue'
+import type { CardInstanceDisplay, SlotStatusEntry } from '../state/types'
 
-defineProps<{ assets: CardInstanceDisplay[]; threatCards?: CardInstanceDisplay[] }>()
+const props = defineProps<{
+  assets: CardInstanceDisplay[]
+  threatCards?: CardInstanceDisplay[]
+  slotStatus?: Record<string, SlotStatusEntry>
+}>()
 
 const emit = defineEmits<{
   activate: [instanceId: string]
@@ -16,10 +21,62 @@ const CLASS_COLORS: Record<string, string> = {
   survivor: '#c0392b',
   neutral: '#666666',
 }
+
+const SLOT_META: Record<string, { icon: string; label: string }> = {
+  hand: { icon: '🖐', label: '手' },
+  arcane: { icon: '🔮', label: '奥术' },
+  accessory: { icon: '💍', label: '饰品' },
+  body: { icon: '🧥', label: '身体' },
+  ally: { icon: '👥', label: '盟友' },
+  tarot: { icon: '🃏', label: '塔罗' },
+}
+
+const TRAIT_CN: Record<string, string> = {
+  tome: '典籍',
+  spell: '法术',
+  ally: '盟友',
+}
+
+const slotBar = computed(() => {
+  if (!props.slotStatus) return []
+  const nameByInstance = new Map(
+    (props.assets || []).map(a => [a.instance_id, a.name_cn || a.name])
+  )
+  return Object.entries(props.slotStatus)
+    .filter(([, s]) => s.limit > 0)
+    .map(([type, s]) => {
+      const meta = SLOT_META[type] || { icon: '▫', label: type }
+      const cardNames = s.cards
+        .map(iid => nameByInstance.get(iid) || iid)
+        .join('、')
+      const restrictedNote = s.restricted > 0
+        ? `（含${s.restricted}个${s.restricted_traits.map(t => TRAIT_CN[t] || t).join('/')}专用）`
+        : ''
+      return {
+        type,
+        icon: meta.icon,
+        label: meta.label,
+        used: s.used,
+        limit: s.limit,
+        full: s.used >= s.limit,
+        title: `${meta.label}槽位 ${s.used}/${s.limit}${restrictedNote}${cardNames ? '\n占用：' + cardNames : ''}`,
+      }
+    })
+})
 </script>
 
 <template>
   <div class="play-area">
+    <!-- 槽位指示条 -->
+    <div v-if="slotBar.length" class="slot-bar">
+      <span
+        v-for="slot in slotBar"
+        :key="slot.type"
+        class="slot-badge"
+        :class="{ full: slot.full }"
+        :title="slot.title"
+      >{{ slot.icon }} {{ slot.used }}/{{ slot.limit }}</span>
+    </div>
     <div class="play-label">场上支援 ({{ assets.length }})</div>
     <div class="play-cards">
       <div
@@ -88,6 +145,27 @@ const CLASS_COLORS: Record<string, string> = {
 .play-area {
   display: flex;
   flex-direction: column;
+}
+.slot-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 2px 4px 6px;
+}
+.slot-badge {
+  background: #23233a;
+  border: 1px solid #3a3a55;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #b8b8d0;
+  padding: 1px 6px;
+  cursor: default;
+  white-space: nowrap;
+}
+.slot-badge.full {
+  border-color: #c0392b;
+  color: #f0a090;
+  background: #3a2328;
 }
 .play-label {
   font-size: 12px;

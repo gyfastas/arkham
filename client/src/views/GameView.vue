@@ -3,7 +3,7 @@ import { watch, computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '../stores/game'
 import { useSocket } from '../composables/useSocket'
-import type { EncounterCardDisplay } from '../state/types'
+import type { EncounterCardDisplay, SlotConflict } from '../state/types'
 
 import HUD from '../components/HUD.vue'
 import LogPanel from '../components/LogPanel.vue'
@@ -17,6 +17,7 @@ import ChoiceModal from '../components/ChoiceModal.vue'
 import EncounterPopup from '../components/EncounterPopup.vue'
 import SkillCommitModal from '../components/SkillCommitModal.vue'
 import MulliganModal from '../components/MulliganModal.vue'
+import SlotDiscardModal from '../components/SlotDiscardModal.vue'
 
 const router = useRouter()
 const store = useGameStore()
@@ -52,6 +53,26 @@ function handleCommitCancel() {
 
 function handleMulligan(cardIds: string[]) {
   socket.sendAction('MULLIGAN', { card_ids: cardIds })
+}
+
+// 槽位不足 → 选择弃置支援重试
+const slotConflict = ref<SlotConflict | null>(null)
+
+watch(() => store.lastActionResult, (result) => {
+  if (result && !result.success && result.code === 'slots_full' && result.slot_conflict) {
+    slotConflict.value = result.slot_conflict
+  }
+})
+
+function handleSlotDiscardConfirm(discardIds: string[]) {
+  const conflict = slotConflict.value
+  slotConflict.value = null
+  if (!conflict) return
+  socket.sendAction('PLAY', { card_id: conflict.card_id, slot_discards: discardIds })
+}
+
+function handleSlotDiscardCancel() {
+  slotConflict.value = null
 }
 
 function handleAdvanceAct() {
@@ -172,6 +193,7 @@ function handleChoice(optionId: string) {
           <PlayArea
             :assets="state.play_area"
             :threat-cards="state.threat_cards || []"
+            :slot-status="state.slot_status || {}"
             class="game-play-area"
             @activate="handleActivate"
             @activate-card="handleActivateCard"
@@ -213,6 +235,12 @@ function handleChoice(optionId: string) {
       :hand="state.hand"
       @confirm="handleCommitConfirm"
       @cancel="handleCommitCancel"
+    />
+    <SlotDiscardModal
+      v-if="slotConflict"
+      :conflict="slotConflict"
+      @confirm="handleSlotDiscardConfirm"
+      @cancel="handleSlotDiscardCancel"
     />
   </div>
 

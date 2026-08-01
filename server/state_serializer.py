@@ -22,6 +22,14 @@ from backend.models.state import CardData
 from backend.scenarios.official_core import load_scenario_definition
 
 
+def _serialize_slots(game: Game, investigator_id: str) -> dict:
+    """Slot usage summary for the slot bar UI."""
+    mgr = getattr(game.state, "slot_managers", {}).get(investigator_id)
+    if mgr is None:
+        return {}
+    return mgr.status()
+
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -448,6 +456,7 @@ def serialize_game_state(
         "treacheries": tre_list,
         "pending_choice": pending_choice,
         "game_over": game_over,
+        "slot_status": _serialize_slots(game, viewer_investigator_id),
         "encounter_deck_count": len(scenario.encounter_deck),
         "encounter_discard_count": len(scenario.encounter_discard),
         "last_encounter": last_encounter,

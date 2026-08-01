@@ -75,11 +75,11 @@ class TestDaisyWalker:
 
 class TestDaisysToteBag:
     def test_enters_play_with_tome_slots(self, game):
-        """Tote Bag should mark extra tome slots when entering play."""
+        """Tote Bag grants 2 Tome-ONLY bonus hand slots (restricted)."""
         tote_data = CardData(
             id="daisys_tote_bag", name="Daisy's Tote Bag", name_cn="黛西的手提包",
             type=CardType.ASSET, card_class=PlayerClass.SEEKER, cost=2,
-            slots=[SlotType.BODY], traits=["item"],
+            slots=[], traits=["item"],
             unique=True,
         )
         game.register_card_data(tote_data)
@@ -95,6 +95,9 @@ class TestDaisysToteBag:
 
         game.card_registry.activate_card("daisys_tote_bag", inst_id, game.event_bus)
 
+        mgr = game.state.slot_managers["daisy"]
+        assert mgr.effective_limit(SlotType.HAND, ["tome"]) == 2  # base only
+
         # Emit card enters play
         ctx = EventContext(
             game_state=game.state,
@@ -105,7 +108,47 @@ class TestDaisysToteBag:
         )
         game.event_bus.emit(ctx)
 
+        # Restricted bonus: tomes get 4 hand slots, non-tomes still only 2
+        assert mgr.restricted_bonuses[SlotType.HAND][0]["count"] == 2
+        assert mgr.restricted_bonuses[SlotType.HAND][0]["trait"] == "tome"
+        assert mgr.effective_limit(SlotType.HAND, ["tome"]) == 4
+        assert mgr.effective_limit(SlotType.HAND, ["item"]) == 2
+        assert mgr.bonus_slots.get(SlotType.HAND) is None  # NOT a generic bonus
         assert ci.uses.get("tome_hand_slots") == 2
+
+    def test_leaves_play_removes_slots(self, game):
+        """Tote Bag leaving play removes the restricted bonus slots."""
+        tote_data = CardData(
+            id="daisys_tote_bag", name="Daisy's Tote Bag", name_cn="黛西的手提包",
+            type=CardType.ASSET, card_class=PlayerClass.SEEKER, cost=2,
+            slots=[], traits=["item"],
+            unique=True,
+        )
+        game.register_card_data(tote_data)
+
+        inv = game.state.get_investigator("daisy")
+        inst_id = game.state.next_instance_id()
+        ci = CardInstance(
+            instance_id=inst_id, card_id="daisys_tote_bag",
+            owner_id="daisy", controller_id="daisy",
+        )
+        game.state.cards_in_play[inst_id] = ci
+        inv.play_area.append(inst_id)
+
+        game.card_registry.activate_card("daisys_tote_bag", inst_id, game.event_bus)
+
+        for evt in (GameEvent.CARD_ENTERS_PLAY, GameEvent.CARD_LEAVES_PLAY):
+            game.event_bus.emit(EventContext(
+                game_state=game.state,
+                event=evt,
+                investigator_id="daisy",
+                target=inst_id,
+                extra={"card_id": "daisys_tote_bag"},
+            ))
+
+        mgr = game.state.slot_managers["daisy"]
+        assert SlotType.HAND not in mgr.restricted_bonuses
+        assert mgr.effective_limit(SlotType.HAND, ["tome"]) == 2  # back to base
 
 
 class TestTheNecronomicon:

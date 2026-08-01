@@ -45,6 +45,12 @@
 - ArkhamDB 英文: https://arkhamdb.com
 - ArkhamDB API: https://arkhamdb.com/api/
 
+## 开发流程
+
+- 默认工作分支：`dev`（日常开发都在 dev 上进行，push 到 origin/dev）
+- `main` 仅用于稳定里程碑合并
+- Commit 作者：YF <303887111@qq.com>（仓库级 git config）
+
 ## 规则核实原则
 
 实现卡牌/机制效果时，**必须先对照官方来源核实规则**，不要凭记忆或数据文件的翻译文本：

@@ -167,6 +167,32 @@ export interface GameState {
   encounter_deck_count?: number
   encounter_discard_count?: number
   last_encounter?: EncounterCardDisplay | null
+  slot_status?: Record<string, SlotStatusEntry>
+}
+
+export interface SlotStatusEntry {
+  used: number
+  base: number
+  bonus: number
+  restricted: number
+  restricted_traits: string[]
+  limit: number
+  cards: string[]
+}
+
+export interface SlotConflictCandidate {
+  instance_id: string
+  id: string
+  name: string
+  name_cn: string
+  slots: string[]
+}
+
+export interface SlotConflict {
+  card_id: string
+  card_name: string
+  needed: Record<string, number>
+  candidates: SlotConflictCandidate[]
 }
 
 export interface EncounterCardDisplay {
@@ -203,6 +229,8 @@ export interface GameEventData {
 export interface ActionResult {
   success: boolean
   message: string
+  code?: string
+  slot_conflict?: SlotConflict
   events: GameEventData[]
   state: GameState
 }

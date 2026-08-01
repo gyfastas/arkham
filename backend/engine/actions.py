@@ -34,6 +34,9 @@ class ActionResolver:
         self.damage = damage_engine
         self.slot_managers = slot_managers
         self.card_registry = card_registry
+        # Set when a PLAY action fails because of slot limits; consumed by
+        # the session layer to build a user-facing slot-conflict response.
+        self.last_slot_conflict: dict | None = None
 
     def perform_action(
         self,
@@ -389,6 +392,24 @@ class ActionResolver:
         if card_data is None:
             return False
 
+        # Slot enforcement (assets only) — check BEFORE paying cost so a
+        # failed play changes nothing. If the player supplied slot_discards
+        # (assets they chose to discard to free slots), apply them first.
+        self.last_slot_conflict = None
+        slot_mgr = self.slot_managers.get(investigator_id)
+        if (
+            card_data.type == CardType.ASSET
+            and card_data.slots
+            and slot_mgr is not None
+            and not slot_mgr.can_play_card(card_data.slots, card_data.traits)
+        ):
+            discards = kwargs.get("slot_discards") or []
+            if not self._try_free_slots(inv, slot_mgr, card_data, discards):
+                self.last_slot_conflict = self._build_slot_conflict(
+                    inv, slot_mgr, card_data
+                )
+                return False
+
         # Pay cost (check BEFORE spending — fail early if can't afford)
         cost = card_data.cost or 0
         if inv.resources < cost:
@@ -433,7 +454,7 @@ class ActionResolver:
         # Handle slots
         slot_mgr = self.slot_managers.get(inv.investigator_id)
         if slot_mgr and card_data.slots:
-            slot_mgr.occupy(instance_id, card_data.slots)
+            slot_mgr.occupy(instance_id, card_data.slots, card_data.traits)
 
         self.game_state.cards_in_play[instance_id] = card_instance
         inv.play_area.append(instance_id)
@@ -452,6 +473,80 @@ class ActionResolver:
         )
         self.bus.emit(ctx)
         return True
+
+    # ------------------------------------------------------------------
+    # Slot helpers
+    # ------------------------------------------------------------------
+    def _try_free_slots(self, inv, slot_mgr, card_data, discards) -> bool:
+        """Discard chosen assets to make room; True if card now fits.
+
+        Safety: if the number of discards cannot possibly satisfy the
+        deficit, nothing is discarded (avoids partial irreversible state).
+        """
+        if slot_mgr.can_play_card(card_data.slots, card_data.traits):
+            return True
+        if not discards:
+            return False
+        needed = slot_mgr.slots_to_free_for_card(card_data.slots, card_data.traits)
+        if len(discards) < sum(needed.values()):
+            return False
+        for iid in discards:
+            if iid not in inv.play_area:
+                return False
+        for iid in discards:
+            self._discard_asset_for_slots(inv, iid)
+        return slot_mgr.can_play_card(card_data.slots, card_data.traits)
+
+    def _discard_asset_for_slots(self, inv, instance_id: str) -> None:
+        """Discard an in-play asset: vacate slots, unregister abilities."""
+        from backend.engine.event_bus import EventContext
+
+        ci = self.game_state.cards_in_play.pop(instance_id, None)
+        if ci is None:
+            return
+        if instance_id in inv.play_area:
+            inv.play_area.remove(instance_id)
+        inv.discard.append(ci.card_id)
+        slot_mgr = self.slot_managers.get(inv.investigator_id)
+        if slot_mgr:
+            slot_mgr.vacate(instance_id)
+        if self.card_registry:
+            self.card_registry.deactivate_card(instance_id, self.bus)
+        ctx = EventContext(
+            game_state=self.game_state,
+            event=GameEvent.CARD_LEAVES_PLAY,
+            investigator_id=inv.investigator_id,
+            target=instance_id,
+            extra={"card_id": ci.card_id},
+        )
+        self.bus.emit(ctx)
+
+    def _build_slot_conflict(self, inv, slot_mgr, card_data) -> dict:
+        """Describe the slot shortage and which in-play assets can go."""
+        needed = slot_mgr.slots_to_free_for_card(
+            card_data.slots, card_data.traits
+        )
+        candidates = []
+        for iid in inv.play_area:
+            ci = self.game_state.get_card_instance(iid)
+            if ci is None or not ci.slot_used:
+                continue
+            cd = self.game_state.get_card_data(ci.card_id)
+            if cd is None or cd.type != CardType.ASSET:
+                continue
+            candidates.append({
+                "instance_id": iid,
+                "id": ci.card_id,
+                "name": cd.name,
+                "name_cn": cd.name_cn,
+                "slots": [s.value for s in ci.slot_used],
+            })
+        return {
+            "card_id": card_data.id,
+            "card_name": card_data.name_cn or card_data.name,
+            "needed": {st.value: n for st, n in needed.items()},
+            "candidates": candidates,
+        }
 
     def _play_event(self, inv, card_id, card_data) -> bool:
         """Play an event card.
