@@ -186,8 +186,30 @@ async def on_setup_game(sid: str, data: dict):
         room.set_deck_cards(player.player_id, deck_cards)
     room.set_ready(player.player_id, True)
 
+    # Campaign mode: save_id → deck/trauma/difficulty/chapter from the save
+    campaign = None
+    save_id = data.get("save_id", "")
+    if save_id:
+        from server.campaign import load_campaign
+        campaign = load_campaign(save_id)
+        if campaign is None:
+            await sio.emit(ServerEvent.ERROR.value, {"message": "战役存档不存在", "code": "save_not_found"}, to=sid)
+            return
+        scenario_id = campaign.current_scenario_id()
+        if not scenario_id:
+            await sio.emit(ServerEvent.ERROR.value, {"message": "战役已完结", "code": "campaign_complete"}, to=sid)
+            return
+        room.campaign = campaign
+    else:
+        scenario_id = data.get("scenario_id", "the_gathering")
+    difficulty = data.get("difficulty", "standard")
+
     try:
-        result = room.start_game(scenario_id=data.get("scenario_id", "the_gathering"))
+        result = room.start_game(
+            scenario_id=scenario_id,
+            difficulty=difficulty,
+            campaign_state=campaign,
+        )
     except Exception as e:
         logger.exception("Failed to start game in room %s", room.room_id)
         await sio.emit(ServerEvent.ERROR.value, {"message": str(e), "code": "setup_failed"}, to=sid)
@@ -196,6 +218,9 @@ async def on_setup_game(sid: str, data: dict):
     if not result["success"]:
         await sio.emit(ServerEvent.ERROR.value, {"message": result["message"], "code": "setup_failed"}, to=sid)
         return
+
+    if campaign is not None:
+        room.session.campaign = campaign
 
     # Add player to session
     player.investigator_ids = ["player"]
@@ -298,58 +323,112 @@ async def on_campaign_state(sid: str, data: dict = None):
 
 @sio.on(ClientEvent.CAMPAIGN_UPGRADE.value)
 async def on_campaign_upgrade(sid: str, data: dict):
-    """Handle deck upgrade actions between scenarios.
+    """Edit the campaign deck between scenarios (server-authoritative).
 
-    data: {
-        "action": "purchase" | "upgrade" | "remove",
-        "card_id": str,            # card to add (purchase) or new card (upgrade)
-        "old_card_id"?: str,       # card to replace (upgrade only)
-        "card_level"?: int,        # level of card being purchased
-        "old_level"?: int,         # level of old card (upgrade only)
-    }
+    data: {"save_id": str, "new_deck": [card_id, ...]  # exactly 30 cards}
+    XP cost is settled server-side from the deck diff (official rules:
+    upgrade = level difference min 1, new card = level min 1, removal free).
     """
-    player = players.get(sid)
-    if not player or not player.room_id:
-        await sio.emit(ServerEvent.ERROR.value, {"message": "不在房间中", "code": "not_in_room"}, to=sid)
+    from server.campaign import load_campaign, save_campaign
+
+    save_id = (data or {}).get("save_id", "")
+    new_deck = (data or {}).get("new_deck") or []
+    camp = load_campaign(save_id)
+    if camp is None:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "战役存档不存在", "code": "save_not_found"}, to=sid)
         return
 
-    room = room_manager.get_room(player.room_id)
-    if not room or not room.campaign:
-        await sio.emit(ServerEvent.ERROR.value, {"message": "非战役模式", "code": "not_campaign"}, to=sid)
+    # Card DB for name/level lookup
+    from backend.engine.game import Game
+    from server.game_session import _load_player_cards
+    g = Game("upgrade_check")
+    _load_player_cards(g)
+
+    ok, msg, cost = camp.apply_deck_change(new_deck, g.state.card_database)
+    if not ok:
+        await sio.emit(ServerEvent.ERROR.value, {"message": msg, "code": "xp_insufficient"}, to=sid)
+        return
+    save_campaign(camp)
+    result = camp.to_dict()
+    result["upgrade_message"] = msg
+    result["upgrade_cost"] = cost
+    await sio.emit("campaign_state", result, to=sid)
+
+
+@sio.on(ClientEvent.CAMPAIGN_NEW.value)
+async def on_campaign_new(sid: str, data: dict):
+    """Create a new campaign save (chapter 1, 0 XP).
+
+    data: {"campaign_id": str, "investigator_id": str, "difficulty": str,
+           "deck_cards": [card_id, ...]}
+    """
+    from server.campaign import campaign_scenarios, new_campaign
+
+    campaign_id = (data or {}).get("campaign_id", "core")
+    investigator_id = (data or {}).get("investigator_id", "daisy_walker")
+    difficulty = (data or {}).get("difficulty", "standard")
+    deck = (data or {}).get("deck_cards") or []
+
+    if not campaign_scenarios(campaign_id):
+        await sio.emit(ServerEvent.ERROR.value, {"message": f"未知战役: {campaign_id}", "code": "bad_campaign"}, to=sid)
+        return
+    if difficulty not in ("easy", "standard", "hard", "expert"):
+        difficulty = "standard"
+    if len(deck) != 30:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "战役开局牌组必须为 30 张", "code": "bad_deck"}, to=sid)
         return
 
-    campaign = room.campaign
-    action = data.get("action", "")
+    camp = new_campaign(campaign_id, investigator_id, difficulty, deck)
+    logger.info("Campaign created: %s (%s/%s)", camp.save_id, campaign_id, difficulty)
+    await sio.emit("campaign_state", camp.to_dict(), to=sid)
 
-    if action == "purchase":
-        card_id = data.get("card_id", "")
-        card_level = data.get("card_level", 0)
-        if campaign.purchase_card(card_id, card_level):
-            await sio.emit("campaign_state", campaign.to_dict(), to=sid)
-        else:
-            await sio.emit(ServerEvent.ERROR.value,
-                           {"message": f"经验不足 (需要 {campaign.card_purchase_cost(card_level)} XP)", "code": "xp_insufficient"}, to=sid)
 
-    elif action == "upgrade":
-        old_card_id = data.get("old_card_id", "")
-        new_card_id = data.get("card_id", "")
-        old_level = data.get("old_level", 0)
-        new_level = data.get("card_level", 0)
-        if campaign.upgrade_card(old_card_id, new_card_id, old_level, new_level):
-            await sio.emit("campaign_state", campaign.to_dict(), to=sid)
-        else:
-            cost = campaign.card_upgrade_cost(old_level, new_level)
-            await sio.emit(ServerEvent.ERROR.value,
-                           {"message": f"无法升级 (需要 {cost} XP)", "code": "xp_insufficient"}, to=sid)
+@sio.on(ClientEvent.CAMPAIGN_LIST.value)
+async def on_campaign_list(sid: str, data: dict = None):
+    from server.campaign import list_campaigns
+    await sio.emit("campaign_list", {"campaigns": list_campaigns()}, to=sid)
 
-    elif action == "remove":
-        card_id = data.get("card_id", "")
-        campaign.remove_card(card_id)
-        await sio.emit("campaign_state", campaign.to_dict(), to=sid)
 
-    else:
-        await sio.emit(ServerEvent.ERROR.value,
-                       {"message": f"未知操作: {action}", "code": "unknown_action"}, to=sid)
+@sio.on(ClientEvent.CAMPAIGN_CONTINUE.value)
+async def on_campaign_continue(sid: str, data: dict):
+    """Load a saved campaign; returns its state (client then starts the
+    current chapter via SETUP_GAME with save_id)."""
+    from server.campaign import load_campaign
+
+    save_id = (data or {}).get("save_id", "")
+    camp = load_campaign(save_id)
+    if camp is None:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "战役存档不存在", "code": "save_not_found"}, to=sid)
+        return
+    await sio.emit("campaign_state", camp.to_dict(), to=sid)
+
+
+@sio.on(ClientEvent.GET_CHAOS_BAG_INFO.value)
+async def on_chaos_bag_info(sid: str, data: dict = None):
+    """Chaos bag composition + symbol effect text for a campaign/difficulty."""
+    from backend.models.chaos import bag_summary, load_chaos_bag_data
+
+    campaign = (data or {}).get("campaign", "core")
+    difficulty = (data or {}).get("difficulty", "standard")
+    info = bag_summary(campaign, difficulty)
+    data_all = load_chaos_bag_data()
+    info["difficulty_labels"] = data_all.get("difficulty_labels", {})
+    info["campaign_name_cn"] = (
+        (data_all.get("campaigns", {}).get(campaign) or {}).get("name_cn", campaign)
+    )
+    # Symbol effect text (Standard side) from the encounter DB scenario cards
+    try:
+        from backend.scenarios.official_core import load_encounter_db_for_campaign
+        db = load_encounter_db_for_campaign(campaign)
+        texts = {}
+        for card in db.values():
+            if card.get("type") == "scenario":
+                texts[card.get("encounter_code") or card["id"]] = card.get("text_cn") or card.get("text") or ""
+        info["symbol_texts"] = texts
+    except Exception:
+        info["symbol_texts"] = {}
+    await sio.emit("chaos_bag_info", info, to=sid)
+
 
 
 # ---------------------------------------------------------------------------

@@ -36,3 +36,4 @@ client/dist/
 # Generated data / scraping outputs
 cards_infos/
 all_cards.json
+saves/

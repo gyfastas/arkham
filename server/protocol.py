@@ -36,8 +36,12 @@ class ClientEvent(str, Enum):
     CHAT = "chat"
     LIST_CARDS = "list_cards"
     GET_INVESTIGATOR = "get_investigator"
-    CAMPAIGN_UPGRADE = "campaign_upgrade"  # Purchase/upgrade cards with XP
+    CAMPAIGN_UPGRADE = "campaign_upgrade"  # Edit deck between scenarios (server-settled)
     CAMPAIGN_STATE = "campaign_state"  # Request campaign state
+    CAMPAIGN_NEW = "campaign_new"  # Start a new campaign (ch.1, 0 XP)
+    CAMPAIGN_LIST = "campaign_list"  # List saved campaigns
+    CAMPAIGN_CONTINUE = "campaign_continue"  # Load a saved campaign
+    GET_CHAOS_BAG_INFO = "get_chaos_bag_info"  # Chaos bag info per campaign/difficulty
 
 
 # ---------------------------------------------------------------------------

@@ -381,6 +381,8 @@ class GameSession:
         self.event_logger: EventLogger | None = None
         self.action_log: list[str] = []
         self.game_over: dict | None = None
+        self.campaign = None  # CampaignState when playing in campaign mode
+        self._campaign_settled = False
         self._players: dict[str, PlayerSession] = {}
         self._pending_skill_test: dict[str, Any] | None = None
         self._pending_skill_test_resume: str | None = None
@@ -588,6 +590,43 @@ class GameSession:
             win = res in {"R1", "R2"}
             msg = self.game.state.scenario.vars.get("resolution_message") or f"结局：{res}"
             self.game_over = {"type": "win" if win else "lose", "message": msg}
+        self._maybe_settle_campaign()
+
+    def _maybe_settle_campaign(self) -> None:
+        """Campaign mode: once the game ends, settle XP/trauma and persist.
+
+        Official: XP earned = total victory points in the victory display
+        (location victory not tracked yet — known gap). If the investigator
+        was defeated, they take 1 trauma of the defeating type (damage →
+        physical, horror → mental).
+        """
+        if self.campaign is None or self._campaign_settled or not self.game_over:
+            return
+        if self.game is None:
+            return
+        self._campaign_settled = True
+        camp = self.campaign
+
+        earned = 0
+        for cid in self.game.state.scenario.victory_display:
+            cd = self.game.state.card_database.get(cid)
+            if cd is not None and getattr(cd, "victory", 0):
+                earned += cd.victory
+        camp.xp += earned
+        camp.xp_earned += earned
+        self.action_log.append(f"⭐ 战役结算：本章获得 {earned} 经验（累计 {camp.xp_earned}）")
+
+        inv = self.game.state.get_investigator("player")
+        if inv is not None and inv.is_defeated:
+            if inv.damage >= inv.health:
+                camp.trauma_physical += 1
+                self.action_log.append("🩸 被击败：获得 1 点身体创伤")
+            else:
+                camp.trauma_mental += 1
+                self.action_log.append("🧠 被击败：获得 1 点精神创伤")
+
+        from server.campaign import save_campaign
+        save_campaign(camp)
 
     def get_state_for_player(self, player_id: str) -> dict:
         """Return serialized game state for a specific player."""
