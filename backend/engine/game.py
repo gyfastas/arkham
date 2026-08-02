@@ -136,8 +136,11 @@ class Game:
                 )
 
         # Give each investigator 5 resources and draw 5 cards.
-        # Draws go through the draw hook so weakness revelations in the
-        # opening hand fire (per official rules).
+        # Official rule (Appendix III, step 8): a weakness drawn during this
+        # step is ignored — set aside WITHOUT resolving it — and replaced by
+        # drawing another card. Set-aside cards are shuffled back into the
+        # owner's deck upon completion of the mulligan step (see
+        # shuffle_set_aside_into_decks).
         from backend.engine.draw_hooks import emit_card_drawn
         defer_opening_revelations = bool(
             self.state.scenario.vars.get("opening_mulligan_pending")

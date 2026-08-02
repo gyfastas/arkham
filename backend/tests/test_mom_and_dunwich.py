@@ -24,6 +24,7 @@ class TestMindOverMatter:
 
     def _game(self):
         g = Game("test")
+        g.chaos_bag.seed(42)  # deterministic tokens (avoid autofail flakiness)
         inv_data = make_investigator_data()
         inv_data.skills.combat = 2
         inv_data.skills.intellect = 5
@@ -87,6 +88,7 @@ class TestEncounterDeckNoLocationLeak:
 class TestDunwichTreacheries:
     def _game_with_controller(self):
         g = Game("extracurricular_activity")
+        g.chaos_bag.seed(42)
         inv_data = make_investigator_data()
         g.register_card_data(inv_data)
         loc = make_location_data()

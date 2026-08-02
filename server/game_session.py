@@ -29,7 +29,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 # ---------------------------------------------------------------------------
-# Investigator / deck definitions (extracted from server_core.py)
+# Investigator / deck definitions
 # ---------------------------------------------------------------------------
 
 INVESTIGATORS: dict[str, dict] = {
@@ -354,6 +354,7 @@ def _load_player_cards(g: Game) -> None:
                 unique=bool(data.get("unique") or False),
                 fast=bool(data.get("fast") or False),
                 victory=int(data.get("victory") or 0),
+                subtype=str(data.get("subtype") or ""),
             )
         except Exception:
             continue
@@ -530,6 +531,10 @@ class GameSession:
         g.setup()
         # Official rule: opening hand mulligan (redraw any number of cards, once)
         g.state.scenario.vars["mulligan_available"] = True
+        for _inv_id, _cards in (g.state.scenario.vars.get("setup_set_aside") or {}).items():
+            if _cards:
+                _names = "、".join(_card_name_cn(g, c) for c in _cards)
+                self.action_log.append(f"🃏 开局抽到弱点已搁置：{_names}（调度后洗回牌库）")
 
         if scenario_id == "the_midnight_masks":
             g.state.scenario.vars["central_location"] = "downtown"
@@ -689,6 +694,10 @@ class GameSession:
         act = data.get("action")
         if not act:
             return {"success": False, "message": "缺少 action"}
+
+        # 玩家在调度窗口内直接行动 → 视为放弃调度，搁置卡洗回牌库
+        if act != "MULLIGAN":
+            self._close_mulligan_window()
 
         # Clear previous encounter card display
         self.game.state.scenario.vars.pop("last_encounter", None)
@@ -877,7 +886,7 @@ class GameSession:
             logs.clear()
 
     # -------------------------------------------------------------------
-    # Action handlers (ported from server_core.py)
+    # Action handlers
     # -------------------------------------------------------------------
 
     def _asset_slot_deficits(self, inv, card_data: CardData, replacing: list[str] | None = None) -> dict[SlotType, int]:
@@ -991,6 +1000,25 @@ class GameSession:
             self.controller.resolve_encounter_card(card_id, choice=choice_id)
             self._clear_game_over()
             return {"success": True, "message": "已选择"}
+
+        # --- Shortcut: choose a connecting location to move to ---
+        if kind == "shortcut_move":
+            target_id = pc.get("investigator_id") or "player"
+            tinv = self.game.state.get_investigator(target_id)
+            if tinv is None:
+                return {"success": False, "message": "调查员不存在"}
+            valid = {opt.get("id") for opt in pc.get("options") or []}
+            if choice_id not in valid:
+                return {"success": False, "message": "无效的目的地"}
+            tinv.location_id = choice_id
+            loc = self.game.state.get_location(choice_id)
+            loc_name = (
+                (loc.card_data.name_cn or loc.card_data.name)
+                if loc is not None and loc.card_data is not None
+                else choice_id
+            )
+            self.action_log.append(f"🛣️ 捷径：移动到【{loc_name}】")
+            return {"success": True, "message": f"捷径：移动到{loc_name}"}
 
         # --- Zoey Samaras reactions on engage ---
         if kind == "zoey_reactions_on_engage":
@@ -1228,29 +1256,55 @@ class GameSession:
         "ritual_candles_lv0": "被动：技能检定时+1",
     }
 
+    def _close_mulligan_window(self) -> None:
+        """玩家跳过调度直接开始行动 → 关闭调度窗口，把开局搁置的卡牌
+        （弱点）洗回牌库（官方规则：调度步骤完成后洗回）。"""
+        scen = self.game.state.scenario
+        if not scen.vars.pop("mulligan_available", None) and not scen.vars.get("setup_set_aside"):
+            return
+        shuffled = self.game.shuffle_set_aside_into_decks()
+        if shuffled:
+            names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
+            self.action_log.append(f"🃏 开局搁置的弱点洗回牌库：{names}")
+
     def _mulligan(self, inv, data: dict) -> dict:
-        """Opening hand mulligan: shuffle chosen cards back and redraw (once)."""
+        """官方调度规则：选定卡牌搁置 → 等量补抽（补抽中的弱点同样搁置再补）
+        → 调度结束后所有搁置卡牌洗回牌库。每局一次。"""
+        from backend.models.state import is_weakness_card
+
         scen = self.game.state.scenario
         if not scen.vars.get("mulligan_available"):
             return {"success": False, "message": "调度已不可用"}
         scen.vars.pop("mulligan_available", None)
 
         card_ids = [c for c in (data.get("card_ids") or []) if c in inv.hand]
-        if not card_ids:
-            self._reveal_opening_hand(inv)
+        inv_set_aside = scen.vars.setdefault("setup_set_aside", {}).setdefault(
+            inv.investigator_id, []
+        )
+        for cid in card_ids:
+            inv.hand.remove(cid)
+            inv_set_aside.append(cid)
+
+        # 补抽：弱点搁置并继续补抽，不触发揭示
+        need = len(card_ids)
+        drawn = 0
+        while drawn < need and inv.deck:
+            cid = inv.deck.pop(0)
+            if is_weakness_card(self.game.state.get_card_data(cid)):
+                inv_set_aside.append(cid)
+                continue
+            inv.hand.append(cid)
+            drawn += 1
+
+        shuffled = self.game.shuffle_set_aside_into_decks()
         if card_ids:
-            for cid in card_ids:
-                inv.hand.remove(cid)
-            inv.deck.extend(card_ids)
-            random.shuffle(inv.deck)
-            for _ in range(len(card_ids)):
-                if inv.deck:
-                    inv.hand.append(inv.deck.pop(0))
-            self._reveal_opening_hand(inv)
             self.action_log.append(f"🔁 调度：重抽 {len(card_ids)} 张手牌")
-            return {"success": True, "message": f"调度：重抽 {len(card_ids)} 张"}
-        self.action_log.append("🔁 保留初始手牌")
-        return {"success": True, "message": "保留初始手牌"}
+        else:
+            self.action_log.append("🔁 保留初始手牌")
+        if shuffled:
+            names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
+            self.action_log.append(f"🃏 搁置卡牌洗回牌库：{names}")
+        return {"success": True, "message": "调度完成"}
 
     def _reveal_opening_hand(self, inv) -> None:
         """Resolve opening-hand revelation after the mulligan window."""
@@ -1296,8 +1350,13 @@ class GameSession:
 
         # Action cost
         actions_cost = int(decl.get("actions", 0) or 0)
-        if actions_cost > inv.actions_remaining:
-            return {"success": False, "message": f"需要{actions_cost}个行动"}
+        if actions_cost > 0:
+            is_tome = self._is_tome_asset(ci.card_id)
+            available = inv.actions_remaining + (
+                inv.tome_actions_remaining if is_tome else 0
+            )
+            if actions_cost > available:
+                return {"success": False, "message": f"需要{actions_cost}个行动"}
 
         # Get or create the impl instance
         impl = self.game.card_registry.active_instances.get(instance_id)
@@ -1326,7 +1385,10 @@ class GameSession:
         if not ok:
             return {"success": False, "message": f"{name_cn}：无法启动（条件不满足）"}
 
-        if actions_cost:
+        if actions_cost == 1:
+            # Prefer Daisy's tome bonus action for Tome cards
+            self._spend_activate_action(inv, ci.card_id)
+        elif actions_cost > 1:
             inv.actions_remaining -= actions_cost
 
         label = decl.get("label", activation_id)
@@ -1570,6 +1632,18 @@ class GameSession:
         self._flush_action_messages()
 
         if not ok:
+            # Slot conflict: the client can prompt the player to discard
+            # in-play assets, then retry PLAY with slot_discards.
+            conflict = getattr(
+                self.game.action_resolver, "last_slot_conflict", None
+            )
+            if enum_act == Action.PLAY and conflict:
+                return {
+                    "success": False,
+                    "code": "slots_full",
+                    "message": f"槽位不足：打出【{conflict.get('card_name', '')}】需要腾出槽位",
+                    "slot_conflict": conflict,
+                }
             return {"success": False, "message": "行动失败"}
 
         # --- Detailed action logging ---

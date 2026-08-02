@@ -65,6 +65,7 @@ class CardData:
     fast: bool = False
     pack: str = ""
     victory: int = 0
+    subtype: str = ""  # e.g. "weakness" / "basic_weakness" (ArkhamDB subtype_name)
 
     # Investigator-specific fields
     skills: SkillValues | None = None
@@ -83,6 +84,14 @@ class CardData:
     clue_value: int | None = None
     per_investigator: bool = False
     connections: list[str] = field(default_factory=list)
+
+
+def is_weakness_card(card_data: CardData | None) -> bool:
+    """弱点判定：subtype 为 weakness / basic_weakness（兼容 basicweakness 变体）。"""
+    if card_data is None:
+        return False
+    sub = (card_data.subtype or "").lower().replace("_", "")
+    return sub in ("weakness", "basicweakness")
 
 
 @dataclass

@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useSocket } from '../composables/useSocket'
 import { useGameStore } from '../stores/game'
+import { CLASS_ORDER, CLASS_COLORS, classLabel } from '../utils/labels'
 import type { CardDisplay } from '../state/types'
 import { localizeDisplayHtml, localizeDisplayText } from '../utils/displayText'
 
@@ -18,6 +19,9 @@ const client = useSocket()
 const store = useGameStore()
 
 const filterTab = ref<'all' | 'asset' | 'event' | 'skill'>('all')
+const levelMin = ref(0)
+const levelMax = ref(5)
+const LEVEL_OPTIONS = [0, 1, 2, 3, 4, 5]
 const deck = ref<string[]>([])
 
 // --- 卡牌悬浮预览 ---
@@ -54,15 +58,6 @@ const SLOT_LABELS: Record<string, string> = {
   ally: '盟友', arcane: '奥秘', 'arcane x2': '双奥秘',
 }
 
-const CLASS_COLORS: Record<string, string> = {
-  guardian: '#2980b9',
-  seeker: '#d4a017',
-  rogue: '#27ae60',
-  mystic: '#8e44ad',
-  survivor: '#c0392b',
-  neutral: '#888',
-}
-
 const FILTER_LABELS: { key: 'all' | 'asset' | 'event' | 'skill'; label: string }[] = [
   { key: 'all', label: '全部' },
   { key: 'asset', label: '支援' },
@@ -73,9 +68,28 @@ const FILTER_LABELS: { key: 'all' | 'asset' | 'event' | 'skill'; label: string }
 // --- Computed ---
 
 const filteredCards = computed(() => {
-  const cards = store.availableCards
-  if (filterTab.value === 'all') return cards
-  return cards.filter(c => c.type.toLowerCase() === filterTab.value)
+  let cards = store.availableCards
+  if (filterTab.value !== 'all') {
+    cards = cards.filter(c => c.type.toLowerCase() === filterTab.value)
+  }
+  const lo = Math.min(levelMin.value, levelMax.value)
+  const hi = Math.max(levelMin.value, levelMax.value)
+  return cards.filter(c => {
+    const lv = c.level ?? 0
+    return lv >= lo && lv <= hi
+  })
+})
+
+/** 按职业分区的卡牌列表 */
+const groupedCards = computed(() => {
+  const groups: { key: string; label: string; color: string; cards: CardDisplay[] }[] = []
+  for (const cls of CLASS_ORDER) {
+    const cards = filteredCards.value.filter(c => c.class === cls)
+    if (cards.length > 0) {
+      groups.push({ key: cls, label: classLabel(cls), color: CLASS_COLORS[cls] || '#888', cards })
+    }
+  }
+  return groups
 })
 
 const deckSize = computed(() => deck.value.length)
@@ -125,20 +139,75 @@ function applyPreset(cards: string[]) {
   deck.value = [...cards]
 }
 
+// --- 卡组文件：导入（本地文件选择） / 保存（下载 JSON） ---
+const fileInput = ref<HTMLInputElement | null>(null)
+
 function importDeck() {
-  const input = window.prompt('粘贴卡组JSON (卡牌ID数组):')
-  if (!input) return
-  try {
-    const parsed = JSON.parse(input)
-    if (Array.isArray(parsed) && parsed.every((x: unknown) => typeof x === 'string')) {
-      deck.value = parsed
-      store.addToast(`导入 ${parsed.length} 张卡牌`, 'info')
-    } else {
-      store.addToast('格式错误: 需要字符串数组', 'error')
+  fileInput.value?.click()
+}
+
+function onImportFile(event: Event) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  input.value = '' // 允许重复选择同一文件
+  if (!file) return
+  const reader = new FileReader()
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(String(reader.result))
+      // 兼容两种格式：纯卡牌ID数组，或保存时导出的 { cards: [...] }
+      const cards: unknown = Array.isArray(parsed) ? parsed : parsed?.cards
+      if (Array.isArray(cards) && cards.every((x: unknown) => typeof x === 'string')) {
+        deck.value = [...cards]
+        store.addToast(`导入 ${cards.length} 张卡牌`, 'info')
+      } else {
+        store.addToast('格式错误：需要卡牌ID数组或 { "cards": [...] }', 'error')
+      }
+    } catch {
+      store.addToast('JSON 解析失败', 'error')
     }
-  } catch {
-    store.addToast('JSON 解析失败', 'error')
   }
+  reader.onerror = () => store.addToast('文件读取失败', 'error')
+  reader.readAsText(file)
+}
+
+// --- 保存弹窗 ---
+const showSaveModal = ref(false)
+const saveFileName = ref('')
+
+function saveDeck() {
+  if (deck.value.length === 0) {
+    store.addToast('卡组为空，无法保存', 'error')
+    return
+  }
+  const date = new Date().toISOString().slice(0, 10)
+  saveFileName.value = `deck_${props.investigatorId}_${date}`
+  showSaveModal.value = true
+}
+
+function confirmSave() {
+  let name = saveFileName.value.trim()
+  if (!name) {
+    store.addToast('请输入文件名', 'error')
+    return
+  }
+  // 去掉路径分隔符，防止非法文件名
+  name = name.replace(/[\\/:*?"<>|]/g, '_')
+  if (!name.toLowerCase().endsWith('.json')) name += '.json'
+  const payload = {
+    investigator: props.investigatorId,
+    saved_at: new Date().toISOString(),
+    cards: [...deck.value],
+  }
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = name
+  a.click()
+  URL.revokeObjectURL(url)
+  showSaveModal.value = false
+  store.addToast(`已保存卡组（${deck.value.length} 张）为 ${name}`, 'info')
 }
 
 function confirm() {
@@ -178,7 +247,7 @@ onUnmounted(() => {
     <div class="db-body">
       <!-- Left: Card Catalog -->
       <div class="catalog-panel">
-        <!-- Filter Tabs -->
+        <!-- Filter Tabs + Level Range -->
         <div class="filter-tabs">
           <button
             v-for="f in FILTER_LABELS"
@@ -189,9 +258,19 @@ onUnmounted(() => {
           >
             {{ f.label }}
           </button>
+          <div class="level-filter">
+            <span class="level-label">等级</span>
+            <select v-model.number="levelMin" class="level-select">
+              <option v-for="n in LEVEL_OPTIONS" :key="'min' + n" :value="n">{{ n }}</option>
+            </select>
+            <span class="level-sep">-</span>
+            <select v-model.number="levelMax" class="level-select">
+              <option v-for="n in LEVEL_OPTIONS" :key="'max' + n" :value="n">{{ n }}</option>
+            </select>
+          </div>
         </div>
 
-        <!-- Card Grid -->
+        <!-- Card Grid（按职业分区） -->
         <div class="card-grid">
           <div
             v-for="card in filteredCards"
@@ -214,12 +293,37 @@ onUnmounted(() => {
               <span class="card-type">{{ card.type }}</span>
               <span class="card-level" v-if="card.level != null && card.level > 0">Lv.{{ card.level }}</span>
             </div>
-            <div class="card-count" v-if="countInDeck(card.id) > 0">
-              x{{ countInDeck(card.id) }}
+            <div
+              v-for="card in group.cards"
+              :key="card.id"
+              class="card-item"
+              :class="{
+                disabled: card.allowed === false,
+                maxed: countInDeck(card.id) >= maxCopies(card),
+              }"
+              :style="{ borderColor: CLASS_COLORS[card.class] || '#333' }"
+              @click="addCard(card)"
+              @mouseenter="showPreview(card, $event)"
+              @mouseleave="hidePreview"
+            >
+              <div class="card-top">
+                <span class="card-name">{{ card.name_cn }}</span>
+                <span class="card-cost" v-if="card.cost !== null">{{ card.cost }}</span>
+              </div>
+              <div class="card-meta">
+                <span class="card-type">{{ TYPE_LABELS[card.type] || card.type }}</span>
+                <span class="card-level" v-if="card.level != null && card.level > 0">Lv.{{ card.level }}</span>
+              </div>
+              <div class="card-count" v-if="countInDeck(card.id) > 0">
+                x{{ countInDeck(card.id) }}
+              </div>
+              <div class="card-locked" v-if="card.allowed === false">
+                需要{{ card.level || 0 }}经验
+              </div>
             </div>
-            <div class="card-locked" v-if="card.allowed === false">
-              需要{{ card.level || 0 }}经验
-            </div>
+          </template>
+          <div v-if="groupedCards.length === 0" class="no-cards">
+            没有符合筛选条件的卡牌
           </div>
         </div>
 
@@ -311,7 +415,36 @@ onUnmounted(() => {
         <!-- Actions -->
         <div class="deck-actions">
           <button class="btn btn-import" @click="importDeck">导入卡组</button>
+          <button class="btn btn-save" :disabled="deckSize === 0" @click="saveDeck">保存卡组</button>
           <button class="btn btn-confirm" :disabled="!canConfirm" @click="confirm">确认</button>
+          <input
+            ref="fileInput"
+            type="file"
+            accept=".json,application/json"
+            style="display: none"
+            @change="onImportFile"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- 保存卡组：文件名弹窗 -->
+    <div v-if="showSaveModal" class="modal-overlay" @click.self="showSaveModal = false">
+      <div class="save-modal">
+        <div class="save-title">保存卡组</div>
+        <div class="save-desc">将当前卡组（{{ deckSize }} 张）保存为 JSON 文件</div>
+        <input
+          v-model="saveFileName"
+          class="save-input"
+          type="text"
+          placeholder="文件名"
+          autofocus
+          @keyup.enter="confirmSave"
+          @keyup.esc="showSaveModal = false"
+        />
+        <div class="save-btns">
+          <button class="btn btn-import" @click="showSaveModal = false">取消</button>
+          <button class="btn btn-confirm" @click="confirmSave">保存</button>
         </div>
       </div>
     </div>
@@ -470,6 +603,38 @@ onUnmounted(() => {
   gap: 4px;
   padding: 10px 16px;
   border-bottom: 1px solid #1a1a2e;
+  align-items: center;
+}
+
+.level-filter {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.level-label {
+  color: #999;
+  font-size: 13px;
+}
+
+.level-sep {
+  color: #555;
+}
+
+.level-select {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4e;
+  color: #ddd;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.level-select:focus {
+  outline: none;
+  border-color: #4a4a8e;
 }
 
 .tab-btn {
@@ -501,6 +666,40 @@ onUnmounted(() => {
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 10px;
   align-content: start;
+}
+
+.class-section {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 10px;
+  margin-top: 6px;
+  border-left: 3px solid #888;
+  background: #101024;
+  border-radius: 4px;
+}
+
+.class-section:first-child {
+  margin-top: 0;
+}
+
+.class-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.class-count {
+  font-size: 12px;
+  color: #666;
+}
+
+.no-cards {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #555;
+  padding: 40px 0;
+  font-size: 14px;
 }
 
 .card-item {
@@ -770,6 +969,72 @@ onUnmounted(() => {
 
 .btn-import:hover {
   background: #252540;
+}
+
+.btn-save {
+  background: #1a1a2e;
+  color: #ccc;
+  border: 1px solid #333;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: #252540;
+}
+
+/* Save Deck Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.save-modal {
+  background: #14142b;
+  border: 1px solid #333355;
+  border-radius: 8px;
+  padding: 20px;
+  width: 360px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.save-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #eee;
+  margin-bottom: 6px;
+}
+
+.save-desc {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.save-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #0d0d20;
+  border: 1px solid #2a2a4e;
+  color: #eee;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.save-input:focus {
+  outline: none;
+  border-color: #4a4a8e;
+}
+
+.save-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .btn-confirm {

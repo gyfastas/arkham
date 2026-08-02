@@ -292,6 +292,22 @@ class DamageEngine:
                 manager.vacate(instance_id)
             inv.play_area.remove(instance_id)
             inv.discard.append(card.card_id)
+        # Vacate slots so destroyed/discarded assets free their slots
+        slot_mgr = getattr(self.game_state, "slot_managers", {}).get(
+            card.owner_id
+        )
+        if slot_mgr is not None:
+            slot_mgr.vacate(instance_id)
+        # Notify abilities (e.g. Tote Bag reclaiming its bonus slots)
+        from backend.engine.event_bus import EventContext
+        ctx = EventContext(
+            game_state=self.game_state,
+            event=GameEvent.CARD_LEAVES_PLAY,
+            investigator_id=card.owner_id,
+            target=instance_id,
+            extra={"card_id": card.card_id},
+        )
+        self.bus.emit(ctx)
 
     def _remove_enemy_from_play(self, instance_id: str) -> None:
         enemy = self.game_state.cards_in_play.pop(instance_id, None)

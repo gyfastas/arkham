@@ -133,6 +133,26 @@ function handleMulligan(cardIds: string[]) {
   socket.sendAction('MULLIGAN', { card_ids: cardIds })
 }
 
+// 槽位不足 → 选择弃置支援重试
+const slotConflict = ref<SlotConflict | null>(null)
+
+watch(() => store.lastActionResult, (result) => {
+  if (result && !result.success && result.code === 'slots_full' && result.slot_conflict) {
+    slotConflict.value = result.slot_conflict
+  }
+})
+
+function handleSlotDiscardConfirm(discardIds: string[]) {
+  const conflict = slotConflict.value
+  slotConflict.value = null
+  if (!conflict) return
+  socket.sendAction('PLAY', { card_id: conflict.card_id, slot_discards: discardIds })
+}
+
+function handleSlotDiscardCancel() {
+  slotConflict.value = null
+}
+
 function handleAdvanceAct() {
   socket.sendAction('ADVANCE_ACT')
 }
@@ -372,6 +392,12 @@ function handleChoice(optionId: string) {
       @roll="handleSkillRoll"
       @activate-card="handleActivateCard"
       @complete="finishSkillTestAnimation"
+    />
+    <SlotDiscardModal
+      v-if="slotConflict"
+      :conflict="slotConflict"
+      @confirm="handleSlotDiscardConfirm"
+      @cancel="handleSlotDiscardCancel"
     />
   </div>
 

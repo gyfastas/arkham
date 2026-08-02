@@ -7,7 +7,9 @@
   "type": "treachery",
   "cost": null,
   "level": null,
-  "traits": ["task"],
+  "traits": [
+    "task"
+  ],
   "skill_icons": {},
   "slots": [],
   "text": "<b>Revelation</b> - Put Cover Up into play in your threat area, with 3 clues on it.\n<b>Forced</b> - When you would discover 1 or more clues at your location: Discard that many clues from Cover Up instead.\n<b>Forced</b> - At the end of the game, if Cover Up still has clues on it: You suffer 1 mental trauma.",
@@ -17,5 +19,6 @@
   "unique": false,
   "signature": "roland_banks",
   "weakness": true,
-  "pack": "core"
+  "pack": "core",
+  "subtype": "weakness"
 }

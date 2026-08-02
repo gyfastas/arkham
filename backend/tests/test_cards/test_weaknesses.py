@@ -371,10 +371,13 @@ class TestInternalInjury:
         assert impl.activate_discard(game.state, "test_investigator") is True
 
 
-class TestSetupWeaknessRevelation:
-    def test_opening_hand_weakness_triggers_revelation(self):
-        """开局手牌中的弱点应立即触发 revelation（官方规则）。"""
+class TestSetupWeaknessSetAside:
+    def test_opening_hand_weakness_set_aside_and_shuffled_back(self):
+        """官方规则（附录III步骤8）：开局抽到的弱点搁置且不触发揭示，
+        补抽替代；调度步骤完成后洗回牌库。"""
         from backend.engine.game import Game
+        from backend.models.enums import CardType
+        from backend.models.state import CardData
         from backend.tests.conftest import make_investigator_data, make_location_data
 
         g = Game("test_setup_weakness")
@@ -382,16 +385,24 @@ class TestSetupWeaknessRevelation:
         g.register_card_data(inv_data)
         loc_data = make_location_data()
         g.register_card_data(loc_data)
-        deck = ["cover_up", "card_a", "card_b", "card_c", "card_d"]
+        g.register_card_data(CardData(
+            id="cover_up", name="Cover Up", name_cn="掩盖真相",
+            type=CardType.TREACHERY, subtype="weakness",
+        ))
+        deck = ["cover_up", "card_a", "card_b", "card_c", "card_d", "card_e"]
         g.add_investigator("p1", inv_data, deck=deck, starting_location="test_location")
         g.add_location("test_location", loc_data)
         g.setup()
 
         inv = g.state.get_investigator("p1")
+        # 弱点不进手牌、不进威胁区、不触发揭示；补抽 card_e 凑满5张
         assert "cover_up" not in inv.hand
-        threat_cards = [
-            g.state.get_card_instance(iid).card_id
-            for iid in inv.threat_area
-            if g.state.get_card_instance(iid)
-        ]
-        assert "cover_up" in threat_cards
+        assert inv.hand == ["card_a", "card_b", "card_c", "card_d", "card_e"]
+        assert inv.threat_area == []
+        assert g.state.scenario.vars["setup_set_aside"] == {"p1": ["cover_up"]}
+
+        # 调度步骤完成 → 洗回牌库
+        shuffled = g.shuffle_set_aside_into_decks()
+        assert shuffled == ["cover_up"]
+        assert "cover_up" in inv.deck
+        assert "setup_set_aside" not in g.state.scenario.vars

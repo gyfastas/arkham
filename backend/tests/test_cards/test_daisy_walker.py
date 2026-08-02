@@ -75,11 +75,11 @@ class TestDaisyWalker:
 
 class TestDaisysToteBag:
     def test_enters_play_with_tome_slots(self, game):
-        """Tote Bag should mark extra tome slots when entering play."""
+        """Tote Bag grants 2 Tome-ONLY bonus hand slots (restricted)."""
         tote_data = CardData(
             id="daisys_tote_bag", name="Daisy's Tote Bag", name_cn="黛西的手提包",
             type=CardType.ASSET, card_class=PlayerClass.SEEKER, cost=2,
-            slots=[SlotType.BODY], traits=["item"],
+            slots=[], traits=["item"],
             unique=True,
         )
         game.register_card_data(tote_data)
@@ -95,6 +95,9 @@ class TestDaisysToteBag:
 
         game.card_registry.activate_card("daisys_tote_bag", inst_id, game.event_bus)
 
+        mgr = game.state.slot_managers["daisy"]
+        assert mgr.effective_limit(SlotType.HAND, ["tome"]) == 2  # base only
+
         # Emit card enters play
         ctx = EventContext(
             game_state=game.state,
@@ -105,7 +108,47 @@ class TestDaisysToteBag:
         )
         game.event_bus.emit(ctx)
 
+        # Restricted bonus: tomes get 4 hand slots, non-tomes still only 2
+        assert mgr.restricted_bonuses[SlotType.HAND][0]["count"] == 2
+        assert mgr.restricted_bonuses[SlotType.HAND][0]["trait"] == "tome"
+        assert mgr.effective_limit(SlotType.HAND, ["tome"]) == 4
+        assert mgr.effective_limit(SlotType.HAND, ["item"]) == 2
+        assert mgr.bonus_slots.get(SlotType.HAND) is None  # NOT a generic bonus
         assert ci.uses.get("tome_hand_slots") == 2
+
+    def test_leaves_play_removes_slots(self, game):
+        """Tote Bag leaving play removes the restricted bonus slots."""
+        tote_data = CardData(
+            id="daisys_tote_bag", name="Daisy's Tote Bag", name_cn="黛西的手提包",
+            type=CardType.ASSET, card_class=PlayerClass.SEEKER, cost=2,
+            slots=[], traits=["item"],
+            unique=True,
+        )
+        game.register_card_data(tote_data)
+
+        inv = game.state.get_investigator("daisy")
+        inst_id = game.state.next_instance_id()
+        ci = CardInstance(
+            instance_id=inst_id, card_id="daisys_tote_bag",
+            owner_id="daisy", controller_id="daisy",
+        )
+        game.state.cards_in_play[inst_id] = ci
+        inv.play_area.append(inst_id)
+
+        game.card_registry.activate_card("daisys_tote_bag", inst_id, game.event_bus)
+
+        for evt in (GameEvent.CARD_ENTERS_PLAY, GameEvent.CARD_LEAVES_PLAY):
+            game.event_bus.emit(EventContext(
+                game_state=game.state,
+                event=evt,
+                investigator_id="daisy",
+                target=inst_id,
+                extra={"card_id": "daisys_tote_bag"},
+            ))
+
+        mgr = game.state.slot_managers["daisy"]
+        assert SlotType.HAND not in mgr.restricted_bonuses
+        assert mgr.effective_limit(SlotType.HAND, ["tome"]) == 2  # back to base
 
 
 class TestTheNecronomicon:
@@ -199,3 +242,77 @@ class TestTheNecronomicon:
         assert inst_id not in inv.threat_area
         assert inst_id not in game.state.cards_in_play
         assert "the_necronomicon" in inv.discard
+
+
+class TestNecronomiconActionCost:
+    """Necronomicon activation costs 1 action (official: [action], not free).
+    Daisy may use her bonus Tome action since it has the Tome trait."""
+
+    def _necro_in_threat(self, game):
+        necro_data = CardData(
+            id="the_necronomicon", name="The Necronomicon", name_cn="死灵之书",
+            type=CardType.ASSET, card_class=PlayerClass.NEUTRAL,
+            slots=[SlotType.HAND], traits=["item", "tome"],
+        )
+        game.register_card_data(necro_data)
+        inv = game.state.get_investigator("daisy")
+        inst_id = game.state.next_instance_id()
+        ci = CardInstance(
+            instance_id=inst_id, card_id="the_necronomicon",
+            owner_id="daisy", controller_id="daisy",
+        )
+        ci.uses = {"horror": 3}
+        game.state.cards_in_play[inst_id] = ci
+        inv.threat_area.append(inst_id)
+        game.card_registry.activate_card("the_necronomicon", inst_id, game.event_bus)
+        return inst_id
+
+    def _session(self, game):
+        from server.game_session import GameSession
+        s = GameSession.__new__(GameSession)
+        s.game = game
+        s.action_log = []
+        s.controller = None
+        s.game_over = None
+        s.event_logger = None
+        return s
+
+    def test_activation_spends_tome_action_first(self, game):
+        inst_id = self._necro_in_threat(game)
+        inv = game.state.get_investigator("daisy")
+        inv.actions_remaining = 3
+        inv.tome_actions_remaining = 1
+
+        s = self._session(game)
+        result = s._activate_card(inv, {"instance_id": inst_id, "activation_id": "horror"})
+
+        assert result["success"] is True
+        assert inv.tome_actions_remaining == 0   # tome action used first
+        assert inv.actions_remaining == 3        # regular actions untouched
+        assert inv.horror == 1
+
+    def test_activation_spends_regular_action_when_no_tome(self, game):
+        inst_id = self._necro_in_threat(game)
+        inv = game.state.get_investigator("daisy")
+        inv.actions_remaining = 2
+        inv.tome_actions_remaining = 0
+
+        s = self._session(game)
+        result = s._activate_card(inv, {"instance_id": inst_id, "activation_id": "horror"})
+
+        assert result["success"] is True
+        assert inv.actions_remaining == 1
+        assert inv.horror == 1
+
+    def test_activation_rejected_without_actions(self, game):
+        inst_id = self._necro_in_threat(game)
+        inv = game.state.get_investigator("daisy")
+        inv.actions_remaining = 0
+        inv.tome_actions_remaining = 0
+
+        s = self._session(game)
+        result = s._activate_card(inv, {"instance_id": inst_id, "activation_id": "horror"})
+
+        assert result["success"] is False
+        assert "行动" in result["message"]
+        assert inv.horror == 0  # no horror moved

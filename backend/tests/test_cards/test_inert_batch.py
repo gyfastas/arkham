@@ -62,6 +62,7 @@ def _add_enemy(game, instance_id, engaged=False, location="test_location"):
 
 class TestShortcut:
     def test_moves_to_connected_location(self, game):
+        """Playing Shortcut sets pending_choice; move happens on resolve."""
         _register(game, Shortcut)
         loc_b = make_location_data(id="loc_b", connections=["test_location"])
         game.register_card_data(loc_b)
@@ -70,8 +71,12 @@ class TestShortcut:
 
         inv = game.state.get_investigator("test_investigator")
         ctx = _play(game, "shortcut_lv0")
-        assert inv.location_id == "loc_b"
-        assert ctx.extra["shortcut_moved_to"] == "loc_b"
+        # No immediate move: player picks the destination via pending_choice
+        assert inv.location_id == "test_location"
+        assert ctx.extra["shortcut_pending"] is True
+        pc = game.state.scenario.vars.get("pending_choice")
+        assert pc is not None and pc["kind"] == "shortcut_move"
+        assert [o["id"] for o in pc["options"]] == ["loc_b"]
 
 
 class TestDodge:

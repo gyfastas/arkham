@@ -17,5 +17,6 @@
   "unique": false,
   "signature": "wendy_adams",
   "weakness": true,
-  "pack": "core"
+  "pack": "core",
+  "subtype": "weakness"
 }
