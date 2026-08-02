@@ -22,4 +22,8 @@ export const ClientEvent = {
   GET_INVESTIGATOR: 'get_investigator',
   CAMPAIGN_UPGRADE: 'campaign_upgrade',
   CAMPAIGN_STATE: 'campaign_state',
+  CAMPAIGN_NEW: 'campaign_new',
+  CAMPAIGN_LIST: 'campaign_list',
+  CAMPAIGN_CONTINUE: 'campaign_continue',
+  GET_CHAOS_BAG_INFO: 'get_chaos_bag_info',
 } as const

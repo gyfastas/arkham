@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import type {
   GameState, CardDisplay, InvestigatorDetail, DeckPreset,
   ActionResult, GameEventData, PendingChoice, CampaignStateData,
-  EncounterCardDisplay,
+  EncounterCardDisplay, CampaignSaveSummary, ChaosBagInfo,
 } from '../state/types'
 
 export type GameLanguage = 'zh-Hans' | 'zh-Hant'
@@ -41,6 +41,9 @@ export const useGameStore = defineStore('game', () => {
 
   // Campaign
   const campaignState = ref<CampaignStateData | null>(null)
+  const campaignSaves = ref<CampaignSaveSummary[]>([])
+  const chaosBagInfo = ref<ChaosBagInfo | null>(null)
+  const difficulty = ref<string>('standard')
 
   // Toast messages
   const toasts = ref<{ id: number; message: string; type: 'error' | 'info' }[]>([])
@@ -76,6 +79,8 @@ export const useGameStore = defineStore('game', () => {
     availableCards.value = []
     deckPresets.value = []
     deckRequirements.value = null
+    campaignState.value = null
+    chaosBagInfo.value = null
   }
 
   return {
@@ -84,7 +89,7 @@ export const useGameStore = defineStore('game', () => {
     language, setLanguage,
     investigatorDetail, availableCards, deckPresets, deckRequirements, signatureCards, weaknessCards,
     state, gameOver, lastActionResult, pendingEvents,
-    campaignState,
+    campaignState, campaignSaves, chaosBagInfo, difficulty,
     toasts, addToast,
     updateState, reset,
   }

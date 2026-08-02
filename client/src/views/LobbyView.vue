@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { useSocket } from '../composables/useSocket'
 import { useGameStore } from '../stores/game'
 import DeckBuilder from '../components/DeckBuilder.vue'
+import { DIFFICULTIES, DIFFICULTY_LABELS } from '../data/meta'
 
 const router = useRouter()
 const client = useSocket()
@@ -262,6 +263,7 @@ async function startGame() {
       store.selectedInvestigator,
       deckPreset,
       deckCards,
+      store.difficulty,
     )
   }
 
@@ -439,9 +441,16 @@ onUnmounted(() => {
 
     <!-- Bottom Bar -->
     <div class="bottom-bar">
+      <button class="btn btn-secondary" @click="router.push('/')">← 主页</button>
       <button class="btn btn-secondary" @click="openDeckBuilder">{{ labels.buildDeck }}</button>
       <div class="deck-status" v-if="customDeckCards.length > 0">
         {{ labels.built }} {{ customDeckCards.length }} 张
+      </div>
+      <div class="difficulty-picker">
+        <span class="diff-label">难度</span>
+        <select v-model="store.difficulty" class="diff-select">
+          <option v-for="d in DIFFICULTIES" :key="d" :value="d">{{ DIFFICULTY_LABELS[d] }}</option>
+        </select>
       </div>
       <button class="btn btn-primary" :disabled="!canStart || starting" @click="startGame">
         {{ starting ? labels.starting : labels.startGame }}
@@ -714,6 +723,33 @@ onUnmounted(() => {
   padding: 12px 24px;
   background: #0d0d20;
   border-top: 1px solid #1a1a2e;
+}
+
+.difficulty-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.diff-label {
+  color: #888;
+  font-size: 13px;
+}
+
+.diff-select {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4e;
+  color: #ddd;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.diff-select:focus {
+  outline: none;
+  border-color: #4a4a8e;
 }
 
 .deck-status {

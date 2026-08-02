@@ -2,7 +2,7 @@
 
 import { io, Socket } from 'socket.io-client'
 import { ServerEvent, ClientEvent } from './Protocol'
-import type { GameState, ActionResult, RoomState, GameEventData, CardDisplay, InvestigatorDetail, DeckPreset, CampaignStateData } from '../state/types'
+import type { GameState, ActionResult, RoomState, GameEventData, CardDisplay, InvestigatorDetail, DeckPreset, CampaignStateData, CampaignSaveSummary, ChaosBagInfo } from '../state/types'
 
 export type ConnectionState = 'disconnected' | 'connecting' | 'connected'
 
@@ -84,6 +84,14 @@ export class SocketClient {
       this.socket.on('campaign_state', (data: CampaignStateData | null) => {
         this.onCampaignState?.(data)
       })
+
+      this.socket.on('campaign_list', (data: { campaigns: CampaignSaveSummary[] }) => {
+        this.onCampaignList?.(data.campaigns || [])
+      })
+
+      this.socket.on('chaos_bag_info', (data: ChaosBagInfo) => {
+        this.onChaosBagInfo?.(data)
+      })
     })
 
     this.connectionPromise = this.connectionPromise.finally(() => {
@@ -116,7 +124,7 @@ export class SocketClient {
     this.socket?.emit(ClientEvent.LEAVE_ROOM, {})
   }
 
-  setupGame(scenarioId: string, investigatorId: string, deckPreset?: string, deckCards?: string[]): void {
+  setupGame(scenarioId: string, investigatorId: string, deckPreset?: string, deckCards?: string[], difficulty?: string, saveId?: string): void {
     const payload: Record<string, unknown> = {
       scenario_id: scenarioId,
       investigator_id: investigatorId,
@@ -125,6 +133,8 @@ export class SocketClient {
     if (deckCards && deckCards.length > 0) {
       payload.deck_cards = deckCards
     }
+    if (difficulty) payload.difficulty = difficulty
+    if (saveId) payload.save_id = saveId
     this.socket?.emit(ClientEvent.SETUP_GAME, payload)
   }
 
@@ -139,13 +149,31 @@ export class SocketClient {
   onCardList: ((cards: CardDisplay[], presets: DeckPreset[], deckReq: any, signatureCards: CardDisplay[], weaknessCards: CardDisplay[]) => void) | null = null
   onInvestigatorDetail: ((detail: InvestigatorDetail) => void) | null = null
   onCampaignState: ((state: CampaignStateData | null) => void) | null = null
+  onCampaignList: ((saves: CampaignSaveSummary[]) => void) | null = null
+  onChaosBagInfo: ((info: ChaosBagInfo) => void) | null = null
 
   getCampaignState(): void {
     this.socket?.emit(ClientEvent.CAMPAIGN_STATE, {})
   }
 
-  campaignUpgrade(data: { action: string; card_id?: string; old_card_id?: string; card_level?: number; old_level?: number }): void {
-    this.socket?.emit(ClientEvent.CAMPAIGN_UPGRADE, data)
+  campaignNew(data: { campaign_id: string; investigator_id: string; difficulty: string; deck_cards: string[] }): void {
+    this.socket?.emit(ClientEvent.CAMPAIGN_NEW, data)
+  }
+
+  campaignList(): void {
+    this.socket?.emit(ClientEvent.CAMPAIGN_LIST, {})
+  }
+
+  campaignContinue(saveId: string, advance: boolean = false): void {
+    this.socket?.emit(ClientEvent.CAMPAIGN_CONTINUE, { save_id: saveId, advance })
+  }
+
+  campaignUpgradeDeck(saveId: string, newDeck: string[]): void {
+    this.socket?.emit(ClientEvent.CAMPAIGN_UPGRADE, { save_id: saveId, new_deck: newDeck })
+  }
+
+  getChaosBagInfo(campaign: string, difficulty: string): void {
+    this.socket?.emit(ClientEvent.GET_CHAOS_BAG_INFO, { campaign, difficulty })
   }
 
   sendAction(action: string, params: Record<string, unknown> = {}): void {

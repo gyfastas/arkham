@@ -392,14 +392,21 @@ async def on_campaign_list(sid: str, data: dict = None):
 @sio.on(ClientEvent.CAMPAIGN_CONTINUE.value)
 async def on_campaign_continue(sid: str, data: dict):
     """Load a saved campaign; returns its state (client then starts the
-    current chapter via SETUP_GAME with save_id)."""
-    from server.campaign import load_campaign
+    current chapter via SETUP_GAME with save_id).
+
+    data: {"save_id": str, "advance": bool} — advance=true moves to the
+    next chapter (used after settlement at chapter end).
+    """
+    from server.campaign import load_campaign, save_campaign
 
     save_id = (data or {}).get("save_id", "")
     camp = load_campaign(save_id)
     if camp is None:
         await sio.emit(ServerEvent.ERROR.value, {"message": "战役存档不存在", "code": "save_not_found"}, to=sid)
         return
+    if (data or {}).get("advance"):
+        camp.advance_scenario()
+        save_campaign(camp)
     await sio.emit("campaign_state", camp.to_dict(), to=sid)
 
 

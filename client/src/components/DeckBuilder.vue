@@ -8,6 +8,12 @@ import { localizeDisplayHtml, localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{
   investigatorId: string
+  /** 可用经验（战役升级模式；构筑模式传 0） */
+  xp?: number
+  /** build=新构筑（默认） / upgrade=战役幕间升级 */
+  mode?: 'build' | 'upgrade'
+  /** upgrade 模式的初始牌组（来自战役存档） */
+  initialDeck?: string[]
 }>()
 
 const emit = defineEmits<{
@@ -22,7 +28,8 @@ const filterTab = ref<'all' | 'asset' | 'event' | 'skill'>('all')
 const levelMin = ref(0)
 const levelMax = ref(5)
 const LEVEL_OPTIONS = [0, 1, 2, 3, 4, 5]
-const deck = ref<string[]>([])
+const isUpgrade = computed(() => props.mode === 'upgrade')
+const deck = ref<string[]>([...(props.initialDeck ?? [])])
 
 // --- 卡牌悬浮预览 ---
 const previewCard = ref<CardDisplay | null>(null)
@@ -93,7 +100,62 @@ const groupedCards = computed(() => {
 })
 
 const deckSize = computed(() => deck.value.length)
-const canConfirm = computed(() => deckSize.value === 30)
+
+/** 战役升级：客户端预估牌组变动的 XP 花费（规则与服务端一致：
+ *  升级=等级差(min 1)，新卡=等级(min 1)，移除免费） */
+const xpCost = computed(() => {
+  if (!isUpgrade.value) return 0
+  const oldDeck = props.initialDeck ?? []
+  const count = (arr: string[]) => {
+    const m = new Map<string, number>()
+    for (const id of arr) m.set(id, (m.get(id) || 0) + 1)
+    return m
+  }
+  const oldC = count(oldDeck)
+  const newC = count(deck.value)
+  const removed = new Map<string, number>()
+  const added = new Map<string, number>()
+  for (const [id, n] of oldC) {
+    const d = n - (newC.get(id) || 0)
+    if (d > 0) removed.set(id, d)
+  }
+  for (const [id, n] of newC) {
+    const d = n - (oldC.get(id) || 0)
+    if (d > 0) added.set(id, d)
+  }
+  const info = (id: string) => store.availableCards.find(c => c.id === id)
+  const removedByName = new Map<string, number[]>() // name -> levels pool
+  for (const [id, n] of removed) {
+    const name = info(id)?.name || id
+    const lv = info(id)?.level ?? 0
+    const pool = removedByName.get(name) ?? []
+    for (let i = 0; i < n; i++) pool.push(lv)
+    removedByName.set(name, pool)
+  }
+  let total = 0
+  for (const [id, n] of added) {
+    const c = info(id)
+    const name = c?.name || id
+    const lv = c?.level ?? 0
+    for (let i = 0; i < n; i++) {
+      const pool = removedByName.get(name)
+      if (pool && pool.length > 0) {
+        total += Math.max(lv - pool.pop()!, 1)
+      } else {
+        total += Math.max(lv, 1)
+      }
+    }
+  }
+  return total
+})
+
+const xpRemaining = computed(() => (props.xp ?? 0) - xpCost.value)
+
+const canConfirm = computed(() => {
+  if (deckSize.value !== 30) return false
+  if (isUpgrade.value) return xpCost.value <= (props.xp ?? 0)
+  return true
+})
 
 // Count how many copies of a card are in the deck
 function countInDeck(cardId: string): number {
@@ -227,7 +289,7 @@ function handleCardList(cards: CardDisplay[], presets: any[], deckReq: any, sigC
 
 onMounted(() => {
   client.onCardList = handleCardList
-  client.listCards(props.investigatorId)
+  client.listCards(props.investigatorId, props.xp ?? 0)
 })
 
 onUnmounted(() => {
@@ -241,7 +303,12 @@ onUnmounted(() => {
   <div class="deckbuilder">
     <div class="db-header">
       <button class="btn btn-back" @click="$emit('back')">← 返回</button>
-      <h2 class="db-title">构筑卡组</h2>
+      <h2 class="db-title">{{ isUpgrade ? '升级卡组' : '构筑卡组' }}</h2>
+      <div v-if="isUpgrade" class="xp-bar">
+        <span class="xp-item">可用经验: {{ props.xp ?? 0 }}</span>
+        <span class="xp-item">花费: {{ xpCost }}</span>
+        <span class="xp-item" :class="{ negative: xpRemaining < 0 }">剩余: {{ xpRemaining }}</span>
+      </div>
     </div>
 
     <div class="db-body">
@@ -460,6 +527,22 @@ onUnmounted(() => {
   font-weight: 600;
   margin: 0;
   color: #ccc;
+}
+
+.xp-bar {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+  font-size: 13px;
+}
+
+.xp-item {
+  color: #c0a060;
+}
+
+.xp-item.negative {
+  color: #e74c3c;
+  font-weight: 700;
 }
 
 .btn-back {

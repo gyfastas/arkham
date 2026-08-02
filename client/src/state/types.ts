@@ -286,9 +286,13 @@ export interface ActionResult {
 }
 
 export interface CampaignStateData {
+  save_id: string
   investigator_id: string
   campaign_id: string
   scenario_index: number
+  difficulty: string
+  current_scenario_id: string
+  is_complete: boolean
   xp: number
   xp_earned: number
   xp_spent: number
@@ -296,6 +300,34 @@ export interface CampaignStateData {
   victory_display: string[]
   trauma_physical: number
   trauma_mental: number
+  upgrade_message?: string
+  upgrade_cost?: number
+}
+
+export interface CampaignSaveSummary {
+  save_id: string
+  campaign_id: string
+  campaign_name_cn: string
+  investigator_id: string
+  difficulty: string
+  scenario_index: number
+  scenario_total: number
+  current_scenario_id: string
+  is_complete: boolean
+  xp: number
+  trauma_physical: number
+  trauma_mental: number
+}
+
+export interface ChaosBagInfo {
+  campaign: string
+  campaign_name_cn: string
+  difficulty: string
+  difficulty_label: string
+  difficulty_labels: Record<string, string>
+  tokens: Record<string, number>
+  total: number
+  symbol_texts: Record<string, string>
 }
 
 export interface RoomState {
