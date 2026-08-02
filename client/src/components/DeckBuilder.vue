@@ -272,26 +272,10 @@ onUnmounted(() => {
 
         <!-- Card Grid（按职业分区） -->
         <div class="card-grid">
-          <div
-            v-for="card in filteredCards"
-            :key="card.id"
-            class="card-item"
-            :class="{
-              disabled: card.allowed === false,
-              maxed: countInDeck(card.id) >= maxCopies(card),
-            }"
-            :style="{ borderColor: CLASS_COLORS[card.class] || '#333' }"
-            @click="addCard(card)"
-            @mouseenter="showPreview(card, $event)"
-            @mouseleave="hidePreview"
-          >
-            <div class="card-top">
-              <span class="card-name">{{ localizeDisplayText(card.name_cn, store.language) }}</span>
-              <span class="card-cost" v-if="card.cost !== null">{{ card.cost }}</span>
-            </div>
-            <div class="card-meta">
-              <span class="card-type">{{ card.type }}</span>
-              <span class="card-level" v-if="card.level != null && card.level > 0">Lv.{{ card.level }}</span>
+          <template v-for="group in groupedCards" :key="group.key">
+            <div class="class-section" :style="{ borderLeftColor: group.color }">
+              <span class="class-name" :style="{ color: group.color }">{{ group.label }}</span>
+              <span class="class-count">{{ group.cards.length }} 张</span>
             </div>
             <div
               v-for="card in group.cards"
@@ -307,7 +291,7 @@ onUnmounted(() => {
               @mouseleave="hidePreview"
             >
               <div class="card-top">
-                <span class="card-name">{{ card.name_cn }}</span>
+                <span class="card-name">{{ localizeDisplayText(card.name_cn, store.language) }}</span>
                 <span class="card-cost" v-if="card.cost !== null">{{ card.cost }}</span>
               </div>
               <div class="card-meta">
