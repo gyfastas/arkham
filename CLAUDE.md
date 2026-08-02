@@ -51,6 +51,14 @@
 - `main` 仅用于稳定里程碑合并
 - Commit 作者：YF <303887111@qq.com>（仓库级 git config）
 
+## 战役模式与难度
+
+- **混乱袋**：`data/chaos_bags.json`（官方组成：Easy 15 / Standard 16 / Hard 17 / Expert 18；敦威治用 elder_thing 替换 tablet）。已知简化：符号效果数值按 Standard 执行。
+- **战役存档**：`saves/campaigns/{save_id}.json`（已 gitignore），记录章节、牌组、XP、创伤、难度。
+- **幕间结算**：游戏结束自动结算（victory 经验 + 被击败创伤），`campaign_upgrade` 服务端按牌组 diff 计价（升级=等级差 min1，新卡=等级 min1，移除免费）。
+- **前端路由**：`/` 开始界面，`/quick` 快速游戏，`/campaign` 战役大厅，`/game`，`/gameover`（战役结算+升级+下一章）。
+- **冒烟测试**：`python3 scripts/smoke_campaign.py`（需服务器运行中）。
+
 ## 规则核实原则
 
 实现卡牌/机制效果时，**必须先对照官方来源核实规则**，不要凭记忆或数据文件的翻译文本：
