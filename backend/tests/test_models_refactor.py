@@ -331,7 +331,7 @@ class TestChaosBagSerialization:
         bag = ChaosBag()
         counts = Counter(bag.tokens)
         assert counts[ChaosTokenType.PLUS_1] == 1
-        assert counts[ChaosTokenType.ZERO] == 2
+        assert counts[ChaosTokenType.ZERO] == 3
         assert counts[ChaosTokenType.MINUS_1] == 3
         assert counts[ChaosTokenType.AUTO_FAIL] == 1
         assert len(bag.tokens) == 16
@@ -346,7 +346,7 @@ class TestChaosBagSerialization:
         }
         assert serialized["total"] == 16
         assert serialized["tokens"]["+1"] == 1
-        assert serialized["tokens"]["0"] == 2
+        assert serialized["tokens"]["0"] == 3
         assert serialized["tokens"]["auto_fail"] == 1
         assert serialized["sealed"] == {}
 

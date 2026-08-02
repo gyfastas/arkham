@@ -403,6 +403,9 @@ class GameSession:
         deck_preset: str = "",
         deck_cards: list[str] | None = None,
         seed: int | None = None,
+        difficulty: str = "standard",
+        trauma_physical: int = 0,
+        trauma_mental: int = 0,
     ) -> dict:
         """Initialize a single-player game (multi-player setup in Phase 4)."""
         self.action_log = []
@@ -522,7 +525,7 @@ class GameSession:
 
 
         # Scenario
-        apply_scenario_to_game(g, scenario_id, seed=seed)
+        apply_scenario_to_game(g, scenario_id, seed=seed, difficulty=difficulty)
         scen = load_scenario_definition(scenario_id)
         g.add_investigator("player", inv_data, deck=deck_ids, starting_location=scen["start_location"])
         g.setup()
@@ -552,6 +555,14 @@ class GameSession:
         inv = g.state.get_investigator("player")
         if inv:
             inv.actions_remaining = 3
+            # Campaign trauma (Appendix III step 2): start with damage/horror
+            # equal to physical/mental trauma.
+            if trauma_physical:
+                inv.damage = trauma_physical
+                self.action_log.append(f"🩸 战役创伤：开局携带 {trauma_physical} 点伤害")
+            if trauma_mental:
+                inv.horror = trauma_mental
+                self.action_log.append(f"🧠 战役创伤：开局携带 {trauma_mental} 点恐惧")
 
         # 第1轮调查阶段开始事件（黛西典籍行动授予等，须在行动点重置之后）
         from backend.engine.event_bus import EventContext

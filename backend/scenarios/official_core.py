@@ -66,8 +66,9 @@ def load_scenario_definition(scenario_id: str) -> dict[str, Any]:
     return _load_json(path)
 
 
-def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
+def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1, difficulty: str = "standard") -> None:
     """Populate `game.state` with scenario data (locations/act/agenda/encounter deck)."""
+    from backend.models.chaos import build_bag_tokens
     from backend.models.enums import CardType
     from backend.models.scenario import ActCard, AgendaCard
     from backend.models.state import CardData
@@ -76,12 +77,17 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1) -> None:
     campaign = scenario_def.get("campaign", "core")
     db = load_encounter_db_for_campaign(campaign)
 
+    # Official chaos bag for this campaign/difficulty (mutate in place so the
+    # SkillTestEngine's bag reference stays valid; RNG seeding is untouched).
+    game.chaos_bag.tokens = build_bag_tokens(campaign, difficulty)
+
     s = game.state.scenario
     s.scenario_id = scenario_id
     s.vars.setdefault("scenario_id", scenario_id)
     s.vars.setdefault("scenario_name", scenario_def.get("name"))
     s.vars.setdefault("resolution_id", None)
     s.vars.setdefault("campaign", campaign)
+    s.vars.setdefault("difficulty", difficulty)
     # Scenario-specific counters
     if scenario_id == "the_midnight_masks":
         s.vars.setdefault("cultists_defeated", 0)

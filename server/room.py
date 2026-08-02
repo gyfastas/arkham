@@ -85,7 +85,12 @@ class Room:
             return False
         return all(s.ready for s in occupied)
 
-    def start_game(self, scenario_id: str = "the_gathering") -> dict:
+    def start_game(
+        self,
+        scenario_id: str = "the_gathering",
+        difficulty: str = "standard",
+        campaign_state=None,
+    ) -> dict:
         """Start the game with current seat configuration."""
         if not self.can_start():
             return {"success": False, "message": "玩家未全部准备"}
@@ -95,11 +100,23 @@ class Room:
         occupied = [s for s in self.seats.values() if s.player_id is not None]
         seat = occupied[0]
 
+        deck_cards = seat.deck_cards or None
+        trauma_physical = trauma_mental = 0
+        if campaign_state is not None:
+            # Campaign mode: deck/trauma/difficulty come from the save file
+            deck_cards = list(campaign_state.deck)
+            difficulty = campaign_state.difficulty
+            trauma_physical = campaign_state.trauma_physical
+            trauma_mental = campaign_state.trauma_mental
+
         result = self.session.setup(
             scenario_id=scenario_id,
             investigator_id=seat.investigator_id,
             deck_preset=seat.deck_preset,
-            deck_cards=seat.deck_cards or None,
+            deck_cards=deck_cards,
+            difficulty=difficulty,
+            trauma_physical=trauma_physical,
+            trauma_mental=trauma_mental,
         )
         if result["success"]:
             self.status = "in_game"
