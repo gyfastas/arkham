@@ -18,6 +18,9 @@ export interface CardDisplay {
   sanity?: number | null
   victory?: number
   allowed?: boolean
+  has_commit_effect?: boolean
+  commit_effect_cost?: number
+  commit_effect_label?: string
 }
 
 export interface InvestigatorDetail {
@@ -50,6 +53,8 @@ export interface ActivationDef {
   method: string
   actions?: number
   target?: string
+  resource_cost?: number
+  timing?: string
 }
 
 export interface CardInstanceDisplay {
@@ -117,6 +122,14 @@ export interface InvestigatorDisplay {
   discard_count: number
   defeated: boolean
   location_id: string
+  slot_summary?: SlotSummary[]
+}
+
+export interface SlotSummary {
+  type: string
+  used: number
+  limit: number
+  available: number
 }
 
 export interface ScenarioDisplay {
@@ -134,6 +147,15 @@ export interface PendingChoice {
   prompt: string
   options: { id: string; label: string }[]
   [key: string]: unknown
+}
+
+export interface PendingSkillTest {
+  investigator_id: string
+  skill_type: string
+  difficulty: number
+  base_skill: number
+  possible_tokens: string[]
+  target_label?: string
 }
 
 export interface GameState {
@@ -163,6 +185,7 @@ export interface GameState {
   scenario: ScenarioDisplay
   treacheries: unknown[]
   pending_choice: PendingChoice | null
+  pending_skill_test?: PendingSkillTest | null
   game_over: { type: string; message: string } | null
   encounter_deck_count?: number
   encounter_discard_count?: number
@@ -224,6 +247,33 @@ export interface GameEventData {
   action?: string
   modified_skill?: number
   card_id?: string
+  possible_tokens?: string[]
+  base_skill?: number
+  committed_icons?: number
+  token_modifier?: number
+  auto_fail?: boolean
+  auto_success?: boolean
+  rexs_curse_redrawn_token?: string
+  rexs_curse_redrawn_modifier?: number
+}
+
+export interface SkillTestAnimation {
+  investigator_id?: string
+  skill_type: string
+  difficulty: number
+  base_skill: number
+  committed_icons: number
+  token: string
+  token_modifier: number
+  modified_skill: number
+  success: boolean
+  auto_fail?: boolean
+  auto_success?: boolean
+  rexs_curse_redrawn_token?: string
+  rexs_curse_redrawn_modifier?: number
+  possible_tokens: string[]
+  target_label?: string
+  committed_card_ids?: string[]
 }
 
 export interface ActionResult {

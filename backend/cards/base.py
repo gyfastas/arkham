@@ -53,6 +53,10 @@ class CardImplementation:
     # The serializer ships these to clients; the session routes
     # ACTIVATE_CARD to the named method.
     activations: list[dict] = []
+    # Optional effect when this card is committed to a skill test. The UI
+    # lets the player choose this separately from the skill icons.
+    commit_effect_cost: int = 0
+    commit_effect_label: str = "成功后触发牌面效果"
 
     def __init__(self, instance_id: str = "") -> None:
         self.instance_id = instance_id

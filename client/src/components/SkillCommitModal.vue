@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { CardDisplay } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{
   skillType: string
@@ -12,6 +14,7 @@ const emit = defineEmits<{
   confirm: [committed: string[]]
   cancel: []
 }>()
+const store = useGameStore()
 
 const SKILL_LABELS: Record<string, string> = {
   willpower: '意志',
@@ -91,14 +94,14 @@ function confirm() {
           :class="{ selected: selected.includes(index) }"
           @click="toggle(index, card)"
         >
-          <div class="cc-name">{{ card.name_cn || card.name }}</div>
+          <div class="cc-name">{{ localizeDisplayText(card.name_cn || card.name, store.language) }}</div>
           <div class="cc-icons">
             <span v-for="(n, k) in card.skill_icons" :key="k" class="cc-icon">
               {{ SKILL_LABELS[k] || k }}×{{ n }}
             </span>
           </div>
-          <div v-if="card.text_cn" class="cc-text" v-html="card.text_cn"></div>
-          <div class="cc-check" v-if="selected.includes(index)">✓</div>
+          <div v-if="card.text_cn" class="cc-text">{{ localizeDisplayText(card.text_cn, store.language) }}</div>
+          <div class="cc-check" v-if="selected.includes(card.id)">✓</div>
         </div>
       </div>
       <div v-else class="commit-empty">手中没有可投入的技能卡</div>

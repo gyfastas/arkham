@@ -13,7 +13,7 @@ from backend.models.enums import GameEvent, Skill, TimingPriority
 
 class Kukri(CardImplementation):
     card_id = "kukri_lv0"
-    activations = [{"id": "bonus_damage", "label": "攻击成功后花1行动：+1伤害", "method": "activate_bonus_damage", "target": "enemy", "actions": 1}]
+    activations = [{"id": "bonus_damage", "label": "攻击成功后花1行动：+1伤害", "method": "activate_bonus_damage", "target": "enemy", "actions": 1, "timing": "combat"}]
 
     @on_event(GameEvent.SKILL_VALUE_DETERMINED, priority=TimingPriority.WHEN)
     def combat_bonus(self, ctx):

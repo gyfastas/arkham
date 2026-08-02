@@ -3,6 +3,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.engine.slots import vacate_asset_slots
 from backend.models.enums import CardType, GameEvent, Skill, TimingPriority
 
 
@@ -30,6 +31,7 @@ class Scavenging(CardImplementation):
             return
 
         # 弃置拾荒，取回道具
+        vacate_asset_slots(ctx.game_state, self.instance_id)
         inv.play_area.remove(self.instance_id)
         ctx.game_state.cards_in_play.pop(self.instance_id, None)
         inv.discard.remove(found)

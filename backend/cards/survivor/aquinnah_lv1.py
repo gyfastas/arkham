@@ -3,6 +3,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.engine.slots import vacate_asset_slots
 from backend.models.enums import CardType, GameEvent, TimingPriority
 
 
@@ -28,6 +29,7 @@ class AquinnahLv1(CardImplementation):
         # 取消伤害
         ctx.modify_amount(-ctx.amount, "aquinnah_cancel")
         # 弃置安奎娜
+        vacate_asset_slots(ctx.game_state, self.instance_id)
         inv.play_area.remove(self.instance_id)
         ctx.game_state.cards_in_play.pop(self.instance_id, None)
         inv.discard.append(self.card_id)

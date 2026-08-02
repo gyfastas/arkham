@@ -12,7 +12,8 @@ from pathlib import Path
 from typing import Any
 
 from backend.engine.game import Game
-from backend.models.enums import Action, CardType, GameEvent, Phase, PlayerClass, SlotType, Skill
+from backend.engine.event_bus import EventContext
+from backend.models.enums import Action, CardType, GameEvent, Phase, PlayerClass, SLOT_LIMITS, SlotType, Skill
 from backend.models.state import CardData, SkillValues
 from backend.scenarios.official_core import (
     apply_scenario_to_game,
@@ -381,6 +382,8 @@ class GameSession:
         self.action_log: list[str] = []
         self.game_over: dict | None = None
         self._players: dict[str, PlayerSession] = {}
+        self._pending_skill_test: dict[str, Any] | None = None
+        self._pending_skill_test_resume: str | None = None
 
     @property
     def is_started(self) -> bool:
@@ -522,6 +525,9 @@ class GameSession:
         apply_scenario_to_game(g, scenario_id, seed=seed)
         scen = load_scenario_definition(scenario_id)
         g.add_investigator("player", inv_data, deck=deck_ids, starting_location=scen["start_location"])
+        # Keep opening weaknesses/treacheries in the mulligan hand first.
+        # They are revealed only after the player keeps or redraws cards.
+        g.state.scenario.vars["opening_mulligan_pending"] = True
         g.setup()
         # Official rule: opening hand mulligan (redraw any number of cards, once)
         g.state.scenario.vars["mulligan_available"] = True
@@ -536,6 +542,7 @@ class GameSession:
             g.state.scenario.vars["central_location"] = scen["start_location"]
 
         self.controller = ScenarioController(g, action_log=self.action_log)
+        self.controller.skill_test_request_handler = self._request_skill_test
         self.controller.attach()
 
         # Event logger for animation
@@ -602,6 +609,77 @@ class GameSession:
                 total += cd.victory
         return total
 
+    def _request_skill_test(
+        self,
+        *,
+        investigator_id: str,
+        skill,
+        difficulty: int,
+        on_success=None,
+        on_failure=None,
+    ) -> None:
+        """Pause an encounter skill test until the player commits cards."""
+        if self.game is None:
+            return
+
+        inv = self.game.state.get_investigator(investigator_id)
+        if inv is None:
+            return
+
+        skill_value = getattr(skill, "value", str(skill))
+        possible_tokens = [
+            getattr(token, "value", str(token))
+            for token in self.game.chaos_bag.tokens
+        ]
+        pending = {
+            "investigator_id": investigator_id,
+            "skill_type": skill_value,
+            "difficulty": int(difficulty),
+            "base_skill": inv.get_skill(skill),
+            "possible_tokens": possible_tokens,
+            "on_success": on_success,
+            "on_failure": on_failure,
+        }
+        self._pending_skill_test = pending
+        self.game.state.scenario.vars["pending_skill_test"] = {
+            key: value
+            for key, value in pending.items()
+            if key not in {"on_success", "on_failure"}
+        }
+
+    def _resolve_pending_skill_test(self, inv, data: dict) -> dict:
+        """Commit cards and resume a skill test previously requested by an encounter."""
+        pending = self._pending_skill_test
+        if pending is None:
+            return {"success": False, "message": "当前没有等待中的技能检定"}
+
+        committed = data.get("committed_cards", []) or []
+        if not isinstance(committed, list):
+            return {"success": False, "message": "投入牌数据无效"}
+
+        # Ignore stale/invalid card ids; the engine will calculate only cards
+        # that are actually present in the investigator's hand.
+        committed = [card_id for card_id in committed if card_id in inv.hand]
+        self._pending_skill_test = None
+        self.game.state.scenario.vars.pop("pending_skill_test", None)
+
+        self.game.skill_test_engine.run_test(
+            investigator_id=pending["investigator_id"],
+            skill_type=Skill(pending["skill_type"]),
+            difficulty=pending["difficulty"],
+            committed_card_ids=committed,
+            effect_card_ids=data.get("effect_card_ids"),
+            on_success=pending.get("on_success"),
+            on_failure=pending.get("on_failure"),
+        )
+
+        if self._pending_skill_test_resume == "end_turn_after_encounter":
+            self._pending_skill_test_resume = None
+            return self._finish_end_turn_after_encounter()
+
+        self._pending_skill_test_resume = None
+        return {"success": True, "message": "技能检定完成"}
+
     def handle_action(self, player_id: str, data: dict) -> dict:
         """Process a player action. Returns result dict with events."""
         if self.game is None:
@@ -629,7 +707,11 @@ class GameSession:
             self.event_logger.flush()
 
         # Resolve pending choice
-        if act == "RESOLVE_CHOICE":
+        if act == "SKILL_TEST_ROLL":
+            result = self._resolve_pending_skill_test(inv, data)
+        elif self._pending_skill_test is not None and act != "ACTIVATE_CARD":
+            return {"success": False, "message": "请先完成当前技能检定"}
+        elif act == "RESOLVE_CHOICE":
             result = self._resolve_choice(data)
         elif act == "MULLIGAN":
             result = self._mulligan(inv, data)
@@ -652,6 +734,37 @@ class GameSession:
         result["events"] = events
         self._clear_game_over()
         return result
+
+    def _finish_end_turn_after_encounter(self) -> dict:
+        """Finish the end-turn transition after an encounter skill test."""
+        if self.game is None:
+            return {"success": False, "message": "游戏未初始化"}
+
+        inv = self.game.state.get_investigator("player")
+        if inv is None:
+            return {"success": False, "message": "未找到调查员"}
+
+        if inv.is_defeated:
+            self.game_over = {"type": "lose", "message": "调查员被遭遇击败！"}
+            return {"success": True, "message": self.game_over["message"]}
+
+        self._clear_game_over()
+        if self.game_over:
+            return {"success": True, "message": self.game_over["message"]}
+
+        inv.actions_remaining = 3
+        self.game.state.scenario.current_phase = Phase.INVESTIGATION
+        self.action_log.append(f"=== 第{self.game.state.scenario.round_number}轮 调查阶段 ===")
+        from backend.engine.event_bus import EventContext
+        for inv_id in self.game.state.player_order:
+            self.game.event_bus.emit(EventContext(
+                game_state=self.game.state,
+                event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+                investigator_id=inv_id,
+            ))
+
+        self._drain_effect_log()
+        return {"success": True, "message": "进入下一轮"}
 
     def handle_end_turn(self, player_id: str) -> dict:
         """End the current player's turn."""
@@ -753,32 +866,15 @@ class GameSession:
                 events = self.event_logger.flush() if self.event_logger else []
                 return {"success": True, "message": "需要做出选择", "events": events}
 
-        if inv.is_defeated:
-            self.game_over = {"type": "lose", "message": "调查员被遭遇击败！"}
-            events = self.event_logger.flush() if self.event_logger else []
-            return {"success": True, "message": self.game_over["message"], "events": events}
+            if self._pending_skill_test is not None:
+                self._pending_skill_test_resume = "end_turn_after_encounter"
+                events = self.event_logger.flush() if self.event_logger else []
+                return {"success": True, "message": "等待技能检定", "events": events}
 
-        self._clear_game_over()
-        if self.game_over:
-            events = self.event_logger.flush() if self.event_logger else []
-            return {"success": True, "message": self.game_over["message"], "events": events}
-
-        # New investigation phase
-        inv.actions_remaining = 3
-        self.game.state.scenario.current_phase = Phase.INVESTIGATION
-        self.action_log.append(f"=== 第{self.game.state.scenario.round_number}轮 调查阶段 ===")
-        # 调查阶段开始事件（黛西的典籍行动授予等）
-        from backend.engine.event_bus import EventContext
-        for inv_id in self.game.state.player_order:
-            self.game.event_bus.emit(EventContext(
-                game_state=self.game.state,
-                event=GameEvent.INVESTIGATION_PHASE_BEGINS,
-                investigator_id=inv_id,
-            ))
-
+        result = self._finish_end_turn_after_encounter()
         events = self.event_logger.flush() if self.event_logger else []
-        self._drain_effect_log()
-        return {"success": True, "message": "进入下一轮", "events": events}
+        result["events"] = events
+        return result
 
     def _drain_effect_log(self) -> None:
         """Move card effect messages (GameState.effect_log) into the action log."""
@@ -793,6 +889,101 @@ class GameSession:
     # Action handlers
     # -------------------------------------------------------------------
 
+    def _asset_slot_deficits(self, inv, card_data: CardData, replacing: list[str] | None = None) -> dict[SlotType, int]:
+        """Return slot deficits after hypothetically replacing assets."""
+        if card_data.type != CardType.ASSET or not card_data.slots:
+            return {}
+
+        manager = self.game.slot_managers.get(inv.investigator_id)
+        if manager is None:
+            return {}
+
+        used = {slot_type: manager.count_used(slot_type) for slot_type in SlotType}
+        for instance_id in set(replacing or []):
+            if instance_id not in inv.play_area:
+                continue
+            instance = self.game.state.get_card_instance(instance_id)
+            if instance is None:
+                continue
+            for slot_type in instance.slot_used:
+                used[slot_type] = max(0, used.get(slot_type, 0) - 1)
+
+        required: dict[SlotType, int] = {}
+        for slot_type in card_data.slots:
+            required[slot_type] = required.get(slot_type, 0) + 1
+
+        deficits: dict[SlotType, int] = {}
+        for slot_type, count in required.items():
+            limit = SLOT_LIMITS.get(slot_type, 0) + manager.bonus_slots.get(slot_type, 0)
+            deficit = used.get(slot_type, 0) + count - limit
+            if deficit > 0:
+                deficits[slot_type] = deficit
+        return deficits
+
+    def _asset_replacement_choice(
+        self,
+        inv,
+        card_id: str,
+        replacing: list[str] | None = None,
+    ) -> dict | None:
+        """Build a choice prompt for freeing slots before playing an asset."""
+        card_data = self.game.state.get_card_data(card_id)
+        selected = list(replacing or [])
+        deficits = self._asset_slot_deficits(inv, card_data, selected) if card_data else {}
+        if not deficits:
+            return None
+
+        candidates = []
+        for instance_id in inv.play_area:
+            if instance_id in selected:
+                continue
+            instance = self.game.state.get_card_instance(instance_id)
+            if instance is None or not any(slot_type in deficits for slot_type in instance.slot_used):
+                continue
+            existing_data = self.game.state.get_card_data(instance.card_id)
+            name = (existing_data.name_cn or existing_data.name) if existing_data else instance.card_id
+            candidates.append({"id": instance_id, "label": f"替换：{name}"})
+
+        if not candidates:
+            return None
+
+        needed = "、".join(f"{slot_type.value}还需{count}个" for slot_type, count in deficits.items())
+        prompt = f"装备【{card_data.name_cn or card_data.name}】需要更多槽位（{needed}），请选择要替换的装备"
+        return {
+            "kind": "replace_asset_for_play",
+            "card_id": card_id,
+            "replace_instance_ids": selected,
+            "prompt": prompt,
+            "options": candidates + [{"id": "cancel", "label": "取消装备"}],
+        }
+
+    def _resolve_asset_replacement_choice(self, pc: dict, choice_id: str | None) -> dict:
+        """Resolve one replacement selection, prompting again when needed."""
+        inv = self.game.state.get_investigator("player")
+        card_id = pc.get("card_id")
+        if inv is None or not card_id:
+            return {"success": False, "message": "无法找到待装备的卡牌"}
+        if choice_id == "cancel":
+            return {"success": True, "message": "已取消装备"}
+
+        option_ids = {option.get("id") for option in pc.get("options", [])}
+        if choice_id not in option_ids or choice_id == "cancel":
+            return {"success": False, "message": "无效的替换选择"}
+
+        selected = list(pc.get("replace_instance_ids") or [])
+        if choice_id not in selected:
+            selected.append(choice_id)
+
+        next_choice = self._asset_replacement_choice(inv, card_id, selected)
+        if next_choice is not None:
+            self.game.state.scenario.vars["pending_choice"] = next_choice
+            return {"success": True, "message": "还需要选择要替换的装备"}
+
+        return self._normal_action(inv, "PLAY", {
+            "card_id": card_id,
+            "replace_instance_ids": selected,
+        })
+
     def _resolve_choice(self, data: dict) -> dict:
         pc = self.game.state.scenario.vars.get("pending_choice")
         if not pc:
@@ -800,6 +991,9 @@ class GameSession:
         choice_id = data.get("choice_id")
         kind = pc.get("kind") or "encounter"
         self.game.state.scenario.vars.pop("pending_choice", None)
+
+        if kind == "replace_asset_for_play":
+            return self._resolve_asset_replacement_choice(pc, choice_id)
 
         if kind == "encounter":
             card_id = pc.get("card_id")
@@ -997,11 +1191,23 @@ class GameSession:
 
     def _discard_asset(self, inv, instance_id: str):
         """Remove an asset from play area and move its card_id to discard."""
+        ci = self.game.state.get_card_instance(instance_id)
+        if ci is None:
+            return
+        self.game.event_bus.emit(EventContext(
+            game_state=self.game.state,
+            event=GameEvent.CARD_LEAVES_PLAY,
+            investigator_id=inv.investigator_id,
+            target=instance_id,
+        ))
+        manager = getattr(self.game, "slot_managers", {}).get(inv.investigator_id)
+        if manager:
+            manager.vacate(instance_id)
+        self.game.card_registry.deactivate_card(instance_id, self.game.event_bus)
         if instance_id in inv.play_area:
             inv.play_area.remove(instance_id)
-        ci = self.game.state.get_card_instance(instance_id)
-        if ci:
-            inv.discard.append(ci.card_id)
+        inv.discard.append(ci.card_id)
+        self.game.state.cards_in_play.pop(instance_id, None)
 
     def _is_tome_asset(self, card_id: str) -> bool:
         """Check if a card has the Tome trait."""
@@ -1100,6 +1306,20 @@ class GameSession:
             self.action_log.append(f"🃏 搁置卡牌洗回牌库：{names}")
         return {"success": True, "message": "调度完成"}
 
+    def _reveal_opening_hand(self, inv) -> None:
+        """Resolve opening-hand revelation after the mulligan window."""
+        if not self.game.state.scenario.vars.pop("opening_mulligan_pending", None):
+            return
+        from backend.engine.draw_hooks import emit_card_drawn
+        for card_id in list(inv.hand):
+            emit_card_drawn(
+                self.game.state,
+                self.game.event_bus,
+                self.game.card_registry,
+                inv,
+                card_id,
+            )
+
     def _activate_card(self, inv, data: dict) -> dict:
         """Generic activation channel: routes ACTIVATE_CARD to a card's
         declared activation method (CardImplementation.activations)."""
@@ -1122,6 +1342,11 @@ class GameSession:
                      if a.get("id") == activation_id), None)
         if decl is None:
             return {"success": False, "message": "该卡没有此启动能力"}
+
+        if decl.get("timing") == "combat":
+            pending = self._pending_skill_test
+            if pending is None or pending.get("skill_type") != "combat":
+                return {"success": False, "message": "combat activation requires an active combat skill test"}
 
         # Action cost
         actions_cost = int(decl.get("actions", 0) or 0)
@@ -1377,6 +1602,17 @@ class GameSession:
                 shroud_bump = True
 
         played_card_id = data.get("card_id") if enum_act == Action.PLAY else None
+
+        # Do not spend resources or actions until the player has selected
+        # which existing assets to replace.
+        if enum_act == Action.PLAY and not (data.get("replace_instance_ids") or []):
+            card_data = self.game.state.get_card_data(played_card_id) if played_card_id else None
+            if card_data and inv.resources >= (card_data.cost or 0):
+                replacement_choice = self._asset_replacement_choice(inv, played_card_id)
+                if replacement_choice is not None:
+                    self.game.state.scenario.vars["pending_choice"] = replacement_choice
+                    return {"success": True, "message": "请选择要替换的装备"}
+
         before_hand = len(inv.hand)
         before_deck = len(inv.deck)
         before_discard = len(inv.discard)

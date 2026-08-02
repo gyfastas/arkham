@@ -287,6 +287,9 @@ class DamageEngine:
             return
         inv = self.game_state.get_investigator(card.owner_id)
         if inv and instance_id in inv.play_area:
+            manager = getattr(self.game_state, "slot_managers", {}).get(card.owner_id)
+            if manager:
+                manager.vacate(instance_id)
             inv.play_area.remove(instance_id)
             inv.discard.append(card.card_id)
         # Vacate slots so destroyed/discarded assets free their slots

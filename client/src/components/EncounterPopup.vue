@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue'
 import type { EncounterCardDisplay } from '../state/types'
-import { traitsLabel } from '../utils/labels'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{ encounter: EncounterCardDisplay | null }>()
+const store = useGameStore()
 
 const emit = defineEmits<{
   dismiss: []
@@ -35,6 +37,10 @@ const TYPE_LABELS: Record<string, string> = {
   enemy: '敌人',
   treachery: '诡计',
 }
+const TYPE_LABELS_HANT: Record<string, string> = {
+  enemy: '敵人',
+  treachery: '詭計',
+}
 </script>
 
 <template>
@@ -42,8 +48,8 @@ const TYPE_LABELS: Record<string, string> = {
     <Transition name="encounter">
       <div v-if="visible && encounter" class="encounter-overlay" @click.self="dismiss">
         <div class="encounter-card">
-          <div class="encounter-type">{{ TYPE_LABELS[encounter.type] || encounter.type }}</div>
-          <div class="encounter-name">{{ encounter.name_cn || encounter.name }}</div>
+          <div class="encounter-type">{{ (store.language === 'zh-Hant' ? TYPE_LABELS_HANT : TYPE_LABELS)[encounter.type] || encounter.type }}</div>
+          <div class="encounter-name">{{ localizeDisplayText(encounter.name_cn || encounter.name, store.language) }}</div>
           <div v-if="encounter.type === 'enemy'" class="encounter-stats">
             <span v-if="encounter.fight != null" class="stat" title="战斗">⚔ {{ encounter.fight }}</span>
             <span v-if="encounter.health != null" class="stat" title="生命">♥ {{ encounter.health }}</span>
@@ -52,9 +58,9 @@ const TYPE_LABELS: Record<string, string> = {
             <span v-if="encounter.horror != null" class="stat hor" title="恐惧">🧠 {{ encounter.horror }}</span>
           </div>
           <div v-if="encounter.traits && encounter.traits.length" class="encounter-traits">
-            {{ traitsLabel(encounter.traits) }}
+            {{ encounter.traits.map(trait => localizeDisplayText(trait, store.language)).join(' · ') }}
           </div>
-          <div v-if="encounter.text" class="encounter-text" v-html="encounter.text"></div>
+          <div v-if="encounter.text" class="encounter-text">{{ localizeDisplayText(encounter.text, store.language) }}</div>
           <button class="dismiss-btn" @click="dismiss">关闭</button>
         </div>
       </div>

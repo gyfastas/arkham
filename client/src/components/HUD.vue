@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { GameState } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 defineProps<{ state: GameState }>()
+const store = useGameStore()
 
 const CLASS_COLORS: Record<string, string> = {
   guardian: '#2980b9',
@@ -18,6 +21,10 @@ const PHASE_LABELS: Record<string, string> = {
   enemy: '敌人阶段',
   upkeep: '整理阶段',
 }
+
+const PHASE_LABELS_HANT: Record<string, string> = {
+  mythos: '神話階段', investigation: '調查階段', enemy: '敵人階段', upkeep: '整理階段',
+}
 </script>
 
 <template>
@@ -26,7 +33,7 @@ const PHASE_LABELS: Record<string, string> = {
       <span
         class="inv-name"
         :style="{ color: CLASS_COLORS[state.investigator.class] || '#ccc' }"
-      >{{ state.investigator.name_cn }}</span>
+      >{{ localizeDisplayText(state.investigator.name_cn, store.language) }}</span>
     </div>
     <div class="hud-stats">
       <div class="stat" title="生命">
@@ -64,8 +71,8 @@ const PHASE_LABELS: Record<string, string> = {
       </div>
     </div>
     <div class="hud-right">
-      <span class="round">第{{ state.round }}轮</span>
-      <span class="phase">{{ PHASE_LABELS[state.phase] || state.phase }}</span>
+      <span class="round">{{ store.language === 'zh-Hant' ? '第' : '第' }}{{ state.round }}{{ store.language === 'zh-Hant' ? '輪' : '轮' }}</span>
+      <span class="phase">{{ (store.language === 'zh-Hant' ? PHASE_LABELS_HANT : PHASE_LABELS)[state.phase] || state.phase }}</span>
     </div>
   </div>
 </template>

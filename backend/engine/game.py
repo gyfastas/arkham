@@ -142,44 +142,18 @@ class Game:
         # owner's deck upon completion of the mulligan step (see
         # shuffle_set_aside_into_decks).
         from backend.engine.draw_hooks import emit_card_drawn
-        from backend.models.state import is_weakness_card
-        set_aside: dict[str, list[str]] = {}
+        defer_opening_revelations = bool(
+            self.state.scenario.vars.get("opening_mulligan_pending")
+        )
         for inv_id in self.state.player_order:
             inv = self.state.get_investigator(inv_id)
-            if not inv:
-                continue
-            inv.resources = 5
-            drawn = 0
-            while drawn < 5 and inv.deck:
-                card_id = inv.deck.pop(0)
-                if is_weakness_card(self.state.get_card_data(card_id)):
-                    set_aside.setdefault(inv_id, []).append(card_id)
-                    continue
-                inv.hand.append(card_id)
-                emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id)
-                drawn += 1
-        if set_aside:
-            self.state.scenario.vars["setup_set_aside"] = set_aside
-
-    def shuffle_set_aside_into_decks(self) -> list[str]:
-        """Shuffle opening-hand set-aside cards (weaknesses and mulliganed
-        cards) back into their owners' decks. Returns the shuffled card ids.
-
-        Official rule: upon completion of the mulligan step, shuffle each
-        set-aside card back into its owner's deck.
-        """
-        import random as _random
-
-        set_aside = self.state.scenario.vars.pop("setup_set_aside", {}) or {}
-        shuffled: list[str] = []
-        for inv_id, cards in set_aside.items():
-            inv = self.state.get_investigator(inv_id)
-            if inv is None or not cards:
-                continue
-            inv.deck.extend(cards)
-            _random.shuffle(inv.deck)
-            shuffled.extend(cards)
-        return shuffled
+            if inv:
+                inv.resources = 5
+                for _ in range(min(5, len(inv.deck))):
+                    card_id = inv.deck.pop(0)
+                    inv.hand.append(card_id)
+                    if not defer_opening_revelations:
+                        emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id)
 
     def run_round(self, action_callback=None, discard_callback=None) -> None:
         """Execute one full game round."""

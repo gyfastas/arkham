@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { CardDisplay } from '../state/types'
+import { useGameStore } from '../stores/game'
+import Card from './Card.vue'
 
 const props = defineProps<{ hand: CardDisplay[] }>()
+const store = useGameStore()
 
 const emit = defineEmits<{
   confirm: [cardIds: string[]]
 }>()
 
-// 按手牌下标选择（卡牌 id 含下划线，不能拼进 key 再解析）
 const selected = ref<number[]>([])
 
 function toggle(i: number) {
@@ -25,8 +27,9 @@ function redraw() {
 <template>
   <div class="mulligan-overlay">
     <div class="mulligan-modal">
-      <div class="m-title">开局调度</div>
-      <div class="m-sub">选择要重抽的手牌（官方规则：开局可调度一次），或保留全部手牌</div>
+      <div class="m-title">{{ store.language === 'zh-Hant' ? '開局調度' : '开局调度' }}</div>
+      <div class="m-sub">{{ store.language === 'zh-Hant' ? '選擇要重抽的手牌（官方規則：開局可調度一次），或保留全部手牌' : '选择要重抽的手牌（官方规则：开局可调度一次），或保留全部手牌' }}</div>
+      <div class="m-note">{{ store.language === 'zh-Hant' ? '開局抽到的威脅或弱點牌也可以在這裡更換。' : '开局抽到的威胁或弱点牌也可以在这里更换。' }}</div>
       <div class="m-cards">
         <div
           v-for="(card, i) in hand"
@@ -35,8 +38,7 @@ function redraw() {
           :class="{ selected: selected.includes(i) }"
           @click="toggle(i)"
         >
-          <div class="m-name">{{ card.name_cn || card.name }}</div>
-          <div class="m-type">{{ card.type }}</div>
+          <Card :card="card" />
           <div class="m-check" v-if="selected.includes(i)">✓</div>
         </div>
       </div>
@@ -47,7 +49,7 @@ function redraw() {
           :disabled="!selected.length"
           @click="redraw"
         >
-          重抽 {{ selected.length }} 张
+          {{ store.language === 'zh-Hant' ? '重抽' : '重抽' }} {{ selected.length }} {{ store.language === 'zh-Hant' ? '張' : '张' }}
         </button>
       </div>
     </div>
@@ -86,6 +88,12 @@ function redraw() {
   margin: 4px 0 14px;
 }
 
+.m-note {
+  margin: -8px 0 12px;
+  color: #d8a56c;
+  font-size: 11px;
+}
+
 .m-cards {
   display: flex;
   gap: 10px;
@@ -95,11 +103,10 @@ function redraw() {
 
 .m-card {
   position: relative;
-  width: 100px;
-  background: #1a1a2e;
-  border: 2px solid #333355;
+  width: 146px;
+  padding: 2px;
+  border: 2px solid transparent;
   border-radius: 8px;
-  padding: 8px;
   cursor: pointer;
   transition: border-color 0.15s;
 }
@@ -107,8 +114,7 @@ function redraw() {
 .m-card:hover { border-color: #6a6aaa; }
 .m-card.selected { border-color: #d4a017; }
 
-.m-name { font-size: 12px; font-weight: bold; color: #e0e0e0; }
-.m-type { font-size: 10px; color: #888; margin-top: 2px; }
+.m-card :deep(.card) { width: 140px; min-height: 178px; }
 
 .m-check {
   position: absolute;

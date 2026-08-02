@@ -11,6 +11,7 @@ const store = useGameStore()
 
 const phase = ref<'setup' | 'deckbuilder'>('setup')
 const customDeckCards = ref<string[]>([])
+const starting = ref(false)
 
 // --- Data ---
 
@@ -23,29 +24,101 @@ const CLASS_COLORS: Record<string, string> = {
   neutral: '#888',
 }
 
-interface ScenarioEntry { id: string; name_cn: string }
-interface InvestigatorEntry { id: string; name_cn: string; class: string }
+interface ScenarioEntry { id: string; name_cn: string; name_hant: string }
+interface InvestigatorEntry { id: string; name_cn: string; name_hant: string; class: string }
+
+const UI_TEXT = {
+  'zh-Hans': {
+    selectScenario: '选择剧本',
+    selectInvestigator: '选择调查员',
+    core: '核心包',
+    dunwichLegacy: '敦威治遗产',
+    dunwich: '敦威治',
+    health: '生命',
+    sanity: '理智',
+    ability: '能力',
+    deckRequirements: '牌组要求',
+    deckSize: '牌组大小',
+    signatureCards: '标志卡',
+    weakness: '弱点',
+    chooseInvestigator: '选择一位调查员查看详情',
+    buildDeck: '构筑卡组',
+    built: '已构筑',
+    startGame: '开始游戏',
+    starting: '正在进入游戏…',
+    language: '选择显示语言',
+    guardian: '守护者',
+    seeker: '探求者',
+    rogue: '流浪者',
+    mystic: '神秘学家',
+    survivor: '求生者',
+    neutral: '中立',
+    selectFirst: '请先选择调查员',
+    deckBuiltSuffix: '张卡组',
+  },
+  'zh-Hant': {
+    selectScenario: '選擇劇本',
+    selectInvestigator: '選擇調查員',
+    core: '核心包',
+    dunwichLegacy: '敦威治遺產',
+    dunwich: '敦威治',
+    health: '生命',
+    sanity: '理智',
+    ability: '能力',
+    deckRequirements: '牌組要求',
+    deckSize: '牌組大小',
+    signatureCards: '標誌卡',
+    weakness: '弱點',
+    chooseInvestigator: '選擇一位調查員查看詳情',
+    buildDeck: '構築牌組',
+    built: '已構築',
+    startGame: '開始遊戲',
+    starting: '正在進入遊戲…',
+    language: '選擇顯示語言',
+    guardian: '守護者',
+    seeker: '探求者',
+    rogue: '流浪者',
+    mystic: '神秘學家',
+    survivor: '求生者',
+    neutral: '中立',
+    selectFirst: '請先選擇調查員',
+    deckBuiltSuffix: '張牌組',
+  },
+} as const
+
+const INVESTIGATOR_TEXT: Record<string, { name_cn: string; name_hant: string; title_cn: string; title_hant: string; ability_hant: string }> = {
+  roland_banks: { name_cn: '罗兰·班克斯', name_hant: '羅蘭·班克斯', title_cn: '联邦探员', title_hant: '聯邦探員', ability_hant: '在你擊敗一名敵人後：發現你所在地點的1個線索。（每輪限制1次。）' },
+  daisy_walker: { name_cn: '黛西·沃克', name_hant: '黛西·沃克', title_cn: '图书馆员', title_hant: '圖書館員', ability_hant: '在你的回合中，你可以執行1個額外行動，該行動只能用於啟動一個典籍能力。' },
+  skids_otoole: { name_cn: '斯基兹·奥图尔', name_hant: '斯基茲·奧圖爾', title_cn: '前科犯', title_hant: '前科犯', ability_hant: '在你的回合中，花費2資源：你在本回合可以執行1個額外行動。（每回合限制1次。）' },
+  agnes_baker: { name_cn: '阿格妮丝·贝克', name_hant: '阿格妮絲·貝克', title_cn: '女招待', title_hant: '女招待', ability_hant: '在阿格妮絲·貝克被放置1點或以上恐懼後：對你所在地點的一名敵人造成1點傷害。（每階段限制1次。）' },
+  wendy_adams: { name_cn: '温蒂·亚当斯', name_hant: '溫蒂·亞當斯', title_cn: '流浪儿', title_hant: '流浪兒', ability_hant: '當你揭示一個混沌標記時，從手牌中丟掉1張牌：取消該混沌標記並放回混沌袋中，然後揭示一個新的混沌標記。（每次檢定限制1次。）' },
+  zoey_samaras: { name_cn: '佐伊·萨马拉斯', name_hant: '佐伊·薩馬拉斯', title_cn: '主厨', title_hant: '主廚', ability_hant: '[reaction]在你與一名敵人交戰後：獲得1個資源。\n[elder_sign]效果：+1。如果攻擊中的這次技能檢定成功，這次攻擊造成+1傷害。' },
+  rex_murphy: { name_cn: '雷克斯·墨菲', name_hant: '雷克斯·墨菲', title_cn: '记者', title_hant: '記者', ability_hant: '[reaction]在調查時技能檢定成功後，如果你超過難度至少2點：發現所在地點1個線索。\n[elder_sign]效果：+2。你可以選擇讓這次檢定自動失敗，來抽取3張卡牌。' },
+  jenny_barnes: { name_cn: '珍妮·巴恩斯', name_hant: '珍妮·巴恩斯', title_cn: '普通人', title_hant: '普通人', ability_hant: '每個補給階段額外獲得1個資源。\n[elder_sign]效果：你每持有1個資源，+1。' },
+  jim_culver: { name_cn: '吉姆·卡尔弗', name_hant: '吉姆·卡爾弗', title_cn: '音乐家', title_hant: '音樂家', ability_hant: '將你抽出的[skull]標記的修正值視為0。\n每次你抽出[elder_sign]標記時，你可以選擇將其視為[skull]標記。\n[elder_sign]效果：+1。' },
+  ashcan_pete: { name_cn: '流浪汉皮特', name_hant: '流浪漢皮特', title_cn: '流浪者', title_hant: '流浪者', ability_hant: '開始遊戲時，將杜克放置入場。\n[free]丟棄一張手牌：準備1張你控制的支援卡。(每輪限制1次。)\n[elder_sign]效果：+2。準備杜克。' },
+}
 
 const scenarioGroups: { label: string; scenarios: ScenarioEntry[] }[] = [
   {
     label: '核心包',
     scenarios: [
-      { id: 'the_gathering', name_cn: '聚集' },
-      { id: 'the_midnight_masks', name_cn: '午夜假面' },
-      { id: 'the_devourer_below', name_cn: '噬灭万物' },
+      { id: 'the_gathering', name_cn: '聚集于此', name_hant: '聚集於此' },
+      { id: 'the_midnight_masks', name_cn: '午夜假面', name_hant: '午夜假面' },
+      { id: 'the_devourer_below', name_cn: '吞噬星辰', name_hant: '吞噬星辰' },
     ],
   },
   {
     label: '敦威治遗产',
     scenarios: [
-      { id: 'extracurricular_activity', name_cn: '课外活动' },
-      { id: 'the_house_always_wins', name_cn: '赌场必胜' },
-      { id: 'the_miskatonic_museum', name_cn: '米斯卡塔尼克博物馆' },
-      { id: 'essex_county_express', name_cn: '埃塞克斯快车' },
-      { id: 'blood_on_the_altar', name_cn: '祭坛��血' },
-      { id: 'undimensioned_and_unseen', name_cn: '无形无踪' },
-      { id: 'where_doom_awaits', name_cn: '末日将至' },
-      { id: 'lost_in_time_and_space', name_cn: '迷失于时空' },
+      { id: 'extracurricular_activity', name_cn: '课外活动', name_hant: '課外活動' },
+      { id: 'the_house_always_wins', name_cn: '赌场必胜', name_hant: '賭場必勝' },
+      { id: 'the_miskatonic_museum', name_cn: '米斯卡塔尼克博物馆', name_hant: '米斯卡塔尼克博物館' },
+      { id: 'essex_county_express', name_cn: '埃塞克斯快车', name_hant: '埃塞克斯縣快車' },
+      { id: 'blood_on_the_altar', name_cn: '祭坛之血', name_hant: '祭壇之血' },
+      { id: 'undimensioned_and_unseen', name_cn: '无形无踪', name_hant: '無形無蹤' },
+      { id: 'where_doom_awaits', name_cn: '末日将至', name_hant: '末日將至' },
+      { id: 'lost_in_time_and_space', name_cn: '迷失于时空', name_hant: '迷失於時空' },
     ],
   },
 ]
@@ -54,31 +127,60 @@ const investigatorGroups: { label: string; investigators: InvestigatorEntry[] }[
   {
     label: '核心包',
     investigators: [
-      { id: 'roland_banks', name_cn: '罗兰·班克斯', class: 'guardian' },
-      { id: 'daisy_walker', name_cn: '黛西·沃克', class: 'seeker' },
-      { id: 'skids_otoole', name_cn: '斯基兹·奥图尔', class: 'rogue' },
-      { id: 'agnes_baker', name_cn: '阿格妮丝·贝克', class: 'mystic' },
-      { id: 'wendy_adams', name_cn: '温蒂·亚当斯', class: 'survivor' },
+      { id: 'roland_banks', name_cn: '罗兰·班克斯', name_hant: '羅蘭·班克斯', class: 'guardian' },
+      { id: 'daisy_walker', name_cn: '黛西·沃克', name_hant: '黛西·沃克', class: 'seeker' },
+      { id: 'skids_otoole', name_cn: '斯基兹·奥图尔', name_hant: '斯基茲·奧圖爾', class: 'rogue' },
+      { id: 'agnes_baker', name_cn: '阿格妮丝·贝克', name_hant: '阿格妮絲·貝克', class: 'mystic' },
+      { id: 'wendy_adams', name_cn: '温蒂·亚当斯', name_hant: '溫蒂·亞當斯', class: 'survivor' },
     ],
   },
   {
     label: '敦威治',
     investigators: [
-      { id: 'zoey_samaras', name_cn: '佐伊·萨马拉斯', class: 'guardian' },
-      { id: 'rex_murphy', name_cn: '雷克斯·墨菲', class: 'seeker' },
-      { id: 'jenny_barnes', name_cn: '珍妮·巴恩斯', class: 'rogue' },
-      { id: 'jim_culver', name_cn: '吉姆·卡尔弗', class: 'mystic' },
-      { id: 'ashcan_pete', name_cn: '流浪汉皮特', class: 'survivor' },
+      { id: 'zoey_samaras', name_cn: '佐伊·萨马拉斯', name_hant: '佐伊·薩馬拉斯', class: 'guardian' },
+      { id: 'rex_murphy', name_cn: '雷克斯·墨菲', name_hant: '雷克斯·墨菲', class: 'seeker' },
+      { id: 'jenny_barnes', name_cn: '珍妮·巴恩斯', name_hant: '珍妮·巴恩斯', class: 'rogue' },
+      { id: 'jim_culver', name_cn: '吉姆·卡尔弗', name_hant: '吉姆·卡爾弗', class: 'mystic' },
+      { id: 'ashcan_pete', name_cn: '流浪汉皮特', name_hant: '流浪漢皮特', class: 'survivor' },
     ],
   },
 ]
 
 // --- Computed ---
 
-const detail = computed(() => store.investigatorDetail)
+const labels = computed(() => UI_TEXT[store.language])
+
+function localizedName(entry: { name_cn: string; name_hant: string }): string {
+  return store.language === 'zh-Hant' ? entry.name_hant : entry.name_cn
+}
+
+function localizedGroupLabel(label: string): string {
+  if (label === '核心包') return labels.value.core
+  if (label === '敦威治遗产') return labels.value.dunwichLegacy
+  if (label === '敦威治') return labels.value.dunwich
+  return label
+}
+
+function classLabel(className: string): string {
+  return labels.value[className as keyof typeof labels.value] || className
+}
+
+const detail = computed(() => {
+  const raw = store.investigatorDetail
+  if (!raw) return null
+  const translation = INVESTIGATOR_TEXT[raw.id]
+  if (!translation) return raw
+  const traditional = store.language === 'zh-Hant'
+  return {
+    ...raw,
+    name_cn: traditional ? translation.name_hant : translation.name_cn,
+    title_cn: traditional ? translation.title_hant : translation.title_cn,
+    ability_cn: traditional ? translation.ability_hant : raw.ability_cn,
+  }
+})
 
 const canStart = computed(() => {
-  return store.selectedScenario && store.selectedInvestigator
+  return Boolean(store.selectedScenario && store.selectedInvestigator)
 })
 
 const skillLabels: Record<string, string> = {
@@ -86,6 +188,17 @@ const skillLabels: Record<string, string> = {
   intellect: '智力',
   combat: '战斗',
   agility: '敏捷',
+}
+
+const traditionalSkillLabels: Record<string, string> = {
+  willpower: '意志',
+  intellect: '智力',
+  combat: '戰鬥',
+  agility: '敏捷',
+}
+
+function skillLabel(key: string): string {
+  return (store.language === 'zh-Hant' ? traditionalSkillLabels : skillLabels)[key] || key
 }
 
 // --- Methods ---
@@ -101,7 +214,7 @@ function selectInvestigator(id: string) {
 
 function openDeckBuilder() {
   if (!store.selectedInvestigator) {
-    store.addToast('请先选择调查员', 'error')
+    store.addToast(labels.value.selectFirst, 'error')
     return
   }
   phase.value = 'deckbuilder'
@@ -110,17 +223,19 @@ function openDeckBuilder() {
 function onDeckConfirm(cards: string[]) {
   customDeckCards.value = cards
   phase.value = 'setup'
-  store.addToast(`已构筑 ${cards.length} 张卡组`, 'info')
+  store.addToast(`${labels.value.built} ${cards.length} ${labels.value.deckBuiltSuffix}`, 'info')
 }
 
 function onDeckBack() {
   phase.value = 'setup'
 }
 
-function startGame() {
-  if (!canStart.value) return
+async function startGame() {
+  if (!canStart.value || starting.value) return
+  starting.value = true
 
-  // Set up the callback before creating room to avoid race condition
+  // Set up callbacks before creating the room so a fast server response is
+  // not missed. The connection check also recovers from a stale HMR/socket.
   const prevRoomCb = client.onRoomUpdate
   client.onRoomUpdate = (_room) => {
     client.onRoomUpdate = prevRoomCb
@@ -153,11 +268,20 @@ function startGame() {
   // Also set up error handler
   const prevErrCb = client.onError
   client.onError = (err) => {
+    starting.value = false
     store.addToast(err.message || '连接错误', 'error')
     client.onError = prevErrCb
   }
 
-  client.createRoom()
+  try {
+    await client.ensureConnected()
+    client.createRoom()
+  } catch (err) {
+    starting.value = false
+    client.onRoomUpdate = prevRoomCb
+    client.onError = prevErrCb
+    store.addToast(err instanceof Error ? err.message : '无法连接到游戏服务器', 'error')
+  }
 }
 
 // --- Socket callbacks ---
@@ -167,6 +291,7 @@ function handleInvestigatorDetail(d: any) {
 }
 
 function handleStateUpdate(state: any, events?: any) {
+  starting.value = false
   store.updateState(state, events)
   router.push('/game')
 }
@@ -188,13 +313,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="lobby" v-if="phase === 'setup'">
+  <div class="lobby" v-if="phase === 'setup'" :lang="store.language">
     <div class="lobby-columns">
       <!-- Left: Scenario Selection -->
       <div class="column col-scenario">
-        <h2 class="column-title">选择剧本</h2>
+        <h2 class="column-title">{{ labels.selectScenario }}</h2>
         <div v-for="group in scenarioGroups" :key="group.label" class="group">
-          <div class="group-label">{{ group.label }}</div>
+          <div class="group-label">{{ localizedGroupLabel(group.label) }}</div>
           <div
             v-for="s in group.scenarios"
             :key="s.id"
@@ -202,16 +327,32 @@ onUnmounted(() => {
             :class="{ selected: store.selectedScenario === s.id }"
             @click="selectScenario(s.id)"
           >
-            {{ s.name_cn }}
+            {{ localizedName(s) }}
           </div>
         </div>
       </div>
 
       <!-- Center: Investigator Selection -->
       <div class="column col-investigator">
-        <h2 class="column-title">选择调查员</h2>
+        <div class="title-row">
+          <h2 class="column-title">{{ labels.selectInvestigator }}</h2>
+          <div class="language-picker" :aria-label="labels.language">
+            <button
+              type="button"
+              class="language-option"
+              :class="{ active: store.language === 'zh-Hans' }"
+              @click="store.setLanguage('zh-Hans')"
+            >简体中文</button>
+            <button
+              type="button"
+              class="language-option"
+              :class="{ active: store.language === 'zh-Hant' }"
+              @click="store.setLanguage('zh-Hant')"
+            >繁體中文</button>
+          </div>
+        </div>
         <div v-for="group in investigatorGroups" :key="group.label" class="group">
-          <div class="group-label">{{ group.label }}</div>
+          <div class="group-label">{{ localizedGroupLabel(group.label) }}</div>
           <div
             v-for="inv in group.investigators"
             :key="inv.id"
@@ -223,7 +364,7 @@ onUnmounted(() => {
               class="class-dot"
               :style="{ backgroundColor: CLASS_COLORS[inv.class] || '#888' }"
             ></span>
-            {{ inv.name_cn }}
+            {{ localizedName(inv) }}
           </div>
         </div>
       </div>
@@ -240,14 +381,14 @@ onUnmounted(() => {
             class="detail-class-badge"
             :style="{ backgroundColor: CLASS_COLORS[detail.class] || '#888' }"
           >
-            {{ detail.class }}
+            {{ classLabel(detail.class) }}
           </div>
 
           <div class="detail-stats">
             <div class="stat-row">
-              <span class="stat-label">生命</span>
+              <span class="stat-label">{{ labels.health }}</span>
               <span class="stat-value">{{ detail.health }}</span>
-              <span class="stat-label" style="margin-left: 24px">理智</span>
+              <span class="stat-label" style="margin-left: 24px">{{ labels.sanity }}</span>
               <span class="stat-value">{{ detail.sanity }}</span>
             </div>
           </div>
@@ -258,51 +399,53 @@ onUnmounted(() => {
               :key="key"
               class="skill-badge"
             >
-              <span class="skill-name">{{ skillLabels[key as string] || key }}</span>
+              <span class="skill-name">{{ skillLabel(key as string) }}</span>
               <span class="skill-val">{{ val }}</span>
             </div>
           </div>
 
           <div class="detail-section" v-if="detail.ability_cn">
-            <div class="section-label">能力</div>
+            <div class="section-label">{{ labels.ability }}</div>
             <div class="section-text">{{ detail.ability_cn }}</div>
           </div>
 
           <div class="detail-section" v-if="detail.deck_requirements">
-            <div class="section-label">牌组要求</div>
+            <div class="section-label">{{ labels.deckRequirements }}</div>
             <div class="section-text">
-              牌组大小: {{ detail.deck_requirements.size }}
+              {{ labels.deckSize }}: {{ detail.deck_requirements.size }}
               <template v-if="detail.deck_requirements.cards">
                 <div v-for="(req, cardId) in detail.deck_requirements.cards" :key="cardId" class="req-item">
-                  {{ cardId }}: Lv.{{ req.min_level }}-{{ req.max_level }}
+                  {{ classLabel(cardId as string) }}: Lv.{{ req.min_level }}-{{ req.max_level }}
                 </div>
               </template>
             </div>
           </div>
 
           <div class="detail-section" v-if="detail.signature_cards?.length">
-            <div class="section-label">标志卡</div>
+            <div class="section-label">{{ labels.signatureCards }}</div>
             <div class="section-text">{{ detail.signature_cards.join(', ') }}</div>
           </div>
 
           <div class="detail-section" v-if="detail.weakness">
-            <div class="section-label">弱点</div>
+            <div class="section-label">{{ labels.weakness }}</div>
             <div class="section-text">{{ detail.weakness }}</div>
           </div>
         </div>
         <div v-else class="detail-placeholder">
-          选择一位调查员查看详情
+          {{ labels.chooseInvestigator }}
         </div>
       </div>
     </div>
 
     <!-- Bottom Bar -->
     <div class="bottom-bar">
-      <button class="btn btn-secondary" @click="openDeckBuilder">构筑卡组</button>
+      <button class="btn btn-secondary" @click="openDeckBuilder">{{ labels.buildDeck }}</button>
       <div class="deck-status" v-if="customDeckCards.length > 0">
-        已构筑 {{ customDeckCards.length }} 张
+        {{ labels.built }} {{ customDeckCards.length }} 张
       </div>
-      <button class="btn btn-primary" :disabled="!canStart" @click="startGame">开始游戏</button>
+      <button class="btn btn-primary" :disabled="!canStart || starting" @click="startGame">
+        {{ starting ? labels.starting : labels.startGame }}
+      </button>
     </div>
   </div>
 
@@ -358,6 +501,47 @@ onUnmounted(() => {
   color: #ccc;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.title-row .column-title {
+  margin-bottom: 0;
+}
+
+.language-picker {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid #333344;
+  border-radius: 5px;
+  background: #101025;
+}
+
+.language-option {
+  padding: 3px 6px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #777;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.language-option:hover {
+  background: #1a1a2e;
+  color: #ccc;
+}
+
+.language-option.active {
+  background: #1e3a5f;
+  color: #fff;
 }
 
 .group {

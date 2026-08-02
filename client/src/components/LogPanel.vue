@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, watch, nextTick } from 'vue'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{ log: string[] }>()
+const store = useGameStore()
 
 const container = ref<HTMLDivElement | null>(null)
 
@@ -15,12 +18,12 @@ watch(() => props.log.length, async () => {
 
 <template>
   <div class="log-panel">
-    <div class="log-title">行动日志</div>
+    <div class="log-title">{{ store.language === 'zh-Hant' ? '行動日誌' : '行动日志' }}</div>
     <div ref="container" class="log-content">
       <div v-for="(entry, i) in log" :key="i" class="log-entry">
-        {{ entry }}
+        {{ localizeDisplayText(entry, store.language) }}
       </div>
-      <div v-if="!log.length" class="log-empty">暂无日志</div>
+      <div v-if="!log.length" class="log-empty">{{ store.language === 'zh-Hant' ? '暫無日誌' : '暂无日志' }}</div>
     </div>
   </div>
 </template>

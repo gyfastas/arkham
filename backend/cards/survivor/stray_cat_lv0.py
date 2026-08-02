@@ -3,6 +3,7 @@
 """
 
 from backend.cards.base import CardImplementation
+from backend.engine.slots import vacate_asset_slots
 from backend.scenarios.official_core import is_elite_enemy
 
 
@@ -25,6 +26,7 @@ class StrayCat(CardImplementation):
             return False
 
         # 弃置野猫
+        vacate_asset_slots(game_state, self.instance_id)
         if self.instance_id in inv.play_area:
             inv.play_area.remove(self.instance_id)
         game_state.cards_in_play.pop(self.instance_id, None)

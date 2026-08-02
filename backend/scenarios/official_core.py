@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -395,6 +395,7 @@ class ScenarioController:
 
     game: Any
     action_log: list[str] | None = None
+    skill_test_request_handler: Callable[..., Any] | None = None
 
     def attach(self) -> None:
         """Attach handlers to the game's event bus."""
@@ -942,6 +943,16 @@ class ScenarioController:
         def _fail(r):
             if on_failure:
                 on_failure(r)
+
+        if self.skill_test_request_handler is not None:
+            self.skill_test_request_handler(
+                investigator_id=investigator_id,
+                skill=skill,
+                difficulty=difficulty,
+                on_success=_ok,
+                on_failure=_fail,
+            )
+            return
 
         self.game.skill_test_engine.run_test(
             investigator_id=investigator_id,

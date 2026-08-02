@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from backend.models.enums import (
-    AOO_EXEMPT_ACTIONS, Action, CardType, GameEvent, Skill,
+    AOO_EXEMPT_ACTIONS, Action, CardType, GameEvent, SLOT_LIMITS, Skill,
 )
 
 if TYPE_CHECKING:
@@ -166,6 +166,7 @@ class ActionResolver:
             skill_type=Skill.INTELLECT,
             difficulty=location.shroud,
             committed_card_ids=committed,
+            effect_card_ids=kwargs.get("effect_card_ids"),
             on_success=on_success,
         )
         return True
@@ -262,8 +263,9 @@ class ActionResolver:
         committed = kwargs.get("committed_cards", [])
 
         def on_success(result):
+            bonus_damage = int(result.extra.get("bonus_damage", 0) or 0)
             self.damage.deal_damage_to_enemy(
-                enemy_instance_id, base_damage, source=weapon_instance_id,
+                enemy_instance_id, base_damage + bonus_damage, source=weapon_instance_id,
                 investigator_id=investigator_id,
             )
 
@@ -283,6 +285,7 @@ class ActionResolver:
             difficulty=difficulty,
             source_instance_id=weapon_instance_id,
             committed_card_ids=committed,
+            effect_card_ids=kwargs.get("effect_card_ids"),
             on_success=on_success,
             on_failure=on_failure,
         )
@@ -375,6 +378,7 @@ class ActionResolver:
             skill_type=Skill.AGILITY,
             difficulty=difficulty,
             committed_card_ids=committed,
+            effect_card_ids=kwargs.get("effect_card_ids"),
             on_success=on_success,
             on_failure=on_failure,
         )
@@ -392,28 +396,70 @@ class ActionResolver:
         if card_data is None:
             return False
 
-        # Slot enforcement (assets only) — check BEFORE paying cost so a
-        # failed play changes nothing. If the player supplied slot_discards
-        # (assets they chose to discard to free slots), apply them first.
-        self.last_slot_conflict = None
-        slot_mgr = self.slot_managers.get(investigator_id)
-        if (
-            card_data.type == CardType.ASSET
-            and card_data.slots
-            and slot_mgr is not None
-            and not slot_mgr.can_play_card(card_data.slots, card_data.traits)
-        ):
-            discards = kwargs.get("slot_discards") or []
-            if not self._try_free_slots(inv, slot_mgr, card_data, discards):
-                self.last_slot_conflict = self._build_slot_conflict(
-                    inv, slot_mgr, card_data
-                )
+        replacement_ids = list(dict.fromkeys(kwargs.get("replace_instance_ids") or []))
+        replacement_instances = []
+        if replacement_ids:
+            if card_data.type != CardType.ASSET or not card_data.slots:
                 return False
+            slot_mgr = self.slot_managers.get(inv.investigator_id)
+            if slot_mgr is None:
+                return False
+
+            replacement_instances = []
+            for instance_id in replacement_ids:
+                if instance_id not in inv.play_area:
+                    return False
+                instance = self.game_state.get_card_instance(instance_id)
+                if instance is None or instance.owner_id != investigator_id:
+                    return False
+                if not any(slot_type in card_data.slots for slot_type in instance.slot_used):
+                    return False
+                replacement_instances.append(instance)
+
+            required: dict = {}
+            for slot_type in card_data.slots:
+                required[slot_type] = required.get(slot_type, 0) + 1
+            for slot_type, count in required.items():
+                freed = sum(instance.slot_used.count(slot_type) for instance in replacement_instances)
+                limit = SLOT_LIMITS.get(slot_type, 0) + slot_mgr.bonus_slots.get(slot_type, 0)
+                if slot_mgr.count_used(slot_type) - freed + count > limit:
+                    return False
+
+        if not replacement_ids and card_data.type == CardType.ASSET and card_data.slots:
+            slot_mgr = self.slot_managers.get(inv.investigator_id)
+            if slot_mgr is None:
+                return False
+            required: dict = {}
+            for slot_type in card_data.slots:
+                required[slot_type] = required.get(slot_type, 0) + 1
+            for slot_type, count in required.items():
+                limit = SLOT_LIMITS.get(slot_type, 0) + slot_mgr.bonus_slots.get(slot_type, 0)
+                if slot_mgr.count_used(slot_type) + count > limit:
+                    return False
 
         # Pay cost (check BEFORE spending — fail early if can't afford)
         cost = card_data.cost or 0
         if inv.resources < cost:
             return False
+
+        # Remove selected assets only after all validation, including cost,
+        # succeeds.
+        for instance in replacement_instances:
+            from backend.engine.event_bus import EventContext
+            self.bus.emit(EventContext(
+                game_state=self.game_state,
+                event=GameEvent.CARD_LEAVES_PLAY,
+                investigator_id=investigator_id,
+                target=instance.instance_id,
+            ))
+            if self.card_registry:
+                self.card_registry.deactivate_card(instance.instance_id, self.bus)
+            slot_mgr.vacate(instance.instance_id)
+            if instance.instance_id in inv.play_area:
+                inv.play_area.remove(instance.instance_id)
+            inv.discard.append(instance.card_id)
+            self.game_state.cards_in_play.pop(instance.instance_id, None)
+
         inv.resources -= cost
 
         from backend.engine.event_bus import EventContext

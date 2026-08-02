@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { EnemyDisplay } from '../state/types'
+import { useGameStore } from '../stores/game'
+import { localizeDisplayText } from '../utils/displayText'
 
 defineProps<{ enemies: EnemyDisplay[] }>()
+const store = useGameStore()
 
 const emit = defineEmits<{
   attack: [enemyInstanceId: string]
@@ -12,7 +15,7 @@ const emit = defineEmits<{
 
 <template>
   <div class="enemy-panel">
-    <div class="panel-title">敌人 ({{ enemies.length }})</div>
+    <div class="panel-title">{{ store.language === 'zh-Hant' ? '敵人' : '敌人' }} ({{ enemies.length }})</div>
     <div class="enemy-list">
       <div
         v-for="enemy in enemies"
@@ -20,29 +23,29 @@ const emit = defineEmits<{
         class="enemy-card"
         :class="{ exhausted: enemy.exhausted }"
       >
-        <div class="enemy-name">{{ enemy.name_cn || enemy.name }}</div>
+        <div class="enemy-name">{{ localizeDisplayText(enemy.name_cn || enemy.name, store.language) }}</div>
         <div class="enemy-stats">
           <span class="fight" title="战斗">⚔{{ enemy.fight }}</span>
           <span class="health" title="生命">♥{{ enemy.health - enemy.current_damage }}/{{ enemy.health }}</span>
           <span class="evade-stat" title="闪避">🏃{{ enemy.evade }}</span>
         </div>
         <div class="enemy-threat">
-          <span v-if="enemy.damage_dealt" class="dmg">伤害: {{ enemy.damage_dealt }}</span>
-          <span v-if="enemy.horror_dealt" class="hor">恐惧: {{ enemy.horror_dealt }}</span>
+          <span v-if="enemy.damage_dealt" class="dmg">{{ store.language === 'zh-Hant' ? '傷害' : '伤害' }}: {{ enemy.damage_dealt }}</span>
+          <span v-if="enemy.horror_dealt" class="hor">{{ store.language === 'zh-Hant' ? '恐懼' : '恐惧' }}: {{ enemy.horror_dealt }}</span>
         </div>
-        <div v-if="enemy.engaged" class="engaged-badge">已交战</div>
-        <div v-if="enemy.exhausted" class="exhausted-badge">已消耗</div>
+        <div v-if="enemy.engaged" class="engaged-badge">{{ store.language === 'zh-Hant' ? '已交戰' : '已交战' }}</div>
+        <div v-if="enemy.exhausted" class="exhausted-badge">{{ store.language === 'zh-Hant' ? '已消耗' : '已消耗' }}</div>
         <div class="enemy-actions">
-          <button class="btn-fight" @click="emit('attack', enemy.instance_id)">战斗</button>
-          <button class="btn-evade" @click="emit('evade', enemy.instance_id)">闪避</button>
+          <button class="btn-fight" @click="emit('attack', enemy.instance_id)">{{ store.language === 'zh-Hant' ? '戰鬥' : '战斗' }}</button>
+          <button class="btn-evade" @click="emit('evade', enemy.instance_id)">{{ store.language === 'zh-Hant' ? '閃避' : '闪避' }}</button>
           <button
             v-if="!enemy.engaged"
             class="btn-engage"
             @click="emit('engage', enemy.instance_id)"
-          >交战</button>
+          >{{ store.language === 'zh-Hant' ? '交戰' : '交战' }}</button>
         </div>
       </div>
-      <div v-if="!enemies.length" class="no-enemies">无敌人</div>
+      <div v-if="!enemies.length" class="no-enemies">{{ store.language === 'zh-Hant' ? '無敵人' : '无敌人' }}</div>
     </div>
   </div>
 </template>

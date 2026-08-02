@@ -4,6 +4,7 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
+from backend.engine.slots import vacate_asset_slots
 from backend.models.enums import ChaosTokenType, GameEvent, Skill, TimingPriority
 
 _BAD_TOKENS = {
@@ -40,6 +41,7 @@ class BaseballBat(CardImplementation):
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None or self.instance_id not in inv.play_area:
             return
+        vacate_asset_slots(ctx.game_state, self.instance_id)
         inv.play_area.remove(self.instance_id)
         ctx.game_state.cards_in_play.pop(self.instance_id, None)
         inv.discard.append("baseball_bat_lv0")
