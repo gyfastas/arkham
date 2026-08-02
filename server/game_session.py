@@ -525,9 +525,6 @@ class GameSession:
         apply_scenario_to_game(g, scenario_id, seed=seed)
         scen = load_scenario_definition(scenario_id)
         g.add_investigator("player", inv_data, deck=deck_ids, starting_location=scen["start_location"])
-        # Keep opening weaknesses/treacheries in the mulligan hand first.
-        # They are revealed only after the player keeps or redraws cards.
-        g.state.scenario.vars["opening_mulligan_pending"] = True
         g.setup()
         # Official rule: opening hand mulligan (redraw any number of cards, once)
         g.state.scenario.vars["mulligan_available"] = True
@@ -1203,7 +1200,9 @@ class GameSession:
         manager = getattr(self.game, "slot_managers", {}).get(inv.investigator_id)
         if manager:
             manager.vacate(instance_id)
-        self.game.card_registry.deactivate_card(instance_id, self.game.event_bus)
+        registry = getattr(self.game, "card_registry", None)
+        if registry is not None:
+            registry.deactivate_card(instance_id, self.game.event_bus)
         if instance_id in inv.play_area:
             inv.play_area.remove(instance_id)
         inv.discard.append(ci.card_id)
@@ -1305,20 +1304,6 @@ class GameSession:
             names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
             self.action_log.append(f"🃏 搁置卡牌洗回牌库：{names}")
         return {"success": True, "message": "调度完成"}
-
-    def _reveal_opening_hand(self, inv) -> None:
-        """Resolve opening-hand revelation after the mulligan window."""
-        if not self.game.state.scenario.vars.pop("opening_mulligan_pending", None):
-            return
-        from backend.engine.draw_hooks import emit_card_drawn
-        for card_id in list(inv.hand):
-            emit_card_drawn(
-                self.game.state,
-                self.game.event_bus,
-                self.game.card_registry,
-                inv,
-                card_id,
-            )
 
     def _activate_card(self, inv, data: dict) -> dict:
         """Generic activation channel: routes ACTIVATE_CARD to a card's

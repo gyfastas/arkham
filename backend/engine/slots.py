@@ -203,6 +203,32 @@ class SlotManager:
             return True
         return False
 
+    # ------------------------------------------------------------------
+    # Serialization helper
+    # ------------------------------------------------------------------
+    def status(self) -> dict[str, dict]:
+        """Slot usage summary for client display."""
+        result: dict[str, dict] = {}
+        for slot_type in SlotType:
+            used = self.count_used(slot_type)
+            base = SLOT_LIMITS.get(slot_type, 0)
+            bonus = self.bonus_slots.get(slot_type, 0)
+            restricted_entries = self.restricted_bonuses.get(slot_type, [])
+            restricted = sum(e["count"] for e in restricted_entries)
+            limit = base + bonus + restricted
+            if limit <= 0 and used <= 0:
+                continue
+            result[slot_type.value] = {
+                "used": used,
+                "base": base,
+                "bonus": bonus,
+                "restricted": restricted,
+                "restricted_traits": [e["trait"] for e in restricted_entries],
+                "limit": limit,
+                "cards": self.get_cards_in_slot(slot_type),
+            }
+        return result
+
 
 def vacate_asset_slots(game_state, instance_id: str) -> None:
     """Keep slot accounting in sync when a card leaves play outside Actions."""

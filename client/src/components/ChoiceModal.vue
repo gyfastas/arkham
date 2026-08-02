@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PendingChoice } from '../state/types'
 import { useGameStore } from '../stores/game'
-import { localizeDisplayText } from '../utils/displayText'
+import { localizeDisplayHtml, localizeDisplayText } from '../utils/displayText'
 
 defineProps<{ choice: PendingChoice | null }>()
 const store = useGameStore()
@@ -15,7 +15,7 @@ const emit = defineEmits<{
   <Teleport to="body">
     <div v-if="choice" class="modal-overlay">
       <div class="modal-content">
-        <div class="modal-prompt">{{ localizeDisplayText(choice.prompt, store.language) }}</div>
+        <div class="modal-prompt" v-html="localizeDisplayHtml(choice.prompt, store.language)"></div>
         <div class="modal-options">
           <button
             v-for="opt in choice.options"

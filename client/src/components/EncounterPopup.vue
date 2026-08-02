@@ -2,7 +2,7 @@
 import { watch, ref } from 'vue'
 import type { EncounterCardDisplay } from '../state/types'
 import { useGameStore } from '../stores/game'
-import { localizeDisplayText } from '../utils/displayText'
+import { localizeDisplayHtml, localizeDisplayText } from '../utils/displayText'
 
 const props = defineProps<{ encounter: EncounterCardDisplay | null }>()
 const store = useGameStore()
@@ -60,7 +60,7 @@ const TYPE_LABELS_HANT: Record<string, string> = {
           <div v-if="encounter.traits && encounter.traits.length" class="encounter-traits">
             {{ encounter.traits.map(trait => localizeDisplayText(trait, store.language)).join(' · ') }}
           </div>
-          <div v-if="encounter.text" class="encounter-text">{{ localizeDisplayText(encounter.text, store.language) }}</div>
+          <div v-if="encounter.text" class="encounter-text" v-html="localizeDisplayHtml(encounter.text, store.language)"></div>
           <button class="dismiss-btn" @click="dismiss">关闭</button>
         </div>
       </div>

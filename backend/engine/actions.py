@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from backend.models.enums import (
-    AOO_EXEMPT_ACTIONS, Action, CardType, GameEvent, SLOT_LIMITS, Skill,
+    AOO_EXEMPT_ACTIONS, Action, CardType, GameEvent, Skill,
 )
 
 if TYPE_CHECKING:
@@ -396,12 +396,20 @@ class ActionResolver:
         if card_data is None:
             return False
 
+        # Slot enforcement (assets only) — checked BEFORE paying cost so a
+        # failed play changes nothing. Trait-aware (tome-only restricted
+        # slots). Two UI flows coexist:
+        # - replace_instance_ids: assets chosen to discard for slots upfront
+        # - slot_discards / slots_full conflict: server reports the conflict
+        #   and the client retries with discards (SlotDiscardModal)
+        self.last_slot_conflict = None
+        slot_mgr = self.slot_managers.get(investigator_id)
+
         replacement_ids = list(dict.fromkeys(kwargs.get("replace_instance_ids") or []))
         replacement_instances = []
         if replacement_ids:
             if card_data.type != CardType.ASSET or not card_data.slots:
                 return False
-            slot_mgr = self.slot_managers.get(inv.investigator_id)
             if slot_mgr is None:
                 return False
 
@@ -412,30 +420,32 @@ class ActionResolver:
                 instance = self.game_state.get_card_instance(instance_id)
                 if instance is None or instance.owner_id != investigator_id:
                     return False
-                if not any(slot_type in card_data.slots for slot_type in instance.slot_used):
-                    return False
                 replacement_instances.append(instance)
 
-            required: dict = {}
-            for slot_type in card_data.slots:
-                required[slot_type] = required.get(slot_type, 0) + 1
-            for slot_type, count in required.items():
-                freed = sum(instance.slot_used.count(slot_type) for instance in replacement_instances)
-                limit = SLOT_LIMITS.get(slot_type, 0) + slot_mgr.bonus_slots.get(slot_type, 0)
-                if slot_mgr.count_used(slot_type) - freed + count > limit:
-                    return False
-
-        if not replacement_ids and card_data.type == CardType.ASSET and card_data.slots:
-            slot_mgr = self.slot_managers.get(inv.investigator_id)
-            if slot_mgr is None:
+            # Simulate freeing the replacements, then run the trait-aware check
+            saved_traits = {
+                inst.instance_id: slot_mgr.slot_traits.get(inst.instance_id, frozenset())
+                for inst in replacement_instances
+            }
+            for inst in replacement_instances:
+                slot_mgr.vacate(inst.instance_id)
+            if not slot_mgr.can_play_card(card_data.slots, card_data.traits):
+                for inst in replacement_instances:
+                    slot_mgr.occupy(inst.instance_id, inst.slot_used, saved_traits[inst.instance_id])
                 return False
-            required: dict = {}
-            for slot_type in card_data.slots:
-                required[slot_type] = required.get(slot_type, 0) + 1
-            for slot_type, count in required.items():
-                limit = SLOT_LIMITS.get(slot_type, 0) + slot_mgr.bonus_slots.get(slot_type, 0)
-                if slot_mgr.count_used(slot_type) + count > limit:
-                    return False
+
+        if not replacement_ids and (
+            card_data.type == CardType.ASSET
+            and card_data.slots
+            and slot_mgr is not None
+            and not slot_mgr.can_play_card(card_data.slots, card_data.traits)
+        ):
+            discards = kwargs.get("slot_discards") or []
+            if not self._try_free_slots(inv, slot_mgr, card_data, discards):
+                self.last_slot_conflict = self._build_slot_conflict(
+                    inv, slot_mgr, card_data
+                )
+                return False
 
         # Pay cost (check BEFORE spending — fail early if can't afford)
         cost = card_data.cost or 0
