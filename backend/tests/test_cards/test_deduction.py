@@ -5,7 +5,7 @@ from backend.cards.seeker.deduction_lv0 import Deduction
 from backend.engine.event_bus import EventBus
 from backend.engine.skill_test import SkillTestEngine
 from backend.models.chaos import ChaosBag
-from backend.models.enums import ChaosTokenType, Skill
+from backend.models.enums import Action, ChaosTokenType, Skill
 from backend.models.state import GameState, InvestigatorState, LocationState, ScenarioState
 from backend.tests.conftest import make_investigator_data, make_location_data, make_skill_data
 
@@ -121,3 +121,78 @@ class TestDeduction:
         )
         # No clue gained — wrong skill type
         assert loc.clues == initial_loc_clues
+
+
+class TestDeductionInvestigateAction:
+    """真实调查行动流程：基础发现先结算，推理额外线索在其后。"""
+
+    @pytest.fixture
+    def game(self):
+        from backend.engine.game import Game
+        from backend.models.enums import CardType, PlayerClass
+        from backend.models.state import CardData
+
+        g = Game("test_deduction_action")
+        g.chaos_bag.seed(42)
+
+        inv_data = make_investigator_data(intellect=5)
+        g.register_card_data(inv_data)
+
+        loc_data = make_location_data(shroud=3)
+        g.register_card_data(loc_data)
+
+        g.register_card_data(CardData(
+            id="deduction_lv0", name="Deduction", name_cn="推理",
+            type=CardType.SKILL, card_class=PlayerClass.SEEKER,
+            skill_icons={"intellect": 1},
+        ))
+
+        g.add_investigator("inv1", inv_data, starting_location="test_location")
+        g.add_location("test_location", loc_data, clues=2)
+        g.card_registry.register_class(Deduction)
+        return g
+
+    def _investigate(self, game):
+        inv = game.state.get_investigator("inv1")
+        inv.actions_remaining = 3
+        game.action_resolver.perform_action(
+            "inv1", Action.INVESTIGATE, committed_cards=["deduction_lv0"],
+        )
+
+    def test_two_clues_gained_with_two_on_location(self, game):
+        """技能5 vs 难度3：基础1 + 推理1 = 共拿2条（用户场景）。"""
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+        loc = game.state.get_location("test_location")
+        inv = game.state.get_investigator("inv1")
+        self._investigate(game)
+        assert inv.clues == 2
+        assert loc.clues == 0
+
+    def test_base_clue_first_when_one_left(self, game):
+        """只剩1条线索：基础发现优先拿到（不为负），推理无额外可取。"""
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+        loc = game.state.get_location("test_location")
+        loc.clues = 1
+        inv = game.state.get_investigator("inv1")
+        self._investigate(game)
+        assert inv.clues == 1
+        assert loc.clues == 0
+        assert loc.clues >= 0  # 地点线索不能为负
+
+    def test_clue_discovered_event_fires_for_base(self, game):
+        """基础发现的 CLUE_DISCOVERED 事件必须触发（米兰博士等依赖它）。"""
+        from backend.models.enums import GameEvent
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+        seen = []
+
+        def spy(ctx):
+            seen.append(ctx.amount)
+
+        game.event_bus.register(
+            GameEvent.CLUE_DISCOVERED, spy,
+            priority=__import__("backend.models.enums", fromlist=["TimingPriority"]).TimingPriority.AFTER,
+        )
+        loc = game.state.get_location("test_location")
+        loc.clues = 1
+        self._investigate(game)
+        assert seen == [1]  # 基础发现触发了一次
