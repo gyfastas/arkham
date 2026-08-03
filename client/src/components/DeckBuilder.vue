@@ -14,6 +14,8 @@ const props = defineProps<{
   mode?: 'build' | 'upgrade'
   /** upgrade 模式的初始牌组（来自战役存档） */
   initialDeck?: string[]
+  /** 卡组为空时自动应用该调查员的第一个预设卡组（战役向导用） */
+  autoPreset?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -285,6 +287,10 @@ function handleCardList(cards: CardDisplay[], presets: any[], deckReq: any, sigC
   store.deckRequirements = deckReq
   store.signatureCards = sigCards || []
   store.weaknessCards = weakCards || []
+  // 战役向导：自动填入预设卡组，避免玩家面对 0/30 的卡组无从下手
+  if (props.autoPreset && deck.value.length === 0 && presets.length > 0) {
+    applyPreset(presets[0].cards)
+  }
 }
 
 onMounted(() => {
@@ -446,7 +452,14 @@ onUnmounted(() => {
             <button class="entry-remove" @click="removeCard(entry.card.id)" title="移除一张">-</button>
           </div>
           <div v-if="deckEntries.length === 0" class="deck-empty">
-            点击左侧卡牌添加到卡组
+            <p>点击左侧卡牌添加到卡组</p>
+            <button
+              v-if="store.deckPresets.length > 0"
+              class="preset-quick-btn"
+              @click="applyPreset(store.deckPresets[0].cards)"
+            >
+              使用预设卡组：{{ store.deckPresets[0].name }}
+            </button>
           </div>
         </div>
 
@@ -938,6 +951,21 @@ onUnmounted(() => {
   font-size: 13px;
   text-align: center;
   padding: 30px 0;
+}
+
+.preset-quick-btn {
+  margin-top: 14px;
+  background: #1a2e1a;
+  border: 1px solid #27ae60;
+  color: #2ecc71;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.preset-quick-btn:hover {
+  background: #20401f;
 }
 
 .auto-section {

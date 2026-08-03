@@ -273,6 +273,7 @@ function invName(id: string): string {
       v-else-if="phase === 'deckbuilder'"
       :investigator-id="selectedInvestigator"
       :xp="0"
+      auto-preset
       @confirm="onDeckConfirm"
       @back="onDeckBack"
     />
