@@ -590,6 +590,15 @@ class GameSession:
             win = res in {"R1", "R2"}
             msg = self.game.state.scenario.vars.get("resolution_message") or f"结局：{res}"
             self.game_over = {"type": "win" if win else "lose", "message": msg}
+        if not self.game_over:
+            # 被击败检测（行动中途也可能发生：反击/机会攻击/卡牌效果）
+            inv = self.game.state.get_investigator("player")
+            if inv is not None and inv.is_defeated:
+                cause = "伤害" if inv.damage >= inv.health else "恐惧"
+                self.game_over = {
+                    "type": "lose",
+                    "message": f"调查员被击败！（{cause}归零）",
+                }
         self._maybe_settle_campaign()
 
     def _maybe_settle_campaign(self) -> None:
