@@ -66,6 +66,10 @@ function getSkillDifficulty(skillType: string, params: Record<string, unknown>):
 }
 
 function getBaseSkill(skillType: string): number {
+  // 优先用游戏状态里的权威技能值；investigatorDetail 仅在快速游戏大厅拉取，
+  // 战役模式/续玩时可能为空（导致基础值显示 0）
+  const fromState = state.value?.investigator.skills?.[skillType]
+  if (fromState !== undefined) return fromState
   const skills = store.investigatorDetail?.skills
   return skills?.[skillType as keyof typeof skills] ?? 0
 }

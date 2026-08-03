@@ -15,7 +15,7 @@ from __future__ import annotations
 from typing import Any
 
 from backend.engine.game import Game
-from backend.models.enums import CardType, SLOT_LIMITS, SlotType
+from backend.models.enums import CardType, SLOT_LIMITS, Skill, SlotType
 from backend.models.state import CardData
 from backend.scenarios.official_core import load_scenario_definition
 
@@ -191,6 +191,7 @@ def serialize_public_state(game: Game) -> dict:
                 "total": len(scenario.agenda_cards),
             } if agenda else None,
             "resolution_id": scenario.vars.get("resolution_id"),
+            "symbol_text": _scenario_symbol_text(game),
         },
     }
 
@@ -270,6 +271,20 @@ def serialize_private_state(game: Game, investigator_id: str) -> dict:
         "hand": hand,
         "discard": discard,
     }
+
+
+def _scenario_symbol_text(game: Game) -> str:
+    """Scenario reference card text (skull/cultist/tablet/elder-thing effects)."""
+    scenario = game.state.scenario
+    card_id = getattr(scenario, "scenario_card_id", None)
+    if not card_id:
+        return ""
+    from backend.scenarios.official_core import load_encounter_db_for_campaign
+    db = load_encounter_db_for_campaign(scenario.vars.get("campaign", "core"))
+    rec = db.get(card_id)
+    if not rec:
+        return ""
+    return rec.get("text_cn") or rec.get("text") or ""
 
 
 # ---------------------------------------------------------------------------
@@ -444,6 +459,13 @@ def serialize_game_state(
             "slot_summary": _serialize_slot_summary(game, viewer_investigator_id) if inv else [],
             # Constant in-play asset/ally bonuses per skill (UI preview)
             "skill_bonuses": game.preview_skill_bonuses(viewer_investigator_id) if inv else {},
+            # Printed skill values (skill test UI base value)
+            "skills": {
+                "willpower": inv.get_skill(Skill.WILLPOWER),
+                "intellect": inv.get_skill(Skill.INTELLECT),
+                "combat": inv.get_skill(Skill.COMBAT),
+                "agility": inv.get_skill(Skill.AGILITY),
+            } if inv else {},
         },
         "location": {
             "id": inv.location_id if inv else "",
@@ -494,6 +516,7 @@ def serialize_game_state(
                 "total": len(scenario.agenda_cards),
             } if agenda else None,
             "resolution_id": scenario.vars.get("resolution_id"),
+            "symbol_text": _scenario_symbol_text(game),
         },
         "treacheries": tre_list,
         "pending_choice": pending_choice,

@@ -118,6 +118,7 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1, difficulty:
             clue_value=int(clues) if clues is not None else 0,
             connections=connections.get(loc_id, []),
             text=rec.get("text") or "",
+            traits=(rec.get("traits") or []),
         )
         game.register_card_data(cd)
         game.add_location(loc_id, cd, clues=cd.clue_value or 0)
@@ -391,6 +392,13 @@ def _is_cultist_enemy_id(card_id: str) -> bool:
     }
 
 
+DUNWICH_SCENARIO_IDS = {
+    "extracurricular_activity", "the_house_always_wins", "the_miskatonic_museum",
+    "essex_county_express", "blood_on_the_altar", "undimensioned_and_unseen",
+    "where_doom_awaits", "lost_in_time_and_space",
+}
+
+
 @dataclass
 class ScenarioController:
     """Scenario-specific glue: encounter resolution + branching endings.
@@ -418,6 +426,7 @@ class ScenarioController:
 
         # Scenario-specific chaos token effects (skull/cultist/tablet/elder_thing)
         self._token_pending: dict[str, set[str]] = {}
+        self._token_success_pending: dict[str, set[str]] = {}
         self.game.event_bus.register(
             GameEvent.CHAOS_TOKEN_RESOLVED,
             self._scenario_token_effects,
@@ -426,6 +435,11 @@ class ScenarioController:
         self.game.event_bus.register(
             GameEvent.SKILL_TEST_FAILED,
             self._scenario_token_fail_effects,
+            priority=TimingPriority.AFTER,
+        )
+        self.game.event_bus.register(
+            GameEvent.SKILL_TEST_SUCCESSFUL,
+            self._scenario_token_success_effects,
             priority=TimingPriority.AFTER,
         )
         self.game.event_bus.register(
@@ -440,6 +454,10 @@ class ScenarioController:
     @property
     def s(self):
         return self.game.state.scenario
+
+    @property
+    def game_state(self):
+        return self.game.state
 
     def log(self, msg: str) -> None:
         if self.action_log is not None:
@@ -593,6 +611,13 @@ class ScenarioController:
             return
         sid = self.s.scenario_id
         pending = self._token_pending.setdefault(ctx.investigator_id, set())
+        success_pending = self._token_success_pending.setdefault(ctx.investigator_id, set())
+
+        if sid in DUNWICH_SCENARIO_IDS:
+            self._dunwich_token_effects(ctx, inv, pending, success_pending)
+            if ctx.extra.get("token_text"):
+                ctx.game_state.log_effect(f"🎲 标记效果：{ctx.extra['token_text']}")
+            return
 
         if sid == "the_gathering":
             if token == ChaosTokenType.SKULL:
@@ -668,6 +693,235 @@ class ScenarioController:
         if ctx.extra.get("token_text"):
             ctx.game_state.log_effect(f"🎲 标记效果：{ctx.extra['token_text']}")
 
+    # ---------------------
+    # Dunwich Legacy token effects (Standard values)
+    # ---------------------
+    def _enemy_card_at(self, location_id: str, card_id: str) -> bool:
+        loc = self.game_state.get_location(location_id)
+        if loc is None:
+            return False
+        for iid in loc.enemies:
+            inst = self.game_state.get_card_instance(iid)
+            if inst is not None and inst.card_id == card_id:
+                return True
+        for iid in (self.game_state.get_investigator("player").threat_area if self.game_state.get_investigator("player") else []):
+            inst = self.game_state.get_card_instance(iid)
+            if inst is not None and inst.card_id == card_id:
+                inv_loc = self.game_state.get_investigator("player").location_id
+                return inv_loc == location_id
+        return False
+
+    def _enemy_card_in_play(self, card_id: str) -> bool:
+        for iid, inst in self.game_state.cards_in_play.items():
+            if inst.card_id == card_id:
+                return True
+        return False
+
+    def _location_has_trait(self, location_id: str, trait: str) -> bool:
+        loc = self.game_state.get_location(location_id)
+        if loc is None or loc.card_data is None:
+            return False
+        return trait in (loc.card_data.traits or [])
+
+    def _count_locations_with_trait(self, trait: str) -> int:
+        return sum(1 for loc in self.game_state.locations.values()
+                   if loc.card_data and trait in (loc.card_data.traits or []))
+
+    def _discard_top_of_deck(self, inv, n: int) -> list[str]:
+        out = []
+        for _ in range(min(n, len(inv.deck))):
+            cid = inv.deck.pop(0)
+            inv.discard.append(cid)
+            out.append(cid)
+        return out
+
+    def _printed_cost_sum(self, card_ids: list[str]) -> int:
+        total = 0
+        for cid in card_ids:
+            cd = self.game_state.get_card_data(cid)
+            if cd is not None:
+                total += cd.cost or 0
+        return total
+
+    def _reveal_extra_numeric_token(self, ctx, reason: str) -> None:
+        """再揭示1个标记（只取数值修正，不递归触发符号效果）。"""
+        from backend.models.enums import CHAOS_TOKEN_VALUES
+        extra = self.game.chaos_bag.draw()
+        val = CHAOS_TOKEN_VALUES.get(extra) or 0
+        ctx.modify_amount(val, reason)
+        ctx.extra["token_text"] = (
+            f"{ctx.extra.get('token_text', '')}，再揭示[{getattr(extra, 'value', extra)}]"
+        )
+
+    def _dunwich_token_effects(self, ctx, inv, pending, success_pending) -> None:
+        """敦威治遗产 8 章符号效果（Standard）。
+
+        简化项（已在代码注释标明）：选择类效果自动取对玩家最有利/最常用分支；
+        技能卡图标无效化、地点移除、Brood 线索移除等未实现。
+        """
+        from backend.models.enums import ChaosTokenType
+
+        token = ctx.chaos_token
+        sid = self.s.scenario_id
+
+        if sid == "extracurricular_activity":
+            if token == ChaosTokenType.SKULL:
+                ctx.modify_amount(-1, "eca_skull")
+                pending.add("eca_skull_deck3")
+                ctx.extra["token_text"] = "骷髅 -1，若失败：弃牌堆顶3张"
+            elif token == ChaosTokenType.CULTIST:
+                x = 3 if len(inv.discard) >= 10 else 1
+                ctx.modify_amount(-x, "eca_cultist")
+                ctx.extra["token_text"] = f"异教徒 -{x}" + ("（弃牌堆≥10张）" if x == 3 else "")
+            elif token == ChaosTokenType.ELDER_THING:
+                discarded = self._discard_top_of_deck(inv, 2)
+                x = self._printed_cost_sum(discarded)
+                ctx.modify_amount(-x, "eca_elder_thing")
+                ctx.extra["token_text"] = f"旧神之物 -{x}（弃牌堆顶2张费用和）"
+
+        elif sid == "the_house_always_wins":
+            if token == ChaosTokenType.SKULL:
+                # 简化：资源足够时自动花2资源视为0（对玩家有利的常规选择）
+                if inv.resources >= 2:
+                    inv.resources -= 2
+                    ctx.extra["token_text"] = "骷髅 视为0（花费2资源）"
+                else:
+                    ctx.modify_amount(-2, "thaw_skull")
+                    ctx.extra["token_text"] = "骷髅 -2"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-3, "thaw_cultist")
+                success_pending.add("thaw_cultist_gain3")
+                ctx.extra["token_text"] = "异教徒 -3，若成功：获得3资源"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-2, "thaw_tablet")
+                pending.add("thaw_tablet_lose3")
+                ctx.extra["token_text"] = "石板 -2，若失败：失去3资源"
+
+        elif sid == "the_miskatonic_museum":
+            if token == ChaosTokenType.SKULL:
+                x = 3 if self._enemy_card_at(inv.location_id, "hunting_horror") else 1
+                ctx.modify_amount(-x, "tmm_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}" + ("（与追獵恐魔同地点）" if x == 3 else "")
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-1, "tmm_cultist")
+                pending.add("tmm_cultist_spawn_horror")
+                ctx.extra["token_text"] = "异教徒 -1，若失败：追獵恐魔生成在你所在地"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-2, "tmm_tablet")
+                pending.add("tmm_tablet_return_clue")
+                ctx.extra["token_text"] = "石板 -2：将你的1个线索放回所在地点"
+            elif token == ChaosTokenType.ELDER_THING:
+                ctx.modify_amount(-3, "tmm_elder_thing")
+                pending.add("tmm_elder_discard_asset")
+                ctx.extra["token_text"] = "旧神之物 -3，若失败：弃1张你控制的支援"
+
+        elif sid == "essex_county_express":
+            if token == ChaosTokenType.SKULL:
+                x = (self.s.current_agenda_index or 0) + 1
+                ctx.modify_amount(-x, "ece_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（当前密谋编号）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-1, "ece_cultist")
+                pending.add("ece_cultist_lose_actions")
+                ctx.extra["token_text"] = "异教徒 -1，若失败且是你的回合：失去剩余行动"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-2, "ece_tablet")
+                target = self._find_nearest_cultist(inv.location_id)
+                if target:
+                    inst = self.game_state.get_card_instance(target)
+                    if inst is not None:
+                        inst.doom += 1
+                ctx.extra["token_text"] = "石板 -2：最近异教徒+1毁灭"
+            elif token == ChaosTokenType.ELDER_THING:
+                ctx.modify_amount(-3, "ece_elder_thing")
+                pending.add("ece_elder_discard_hand")
+                ctx.extra["token_text"] = "旧神之物 -3，若失败：弃1张手牌"
+
+        elif sid == "blood_on_the_altar":
+            if token == ChaosTokenType.SKULL:
+                # 简化：以“无线索地点”近似“底下无遭遇卡的地点”（该机制未实现）
+                x = min(4, sum(1 for loc in self.game_state.locations.values() if loc.clues == 0))
+                if x:
+                    ctx.modify_amount(-x, "bota_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（无遭遇卡地点×{x}，最大4）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.modify_amount(-2, "bota_cultist")
+                pending.add("bota_cultist_clue_to_loc")
+                ctx.extra["token_text"] = "异教徒 -2，若失败：供应堆放1线索到所在地点"
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-2, "bota_tablet")
+                ctx.extra["token_text"] = "石板 -2"
+                if "隐藏密室" in (self.game_state.get_location(inv.location_id).card_data.name_cn
+                                  if self.game_state.get_location(inv.location_id) else "") \
+                        or self._location_has_trait(inv.location_id, "密室"):
+                    self._reveal_extra_numeric_token(ctx, "bota_tablet_extra")
+            elif token == ChaosTokenType.ELDER_THING:
+                ctx.modify_amount(-3, "bota_elder_thing")
+                pending.add("bota_elder_doom_agenda")
+                ctx.extra["token_text"] = "旧神之物 -3，若失败：当前密谋+1毁灭"
+
+        elif sid == "undimensioned_and_unseen":
+            if token == ChaosTokenType.SKULL:
+                x = self._enemy_keyword_count_in_play("brood_of_yog_sothoth")
+                if x:
+                    ctx.modify_amount(-x, "uau_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（猶格·索托斯之子×{x}）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.extra["token_text"] = "异教徒 再揭示1个标记，若失败：受1恐惧"
+                pending.add("uau_cultist_horror")
+                self._reveal_extra_numeric_token(ctx, "uau_cultist_extra")
+            elif token == ChaosTokenType.TABLET:
+                # 简化：Brood 线索机制未实现，固定视为 -4
+                ctx.modify_amount(-4, "uau_tablet")
+                ctx.extra["token_text"] = "石板 -4（简化：未实现移除Brood线索的选项）"
+            elif token == ChaosTokenType.ELDER_THING:
+                ctx.modify_amount(-3, "uau_elder_thing")
+                pending.add("uau_elder_brood_attack")
+                ctx.extra["token_text"] = "旧神之物 -3（对抗Brood时它立刻攻击你）"
+
+        elif sid == "where_doom_awaits":
+            if token == ChaosTokenType.SKULL:
+                x = 3 if self._location_has_trait(inv.location_id, "幻境") else 1
+                ctx.modify_amount(-x, "wda_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}" + ("（幻境地点）" if x == 3 else "")
+            elif token == ChaosTokenType.CULTIST:
+                # 简化：技能卡图标/效果无效化未实现，仅再揭示标记
+                ctx.extra["token_text"] = "异教徒 再揭示1个标记（简化：图标无效化未实现）"
+                self._reveal_extra_numeric_token(ctx, "wda_cultist_extra")
+            elif token == ChaosTokenType.TABLET:
+                x = 4 if (self.s.current_agenda_index or 0) == 1 else 2
+                ctx.modify_amount(-x, "wda_tablet")
+                ctx.extra["token_text"] = f"石板 -{x}" + ("（密谋2）" if x == 4 else "")
+            elif token == ChaosTokenType.ELDER_THING:
+                discarded = self._discard_top_of_deck(inv, 2)
+                x = self._printed_cost_sum(discarded)
+                ctx.modify_amount(-x, "wda_elder_thing")
+                ctx.extra["token_text"] = f"旧神之物 -{x}（弃牌堆顶2张费用和）"
+
+        elif sid == "lost_in_time_and_space":
+            if token == ChaosTokenType.SKULL:
+                x = min(5, self._count_locations_with_trait("異次元"))
+                if x:
+                    ctx.modify_amount(-x, "lits_skull")
+                ctx.extra["token_text"] = f"骷髅 -{x}（異次元地点×{x}，最大5）"
+            elif token == ChaosTokenType.CULTIST:
+                ctx.extra["token_text"] = "异教徒 再揭示1个标记，若失败：穿越到遭遇地点"
+                pending.add("lits_cultist_move_location")
+                self._reveal_extra_numeric_token(ctx, "lits_cultist_extra")
+            elif token == ChaosTokenType.TABLET:
+                ctx.modify_amount(-3, "lits_tablet")
+                pending.add("lits_tablet_yog_attack")
+                ctx.extra["token_text"] = "石板 -3（猶格·索托斯在场时它立刻攻击你）"
+            elif token == ChaosTokenType.ELDER_THING:
+                loc = self.game_state.get_location(inv.location_id)
+                x = loc.shroud if loc else 0
+                ctx.modify_amount(-x, "lits_elder_thing")
+                ctx.extra["token_text"] = f"旧神之物 -{x}（所在地点隐藏值）"
+
+    def _enemy_keyword_count_in_play(self, card_id: str) -> int:
+        return sum(1 for inst in self.game_state.cards_in_play.values()
+                   if inst.card_id == card_id)
+
     def _scenario_token_fail_effects(self, ctx) -> None:
         """Conditional effects when the test fails."""
         pending = self._token_pending.get(ctx.investigator_id)
@@ -687,8 +941,128 @@ class ScenarioController:
                     loc.clues += 1
             pending.discard("midnight_tablet_clue")
 
+        # --- Dunwich ---
+        if "eca_skull_deck3" in pending:
+            self._discard_top_of_deck(inv, 3)
+            ctx.game_state.log_effect("💀 骷髅失败效果：弃牌堆顶3张")
+            pending.discard("eca_skull_deck3")
+        if "thaw_tablet_lose3" in pending:
+            inv.resources = max(0, inv.resources - 3)
+            ctx.game_state.log_effect("💀 石板失败效果：失去3资源")
+            pending.discard("thaw_tablet_lose3")
+        if "tmm_cultist_spawn_horror" in pending:
+            if not self._enemy_card_in_play("hunting_horror"):
+                self._spawn_enemy_from_encounter("hunting_horror", ctx.investigator_id)
+                ctx.game_state.log_effect("💀 异教徒失败效果：追獵恐魔生成")
+            pending.discard("tmm_cultist_spawn_horror")
+        if "tmm_tablet_return_clue" in pending:
+            if inv.clues > 0:
+                inv.clues -= 1
+                loc = ctx.game_state.get_location(inv.location_id)
+                if loc is not None:
+                    loc.clues += 1
+            ctx.game_state.log_effect("💀 石板效果：1个线索放回所在地点")
+            pending.discard("tmm_tablet_return_clue")
+        if "tmm_elder_discard_asset" in pending:
+            # 简化：弃置费用最低的支援（官方为玩家自选）
+            cheapest = None
+            cheapest_cost = 999
+            for iid in inv.play_area:
+                inst = self.game_state.get_card_instance(iid)
+                cd = self.game_state.get_card_data(inst.card_id) if inst else None
+                if cd is not None and (cd.cost or 0) < cheapest_cost:
+                    cheapest, cheapest_cost = iid, (cd.cost or 0)
+            if cheapest is not None:
+                inst = self.game_state.get_card_instance(cheapest)
+                cd = self.game_state.get_card_data(inst.card_id)
+                inv.play_area.remove(cheapest)
+                inv.discard.append(inst.card_id)
+                mgr = getattr(self.game, "slot_managers", {}).get(ctx.investigator_id)
+                if mgr:
+                    mgr.vacate(cheapest)
+                self.game_state.cards_in_play.pop(cheapest, None)
+                ctx.game_state.log_effect(f"💀 旧神之物失败效果：弃置支援《{cd.name_cn if cd else inst.card_id}》（自动选最低费）")
+            pending.discard("tmm_elder_discard_asset")
+        if "ece_cultist_lose_actions" in pending:
+            if inv.actions_remaining > 0:
+                inv.actions_remaining = 0
+                ctx.game_state.log_effect("💀 异教徒失败效果：失去所有剩余行动")
+            pending.discard("ece_cultist_lose_actions")
+        if "ece_elder_discard_hand" in pending:
+            if inv.hand:
+                import random as _rnd
+                dropped = _rnd.choice(inv.hand)
+                inv.hand.remove(dropped)
+                inv.discard.append(dropped)
+                cd = self.game_state.get_card_data(dropped)
+                ctx.game_state.log_effect(f"💀 旧神之物失败效果：随机弃1手牌《{cd.name_cn if cd else dropped}》（官方为自选）")
+            pending.discard("ece_elder_discard_hand")
+        if "bota_cultist_clue_to_loc" in pending:
+            loc = ctx.game_state.get_location(inv.location_id)
+            if loc is not None:
+                loc.clues += 1
+            ctx.game_state.log_effect("💀 异教徒失败效果：供应堆放1线索到所在地点")
+            pending.discard("bota_cultist_clue_to_loc")
+        if "bota_elder_doom_agenda" in pending:
+            ctx.game_state.scenario.doom_on_agenda += 1
+            ctx.game_state.log_effect("💀 旧神之物失败效果：当前密谋+1毁灭")
+            self._check_agenda_threshold()
+            pending.discard("bota_elder_doom_agenda")
+        if "uau_cultist_horror" in pending:
+            inv.horror += 1
+            ctx.game_state.log_effect("💀 异教徒失败效果：受1恐惧")
+            pending.discard("uau_cultist_horror")
+        if "uau_elder_brood_attack" in pending:
+            source = getattr(ctx, "source", None)
+            inst = self.game_state.get_card_instance(source) if source else None
+            if inst is not None and inst.card_id == "brood_of_yog_sothoth":
+                cd = self.game_state.get_card_data(inst.card_id)
+                if cd is not None:
+                    inv.damage += cd.enemy_damage or 0
+                    inv.horror += cd.enemy_horror or 0
+                    ctx.game_state.log_effect("💀 旧神之物效果：猶格·索托斯之子立刻攻击你")
+            pending.discard("uau_elder_brood_attack")
+        if "lits_tablet_yog_attack" in pending:
+            if self._enemy_card_in_play("yog_sothoth"):
+                cd = self.game_state.get_card_data("yog_sothoth")
+                if cd is not None:
+                    inv.damage += cd.enemy_damage or 0
+                    inv.horror += cd.enemy_horror or 0
+                    ctx.game_state.log_effect("💀 石板效果：猶格·索托斯立刻攻击你")
+            pending.discard("lits_tablet_yog_attack")
+        if "lits_cultist_move_location" in pending:
+            # 简化：找遭遇牌堆顶第一张地点卡放场并移动（找不到则跳过）
+            scen = ctx.game_state.scenario
+            moved_to = None
+            for i, enc_id in enumerate(list(scen.encounter_deck)):
+                cd = self.game_state.get_card_data(enc_id)
+                if cd is not None and cd.type.value == "location":
+                    scen.encounter_deck.pop(i)
+                    if enc_id not in ctx.game_state.locations:
+                        ctx.game_state.add_location(enc_id, cd, clues=cd.clue_value or 0)
+                    inv.location_id = enc_id
+                    moved_to = cd.name_cn or cd.name
+                    break
+            if moved_to:
+                ctx.game_state.log_effect(f"💀 异教徒失败效果：放置并移动到【{moved_to}】")
+            pending.discard("lits_cultist_move_location")
+
+    def _scenario_token_success_effects(self, ctx) -> None:
+        """Conditional effects when the test succeeds (e.g. THAW cultist)."""
+        pending = self._token_success_pending.get(ctx.investigator_id)
+        if not pending:
+            return
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None:
+            return
+        if "thaw_cultist_gain3" in pending:
+            inv.resources += 3
+            ctx.game_state.log_effect("🎲 异教徒成功效果：获得3资源")
+            pending.discard("thaw_cultist_gain3")
+
     def _clear_token_pending(self, ctx) -> None:
         self._token_pending.pop(ctx.investigator_id, None)
+        self._token_success_pending.pop(ctx.investigator_id, None)
 
     # ---------------------
     # Encounter resolution

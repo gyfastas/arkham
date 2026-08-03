@@ -13,6 +13,11 @@ const emit = defineEmits<{
 
 const agendaExpanded = ref(true)
 const actExpanded = ref(true)
+const symbolExpanded = ref(false)
+
+const symbolText = computed(() =>
+  localizeSymbolText(props.state.scenario.symbol_text || '', store.language),
+)
 
 const agendaText = computed(() => {
   const a = props.state.scenario.agenda
@@ -88,6 +93,20 @@ const actBackText = computed(() => {
           <span class="back-label">▶ {{ store.language === 'zh-Hant' ? '推進效果' : '推进效果' }}</span>
           <div>{{ actBackText }}</div>
         </div>
+      </div>
+    </div>
+
+    <!-- 混沌标记效果（剧本参考卡） -->
+    <div v-if="state.scenario.symbol_text" class="scenario-card symbol-card">
+      <div class="card-top" @click="symbolExpanded = !symbolExpanded">
+        <div class="card-label">
+          <span class="label-icon">🎲</span>
+          混沌标记
+          <span class="expand-icon">{{ symbolExpanded ? '▾' : '▸' }}</span>
+        </div>
+      </div>
+      <div v-if="symbolExpanded" class="card-body">
+        <div class="card-text symbol-text">{{ symbolText }}</div>
       </div>
     </div>
 
@@ -216,6 +235,11 @@ const actBackText = computed(() => {
   padding: 8px;
   background: #0e0e20;
   border-radius: 4px;
+  white-space: pre-line;
+}
+
+.symbol-text {
+  color: #c8b070;
   margin-top: 6px;
   white-space: pre-line;
 }

@@ -124,6 +124,7 @@ export interface InvestigatorDisplay {
   location_id: string
   slot_summary?: SlotSummary[]
   skill_bonuses?: Record<string, number>
+  skills?: Record<string, number>
 }
 
 export interface SlotSummary {
@@ -140,6 +141,7 @@ export interface ScenarioDisplay {
   act: { id: string; name: string; name_cn: string; clues: number; text_cn: string; back_text: string; back_text_cn: string; sequence: number; total: number } | null
   agenda: { id: string; name: string; name_cn: string; doom: number; text_cn: string; back_text: string; back_text_cn: string; sequence: number; total: number } | null
   resolution_id: string | null
+  symbol_text?: string
 }
 
 export interface PendingChoice {
