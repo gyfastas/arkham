@@ -410,6 +410,28 @@ async def on_campaign_continue(sid: str, data: dict):
     await sio.emit("campaign_state", camp.to_dict(), to=sid)
 
 
+@sio.on(ClientEvent.GET_OPTIONS.value)
+async def on_get_options(sid: str, data: dict = None):
+    from server.campaign import list_campaigns
+    from server.options import options_payload
+    await sio.emit("options", options_payload(save_count=len(list_campaigns())), to=sid)
+
+
+@sio.on(ClientEvent.SET_OPTIONS.value)
+async def on_set_options(sid: str, data: dict):
+    from server.campaign import list_campaigns
+    from server.options import options_payload, set_save_dir
+
+    if data is None or "save_dir" not in data:
+        await sio.emit(ServerEvent.ERROR.value, {"message": "缺少 save_dir", "code": "bad_options"}, to=sid)
+        return
+    ok, msg = set_save_dir(data.get("save_dir", ""))
+    if not ok:
+        await sio.emit(ServerEvent.ERROR.value, {"message": msg, "code": "bad_save_dir"}, to=sid)
+        return
+    await sio.emit("options", options_payload(save_count=len(list_campaigns())), to=sid)
+
+
 @sio.on(ClientEvent.GET_CHAOS_BAG_INFO.value)
 async def on_chaos_bag_info(sid: str, data: dict = None):
     """Chaos bag composition + symbol effect text for a campaign/difficulty."""

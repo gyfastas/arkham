@@ -2,7 +2,7 @@
 
 import { io, Socket } from 'socket.io-client'
 import { ServerEvent, ClientEvent } from './Protocol'
-import type { GameState, ActionResult, RoomState, GameEventData, CardDisplay, InvestigatorDetail, DeckPreset, CampaignStateData, CampaignSaveSummary, ChaosBagInfo } from '../state/types'
+import type { GameState, ActionResult, RoomState, GameEventData, CardDisplay, InvestigatorDetail, DeckPreset, CampaignStateData, CampaignSaveSummary, ChaosBagInfo, OptionsData } from '../state/types'
 
 export type ConnectionState = 'disconnected' | 'connecting' | 'connected'
 
@@ -92,6 +92,10 @@ export class SocketClient {
       this.socket.on('chaos_bag_info', (data: ChaosBagInfo) => {
         this.onChaosBagInfo?.(data)
       })
+
+      this.socket.on('options', (data: OptionsData) => {
+        this.onOptions?.(data)
+      })
     })
 
     this.connectionPromise = this.connectionPromise.finally(() => {
@@ -151,6 +155,7 @@ export class SocketClient {
   onCampaignState: ((state: CampaignStateData | null) => void) | null = null
   onCampaignList: ((saves: CampaignSaveSummary[]) => void) | null = null
   onChaosBagInfo: ((info: ChaosBagInfo) => void) | null = null
+  onOptions: ((options: OptionsData) => void) | null = null
 
   getCampaignState(): void {
     this.socket?.emit(ClientEvent.CAMPAIGN_STATE, {})
@@ -174,6 +179,14 @@ export class SocketClient {
 
   getChaosBagInfo(campaign: string, difficulty: string): void {
     this.socket?.emit(ClientEvent.GET_CHAOS_BAG_INFO, { campaign, difficulty })
+  }
+
+  getOptions(): void {
+    this.socket?.emit(ClientEvent.GET_OPTIONS, {})
+  }
+
+  setSaveDir(saveDir: string): void {
+    this.socket?.emit(ClientEvent.SET_OPTIONS, { save_dir: saveDir })
   }
 
   sendAction(action: string, params: Record<string, unknown> = {}): void {

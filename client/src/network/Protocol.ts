@@ -26,4 +26,6 @@ export const ClientEvent = {
   CAMPAIGN_LIST: 'campaign_list',
   CAMPAIGN_CONTINUE: 'campaign_continue',
   GET_CHAOS_BAG_INFO: 'get_chaos_bag_info',
+  GET_OPTIONS: 'get_options',
+  SET_OPTIONS: 'set_options',
 } as const

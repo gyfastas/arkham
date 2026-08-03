@@ -42,6 +42,8 @@ class ClientEvent(str, Enum):
     CAMPAIGN_LIST = "campaign_list"  # List saved campaigns
     CAMPAIGN_CONTINUE = "campaign_continue"  # Load a saved campaign
     GET_CHAOS_BAG_INFO = "get_chaos_bag_info"  # Chaos bag info per campaign/difficulty
+    GET_OPTIONS = "get_options"  # Read user options
+    SET_OPTIONS = "set_options"  # Update user options
 
 
 # ---------------------------------------------------------------------------

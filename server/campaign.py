@@ -15,6 +15,12 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CAMPAIGN_SAVE_DIR = PROJECT_ROOT / "saves" / "campaigns"
 
 
+def _save_dir() -> Path:
+    """Effective save dir: user-configured (options) or the default above."""
+    from server.options import effective_save_dir
+    return effective_save_dir(CAMPAIGN_SAVE_DIR)
+
+
 @dataclass
 class CampaignState:
     """Persistent state across scenarios in a campaign."""
@@ -281,15 +287,16 @@ def new_campaign(
 
 
 def save_campaign(state: CampaignState) -> None:
-    CAMPAIGN_SAVE_DIR.mkdir(parents=True, exist_ok=True)
-    path = CAMPAIGN_SAVE_DIR / f"{state.save_id}.json"
+    save_dir = _save_dir()
+    save_dir.mkdir(parents=True, exist_ok=True)
+    path = save_dir / f"{state.save_id}.json"
     path.write_text(
         json.dumps(state.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
 
 def load_campaign(save_id: str) -> CampaignState | None:
-    path = CAMPAIGN_SAVE_DIR / f"{save_id}.json"
+    path = _save_dir() / f"{save_id}.json"
     if not path.is_file():
         return None
     try:
@@ -301,9 +308,10 @@ def load_campaign(save_id: str) -> CampaignState | None:
 def list_campaigns() -> list[dict]:
     """Summaries of all saved campaigns for the lobby."""
     out: list[dict] = []
-    if not CAMPAIGN_SAVE_DIR.is_dir():
+    save_dir = _save_dir()
+    if not save_dir.is_dir():
         return out
-    for p in sorted(CAMPAIGN_SAVE_DIR.glob("*.json")):
+    for p in sorted(save_dir.glob("*.json")):
         try:
             d = json.loads(p.read_text(encoding="utf-8"))
         except Exception:

@@ -339,6 +339,13 @@ export interface ChaosBagInfo {
   symbol_texts: Record<string, string>
 }
 
+export interface OptionsData {
+  save_dir: string
+  default_save_dir: string
+  is_custom: boolean
+  save_count: number
+}
+
 export interface RoomState {
   room_id: string
   host_player_id: string
