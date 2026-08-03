@@ -1068,6 +1068,22 @@ class GameSession:
             self.action_log.append(f"🛣️ 捷径：移动到【{loc_name}】")
             return {"success": True, "message": f"捷径：移动到{loc_name}"}
 
+        # --- 研究馆员：检索典籍，玩家选择1张加入手牌，其余洗回 ---
+        if kind == "search_tome":
+            inv = self.game.state.get_investigator(pc.get("investigator_id") or "player")
+            if inv is None:
+                return {"success": False, "message": "调查员不存在"}
+            valid = {opt.get("id") for opt in pc.get("options") or []}
+            if choice_id not in valid or choice_id not in inv.deck:
+                return {"success": False, "message": "无效的选择"}
+            inv.deck.remove(choice_id)
+            inv.hand.append(choice_id)
+            random.shuffle(inv.deck)
+            cd = self.game.state.get_card_data(choice_id)
+            name = (cd.name_cn or cd.name) if cd else choice_id
+            self.action_log.append(f"📚 研究馆员：选择《{name}》加入手牌，牌库洗混")
+            return {"success": True, "message": f"获得《{name}》"}
+
         # --- Zoey Samaras reactions on engage ---
         if kind == "zoey_reactions_on_engage":
             inv = self.game.state.get_investigator(pc.get("investigator_id"))

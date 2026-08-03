@@ -17,6 +17,7 @@ import ChoiceModal from '../components/ChoiceModal.vue'
 import EncounterPopup from '../components/EncounterPopup.vue'
 import MulliganModal from '../components/MulliganModal.vue'
 import SkillTestOverlay from '../components/SkillTestOverlay.vue'
+import DeckPanel from '../components/DeckPanel.vue'
 
 const router = useRouter()
 const store = useGameStore()
@@ -378,6 +379,7 @@ function handleChoice(optionId: string) {
           @evade="handleEvade"
           @engage="handleEngage"
         />
+        <DeckPanel :deck="state.deck_cards || []" :discard="state.discard || []" />
         <ScenarioPanel :state="state" @advance-act="handleAdvanceAct" />
       </div>
     </div>

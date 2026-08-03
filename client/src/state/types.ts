@@ -173,6 +173,8 @@ export interface GameState {
   locations: Record<string, LocationDisplay>
   hand: CardDisplay[]
   discard: CardDisplay[]
+  /** 牌库内容（乱序，仅供查看构成，不代表实际顺序） */
+  deck_cards: CardDisplay[]
   play_area: CardInstanceDisplay[]
   threat_cards: CardInstanceDisplay[]
   enemies: EnemyDisplay[]

@@ -331,6 +331,18 @@ def serialize_game_state(
             if cd:
                 discard.append(_serialize_card(cd))
 
+    # Deck contents — viewable but NEVER in order (official: the deck is
+    # hidden; this is a convenience view). Shuffled at serialization time
+    # so no ordering information can leak to the client.
+    deck_cards: list[dict] = []
+    if inv:
+        for card_id in inv.deck:
+            cd = game.state.get_card_data(card_id)
+            if cd:
+                deck_cards.append(_serialize_card(cd))
+        import random as _random
+        _random.shuffle(deck_cards)
+
     # Play area
     play_area: list[dict] = []
     if inv:
@@ -444,6 +456,7 @@ def serialize_game_state(
         "locations": locations,
         "hand": hand,
         "discard": discard,
+        "deck_cards": deck_cards,
         "play_area": play_area,
         "threat_cards": threat_cards,
         "enemies": enemies,
