@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import type { GameState } from '../state/types'
 import { useGameStore } from '../stores/game'
-import { localizeDisplayText } from '../utils/displayText'
+import { localizeDisplayText, localizeSymbolText } from '../utils/displayText'
 
 const props = defineProps<{ state: GameState }>()
 const store = useGameStore()
@@ -20,7 +20,7 @@ const agendaText = computed(() => {
 })
 const agendaBackText = computed(() => {
   const a = props.state.scenario.agenda
-  return localizeDisplayText(a?.back_text_cn || a?.back_text || '', store.language)
+  return localizeSymbolText(a?.back_text_cn || a?.back_text || '', store.language)
 })
 const actText = computed(() => {
   const a = props.state.scenario.act
@@ -28,7 +28,7 @@ const actText = computed(() => {
 })
 const actBackText = computed(() => {
   const a = props.state.scenario.act
-  return localizeDisplayText(a?.back_text_cn || a?.back_text || '', store.language)
+  return localizeSymbolText(a?.back_text_cn || a?.back_text || '', store.language)
 })
 </script>
 

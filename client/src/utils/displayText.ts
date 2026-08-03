@@ -5,6 +5,7 @@ export type DisplayLanguage = 'zh-Hans' | 'zh-Hant'
 // rendering Simplified Chinese, so switching back preserves the source text.
 const TRADITIONAL_PAIRS: [string, string][] = [
   ['萬', '万'], ['與', '与'], ['專', '专'], ['業', '业'], ['東', '东'], ['絲', '丝'],
+  ['單', '单'], ['線', '线'], ['敗', '败'], ['難', '难'], ['滅', '灭'], ['獻', '献'],
   ['丟', '丢'], ['兩', '两'], ['個', '个'], ['豐', '丰'], ['臨', '临'], ['為', '为'],
   ['麗', '丽'], ['舉', '举'], ['義', '义'], ['鄉', '乡'], ['書', '书'], ['買', '买'],
   ['亂', '乱'], ['爭', '争'], ['於', '于'], ['雲', '云'], ['亞', '亚'], ['產', '产'],
@@ -110,4 +111,23 @@ export function localizeDisplayHtml(value: string | null | undefined, language: 
   const result = language === 'zh-Hans' ? simplifyChinese(cleaned) : cleaned
   htmlCache.set(key, result)
   return result
+}
+
+/** 方括号符号 → 中文（[skull]→骷髅，[cultist]→邪教徒 等） */
+const SYMBOL_TEXT_LABELS: Record<string, string> = {
+  skull: '骷髅', cultist: '邪教徒', tablet: '石板', elder_thing: '旧神之物',
+  auto_fail: '自动失败', elder_sign: '远古印记', bless: '祝福', curse: '诅咒',
+  frost: '冰霜',
+  willpower: '意志', intellect: '智力', combat: '战斗', agility: '敏捷',
+  wild: '万能',
+  action: '行动', reaction: '反应', free: '免费',
+  per_investigator: '每调查员',
+}
+
+/** localizeDisplayText + 方括号符号中文化（用于剧本/混乱袋效果文本） */
+export function localizeSymbolText(value: string | null | undefined, language: DisplayLanguage = 'zh-Hans'): string {
+  const text = localizeDisplayText(value, language)
+  return text.replace(/\[([a-z_]+)\]/gi, (match, key: string) =>
+    SYMBOL_TEXT_LABELS[key.toLowerCase()] ?? match,
+  )
 }

@@ -8,6 +8,7 @@ import {
   CAMPAIGNS, INVESTIGATOR_GROUPS, DIFFICULTIES, DIFFICULTY_LABELS, TOKEN_LABELS,
 } from '../data/meta'
 import { CLASS_COLORS } from '../utils/labels'
+import { localizeSymbolText } from '../utils/displayText'
 import type { CampaignStateData } from '../state/types'
 
 const router = useRouter()
@@ -236,7 +237,7 @@ function invName(id: string): string {
           </div>
           <div v-if="Object.keys(bagInfo.symbol_texts || {}).length" class="bag-symbol-texts">
             <div v-for="(text, key) in bagInfo.symbol_texts" :key="key" class="symbol-text">
-              {{ text }}
+              {{ localizeSymbolText(text, store.language) }}
             </div>
           </div>
         </div>

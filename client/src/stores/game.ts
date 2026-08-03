@@ -12,7 +12,7 @@ const LANGUAGE_STORAGE_KEY = 'arkham-language'
 
 function loadLanguage(): GameLanguage {
   const saved = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
-  return saved === 'zh-Hans' || saved === 'zh-Hant' ? saved : 'zh-Hant'
+  return saved === 'zh-Hans' || saved === 'zh-Hant' ? saved : 'zh-Hans'
 }
 
 export const useGameStore = defineStore('game', () => {
