@@ -53,13 +53,9 @@ class TestOldBookOfLore:
         assert len(inv.deck) == 3
         assert len(inv.hand) == 0
 
-        ctx = EventContext(
-            game_state=state,
-            event=GameEvent.CARD_EXHAUSTED,
-            investigator_id="inv1",
-        )
-        impl.activate(ctx)
+        ok = impl.activate(state, "inv1")
 
+        assert ok
         assert len(inv.hand) == 1
         assert inv.hand[0] == "card_a"
         assert len(inv.deck) == 2
