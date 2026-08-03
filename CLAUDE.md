@@ -54,7 +54,7 @@
 ## 战役模式与难度
 
 - **混乱袋**：`data/chaos_bags.json`（官方组成：Easy 15 / Standard 16 / Hard 17 / Expert 18；敦威治用 elder_thing 替换 tablet）。已知简化：符号效果数值按 Standard 执行。
-- **战役存档**：`saves/campaigns/{save_id}.json`（已 gitignore），记录章节、牌组、XP、创伤、难度。
+- **战役存档**：默认 `saves/campaigns/{save_id}.json`（已 gitignore），记录章节、牌组、XP、创伤、难度。存档目录可在开始界面「选项」中修改（设置存于 `saves/settings.json`）。
 - **幕间结算**：游戏结束自动结算（victory 经验 + 被击败创伤），`campaign_upgrade` 服务端按牌组 diff 计价（升级=等级差 min1，新卡=等级 min1，移除免费）。
 - **前端路由**：`/` 开始界面，`/quick` 快速游戏，`/campaign` 战役大厅，`/game`，`/gameover`（战役结算+升级+下一章）。
 - **冒烟测试**：`python3 scripts/smoke_campaign.py`（需服务器运行中）。
