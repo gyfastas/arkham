@@ -683,6 +683,7 @@ class GameSession:
             "skill_type": skill_value,
             "difficulty": int(difficulty),
             "base_skill": inv.get_skill(skill),
+            "asset_bonus": self.game.preview_skill_bonuses(investigator_id).get(skill_value, 0),
             "possible_tokens": possible_tokens,
             "on_success": on_success,
             "on_failure": on_failure,

@@ -130,10 +130,12 @@ const weaponPreviewBonus = computed(() => {
 })
 
 const baseValue = computed(() => props.test?.base_skill ?? 0)
+// 装备/盟友常数加值（服务端 dry-run 预览；揭示后取服务器权威值）
+const assetBonus = computed(() => props.test?.asset_bonus ?? 0)
 const committedValue = computed(() => props.mode === 'commit'
   ? selectedIcons.value
   : props.test?.committed_icons ?? selectedIcons.value)
-const currentValue = computed(() => baseValue.value + committedValue.value + weaponPreviewBonus.value)
+const currentValue = computed(() => baseValue.value + assetBonus.value + committedValue.value + weaponPreviewBonus.value)
 const finalValue = computed(() => props.test?.modified_skill ?? currentValue.value)
 const targetValue = computed(() => props.test?.difficulty ?? 0)
 const activeToken = computed(() => tokens.value[activeIndex.value] || '')
@@ -314,6 +316,7 @@ onBeforeUnmount(clearTimer)
           <div class="value-number">{{ resultVisible ? finalValue : currentValue }}</div>
           <div class="value-detail">
             基础 {{ baseValue }}
+            <span v-if="assetBonus">+ 装备 {{ assetBonus }}</span>
             <span v-if="committedValue">+ 投入 {{ committedValue }}</span>
             <span v-if="resultVisible && test.token_modifier">{{ test.token_modifier >= 0 ? '+' : '' }}{{ test.token_modifier }}</span>
           </div>

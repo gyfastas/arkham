@@ -278,6 +278,18 @@ class SkillTestEngine:
         )
         self.bus.emit(ctx)
         result.modified_skill = max(0, ctx.amount)
+        # Asset/ally/effect bonuses folded in by the event bus, so the UI can
+        # display the full calculation (base + icons + token + bonuses).
+        pre_event_value = (
+            0
+            if result.auto_fail
+            else max(0, result.base_skill + result.committed_icons + result.token_modifier)
+        )
+        result.extra["asset_bonus"] = result.modified_skill - pre_event_value
+        result.extra["skill_bonus_sources"] = [
+            {"reason": reason, "delta": delta}
+            for reason, delta in getattr(ctx, "_modifications", [])
+        ]
 
     def _st6_determine_result(self, result: SkillTestResult) -> None:
         from backend.engine.event_bus import EventContext
@@ -307,6 +319,8 @@ class SkillTestEngine:
                 "token_modifier": result.token_modifier,
                 "auto_fail": result.auto_fail,
                 "auto_success": result.auto_success,
+                "asset_bonus": result.extra.get("asset_bonus", 0),
+                "skill_bonus_sources": result.extra.get("skill_bonus_sources", []),
                 "enabled_effect_cards": list(self._effect_card_ids),
                 "explicit_effect_selection": self._explicit_effect_selection,
             },

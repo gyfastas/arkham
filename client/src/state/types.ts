@@ -123,6 +123,7 @@ export interface InvestigatorDisplay {
   defeated: boolean
   location_id: string
   slot_summary?: SlotSummary[]
+  skill_bonuses?: Record<string, number>
 }
 
 export interface SlotSummary {
@@ -154,6 +155,7 @@ export interface PendingSkillTest {
   skill_type: string
   difficulty: number
   base_skill: number
+  asset_bonus?: number
   possible_tokens: string[]
   target_label?: string
 }
@@ -253,6 +255,8 @@ export interface GameEventData {
   token_modifier?: number
   auto_fail?: boolean
   auto_success?: boolean
+  asset_bonus?: number
+  skill_bonus_sources?: { reason: string; delta: number }[]
   rexs_curse_redrawn_token?: string
   rexs_curse_redrawn_modifier?: number
 }
@@ -262,6 +266,7 @@ export interface SkillTestAnimation {
   skill_type: string
   difficulty: number
   base_skill: number
+  asset_bonus?: number
   committed_icons: number
   token: string
   token_modifier: number

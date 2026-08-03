@@ -72,15 +72,20 @@ function getBaseSkill(skillType: string): number {
 function createSkillTestDraft(skillType: string, params: Record<string, unknown>, pending?: PendingSkillTest): SkillTestAnimation {
   const baseSkill = pending?.base_skill ?? getBaseSkill(skillType)
   const difficulty = pending?.difficulty ?? getSkillDifficulty(skillType, params)
+  // 装备/盟友常数加值（服务端 dry-run 预览）
+  const assetBonus = pending?.asset_bonus
+    ?? state.value?.investigator.skill_bonuses?.[skillType]
+    ?? 0
   return {
     investigator_id: pending?.investigator_id ?? state.value?.investigator.id,
     skill_type: skillType,
     difficulty,
     base_skill: baseSkill,
+    asset_bonus: assetBonus,
     committed_icons: 0,
     token: '',
     token_modifier: 0,
-    modified_skill: baseSkill,
+    modified_skill: baseSkill + assetBonus,
     success: false,
     possible_tokens: pending?.possible_tokens ?? [],
     target_label: pending?.target_label ?? targetLabelForSkill(skillType),
@@ -117,7 +122,9 @@ function handleSkillRoll(payload: { committed: string[]; effectCardIds: string[]
       ...skillTestAnimation.value,
       committed_card_ids: committed,
       committed_icons: committedIcons,
-      modified_skill: skillTestAnimation.value.base_skill + committedIcons,
+      modified_skill: skillTestAnimation.value.base_skill
+        + (skillTestAnimation.value.asset_bonus ?? 0)
+        + committedIcons,
     }
   }
   skillTestMode.value = 'spinning'
@@ -216,6 +223,7 @@ function startSkillTestAnimation(events: GameEventData[]) {
     success: outcome.success ?? outcome.event === 'SKILL_TEST_SUCCESSFUL',
     auto_fail: outcome.auto_fail,
     auto_success: outcome.auto_success,
+    asset_bonus: outcome.asset_bonus ?? 0,
     rexs_curse_redrawn_token: redrawnToken,
     rexs_curse_redrawn_modifier: outcome.rexs_curse_redrawn_modifier,
     possible_tokens: reveal.possible_tokens || [],

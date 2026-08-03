@@ -73,3 +73,40 @@ class TestMagnifyingGlass:
         # Intellect 3 + (-1) = 2 < shroud 3 -> fail
         game.action_resolver.perform_action("inv1", Action.INVESTIGATE)
         assert inv.clues == 0
+
+    def test_asset_bonus_recorded_in_result(self, game):
+        """asset_bonus/skill_bonus_sources 记录在检定结果中（供 UI 展示）。"""
+        _equip_mag_glass(game)
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+
+        captured = {}
+
+        def on_success(result):
+            captured["result"] = result
+
+        game.skill_test_engine.run_test(
+            investigator_id="inv1",
+            skill_type=__import__("backend.models.enums", fromlist=["Skill"]).Skill.INTELLECT,
+            difficulty=3,
+            committed_card_ids=[],
+            on_success=on_success,
+        )
+        result = captured["result"]
+        assert result.extra["asset_bonus"] == 1
+        assert any(
+            s["reason"] == "magnifying_glass_bonus" and s["delta"] == 1
+            for s in result.extra["skill_bonus_sources"]
+        )
+
+    def test_preview_skill_bonuses(self, game):
+        """preview_skill_bonuses 返回在场资产/盟友的常数加值（无副作用）。"""
+        assert game.preview_skill_bonuses("inv1") == {}
+        _equip_mag_glass(game)
+        bonuses = game.preview_skill_bonuses("inv1")
+        assert bonuses == {"intellect": 1}
+        # dry-run 无副作用：真实检定仍能获得同样的加值
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+        inv = game.state.get_investigator("inv1")
+        inv.actions_remaining = 3
+        game.action_resolver.perform_action("inv1", Action.INVESTIGATE)
+        assert inv.clues == 1

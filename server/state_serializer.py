@@ -430,6 +430,8 @@ def serialize_game_state(
             "defeated": inv.is_defeated if inv else False,
             "location_id": inv.location_id if inv else "",
             "slot_summary": _serialize_slot_summary(game, viewer_investigator_id) if inv else [],
+            # Constant in-play asset/ally bonuses per skill (UI preview)
+            "skill_bonuses": game.preview_skill_bonuses(viewer_investigator_id) if inv else {},
         },
         "location": {
             "id": inv.location_id if inv else "",

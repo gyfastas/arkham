@@ -181,6 +181,45 @@ class Game:
             shuffled.extend(cards)
         return shuffled
 
+    def preview_skill_bonuses(self, investigator_id: str) -> dict[str, int]:
+        """Constant in-play asset/ally bonuses per skill, for UI preview.
+
+        Runs a read-only SKILL_VALUE_DETERMINED dry-run per skill (no token,
+        no committed icons, marked preview=True) and reports the delta from
+        the printed skill. Existing card handlers only call
+        ctx.modify_amount here — one-shot flags are consumed on
+        SKILL_TEST_ENDS/ROUND_ENDS, not in this handler — so the dry-run is
+        side-effect free.
+        """
+        from backend.engine.event_bus import EventContext
+        from backend.models.enums import Skill
+
+        bonuses: dict[str, int] = {}
+        inv = self.state.get_investigator(investigator_id)
+        if inv is None:
+            return bonuses
+        for skill in (Skill.WILLPOWER, Skill.INTELLECT, Skill.COMBAT, Skill.AGILITY):
+            base = inv.get_skill(skill)
+            ctx = EventContext(
+                game_state=self.state,
+                event=GameEvent.SKILL_VALUE_DETERMINED,
+                investigator_id=investigator_id,
+                skill_type=skill,
+                modified_skill=base,
+                amount=base,
+                extra={
+                    "base_skill": base,
+                    "committed_icons": 0,
+                    "token_modifier": 0,
+                    "preview": True,
+                },
+            )
+            self.event_bus.emit(ctx)
+            delta = ctx.amount - base
+            if delta:
+                bonuses[skill.value] = delta
+        return bonuses
+
     def run_round(self, action_callback=None, discard_callback=None) -> None:
         """Execute one full game round."""
         self.state.scenario.round_number += 1

@@ -72,6 +72,7 @@ def _serialize_event(ctx: EventContext) -> dict[str, Any]:
         for key in (
             "card_id", "possible_tokens", "base_skill", "committed_icons",
             "token_modifier", "auto_fail", "auto_success",
+            "asset_bonus", "skill_bonus_sources",
             "rexs_curse_redrawn_token", "rexs_curse_redrawn_modifier",
         ):
             if key in ctx.extra:
