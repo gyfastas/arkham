@@ -419,6 +419,7 @@ function handleChoice(optionId: string) {
       :enemies="state.enemies"
       :resources="state.investigator.resources"
       :mode="skillTestMode"
+      :symbol-text="state.scenario.symbol_text || ''"
       @roll="handleSkillRoll"
       @activate-card="handleActivateCard"
       @complete="finishSkillTestAnimation"

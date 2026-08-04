@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import type { CardDisplay, CardInstanceDisplay, EnemyDisplay, SkillTestAnimation } from '../state/types'
 import Card from './Card.vue'
 import { useGameStore } from '../stores/game'
-import { localizeDisplayText } from '../utils/displayText'
+import { localizeDisplayText, localizeSymbolText } from '../utils/displayText'
 
 const props = defineProps<{
   test: SkillTestAnimation | null
@@ -12,6 +12,8 @@ const props = defineProps<{
   enemies: EnemyDisplay[]
   resources: number
   mode: 'commit' | 'spinning'
+  /** 剧本参考卡文本（混沌标记效果说明） */
+  symbolText?: string
 }>()
 
 const emit = defineEmits<{
@@ -53,6 +55,43 @@ const resultVisible = ref(false)
 const spinStarted = ref(false)
 let spinTimer: ReturnType<typeof setTimeout> | null = null
 const SPIN_DURATION = 3000
+
+// --- 标记效果提示（悬浮/点击轮盘标记） ---
+const hoverToken = ref<string | null>(null)
+const lockedToken = ref<string | null>(null)
+const infoToken = computed(() => lockedToken.value || hoverToken.value)
+
+function tokenEffectText(token: string): string {
+  if (!token) return ''
+  if (Number.isFinite(Number(token))) return `修正值 ${token}`
+  const GENERIC: Record<string, string> = {
+    auto_fail: '自动失败：本次检定直接失败（技能值视为0）',
+    elder_sign: '远古印记：触发你调查员卡上的 ✦ 效果',
+    bless: '祝福：+2（揭示后从袋中移除）',
+    curse: '诅咒：-2（揭示后从袋中移除）',
+    frost: '冰霜：-1',
+  }
+  if (GENERIC[token]) return GENERIC[token]
+  // 从剧本参考卡文本中提取该符号的效果行
+  const text = props.symbolText || ''
+  const line = text.split('\n').find(l => l.replace(/<[^>]+>/g, '').trim().startsWith(`[${token}]`))
+  if (!line) return '（本剧本无特殊效果说明）'
+  return localizeSymbolText(line, store.language)
+}
+
+const infoText = computed(() => (infoToken.value ? tokenEffectText(infoToken.value) : ''))
+
+function onTokenHover(token: string) {
+  hoverToken.value = token
+}
+
+function onTokenLeave() {
+  hoverToken.value = null
+}
+
+function onTokenClick(token: string) {
+  lockedToken.value = lockedToken.value === token ? null : token
+}
 
 const tokens = computed(() => {
   const source = props.test?.possible_tokens?.length
@@ -295,8 +334,11 @@ onBeforeUnmount(clearTimer)
             v-for="item in wheelTokens"
             :key="`${item.token}-${item.index}`"
             class="wheel-token"
-            :class="[item.className, { active: item.index === activeIndex }]"
+            :class="[item.className, { active: item.index === activeIndex, info: infoToken === item.token }]"
             :style="item.style"
+            @mouseenter="onTokenHover(item.token)"
+            @mouseleave="onTokenLeave()"
+            @click.stop="onTokenClick(item.token)"
           >
             {{ item.label }}
           </div>
@@ -308,6 +350,15 @@ onBeforeUnmount(clearTimer)
           </div>
           <div class="center-caption">{{ spinning ? '转动中…' : resultVisible ? '已揭示' : '等待投掷' }}</div>
         </div>
+      </div>
+
+      <!-- 标记效果提示 -->
+      <div class="token-info" :class="{ placeholder: !infoToken }">
+        <template v-if="infoToken">
+          <span class="ti-name">{{ TOKEN_LABELS[infoToken] || infoToken }}</span>
+          <span class="ti-text">{{ infoText }}</span>
+        </template>
+        <template v-else>悬停或点击标记查看其效果</template>
       </div>
 
       <div class="value-strip">
@@ -462,6 +513,42 @@ onBeforeUnmount(clearTimer)
 .symbol-fail { color: #ff847c; } .symbol-elder-sign, .symbol-bless { color: #79dcad; } .symbol-skull, .symbol-cultist, .symbol-elder { color: #e2a2ed; }
 .wheel-pointer { position: absolute; top: calc(50% - 148px); left: calc(50% - 8px); width: 0; height: 0; border-right: 8px solid transparent; border-bottom: 18px solid #f4d36e; border-left: 8px solid transparent; filter: drop-shadow(0 0 5px rgba(244, 211, 110, .8)); }
 .wheel-center { position: absolute; top: 50%; left: 50%; display: flex; width: 108px; height: 108px; align-items: center; justify-content: center; flex-direction: column; border: 2px solid #8b78bd; border-radius: 50%; background: #121126; transform: translate(-50%, -50%); box-shadow: 0 0 30px rgba(135, 107, 225, .28); }
+
+.wheel-token { cursor: pointer; }
+
+.wheel-token.info {
+  outline: 2px solid #c0a060;
+  border-radius: 6px;
+}
+
+.token-info {
+  min-height: 34px;
+  margin: 6px 0 2px;
+  padding: 6px 12px;
+  background: #101024;
+  border: 1px solid #2a2a4e;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-info.placeholder {
+  color: #555;
+  justify-content: center;
+}
+
+.ti-name {
+  color: #c0a060;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ti-text {
+  line-height: 1.5;
+}
 .center-token { color: #f8eab1; font-size: 19px; font-weight: 700; text-align: center; } .center-caption { margin-top: 5px; color: #8f88a7; font-size: 11px; }
 .value-strip { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
 .value-card { min-height: 78px; padding: 10px 14px; border: 1px solid #413e61; border-radius: 10px; background: rgba(15, 15, 32, .78); }

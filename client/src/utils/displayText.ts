@@ -124,10 +124,12 @@ const SYMBOL_TEXT_LABELS: Record<string, string> = {
   per_investigator: '每调查员',
 }
 
-/** localizeDisplayText + 方括号符号中文化（用于剧本/混乱袋效果文本） */
+/** localizeDisplayText + 方括号符号中文化 + 双括号 trait 去括号（用于剧本/混乱袋效果文本） */
 export function localizeSymbolText(value: string | null | undefined, language: DisplayLanguage = 'zh-Hans'): string {
   const text = localizeDisplayText(value, language)
-  return text.replace(/\[([a-z_]+)\]/gi, (match, key: string) =>
-    SYMBOL_TEXT_LABELS[key.toLowerCase()] ?? match,
-  )
+  return text
+    .replace(/\[\[([^\]]+)\]\]/g, '$1')
+    .replace(/\[([a-z_]+)\]/gi, (match, key: string) =>
+      SYMBOL_TEXT_LABELS[key.toLowerCase()] ?? match,
+    )
 }
