@@ -247,7 +247,22 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1, difficulty:
                     traits=(rec.get("traits") or []),
                     keywords=_derive_enemy_keywords(rec),
                     text=rec.get("text") or "",
+                    text_cn=rec.get("text_cn") or "",
                     victory=int(rec.get("victory") or 0),
+                )
+                game.register_card_data(cd)
+
+            # Register treachery data (needed by location attachments /
+            # client display for cards like Locked Door, Obscuring Fog)
+            elif t == "treachery":
+                cd = CardData(
+                    id=rec["id"],
+                    name=rec.get("name") or rec["id"],
+                    name_cn=rec.get("name_cn") or "",
+                    type=CardType.TREACHERY,
+                    traits=(rec.get("traits") or []),
+                    text=rec.get("text") or "",
+                    text_cn=rec.get("text_cn") or "",
                 )
                 game.register_card_data(cd)
 
@@ -490,6 +505,79 @@ class ScenarioController:
         rec = tre.get(treachery_id)
         return rec.get("attached_to") if rec else None
 
+    # ---------------------
+    # Location attachments（地点附属卡统一架构）
+    # ---------------------
+    # 附属到地点的卡（上锁的门、遮蔽迷雾等）以真实 CardInstance 存在：
+    # instance.attached_to = location_id，且登记在 LocationState.attachments。
+    # 效果查询（调查封锁/隐蔽值加成）统一从附属卡推导，不再散落硬编码。
+
+    def attach_card_to_location(self, card_id: str, location_id: str) -> str | None:
+        """Attach a card to a location; returns the new instance_id."""
+        from backend.models.state import CardInstance
+        loc = self.game_state.get_location(location_id)
+        if loc is None:
+            return None
+        instance_id = self.game_state.next_instance_id()
+        ci = CardInstance(
+            instance_id=instance_id,
+            card_id=card_id,
+            owner_id="scenario",
+            controller_id="scenario",
+            attached_to=location_id,
+        )
+        self.game_state.cards_in_play[instance_id] = ci
+        loc.attachments.append(instance_id)
+        return instance_id
+
+    def detach_card_from_location(self, instance_id: str, *, to_encounter_discard: bool = True) -> None:
+        """Detach a card from its location and remove it from play."""
+        ci = self.game_state.get_card_instance(instance_id)
+        if ci is None:
+            return
+        loc = self.game_state.get_location(ci.attached_to or "")
+        if loc is not None and instance_id in loc.attachments:
+            loc.attachments.remove(instance_id)
+        self.game_state.cards_in_play.pop(instance_id, None)
+        if to_encounter_discard:
+            self.game_state.scenario.encounter_discard.append(ci.card_id)
+
+    def location_attachment_ids(self, location_id: str) -> list[str]:
+        """Card ids attached to a location."""
+        loc = self.game_state.get_location(location_id)
+        return loc.attachment_card_ids(self.game_state) if loc else []
+
+    def location_attachment_instance(self, location_id: str, card_id: str) -> str | None:
+        """Instance id of a specific card attached to a location, if any."""
+        loc = self.game_state.get_location(location_id)
+        if loc is None:
+            return None
+        for iid in loc.attachments:
+            ci = self.game_state.get_card_instance(iid)
+            if ci is not None and ci.card_id == card_id:
+                return iid
+        return None
+
+    def location_with_attachment(self, card_id: str) -> str | None:
+        """First location that has the given card attached."""
+        for loc in self.game_state.locations.values():
+            if self.location_attachment_instance(loc.location_id, card_id):
+                return loc.location_id
+        return None
+
+    def location_investigate_blocker(self, location_id: str) -> str | None:
+        """card_id of an attachment blocking investigation, if any."""
+        if self.location_attachment_instance(location_id, "locked_door"):
+            return "locked_door"
+        return None
+
+    def location_shroud_bonus(self, location_id: str) -> int:
+        """Shroud modifier from attachments (遮蔽迷雾 +2)."""
+        bonus = 0
+        if self.location_attachment_instance(location_id, "obscuring_fog"):
+            bonus += 2
+        return bonus
+
     def _skill_modifiers(self, ctx) -> None:
         # Dreams of R'lyeh: -1 willpower while in play
         if self.has_treachery("dreams_of_r_lyeh", investigator_id=ctx.investigator_id or "player"):
@@ -501,8 +589,9 @@ class ScenarioController:
         loc_id = ctx.location_id
         if not loc_id:
             return
-        if self.get_attached("obscuring_fog") == loc_id:
-            self.remove_treachery("obscuring_fog")
+        fog_iid = self.location_attachment_instance(loc_id, "obscuring_fog")
+        if fog_iid:
+            self.detach_card_from_location(fog_iid)
             self.log("🌫️ 迷雾被驱散（Obscuring Fog弃掉）")
 
     def _on_enemy_defeated(self, ctx) -> None:
@@ -1129,7 +1218,7 @@ class ScenarioController:
 
         if card_id == "obscuring_fog":
             loc_id = inv.location_id
-            self.add_treachery("obscuring_fog", investigator_id=investigator_id, attached_to=loc_id)
+            self.attach_card_to_location("obscuring_fog", loc_id)
             self.log("🌫️ 遭遇：迷雾（所在地点+2隐蔽，调查成功后弃掉）")
             return {"pending": False, "message": "obscuring_fog"}
 
@@ -1190,15 +1279,15 @@ class ScenarioController:
             most = None
             best = -1
             for loc_id, loc in self.game.state.locations.items():
-                if self.get_attached("locked_door") == loc_id:
+                if self.location_attachment_instance(loc_id, "locked_door"):
                     continue
                 if loc.clues > best:
                     best = loc.clues
                     most = loc_id
             if most is None:
                 most = inv.location_id
-            self.add_treachery("locked_door", investigator_id=investigator_id, attached_to=most)
-            self.log("🚪 遭遇：上锁的门（该地点无法调查，行动：战斗/敏捷4可弃）")
+            self.attach_card_to_location("locked_door", most)
+            self.log("🚪 遭遇：上锁的门（该地点无法调查，行动：战斗/敏捷3可弃）")
             return {"pending": False, "message": "locked_door"}
 
         if card_id == "mysterious_chanting":

@@ -1235,27 +1235,36 @@ class GameSession:
         return {"success": True, "message": f"撤退结局：{rid}"}
 
     def _locked_door_test(self, inv, data: dict) -> dict:
+        """官方：在附属地点，[行动] 战斗(3)或敏捷(3)，成功则弃掉上锁的门。"""
         if inv.actions_remaining <= 0:
             return {"success": False, "message": "没有行动点"}
         skill = data.get("skill")
         if skill not in {"combat", "agility"}:
             return {"success": False, "message": "skill 必须是 combat/agility"}
-        attached = self.game.state.scenario.vars.get("treacheries", {}).get("locked_door", {}).get("attached_to")
+        door_iid = None
+        attached = None
+        if self.controller:
+            attached = self.controller.location_with_attachment("locked_door")
+            if attached:
+                door_iid = self.controller.location_attachment_instance(attached, "locked_door")
         if not attached:
             return {"success": False, "message": "当前没有上锁的门"}
+        if attached != inv.location_id:
+            return {"success": False, "message": "必须在上锁的门所在地点"}
 
         inv.actions_remaining -= 1
         ok = {"success": False}
 
         def on_success(_r):
             ok["success"] = True
-            self.controller.remove_treachery("locked_door")
+            if door_iid and self.controller:
+                self.controller.detach_card_from_location(door_iid)
             self.action_log.append("🚪 你打开了上锁的门（Locked Door弃掉）")
 
         self.game.skill_test_engine.run_test(
             investigator_id="player",
             skill_type=Skill.COMBAT if skill == "combat" else Skill.AGILITY,
-            difficulty=4,
+            difficulty=3,
             committed_card_ids=data.get("committed_cards", []) or [],
             on_success=on_success,
             on_failure=lambda _r: None,
@@ -1648,19 +1657,20 @@ class GameSession:
                 self.game.state.scenario.vars["frozen_in_fear_used"] = True
                 self.action_log.append("🥶 恐惧冻结：支付额外1行动")
 
-        if enum_act == Action.INVESTIGATE:
-            attached = self.game.state.scenario.vars.get("treacheries", {}).get("locked_door", {}).get("attached_to")
-            if attached and attached == inv.location_id:
+        if enum_act == Action.INVESTIGATE and self.controller:
+            blocker = self.controller.location_investigate_blocker(inv.location_id)
+            if blocker:
                 return {"success": False, "message": "上锁的门：该地点无法调查"}
 
-        # Obscuring Fog
-        fog_loc = self.game.state.scenario.vars.get("treacheries", {}).get("obscuring_fog", {}).get("attached_to")
+        # Obscuring Fog（附属卡：所在地点隐蔽+2）
         shroud_bump = False
-        if enum_act == Action.INVESTIGATE and fog_loc == inv.location_id:
-            loc = self.game.state.get_location(inv.location_id)
-            if loc:
-                loc.card_data.shroud = (loc.card_data.shroud or 0) + 2
-                shroud_bump = True
+        if enum_act == Action.INVESTIGATE and self.controller:
+            bump = self.controller.location_shroud_bonus(inv.location_id)
+            if bump:
+                loc = self.game.state.get_location(inv.location_id)
+                if loc:
+                    loc.card_data.shroud = (loc.card_data.shroud or 0) + bump
+                    shroud_bump = bump
 
         played_card_id = data.get("card_id") if enum_act == Action.PLAY else None
 
@@ -1687,7 +1697,7 @@ class GameSession:
             if shroud_bump:
                 loc = self.game.state.get_location(inv.location_id)
                 if loc:
-                    loc.card_data.shroud = max(0, (loc.card_data.shroud or 0) - 2)
+                    loc.card_data.shroud = max(0, (loc.card_data.shroud or 0) - shroud_bump)
 
         # Flush any card-generated messages (e.g. search results) to the action log
         self._flush_action_messages()

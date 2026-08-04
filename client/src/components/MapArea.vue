@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { LocationDisplay } from '../state/types'
+import { computed, ref } from 'vue'
+import type { LocationAttachment, LocationDisplay, EnemyDisplay } from '../state/types'
 import { useGameStore } from '../stores/game'
 import { localizeDisplayText } from '../utils/displayText'
+import { traitsLabel } from '../utils/labels'
 
 const props = defineProps<{
   locations: Record<string, LocationDisplay>
@@ -11,6 +12,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   move: [locationId: string]
+  unlockDoor: [skill: string]
 }>()
 const store = useGameStore()
 
@@ -36,6 +38,34 @@ function handleClick(locId: string, loc: LocationDisplay) {
     emit('move', locId)
   }
 }
+
+// --- 敌人详情弹窗 ---
+const enemyPopupLoc = ref<string | null>(null)
+const enemyPopupList = computed<EnemyDisplay[]>(() => {
+  if (!enemyPopupLoc.value) return []
+  return props.locations[enemyPopupLoc.value]?.enemy_list || []
+})
+
+function openEnemyPopup(locId: string) {
+  enemyPopupLoc.value = locId
+}
+
+function enemyText(e: EnemyDisplay): string {
+  return localizeDisplayText(e.text_cn || e.text || '', store.language)
+}
+
+// --- 附属卡详情弹窗 ---
+const attachPopup = ref<{ locId: string; card: LocationAttachment } | null>(null)
+
+function openAttachPopup(locId: string, card: LocationAttachment) {
+  attachPopup.value = { locId, card }
+}
+
+function attachText(card: LocationAttachment): string {
+  return localizeDisplayText(card.text_cn || card.text || '', store.language)
+}
+
+const attachIsCurrent = computed(() => attachPopup.value?.locId === props.currentLocationId)
 </script>
 
 <template>
@@ -68,8 +98,24 @@ function handleClick(locId: string, loc: LocationDisplay) {
             <span class="stat-val">{{ loc.clues }}</span>
           </span>
         </div>
-        <div v-if="loc.enemies_here > 0" class="loc-enemies">
-          👹×{{ loc.enemies_here }}
+        <div class="loc-markers">
+          <div
+            v-if="loc.enemies_here > 0"
+            class="loc-enemies clickable"
+            title="点击查看敌人详情"
+            @click.stop="openEnemyPopup(String(locId))"
+          >
+            👹×{{ loc.enemies_here }}
+          </div>
+          <div
+            v-for="att in (loc.attachments || [])"
+            :key="att.instance_id"
+            class="loc-attachment clickable"
+            title="点击查看附属卡详情"
+            @click.stop="openAttachPopup(String(locId), att)"
+          >
+            📎 {{ localizeDisplayText(att.name_cn || att.name, store.language) }}
+          </div>
         </div>
         <div v-if="loc.connections.length" class="loc-connections">
             <span class="conn-label">{{ store.language === 'zh-Hant' ? '連接:' : '连接:' }}</span>
@@ -82,6 +128,64 @@ function handleClick(locId: string, loc: LocationDisplay) {
         </div>
       </div>
     </div>
+
+    <!-- 敌人详情弹窗 -->
+    <Teleport to="body">
+      <div v-if="enemyPopupLoc" class="popup-overlay" @click.self="enemyPopupLoc = null">
+        <div class="popup-modal">
+          <div class="popup-header">
+            <span class="popup-title">{{ nameById[enemyPopupLoc] || enemyPopupLoc }} 的敌人</span>
+            <button class="popup-close" @click="enemyPopupLoc = null">✕</button>
+          </div>
+          <div class="popup-body">
+            <div v-for="e in enemyPopupList" :key="e.instance_id" class="enemy-card">
+              <div class="ec-name">
+                {{ localizeDisplayText(e.name_cn || e.name, store.language) }}
+                <span v-if="e.exhausted" class="ec-badge">已消耗</span>
+              </div>
+              <div class="ec-stats">
+                <span title="战斗">⚔ {{ e.fight }}</span>
+                <span title="生命">♥ {{ e.health - e.current_damage }}/{{ e.health }}</span>
+                <span title="闪避">🏃 {{ e.evade }}</span>
+                <span title="伤害">🗡 {{ e.damage_dealt }}</span>
+                <span title="恐惧">🧠 {{ e.horror_dealt }}</span>
+                <span v-if="e.doom" title="毁灭">☠ {{ e.doom }}</span>
+              </div>
+              <div v-if="e.traits?.length" class="ec-traits">{{ traitsLabel(e.traits) }}</div>
+              <div v-if="e.keywords?.length" class="ec-keywords">
+                <span v-for="k in e.keywords" :key="k" class="ec-kw">{{ traitsLabel(k) }}</span>
+              </div>
+              <div v-if="enemyText(e)" class="ec-text">{{ enemyText(e) }}</div>
+            </div>
+            <div v-if="!enemyPopupList.length" class="popup-empty">没有敌人</div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
+
+    <!-- 附属卡详情弹窗 -->
+    <Teleport to="body">
+      <div v-if="attachPopup" class="popup-overlay" @click.self="attachPopup = null">
+        <div class="popup-modal">
+          <div class="popup-header">
+            <span class="popup-title">
+              {{ localizeDisplayText(attachPopup.card.name_cn || attachPopup.card.name, store.language) }}
+              <span class="popup-sub">附属：{{ nameById[attachPopup.locId] || attachPopup.locId }}</span>
+            </span>
+            <button class="popup-close" @click="attachPopup = null">✕</button>
+          </div>
+          <div class="popup-body">
+            <div v-if="attachPopup.card.traits?.length" class="ec-traits">{{ traitsLabel(attachPopup.card.traits) }}</div>
+            <div v-if="attachText(attachPopup.card)" class="ec-text">{{ attachText(attachPopup.card) }}</div>
+            <div v-if="attachPopup.card.id === 'locked_door' && attachIsCurrent" class="attach-actions">
+              <button class="unlock-btn" @click="emit('unlockDoor', 'combat'); attachPopup = null">⚔ 战斗检定（3）</button>
+              <button class="unlock-btn" @click="emit('unlockDoor', 'agility'); attachPopup = null">🏃 敏捷检定（3）</button>
+            </div>
+            <div v-else-if="attachPopup.card.id === 'locked_door'" class="attach-hint">需要移动到该地点才能开锁</div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -192,10 +296,187 @@ function handleClick(locId: string, loc: LocationDisplay) {
   border-radius: 3px;
   font-size: 13px;
 }
+.loc-markers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
 .loc-enemies {
   font-size: 12px;
   color: #e74c3c;
-  margin-top: 4px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
+
+.loc-attachment {
+  font-size: 11px;
+  color: #d4a017;
+  background: #1e1a10;
+  border: 1px solid #4a3a10;
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+
+/* Popups */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+}
+
+.popup-modal {
+  background: #14142b;
+  border: 1px solid #333355;
+  border-radius: 10px;
+  width: 420px;
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+.popup-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e0d0a0;
+}
+
+.popup-sub {
+  font-size: 11px;
+  color: #777;
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+.popup-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  color: #fff;
+}
+
+.popup-body {
+  overflow-y: auto;
+  padding: 12px 16px;
+}
+
+.enemy-card {
+  background: #0d0d20;
+  border: 1px solid #2a2a4e;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.ec-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #eee;
+  margin-bottom: 4px;
+}
+
+.ec-badge {
+  font-size: 10px;
+  color: #999;
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 0 4px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+.ec-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 4px;
+}
+
+.ec-traits {
+  font-size: 11px;
+  color: #8a9;
+  margin-bottom: 3px;
+}
+
+.ec-keywords {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.ec-kw {
+  font-size: 10px;
+  color: #d4a017;
+  border: 1px solid #4a3a10;
+  border-radius: 3px;
+  padding: 0 5px;
+}
+
+.ec-text {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.popup-empty {
+  text-align: center;
+  color: #555;
+  padding: 24px 0;
+}
+
+.attach-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.unlock-btn {
+  flex: 1;
+  background: #1a2e1a;
+  border: 1px solid #27ae60;
+  color: #2ecc71;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.unlock-btn:hover {
+  background: #20401f;
+}
+
+.attach-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #777;
 }
 .loc-connections {
   display: flex;

@@ -92,6 +92,22 @@ export interface EnemyDisplay {
   current_damage: number
   exhausted: boolean
   engaged: boolean
+  text?: string
+  text_cn?: string
+  traits?: string[]
+  keywords?: string[]
+  doom?: number
+  victory?: number
+}
+
+export interface LocationAttachment {
+  instance_id: string
+  id: string
+  name: string
+  name_cn: string
+  text: string
+  text_cn: string
+  traits: string[]
 }
 
 export interface LocationDisplay {
@@ -101,6 +117,8 @@ export interface LocationDisplay {
   clues: number
   connections: string[]
   enemies_here: number
+  enemy_list?: EnemyDisplay[]
+  attachments?: LocationAttachment[]
   is_current?: boolean
 }
 

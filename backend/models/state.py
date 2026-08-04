@@ -187,6 +187,7 @@ class LocationState:
     enemies: list[str] = field(default_factory=list)       # unengaged enemy instance_ids
     revealed: bool = False
     doom: int = 0
+    attachments: list[str] = field(default_factory=list)   # attached card instance_ids (上锁的门/迷雾等)
 
     @property
     def shroud(self) -> int:
@@ -195,6 +196,15 @@ class LocationState:
     @property
     def connections(self) -> list[str]:
         return self.card_data.connections
+
+    def attachment_card_ids(self, game_state: "GameState") -> list[str]:
+        """Card ids of attached cards (resolved via instances)."""
+        out = []
+        for iid in self.attachments:
+            ci = game_state.get_card_instance(iid)
+            if ci is not None:
+                out.append(ci.card_id)
+        return out
 
 
 @dataclass

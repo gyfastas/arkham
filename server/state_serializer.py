@@ -46,6 +46,29 @@ def _enemy_dict(game: Game, ci: Any, cd: CardData | None, engaged: bool) -> dict
         "current_damage": ci.damage,
         "exhausted": ci.exhausted,
         "engaged": engaged,
+        "text": cd.text if cd else "",
+        "text_cn": cd.text_cn if cd else "",
+        "traits": list(cd.traits) if cd and cd.traits else [],
+        "keywords": list(cd.keywords) if cd and cd.keywords else [],
+        "doom": ci.doom,
+        "victory": cd.victory if cd else 0,
+    }
+
+
+def _attachment_dict(game: Game, instance_id: str) -> dict | None:
+    """Serialize a card attached to a location (上锁的门/迷雾等)."""
+    ci = game.state.get_card_instance(instance_id)
+    if ci is None:
+        return None
+    cd = game.state.get_card_data(ci.card_id)
+    return {
+        "instance_id": ci.instance_id,
+        "id": ci.card_id,
+        "name": cd.name if cd else ci.card_id,
+        "name_cn": cd.name_cn if cd else "",
+        "text": cd.text if cd else "",
+        "text_cn": cd.text_cn if cd else "",
+        "traits": list(cd.traits) if cd and cd.traits else [],
     }
 
 
@@ -320,6 +343,19 @@ def serialize_game_state(
     # Locations (with is_current for the viewing investigator)
     locations: dict[str, dict] = {}
     for loc_id, loc in game.state.locations.items():
+        # 地点上的敌人明细（公开信息）
+        enemy_list = []
+        for eid in loc.enemies:
+            ci = game.state.get_card_instance(eid)
+            if ci is None:
+                continue
+            cd = game.state.get_card_data(ci.card_id)
+            enemy_list.append(_enemy_dict(game, ci, cd, False))
+        # 附属卡（上锁的门/迷雾等）
+        attachments = [
+            a for a in (_attachment_dict(game, iid) for iid in loc.attachments)
+            if a is not None
+        ]
         locations[loc_id] = {
             "name": loc.card_data.name,
             "name_cn": loc.card_data.name_cn,
@@ -327,6 +363,8 @@ def serialize_game_state(
             "clues": loc.clues,
             "connections": loc.connections,
             "enemies_here": len(loc.enemies),
+            "enemy_list": enemy_list,
+            "attachments": attachments,
             "is_current": inv is not None and loc_id == inv.location_id,
         }
 

@@ -169,6 +169,21 @@ function handleAdvanceAct() {
   socket.sendAction('ADVANCE_ACT')
 }
 
+// 上锁的门：开锁检定（官方难度3，需在附属地点）
+function handleUnlockDoor(skill: string) {
+  commitRequest.value = {
+    skillType: skill,
+    actionLabel: skill === 'combat' ? '上锁的门：破门' : '上锁的门：撬锁',
+    actionType: 'LOCKED_DOOR_TEST',
+    params: { skill },
+  }
+  skillTestAnimation.value = createSkillTestDraft(skill, {}, {
+    difficulty: 3,
+    possible_tokens: [],
+  } as PendingSkillTest)
+  skillTestMode.value = 'commit'
+}
+
 // Navigate to game over screen
 watch(() => store.gameOver, (go) => {
   if (go) {
@@ -354,6 +369,7 @@ function handleChoice(optionId: string) {
           :current-location-id="state.location.id"
           class="game-map"
           @move="handleMove"
+          @unlock-door="handleUnlockDoor"
         />
         <div class="game-bottom">
           <PlayArea
