@@ -16,10 +16,10 @@
   "slots": [
     "hand"
   ],
-  "text": "Choose an investigator at your location and test intellect (2). If you succeed, heal 1 damage from that investigator. If you fail, deal 1 damage to that investigator.",
+  "text": "[action] Choose an investigator at your location and test intellect (2). If you succeed, heal 1 damage from that investigator. If you fail, deal 1 damage to that investigator.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "消耗医学教科书：你获得+2智力。"
+  "text_cn": "[行动]：选择你所在地点的一名调查员并检定智力(2)。如果成功，治愈该调查员1点伤害。如果失败，对该调查员造成1点伤害。"
 }

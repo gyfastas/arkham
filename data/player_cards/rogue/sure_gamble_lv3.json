@@ -11,7 +11,7 @@
     "insight"
   ],
   "skill_icons": {},
-  "text": "Fast. Play when a chaos token with a negative modifier is revealed during a skill test you are performing. Switch that token's modifier to its positive counterpart.",
+  "text": "Fast. Play after you reveal a chaos token with a negative modifier.\nSwitch that token's \"-\" to a \"+\".",
   "keywords": [
     "fast"
   ],
@@ -19,5 +19,5 @@
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你揭示一个混沌标记后打出。无视该混沌标记，改为揭示另一个混沌标记。"
+  "text_cn": "<b>快速</b>。在你揭示一个带有负修正的混沌标记后打出。将该标记的\"-\"翻成\"+\"。"
 }

@@ -16,7 +16,7 @@
   },
   "slots": [],
   "text": "[action] Test [intellect] (4). If you succeed, discard Strange Solution and draw 2 cards. Record in your Campaign Log that \"you have identified the solution.\"",
-  "text_cn": "[action]：檢定[intellect] (4)。如果成功，丟棄奇怪的溶液，並抽取2張卡牌。在冒險日誌中，記錄下\"確認溶液成分\"。",
+  "text_cn": "[行动]：检定智力(4)。如果成功，丢弃奇怪的溶液，并抽取2张卡牌。在冒险日志中，记录下\"你已确认溶液的成分\"。",
   "health": null,
   "sanity": null,
   "unique": false,

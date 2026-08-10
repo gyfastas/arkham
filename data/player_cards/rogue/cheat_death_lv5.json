@@ -1,0 +1,24 @@
+{
+  "id": "cheat_death_lv5",
+  "arkhamdb_code": "03310",
+  "name": "Cheat Death",
+  "name_cn": "死里逃生",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 5,
+  "traits": [
+    "trick",
+    "fated"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would be defeated.\nDisengage from each enemy engaged with you, discard all cards in your threat area, heal 2 horror and 2 damage, and move to any revealed location with no enemies. If it is your turn, end your turn. Remove Cheat Death from the game.",
+  "text_cn": "快速。在你将要被击败时打出。你解除交战状态，丢弃你威胁区域中所有卡牌，治愈2点恐惧和2点伤害，并移动到任意一个没有敌人的已揭示地点。如果这是你的回合，结束你的回合。从游戏中移除死里逃生。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

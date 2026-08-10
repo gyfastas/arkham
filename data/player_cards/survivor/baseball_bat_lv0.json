@@ -18,10 +18,10 @@
     "hand",
     "hand"
   ],
-  "text": "Fight. You get +2 combat and deal +1 damage for this attack. If a skull or auto_fail chaos token is revealed during this attack, discard Baseball Bat after the attack resolves.",
+  "text": "[action]: <b>Fight.</b> You get +2 [combat] for this attack. This attack deals +1 damage. If a [skull] or [auto_fail] symbol is revealed during this attack, discard Baseball Bat after the attack resolves.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "消耗球棒：<b>攻击</b>。你获得+2战斗，本次攻击造成+1伤害。如果这次攻击揭示一个负面混沌标记，弃置球棒。"
+  "text_cn": "[行动]：<b>攻击</b>。本次攻击你获得+2[战斗]，造成+1伤害。如果本次攻击中揭示了[骷髅]或[自动失败]标记，在攻击结算后弃置球棒。"
 }

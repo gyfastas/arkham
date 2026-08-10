@@ -13,10 +13,10 @@
     "willpower": 2
   },
   "slots": [],
-  "text": "If this test is successful, draw 1 card.",
+  "text": "Max 1 committed per skill test.\nIf this test is successful, draw 1 card.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "如果你成功，抽取1张牌。"
+  "text_cn": "每次技能检定最多提交1张。\n若本次检定成功，抽取1张牌。"
 }

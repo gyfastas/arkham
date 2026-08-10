@@ -1,0 +1,23 @@
+{
+  "id": "quantum_flux_lv0",
+  "arkhamdb_code": "03196",
+  "name": "Quantum Flux",
+  "name_cn": "量子通量",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Shuffle your discard pile into your deck and draw 1 card. Remove Quantum Flux from the game.",
+  "text_cn": "将你的弃牌堆洗入你的牌堆并抽取1张卡牌。从游戏中移除量子通量。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

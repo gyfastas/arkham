@@ -1,0 +1,24 @@
+{
+  "id": "eidetic_memory_lv3",
+  "arkhamdb_code": "03306",
+  "name": "Eidetic Memory",
+  "name_cn": "遗觉记忆",
+  "class": "seeker",
+  "type": "event",
+  "cost": null,
+  "level": 3,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Play Eidetic Memory as an exact copy of an [[Insight]] event in any investigator's discard pile <i>(including its resource cost)</i>. Remove that event from the game. Remove Eidetic Memory from the game instead of discarding it.",
+  "text_cn": "将遗觉记忆作为任意一个调查员弃牌堆中一张[[洞察]]事件卡打出<i>(包括其资源费用)</i>。从游戏中移除该事件卡。不要丢弃遗觉记忆，改为将其从游戏中移除。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

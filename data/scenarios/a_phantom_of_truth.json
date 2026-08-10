@@ -1,0 +1,142 @@
+{
+  "id": "a_phantom_of_truth",
+  "name": "A Phantom of Truth",
+  "name_cn": "真相幻影",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 5,
+  "encounter_sets": [
+    "a_phantom_of_truth",
+    "evil_portents",
+    "byakhee",
+    "stranger",
+    "agents_of_hastur",
+    "arkham"
+  ],
+  "scenario_set": "a_phantom_of_truth",
+  "start_location": "gare_dorsay",
+  "initial_locations": [
+    "montparnasse",
+    "grand_guignol",
+    "gare_dorsay",
+    "père_lachaise_cemetery",
+    "canal_saint_martin",
+    "notre_dame",
+    "gardens_of_luxembourg"
+  ],
+  "set_aside": [
+    "the_organist"
+  ],
+  "connections": {
+    "montparnasse": [
+      "gare_dorsay",
+      "notre_dame",
+      "gardens_of_luxembourg"
+    ],
+    "montmartre_a": [
+      "grand_guignol",
+      "opéra_garnier_a",
+      "opéra_garnier_b",
+      "canal_saint_martin",
+      "le_marais_a",
+      "le_marais_b"
+    ],
+    "montmartre_b": [
+      "grand_guignol",
+      "opéra_garnier_a",
+      "opéra_garnier_b",
+      "canal_saint_martin",
+      "le_marais_a",
+      "le_marais_b"
+    ],
+    "grand_guignol": [
+      "montmartre_a",
+      "montmartre_b",
+      "opéra_garnier_a",
+      "opéra_garnier_b"
+    ],
+    "opéra_garnier_a": [
+      "montmartre_a",
+      "montmartre_b",
+      "grand_guignol",
+      "gare_dorsay"
+    ],
+    "opéra_garnier_b": [
+      "montmartre_a",
+      "montmartre_b",
+      "grand_guignol",
+      "gare_dorsay"
+    ],
+    "gare_dorsay": [
+      "opéra_garnier_a",
+      "opéra_garnier_b",
+      "montparnasse",
+      "gardens_of_luxembourg"
+    ],
+    "père_lachaise_cemetery": [
+      "canal_saint_martin",
+      "le_marais_a",
+      "le_marais_b"
+    ],
+    "canal_saint_martin": [
+      "montmartre_a",
+      "montmartre_b",
+      "père_lachaise_cemetery",
+      "le_marais_a",
+      "le_marais_b"
+    ],
+    "le_marais_a": [
+      "montmartre_a",
+      "montmartre_b",
+      "canal_saint_martin",
+      "père_lachaise_cemetery",
+      "notre_dame"
+    ],
+    "le_marais_b": [
+      "montmartre_a",
+      "montmartre_b",
+      "canal_saint_martin",
+      "père_lachaise_cemetery",
+      "notre_dame"
+    ],
+    "notre_dame": [
+      "montparnasse",
+      "le_marais_a",
+      "le_marais_b",
+      "gardens_of_luxembourg"
+    ],
+    "gardens_of_luxembourg": [
+      "montparnasse",
+      "gare_dorsay",
+      "notre_dame"
+    ]
+  },
+  "act_deck": [
+    "the_parisian_conspiracy_v_i",
+    "the_parisian_conspiracy_v_ii",
+    "pursuing_shadows",
+    "stalked_by_shadows"
+  ],
+  "agenda_deck": [
+    "the_first_night",
+    "the_second_night",
+    "the_third_night"
+  ],
+  "locations": [
+    "montparnasse",
+    "montmartre_a",
+    "montmartre_b",
+    "grand_guignol",
+    "opéra_garnier_a",
+    "opéra_garnier_b",
+    "gare_dorsay",
+    "père_lachaise_cemetery",
+    "canal_saint_martin",
+    "le_marais_a",
+    "le_marais_b",
+    "notre_dame",
+    "gardens_of_luxembourg"
+  ],
+  "story_assets": [],
+  "setup_notes": "蒙马特尔/加尼叶歌剧院/玛黑区各随机选用两版本之一入场，另一版本移出游戏；双面敌人风琴手放置一旁；每位调查员将1张 Lost Soul 弱点洗入牌库，剩余放置一旁。若战役日志采访过 Jordan Perry：调查员从蒙巴纳斯开始且多3资源，否则从奥赛火车站开始。Act 1 根据战役日志选用：怀疑≥确信用 v.I，确信>怀疑用 v.II。遭遇组 arkham 仅取5张诡计（2x False Lead、3x Hunting Shadow）；怀疑≥确信时移除2张 Twin Suns 和3张 Hunting Shadow，确信>怀疑时移除2张 Black Stars Rise 和2张 False Lead。"
+}

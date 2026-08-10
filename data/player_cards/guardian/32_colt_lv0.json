@@ -1,0 +1,30 @@
+{
+  "id": "32_colt_lv0",
+  "arkhamdb_code": "03020",
+  "name": ".32 Colt",
+  "name_cn": ".32柯尔特手枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Uses (6 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You deal +1 damage for this attack.",
+  "text_cn": "使用(6子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "ammo": 6
+  }
+}

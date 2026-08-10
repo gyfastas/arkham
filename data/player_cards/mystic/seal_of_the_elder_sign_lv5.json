@@ -1,0 +1,24 @@
+{
+  "id": "seal_of_the_elder_sign_lv5",
+  "arkhamdb_code": "03312",
+  "name": "Seal of the Elder Sign",
+  "name_cn": "远古印记封印",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 5,
+  "traits": [
+    "spell",
+    "expert"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Do not reveal chaos tokens from the chaos bag for this test. Treat the chaos token revealed for this test as an [elder_sign].\nWhen this test ends, remove Seal of the Elder Sign from the game.",
+  "text_cn": "本次检定中不要从混乱袋中抽取混乱标记。本次检定抽出的混乱标记视为[elder_sign]。\n在本次检定结束时，从游戏中移除远古印记封印。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

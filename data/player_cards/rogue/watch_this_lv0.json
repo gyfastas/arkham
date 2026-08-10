@@ -1,0 +1,25 @@
+{
+  "id": "watch_this_lv0",
+  "arkhamdb_code": "03233",
+  "name": "\"Watch this!\"",
+  "name_cn": "\"吃我一招！\"",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "gambit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Commit only to a skill test you are performing. As an additional cost to commit \"Watch this!\" to a skill test, spend up to 3 resources.\nIf you succeed by 1 or more, gain twice that many resources.",
+  "text_cn": "只能投入你正在进行的技能检定。将\"吃我一招！\"投入技能检定时，花费最多3资源作为额外费用。\n如果你成功且超过难度至少1点，获得同等花费数量的两倍的资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -16,10 +16,11 @@
   "slots": [
     "hand"
   ],
-  "text": "You get +1 intellect while investigating.",
+  "text": "Fast.\nYou get +1 intellect while investigating.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "你获得+1智力。"
+  "fast": true,
+  "text_cn": "快速。\n调查时你获得+1智力。"
 }

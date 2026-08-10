@@ -1,5 +1,5 @@
 """Flashlight (Level 0) — Neutral Asset, Hand slot.
-使用(3补给)。消耗手电筒并花费1补给：调查。你所在地点的隐蔽值降低2，直到本次调查结束。
+使用(3补给)。[行动]花费1补给：调查。你所在地点的隐蔽值降低2，直到本次调查结束。
 
 简化说明：
 - activate() 花费1补给并武装；随后由会话层发起调查行动。
@@ -25,7 +25,6 @@ class Flashlight(CardImplementation):
         if inst is None or inst.uses.get("supply", 0) <= 0:
             return False
         inst.uses["supply"] -= 1
-        inst.exhausted = True
         self._armed = True
         return True
 

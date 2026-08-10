@@ -16,10 +16,10 @@
   "slots": [
     "accessory"
   ],
-  "text": "+1 willpower. Discard: investigator gets 2 additional actions.",
+  "text": "You get +1 [willpower].\n[fast] While an investigator at your location is taking his or her turn, discard Police Badge: That investigator may take 2 additional actions this turn.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你获得+1意志。\n<b>反应</b> - 弃置警徽：你获得2个额外行动。"
+  "text_cn": "你获得+1[意志]。\n<b>快速</b> - 当你所在地点的一位调查员正在其回合中时，弃置警徽：该调查员本回合可额外执行2个行动。"
 }

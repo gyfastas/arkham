@@ -17,10 +17,10 @@
   "slots": [
     "ally"
   ],
-  "text": "You get +1 agility. Exhaust Cat Burglar: Disengage from an enemy engaged with you and move to a connecting location.",
+  "text": "You get +1 agility.\n[action] Exhaust Cat Burglar: Disengage from each enemy engaged with you and move to a connecting location. This action does not provoke attacks of opportunity.",
   "health": 2,
   "sanity": 2,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你获得+1敏捷。\n<b>反应</b> - 在你成功躲避后：消耗飞贼并获得2资源。"
+  "text_cn": "你获得+1敏捷。\n<b>行动</b> - 消耗飞贼：脱离每个与你交战的敌人并移动到一个相连地点。此行动不触发借机攻击。"
 }

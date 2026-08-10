@@ -1,0 +1,25 @@
+{
+  "id": "newspaper_lv2",
+  "arkhamdb_code": "03313",
+  "name": "Newspaper",
+  "name_cn": "报纸",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "item"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "You get +2 [intellect] while investigating if you have no clues.\n[reaction] When you would discover 1 or more clues at your location, if you have no clues: Discover an additional clue at your location.",
+  "text_cn": "只要你没有线索，调查时你获得+2[intellect]。\n[reaction]在你将要发现你所在地点的1个或以上线索时，如果你没有线索：发现你所在地点的额外1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

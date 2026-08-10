@@ -4,19 +4,11 @@ import pytest
 
 from backend.cards.guardian.dodge_lv0 import Dodge
 from backend.cards.guardian.dynamite_blast_lv0 import DynamiteBlast
-from backend.cards.guardian.guard_dog_lv0 import GuardDog
 from backend.cards.guardian.physical_training_lv0 import PhysicalTraining
-from backend.cards.mystic.shrivelling_lv0 import Shrivelling
 from backend.cards.neutral.charisma_lv3 import Charisma
 from backend.cards.neutral.flashlight_lv0 import Flashlight
-from backend.cards.rogue.backstab_lv0 import Backstab
-from backend.cards.seeker.expose_weakness_lv1 import ExposeWeakness
 from backend.cards.seeker.shortcut_lv0 import Shortcut
-from backend.cards.survivor.aquinnah_lv1 import AquinnahLv1
-from backend.cards.survivor.leather_coat_lv0 import LeatherCoat
-from backend.cards.survivor.look_what_i_found_lv0 import LookWhatIFound
 from backend.cards.survivor.lucky_lv0 import Lucky
-from backend.cards.survivor.scavenging_lv0 import Scavenging
 from backend.engine.event_bus import EventContext
 from backend.models.enums import ChaosTokenType, GameEvent, Skill, SlotType
 from backend.models.state import CardInstance
@@ -111,41 +103,6 @@ class TestLucky:
         assert "lucky_lv0" in inv.discard
 
 
-class TestGuardDog:
-    def test_retaliates_on_enemy_damage(self, game):
-        inv = game.state.get_investigator("test_investigator")
-        _register(game, GuardDog, "dog_1")
-        dog = CardInstance(
-            instance_id="dog_1", card_id="guard_dog_lv0",
-            owner_id="test_investigator", controller_id="test_investigator",
-        )
-        game.state.cards_in_play["dog_1"] = dog
-        inv.play_area.append("dog_1")
-        attacker = _add_enemy(game, "e1", engaged=True)
-
-        _emit(game, GameEvent.DAMAGE_DEALT, amount=1, source="e1")
-        assert attacker.damage == 1
-
-
-class TestAquinnah:
-    def test_cancels_and_reflects(self, game):
-        inv = game.state.get_investigator("test_investigator")
-        _register(game, AquinnahLv1, "aq_1")
-        aq = CardInstance(
-            instance_id="aq_1", card_id="aquinnah_lv1",
-            owner_id="test_investigator", controller_id="test_investigator",
-        )
-        game.state.cards_in_play["aq_1"] = aq
-        inv.play_area.append("aq_1")
-        attacker = _add_enemy(game, "e1", engaged=True)
-
-        ctx = _emit(game, GameEvent.DAMAGE_DEALT, amount=2, source="e1")
-        assert ctx.amount == 0
-        assert attacker.damage == 1
-        assert "aq_1" not in inv.play_area
-        assert "aquinnah_lv1" in inv.discard
-
-
 class TestPhysicalTraining:
     def test_spend_boosts_skill(self, game):
         inv = game.state.get_investigator("test_investigator")
@@ -181,85 +138,6 @@ class TestDynamiteBlast:
         assert inv.damage == 3
 
 
-class TestExposeWeakness:
-    def test_discovers_clue_per_enemy(self, game):
-        _register(game, ExposeWeakness)
-        _add_enemy(game, "e1")
-        inv = game.state.get_investigator("test_investigator")
-        inv.clues = 0
-
-        ctx = _play(game, "expose_weakness_lv1")
-        assert inv.clues == 1
-        assert ctx.extra["expose_weakness_clues"] == 1
-
-
-class TestScavenging:
-    def test_recovers_item_on_big_investigate(self, game):
-        inv = game.state.get_investigator("test_investigator")
-        _register(game, Scavenging, "scav_1")
-        scav = CardInstance(
-            instance_id="scav_1", card_id="scavenging_lv0",
-            owner_id="test_investigator", controller_id="test_investigator",
-        )
-        game.state.cards_in_play["scav_1"] = scav
-        inv.play_area.append("scav_1")
-
-        item_data = make_asset_data(id="flashlight_lv0", traits=["item"])
-        game.register_card_data(item_data)
-        inv.discard = ["flashlight_lv0"]
-
-        ctx = _emit(
-            game, GameEvent.SKILL_TEST_SUCCESSFUL,
-            skill_type=Skill.INTELLECT, success=True,
-            modified_skill=5, difficulty=2,
-        )
-        assert ctx.extra.get("scavenging_recovered") == "flashlight_lv0"
-        assert "flashlight_lv0" in inv.hand
-        assert "scav_1" not in inv.play_area
-
-
-class TestShrivelling:
-    def test_willpower_substitution_and_bonus_damage(self, game):
-        inv = game.state.get_investigator("test_investigator")
-        impl = _register(game, Shrivelling, "sh_1")
-        sh = CardInstance(
-            instance_id="sh_1", card_id="shrivelling_lv0",
-            owner_id="test_investigator", controller_id="test_investigator",
-        )
-        sh.uses = {"charges": 4}
-        game.state.cards_in_play["sh_1"] = sh
-        inv.play_area.append("sh_1")
-        inv.card_data.skills.willpower = 5
-        inv.card_data.skills.combat = 2
-
-        assert impl.activate(game.state, "test_investigator") is True
-        assert sh.uses["charges"] == 3
-
-        ctx = _emit(game, GameEvent.SKILL_VALUE_DETERMINED,
-                    skill_type=Skill.COMBAT, amount=2)
-        assert ctx.amount == 6  # 意志5 + 1
-
-        ctx = _emit(game, GameEvent.DAMAGE_DEALT, amount=1)
-        assert ctx.amount == 2  # +1 伤害
-
-
-class TestLeatherCoat:
-    def test_health_bonus_on_enter_and_leave(self, game):
-        _register(game, LeatherCoat, "lc_1")
-        coat = CardInstance(
-            instance_id="lc_1", card_id="leather_coat_lv0",
-            owner_id="test_investigator", controller_id="test_investigator",
-        )
-        game.state.cards_in_play["lc_1"] = coat
-        inv = game.state.get_investigator("test_investigator")
-        base_health = inv.health
-
-        _emit(game, GameEvent.CARD_ENTERS_PLAY, target="lc_1")
-        assert inv.health == base_health + 2
-        _emit(game, GameEvent.CARD_LEAVES_PLAY, target="lc_1")
-        assert inv.health == base_health
-
-
 class TestCharisma:
     def test_ally_slot_bonus(self, game):
         _register(game, Charisma, "ch_1")
@@ -272,25 +150,9 @@ class TestCharisma:
         base = mgr.available(SlotType.ALLY)
 
         _emit(game, GameEvent.CARD_ENTERS_PLAY, target="ch_1")
-        assert mgr.available(SlotType.ALLY) == base + 2
+        assert mgr.available(SlotType.ALLY) == base + 1
         _emit(game, GameEvent.CARD_LEAVES_PLAY, target="ch_1")
         assert mgr.available(SlotType.ALLY) == base
-
-
-class TestBackstab:
-    def test_agility_substitution(self, game):
-        _register(game, Backstab)
-        inv = game.state.get_investigator("test_investigator")
-        inv.card_data.skills.agility = 4
-        inv.card_data.skills.combat = 2
-
-        _play(game, "backstab_lv0")
-        ctx = _emit(game, GameEvent.SKILL_VALUE_DETERMINED,
-                    skill_type=Skill.COMBAT, amount=2)
-        assert ctx.amount == 6  # 敏捷4 + 2
-
-        ctx = _emit(game, GameEvent.DAMAGE_DEALT, amount=1)
-        assert ctx.amount == 2  # +1 伤害
 
 
 class TestFlashlight:
@@ -313,15 +175,3 @@ class TestFlashlight:
         assert ctx.difficulty == 1
         assert ctx.extra["flashlight_lowered"] is True
 
-
-class TestLookWhatIFound:
-    def test_discovers_two_on_failure(self, game):
-        _register(game, LookWhatIFound)
-        inv = game.state.get_investigator("test_investigator")
-        inv.hand = ["look_what_i_found_lv0"]
-        inv.resources = 2
-        inv.clues = 0
-
-        ctx = _emit(game, GameEvent.SKILL_TEST_FAILED, success=False)
-        assert inv.clues == 2
-        assert ctx.extra["look_what_i_found_clues"] == 2

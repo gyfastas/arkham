@@ -110,3 +110,18 @@ class TestRolands38Special:
             weapon_instance_id=gun_id,
         )
         assert enemy.damage == 2
+
+    def test_ammo_spent_even_on_miss(self, game):
+        """卡面：花1弹药是攻击动作的费用——未命中同样消耗。"""
+        gun_id = _equip_gun(game)
+        enemy = _spawn_enemy(game)
+        game.chaos_bag.tokens = [ChaosTokenType.MINUS_2]  # 3+1-2=2 < 5 -> miss
+        game.state.get_location("test_location").clues = 0
+
+        game.action_resolver.perform_action(
+            "inv1", Action.FIGHT,
+            enemy_instance_id="enemy_1",
+            weapon_instance_id=gun_id,
+        )
+        assert enemy.damage == 0  # 未命中无伤害
+        assert game.state.get_card_instance(gun_id).uses["ammo"] == 3  # 弹药已扣

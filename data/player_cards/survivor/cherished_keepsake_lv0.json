@@ -1,0 +1,26 @@
+{
+  "id": "cherished_keepsake_lv0",
+  "arkhamdb_code": "03114",
+  "name": "Cherished Keepsake",
+  "name_cn": "珍爱纪念",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "item",
+    "charm"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "",
+  "text_cn": "",
+  "health": null,
+  "sanity": 2,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

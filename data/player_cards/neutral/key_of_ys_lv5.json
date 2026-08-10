@@ -1,0 +1,27 @@
+{
+  "id": "key_of_ys_lv5",
+  "arkhamdb_code": "03315",
+  "name": "Key of Ys",
+  "name_cn": "伊苏之匙",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 5,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "You get +1 to each of your skills for each horror on Key of Ys.\n<b>Forced</b> - When any amount of horror would be placed on you: Place 1 of that horror on Key of Ys.\n<b>Forced</b> - When Key of Ys leaves play: Discard the top 10 cards of your deck.",
+  "text_cn": "伊苏之匙上每有1点恐惧你每项技能+1。\n<b>强制</b> - 在任意数量的恐惧将要放置到你身上时：将其中1点恐惧放置到伊苏之匙上。\n<b>强制</b> - 在伊苏之匙离场时：丢弃你牌堆顶的10张卡牌。",
+  "health": null,
+  "sanity": 4,
+  "unique": true,
+  "pack": "path_to_carcosa"
+}

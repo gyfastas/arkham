@@ -1,0 +1,22 @@
+{
+  "id": "overzealous_lv0",
+  "arkhamdb_code": "03040",
+  "name": "Overzealous",
+  "name_cn": "头脑发热",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Draw the top card of the encounter deck. That card gains surge.",
+  "text_cn": "<b>显现</b> - 抽取遭遇牌堆顶上的1张卡牌。该卡牌获得涌动。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "basic_weakness"
+}

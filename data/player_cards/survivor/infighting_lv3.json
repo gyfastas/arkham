@@ -1,0 +1,24 @@
+{
+  "id": "infighting_lv3",
+  "arkhamdb_code": "03314",
+  "name": "Infighting",
+  "name_cn": "内讧",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Play after the enemy phase begins.\nCancel all attacks made by non-[[Elite]] enemies against you this phase.",
+  "text_cn": "快速。敌军阶段开始时打出。取消本阶段所有非[[精英]]敌人对你的攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

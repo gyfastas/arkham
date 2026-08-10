@@ -1,0 +1,25 @@
+{
+  "id": "inspiring_presence_lv0",
+  "arkhamdb_code": "03228",
+  "name": "Inspiring Presence",
+  "name_cn": "先身士卒",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful, ready an [[Ally]] asset at your location and heal 1 damage or 1 horror from it.",
+  "text_cn": "如果本次技能检定成功，准备你所在地点的一张[[盟友]]支援卡并为其治愈1点伤害或1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

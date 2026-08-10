@@ -1,0 +1,24 @@
+{
+  "id": "hiding_spot_lv0",
+  "arkhamdb_code": "03038",
+  "name": "Hiding Spot",
+  "name_cn": "藏身地点",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "trick"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Attach Hiding Spot to any location.\nEach non-[[Elite]] enemy at attached location gains aloof.\n<b>Forced</b> - At the end of the enemy phase, if a ready enemy is at attached location: Discard Hiding Spot.",
+  "text_cn": "快速。将藏身地点叠加到一个任意地点。\n被叠加地点上每名非[[精英]]敌人获得冷漠。\n<b>强制</b> - 当敌军阶段结束时，如果该地点上有准备的敌人：丢弃藏身地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

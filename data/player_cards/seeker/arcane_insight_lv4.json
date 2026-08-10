@@ -1,0 +1,29 @@
+{
+  "id": "arcane_insight_lv4",
+  "arkhamdb_code": "03266",
+  "name": "Arcane Insight",
+  "name_cn": "奥术洞察",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (3 charges).\n[fast] While an investigator is taking his or her turn, spend 1 charge: Your location gets -2 shroud until the end of this turn. (Limit once per turn.)",
+  "text_cn": "使用(3充能)。\n[free]一位调查员进行自己回合时，花费1充能：本回合结束前你所在地点-2隐藏值。(每回合限制1次。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "charges": 3
+  }
+}

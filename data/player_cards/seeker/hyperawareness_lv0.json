@@ -14,10 +14,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "Spend 1 resource: You get +1 intellect for this skill test. Spend 1 resource: You get +1 agility for this skill test.",
+  "text": "Fast. Spend 1 resource: You get +1 intellect for this skill test.\nFast. Spend 1 resource: You get +1 agility for this skill test.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "花费1资源：+1智力。花费1资源：+1敏捷。"
+  "text_cn": "快速。花费1资源：本次技能检定+1智力。\n快速。花费1资源：本次技能检定+1敏捷。"
 }

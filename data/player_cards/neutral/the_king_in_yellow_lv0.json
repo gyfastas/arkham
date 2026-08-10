@@ -1,0 +1,24 @@
+{
+  "id": "the_king_in_yellow_lv0",
+  "arkhamdb_code": "03011",
+  "name": "The King in Yellow",
+  "name_cn": "黄衣之王",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "tome"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "hand"
+  ],
+  "text": "<b>Revelation</b> - Put The King in Yellow into play in your threat area. It cannot leave play except through the [reaction] ability below.\nYou cannot commit exactly 1 or 2 cards to a skill test.\n[reaction] After a skill test is successful in which Minh Thi Phan has committed at least 6 matching skill icons for that test: Discard The King in Yellow.",
+  "text_cn": "<b>显现</b> - 将黄衣之王放置入你的威胁区域。除非通过以下[reaction]能力，否则它不能离场。\n你不能在技能检定中投入正好1或2张卡牌。\n[reaction]技能检定成功且潘明投入至少6个与该次检定对应的技能图标后：丢弃黄衣之王。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "path_to_carcosa",
+  "subtype": "weakness"
+}

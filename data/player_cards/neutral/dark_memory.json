@@ -4,7 +4,7 @@
  "name": "Dark Memory",
  "name_cn": "黑暗记忆",
  "class": "neutral",
- "type": "treachery",
+ "type": "event",
  "cost": 2,
  "level": null,
  "traits": [
@@ -12,7 +12,7 @@
  ],
  "skill_icons": {},
  "slots": [],
- "text": "Agnes Baker deck only.\nPlace 1 doom on the current agenda. (This effect may cause the current agenda to advance.)\n<b>Forced</b> - If Dark Memory is in your hand at the end of your turn: Reveal it and take 2 horror.",
+ "text": "Agnes Baker deck only.\nPlace 1 doom on the current agenda. This effect can cause the current agenda to advance.\n<b>Forced</b> - If Dark Memory is in your hand at the end of your turn, reveal it and take 2 horror.",
  "text_cn": "阿格尼丝·贝克牌组专用。\n在当前密谋上放置1个毁灭标记。（此效果可能导致当前密谋推进。）\n<b>强制</b> - 如果你回合结束时手牌中有黑暗记忆：展示该牌并受到2点恐惧。",
  "health": null,
  "sanity": null,

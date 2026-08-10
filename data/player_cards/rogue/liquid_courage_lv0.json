@@ -20,5 +20,8 @@
   "health": null,
   "sanity": null,
   "unique": false,
-  "pack": "dunwich_legacy"
+  "pack": "dunwich_legacy",
+  "uses": {
+    "supplies": 4
+  }
 }

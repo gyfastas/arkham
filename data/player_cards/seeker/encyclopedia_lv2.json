@@ -16,10 +16,10 @@
   "slots": [
     "hand"
   ],
-  "text": "Exhaust Encyclopedia: Choose an investigator at your location. That investigator gets +2 to a skill of your choice until the end of the phase.",
+  "text": "[action] Exhaust Encyclopedia: Choose an investigator at your location. That investigator gets +2 to a skill of your choice until the end of the phase.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "消耗百科全书并花费1资源：你选择一名调查员。该调查员在你所在地点，获得+2你选择的技能值，直到本阶段结束。"
+  "text_cn": "[行动]消耗百科全书：选择你所在地点的一名调查员。该调查员由你选择的一项技能+2，直到本阶段结束。"
 }

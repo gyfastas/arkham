@@ -13,10 +13,10 @@
     "wild": 2
   },
   "slots": [],
-  "text": "",
+  "text": "Max 1 committed per skill test.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": ""
+  "text_cn": "每次技能检定最多提交1张。"
 }

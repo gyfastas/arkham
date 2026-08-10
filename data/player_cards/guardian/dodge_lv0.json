@@ -14,10 +14,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "Fast. Play when an enemy attacks. Cancel that attack.",
+  "text": "Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你所在地点的敌人攻击时打出。取消本次攻击。"
+  "text_cn": "<b>快速</b>。当敌人攻击你所在地点的一名调查员时打出。\n取消本次攻击。"
 }

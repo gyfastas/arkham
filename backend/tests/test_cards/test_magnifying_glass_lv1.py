@@ -53,10 +53,18 @@ def setup():
 
 class TestMagnifyingGlassLv1:
     def test_intellect_bonus(self, setup):
-        """Magnifying Glass Lv1 provides +1 intellect during skill tests."""
+        """Magnifying Glass Lv1 provides +1 intellect while investigating."""
+        from backend.engine.event_bus import EventContext
+        from backend.models.enums import GameEvent
         state, bus, bag, engine, inv, loc = setup
         bag.tokens = [ChaosTokenType.ZERO]
 
+        # "调查时"限定：先标记调查行动
+        bus.emit(EventContext(
+            game_state=state,
+            event=GameEvent.INVESTIGATE_ACTION_INITIATED,
+            investigator_id="inv1",
+        ))
         # Base intellect 3 + 1 mag glass bonus = 4 vs difficulty 4 -> success
         result = engine.run_test(
             investigator_id="inv1",
@@ -64,6 +72,19 @@ class TestMagnifyingGlassLv1:
             difficulty=4,
         )
         assert result.success
+
+    def test_no_bonus_when_not_investigating(self, setup):
+        """非调查的智力检定不享受加值。"""
+        state, bus, bag, engine, inv, loc = setup
+        bag.tokens = [ChaosTokenType.ZERO]
+
+        # int 3 + 0 = 3 < 4 -> fail（无 +1）
+        result = engine.run_test(
+            investigator_id="inv1",
+            skill_type=Skill.INTELLECT,
+            difficulty=4,
+        )
+        assert not result.success
 
     def test_card_has_intellect_icon(self, setup):
         """Magnifying Glass Lv1 card data has intellect skill icon."""

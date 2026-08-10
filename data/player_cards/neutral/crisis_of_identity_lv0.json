@@ -1,0 +1,22 @@
+{
+  "id": "crisis_of_identity_lv0",
+  "arkhamdb_code": "03019",
+  "name": "Crisis of Identity",
+  "name_cn": "身份危机",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Discard all cards you control of your current role. Then, discard the top card of your deck. Switch your role to the class of the discarded card (if the discarded card is a weakness, switch your role to neutral).",
+  "text_cn": "<b>显现</b> - 丢弃你控制的所有你当前角色的卡牌。然后，丢弃你牌堆顶的1张卡牌。将你的角色切换到该丢弃的卡牌职阶(如果丢弃的卡牌是弱点，切换为中立角色)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "weakness"
+}

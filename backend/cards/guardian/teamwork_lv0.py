@@ -61,8 +61,8 @@ class Teamwork(CardImplementation):
         vacate_asset_slots(game_state, asset_instance_id)
         giver.play_area.remove(asset_instance_id)
         receiver.play_area.append(asset_instance_id)
+        # 交易只改变控制权，所有权不变（官方规则：control 与 ownership 分离）
         inst.controller_id = to_investigator_id
-        inst.owner_id = to_investigator_id
         manager = getattr(game_state, "slot_managers", {}).get(to_investigator_id)
         if manager:
             manager.occupy(asset_instance_id, inst.slot_used)

@@ -141,6 +141,7 @@ class GameEvent(Enum):
     ENEMY_DISENGAGED = auto()
     ENEMY_DEFEATED = auto()
     ENEMY_EVADED = auto()
+    ENEMY_MOVE_BLOCKED = auto()
 
     # Clues
     CLUE_DISCOVERED = auto()

@@ -10,6 +10,7 @@
     "trick"
   ],
   "skill_icons": {
+    "intellect": 1,
     "agility": 1
   },
   "slots": [],
@@ -21,5 +22,5 @@
   "sanity": null,
   "pack": "the_forgotten_age",
   "unique": false,
-  "text_cn": "选择一名调查员。该调查员与你交战一个在你地点的敌人。"
+  "text_cn": "<b>快速</b>。在你抽到一张非危难遭遇卡后、结算其效果前打出。选择另一位调查员。该调查员被视为抽到了该遭遇卡。获得1资源。"
 }

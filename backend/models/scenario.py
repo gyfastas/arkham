@@ -87,6 +87,7 @@ class ActCard:
     name_cn: str
     sequence: int = 1  # Position in act deck (1-based)
     clue_threshold: int | None = None  # Clues needed to advance (None = special condition)
+    clue_threshold_per_investigator: bool = False  # 官方 ⊘ 标记：阈值×调查员人数
     text: str = ""
     text_cn: str = ""
     back_text: str = ""

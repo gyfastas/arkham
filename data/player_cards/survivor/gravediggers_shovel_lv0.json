@@ -1,0 +1,28 @@
+{
+  "id": "gravediggers_shovel_lv0",
+  "arkhamdb_code": "03037",
+  "name": "Gravedigger's Shovel",
+  "name_cn": "挖墓人的铲子",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Fight.</b> You get +2 [combat] for this attack.\n[action] Discard Gravedigger's Shovel: Discover 1 clue at your location.",
+  "text_cn": "[action]：<b>攻击</b>。这次攻击中你+2[combat]。\n[action]丢弃挖墓人的铲子：发现你所在地点的1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

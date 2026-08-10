@@ -1,5 +1,5 @@
 """Hypochondria — Neutral Treachery, Basic Weakness.
-显现：放到你的威胁区域。
+显现：将忧郁症放到你的威胁区域。
 强制 - 在你受到至少1点伤害后：受到1点直接恐惧。
 [action][action]：丢弃忧郁症。
 """
@@ -33,15 +33,20 @@ class Hypochondria(CardImplementation):
         ctx.game_state.cards_in_play[inst_id] = ci
         inv.threat_area.append(inst_id)
 
-    @on_event(GameEvent.DAMAGE_DEALT, priority=TimingPriority.AFTER)
+    @on_event(GameEvent.DAMAGE_ASSIGNED, priority=TimingPriority.AFTER)
     def horror_after_damage(self, ctx):
-        """你受到至少1点伤害后：受到1点直接恐惧。"""
+        """强制 - 在你受到至少1点伤害后：受到1点直接恐惧。
+
+        DAMAGE_DEALT 只对敌人生效；调查员受伤走 DAMAGE_ASSIGNED。
+        注：DAMAGE_ASSIGNED 在伤害实际结算前触发，amount 为分配前总量
+        （含可被盟友承伤的部分），引擎暂无"调查员实际受伤"事件，特此注明。
+        """
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None or (ctx.amount or 0) < 1:
             return
         if self._find_hypochondria(ctx.game_state, inv) is None:
             return
-        inv.horror += 1  # 直接恐惧（不分配）
+        inv.horror += 1  # 直接恐惧（不分配；引擎层直接伤害不判负的已知问题待统一处理）
 
     def activate_discard(self, game_state, investigator_id) -> bool:
         """[action][action]：丢弃忧郁症。"""

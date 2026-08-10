@@ -1,0 +1,23 @@
+{
+  "id": "recharge_lv2",
+  "arkhamdb_code": "03197",
+  "name": "Recharge",
+  "name_cn": "重新充能",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Choose a [[Spell]] or [[Relic]] asset controlled by an investigator at your location and reveal a random chaos token from the chaos bag. If you reveal a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol, discard the chosen asset. Otherwise, add 3 charges to the chosen asset.",
+  "text_cn": "选择你所在地点的一位调查员控制的1张[[法术]]或[[遗物]]支援卡，并从混乱袋中随机抽取1个混乱标记。如果抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记，丢弃选择的支援卡。否则，为选择的支援卡增加3充能。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

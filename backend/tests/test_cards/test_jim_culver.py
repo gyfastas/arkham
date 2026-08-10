@@ -102,3 +102,16 @@ class TestJimCulver:
             amount=0,
         )
         assert ctx.amount == 1
+
+    def test_deck_requirements_include_any_class_level0_slots(self):
+        """02004：构筑选项含"任意阵营0级至多5张"（ mystic/neutral 0-5 之外）。"""
+        import json
+        from pathlib import Path
+        path = (Path(__file__).resolve().parents[3]
+                / "data" / "investigators" / "jim_culver.json")
+        req = json.loads(path.read_text(encoding="utf-8"))["deck_requirements"]
+        assert req["cards"]["mystic"] == {"min_level": 0, "max_level": 5}
+        assert req["cards"]["neutral"] == {"min_level": 0, "max_level": 5}
+        assert req["cards"]["any"] == {
+            "min_level": 0, "max_level": 0, "max_count": 5,
+        }

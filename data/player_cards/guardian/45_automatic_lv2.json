@@ -1,0 +1,31 @@
+{
+  "id": "45_automatic_lv2",
+  "arkhamdb_code": "03190",
+  "name": ".45 Automatic",
+  "name_cn": ".45自动手枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 2,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Uses (4 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. This attack deals +1 damage. Ignore the retaliate keyword for this attack.",
+  "text_cn": "使用(4子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击中你+2[combat]。这次攻击造成+1伤害。这次攻击忽略反击关键词。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "ammo": 4
+  }
+}

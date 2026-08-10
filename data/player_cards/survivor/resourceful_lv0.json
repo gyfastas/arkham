@@ -1,0 +1,25 @@
+{
+  "id": "resourceful_lv0",
+  "arkhamdb_code": "03039",
+  "name": "Resourceful",
+  "name_cn": "急中生智",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful, choose a [survivor] card not named Resourceful in your discard pile. Add the chosen card to your hand.",
+  "text_cn": "如果本次技能检定成功，选择你弃牌堆中一张标题不是急中生智的[survivor]卡牌。将选中的卡牌加入你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

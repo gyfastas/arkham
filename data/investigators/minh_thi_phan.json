@@ -1,0 +1,46 @@
+{
+  "id": "minh_thi_phan",
+  "arkhamdb_code": "03002",
+  "name": "Minh Thi Phan",
+  "name_cn": "潘明",
+  "title": "The Secretary",
+  "title_cn": "秘书",
+  "class": "seeker",
+  "health": 7,
+  "sanity": 7,
+  "skills": {
+    "willpower": 4,
+    "intellect": 4,
+    "combat": 2,
+    "agility": 2
+  },
+  "ability": "[reaction] After an investigator at your location commits a card to a skill test: That card gains a [wild] icon until the end of the test. (Limit once for each investigator per round.)\n[elder_sign] effect: +1. You may choose a skill card committed to this skill test to return to its owner's hand after this test ends.",
+  "ability_cn": "[reaction]你所在地点的调查员在技能检定中投入一张卡牌后：在此次技能检定结束前，该卡牌获得1个[wild]图标。(每位调查员每轮限制1次。)\n[elder_sign]效果：+1。本次技能检定结束后，你可以选择投入本次技能检定的一张技能卡返回其所有者的手牌。",
+  "elder_sign": "[elder_sign] effect: +1. You may choose a skill card committed to this skill test to return to its owner's hand after this test ends.",
+  "elder_sign_cn": "[elder_sign]效果：+1。本次技能检定结束后，你可以选择投入本次技能检定的一张技能卡返回其所有者的手牌。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "seeker": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "survivor": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    }
+  },
+  "signature_cards": [
+    "analytical_mind_lv0"
+  ],
+  "weakness": "the_king_in_yellow_lv0",
+  "flavor_text": "\"You can depend on me to guide you through the unknown.\"",
+  "pack": "path_to_carcosa",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, Survivor cards ([survivor]) level 0-2.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Analytical Mind, The King in Yellow <i>(Act 1)</i>, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：探求者卡([seeker])等级0-5，中立卡牌等级0-5，求生者卡([survivor])等级0-2。\n<b>牌组构建需求</b>(不计入卡牌张数)：缜密分析、黄衣之王<i>(第一幕)</i>、1张随机基础弱点。"
+}

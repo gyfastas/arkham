@@ -1,5 +1,10 @@
 """Encyclopedia (Level 2) — Seeker Asset, Hand slot.
-消耗：选择一名在你所在地点的调查员，选择一项技能，该调查员该技能+2直到阶段结束。
+[行动]消耗百科全书：选择你所在地点的一名调查员。该调查员你选择的一项
+技能+2，直到本阶段结束。
+
+简化说明：
+- 目标调查员/技能选择需会话层传参：activate() 支持 target_investigator_id
+  与 skill 参数；会话层通用通道调用时默认目标为自己、技能为智力。
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -9,24 +14,37 @@ from backend.models.enums import GameEvent, Skill, TimingPriority
 class Encyclopedia(CardImplementation):
     card_id = "encyclopedia_lv2"
 
-    def activate(self, ctx, target_id: str | None = None, skill: Skill | None = None):
-        """Exhaust: target investigator gets +2 to chosen skill until end of phase.
+    activations = [
+        {"id": "boost", "label": "[行动] 消耗：所选技能+2至阶段结束",
+         "method": "activate", "actions": 1},
+    ]
 
-        Skeleton — stores the buff on the investigator for the skill value
-        determination handler to pick up.
-        """
-        target_id = target_id or ctx.investigator_id
-        inv = ctx.game_state.get_investigator(target_id)
-        if inv is None or skill is None:
-            return
-        # Store the active buff
-        if not hasattr(inv, "active_effects"):
-            inv.active_effects = {}
-        inv.active_effects["encyclopedia"] = {
+    def activate(self, game_state, investigator_id: str,
+                 target_investigator_id: str | None = None,
+                 skill: Skill | None = None) -> bool:
+        """消耗：目标调查员所选技能+2，直到本阶段结束。"""
+        inv = game_state.get_investigator(investigator_id)
+        if inv is None or self.instance_id not in inv.play_area:
+            return False
+        inst = game_state.get_card_instance(self.instance_id)
+        if inst is None or inst.exhausted:
+            return False
+        target = game_state.get_investigator(target_investigator_id or investigator_id)
+        if target is None or target.location_id != inv.location_id:
+            return False
+        # 简化：会话层通用通道无法传参时默认智力
+        skill = skill or Skill.INTELLECT
+
+        inst.exhausted = True
+        if not hasattr(target, "active_effects"):
+            target.active_effects = {}
+        target.active_effects["encyclopedia"] = {
             "skill": skill,
             "amount": 2,
             "source": self.instance_id,
         }
+        game_state.log_effect(f"📖 百科全书：所选技能+2（{skill.value}）至阶段结束")
+        return True
 
     @on_event(
         GameEvent.SKILL_VALUE_DETERMINED,
@@ -51,10 +69,7 @@ class Encyclopedia(CardImplementation):
     )
     def expire_buff(self, ctx):
         """Remove Encyclopedia buff at end of phase."""
-        for inv_id in ctx.game_state.investigator_ids:
-            inv = ctx.game_state.get_investigator(inv_id)
-            if inv is None:
-                continue
+        for inv in ctx.game_state.investigators.values():
             buff = getattr(inv, "active_effects", {}).get("encyclopedia")
             if buff and buff["source"] == self.instance_id:
                 inv.active_effects.pop("encyclopedia", None)

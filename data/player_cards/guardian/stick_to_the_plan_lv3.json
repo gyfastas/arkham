@@ -1,0 +1,21 @@
+{
+  "id": "stick_to_the_plan_lv3",
+  "arkhamdb_code": "03264",
+  "name": "Stick to the Plan",
+  "name_cn": "原定计划",
+  "class": "guardian",
+  "type": "asset",
+  "cost": null,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Exceptional.\n[reaction] Before you draw your opening hand: Search your deck for up to 3 different [[Tactic]] and/or [[Supply]] events, and attach them facedown to Stick to the Plan. Shuffle your deck.\nCards attached to Stick to the Plan may be played as if they were in your hand. As an additional cost to play an attached card, exhaust Stick to the Plan.",
+  "text_cn": "永久。卓越。\n[reaction]在你抽取起始手牌前：在你的牌堆中查找最多3张不同的[[策略]]和/或[[供给]]事件卡，将其面朝下叠加到原定计划。<i>(FAQ, v2.0)</i>混洗你的牌堆。\n叠加到原定计划的卡牌可以视为你的手牌打出。消耗原定计划作为打出叠加卡牌的额外费用。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

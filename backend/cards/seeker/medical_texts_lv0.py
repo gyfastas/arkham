@@ -1,56 +1,49 @@
 """Medical Texts (Level 0) — Seeker Asset, Hand slot.
-消耗：进行智力(2)检定。成功治疗1点伤害，失败造成1点伤害。
+[行动]：选择你所在地点的一名调查员并检定智力(2)。如果成功，治愈该调查员
+1点伤害。如果失败，对该调查员造成1点伤害。
+
+简化说明：
+- 检定由卡牌自身回放（CardSelfTest，无投入窗口；完整投入流程需会话层接线）；
+- 目标调查员简化为发动者自己（多人局目标选择需会话层传参）；
+- 失败伤害走 DamageEngine（可被盟友分担、触发击败检查）。
 """
 
-from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, Skill, TimingPriority
+from backend.cards.seeker._selftest import CardSelfTest
+from backend.engine.damage import DamageEngine
+from backend.models.enums import Skill
 
 
-class MedicalTexts(CardImplementation):
+class MedicalTexts(CardSelfTest):
     card_id = "medical_texts_lv0"
 
-    def activate(self, ctx, target_id: str | None = None):
-        """Exhaust: test Intellect (2). Success: heal 1 damage. Failure: deal 1 damage.
+    activations = [
+        {"id": "heal_test", "label": "[行动] 智力(2)检定：成功治1伤，失败受1伤",
+         "method": "activate", "actions": 1},
+    ]
 
-        Skeleton — the actual skill test would be initiated through the
-        skill test framework. This method sets up the test parameters.
-        """
-        inv_id = target_id or ctx.investigator_id
-        inv = ctx.game_state.get_investigator(inv_id)
-        if inv is None:
-            return
-        # In full implementation, this would initiate a skill test:
-        # ctx.initiate_skill_test(
-        #     investigator_id=ctx.investigator_id,
-        #     skill=Skill.INTELLECT,
-        #     difficulty=2,
-        #     source=self.instance_id,
-        #     target=inv_id,
-        # )
-        pass
+    def activate(self, game_state, investigator_id: str,
+                 target_investigator_id: str | None = None) -> bool:
+        inv = game_state.get_investigator(investigator_id)
+        if inv is None or self.instance_id not in inv.play_area:
+            return False
+        target = game_state.get_investigator(target_investigator_id or investigator_id)
+        if target is None or target.location_id != inv.location_id:
+            return False
 
-    @on_event(
-        GameEvent.SKILL_TEST_SUCCESSFUL,
-        priority=TimingPriority.AFTER,
-    )
-    def heal_on_success(self, ctx):
-        """On successful intellect test from Medical Texts, heal 1 damage."""
-        if ctx.source != self.instance_id:
-            return
-        target_id = ctx.extra.get("target_id", ctx.investigator_id)
-        inv = ctx.game_state.get_investigator(target_id)
-        if inv and inv.damage > 0:
-            inv.damage -= 1
-
-    @on_event(
-        GameEvent.SKILL_TEST_FAILED,
-        priority=TimingPriority.AFTER,
-    )
-    def damage_on_failure(self, ctx):
-        """On failed intellect test from Medical Texts, deal 1 damage."""
-        if ctx.source != self.instance_id:
-            return
-        target_id = ctx.extra.get("target_id", ctx.investigator_id)
-        inv = ctx.game_state.get_investigator(target_id)
-        if inv:
-            inv.damage += 1
+        result = self.run_self_test(
+            game_state, investigator_id, Skill.INTELLECT, 2,
+            source=self.instance_id,
+        )
+        if result is None:
+            return False
+        success, _margin = result
+        if success:
+            if target.damage > 0:
+                target.damage -= 1
+                game_state.log_effect("📕 医学教科书：检定成功，治愈1点伤害")
+        else:
+            DamageEngine(game_state, self._selftest_bus).deal_damage(
+                target.investigator_id, damage=1, source=self.instance_id,
+            )
+            game_state.log_effect("📕 医学教科书：检定失败，造成1点伤害")
+        return True

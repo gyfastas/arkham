@@ -16,10 +16,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "Attach to your location. Non-Elite enemies cannot move to attached location. Forced - When an investigator leaves attached location: Discard Barricade.",
+  "text": "Attach to your location.\nNon-Elite enemies cannot move into attached location.\nForced - When an investigator leaves attached location: Discard Barricade.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "将屏障附加到你所在地点。\n被附加的地点不能生成非精英敌人。"
+  "text_cn": "附加到你所在地点。\n非精英敌人不能移动进入被附加地点。\n强制-当一位调查员离开被附加地点时：弃掉屏障。"
 }

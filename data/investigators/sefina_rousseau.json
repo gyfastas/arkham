@@ -1,0 +1,46 @@
+{
+  "id": "sefina_rousseau",
+  "arkhamdb_code": "03003",
+  "name": "Sefina Rousseau",
+  "name_cn": "赛菲娜·卢梭",
+  "title": "The Painter",
+  "title_cn": "画家",
+  "class": "rogue",
+  "health": 5,
+  "sanity": 9,
+  "skills": {
+    "willpower": 4,
+    "intellect": 2,
+    "combat": 2,
+    "agility": 4
+  },
+  "ability": "<b>Forced</b> - When you would draw your opening hand: Draw 13 cards, instead. Choose up to 5 events to place beneath this card and keep 8 cards as your opening hand. Discard the rest. <i>(You cannot mulligan.)</i>\n[action]: Choose an event beneath this card and draw it. Does not provoke attacks of opportunity.\n[elder_sign] effect: +3. You may choose an event beneath this card and draw it.",
+  "ability_cn": "<b>强制</b> - 在你将要抽取起始手牌时：改为抽取13张卡牌。选择最多5张事件卡放在本卡牌下，并保留8张卡牌作为你的起始手牌。丢弃其余卡牌。<i>(你不能换牌。)</i>\n[action]：选择并抽取本卡牌下方的一张事件卡。不会引起趁乱攻击。\n[elder_sign]效果：+3。你可以选择并抽取本卡牌下的一张事件卡。",
+  "elder_sign": "[elder_sign] effect: +3. You may choose an event beneath this card and draw it.",
+  "elder_sign_cn": "[elder_sign]效果：+3。你可以选择并抽取本卡牌下的一张事件卡。",
+  "deck_requirements": {
+    "size": 33,
+    "cards": {
+      "rogue": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "mystic": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    }
+  },
+  "signature_cards": [
+    "the_painted_world_lv0"
+  ],
+  "weakness": "stars_of_hyades_lv0",
+  "flavor_text": "",
+  "pack": "path_to_carcosa",
+  "back_text": "<b>Deck Size</b>: 33.\n<b>Deckbuilding Options</b>: Rogue cards ([rogue]) level 0-5, Neutral cards level 0-5, Mystic cards ([mystic]) level 0-2.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of The Painted World, 1 copy of Stars of Hyades, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：33。\n<b>牌组构建选项</b>：流浪者卡([rogue])等级0-5，中立卡牌等级0-5，潜修者卡([mystic])等级0-2。\n<b>牌组构建需求</b>(不计入卡牌张数)：3张画中世界、毕宿星团、1张随机基础弱点。"
+}

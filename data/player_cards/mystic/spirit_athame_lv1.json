@@ -1,0 +1,28 @@
+{
+  "id": "spirit_athame_lv1",
+  "arkhamdb_code": "03035",
+  "name": "Spirit Athame",
+  "name_cn": "灵力祭祀刀",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "item",
+    "relic",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[fast] During a skill test on a [[Spell]] card, exhaust Spirit Athame: You get +2 skill value for this test.\n[action] Exhaust Spirit Athame: <b>Fight.</b> You get +2 [combat] for this attack.",
+  "text_cn": "[free]进行[[法术]]卡上的技能检定时，消耗灵力祭祀刀：这次技能检定你+2技能值。\n[action]消耗灵力祭祀刀：<b>攻击</b>。这次攻击中你+2[combat]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

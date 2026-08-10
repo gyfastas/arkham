@@ -1,0 +1,28 @@
+{
+  "id": "alchemical_transmutation_lv0",
+  "arkhamdb_code": "03032",
+  "name": "Alchemical Transmutation",
+  "name_cn": "炼金转化",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (3 charges).\n[action] Exhaust Alchemical Transmutation, spend 1 charge: Test [willpower] (1). For each point you succeed by, gain 1 resource (to a maximum of 3). If a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol is revealed during this test, take 1 damage.",
+  "text_cn": "使用(3充能)。\n[action]消耗炼金转化，花费1充能：检定[willpower](1)。你成功时每超过难度1点，获得1个资源(上限3个)。如果本次检定中抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记，受到1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "charges": 3
+  }
+}

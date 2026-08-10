@@ -1,0 +1,24 @@
+{
+  "id": "storm_of_spirits_lv0",
+  "arkhamdb_code": "03153",
+  "name": "Storm of Spirits",
+  "name_cn": "灵力风暴",
+  "class": "mystic",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> This attack uses [willpower] instead of [combat]. If you succeed, instead of its standard damage, this attack deals 2 damage to each enemy at the attacked enemy's location <i>(any additional damage is dealt to the attacked enemy)</i>. If a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] token is revealed during this attack, deal 1 damage to each investigator at the attacked enemy's location.",
+  "text_cn": "<b>攻击</b>。这次攻击不使用[combat]，改为使用[willpower]。如果你成功，这次攻击不造成基础伤害，而是对被攻击敌人所在地点的每名敌人造成2点伤害<i>(所有额外伤害只对受到攻击的敌人造成)</i>。<i>(FAQ, v2.0)</i>如果这次攻击中抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记，对所在地点每位调查员造成1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -1,5 +1,6 @@
 """Beat Cop (Level 0) — Guardian Asset, Ally slot.
-+1战斗力。弃置巡警：对你所在地点的一个敌人造成1点伤害。
+你获得+1战斗。
+[快速]弃置巡警：对你所在地点的一名敌人造成1点伤害。
 """
 from backend.cards.base import CardImplementation, on_event
 from backend.models.enums import GameEvent, Skill, TimingPriority
@@ -9,12 +10,11 @@ class BeatCop(CardImplementation):
     card_id = "beat_cop_lv0"
     activations = [{
         "id": "discard_damage",
-        "label": "弃置巡警：对交战敌人造成1伤害",
+        "label": "弃置巡警：对同地点敌人造成1伤害",
         "method": "activate_discard_damage",
         "target": "enemy",
         "actions": 0,
         "resource_cost": 0,
-        "timing": "combat",
     }]
 
     def activate_discard_damage(self, game_state, investigator_id: str,
@@ -23,7 +23,7 @@ class BeatCop(CardImplementation):
         enemy = game_state.get_card_instance(enemy_instance_id)
         if inv is None or enemy is None or self.instance_id not in inv.play_area:
             return False
-        if enemy_instance_id not in inv.threat_area:
+        if not _enemy_at_location(game_state, inv, enemy_instance_id):
             return False
         manager = getattr(game_state, "slot_managers", {}).get(investigator_id)
         if manager:
@@ -44,3 +44,14 @@ class BeatCop(CardImplementation):
             inv = ctx.game_state.get_investigator(ctx.investigator_id)
             if inv and self.instance_id in inv.play_area:
                 ctx.modify_amount(1, "beat_cop_combat_bonus")
+
+
+def _enemy_at_location(game_state, inv, enemy_instance_id: str) -> bool:
+    """敌人须在该调查员所在地点（未交战的在地点，交战的在威胁区）。"""
+    location = game_state.get_location(inv.location_id)
+    if location is not None and enemy_instance_id in location.enemies:
+        return True
+    for other in game_state.get_investigators_at_location(inv.location_id):
+        if enemy_instance_id in other.threat_area:
+            return True
+    return False

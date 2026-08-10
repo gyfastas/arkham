@@ -1,0 +1,23 @@
+{
+  "id": "daring_maneuver_lv0",
+  "arkhamdb_code": "03030",
+  "name": "Daring Maneuver",
+  "name_cn": "艺高胆大",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "gambit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would succeed at a skill test.\nYou get +2 skill value for this test.",
+  "text_cn": "快速。在你技能检定将要成功时打出。\n这次技能检定你+2技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

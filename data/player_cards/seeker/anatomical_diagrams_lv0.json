@@ -1,0 +1,25 @@
+{
+  "id": "anatomical_diagrams_lv0",
+  "arkhamdb_code": "03108",
+  "name": "Anatomical Diagrams",
+  "name_cn": "解剖图表",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any investigator's turn. Play only if you have 5 or more remaining sanity.\nChoose a non-[[Elite]] enemy at your location. Until the end of the active investigator's turn, that enemy gets -2 fight and -2 evade.",
+  "text_cn": "快速。在任意调查员的回合中打出。你剩余神智值为5点或以上时才可打出。\n选择你所在地点中一个非[[精英]]敌人。在当前调查员回合结束前，该敌人-2攻击并-2躲避。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "fast": true
+}

@@ -1,0 +1,23 @@
+{
+  "id": "improvisation_lv0",
+  "arkhamdb_code": "03018",
+  "name": "Improvisation",
+  "name_cn": "即兴表演",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Lola Hayes deck only.\nFast. Play only during your turn.\nSwitch your role. Until the end of your turn, reduce the resource cost of the next card you play of your role by 3. Draw 1 card.",
+  "text_cn": "萝拉·海耶斯牌组专用。\n快速。只能在你回合中打出。\n切换你的角色。你回合结束前，你所选角色的下一张卡牌资源费用降低3点。抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

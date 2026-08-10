@@ -66,6 +66,11 @@ onUnmounted(() => {
           <div class="mode-name">战役模式</div>
           <div class="mode-desc">选择战役与难度，从第一章开始，经验与创伤贯穿全程</div>
         </div>
+        <div class="mode-card" @click="router.push('/quick?mode=multi')">
+          <div class="mode-icon">👥</div>
+          <div class="mode-name">联机合作</div>
+          <div class="mode-desc">2-4 人合作：创建房间，或按房间 ID 加入队友的局</div>
+        </div>
         <div class="mode-card options-card" @click="openOptions">
           <div class="mode-icon">⚙️</div>
           <div class="mode-name">选项</div>

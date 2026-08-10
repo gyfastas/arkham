@@ -47,8 +47,8 @@ def setup():
 
 
 class TestOldBookOfLore:
-    def test_activate_draws_card(self, setup):
-        """Activating Old Book of Lore draws the top card from the deck."""
+    def test_activate_searches_top3_and_shuffles(self, setup):
+        """官方：消耗，查看牌库顶3张，抽1张，其余洗入牌库。"""
         state, bus, inv, impl = setup
         assert len(inv.deck) == 3
         assert len(inv.hand) == 0
@@ -57,8 +57,32 @@ class TestOldBookOfLore:
 
         assert ok
         assert len(inv.hand) == 1
-        assert inv.hand[0] == "card_a"
+        assert inv.hand[0] == "card_a"  # 默认取第1张
         assert len(inv.deck) == 2
+        assert set(inv.deck) == {"card_b", "card_c"}  # 其余洗入牌库
+        ci = state.get_card_instance("inst_book")
+        assert ci.exhausted is True  # 已消耗
+
+    def test_activate_pick_index(self, setup):
+        """pick_index 指定抽取顶3中的哪一张。"""
+        state, bus, inv, impl = setup
+
+        ok = impl.activate(state, "inv1", pick_index=1)
+
+        assert ok
+        assert inv.hand == ["card_b"]
+        assert set(inv.deck) == {"card_a", "card_c"}
+
+    def test_activate_fails_when_exhausted(self, setup):
+        """已消耗时不能再启动。"""
+        state, bus, inv, impl = setup
+        state.get_card_instance("inst_book").exhausted = True
+
+        ok = impl.activate(state, "inv1")
+
+        assert ok is False
+        assert len(inv.hand) == 0
+        assert len(inv.deck) == 3
 
     def test_provides_willpower_icon(self, setup):
         """Old Book of Lore card data has willpower skill icon."""

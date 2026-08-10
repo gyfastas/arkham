@@ -17,10 +17,10 @@
   "slots": [
     "body"
   ],
-  "text": "No ability. Bulletproof Vest can soak up to 4 damage.",
+  "text": "",
   "health": 4,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "你获得+4生命值。"
+  "text_cn": ""
 }

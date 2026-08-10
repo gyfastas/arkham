@@ -16,10 +16,10 @@
   "slots": [
     "ally"
   ],
-  "text": "When an enemy attacks you, exhaust Aquinnah and take 1 horror: Deal that enemy's damage and horror to another enemy at your location instead.",
+  "text": "[reaction] When an enemy attacks you, exhaust Aquinnah and deal 1 horror to her: Deal that enemy's damage to any enemy at your location, instead. (You still take horror dealt by the attack.)",
   "health": 1,
   "sanity": 4,
   "pack": "rcore",
   "unique": true,
-  "text_cn": "<b>反应</b> - 当你受到敌人伤害时：弃置安奎娜。取消该伤害，改为对该敌人造成2点伤害。"
+  "text_cn": "<b>反应</b> - 当一个敌人攻击你时：横置安奎娜并对她造成1点恐惧：改为将该敌人的伤害值对你所在地点的任意敌人造成。（你仍承受该攻击造成的恐惧。）"
 }

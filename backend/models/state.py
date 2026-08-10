@@ -187,6 +187,7 @@ class LocationState:
     enemies: list[str] = field(default_factory=list)       # unengaged enemy instance_ids
     revealed: bool = False
     doom: int = 0
+    horror: int = 0  # 地点上的恐惧标记（卡尔克萨剧本机制，如 Curtain Call）
     attachments: list[str] = field(default_factory=list)   # attached card instance_ids (上锁的门/迷雾等)
 
     @property

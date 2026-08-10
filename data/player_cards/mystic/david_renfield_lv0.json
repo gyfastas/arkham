@@ -1,0 +1,26 @@
+{
+  "id": "david_renfield_lv0",
+  "arkhamdb_code": "03112",
+  "name": "David Renfield",
+  "name_cn": "大卫·伦费尔德",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "ally",
+    "patron"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "While David Renfield has at least 1 doom on him, you get +1 [willpower].\n[fast] Exhaust David Renfield: You may place 1 doom on David Renfield. Gain 1 resource for each doom on David Renfield.",
+  "text_cn": "只要大卫·伦费尔德身上有至少1个毁灭标记，你获得+1[willpower]。\n[fast]消耗大卫·伦费尔德：你可以在大卫·伦费尔德身上放置1个毁灭标记。大卫·伦费尔德身上每有一个毁灭标记，获得1资源。",
+  "health": 2,
+  "sanity": 1,
+  "unique": true,
+  "pack": "path_to_carcosa"
+}

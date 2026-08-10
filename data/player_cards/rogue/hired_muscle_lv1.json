@@ -18,7 +18,7 @@
     "ally"
   ],
   "text": "You get +1 [combat].\n<b>Forced</b> - At the end of the upkeep phase: You must either pay 1 resource or discard Hired Muscle.",
-  "text_cn": "你獲得+1[combat]。\n<b>強制</b> - 當補給階段結束時：你必須選擇丟棄1資源，或丟棄雇傭打手。",
+  "text_cn": "你獲得+1[combat]。\n<b>強制</b> - 當補給階段結束時：你必須選擇支付1資源，或丟棄雇傭打手。",
   "health": 3,
   "sanity": 1,
   "unique": false,

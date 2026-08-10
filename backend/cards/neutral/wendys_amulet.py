@@ -1,6 +1,7 @@
 """温蒂的护身符（Wendy's Amulet）— 温蒂·亚当斯专属支援卡，饰品。
 你可以将弃牌堆最上面的事件牌当作手牌来打出。
-强制 - 在你打出一张事件牌后：将其放到你的牌堆底部，而非弃牌堆。
+强制 - 在你打出一张事件牌或从场上弃置一张事件牌后：将其放到你的牌堆
+底部，而非弃牌堆。
 
 简化说明：
 - "从弃牌堆打出"实现为 play_top_event_from_discard() 方法，由会话层/UI
@@ -88,6 +89,31 @@ class WendysAmulet(CardImplementation):
         inv_id, card_id = pending
         inv = ctx.game_state.get_investigator(inv_id)
         if inv is None:
+            return
+        if card_id in inv.discard:
+            inv.discard.remove(card_id)
+        if card_id not in inv.deck:
+            inv.deck.append(card_id)
+
+    @on_event(
+        GameEvent.CARD_LEAVES_PLAY,
+        priority=TimingPriority.AFTER,
+    )
+    def move_discarded_event_to_deck_bottom(self, ctx):
+        """Forced: after you discard an event from play, place it on the
+        bottom of your deck instead of in your discard pile.
+
+        注：当前引擎没有"事件牌在场"的机制（事件结算后即进弃牌堆），
+        该触发在生产链路中暂不可达；若引擎日后支持场上事件，此处即生效。
+        """
+        card_id = ctx.extra.get("card_id")
+        if not card_id or card_id == "wendys_amulet":
+            return
+        card_data = ctx.game_state.get_card_data(card_id)
+        if card_data is None or card_data.type != CardType.EVENT:
+            return
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None or self.instance_id not in inv.play_area:
             return
         if card_id in inv.discard:
             inv.discard.remove(card_id)

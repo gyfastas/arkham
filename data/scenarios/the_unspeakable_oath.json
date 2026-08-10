@@ -1,0 +1,129 @@
+{
+  "id": "the_unspeakable_oath",
+  "name": "The Unspeakable Oath",
+  "name_cn": "邪秽誓约",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 4,
+  "encounter_sets": [
+    "the_unspeakable_oath",
+    "hasturs_gift",
+    "inhabitants_of_carcosa",
+    "delusions",
+    "decay",
+    "agents_of_hastur"
+  ],
+  "scenario_set": "the_unspeakable_oath",
+  "start_location": "asylum_halls_a",
+  "initial_locations": [
+    "mess_hall",
+    "kitchen",
+    "yard",
+    "garden",
+    "infirmary",
+    "basement_hall"
+  ],
+  "set_aside": [
+    "daniel_chesterfield",
+    "patient_confinement_a",
+    "patient_confinement_b",
+    "patient_confinement_c",
+    "patient_confinement_d"
+  ],
+  "connections": {
+    "asylum_halls_a": [
+      "asylum_halls_c",
+      "asylum_halls_d",
+      "mess_hall",
+      "yard"
+    ],
+    "asylum_halls_b": [
+      "asylum_halls_c",
+      "asylum_halls_d",
+      "mess_hall",
+      "yard"
+    ],
+    "asylum_halls_c": [
+      "asylum_halls_a",
+      "asylum_halls_b",
+      "infirmary",
+      "basement_hall"
+    ],
+    "asylum_halls_d": [
+      "asylum_halls_a",
+      "asylum_halls_b",
+      "infirmary",
+      "basement_hall"
+    ],
+    "kitchen": [
+      "mess_hall"
+    ],
+    "mess_hall": [
+      "kitchen",
+      "asylum_halls_a",
+      "asylum_halls_b"
+    ],
+    "infirmary": [
+      "asylum_halls_c",
+      "asylum_halls_d"
+    ],
+    "yard": [
+      "garden",
+      "asylum_halls_a",
+      "asylum_halls_b"
+    ],
+    "garden": [
+      "yard"
+    ],
+    "basement_hall": [
+      "asylum_halls_c",
+      "asylum_halls_d",
+      "patient_confinement_a",
+      "patient_confinement_b",
+      "patient_confinement_c",
+      "patient_confinement_d"
+    ],
+    "patient_confinement_a": [
+      "basement_hall"
+    ],
+    "patient_confinement_b": [
+      "basement_hall"
+    ],
+    "patient_confinement_c": [
+      "basement_hall"
+    ],
+    "patient_confinement_d": [
+      "basement_hall"
+    ]
+  },
+  "act_deck": [
+    "arkham_asylum",
+    "the_really_bad_ones_v_i",
+    "the_really_bad_ones_v_ii",
+    "planning_the_escape",
+    "no_asylum"
+  ],
+  "agenda_deck": [
+    "locked_inside",
+    "torturous_descent",
+    "his_domain"
+  ],
+  "locations": [
+    "asylum_halls_a",
+    "asylum_halls_b",
+    "asylum_halls_c",
+    "asylum_halls_d",
+    "kitchen",
+    "mess_hall",
+    "infirmary",
+    "yard",
+    "garden",
+    "basement_hall",
+    "patient_confinement_a",
+    "patient_confinement_b",
+    "patient_confinement_c",
+    "patient_confinement_d"
+  ],
+  "story_assets": [],
+  "setup_notes": "随机移除1张西区和1张东区疯人院大厅，剩余2张大厅连同食堂/厨房/后院/花园/医务室/地下室走廊入场；调查员任选一张疯人院大厅开始。Daniel Chesterfield 与4张病人拘禁室放置一旁；遭遇库中7张Monster敌人放置一旁。Act 2 根据战役日志是否拿了黑玛瑙扣选用 v.I 或 v.II。"
+}

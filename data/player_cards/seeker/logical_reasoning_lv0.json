@@ -1,0 +1,23 @@
+{
+  "id": "logical_reasoning_lv0",
+  "arkhamdb_code": "03191",
+  "name": "Logical Reasoning",
+  "name_cn": "逻辑推理",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Play only if you have at least 1 clue.\nChoose an investigator at your location. That investigator either heals 2 horror or discards a [[Terror]] card from his or her threat area.",
+  "text_cn": "你至少拥有1个线索时才可打出。\n选择你所在地点的一位调查员。该调查员治愈2点恐惧或丢弃其威胁区域中的1张[[恐怖]]卡。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

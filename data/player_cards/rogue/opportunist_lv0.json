@@ -12,10 +12,10 @@
   "skill_icons": {
     "wild": 1
   },
-  "text": "If this test is successful by 3 or more, return Opportunist to your hand instead of discarding it.",
+  "text": "Commit only to a skill test you are performing.\nIf you succeed by 3 or more, return Opportunist to your hand after this test instead of discarding it.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "如果你成功，返回机会主义者到你的手中。"
+  "text_cn": "仅可投入你正在执行的技能检定。\n如果你成功且超出难度3点以上，在本检定后将机会主义者返回你的手牌，而非弃置。"
 }

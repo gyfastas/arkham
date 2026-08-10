@@ -1,0 +1,23 @@
+{
+  "id": "stealth_lv0",
+  "arkhamdb_code": "03028",
+  "name": "Stealth",
+  "name_cn": "潜行",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[action] Exhaust Stealth: <b>Evade.</b> The chosen enemy gets -2 evade for this evasion attempt. If you successfully evade the enemy, disengage with it but do not exhaust it. Until the end of your turn, that enemy cannot engage you.",
+  "text_cn": "[action]消耗潜行：<b>躲避</b>。本次躲避尝试所选敌人-2躲避。如果你成功躲避该敌人，它解除交战状态但不消耗。你回合结束前，该敌人不能与你交战。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

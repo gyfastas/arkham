@@ -1,0 +1,31 @@
+{
+  "id": "archaic_glyphs_guiding_stones_lv3",
+  "arkhamdb_code": "03192",
+  "name": "Archaic Glyphs",
+  "name_cn": "古代雕文",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Researched. Uses (3 charges).\n[action] Spend 1 charge: <b>Investigate.</b> For every 2 points you succeed by, discover 1 additional clue at your location.",
+  "text_cn": "研究。<i>(FAQ, v2.0)</i>\n使用(3充能)。\n[action]花费1充能：<b>调查</b>。你每超出难度2点，发现你所在地点的额外1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "charges": 3
+  },
+  "subname": "Guiding Stones",
+  "subname_cn": "指引之石"
+}

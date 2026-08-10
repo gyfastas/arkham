@@ -41,6 +41,10 @@ class CampaignState:
     trauma_physical: int = 0
     trauma_mental: int = 0
 
+    # 卡尔克萨之路战役轨道（其余战役恒为 0）
+    doubt: int = 0
+    conviction: int = 0
+
     # --- chapter helpers -------------------------------------------------
 
     def current_scenario_id(self) -> str:
@@ -224,6 +228,8 @@ class CampaignState:
             "victory_display": list(self.victory_display),
             "trauma_physical": self.trauma_physical,
             "trauma_mental": self.trauma_mental,
+            "doubt": self.doubt,
+            "conviction": self.conviction,
         }
 
     @classmethod
@@ -241,6 +247,8 @@ class CampaignState:
             victory_display=list(data.get("victory_display", [])),
             trauma_physical=data.get("trauma_physical", 0),
             trauma_mental=data.get("trauma_mental", 0),
+            doubt=data.get("doubt", 0),
+            conviction=data.get("conviction", 0),
         )
 
 
@@ -265,7 +273,7 @@ def campaign_scenarios(campaign_id: str) -> list[str]:
 
 
 def campaign_name_cn(campaign_id: str) -> str:
-    names = {"core": "狂热者之夜", "dunwich_legacy": "敦威治遗产"}
+    names = {"core": "狂热者之夜", "dunwich_legacy": "敦威治遗产", "path_to_carcosa": "卡尔克萨之路"}
     return names.get(campaign_id, campaign_id)
 
 

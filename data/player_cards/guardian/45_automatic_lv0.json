@@ -17,10 +17,10 @@
   "slots": [
     "hand"
   ],
-  "text": "Uses (4 ammo). Spend 1 ammo: Fight. You get +1 combat for this attack. This attack deals +1 damage.",
+  "text": "Uses (4 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +1 [combat] for this attack. This attack deals +1 damage.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "使用(4弹药)。消耗.45自动手枪并花费1弹药：<b>攻击</b>。你获得+1战斗，本次攻击造成+1伤害。"
+  "text_cn": "使用(4弹药)。\n[行动]花费1弹药：<b>攻击</b>。本次攻击你获得+1[战斗]，造成+1伤害。"
 }

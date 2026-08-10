@@ -1,0 +1,26 @@
+{
+  "id": "in_the_know_lv1",
+  "arkhamdb_code": "03027",
+  "name": "In the Know",
+  "name_cn": "掌握内幕",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Uses (3 secrets).\n[action] Spend 1 secret: <b>Investigate.</b> Investigate any revealed location in play as if you were at that location.",
+  "text_cn": "使用(3秘密)。\n[action]花费1秘密：<b>调查</b>。调查任意一个已揭示的地点，视为你在该地点中。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "secrets": 3
+  }
+}

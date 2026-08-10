@@ -1,0 +1,23 @@
+{
+  "id": "ill_see_you_in_hell_lv0",
+  "arkhamdb_code": "03189",
+  "name": "\"I'll see you in hell!\"",
+  "name_cn": "\"同归于尽！\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [],
+  "text": "Each non-[[Elite]] enemy engaged with you is defeated. You are defeated and suffer 1 physical trauma. This action does not provoke attacks of opportunity.",
+  "text_cn": "击败与你交战的每个非[[精英]]敌人。你被击败并承受1点肉体创伤。本行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

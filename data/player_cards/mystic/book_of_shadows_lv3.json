@@ -17,10 +17,10 @@
   "slots": [
     "hand"
   ],
-  "text": "+1 arcane slot. Exhaust: Add 1 charge to a Spell.",
+  "text": "You have 1 additional arcane slot.\n[action] Exhaust Book of Shadows: Add 1 charge to a [[Spell]] asset you control.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你每控制一张<b>法术</b>支援卡，你获得+1意志和+1智力。"
+  "text_cn": "你拥有1个额外的奥秘槽位。\n[action] 横置影之书：给你控制的一张<b>法术</b>支援卡添加1个充能。"
 }

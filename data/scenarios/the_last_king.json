@@ -1,0 +1,83 @@
+{
+  "id": "the_last_king",
+  "name": "The Last King",
+  "name_cn": "最后的王者",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 2,
+  "encounter_sets": [
+    "the_last_king",
+    "hasturs_gift",
+    "decay",
+    "stranger",
+    "ancient_evils"
+  ],
+  "scenario_set": "the_last_king",
+  "start_location": "foyer",
+  "initial_locations": [
+    "foyer",
+    "courtyard",
+    "living_room",
+    "ballroom",
+    "dining_room",
+    "gallery"
+  ],
+  "set_aside": [
+    "dianne_devine"
+  ],
+  "connections": {
+    "foyer": [
+      "ballroom",
+      "living_room",
+      "courtyard"
+    ],
+    "ballroom": [
+      "foyer",
+      "courtyard",
+      "dining_room"
+    ],
+    "living_room": [
+      "foyer",
+      "courtyard",
+      "gallery"
+    ],
+    "gallery": [
+      "living_room",
+      "courtyard"
+    ],
+    "courtyard": [
+      "foyer",
+      "ballroom",
+      "living_room",
+      "gallery",
+      "dining_room"
+    ],
+    "dining_room": [
+      "ballroom",
+      "courtyard"
+    ]
+  },
+  "act_deck": [
+    "discovering_the_truth"
+  ],
+  "agenda_deck": [
+    "fashionably_late",
+    "the_terrifying_truth"
+  ],
+  "locations": [
+    "foyer",
+    "ballroom",
+    "living_room",
+    "gallery",
+    "courtyard",
+    "dining_room"
+  ],
+  "story_assets": [
+    "constance_dumaine_b",
+    "jordan_perry_b",
+    "ishimaru_haruko_b",
+    "sebastien_moreau_b",
+    "ashleigh_clarke_b"
+  ],
+  "setup_notes": "6个地点全部入场，调查员从门厅开始。5张旁观者资产洗混后随机放入除门厅外的每个地点各1张，每张放1线索+每调查员1额外线索。5张 Sickening Reality 故事卡置于剧本参考卡下。黛安娜·迪瓦恩搁置出场。苍白面具男子弱点加入领队牌库（原持有者未参战则转移给其他调查员）。"
+}

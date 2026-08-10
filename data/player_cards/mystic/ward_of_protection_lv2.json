@@ -1,0 +1,25 @@
+{
+  "id": "ward_of_protection_lv2",
+  "arkhamdb_code": "03270",
+  "name": "Ward of Protection",
+  "name_cn": "守护结界",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "spell",
+    "spirit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an investigator at any location draws a non-weakness treachery card.\nCancel that card's revelation effect. Then, take 1 horror.",
+  "text_cn": "快速。在任意地点的调查员抽出一张非弱点诡计卡时打出。\n取消该卡牌的显现效果。然后，受到1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "fast": true
+}

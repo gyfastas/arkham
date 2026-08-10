@@ -171,12 +171,23 @@ def serialize_public_state(game: Game) -> dict:
     # Act / Agenda
     act = scenario.current_act
     agenda = scenario.current_agenda
-    act_need = act.clue_threshold if act and act.clue_threshold is not None else 0
     doom_threshold = agenda.doom_threshold if agenda else scenario.doom_threshold
-    # Can the lead investigator advance the act? (clues >= threshold)
+    # Effective clue threshold: ⊘ (per-investigator) values scale by player count
+    act_need = 0
+    if act is not None and act.clue_threshold is not None:
+        act_need = act.clue_threshold
+        if getattr(act, "clue_threshold_per_investigator", False):
+            act_need *= max(1, len(game.state.player_order))
+    # 全组线索合计（官方：推进幕时汇集所有存活调查员的线索）
+    group_clues = sum(
+        i.clues
+        for i in (game.state.get_investigator(x) for x in game.state.player_order)
+        if i is not None and not i.is_defeated
+    )
+    # Can the group advance the act? (official: clues are pooled)
     can_advance_act = bool(
-        act is not None and act.clue_threshold is not None and inv is not None
-        and inv.clues >= act.clue_threshold
+        act is not None and act.clue_threshold is not None
+        and group_clues >= act_need
     )
 
     return {
@@ -297,7 +308,10 @@ def serialize_private_state(game: Game, investigator_id: str) -> dict:
 
 
 def _scenario_symbol_text(game: Game) -> str:
-    """Scenario reference card text (skull/cultist/tablet/elder-thing effects)."""
+    """Scenario reference card text (skull/cultist/tablet/elder-thing effects).
+
+    Easy/Standard see the card front; Hard/Expert see the back side.
+    """
     scenario = game.state.scenario
     card_id = getattr(scenario, "scenario_card_id", None)
     if not card_id:
@@ -307,6 +321,9 @@ def _scenario_symbol_text(game: Game) -> str:
     rec = db.get(card_id)
     if not rec:
         return ""
+    hard = str(scenario.vars.get("difficulty", "standard")) in ("hard", "expert")
+    if hard and rec.get("back_text"):
+        return rec["back_text"]
     return rec.get("text_cn") or rec.get("text") or ""
 
 
@@ -361,10 +378,11 @@ def serialize_game_state(
             "name_cn": loc.card_data.name_cn,
             "shroud": loc.shroud,
             "clues": loc.clues,
-            "connections": loc.connections,
+            "connections": [c for c in loc.connections if c in game.state.locations],
             "enemies_here": len(loc.enemies),
             "enemy_list": enemy_list,
             "attachments": attachments,
+            "horror": loc.horror,
             "is_current": inv is not None and loc_id == inv.location_id,
         }
 
@@ -426,8 +444,19 @@ def serialize_game_state(
     # Act / Agenda
     act = scenario.current_act
     agenda = scenario.current_agenda
-    act_need = act.clue_threshold if act and act.clue_threshold is not None else 0
     doom_threshold = agenda.doom_threshold if agenda else scenario.doom_threshold
+    # Effective clue threshold: ⊘ (per-investigator) values scale by player count
+    act_need = 0
+    if act is not None and act.clue_threshold is not None:
+        act_need = act.clue_threshold
+        if getattr(act, "clue_threshold_per_investigator", False):
+            act_need *= max(1, len(game.state.player_order))
+    # 全组线索合计（官方：推进幕时汇集所有存活调查员的线索）
+    group_clues = sum(
+        i.clues
+        for i in (game.state.get_investigator(x) for x in game.state.player_order)
+        if i is not None and not i.is_defeated
+    )
 
     # Treacheries / pending choice / encounter info
     tre = scenario.vars.get("treacheries", {})
@@ -478,6 +507,7 @@ def serialize_game_state(
     return {
         "investigator": {
             "id": inv.card_data.id if inv else "",
+            "instance_id": viewer_investigator_id,
             "name": inv.card_data.name if inv else "",
             "name_cn": inv.card_data.name_cn if inv else "",
             "class": inv.card_data.card_class.value if inv else "",
@@ -564,4 +594,11 @@ def serialize_game_state(
         "encounter_deck_count": len(scenario.encounter_deck),
         "encounter_discard_count": len(scenario.encounter_discard),
         "last_encounter": last_encounter,
+        # 其他调查员的公开信息（多人联机队友面板）
+        "other_investigators": [
+            serialize_investigator_public(game, inv_id)
+            for inv_id in game.state.player_order
+            if inv_id != viewer_investigator_id
+            and game.state.get_investigator(inv_id) is not None
+        ],
     }

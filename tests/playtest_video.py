@@ -79,6 +79,32 @@ class Playtest:
                 self.settle(1000)
         except Exception:
             pass
+        # 技能检定轮盘：投掷（等待转动动画）→ 确认
+        try:
+            roll = self.page.locator(".skill-overlay .overlay-actions button.roll-button:not([disabled])")
+            if roll.count() and roll.first.is_visible():
+                roll.first.click()
+                self.settle(3600)
+                handled = True
+        except Exception:
+            pass
+        try:
+            confirm = self.page.locator(".skill-overlay button.confirm-button")
+            if confirm.count() and confirm.first.is_visible():
+                confirm.first.click()
+                handled = True
+                self.settle(800)
+        except Exception:
+            pass
+        # 开局调度：保留手牌
+        try:
+            keep = self.page.locator("button:has-text('保留手牌')")
+            if keep.count() and keep.first.is_visible():
+                keep.first.click()
+                handled = True
+                self.settle(600)
+        except Exception:
+            pass
         return handled
 
     def click_action(self, label: str) -> bool:
@@ -164,38 +190,46 @@ class Playtest:
             return 0
 
     # ---------- script ----------
-    def run(self, base_url: str):
+    def run(self, base_url: str, scenario: str = "聚集", investigator: str = "佐伊"):
         page = self.page
         print("== 大厅 ==")
-        page.goto(base_url)
+        page.goto(f"{base_url}/#/quick")
         page.wait_for_load_state("networkidle")
         self.settle(1200)
         self.shot("lobby")
 
-        # 选剧本：聚集（核心包第一幕）
-        page.locator(".col-scenario .list-item", has_text="聚集").first.click()
+        # 选剧本
+        page.locator(".col-scenario .list-item", has_text=scenario).first.click()
         self.settle(600)
-        # 选调查员：佐伊·萨马拉斯（展示敦威治新内容）
-        page.locator(".investigator-item", has_text="佐伊").first.click()
+        # 选调查员
+        page.locator(".investigator-item", has_text=investigator).first.click()
         self.settle(1200)  # 等调查员详情加载
-        self.shot("select_zoey")
+        self.shot("select_investigator")
 
         # 开始游戏
         page.locator("button.btn-primary", has_text="开始游戏").click()
         print("== 游戏开始，等待状态 ==")
         page.wait_for_selector(".game-view", timeout=15000)
         self.settle(2500)
+        # 开局调度：显式等待并保留手牌（弹窗出现时机有竞争，dismiss 可能漏掉）
+        try:
+            keep = page.locator("button", has_text="保留手牌").first
+            keep.wait_for(state="visible", timeout=8000)
+            keep.click()
+            self.settle(1000)
+        except Exception:
+            pass
         self.dismiss_overlays()
         self.shot("game_start")
 
         # ---- 回合 1 ----
         print("== 回合 1：备战 ==")
-        for weapon in ("弯刀", "大砍刀", "自动手枪", "警棍"):
+        for weapon in ("弯刀", "大砍刀", "自动手枪", "警棍", "柯尔特", "弯刀", "铁铲", "指虎"):
             if self.play_card_by_name(weapon):
                 print(f"  ⚔️ 装备武器: {weapon}")
                 break
         self.shot("weapon")
-        self.play_card_by_name("佐伊的十字架") or self.play_first_asset()
+        self.play_first_asset()
         self.shot("asset")
         self.move_to_connected()
         self.shot("moved")
@@ -247,6 +281,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8910)
     ap.add_argument("--out", default="/tmp/arkham_playtest")
+    ap.add_argument("--scenario", default="聚集")
+    ap.add_argument("--investigator", default="佐伊")
     args = ap.parse_args()
 
     out = Path(args.out)
@@ -264,7 +300,7 @@ def main():
         page.on("pageerror", lambda e: print(f"  🔥 PAGE ERROR: {e}"))
         page.on("console", lambda m: print(f"  🖥️ console.{m.type}: {m.text[:200]}") if m.type in ("error", "warning") else None)
         try:
-            Playtest(page, out).run(f"http://localhost:{args.port}")
+            Playtest(page, out).run(f"http://localhost:{args.port}", scenario=args.scenario, investigator=args.investigator)
         finally:
             ctx.close()  # 触发视频落盘
             browser.close()

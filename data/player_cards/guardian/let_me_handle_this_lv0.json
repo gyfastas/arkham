@@ -1,0 +1,24 @@
+{
+  "id": "let_me_handle_this_lv0",
+  "arkhamdb_code": "03022",
+  "name": "\"Let me handle this!\"",
+  "name_cn": "\"放著我来！\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play after another investigator draws a non-peril encounter card, but before resolving that card's effects.\nYou are considered to have drawn that encounter card, instead. You get +2 to each of your skills while resolving that card's revelation effect.",
+  "text_cn": "快速。另一位调查员抽取了1张非祸害遭遇卡后，结算该卡牌效果前打出。\n改为你被视为抽取了该遭遇卡。结算该卡牌的显现效果时，你每项技能+2。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -1,11 +1,18 @@
 """The Necronomicon: John Dee Translation — Neutral Asset (Signature Weakness).
 揭示：放入威胁区域，上面放3个恐惧。有恐惧时不能离场。
-[行动]：将1个恐惧从死灵之书移到黛西身上。若无恐惧则弃掉。
-（官方：该启动能力消耗1个行动，不是自由行动）
+你揭示的每个[elder_sign]标记都视为[auto_fail]标记。
+[行动]：将1个恐惧从死灵之书移到黛西·沃克身上。然后，若死灵之书上没有
+恐惧，弃掉它。
+
+实现说明：
+- elder_sign→auto_fail 经 CHAOS_TOKEN_RESOLVED 设置
+  ctx.extra["force_auto_fail"]（引擎 skill_test._st4 已支持）。注意剧本的
+  调查员专属 elder_sign 效果若监听同一事件且只检查标记类型，可能仍会
+  触发——剧本层需自行检查 force_auto_fail，特此注明。
 """
 
 from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, TimingPriority
+from backend.models.enums import ChaosTokenType, GameEvent, TimingPriority
 
 
 class TheNecronomicon(CardImplementation):
@@ -45,24 +52,26 @@ class TheNecronomicon(CardImplementation):
         inv.threat_area.append(inst_id)
 
     @on_event(
-        GameEvent.ACTION_PERFORMED,
-        priority=TimingPriority.AFTER,
+        GameEvent.CHAOS_TOKEN_RESOLVED,
+        priority=TimingPriority.WHEN,
     )
-    def move_horror(self, ctx):
-        """Free action: Move 1 horror from Necronomicon to the investigator.
-
-        In a full implementation, this would be an Activate action on the card.
-        When horror reaches 0, the Necronomicon can be discarded.
-        """
-        # This is a skeleton — actual activation requires UI interaction.
-        # The action would be triggered by a specific "ACTIVATE" action targeting
-        # this card's instance_id.
-        pass
+    def elder_sign_is_auto_fail(self, ctx):
+        """Treat each [elder_sign] you reveal as a [auto_fail] (while The
+        Necronomicon is in your threat area)."""
+        if ctx.chaos_token != ChaosTokenType.ELDER_SIGN:
+            return
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None:
+            return
+        for inst_id in inv.threat_area:
+            inst = ctx.game_state.get_card_instance(inst_id)
+            if inst is not None and inst.card_id == "the_necronomicon":
+                ctx.extra["force_auto_fail"] = True
+                return
 
     def activate(self, game_state, investigator_id):
-        """Activate ability: Move 1 horror to investigator.
-
-        Call this method when the player chooses to activate the Necronomicon.
+        """[action]: Move 1 horror from The Necronomicon to Daisy Walker.
+        Then, if The Necronomicon has no horror on it, discard it.
         """
         inv = game_state.get_investigator(investigator_id)
         if inv is None:
@@ -75,7 +84,7 @@ class TheNecronomicon(CardImplementation):
         ci.uses["horror"] -= 1
         inv.horror += 1
 
-        # If no horror left, it can now leave play (discard)
+        # Then, if no horror left, discard it
         if ci.uses["horror"] <= 0:
             if self.instance_id in inv.threat_area:
                 inv.threat_area.remove(self.instance_id)

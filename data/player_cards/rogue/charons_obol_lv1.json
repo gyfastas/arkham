@@ -1,0 +1,22 @@
+{
+  "id": "charons_obol_lv1",
+  "arkhamdb_code": "03308",
+  "name": "Charon's Obol",
+  "name_cn": "卡戎的银币",
+  "class": "rogue",
+  "type": "asset",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Exceptional.\nWhen earning experience during the resolution of a scenario, if you were not defeated during that scenario, you earn 2 additional experience. If you were defeated during that scenario, you are <b>killed</b>.",
+  "text_cn": "永久。卓越。\n在冒险结局中获得经验时，如果你该次冒险中没有被击败，你获得额外2点经验。如果你该次冒险中被击败，你<b>阵亡</b>。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "path_to_carcosa"
+}

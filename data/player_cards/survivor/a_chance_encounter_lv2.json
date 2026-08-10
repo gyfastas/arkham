@@ -1,0 +1,24 @@
+{
+  "id": "a_chance_encounter_lv2",
+  "arkhamdb_code": "03238",
+  "name": "A Chance Encounter",
+  "name_cn": "不期而遇",
+  "class": "survivor",
+  "type": "event",
+  "cost": -2,
+  "level": 2,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Choose an [[Ally]] asset with printed resource cost X in any player's discard pile. Put that asset into play under your control.",
+  "text_cn": "选择任意玩家弃牌堆中的一张打印资源费用为X的[[盟友]]支援。将该支援放置入场，置于你的控制之下。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

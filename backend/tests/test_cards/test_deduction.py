@@ -2,10 +2,10 @@
 
 import pytest
 from backend.cards.seeker.deduction_lv0 import Deduction
-from backend.engine.event_bus import EventBus
+from backend.engine.event_bus import EventBus, EventContext
 from backend.engine.skill_test import SkillTestEngine
 from backend.models.chaos import ChaosBag
-from backend.models.enums import Action, ChaosTokenType, Skill
+from backend.models.enums import Action, ChaosTokenType, GameEvent, Skill
 from backend.models.state import GameState, InvestigatorState, LocationState, ScenarioState
 from backend.tests.conftest import make_investigator_data, make_location_data, make_skill_data
 
@@ -46,15 +46,32 @@ def setup():
     return state, bus, bag, engine, inv, loc
 
 
+def _investigate_test(engine, state, bus, inv, loc, **kwargs):
+    """用原始检定引擎模拟调查行动：on_success 复制基础发现（同
+    actions._investigate：地点线索>0 时取1条并发出 CLUE_DISCOVERED）。"""
+    def on_success(_result):
+        if loc.clues > 0:
+            loc.clues -= 1
+            inv.clues += 1
+            bus.emit(EventContext(
+                game_state=state,
+                event=GameEvent.CLUE_DISCOVERED,
+                investigator_id=inv.investigator_id,
+                location_id=loc.location_id,
+                amount=1,
+            ))
+    kwargs.setdefault("on_success", on_success)
+    return engine.run_test(investigator_id="inv1", **kwargs)
+
+
 class TestDeduction:
     def test_provides_intellect_icon(self, setup):
         state, bus, bag, engine, inv, loc = setup
         bag.tokens = [ChaosTokenType.ZERO]
 
-        result = engine.run_test(
-            investigator_id="inv1",
-            skill_type=Skill.INTELLECT,
-            difficulty=4,
+        result = _investigate_test(
+            engine, state, bus, inv, loc,
+            skill_type=Skill.INTELLECT, difficulty=4,
             committed_card_ids=["deduction_lv0"],
         )
         # base 3 + 1 icon + 0 = 4 >= 4
@@ -62,10 +79,49 @@ class TestDeduction:
         assert result.committed_icons == 1
 
     def test_extra_clue_on_success(self, setup):
+        """调查成功：基础发现1条 + 推理额外1条，共2条。"""
         state, bus, bag, engine, inv, loc = setup
         bag.tokens = [ChaosTokenType.PLUS_1]
-        initial_clues = inv.clues
-        initial_loc_clues = loc.clues
+
+        result = _investigate_test(
+            engine, state, bus, inv, loc,
+            skill_type=Skill.INTELLECT, difficulty=2,
+            committed_card_ids=["deduction_lv0"],
+        )
+        assert result.success
+        assert inv.clues == 2
+        assert loc.clues == 1
+
+    def test_no_extra_clue_on_failure(self, setup):
+        state, bus, bag, engine, inv, loc = setup
+        bag.tokens = [ChaosTokenType.AUTO_FAIL]
+
+        _investigate_test(
+            engine, state, bus, inv, loc,
+            skill_type=Skill.INTELLECT, difficulty=2,
+            committed_card_ids=["deduction_lv0"],
+        )
+        assert inv.clues == 0
+        assert loc.clues == 3
+
+    def test_no_extra_clue_if_no_clues_left(self, setup):
+        """地点已无线索：无基础发现，推理也不发线索。"""
+        state, bus, bag, engine, inv, loc = setup
+        bag.tokens = [ChaosTokenType.PLUS_1]
+        loc.clues = 0
+
+        _investigate_test(
+            engine, state, bus, inv, loc,
+            skill_type=Skill.INTELLECT, difficulty=2,
+            committed_card_ids=["deduction_lv0"],
+        )
+        assert inv.clues == 0
+        assert loc.clues == 0
+
+    def test_no_extra_clue_when_not_investigating(self, setup):
+        """非调查的智力检定成功（无基础发现/CLUE_DISCOVERED）不发线索。"""
+        state, bus, bag, engine, inv, loc = setup
+        bag.tokens = [ChaosTokenType.PLUS_1]
 
         result = engine.run_test(
             investigator_id="inv1",
@@ -74,53 +130,22 @@ class TestDeduction:
             committed_card_ids=["deduction_lv0"],
         )
         assert result.success
-        # Deduction grants 1 extra clue (on top of whatever the investigate action gives)
-        assert inv.clues == initial_clues + 1
-        assert loc.clues == initial_loc_clues - 1
-
-    def test_no_extra_clue_on_failure(self, setup):
-        state, bus, bag, engine, inv, loc = setup
-        bag.tokens = [ChaosTokenType.AUTO_FAIL]
-        initial_clues = inv.clues
-        initial_loc_clues = loc.clues
-
-        engine.run_test(
-            investigator_id="inv1",
-            skill_type=Skill.INTELLECT,
-            difficulty=2,
-            committed_card_ids=["deduction_lv0"],
-        )
-        assert inv.clues == initial_clues
-        assert loc.clues == initial_loc_clues
-
-    def test_no_extra_clue_if_no_clues_left(self, setup):
-        state, bus, bag, engine, inv, loc = setup
-        bag.tokens = [ChaosTokenType.PLUS_1]
-        loc.clues = 0
-
-        engine.run_test(
-            investigator_id="inv1",
-            skill_type=Skill.INTELLECT,
-            difficulty=2,
-            committed_card_ids=["deduction_lv0"],
-        )
         assert inv.clues == 0
-        assert loc.clues == 0
+        assert loc.clues == 3
 
     def test_not_triggered_for_combat(self, setup):
         """Deduction only triggers on intellect tests."""
         state, bus, bag, engine, inv, loc = setup
         bag.tokens = [ChaosTokenType.PLUS_1]
-        initial_loc_clues = loc.clues
 
-        engine.run_test(
-            investigator_id="inv1",
-            skill_type=Skill.COMBAT,
-            difficulty=2,
+        _investigate_test(
+            engine, state, bus, inv, loc,
+            skill_type=Skill.COMBAT, difficulty=2,
             committed_card_ids=["deduction_lv0"],
         )
-        # No clue gained — wrong skill type
-        assert loc.clues == initial_loc_clues
+        # 战斗检定成功也只发基础发现的1条，推理不触发
+        assert inv.clues == 1
+        assert loc.clues == 2
 
 
 class TestDeductionInvestigateAction:

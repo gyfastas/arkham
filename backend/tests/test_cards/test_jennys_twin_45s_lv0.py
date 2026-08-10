@@ -97,3 +97,17 @@ class TestJennysTwin45s:
         # 3 combat vs 5 fight -> fails, no damage, no ammo spent
         assert enemy.damage == 0
         assert game.state.get_card_instance(gun_id).uses["ammo"] == 0
+
+    def test_ammo_spent_even_on_miss(self, game):
+        """卡面：花1弹药是攻击动作的费用——未命中同样消耗。"""
+        gun_id = _equip_guns(game)
+        enemy = _spawn_enemy(game)
+        game.chaos_bag.tokens = [ChaosTokenType.MINUS_1]  # 3+2-1=4 < 5 -> miss
+
+        game.action_resolver.perform_action(
+            "inv1", Action.FIGHT,
+            enemy_instance_id="enemy_1",
+            weapon_instance_id=gun_id,
+        )
+        assert enemy.damage == 0  # 未命中无伤害
+        assert game.state.get_card_instance(gun_id).uses["ammo"] == 3  # 弹药已扣

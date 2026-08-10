@@ -1,19 +1,23 @@
 """Inquiring Mind (Level 0) — Seeker Skill.
-在进行一次检定以躲避敌人或调查时打出。你获得+2本次技能类型。
+仅当你所在地点有线索时，才能投入技能检定。（3个狂野图标由数据提供。）
+
+简化说明：
+- 3 个狂野图标由 skill_icons 数据经技能卡提交流程自动结算，无需 handler；
+- "所在地点有线索才能投入"的限制由 can_commit() 表达，但引擎提交通道
+  （skill_test._st2_commit / 会话层投入校验）目前不调用它——需要引擎/会话
+  侧接线，已列入审计报告待主代理处理。
 """
 
-from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, Skill, TimingPriority
+from backend.cards.base import CardImplementation
 
 
 class InquiringMind(CardImplementation):
     card_id = "inquiring_mind_lv0"
 
-    @on_event(GameEvent.SKILL_VALUE_DETERMINED, priority=TimingPriority.WHEN)
-    def skill_bonus(self, ctx):
-        """提交到躲避(敏捷)或调查(智力)检定时：+2。"""
-        if "inquiring_mind_lv0" not in ctx.committed_cards:
-            return
-        if ctx.skill_type not in (Skill.AGILITY, Skill.INTELLECT):
-            return
-        ctx.modify_amount(2, "inquiring_mind_bonus")
+    def can_commit(self, game_state, investigator_id: str) -> bool:
+        """官方投入限制：仅当你所在地点有线索时可投入本卡。"""
+        inv = game_state.get_investigator(investigator_id)
+        if inv is None:
+            return False
+        location = game_state.get_location(inv.location_id)
+        return bool(location and location.clues > 0)

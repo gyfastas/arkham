@@ -1,5 +1,7 @@
 """Lucky! (Level 2) — Survivor Event.
-快速。当你即将检定失败时，技能值+2。如果你成功，返回运气好！到你的手中。
+Fast. Play when you would fail a skill test.
+Get +2 to your skill value for that test. Draw 1 card.
+（抽牌无论成败。）
 """
 
 from backend.cards.survivor.lucky_lv0 import Lucky
@@ -7,4 +9,4 @@ from backend.cards.survivor.lucky_lv0 import Lucky
 
 class LuckyLv2(Lucky):
     card_id = "lucky_lv2"
-    return_on_success = True
+    draw_a_card = True

@@ -1,0 +1,28 @@
+{
+  "id": "armor_of_ardennes_lv5",
+  "arkhamdb_code": "03305",
+  "name": "Armor of Ardennes",
+  "name_cn": "阿登护甲",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 5,
+  "traits": [
+    "item",
+    "armor",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "combat": 2
+  },
+  "slots": [
+    "body"
+  ],
+  "text": "[reaction] When damage is assigned to Armor of Ardennes, exhaust Armor of Ardennes: Cancel 1 of that damage.",
+  "text_cn": "[reaction]在分配伤害给阿登护甲时，消耗阿登护甲：取消该次伤害中的1点。",
+  "health": 4,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

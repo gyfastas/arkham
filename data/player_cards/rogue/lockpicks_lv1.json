@@ -1,5 +1,6 @@
 {
   "id": "lockpicks_lv1",
+  "arkhamdb_code": "03031",
   "name": "Lockpicks",
   "name_cn": "撬锁工具",
   "class": "rogue",
@@ -17,13 +18,13 @@
   "slots": [
     "hand"
   ],
-  "text": "Uses (3 supplies). Exhaust and spend 1 supply: Investigate. You may use your agility value instead of your intellect value for this investigation.",
-  "uses": {
-    "supply": 3
-  },
+  "text": "Uses (3 supplies). If Lockpicks has no supplies, discard it.\n[action] Exhaust Lockpicks: <b>Investigate.</b> Add your [agility] value to your skill value for this investigation. If you do not succeed by at least 2, remove 1 supply from Lockpicks.",
+  "text_cn": "使用(3补给)。如果撬锁工具上没有补给，将其丢弃。\n[action]消耗撬锁工具：<b>调查</b>。这次调查中将你的[agility]数值加入你的技能值。如果你没有成功并超过难度至少2点，移除撬锁工具上的1补给。",
   "health": null,
   "sanity": null,
-  "pack": "rcore",
   "unique": false,
-  "text_cn": "消耗撬锁工具：<b>调查</b>。你获得+3智力。如果这次检定失败，弃置撬锁工具。"
+  "pack": "path_to_carcosa",
+  "uses": {
+    "supplies": 3
+  }
 }

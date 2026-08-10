@@ -1,0 +1,24 @@
+{
+  "id": "eat_lead_lv2",
+  "arkhamdb_code": "03304",
+  "name": "\"Eat lead!\"",
+  "name_cn": "\"吃枪子吧！\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you activate the <b>Fight</b> ability on a [[Firearm]] asset.\nYou may spend X additional ammo tokens from that asset. When you reveal chaos tokens for this attack, reveal X additional chaos tokens. Choose one to resolve and ignore the rest.",
+  "text_cn": "快速。在你启动[[枪械]]支援卡上的<b>攻击</b>能力时打出。\n你可以花费该支援卡上的额外X子弹。本次攻击中，在你抽取混乱标记时，抽取额外X个混乱标记。选择其中一个结算并忽略其余标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -102,7 +102,7 @@ class TestEighteenDerringer:
         assert card.uses["ammo"] == 1  # Started with 2, used 1
 
     def test_refund_ammo_on_fail(self, game):
-        """On a failed attack, 1 ammo is returned."""
+        """On a failed attack, the spent ammo is returned (net cost 0)."""
         derringer_id = _equip_derringer(game)
         _spawn_enemy(game)
         game.chaos_bag.tokens = [ChaosTokenType.AUTO_FAIL]
@@ -116,9 +116,26 @@ class TestEighteenDerringer:
             weapon_instance_id=derringer_id,
         )
         card = game.state.get_card_instance(derringer_id)
-        # No ammo was spent (DAMAGE_DEALT doesn't fire on fail),
-        # but refund still fires → 2 + 1 = 3
-        assert card.uses["ammo"] == 3
+        # 发动时扣1弹药（2→1），失败返还1（1→2，不超过上限2）
+        assert card.uses["ammo"] == 2
+
+    def test_refund_ammo_capped_at_max(self, game):
+        """Refund never exceeds the ammo cap of 2."""
+        derringer_id = _equip_derringer(game)
+        _spawn_enemy(game)
+        game.chaos_bag.tokens = [ChaosTokenType.AUTO_FAIL, ChaosTokenType.AUTO_FAIL]
+
+        inv = game.state.get_investigator("inv1")
+        inv.actions_remaining = 3
+
+        for _ in range(2):
+            game.action_resolver.perform_action(
+                "inv1", Action.FIGHT,
+                enemy_instance_id="enemy_1",
+                weapon_instance_id=derringer_id,
+            )
+        card = game.state.get_card_instance(derringer_id)
+        assert card.uses["ammo"] == 2
 
     def test_no_bonus_without_ammo(self, game):
         derringer_id = _equip_derringer(game)

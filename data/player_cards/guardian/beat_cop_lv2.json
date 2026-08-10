@@ -17,10 +17,10 @@
   "slots": [
     "ally"
   ],
-  "text": "+1 combat. Exhaust and deal 1 damage to it: Deal 1 damage to an enemy.",
+  "text": "You get +1 [combat].\n[fast] Exhaust Beat Cop and deal 1 damage to it: Deal 1 damage to an enemy at your location.",
   "health": 3,
   "sanity": 2,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你获得+1战斗。\n<b>反应</b> - 弃置巡警：对一个在你地点的敌人造成2点伤害。"
+  "text_cn": "你获得+1[战斗]。\n<b>快速</b> - 横置巡警并对它造成1点伤害：对你所在地点的一名敌人造成1点伤害。"
 }

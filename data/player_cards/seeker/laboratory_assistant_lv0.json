@@ -2,7 +2,7 @@
   "id": "laboratory_assistant_lv0",
   "arkhamdb_code": "02020",
   "name": "Laboratory Assistant",
-  "name_cn": "實驗室助理",
+  "name_cn": "实验室助理",
   "class": "seeker",
   "type": "asset",
   "cost": 2,
@@ -19,7 +19,7 @@
     "ally"
   ],
   "text": "Your maximum hand size is increased by 2.\n[reaction] After Laboratory Assistant enters play: Draw 2 cards.",
-  "text_cn": "你手牌上限+2。\n[reaction]在實驗室助理入場後：抽取2張卡牌。",
+  "text_cn": "你的手牌上限+2。\n[反应]在实验室助理入场后：抽取2张卡牌。",
   "health": 1,
   "sanity": 2,
   "unique": false,

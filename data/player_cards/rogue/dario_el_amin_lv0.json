@@ -1,0 +1,26 @@
+{
+  "id": "dario_el_amin_lv0",
+  "arkhamdb_code": "03151",
+  "name": "Dario El-Amin",
+  "name_cn": "达里奥·埃尔阿明",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "ally",
+    "patron"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "While you have 10 or more resources, you get +1 [willpower] and +1 [intellect].\n[action] If there are no enemies at your location, exhaust Dario El-Amin: Gain 2 resources.",
+  "text_cn": "如果你有10点或以上资源，你获得+1[willpower]和+1[intellect]。\n[action]如果你所在地点没有敌人，消耗达里奥·埃尔阿明：获得2资源。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "path_to_carcosa"
+}

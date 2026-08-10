@@ -14,10 +14,10 @@
     "intellect": 1
   },
   "slots": [],
-  "text": "Exhaust Burglary: Investigate. If you succeed, instead of discovering clues, gain 3 resources.",
+  "text": "[action] Exhaust Burglary: Investigate. If you succeed, instead of discovering clues, gain 3 resources.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>调查</b>。使用敏捷代替智力。如果你成功，获得3资源而不是发现线索。"
+  "text_cn": "<b>行动</b> - 消耗夜盗：<b>调查</b>。如果你成功，获得3资源而不是发现线索。"
 }

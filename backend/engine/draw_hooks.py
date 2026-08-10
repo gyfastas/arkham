@@ -30,12 +30,13 @@ def emit_card_drawn(
     card_registry: "CardRegistry | None",
     inv: "InvestigatorState",
     card_id: str,
+    chaos_bag=None,
 ) -> None:
     """Emit CARD_DRAWN with the drawn card's implementation activated."""
     temp_instance_id: str | None = None
     if card_registry and card_registry.get_implementation(card_id):
         temp_instance_id = game_state.next_instance_id()
-        card_registry.activate_card(card_id, temp_instance_id, bus)
+        card_registry.activate_card(card_id, temp_instance_id, bus, chaos_bag=chaos_bag)
 
     ctx = EventContext(
         game_state=game_state,

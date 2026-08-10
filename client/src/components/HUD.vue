@@ -1,10 +1,23 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { GameState } from '../state/types'
 import { useGameStore } from '../stores/game'
 import { localizeDisplayText } from '../utils/displayText'
+import { isMultiplayer, instanceName } from '../utils/multiplayer'
 
-defineProps<{ state: GameState }>()
+const props = defineProps<{ state: GameState }>()
 const store = useGameStore()
+
+// 多人联机：回合指示（单人局不显示，避免噪音）
+const isMulti = computed(() => isMultiplayer(props.state))
+const yourTurn = computed(() => props.state.your_turn !== false)
+const turnLabel = computed(() => {
+  if (yourTurn.value) return '你的回合'
+  const activeId = props.state.active_investigator_id
+  const raw = activeId ? instanceName(props.state, activeId) : ''
+  const name = raw ? localizeDisplayText(raw, store.language) : '其他玩家'
+  return `等待 ${name}`
+})
 
 const CLASS_COLORS: Record<string, string> = {
   guardian: '#2980b9',
@@ -34,6 +47,11 @@ const PHASE_LABELS_HANT: Record<string, string> = {
         class="inv-name"
         :style="{ color: CLASS_COLORS[state.investigator.class] || '#ccc' }"
       >{{ localizeDisplayText(state.investigator.name_cn, store.language) }}</span>
+      <span
+        v-if="isMulti"
+        class="turn-badge"
+        :class="{ mine: yourTurn, waiting: !yourTurn }"
+      >{{ turnLabel }}</span>
     </div>
     <div class="hud-stats">
       <div class="stat" title="生命">
@@ -90,6 +108,27 @@ const PHASE_LABELS_HANT: Record<string, string> = {
 .inv-name {
   font-weight: bold;
   font-size: 16px;
+}
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.turn-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+.turn-badge.mine {
+  background: #c0a060;
+  color: #0a0a1a;
+}
+.turn-badge.waiting {
+  background: transparent;
+  border-color: #555566;
+  color: #999;
 }
 .hud-stats {
   display: flex;

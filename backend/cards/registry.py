@@ -25,12 +25,18 @@ class CardRegistry:
     def get_implementation(self, card_id: str) -> type[CardImplementation] | None:
         return self._implementations.get(card_id)
 
-    def activate_card(self, card_id: str, instance_id: str, bus: EventBus) -> CardImplementation | None:
+    def activate_card(self, card_id: str, instance_id: str, bus: EventBus,
+                      chaos_bag=None) -> CardImplementation | None:
         impl_class = self._implementations.get(card_id)
         if impl_class is None:
             return None
         impl = impl_class(instance_id)
         impl.register(bus, instance_id)
+        # Cards that peek at the chaos bag (Rex's Curse, Final Rhapsody, ...)
+        # get it injected here so the effect works in production, not only in
+        # tests that call bind_chaos_bag by hand.
+        if chaos_bag is not None and hasattr(impl, "bind_chaos_bag"):
+            impl.bind_chaos_bag(chaos_bag)
         self._active_cards[instance_id] = impl
         return impl
 

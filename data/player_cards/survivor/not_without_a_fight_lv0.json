@@ -1,0 +1,25 @@
+{
+  "id": "not_without_a_fight_lv0",
+  "arkhamdb_code": "03272",
+  "name": "\"Not without a fight!\"",
+  "name_cn": "\"放马过来！\"",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Commit to a skill test only if you are engaged with an enemy.\nFor each enemy engaged with you, \"Not without a fight!\" gains [willpower] [combat] [agility].",
+  "text_cn": "你与敌人交战时才可投入技能检定。\n你每与一个敌人交战，\"放马过来！\"获得[willpower][combat][agility]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

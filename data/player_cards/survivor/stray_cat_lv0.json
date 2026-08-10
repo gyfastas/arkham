@@ -16,10 +16,11 @@
   "slots": [
     "ally"
   ],
-  "text": "Discard Stray Cat: Automatically evade a non-Elite enemy engaged with you.",
+  "text": "[fast] Discard Stray Cat: Automatically evade a non-[[Elite]] enemy at your location.",
   "health": 1,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "<b>快速</b>。弃置野猫：自动成功躲避一个与你交战的非精英敌人。"
+  "text_cn": "<b>快速</b>。弃置野猫：自动躲避你所在地点的一个非精英敌人。",
+  "fast": true
 }

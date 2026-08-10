@@ -1,5 +1,6 @@
 {
   "id": "first_aid_lv3",
+  "arkhamdb_code": "03230",
   "name": "First Aid",
   "name_cn": "急救",
   "class": "guardian",
@@ -14,10 +15,13 @@
     "willpower": 2
   },
   "slots": [],
-  "text": "Uses (4 supplies). Spend 1 supply: Heal 1 damage and 1 horror.",
+  "text": "Uses (4 supplies). If First Aid has no supplies, discard it.\n[action] Spend 1 supply: Heal 1 damage and 1 horror from an investigator or [[Ally]] asset in your location.",
+  "text_cn": "使用(4补给)。如果急救没有补给，将其丢弃。\n[action]花费1补给：治愈你所在地点一位调查员或一张[[盟友]]支援卡的1点伤害和1点恐惧。",
   "health": null,
   "sanity": null,
-  "pack": "rcore",
   "unique": false,
-  "text_cn": "消耗急救并花费1资源：治愈你所在地点的一名调查员或盟友3点伤害。"
+  "pack": "path_to_carcosa",
+  "uses": {
+    "supplies": 4
+  }
 }

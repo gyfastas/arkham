@@ -13,7 +13,7 @@
     "intellect": 1,
     "agility": 1
   },
-  "text": "Fast. Disengage from each enemy engaged with you and move to a revealed location with no enemies.",
+  "text": "Fast. Play only during your turn.\nDisengage from each enemy engaged with you and move to a revealed location with no enemies.",
   "keywords": [
     "fast"
   ],
@@ -21,5 +21,5 @@
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。与所有敌人脱离交战，移动到一个没有敌人的已揭示地点。"
+  "text_cn": "<b>快速</b>。仅在你的回合中打出。与每个与你交战的敌人脱离交战，移动到一个没有敌人的已揭示地点。"
 }

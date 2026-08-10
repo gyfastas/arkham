@@ -1,0 +1,23 @@
+{
+  "id": "uncage_the_soul_lv0",
+  "arkhamdb_code": "03033",
+  "name": "Uncage the Soul",
+  "name_cn": "解锢灵魂",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Play a [[Spell]] or [[Ritual]] card from your hand, reducing its resource cost by 3.",
+  "text_cn": "打出你手牌中一张[[法术]]或[[仪式]]，其资源费用降低3点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

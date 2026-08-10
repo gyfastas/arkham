@@ -1,0 +1,123 @@
+{
+  "id": "echoes_of_the_past",
+  "name": "Echoes of the Past",
+  "name_cn": "往事回声",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 3,
+  "encounter_sets": [
+    "echoes_of_the_past",
+    "cult_of_the_yellow_sign",
+    "delusions",
+    "arkham",
+    "locked_doors",
+    "pentagram"
+  ],
+  "scenario_set": "echoes_of_the_past",
+  "start_location": "entry_hall",
+  "initial_locations": [
+    "entry_hall",
+    "quiet_halls_a",
+    "quiet_halls_b",
+    "historical_society_a",
+    "historical_society_b",
+    "historical_society_c",
+    "historical_society_d",
+    "historical_society_e",
+    "historical_society_f",
+    "historical_society_g",
+    "historical_society_h",
+    "historical_society_i"
+  ],
+  "set_aside": [
+    "hidden_library",
+    "possessed_oathspeaker",
+    "mr_peabody",
+    "the_tattered_cloak",
+    "clasp_of_black_onyx"
+  ],
+  "connections": {
+    "entry_hall": [
+      "quiet_halls_a",
+      "historical_society_a",
+      "historical_society_b",
+      "historical_society_c"
+    ],
+    "quiet_halls_a": [
+      "entry_hall",
+      "quiet_halls_b",
+      "historical_society_d",
+      "historical_society_e",
+      "historical_society_f"
+    ],
+    "quiet_halls_b": [
+      "quiet_halls_a",
+      "historical_society_g",
+      "historical_society_h",
+      "historical_society_i"
+    ],
+    "historical_society_a": [
+      "entry_hall"
+    ],
+    "historical_society_b": [
+      "entry_hall"
+    ],
+    "historical_society_c": [
+      "entry_hall",
+      "historical_society_d"
+    ],
+    "historical_society_d": [
+      "quiet_halls_a",
+      "historical_society_c"
+    ],
+    "historical_society_e": [
+      "quiet_halls_a",
+      "historical_society_g"
+    ],
+    "historical_society_f": [
+      "quiet_halls_a"
+    ],
+    "historical_society_g": [
+      "quiet_halls_b",
+      "historical_society_e"
+    ],
+    "historical_society_h": [
+      "quiet_halls_b"
+    ],
+    "historical_society_i": [
+      "quiet_halls_b"
+    ],
+    "hidden_library": []
+  },
+  "act_deck": [
+    "race_for_answers",
+    "mistakes_of_the_past",
+    "the_oath"
+  ],
+  "agenda_deck": [
+    "the_truth_is_hidden",
+    "ransacking_the_manor",
+    "secrets_better_left_hidden"
+  ],
+  "locations": [
+    "entry_hall",
+    "historical_society_a",
+    "historical_society_b",
+    "historical_society_c",
+    "quiet_halls_a",
+    "historical_society_d",
+    "historical_society_e",
+    "historical_society_f",
+    "quiet_halls_b",
+    "historical_society_g",
+    "historical_society_h",
+    "historical_society_i",
+    "hidden_library"
+  ],
+  "story_assets": [
+    "mr_peabody",
+    "clasp_of_black_onyx",
+    "the_tattered_cloak"
+  ],
+  "setup_notes": "setup 时从一层（a/b/c）、二层（d/e/f）、三层（g/h/i）历史协会地点中各随机移除1张（不看背面），其余6张与入口大厅、两张宁静走廊放入场内，调查员从入口大厅开始。arkham 组只取5张诡计卡（2张虚假线索、3张猎影），不取地点/幕/密谋卡（引擎按类型过滤后自动满足）。按人数在三楼（4人时二/三楼）历史协会地点生成卡尔克萨探求者：2人1只、3人2只、4人3只。若战役日志 VIPs Interviewed 含 Sebastien Moreau：入口大厅放1/调查员线索；若记录 fled_dinner_party：每调查员首回合多1行动。入口大厅连接所有一层地点、宁静走廊连接本层其他地点（卡面文字，与图标一致）；第三幕 the_oath 生效时所有 Passageway 地点互通（a/e/g/h 及移动的敌人眼中的 hidden_library）。hidden_library 无地点图标、无印刷连接（Victory 2），由第二幕 mistakes_of_the_past 推进时入场。"
+}

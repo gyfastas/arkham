@@ -205,6 +205,10 @@ async def on_setup_game(sid: str, data: dict):
     difficulty = data.get("difficulty", "standard")
 
     try:
+        if not room.can_start():
+            # 多人局：等待其他玩家准备（已记录该玩家的座位/牌组/准备状态）
+            await sio.emit("room_update", room.to_dict(), room=room.room_id)
+            return
         result = room.start_game(
             scenario_id=scenario_id,
             difficulty=difficulty,
@@ -222,24 +226,33 @@ async def on_setup_game(sid: str, data: dict):
     if campaign is not None:
         room.session.campaign = campaign
 
-    # Add player to session
-    player.investigator_ids = ["player"]
-    room.session.add_player(player)
+    # Add players to session (links player_id → investigator instance id)
+    for p in players.values():
+        if p.room_id == room.room_id:
+            room.session.add_player(p)
 
-    # Broadcast initial state to all players in room
+    # Broadcast initial state to all players in room (each gets their own view)
     try:
-        state = room.session.get_state_for_player(player.player_id)
+        await broadcast_states(room)
     except Exception as e:
         logger.exception("Failed to serialize state")
         await sio.emit(ServerEvent.ERROR.value, {"message": str(e), "code": "state_error"}, to=sid)
         return
 
-    await sio.emit(
-        ServerEvent.STATE_UPDATE.value,
-        {"state": state},
-        room=room.room_id,
-    )
-    logger.info("Game started in room %s", room.room_id)
+    logger.info("Game started in room %s (%d players)", room.room_id, len(room.players))
+
+
+async def broadcast_states(room, events: list | None = None) -> None:
+    """Send each room member their own filtered state (information hiding)."""
+    for pid in room.players:
+        p = next((x for x in players.values() if x.player_id == pid), None)
+        if p is None:
+            continue
+        state = room.session.get_state_for_player(pid)
+        payload = {"state": state}
+        if events is not None:
+            payload["events"] = events
+        await sio.emit(ServerEvent.STATE_UPDATE.value, payload, to=p.sid)
 
 
 @sio.on(ClientEvent.PLAYER_ACTION.value)
@@ -255,20 +268,24 @@ async def on_player_action(sid: str, data: dict):
         return
 
     result = room.session.handle_action(player.player_id, data)
-    state = room.session.get_state_for_player(player.player_id)
-    result["state"] = state
+    result["state"] = room.session.get_state_for_player(player.player_id)
 
     # Send result to acting player
     await sio.emit(ServerEvent.ACTION_RESULT.value, result, to=sid)
 
-    # Broadcast updated state to all other players in room
-    # (In Phase 4, each player gets their own filtered state)
-    await sio.emit(
-        ServerEvent.STATE_UPDATE.value,
-        {"state": state, "events": result.get("events", [])},
-        room=room.room_id,
-        skip_sid=sid,
-    )
+    # Broadcast updated state to all other players (each gets their own view)
+    for pid in room.players:
+        if pid == player.player_id:
+            continue
+        p = next((x for x in players.values() if x.player_id == pid), None)
+        if p is None:
+            continue
+        await sio.emit(
+            ServerEvent.STATE_UPDATE.value,
+            {"state": room.session.get_state_for_player(pid),
+             "events": result.get("events", [])},
+            to=p.sid,
+        )
 
 
 @sio.on(ClientEvent.END_TURN.value)
@@ -284,16 +301,21 @@ async def on_end_turn(sid: str, data: dict = None):
         return
 
     result = room.session.handle_end_turn(player.player_id)
-    state = room.session.get_state_for_player(player.player_id)
-    result["state"] = state
+    result["state"] = room.session.get_state_for_player(player.player_id)
 
     await sio.emit(ServerEvent.ACTION_RESULT.value, result, to=sid)
-    await sio.emit(
-        ServerEvent.STATE_UPDATE.value,
-        {"state": state, "events": result.get("events", [])},
-        room=room.room_id,
-        skip_sid=sid,
-    )
+    for pid in room.players:
+        if pid == player.player_id:
+            continue
+        p = next((x for x in players.values() if x.player_id == pid), None)
+        if p is None:
+            continue
+        await sio.emit(
+            ServerEvent.STATE_UPDATE.value,
+            {"state": room.session.get_state_for_player(pid),
+             "events": result.get("events", [])},
+            to=p.sid,
+        )
 
 
 @sio.on(ClientEvent.RESOLVE_CHOICE.value)
@@ -344,7 +366,10 @@ async def on_campaign_upgrade(sid: str, data: dict):
     g = Game("upgrade_check")
     _load_player_cards(g)
 
-    ok, msg, cost = camp.apply_deck_change(new_deck, g.state.card_database)
+    ok, msg, cost = camp.apply_deck_change(
+        new_deck, g.state.card_database,
+        deck_size=_campaign_deck_size(camp),
+    )
     if not ok:
         await sio.emit(ServerEvent.ERROR.value, {"message": msg, "code": "xp_insufficient"}, to=sid)
         return
@@ -353,6 +378,15 @@ async def on_campaign_upgrade(sid: str, data: dict):
     result["upgrade_message"] = msg
     result["upgrade_cost"] = cost
     await sio.emit("campaign_state", result, to=sid)
+
+
+def _campaign_deck_size(camp) -> int:
+    """Official deck size for the campaign investigator (Sefina 33 / Lola 35)."""
+    from server.game_session import _load_investigator_json
+    inv_json = _load_investigator_json(camp.investigator_id)
+    if inv_json and inv_json.get("deck_requirements"):
+        return int(inv_json["deck_requirements"].get("size") or 30)
+    return 30
 
 
 @sio.on(ClientEvent.CAMPAIGN_NEW.value)
@@ -374,8 +408,14 @@ async def on_campaign_new(sid: str, data: dict):
         return
     if difficulty not in ("easy", "standard", "hard", "expert"):
         difficulty = "standard"
-    if len(deck) != 30:
-        await sio.emit(ServerEvent.ERROR.value, {"message": "战役开局牌组必须为 30 张", "code": "bad_deck"}, to=sid)
+    # 官方牌组张数：多数 30，Sefina 33、Lola 35
+    from server.game_session import _load_investigator_json
+    expected_size = 30
+    _inv_json = _load_investigator_json(investigator_id)
+    if _inv_json and _inv_json.get("deck_requirements"):
+        expected_size = int(_inv_json["deck_requirements"].get("size") or 30)
+    if len(deck) != expected_size:
+        await sio.emit(ServerEvent.ERROR.value, {"message": f"战役开局牌组必须为 {expected_size} 张", "code": "bad_deck"}, to=sid)
         return
 
     camp = new_campaign(campaign_id, investigator_id, difficulty, deck)
@@ -445,14 +485,20 @@ async def on_chaos_bag_info(sid: str, data: dict = None):
     info["campaign_name_cn"] = (
         (data_all.get("campaigns", {}).get(campaign) or {}).get("name_cn", campaign)
     )
-    # Symbol effect text (Standard side) from the encounter DB scenario cards
+    # Symbol effect text from the encounter DB scenario cards; the reference
+    # card side matches the requested difficulty (front=easy/standard,
+    # back=hard/expert).
     try:
         from backend.scenarios.official_core import load_encounter_db_for_campaign
         db = load_encounter_db_for_campaign(campaign)
+        hard = difficulty in ("hard", "expert")
         texts = {}
         for card in db.values():
             if card.get("type") == "scenario":
-                texts[card.get("encounter_code") or card["id"]] = card.get("text_cn") or card.get("text") or ""
+                if hard and card.get("back_text"):
+                    texts[card.get("encounter_code") or card["id"]] = card["back_text"]
+                else:
+                    texts[card.get("encounter_code") or card["id"]] = card.get("text_cn") or card.get("text") or ""
         info["symbol_texts"] = texts
     except Exception:
         info["symbol_texts"] = {}
@@ -479,6 +525,9 @@ def create_app() -> web.Application:
         # Exact route for "/" must be registered before the static prefix,
         # otherwise aiohttp shows a directory listing instead of the app.
         app.router.add_get("/", index)
+        # SPA 前端路由回退：/quick /campaign /game /gameover 等都返回 index.html
+        for spa_route in ("/quick", "/campaign", "/game", "/gameover", "/lobby"):
+            app.router.add_get(spa_route, index)
         app.router.add_static("/", client_dist, show_index=False)
 
     return app

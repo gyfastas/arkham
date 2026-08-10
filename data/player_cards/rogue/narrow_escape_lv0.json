@@ -1,0 +1,23 @@
+{
+  "id": "narrow_escape_lv0",
+  "arkhamdb_code": "03267",
+  "name": "Narrow Escape",
+  "name_cn": "侥幸逃脱",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Play when an enemy makes an attack of opportunity against you.\nCancel that attack. You get +2 skill value for the next skill test you perform this turn.",
+  "text_cn": "快速。在敌人对你进行趁乱攻击时打出。\n取消该次攻击。本回合中你下一次技能检定+2技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

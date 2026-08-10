@@ -1,0 +1,24 @@
+{
+  "id": "pickpocketing_lv2",
+  "arkhamdb_code": "03195",
+  "name": "Pickpocketing",
+  "name_cn": "扒窃",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "talent",
+    "illicit"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast.\n[reaction] After you evade an enemy, exhaust Pickpocketing: Draw 1 card or gain 1 resource. If you succeeded by 2 or more, do both instead.",
+  "text_cn": "快速。\n[reaction]在你躲避一名敌人后，消耗扒窃：抽取1张卡牌或获得1资源。如果你成功并超过难度2点或以上，改为执行以上两项。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

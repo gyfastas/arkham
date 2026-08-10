@@ -1,0 +1,40 @@
+{
+  "investigator_id": "minh_thi_phan",
+  "presets": [
+    {
+      "name": "潘明（入门）",
+      "cards": [
+        "archaic_glyphs_lv0",
+        "archaic_glyphs_lv0",
+        "cherished_keepsake_lv0",
+        "cherished_keepsake_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "magnifying_glass_lv1",
+        "magnifying_glass_lv1",
+        "fire_axe_lv0",
+        "fire_axe_lv0",
+        "knife_lv0",
+        "knife_lv0",
+        "magnifying_glass_lv0",
+        "magnifying_glass_lv0",
+        "newspaper_lv2",
+        "newspaper_lv2",
+        "plucky_lv1",
+        "plucky_lv1",
+        "rabbits_foot_lv0",
+        "rabbits_foot_lv0",
+        "scavenging_lv0",
+        "scavenging_lv0",
+        "scientific_theory_lv1",
+        "scientific_theory_lv1",
+        "strange_solution_lv0",
+        "strange_solution_lv0",
+        "stray_cat_lv0",
+        "stray_cat_lv0",
+        "archaic_glyphs_guiding_stones_lv3",
+        "archaic_glyphs_guiding_stones_lv3"
+      ]
+    }
+  ]
+}

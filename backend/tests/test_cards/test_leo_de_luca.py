@@ -68,7 +68,7 @@ class TestLeoDeLuca:
 
         ctx = EventContext(
             game_state=state,
-            event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+            event=GameEvent.INVESTIGATOR_TURN_BEGINS,
             investigator_id="inv1",
             extra={},
         )
@@ -83,7 +83,7 @@ class TestLeoDeLuca:
 
         ctx = EventContext(
             game_state=state,
-            event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+            event=GameEvent.INVESTIGATOR_TURN_BEGINS,
             investigator_id="inv1",
             extra={},
         )
@@ -97,7 +97,7 @@ class TestLeoDeLuca:
 
         ctx = EventContext(
             game_state=state,
-            event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+            event=GameEvent.INVESTIGATOR_TURN_BEGINS,
             investigator_id="inv1",
             extra={},
         )

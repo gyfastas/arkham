@@ -1,0 +1,24 @@
+{
+  "id": "on_the_hunt_lv0",
+  "arkhamdb_code": "03263",
+  "name": "On the Hunt",
+  "name_cn": "追猎行动",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would draw an encounter card during the mythos phase.\nInstead, search the top 9 cards of the encounter deck for an enemy, spawn it engaged with you <i>(instead of its normal spawn location)</i>, and shuffle the encounter deck. If you cannot, draw the top card of the encounter deck.",
+  "text_cn": "快速。在神话阶段你将要抽取一张遭遇卡时打出。\n改为在遭遇牌堆顶上的9张卡牌中查找一个敌人，生成该敌人并与它交战<i>(代替原有的生成地点)</i>，并混洗遭遇牌堆。如果你不能这么做，抽取遭遇牌堆顶上的1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

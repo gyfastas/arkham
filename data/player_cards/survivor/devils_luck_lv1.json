@@ -1,0 +1,23 @@
+{
+  "id": "devils_luck_lv1",
+  "arkhamdb_code": "03157",
+  "name": "Devil's Luck",
+  "name_cn": "吉人天相",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you are dealt damage and/or horror.\nCancel up to 10 damage and/or horror just dealt to you. Exile Devil's Luck.",
+  "text_cn": "快速。在你受到伤害和/或恐惧时打出。\n取消最多10点你刚才受到的伤害和/或恐惧。放逐吉人天相。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

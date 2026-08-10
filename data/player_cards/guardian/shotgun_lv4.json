@@ -18,10 +18,10 @@
     "hand",
     "hand"
   ],
-  "text": "Uses (2 ammo). Fight. +3 combat. Damage = points succeeded by (min 1, max 5).",
+  "text": "Uses (2 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +3 [combat] for this attack. Instead of its standard damage, this attack deals 1 damage for each point you succeed by (to a minimum of 1, to a maximum of 5). If you fail and would damage another investigator, this attack deals 1 damage for each point you fail by (to a minimum of 1, to a maximum of 5).",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "使用(2弹药)。消耗霰弹枪并花费1弹药：<b>攻击</b>。本次攻击造成+2伤害。如果你成功且超过难度2点以上，本次攻击造成额外+1伤害。"
+  "text_cn": "使用(2弹药)。\n[行动]花费1弹药：<b>攻击</b>。本次攻击你获得+3[战斗]。本次攻击不造成标准伤害，改为造成等同于你成功超出点数的伤害（最少1点，最多5点）。如果你失败且将误伤另一位调查员，本次攻击改为造成等同于你失败点数的伤害（最少1点，最多5点）。"
 }

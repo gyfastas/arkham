@@ -1,0 +1,24 @@
+{
+  "id": "graveyard_ghouls_lv0",
+  "arkhamdb_code": "03017",
+  "name": "Graveyard Ghouls",
+  "name_cn": "墓地食尸鬼",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "humanoid",
+    "monster",
+    "ghoul"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Prey</b> - William Yorick only.\nHunter.\nWhile Graveyard Ghouls is engaged with you, cards cannot leave your discard pile.",
+  "text_cn": "<b>猎物</b> - 仅限威廉·约里克。\n猎手。\n墓地食尸鬼与你交战时，你弃牌堆中的卡牌不能离开弃牌堆。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "weakness"
+}

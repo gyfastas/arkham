@@ -80,6 +80,16 @@ class EnemyPhase:
                 dest = self.game_state.get_location(first_hop)
                 if dest is None:
                     continue
+                # Barricade: non-Elite enemies cannot move into a barricaded
+                # location (they stay put).
+                if first_hop in self.game_state.scenario.vars.get("barricaded_locations", []) \
+                        and "elite" not in (enemy_data.keywords or []):
+                    self._emit(
+                        GameEvent.ENEMY_MOVE_BLOCKED,
+                        enemy_id=enemy_iid,
+                        location_id=first_hop,
+                    )
+                    continue
                 loc.enemies.remove(enemy_iid)
                 investigators_at_dest = self.game_state.get_investigators_at_location(first_hop)
                 if investigators_at_dest:

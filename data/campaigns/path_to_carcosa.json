@@ -1,0 +1,25 @@
+{
+  "id": "path_to_carcosa",
+  "name": "The Path to Carcosa",
+  "name_cn": "卡尔克萨之路",
+  "type": "official",
+  "scenarios": [
+    "curtain_call",
+    "the_last_king",
+    "echoes_of_the_past",
+    "the_unspeakable_oath",
+    "a_phantom_of_truth",
+    "the_pallid_mask",
+    "black_stars_rise",
+    "dim_carcosa"
+  ],
+  "investigators": [
+    "mark_harrigan",
+    "minh_thi_phan",
+    "sefina_rousseau",
+    "akachi_onyele",
+    "william_yorick",
+    "lola_hayes"
+  ],
+  "notes": "Curtain Call 与 The Last King 为第1章二选一（先玩哪个都行）。战役机制：Doubt/Conviction 轨道、Chasing the Stranger 计数。"
+}

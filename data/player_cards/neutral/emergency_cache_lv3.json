@@ -1,0 +1,21 @@
+{
+  "id": "emergency_cache_lv3",
+  "arkhamdb_code": "03239",
+  "name": "Emergency Cache",
+  "name_cn": "应急物品",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "supply"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Gain 4 resources or place 4 supply tokens among assets controlled by investigators at your location, or any combination thereof.",
+  "text_cn": "获得4资源，或者将4补给标记分配给你所在地点的调查员控制的支援卡，或者以任意形式组合，分配的补给标记总数为4。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

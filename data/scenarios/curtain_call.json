@@ -1,0 +1,100 @@
+{
+  "id": "curtain_call",
+  "name": "Curtain Call",
+  "name_cn": "谢幕",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 1,
+  "encounter_sets": [
+    "curtain_call",
+    "evil_portents",
+    "delusions",
+    "hauntings",
+    "cult_of_the_yellow_sign",
+    "striking_fear",
+    "rats"
+  ],
+  "scenario_set": "curtain_call",
+  "start_location": "theatre",
+  "initial_locations": [
+    "theatre",
+    "lobby",
+    "balcony",
+    "backstage"
+  ],
+  "set_aside": [
+    "the_man_in_the_pallid_mask",
+    "royal_emissary",
+    "lighting_box",
+    "box_office",
+    "green_room",
+    "dressing_room",
+    "rehearsal_room",
+    "trap_room"
+  ],
+  "connections": {
+    "theatre": [
+      "lobby",
+      "balcony",
+      "backstage"
+    ],
+    "lobby": [
+      "theatre",
+      "balcony",
+      "lighting_box",
+      "box_office",
+      "green_room"
+    ],
+    "balcony": [
+      "theatre",
+      "lobby"
+    ],
+    "backstage": [
+      "theatre",
+      "dressing_room",
+      "rehearsal_room",
+      "trap_room"
+    ],
+    "lighting_box": [
+      "lobby"
+    ],
+    "box_office": [
+      "lobby"
+    ],
+    "green_room": [
+      "lobby"
+    ],
+    "dressing_room": [
+      "backstage"
+    ],
+    "rehearsal_room": [
+      "backstage"
+    ],
+    "trap_room": [
+      "backstage"
+    ]
+  },
+  "act_deck": [
+    "awakening",
+    "the_stranger_a",
+    "curtain_call_b"
+  ],
+  "agenda_deck": [
+    "the_third_act",
+    "encore"
+  ],
+  "locations": [
+    "theatre",
+    "lobby",
+    "balcony",
+    "backstage",
+    "lighting_box",
+    "box_office",
+    "green_room",
+    "dressing_room",
+    "rehearsal_room",
+    "trap_room"
+  ],
+  "story_assets": [],
+  "setup_notes": "门厅/后台各揭示时随机放2张对应 doorway 地点（门厅：灯光室/售票处/绿房间；后台：化妆间/排练室/陷阱房）。苍白面具男子弱点加入领队牌库。"
+}

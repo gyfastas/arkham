@@ -54,7 +54,7 @@ class TestDaisyWalker:
         assert inv.card_data.skills.combat == 2
 
     def test_tome_action_bonus(self, game):
-        """Daisy gets +1 action at investigation phase start."""
+        """Daisy gets 1 tome-only extra action; regular actions stay at 3."""
         inv = game.state.get_investigator("daisy")
         inv.actions_remaining = 3
 
@@ -70,7 +70,75 @@ class TestDaisyWalker:
         )
         game.event_bus.emit(ctx)
 
-        assert inv.actions_remaining == 4  # 3 + 1 tome action
+        assert inv.tome_actions_remaining == 1  # 1 tome-only action
+        assert inv.actions_remaining == 3  # regular actions unchanged
+
+    def test_elder_sign_draws_per_tome(self, game):
+        """Elder sign: +0; on success draw 1 card per Tome controlled."""
+        inv = game.state.get_investigator("daisy")
+        hand_before = len(inv.hand)
+
+        # Put a tome asset in play
+        tome_data = CardData(
+            id="old_book_of_lore_lv0", name="Old Book of Lore", name_cn="智慧古书",
+            type=CardType.ASSET, card_class=PlayerClass.SEEKER, cost=3,
+            slots=[SlotType.HAND], traits=["item", "tome"],
+        )
+        game.register_card_data(tome_data)
+        ci = CardInstance(
+            instance_id="tome_1", card_id="old_book_of_lore_lv0",
+            owner_id="daisy", controller_id="daisy",
+        )
+        game.state.cards_in_play["tome_1"] = ci
+        inv.play_area.append("tome_1")
+
+        daisy_impl = DaisyWalker("daisy_impl")
+        daisy_impl.register(game.event_bus, "daisy_impl")
+
+        # Elder sign resolved during a successful test
+        game.event_bus.emit(EventContext(
+            game_state=game.state,
+            event=GameEvent.CHAOS_TOKEN_RESOLVED,
+            investigator_id="daisy",
+            chaos_token=ChaosTokenType.ELDER_SIGN,
+            amount=0,
+        ))
+        game.event_bus.emit(EventContext(
+            game_state=game.state,
+            event=GameEvent.SKILL_TEST_SUCCESSFUL,
+            investigator_id="daisy",
+            success=True,
+        ))
+        assert len(inv.hand) == hand_before + 1  # 1 tome -> draw 1
+
+    def test_elder_sign_no_draw_on_failure(self, game):
+        """Elder sign on a failed test draws nothing."""
+        inv = game.state.get_investigator("daisy")
+        hand_before = len(inv.hand)
+
+        daisy_impl = DaisyWalker("daisy_impl")
+        daisy_impl.register(game.event_bus, "daisy_impl")
+
+        game.event_bus.emit(EventContext(
+            game_state=game.state,
+            event=GameEvent.CHAOS_TOKEN_RESOLVED,
+            investigator_id="daisy",
+            chaos_token=ChaosTokenType.ELDER_SIGN,
+            amount=0,
+        ))
+        game.event_bus.emit(EventContext(
+            game_state=game.state,
+            event=GameEvent.SKILL_TEST_FAILED,
+            investigator_id="daisy",
+            success=False,
+        ))
+        game.event_bus.emit(EventContext(
+            game_state=game.state,
+            event=GameEvent.SKILL_TEST_ENDS,
+            investigator_id="daisy",
+            success=False,
+        ))
+        assert len(inv.hand) == hand_before
 
 
 class TestDaisysToteBag:
@@ -213,6 +281,49 @@ class TestTheNecronomicon:
         assert result is True
         assert inv.horror == old_horror + 1
         assert ci.uses["horror"] == 2
+
+    def test_elder_sign_treated_as_auto_fail(self, game):
+        """死灵之书在威胁区域时，你揭示的[elder_sign]视为[auto_fail]。"""
+        necro_data = CardData(
+            id="the_necronomicon", name="The Necronomicon", name_cn="死灵之书",
+            type=CardType.ASSET, card_class=PlayerClass.NEUTRAL,
+            slots=[SlotType.HAND], traits=["item", "tome"],
+        )
+        game.register_card_data(necro_data)
+
+        inv = game.state.get_investigator("daisy")
+        inst_id = game.state.next_instance_id()
+        ci = CardInstance(
+            instance_id=inst_id, card_id="the_necronomicon",
+            owner_id="daisy", controller_id="daisy",
+        )
+        ci.uses = {"horror": 3}
+        game.state.cards_in_play[inst_id] = ci
+        inv.threat_area.append(inst_id)
+
+        necro_impl = TheNecronomicon(inst_id)
+        necro_impl.register(game.event_bus, inst_id)
+
+        ctx = EventContext(
+            game_state=game.state,
+            event=GameEvent.CHAOS_TOKEN_RESOLVED,
+            investigator_id="daisy",
+            chaos_token=ChaosTokenType.ELDER_SIGN,
+            amount=0,
+        )
+        game.event_bus.emit(ctx)
+        assert ctx.extra.get("force_auto_fail") is True
+
+        # 其他标记不转换
+        ctx2 = EventContext(
+            game_state=game.state,
+            event=GameEvent.CHAOS_TOKEN_RESOLVED,
+            investigator_id="daisy",
+            chaos_token=ChaosTokenType.SKULL,
+            amount=-2,
+        )
+        game.event_bus.emit(ctx2)
+        assert "force_auto_fail" not in ctx2.extra
 
     def test_discard_when_no_horror(self, game):
         """Necronomicon is discarded when last horror is moved off."""

@@ -1,16 +1,17 @@
-"""Shrivelling (Level 0) — Mystic Asset, Arcane slot.
-使用(4充能)。消耗皱缩术并花费1充能：攻击。本次攻击使用意志代替战斗。
-你获得+1战斗，本次攻击造成+1伤害。如果这次攻击揭示一个负面混沌标记，受到1点恐惧。
+"""Shrivelling (Level 0) — Mystic Asset, Arcane slot. (01060)
+使用(4充能)。[action]花费1充能：攻击。本次攻击使用[willpower]代替[combat]，
+并造成+1伤害。如果本次攻击中揭示了[skull]、[cultist]、[tablet]、[elder_thing]
+或[auto_fail]标记，受到1点恐惧。
 
 简化说明：
 - activate() 花费1充能并武装；随后由会话层发起战斗行动（weapon_instance_id
-  传本卡实例），检定时替换战斗为意志 +1。
-- "负面混沌标记"按骷髅/异教徒/石板/古老存在/自动失败处理。
+  传本卡实例），检定时以意志代替战斗（官方卡面无技能加值、无横置要求）。
+- +1伤害经 ctx.extra["bonus_damage"] 通道汇入战斗结算（与 vicious_blow 等一致）。
 """
 
 from backend.cards.base import CardImplementation, on_event
 from backend.models.enums import (
-    CHAOS_TOKEN_VALUES, ChaosTokenType, GameEvent, Skill, TimingPriority,
+    ChaosTokenType, GameEvent, Skill, TimingPriority,
 )
 
 _BAD_TOKENS = {
@@ -22,6 +23,12 @@ _BAD_TOKENS = {
 
 class Shrivelling(CardImplementation):
     card_id = "shrivelling_lv0"
+    activations = [{
+        "id": "fight",
+        "label": "花1充能：用意志攻击，+1伤害",
+        "method": "activate",
+        "actions": 1,
+    }]
 
     def __init__(self, instance_id: str = "") -> None:
         super().__init__(instance_id)
@@ -36,32 +43,34 @@ class Shrivelling(CardImplementation):
         if inst is None or inst.uses.get("charges", 0) <= 0:
             return False
         inst.uses["charges"] -= 1
-        inst.exhausted = True
         self._armed = True
         return True
 
+    def _is_this_attack(self, ctx) -> bool:
+        """仅当本次检定是以本卡发起的攻击（引擎经 ctx.source 传武器实例）。"""
+        return self._armed and ctx.source == self.instance_id
+
     @on_event(GameEvent.SKILL_VALUE_DETERMINED, priority=TimingPriority.WHEN)
     def substitute_willpower(self, ctx):
-        if not self._armed or ctx.skill_type != Skill.COMBAT:
-            return
-        if ctx.extra.get("weapon_instance_id") not in (None, self.instance_id):
+        if ctx.skill_type != Skill.COMBAT or not self._is_this_attack(ctx):
             return
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
             return
         base_val = inv.get_skill(ctx.skill_type)
         willpower = inv.get_skill(Skill.WILLPOWER)
-        ctx.modify_amount(willpower - base_val + 1, "shrivelling_substitute")
+        ctx.modify_amount(willpower - base_val, "shrivelling_substitute")
 
-    @on_event(GameEvent.DAMAGE_DEALT, priority=TimingPriority.WHEN)
+    @on_event(GameEvent.SKILL_TEST_SUCCESSFUL, priority=TimingPriority.WHEN)
     def bonus_damage(self, ctx):
-        if not self._armed:
+        """攻击成功：+1伤害（经 bonus_damage 通道汇入战斗结算）。"""
+        if not self._is_this_attack(ctx):
             return
-        ctx.modify_amount(1, "shrivelling_bonus_damage")
+        ctx.extra["bonus_damage"] = ctx.extra.get("bonus_damage", 0) + 1
 
     @on_event(GameEvent.CHAOS_TOKEN_RESOLVED, priority=TimingPriority.AFTER)
     def horror_on_bad_token(self, ctx):
-        if not self._armed or ctx.chaos_token not in _BAD_TOKENS:
+        if not self._is_this_attack(ctx) or ctx.chaos_token not in _BAD_TOKENS:
             return
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is not None:

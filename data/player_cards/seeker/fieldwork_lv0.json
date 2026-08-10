@@ -1,0 +1,23 @@
+{
+  "id": "fieldwork_lv0",
+  "arkhamdb_code": "03024",
+  "name": "Fieldwork",
+  "name_cn": "实地调查",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[reaction] After you move to a location, if that location has at least 1 clue on it, exhaust Fieldwork: You get +2 skill value for the next skill test you perform this phase.",
+  "text_cn": "[reaction]你移动到一个地点后，如果该地点至少有1个线索，消耗实地调查：本阶段中你下一次技能检定+2技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

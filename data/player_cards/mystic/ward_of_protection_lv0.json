@@ -14,10 +14,11 @@
     "wild": 1
   },
   "slots": [],
-  "text": "Fast. Cancel a treachery's revelation. Take 1 horror.",
+  "text": "Fast. Play when you draw a non-weakness treachery card.\nCancel that card's revelation effect. Then, take 1 horror.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你抽取一张非弱点诡计卡时打出。取消该卡的所有效果，弃置它。然后，受到1点恐惧。"
+  "fast": true,
+  "text_cn": "<b>快速</b>。在你抽取一张非弱点诡计卡时打出。取消该卡的揭示效果。然后，受到1点恐惧。"
 }

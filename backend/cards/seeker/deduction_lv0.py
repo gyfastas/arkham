@@ -1,11 +1,18 @@
 """Deduction (Level 0) — Seeker Skill.
-提交到智力检定时提供1个智力图标。如果该检定成功，额外发现1条线索。
+如果本次检定在调查地点时成功，在该地点额外发现1条线索。
 
-官方结算顺序：调查行动的基础发现先结算（ST.7），推理的额外线索在其后。
-此前实现挂在 SKILL_TEST_SUCCESSFUL（ST.6，先于基础结算），当地点只剩
-1条线索时推理会"抢走"基础线索——基础效果拿不到、CLUE_DISCOVERED 不
-触发（米兰博士等后续效应失效）。
-现改为：ST.6 打标记 → ST.8（SKILL_TEST_ENDS，基础结算之后）再取额外线索。
+官方结算顺序：调查行动的基础发现先结算（ST.7 发出 CLUE_DISCOVERED），
+推理的额外线索在其后（"additional"）。
+实现：ST.6（SKILL_TEST_SUCCESSFUL）打标记 → 基础发现的 CLUE_DISCOVERED
+（AFTER，确认这是调查行动且基础结算已完成）再取额外线索。
+说明：
+- 投入的技能卡实例在 ST.2 才被激活，收不到行动前的
+  INVESTIGATE_ACTION_INITIATED；因此"调查时"条件以基础发现的
+  CLUE_DISCOVERED 为准——非调查的智力检定（如诡计卡检定）不发该事件，
+  自然不会发线索；
+- 地点只剩1条线索时由基础发现先拿（此前实现推理在 ST.6 抢线索，导致
+  基础发现落空、CLUE_DISCOVERED 不触发）；
+- 调查成功但地点已无线索（无基础发现）时，推理也不发线索。
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -35,11 +42,11 @@ class Deduction(CardImplementation):
         inv.active_effects[_FLAG] = True
 
     @on_event(
-        GameEvent.SKILL_TEST_ENDS,
+        GameEvent.CLUE_DISCOVERED,
         priority=TimingPriority.AFTER,
     )
     def take_extra_clue(self, ctx):
-        """基础结算完成后：若地点还有线索，再发现1条（地点线索不为负）。"""
+        """基础发现结算后（确认是调查）：若地点还有线索，再发现1条。"""
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
             return
@@ -50,3 +57,13 @@ class Deduction(CardImplementation):
         if location is not None and location.clues > 0:
             location.clues -= 1
             inv.clues += 1
+
+    @on_event(
+        GameEvent.SKILL_TEST_ENDS,
+        priority=TimingPriority.AFTER,
+    )
+    def clear_flag(self, ctx):
+        """检定结束：清除未消费的标记（如非调查检定/失败）。"""
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is not None and hasattr(inv, "active_effects"):
+            inv.active_effects.pop(_FLAG, None)

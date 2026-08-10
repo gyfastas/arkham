@@ -27,6 +27,7 @@ class ActionResolver:
         damage_engine: DamageEngine,
         slot_managers: dict[str, SlotManager],
         card_registry: CardRegistry | None = None,
+        chaos_bag=None,
     ) -> None:
         self.game_state = game_state
         self.bus = event_bus
@@ -34,6 +35,7 @@ class ActionResolver:
         self.damage = damage_engine
         self.slot_managers = slot_managers
         self.card_registry = card_registry
+        self.chaos_bag = chaos_bag
         # Set when a PLAY action fails because of slot limits; consumed by
         # the session layer to build a user-facing slot-conflict response.
         self.last_slot_conflict: dict | None = None
@@ -203,7 +205,7 @@ class ActionResolver:
             inv.hand.append(card_id)
 
             from backend.engine.draw_hooks import emit_card_drawn
-            emit_card_drawn(self.game_state, self.bus, self.card_registry, inv, card_id)
+            emit_card_drawn(self.game_state, self.bus, self.card_registry, inv, card_id, chaos_bag=self.chaos_bag)
         elif inv.discard:
             # Shuffle discard into deck, draw, take 1 horror
             inv.deck = list(inv.discard)
@@ -257,6 +259,11 @@ class ActionResolver:
             source=weapon_instance_id,
         )
         self.bus.emit(ctx)
+        if ctx.cancelled:
+            # Card effects (e.g. a weapon with no ammo left) may cancel the
+            # attack outright; returning False means the action is not spent.
+            self.game_state.log_effect("⚔️ 攻击被取消")
+            return False
 
         difficulty = enemy_data.enemy_fight or 0
         base_damage = 1  # Default bare-hand damage
@@ -264,8 +271,11 @@ class ActionResolver:
 
         def on_success(result):
             bonus_damage = int(result.extra.get("bonus_damage", 0) or 0)
+            # Clamp at 0: negative bonus (e.g. Pallid Mask cultist) must not
+            # heal the enemy.
+            total_damage = max(0, base_damage + bonus_damage)
             self.damage.deal_damage_to_enemy(
-                enemy_instance_id, base_damage + bonus_damage, source=weapon_instance_id,
+                enemy_instance_id, total_damage, source=weapon_instance_id,
                 investigator_id=investigator_id,
             )
 
@@ -517,7 +527,7 @@ class ActionResolver:
 
         # Register card abilities
         if self.card_registry:
-            self.card_registry.activate_card(card_id, instance_id, self.bus)
+            self.card_registry.activate_card(card_id, instance_id, self.bus, chaos_bag=self.chaos_bag)
 
         from backend.engine.event_bus import EventContext
         ctx = EventContext(
@@ -621,7 +631,7 @@ class ActionResolver:
         temp_instance_id = self.game_state.next_instance_id()
         cleanup_entry = None
         if self.card_registry:
-            self.card_registry.activate_card(card_id, temp_instance_id, self.bus)
+            self.card_registry.activate_card(card_id, temp_instance_id, self.bus, chaos_bag=self.chaos_bag)
 
             # Auto-cleanup at end of round to avoid leaking handlers
             def _cleanup(ctx):

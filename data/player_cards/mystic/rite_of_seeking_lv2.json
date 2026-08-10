@@ -15,10 +15,13 @@
   "slots": [
     "arcane"
   ],
-  "text": "Uses (3 charges). Investigate using willpower +2. Discover 1 additional clue.",
+  "text": "Uses (3 charges).\n[action] Spend 1 charge: <b>Investigate.</b> Investigate using [willpower] instead of [intellect]. You get +2 [willpower] for this test. If you succeed you discover 1 additional clue at this location. If a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol is revealed during this test, after this test resolves lose all remaining actions and immediately end your turn.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "使用(3充能）。消耗礼寻术并花费1充能：<b>调查</b>。本次调查使用意志代替智力。你获得+2智力，本次调查发现额外1条线索。"
+  "text_cn": "使用(3充能)。\n[action]花费1充能：<b>调查</b>。这次调查不使用[intellect]，改为使用[willpower]。本次检定你获得+2[willpower]。如果成功，额外发现所在地点1个线索。如果检定中抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记，在检定结束后，失去所有剩余行动，并立刻结束你的回合。",
+  "uses": {
+    "charges": 3
+  }
 }

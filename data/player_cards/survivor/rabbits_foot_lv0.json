@@ -21,5 +21,5 @@
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "<b>强制</b> - 在你检定失败后：抽取1张牌。"
+  "text_cn": "<b>反应</b> - 在你检定失败后：横置幸运兔脚：抽1张牌。"
 }

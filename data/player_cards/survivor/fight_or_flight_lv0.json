@@ -1,0 +1,21 @@
+{
+  "id": "fight_or_flight_lv0",
+  "arkhamdb_code": "03155",
+  "name": "Fight or Flight",
+  "name_cn": "战斗或逃跑",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nUntil the end of the round, you get +X [combat] and +X [agility], where X is the amount of horror on you.",
+  "text_cn": "快速。只能在你回合中打出。\n直到本轮结束，你获得+X[combat]和+X[agility]，其中X等于你身上的恐惧数量。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

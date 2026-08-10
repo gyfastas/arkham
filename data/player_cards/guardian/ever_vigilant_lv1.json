@@ -1,0 +1,23 @@
+{
+  "id": "ever_vigilant_lv1",
+  "arkhamdb_code": "03023",
+  "name": "Ever Vigilant",
+  "name_cn": "时刻警惕",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "One at a time, play up to 3 assets from your hand, reducing the resource cost of each by 1.",
+  "text_cn": "每次1张，打出你手牌中最多3张支援卡，每张资源费用减少1点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

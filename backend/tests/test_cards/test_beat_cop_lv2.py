@@ -24,6 +24,7 @@ def game():
         type=CardType.ASSET, card_class=PlayerClass.GUARDIAN, cost=4,
         slots=[SlotType.ALLY], traits=["ally", "police"],
         skill_icons={"combat": 1, "agility": 1},
+        health=3, sanity=2,
     )
     g.register_card_data(beat_cop_data)
 
@@ -71,6 +72,60 @@ class TestBeatCopLv2:
         )
         enemy = game.state.get_card_instance("enemy_1")
         assert enemy.damage > 0
+
+    def test_exhaust_and_self_damage_deals_1(self, game):
+        """横置巡警+自伤1：对同地点敌人造成1伤害（不弃置）。"""
+        cop_id = _equip_beat_cop_lv2(game)
+        enemy = _spawn_enemy(game)
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_exhaust_damage(game.state, "inv1", "enemy_1") is True
+        assert enemy.damage == 1
+        cop = game.state.get_card_instance(cop_id)
+        assert cop.exhausted is True
+        assert cop.damage == 1
+        # 仍在场，未进弃牌堆
+        inv = game.state.get_investigator("inv1")
+        assert cop_id in inv.play_area
+        assert "beat_cop_lv2" not in inv.discard
+
+    def test_cannot_activate_when_exhausted(self, game):
+        """已横置时不能再启动。"""
+        cop_id = _equip_beat_cop_lv2(game)
+        enemy = _spawn_enemy(game)
+        cop = game.state.get_card_instance(cop_id)
+        cop.exhausted = True
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_exhaust_damage(game.state, "inv1", "enemy_1") is False
+        assert enemy.damage == 0
+        assert cop.damage == 0
+
+    def test_self_damage_can_defeat_cop(self, game):
+        """自伤累积到生命值时巡警被击败离场。"""
+        cop_id = _equip_beat_cop_lv2(game)
+        _spawn_enemy(game)
+        cop = game.state.get_card_instance(cop_id)
+        cop.damage = 2  # 生命3，再受1点即被击败
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_exhaust_damage(game.state, "inv1", "enemy_1") is True
+        inv = game.state.get_investigator("inv1")
+        assert cop_id not in inv.play_area
+        assert "beat_cop_lv2" in inv.discard
+
+    def test_enemy_must_be_at_location(self, game):
+        """敌人不在你所在地点时不能指定。"""
+        cop_id = _equip_beat_cop_lv2(game)
+        enemy = CardInstance(
+            instance_id="enemy_far", card_id="test_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play["enemy_far"] = enemy
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_exhaust_damage(game.state, "inv1", "enemy_far") is False
+        assert enemy.damage == 0
 
 
 def _spawn_enemy(game, instance_id="enemy_1"):

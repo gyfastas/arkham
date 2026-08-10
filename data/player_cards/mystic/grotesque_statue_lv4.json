@@ -16,10 +16,13 @@
   "slots": [
     "hand"
   ],
-  "text": "Uses (4 charges). Reveal 2 chaos tokens, choose 1.",
+  "text": "Uses (4 charges). If Grotesque Statue has no charges, discard it.\n[reaction] When you would reveal a chaos token, spend 1 charge: Reveal 2 chaos tokens instead of 1. Choose 1 of those tokens to resolve, and ignore the other.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "使用(4充能）。<b>快速</b>。在你揭示一个混沌标记时：花费1充能。取消该标记，改为揭示另一个混沌标记。"
+  "text_cn": "使用(4充能)。如果诡秘石像上没有充能，弃置它。\n[reaction] 在你将要揭示一个混沌标记时，花费1充能：改为揭示2个混沌标记。选择其中1个结算，忽略另1个。",
+  "uses": {
+    "charges": 4
+  }
 }

@@ -1,0 +1,26 @@
+{
+  "id": "madame_labranche_lv0",
+  "arkhamdb_code": "03198",
+  "name": "Madame Labranche",
+  "name_cn": "拉布兰奇夫人",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "ally",
+    "patron"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[fast] If you have no cards in your hand, exhaust Madame Labranche: Draw 1 card.\n[fast] If you have no resources, exhaust Madame Labranche: Gain 1 resource.",
+  "text_cn": "[free]如果你手牌中没有卡牌，消耗拉布兰奇夫人：抽取1张卡牌。\n[free]如果你没有资源，消耗拉布兰奇夫人：获得1资源。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "path_to_carcosa"
+}

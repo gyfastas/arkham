@@ -1,0 +1,88 @@
+{
+  "id": "dim_carcosa",
+  "name": "Dim Carcosa",
+  "name_cn": "卡城幽影",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 8,
+  "encounter_sets": [
+    "dim_carcosa",
+    "delusions",
+    "cult_of_the_yellow_sign",
+    "inhabitants_of_carcosa",
+    "agents_of_hastur",
+    "striking_fear"
+  ],
+  "scenario_set": "dim_carcosa",
+  "start_location": "dark_spires",
+  "initial_locations": [
+    "shores_of_hali",
+    "bleak_plains",
+    "ruins_of_carcosa",
+    "dim_streets",
+    "depths_of_demhe",
+    "dark_spires",
+    "palace_of_the_king"
+  ],
+  "set_aside": [
+    "hastur_a",
+    "hastur_b",
+    "hastur_c",
+    "beast_of_aldebaran"
+  ],
+  "connections": {
+    "shores_of_hali": [
+      "bleak_plains"
+    ],
+    "bleak_plains": [
+      "shores_of_hali",
+      "ruins_of_carcosa",
+      "dim_streets"
+    ],
+    "ruins_of_carcosa": [
+      "bleak_plains",
+      "depths_of_demhe",
+      "palace_of_the_king"
+    ],
+    "dim_streets": [
+      "bleak_plains",
+      "depths_of_demhe",
+      "palace_of_the_king"
+    ],
+    "depths_of_demhe": [
+      "dark_spires",
+      "ruins_of_carcosa",
+      "dim_streets"
+    ],
+    "dark_spires": [
+      "depths_of_demhe"
+    ],
+    "palace_of_the_king": [
+      "ruins_of_carcosa",
+      "dim_streets"
+    ]
+  },
+  "act_deck": [
+    "in_lost_carcosa",
+    "search_for_the_stranger_vi",
+    "search_for_the_stranger_vii",
+    "search_for_the_stranger_viii",
+    "the_king_in_tatters"
+  ],
+  "agenda_deck": [
+    "madness_coils",
+    "madness_drowns",
+    "madness_dies"
+  ],
+  "locations": [
+    "shores_of_hali",
+    "bleak_plains",
+    "ruins_of_carcosa",
+    "dim_streets",
+    "depths_of_demhe",
+    "dark_spires",
+    "palace_of_the_king"
+  ],
+  "story_assets": [],
+  "setup_notes": "本剧本地点均为单面（无未揭示面，背面为故事卡），入场时即按线索值放置线索。随机将荒凉平原/幽暗街道/卡尔克萨废墟/迪蒙深渊各1张入场，其余副本搁置移出游戏；哈利湖滨、黑暗尖柱、王之宫殿固定入场。起点分支：若战役日志 opened the path below，调查员从哈利湖滨开始，否则从黑暗尖柱开始。Act 2 版本分支：怀疑+确信≤5 用 v.I；≥6 且怀疑>确信 用 v.II；≥6 且确信>怀疑 用 v.III；相等则由玩家选 v.II 或 v.III，其余版本移出游戏。搁置：哈斯塔三版本（黄衣之王/卡尔克萨领主/褴褛之王）与毕宿五的野兽；苍白面具男子弱点持有者将其从牌库找出搁置。按战役日志 Chasing the Stranger 计数在密谋1a加厄运：0-2加3、3-5加2、6-8加1、9+不加。每位调查员受到等同其神智值一半（向下取整）的直接恐惧（不可防止、不会因此战败）；本剧本中调查员恐惧≥神智不会战败，恐惧超过神智时剩余神智视为0。"
+}

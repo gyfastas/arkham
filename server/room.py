@@ -91,32 +91,42 @@ class Room:
         difficulty: str = "standard",
         campaign_state=None,
     ) -> dict:
-        """Start the game with current seat configuration."""
+        """Start the game with current seat configuration (1-4 players)."""
         if not self.can_start():
             return {"success": False, "message": "玩家未全部准备"}
 
         self.session = GameSession(self.room_id)
-        # For now, single-player setup (Phase 4 will handle multi-player)
-        occupied = [s for s in self.seats.values() if s.player_id is not None]
-        seat = occupied[0]
-
-        deck_cards = seat.deck_cards or None
-        trauma_physical = trauma_mental = 0
         if campaign_state is not None:
-            # Campaign mode: deck/trauma/difficulty come from the save file
-            deck_cards = list(campaign_state.deck)
-            difficulty = campaign_state.difficulty
-            trauma_physical = campaign_state.trauma_physical
-            trauma_mental = campaign_state.trauma_mental
+            # 提前挂载，setup 需要读取战役轨道（Doubt/Conviction/混乱袋规则）
+            self.session.campaign = campaign_state
+        occupied = [s for s in self.seats.values() if s.player_id is not None]
+
+        players = []
+        for seat in occupied:
+            trauma_physical = trauma_mental = 0
+            deck_cards = seat.deck_cards or None
+            diff = difficulty
+            if campaign_state is not None:
+                # Campaign mode: deck/trauma/difficulty come from the save file
+                # (campaign is currently a single-player mode — first seat only)
+                deck_cards = list(campaign_state.deck)
+                diff = campaign_state.difficulty
+                trauma_physical = campaign_state.trauma_physical
+                trauma_mental = campaign_state.trauma_mental
+            players.append({
+                "player_id": seat.player_id,
+                "investigator_id": seat.investigator_id,
+                "deck_preset": seat.deck_preset,
+                "deck_cards": deck_cards,
+                "trauma_physical": trauma_physical,
+                "trauma_mental": trauma_mental,
+            })
+            difficulty = diff
 
         result = self.session.setup(
             scenario_id=scenario_id,
-            investigator_id=seat.investigator_id,
-            deck_preset=seat.deck_preset,
-            deck_cards=deck_cards,
             difficulty=difficulty,
-            trauma_physical=trauma_physical,
-            trauma_mental=trauma_mental,
+            players=players,
         )
         if result["success"]:
             self.status = "in_game"

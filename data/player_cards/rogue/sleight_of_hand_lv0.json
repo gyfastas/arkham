@@ -1,0 +1,24 @@
+{
+  "id": "sleight_of_hand_lv0",
+  "arkhamdb_code": "03029",
+  "name": "Sleight of Hand",
+  "name_cn": "障眼戏法",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nPut an [[Item]] asset into play from your hand. At the end of your turn, if that asset is still in play, return it to your hand.",
+  "text_cn": "快速。只能在你回合中打出。将手牌中的一张[[道具]]支援卡放置入场。当你回合结束时，如果该支援卡还在场上，将其收回你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

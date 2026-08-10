@@ -1,0 +1,23 @@
+{
+  "id": "drawing_the_sign_lv0",
+  "arkhamdb_code": "03041",
+  "name": "Drawing the Sign",
+  "name_cn": "涂绘印记",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "pact",
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Drawing the Sign into play in your threat area.\nYour maximum hand size is reduced by 5.\n[action] [action]: Discard Drawing the Sign.",
+  "text_cn": "<b>显现</b> - 将涂绘印记放置入你的威胁区域。\n你的手牌上限降低5张。<i>(FAQ, v1.6)</i>\n[action][action]：丢弃涂绘印记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "basic_weakness"
+}

@@ -84,6 +84,14 @@ class TestMagnifyingGlass:
         def on_success(result):
             captured["result"] = result
 
+        # 放大镜只在"调查时"提供加值：先标记调查行动
+        from backend.engine.event_bus import EventContext
+        from backend.models.enums import GameEvent
+        game.event_bus.emit(EventContext(
+            game_state=game.state,
+            event=GameEvent.INVESTIGATE_ACTION_INITIATED,
+            investigator_id="inv1",
+        ))
         game.skill_test_engine.run_test(
             investigator_id="inv1",
             skill_type=__import__("backend.models.enums", fromlist=["Skill"]).Skill.INTELLECT,
@@ -98,13 +106,28 @@ class TestMagnifyingGlass:
             for s in result.extra["skill_bonus_sources"]
         )
 
+    def test_no_bonus_when_not_investigating(self, game):
+        """非调查的智力检定（如诡计卡检定）不享受放大镜加值。"""
+        _equip_mag_glass(game)
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+
+        result = game.skill_test_engine.run_test(
+            investigator_id="inv1",
+            skill_type=__import__("backend.models.enums", fromlist=["Skill"]).Skill.INTELLECT,
+            difficulty=4,
+            committed_card_ids=[],
+        )
+        # int 3 + 0 = 3 < 4 -> fail（无 +1）
+        assert not result.success
+        assert result.extra["asset_bonus"] == 0
+
     def test_preview_skill_bonuses(self, game):
-        """preview_skill_bonuses 返回在场资产/盟友的常数加值（无副作用）。"""
+        """preview_skill_bonuses 是无上下文的干跑；放大镜的"调查时"条件
+        加值不在预览中出现（与 dr_milan 的无条件 +1 智力不同）。"""
         assert game.preview_skill_bonuses("inv1") == {}
         _equip_mag_glass(game)
-        bonuses = game.preview_skill_bonuses("inv1")
-        assert bonuses == {"intellect": 1}
-        # dry-run 无副作用：真实检定仍能获得同样的加值
+        assert game.preview_skill_bonuses("inv1") == {}
+        # 真实调查仍能获得加值
         game.chaos_bag.tokens = [ChaosTokenType.ZERO]
         inv = game.state.get_investigator("inv1")
         inv.actions_remaining = 3

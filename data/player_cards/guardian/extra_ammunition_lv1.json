@@ -13,10 +13,10 @@
     "intellect": 1
   },
   "slots": [],
-  "text": "Place 3 ammo on a Firearm asset.",
+  "text": "Place 3 ammo tokens on a [[Firearm]] asset controlled by an investigator at your location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你每控制一把占用2个手槽位的武器，手槽位上限+1。\n<b>反应</b> - 在你打出一张有'使用(弹药)'的支援卡后：在其上放置2弹药。"
+  "text_cn": "在你所在地点的一位调查员控制的[枪械]支援上放置3弹药。"
 }

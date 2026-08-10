@@ -1,0 +1,22 @@
+{
+  "id": "angered_spirits_lv0",
+  "arkhamdb_code": "03015",
+  "name": "Angered Spirits",
+  "name_cn": "怒灵",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "task"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Angered Spirits into play in your threat area.\n[fast] Exhaust a [[Spell]] asset: Move 1 charge from that asset to Angered Spirits.\n<b>Forced</b> - When the game ends, if Angered Spirits has fewer than 4 charges on it: You suffer 1 physical trauma.",
+  "text_cn": "<b>显现</b> - 将怒灵放置入你的威胁区域。\n[free]消耗1张[[法术]]支援卡：将该支援卡上的1个充能移动到怒灵上。\n<b>强制</b> - 在游戏结束时，如果怒灵上的充能少于4个：你受到1点肉体创伤。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "weakness"
+}

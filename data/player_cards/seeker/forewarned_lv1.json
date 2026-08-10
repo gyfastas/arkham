@@ -1,0 +1,24 @@
+{
+  "id": "forewarned_lv1",
+  "arkhamdb_code": "03150",
+  "name": "Forewarned",
+  "name_cn": "预先警告",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you draw a non-weakness treachery card.\nPlace 1 of your clues on your location. Then, cancel that card's revelation effect.",
+  "text_cn": "快速。在你抽出一张非弱点诡计卡时打出。\n将你的1个线索放置到你所在地点上。然后，取消该卡牌的显现效果。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "fast": true
+}

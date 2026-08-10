@@ -1,0 +1,28 @@
+{
+  "id": "knuckleduster_lv0",
+  "arkhamdb_code": "03110",
+  "name": "Knuckleduster",
+  "name_cn": "指节铜环",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Fight.</b> This attack deals +1 damage. The attacked enemy gains retaliate for this attack.",
+  "text_cn": "[action]：<b>攻击</b>。这次攻击造成+1伤害。这次攻击中被攻击的敌人获得反击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

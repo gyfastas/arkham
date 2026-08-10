@@ -1,0 +1,23 @@
+{
+  "id": "the_thing_that_follows_lv0",
+  "arkhamdb_code": "03042",
+  "name": "The Thing That Follows",
+  "name_cn": "随行鬼影",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "monster",
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Spawn</b> - Location farthest from you.\n<b>Prey</b> - Bearer only.\nHunter.\n<b>Forced</b> - When The Thing That Follows would be defeated: Instead shuffle it into its bearer's deck.",
+  "text_cn": "<b>生成</b> - 离你最远的地点。\n<b>猎物</b> - 仅对承受者。\n猎手。\n<b>强制</b> - 在随行鬼影将要被击败时：改为将其洗入承受者的牌组。",
+  "health": 2,
+  "sanity": null,
+  "unique": true,
+  "pack": "path_to_carcosa",
+  "subtype": "basic_weakness"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "combat_training_lv1",
+  "arkhamdb_code": "03107",
+  "name": "Combat Training",
+  "name_cn": "战斗训练",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "talent",
+    "composure"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Limit 1 [[Composure]] in play.\nNon-direct horror must be assigned to Combat Training before it can be assigned to your investigator card.\n[fast] Spend 1 resource: You get +1 [combat] for this skill test.\n[fast] Spend 1 resource: You get +1 [agility] for this skill test.",
+  "text_cn": "快速。场上限制1张[[沉稳]]。\n非直接恐惧必须分配给战斗训练后才能分配给你的调查员卡。\n[free]花费1资源：这次技能检定中你+1[combat]。\n[free]花费1资源：这次技能检定中你+1[agility]。",
+  "health": null,
+  "sanity": 1,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

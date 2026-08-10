@@ -1,57 +1,56 @@
-"""Arcane Initiate (Level 0) — Mystic Asset, Ally slot.
-强制 - 在刷新阶段开始时：弃置新晋术士或在其上放置1点恐惧。
-反应 - 在新晋术士进场时或在其上有恐惧放置时：搜索你的牌库，将一张法术支援卡加入手牌，然后洗牌。
+"""Arcane Initiate (Level 0) — Mystic Asset, Ally slot. (01063)
+<b>强制</b> - 在新晋术士进场后：在其上放置1个毁灭标记。
+[fast] 横置新晋术士：搜索你牌库顶的3张牌，从中选择1张[[法术]]卡抽取，然后洗混你的牌库。
 
 简化说明：
-- 刷新阶段的"弃置或放恐惧"自动选择放恐惧。
+- 搜索只命中牌库顶3张中的第一张法术卡（无选择 UI）；未命中则仅洗牌。
 """
 
 import random
 
 from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import CardType, GameEvent, TimingPriority
+from backend.models.enums import GameEvent, TimingPriority
 
 
 class ArcaneInitiate(CardImplementation):
     card_id = "arcane_initiate_lv0"
-
-    def _search_spell(self, game_state, inv) -> str | None:
-        """从牌库搜索一张法术支援卡加入手牌，然后洗牌。"""
-        for i, card_id in enumerate(inv.deck):
-            cd = game_state.get_card_data(card_id)
-            if cd is None or cd.type != CardType.ASSET:
-                continue
-            if "spell" in (cd.traits or []):
-                inv.deck.pop(i)
-                inv.hand.append(card_id)
-                random.shuffle(inv.deck)
-                return card_id
-        random.shuffle(inv.deck)
-        return None
+    activations = [{
+        "id": "search_spell",
+        "label": "【快速】横置：搜牌库顶3张找1张法术并抽取，然后洗牌",
+        "method": "activate",
+    }]
 
     @on_event(GameEvent.CARD_ENTERS_PLAY, priority=TimingPriority.AFTER)
     def enter_play(self, ctx):
-        """进场时：搜索法术支援卡。"""
+        """强制 - 进场后：在其上放置1个毁灭标记。"""
         if ctx.target != self.instance_id:
             return
-        inv = ctx.game_state.get_investigator(ctx.investigator_id)
-        if inv is None:
+        inst = ctx.game_state.get_card_instance(self.instance_id)
+        if inst is None:
             return
-        found = self._search_spell(ctx.game_state, inv)
-        if found:
-            ctx.extra["arcane_initiate_found"] = found
-            ctx.game_state.log_effect(
-                f"🔮 新晋术士：搜索牌库，找到【{ctx.game_state.card_name(found)}】")
+        inst.doom += 1
+        ctx.extra["arcane_initiate_doom"] = True
 
-    @on_event(GameEvent.UPKEEP_PHASE_BEGINS, priority=TimingPriority.WHEN)
-    def upkeep_horror(self, ctx):
-        """刷新阶段开始时：在其上放置1点恐惧（并触发搜索）。"""
-        for inv in ctx.game_state.investigators.values():
-            if self.instance_id not in inv.play_area:
-                continue
-            inst = ctx.game_state.get_card_instance(self.instance_id)
-            if inst is None:
-                continue
-            inst.horror += 1
-            # 有恐惧放置时：搜索法术支援卡
-            self._search_spell(ctx.game_state, inv)
+    def activate(self, game_state, investigator_id: str) -> bool:
+        """【快速】横置：搜索牌库顶3张牌中的1张法术卡并抽取，然后洗牌。"""
+        inv = game_state.get_investigator(investigator_id)
+        if inv is None or self.instance_id not in inv.play_area:
+            return False
+        inst = game_state.get_card_instance(self.instance_id)
+        if inst is None or inst.exhausted:
+            return False
+        inst.exhausted = True
+
+        top = inv.deck[:3]
+        found = None
+        for i, card_id in enumerate(top):
+            cd = game_state.get_card_data(card_id)
+            if cd is not None and "spell" in (cd.traits or []):
+                found = inv.deck.pop(i)
+                inv.hand.append(found)
+                break
+        random.shuffle(inv.deck)
+        if found:
+            game_state.log_effect(
+                f"🔮 新晋术士：搜索牌库顶3张，抽取【{game_state.card_name(found)}】")
+        return True

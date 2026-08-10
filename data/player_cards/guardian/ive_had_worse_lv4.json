@@ -14,10 +14,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "Fast. Cancel up to 5 damage/horror. Gain resources equal to amount canceled.",
+  "text": "Fast. Play when you are dealt damage and/or horror.\nCancel up to 5 damage and/or horror just dealt to you. Then, gain that many resources.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你将受到3点或更多伤害或恐惧时打出。取消最多3点该伤害或恐惧。"
+  "text_cn": "<b>快速</b>。在你被造成伤害和/或恐惧时打出。\n取消刚对你造成的至多5点伤害和/或恐惧。然后，获得等量的资源。"
 }

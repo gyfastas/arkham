@@ -1,0 +1,26 @@
+{
+  "id": "book_of_shadows_lv1",
+  "arkhamdb_code": "03154",
+  "name": "Book of Shadows",
+  "name_cn": "影之书",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action] Exhaust Book of Shadows and spend 1 resource: Add 1 charge to a [[Spell]] asset you control.",
+  "text_cn": "[action]消耗影之书并花费1资源：你控制的一张[[法术]]支援卡增加1充能。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

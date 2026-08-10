@@ -1,0 +1,45 @@
+{
+  "investigator_id": "lola_hayes",
+  "presets": [
+    {
+      "name": "萝拉·海耶斯（入门）",
+      "cards": [
+        "arcane_initiate_lv3",
+        "arcane_initiate_lv3",
+        "archaic_glyphs_lv0",
+        "archaic_glyphs_lv0",
+        "cherished_keepsake_lv0",
+        "cherished_keepsake_lv0",
+        "forbidden_knowledge_lv0",
+        "forbidden_knowledge_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "magnifying_glass_lv1",
+        "magnifying_glass_lv1",
+        "alchemical_transmutation_lv0",
+        "alchemical_transmutation_lv0",
+        "arcane_initiate_lv0",
+        "arcane_initiate_lv0",
+        "blackjack_lv0",
+        "blackjack_lv0",
+        "burglary_lv0",
+        "burglary_lv0",
+        "combat_training_lv1",
+        "combat_training_lv1",
+        "fire_axe_lv0",
+        "fire_axe_lv0",
+        "grounded_lv1",
+        "grounded_lv1",
+        "hired_muscle_lv1",
+        "hired_muscle_lv1",
+        "knife_lv0",
+        "knife_lv0",
+        "liquid_courage_lv0",
+        "liquid_courage_lv0",
+        "magnifying_glass_lv0",
+        "magnifying_glass_lv0",
+        "moxie_lv1"
+      ]
+    }
+  ]
+}

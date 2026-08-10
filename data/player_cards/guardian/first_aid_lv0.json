@@ -14,10 +14,13 @@
     "willpower": 1
   },
   "slots": [],
-  "text": "Uses (3 supplies). Spend 1 supply: Heal 1 damage or horror from an investigator at your location.",
+  "text": "Uses (3 supplies). If First Aid has no supplies, discard it.\n[action] Spend 1 supply: Heal 1 damage or horror from an investigator at your location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "消耗急救并花费1资源：治愈你所在地点的一名调查员或盟友2点伤害。"
+  "text_cn": "使用(3补给)。如果急救没有补给，弃置它。\n[行动]花费1补给：治愈你所在地点一名调查员的1点伤害或1点恐惧。",
+  "uses": {
+    "supplies": 3
+  }
 }

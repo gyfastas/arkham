@@ -1,0 +1,25 @@
+{
+  "id": "spirit_speaker_lv0",
+  "arkhamdb_code": "03014",
+  "name": "Spirit-Speaker",
+  "name_cn": "灵言者",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Akachi Onyele deck only.\n[fast] Exhaust Spirit-Speaker: Choose an asset you control with \"uses (charges).\" Either return that asset to your hand, or move all charges from that asset to your resource pool <i>(as resources)</i> and discard that asset.",
+  "text_cn": "阿喀琦·奥耶莉牌组专用。\n[free]消耗灵言者：选择你控制的一张带有\"使用(充能)\"的支援卡。该支援卡返回你的手牌，或者将该支援卡上所有的充能<i>(作为资源)</i>移动到你的资源池并丢弃该支援卡。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

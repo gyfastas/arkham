@@ -1,0 +1,24 @@
+{
+  "id": "astral_travel_lv0",
+  "arkhamdb_code": "03034",
+  "name": "Astral Travel",
+  "name_cn": "星界旅行",
+  "class": "mystic",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Move.</b> Move to any revealed location and reveal a random token from the chaos bag. If you reveal a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol, you must discard an [[Item]] or [[Ally]] asset you control (if you cannot, take 1 damage).",
+  "text_cn": "<b>移动</b>。移动到任意一个已揭示的地点并从混乱袋中随机抽取1个标记。如果抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记，你必须丢弃一张你控制的[[道具]]或[[盟友]]支援卡(如果你不能这么做，则受到1点伤害)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

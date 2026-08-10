@@ -11,7 +11,7 @@
   ],
   "skill_icons": {},
   "slots": [],
-  "text": "Permanent. You may have 2 allies in play (instead of the normal maximum of 1).",
+  "text": "You have 1 additional ally slot.",
   "keywords": [
     "permanent"
   ],
@@ -19,5 +19,5 @@
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你获得2个额外的盟友槽位。"
+  "text_cn": "你获得1个额外的盟友槽位。"
 }

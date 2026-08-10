@@ -1,9 +1,9 @@
 """Hired Muscle (Level 1) — Rogue Asset, Ally slot.
 你获得+1[combat]。
-强制 - 当补给阶段结束时：你必须选择丢弃1资源，或丢弃雇佣打手。
+强制 - 当补给阶段结束时：你必须选择支付1资源，或丢弃雇佣打手。
 
 简化说明：
-- 补给阶段的"选择"自动结算：有资源则扣1，否则丢弃雇佣打手。
+- 补给阶段的"选择"自动结算：有资源则付1，否则丢弃雇佣打手。
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -25,7 +25,7 @@ class HiredMuscle(CardImplementation):
 
     @on_event(GameEvent.UPKEEP_PHASE_ENDS, priority=TimingPriority.AFTER)
     def upkeep_payment(self, ctx):
-        """补给阶段结束：丢弃1资源，否则丢弃雇佣打手。"""
+        """补给阶段结束：支付1资源，否则丢弃雇佣打手。"""
         for inv in ctx.game_state.investigators.values():
             if self.instance_id not in inv.play_area:
                 continue

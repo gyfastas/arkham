@@ -1,0 +1,23 @@
+{
+  "id": "no_stone_unturned_lv0",
+  "arkhamdb_code": "03026",
+  "name": "No Stone Unturned",
+  "name_cn": "殚精竭虑",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Choose an investigator at your location. That investigator searches the top 6 cards of his or her deck for a card, draws it, and shuffles his or her deck.",
+  "text_cn": "选择你所在地点的一位调查员。该调查员在其牌堆顶部的6张卡牌中查找并抽取1张卡牌，并且混洗自己的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

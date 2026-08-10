@@ -1,6 +1,6 @@
 """Peter Sylvestre (Level 0) — Survivor Asset, Ally slot.
-Passive: +1 agility.
-Reaction: After your turn ends, heal 1 horror from Peter Sylvestre.
+You get +1 [agility].
+[reaction] After your turn ends: Heal 1 horror from Peter Sylvestre.
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -21,3 +21,13 @@ class PeterSylvestre(CardImplementation):
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv and self.instance_id in inv.play_area:
             ctx.modify_amount(1, "peter_sylvestre_agility")
+
+    @on_event(GameEvent.INVESTIGATOR_TURN_ENDS, priority=TimingPriority.AFTER)
+    def heal_horror(self, ctx):
+        """你的回合结束后：治愈彼得·希尔维斯特1点恐惧。"""
+        inv = ctx.game_state.get_investigator(ctx.investigator_id)
+        if inv is None or self.instance_id not in inv.play_area:
+            return
+        inst = ctx.game_state.get_card_instance(self.instance_id)
+        if inst is not None and inst.horror > 0:
+            inst.horror -= 1

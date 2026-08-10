@@ -36,7 +36,8 @@ class TestDefeatGameOver:
         session._clear_game_over()
         assert session.game_over is not None
         assert session.game_over["type"] == "lose"
-        assert "伤害" in session.game_over["message"]
+        # 单人局：唯一调查员被击败即全员败北
+        assert "击败" in session.game_over["message"]
 
     def test_horror_defeat_sets_game_over(self):
         session = _make_session()
@@ -45,7 +46,7 @@ class TestDefeatGameOver:
         session._clear_game_over()
         assert session.game_over is not None
         assert session.game_over["type"] == "lose"
-        assert "恐惧" in session.game_over["message"]
+        assert "击败" in session.game_over["message"]
 
     def test_no_defeat_no_game_over(self):
         session = _make_session()

@@ -15,6 +15,9 @@ const emit = defineEmits<{
 const hasEnemies = computed(() => props.state.enemies.some(e => e.engaged))
 const hasActionsLeft = computed(() => props.state.investigator.actions_remaining > 0)
 const hasTomeActions = computed(() => props.state.investigator.tome_actions_remaining > 0)
+// 多人联机：非本玩家回合时禁用全部行动按钮（单人局 your_turn 恒 true）
+const yourTurn = computed(() => props.state.your_turn !== false)
+const waitTip = computed(() => (store.language === 'zh-Hant' ? '等待其他玩家' : '等待其他玩家'))
 
 interface ActionDef {
   type: string
@@ -48,6 +51,8 @@ const actions = computed<ActionDef[]>(() => [
         v-show="act.show"
         class="action-btn"
         :class="[act.type.toLowerCase(), { highlight: act.highlight }]"
+        :disabled="!yourTurn"
+        :title="yourTurn ? '' : waitTip"
         @click="emit('action', act.type)"
       >
         <span class="action-icon">{{ act.icon }}</span>
@@ -98,6 +103,14 @@ const actions = computed<ActionDef[]>(() => [
 .action-btn:hover {
   background: #2a2a44;
   border-color: #c0a060;
+}
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.action-btn:disabled:hover {
+  background: #1a1a2e;
+  border-color: #333344;
 }
 .action-btn.fight { border-color: #c0392b44; }
 .action-btn.fight:hover { border-color: #e74c3c; }

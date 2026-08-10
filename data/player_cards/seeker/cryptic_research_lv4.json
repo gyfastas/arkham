@@ -16,5 +16,6 @@
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "抽取3张牌。"
+  "fast": true,
+  "text_cn": "快速。只能在你的回合中打出。\n选择你所在地点的一名调查员。该调查员抽取3张牌。"
 }

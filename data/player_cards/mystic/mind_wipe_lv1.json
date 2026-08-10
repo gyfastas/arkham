@@ -14,10 +14,11 @@
     "combat": 1
   },
   "slots": [],
-  "text": "Fast. Blank a non-Elite enemy's text until end of phase.",
+  "text": "Fast. Play after a phase begins.\nChoose a non-[[Elite]] enemy at your location. Treat the chosen enemy's printed text box as if it were blank (except for [[Traits]]) until the end of the phase.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。选择你所在地点或一个连接地点的一个非精英敌人。取消该敌人直到本阶段结束的所有文本效果。"
+  "fast": true,
+  "text_cn": "<b>快速</b>。在一个阶段开始后打出。选择你所在地点的一个非[[精英]]敌人。将该敌人的印刷文本框视为空白（[[特性]]除外），直到本阶段结束。"
 }

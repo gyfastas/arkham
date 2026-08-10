@@ -13,10 +13,13 @@
     "intellect": 1
   },
   "slots": [],
-  "text": "Uses (4 secrets). Exhaust and take 1 horror: Move 1 secret to resource pool as resource.",
+  "text": "Uses (4 secrets). If Forbidden Knowledge has no secrets, discard it.\n[fast] Exhaust Forbidden Knowledge and take 1 horror: Move 1 secret from Forbidden Knowledge to your resource pool, as a resource.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "禁忌知识进场时带有4个秘密。\n<b>反应</b> - 在禁忌知识上有秘密时：花费1秘密并受到1点恐惧，获得2资源。"
+  "text_cn": "使用(4个秘密)。如果禁忌知识上没有秘密，弃置它。\n[fast] 横置禁忌知识并受到1点恐惧：将禁忌知识上的1个秘密移动到你的资源池，作为1个资源。",
+  "uses": {
+    "secrets": 4
+  }
 }

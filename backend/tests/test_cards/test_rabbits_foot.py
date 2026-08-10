@@ -6,7 +6,7 @@ from backend.engine.event_bus import EventBus
 from backend.engine.skill_test import SkillTestEngine
 from backend.models.chaos import ChaosBag
 from backend.models.enums import ChaosTokenType, PlayerClass, Skill, SlotType
-from backend.models.state import GameState, InvestigatorState, ScenarioState
+from backend.models.state import CardInstance, GameState, InvestigatorState, ScenarioState
 from backend.tests.conftest import make_investigator_data, make_asset_data, make_skill_data
 
 
@@ -28,6 +28,11 @@ def setup():
     )
     inv.play_area.append("rabbits_foot_inst")
     state.investigators["inv1"] = inv
+    state.cards_in_play["rabbits_foot_inst"] = CardInstance(
+        instance_id="rabbits_foot_inst", card_id="rabbits_foot_lv0",
+        owner_id="inv1", controller_id="inv1",
+        slot_used=[SlotType.ACCESSORY],
+    )
 
     engine = SkillTestEngine(state, bus, bag)
 
@@ -63,3 +68,30 @@ class TestRabbitsFoot:
         )
         # Should not draw on success
         assert len(inv.deck) == initial_deck
+
+    def test_exhausts_after_trigger(self, setup):
+        """卡面：失败后横置兔脚才抽牌——横置后再次失败不重复抽。"""
+        state, bus, bag, engine, inv = setup
+        inst = state.cards_in_play["rabbits_foot_inst"]
+        bag.tokens = [ChaosTokenType.AUTO_FAIL]
+
+        engine.run_test(
+            investigator_id="inv1", skill_type=Skill.WILLPOWER, difficulty=3,
+        )
+        assert inst.exhausted is True
+        assert len(inv.deck) == 2
+
+        # 已横置：第二次失败不再抽
+        bag.tokens = [ChaosTokenType.AUTO_FAIL]
+        engine.run_test(
+            investigator_id="inv1", skill_type=Skill.WILLPOWER, difficulty=3,
+        )
+        assert len(inv.deck) == 2
+
+        # 刷新后可再次触发
+        inst.exhausted = False
+        bag.tokens = [ChaosTokenType.AUTO_FAIL]
+        engine.run_test(
+            investigator_id="inv1", skill_type=Skill.WILLPOWER, difficulty=3,
+        )
+        assert len(inv.deck) == 1

@@ -14,10 +14,10 @@
     "wild": 1
   },
   "slots": [],
-  "text": "Fast. Until the end of the round, do not reveal chaos tokens for any skill tests you perform.",
+  "text": "Fast. Play only during your turn.\nUntil the end of your turn, do not reveal chaos tokens for any skill tests you perform.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你回合开始时打出。直到本回合结束，你每有一个已揭示的混沌标记，你获得+1所有技能。"
+  "text_cn": "<b>快速</b>。仅在你的回合中打出。\n直到你的回合结束，你进行技能检定时不揭示混沌标记。"
 }

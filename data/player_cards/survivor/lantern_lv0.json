@@ -1,0 +1,26 @@
+{
+  "id": "lantern_lv0",
+  "arkhamdb_code": "03036",
+  "name": "Lantern",
+  "name_cn": "提灯",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Investigate.</b> Your location gets -1 shroud for this investigation.\n[action] Discard Lantern: Deal 1 damage to an enemy at your location. This action does not provoke attacks of opportunity.",
+  "text_cn": "[action]：<b>调查</b>。本次调查中你所在地点-1隐藏值。\n[action]丢弃提灯：对你所在地点的一个敌人造成1点伤害。本行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

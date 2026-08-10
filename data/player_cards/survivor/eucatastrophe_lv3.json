@@ -14,10 +14,10 @@
     "wild": 2
   },
   "slots": [],
-  "text": "Fast. Play when a chaos token would reduce your skill value to 0 during a skill test. Cancel that chaos token and treat it as an elder sign token instead.",
+  "text": "Fast. Play when you reveal a chaos token that would reduce your skill value to 0 during a skill test (including the [auto_fail] token).\nCancel that token and treat it as an [elder_sign] token, instead.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你将要被击败时打出。改为弃置你手牌中所有的弱点，恢复所有生命和理智，获得3资源，结束你本回合。"
+  "text_cn": "<b>快速</b>。当你揭示一个将使你的技能值降为0的混沌标记时打出（包括[自动失败]标记）。\n取消该标记，改为视为[远古印记]标记。"
 }

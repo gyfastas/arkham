@@ -1,0 +1,23 @@
+{
+  "id": "torrent_of_power_lv0",
+  "arkhamdb_code": "03235",
+  "name": "Torrent of Power",
+  "name_cn": "力量洪流",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to commit Torrent of Power to a skill test, spend up to 3 charges from among assets you control.\nFor each charge spent in this way, Torrent of Power gains [willpower] [wild].",
+  "text_cn": "将力量洪流投入技能检定时，从你控制的支援卡上花费最多3充能作为额外费用。\n每以此方式花费1点充能，力量洪流获得[willpower][wild]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

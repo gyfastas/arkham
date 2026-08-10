@@ -13,10 +13,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "If this test is successful during an evasion attempt, you may immediately disengage from each enemy engaged with you and move to a connecting location.",
+  "text": "If this skill test is successful during an evasion attempt, the evading investigator may immediately disengage from each other enemy engaged with him or her, and may move to a connecting location.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你躲避检定失败时打出。改为成功，然后你可以移动到一个连接地点。"
+  "text_cn": "如果本次技能检定在躲避尝试中成功，躲避的调查员可以立即与每个其他与其交战的敌人脱离，并可以移动到一个连接地点。"
 }

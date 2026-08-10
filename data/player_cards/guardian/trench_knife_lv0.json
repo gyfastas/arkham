@@ -1,0 +1,27 @@
+{
+  "id": "trench_knife_lv0",
+  "arkhamdb_code": "03147",
+  "name": "Trench Knife",
+  "name_cn": "双刃短刀",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Engage actions you perform do not provoke attacks of opportunity.\n[action]: <b>Fight.</b> You get +X [combat] for this attack. X is the number of enemies engaged with you.",
+  "text_cn": "你执行交战行动时不会引起趁乱攻击。\n[action]：<b>攻击</b>。这次攻击中你+X[combat]。其中X为与你交战的敌人数量。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -4,11 +4,15 @@
 """
 
 from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, TimingPriority, CardType
+from backend.models.enums import GameEvent, Skill, TimingPriority, CardType
 
 
 class ZoeySamaras(CardImplementation):
     card_id = "zoey_samaras"
+
+    def __init__(self, instance_id: str = "") -> None:
+        super().__init__(instance_id)
+        self._elder_sign_attack = False
 
     @on_event(
         GameEvent.ENEMY_ENGAGED,
@@ -113,8 +117,10 @@ class ZoeySamaras(CardImplementation):
         # +1 modifier for the skill test
         ctx.modify_amount(1, "zoey_elder_sign")
 
-        # Mark that this is an attack test for the success handler
-        ctx.extra["zoey_elder_sign_attack"] = True
+        # 本次检定抽到远古印记：若攻击（战斗检定）成功，+1伤害。
+        # 成功事件是新的 ctx（extra 不共享），用实例标记跨事件传递；
+        # "攻击"以战斗检定判定（ctx.source 在徒手攻击时为 None，不能单靠它）。
+        self._elder_sign_attack = ctx.skill_type == Skill.COMBAT
 
     @on_event(
         GameEvent.SKILL_TEST_SUCCESSFUL,
@@ -122,8 +128,11 @@ class ZoeySamaras(CardImplementation):
     )
     def elder_sign_damage_bonus(self, ctx):
         """If elder sign and this was an attack, deal +1 damage."""
-        is_attack = ctx.extra.get("zoey_elder_sign_attack", False)
-        if not is_attack:
+        if not self._elder_sign_attack:
+            return
+        self._elder_sign_attack = False
+
+        if ctx.skill_type != Skill.COMBAT:
             return
 
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
@@ -134,18 +143,14 @@ class ZoeySamaras(CardImplementation):
         if card_data is None or card_data.id != "zoey_samaras":
             return
 
-        # Check if there's an enemy being attacked
-        enemy_id = getattr(ctx, 'enemy_id', None) or ctx.extra.get('enemy_id')
-        if enemy_id is None:
-            return
+        # bonus_damage 通道：fight 行动在成功时将其加到攻击伤害上
+        ctx.extra["bonus_damage"] = ctx.extra.get("bonus_damage", 0) + 1
+        ctx.extra["zoey_elder_sign_damage"] = True
 
-        enemy = ctx.game_state.get_card_instance(enemy_id)
-        if enemy is None:
-            return
-
-        enemy_data = ctx.game_state.get_card_data(enemy.card_id)
-        if enemy_data is None or enemy_data.type != CardType.ENEMY:
-            return
-
-        # Deal +1 damage to the enemy
-        enemy.damage += 1
+    @on_event(
+        GameEvent.SKILL_TEST_ENDS,
+        priority=TimingPriority.AFTER,
+    )
+    def elder_sign_reset(self, ctx):
+        """检定结束：清除远古印记标记（失败/未消耗都归零）。"""
+        self._elder_sign_attack = False

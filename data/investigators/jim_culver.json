@@ -28,6 +28,11 @@
    "neutral": {
     "min_level": 0,
     "max_level": 5
+   },
+   "any": {
+    "min_level": 0,
+    "max_level": 0,
+    "max_count": 5
    }
   }
  },

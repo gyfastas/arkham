@@ -5,7 +5,7 @@ from backend.cards.guardian.zoey_samaras import ZoeySamaras
 from backend.engine.event_bus import EventBus, EventContext
 from backend.engine.game import Game
 from backend.models.enums import (
-    Action, CardType, ChaosTokenType, GameEvent, Phase, PlayerClass,
+    Action, CardType, ChaosTokenType, GameEvent, Phase, PlayerClass, Skill,
 )
 from backend.models.state import CardData, CardInstance, SkillValues
 
@@ -193,3 +193,52 @@ class TestZoeySamaras:
 
         # Should NOT have modifier for Roland
         assert ctx.amount == 0
+
+    def test_elder_sign_attack_deals_bonus_damage(self, game):
+        """远古印记：攻击检定成功时本次攻击+1伤害（战斗4+印记1 vs 战斗2 → 1+1伤害）。"""
+        zoey_impl = ZoeySamaras("zoey_impl")
+        zoey_impl.register(game.event_bus, "zoey_impl")
+
+        enemy_iid = game.state.next_instance_id()
+        enemy = CardInstance(
+            instance_id=enemy_iid, card_id="test_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play[enemy_iid] = enemy
+        inv = game.state.get_investigator("zoey")
+        inv.threat_area.append(enemy_iid)
+        inv.actions_remaining = 3
+
+        game.chaos_bag.tokens = [ChaosTokenType.ELDER_SIGN]
+        game.action_resolver.perform_action(
+            "zoey", Action.FIGHT, enemy_instance_id=enemy_iid,
+        )
+        # 基础1伤害 + 远古印记+1 = 2
+        assert enemy.damage == 2
+
+    def test_elder_sign_no_bonus_on_non_combat(self, game):
+        """远古印记：非攻击检定成功不加伤害（标记不泄漏到后续攻击）。"""
+        zoey_impl = ZoeySamaras("zoey_impl")
+        zoey_impl.register(game.event_bus, "zoey_impl")
+
+        enemy_iid = game.state.next_instance_id()
+        enemy = CardInstance(
+            instance_id=enemy_iid, card_id="test_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play[enemy_iid] = enemy
+        inv = game.state.get_investigator("zoey")
+        inv.threat_area.append(enemy_iid)
+        inv.actions_remaining = 3
+
+        # 先在非战斗检定中抽到远古印记（不置攻击标记）
+        game.chaos_bag.tokens = [ChaosTokenType.ELDER_SIGN]
+        game.skill_test_engine.run_test(
+            investigator_id="zoey", skill_type=Skill.WILLPOWER, difficulty=1,
+        )
+        # 随后的徒手攻击用普通 token：不应附加远古印记伤害
+        game.chaos_bag.tokens = [ChaosTokenType.ZERO]
+        game.action_resolver.perform_action(
+            "zoey", Action.FIGHT, enemy_instance_id=enemy_iid,
+        )
+        assert enemy.damage == 1

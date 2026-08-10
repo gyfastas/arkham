@@ -17,10 +17,10 @@
   "slots": [
     "accessory"
   ],
-  "text": "No ability. Elder Sign Amulet can soak up to 4 horror.",
+  "text": "",
   "health": null,
   "sanity": 4,
   "pack": "core",
   "unique": false,
-  "text_cn": "你获得+4理智。"
+  "text_cn": ""
 }

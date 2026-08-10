@@ -1,0 +1,23 @@
+{
+  "id": "waylay_lv0",
+  "arkhamdb_code": "03237",
+  "name": "Waylay",
+  "name_cn": "中途伏击",
+  "class": "survivor",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Choose an exhausted non-[[Elite]] enemy at your location and test [agility] (X), where X is that enemy's evade value. If you succeed, defeat that enemy.",
+  "text_cn": "选择你所在地点一个消耗的非[[精英]]敌人并检定[agility](X)，其中X为该敌人的躲避值。如果你成功，击败该敌人。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

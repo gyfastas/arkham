@@ -124,6 +124,8 @@ export interface LocationDisplay {
 
 export interface InvestigatorDisplay {
   id: string
+  /** 调查员实例 id（"player"/"player2"/...），多人联机时用于归属判断 */
+  instance_id?: string
   name: string
   name_cn: string
   class: string
@@ -143,6 +145,31 @@ export interface InvestigatorDisplay {
   slot_summary?: SlotSummary[]
   skill_bonuses?: Record<string, number>
   skills?: Record<string, number>
+}
+
+/** 队友公开信息（serialize_investigator_public） */
+export interface OtherInvestigator {
+  /** 调查员卡 id（如 roland_banks），非实例 id */
+  id: string
+  name: string
+  name_cn: string
+  class: string
+  health: number
+  sanity: number
+  damage: number
+  horror: number
+  resources: number
+  clues: number
+  actions_remaining: number
+  tome_actions_remaining?: number
+  hand_count: number
+  deck_count: number
+  discard_count: number
+  defeated: boolean
+  location_id: string
+  slot_summary?: SlotSummary[]
+  play_area?: CardInstanceDisplay[]
+  threat_area?: EnemyDisplay[]
 }
 
 export interface SlotSummary {
@@ -167,6 +194,8 @@ export interface PendingChoice {
   card_id?: string
   prompt: string
   options: { id: string; label: string }[]
+  /** 属主调查员实例 id（"player"/"player2"/...）；缺省时归当前行动者 */
+  investigator_id?: string
   [key: string]: unknown
 }
 
@@ -215,6 +244,12 @@ export interface GameState {
   encounter_discard_count?: number
   last_encounter?: EncounterCardDisplay | null
   slot_status?: Record<string, SlotStatusEntry>
+  /** 当前行动者的调查员实例 id（"player"/"player2"/...） */
+  active_investigator_id?: string | null
+  /** 是否轮到本客户端玩家行动（单人局恒为 true） */
+  your_turn?: boolean
+  /** 队友公开信息（多人联机；单人局为空数组） */
+  other_investigators?: OtherInvestigator[]
 }
 
 export interface SlotStatusEntry {

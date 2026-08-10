@@ -13,7 +13,7 @@
     "willpower": 1
   },
   "slots": [],
-  "text": "Deal 3 damage to each enemy at chosen location.",
+  "text": "Choose either your location or a connecting location. Deal 3 damage to each enemy and to each investigator at the chosen location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",

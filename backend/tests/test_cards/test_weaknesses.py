@@ -90,6 +90,24 @@ class TestCoverUp:
         inv = game.state.get_investigator("test_investigator")
         assert inv.mental_trauma == 1
 
+    def test_no_redirect_for_other_location(self, game):
+        """卡面限定"在你的地点"：在其他地点发现线索不触发重定向。"""
+        _register(game, CoverUp)
+        _draw(game, "cover_up")
+        inv = game.state.get_investigator("test_investigator")
+        loc_b = make_location_data(id="loc_b", connections=["test_location"])
+        game.register_card_data(loc_b)
+        game.add_location("loc_b", loc_b)
+
+        ctx = _emit(game, GameEvent.CLUE_DISCOVERED, location_id="loc_b", amount=1)
+        assert "cover_up_redirected" not in ctx.extra
+        inst = next(
+            game.state.get_card_instance(i)
+            for i in inv.threat_area
+            if game.state.get_card_instance(i).card_id == "cover_up"
+        )
+        assert inst.uses["clues"] == 3  # 未弃线索
+
 
 class TestHospitalDebts:
     def test_revelation_and_payment(self, game):
@@ -136,6 +154,23 @@ class TestDarkMemory:
         assert game.state.scenario.doom_on_agenda == doom_before + 1
         assert ctx.extra.get("dark_memory_doom_placed") is True
 
+    def test_played_from_hand_places_doom(self, game):
+        """从手牌打出（事件，费用2）同样放置1个毁灭标记。"""
+        _register(game, DarkMemory)
+        _draw(game, "dark_memory")
+        doom = game.state.scenario.doom_on_agenda
+        _emit(game, GameEvent.CARD_PLAYED, extra={"card_id": "dark_memory"})
+        assert game.state.scenario.doom_on_agenda == doom + 1
+
+    def test_doom_placement_triggers_threshold_check(self, game):
+        """放置毁灭后立即检查阈值，可能导致密谋推进。"""
+        _register(game, DarkMemory)
+        game.state.scenario.doom_threshold = 1
+        idx = game.state.scenario.current_agenda_index
+        _draw(game, "dark_memory")
+        assert game.state.scenario.current_agenda_index == idx + 1
+        assert game.state.scenario.doom_on_agenda == 0  # 推进后清空
+
     def test_turn_end_in_hand_causes_horror(self, game):
         _register(game, DarkMemory)
         _draw(game, "dark_memory")
@@ -143,10 +178,11 @@ class TestDarkMemory:
         assert "dark_memory" in inv.hand  # 留在手牌
         _emit(game, GameEvent.INVESTIGATOR_TURN_ENDS)
         assert inv.horror == 2
-        assert "dark_memory" in inv.discard
-        # 只触发一次
+        # 卡面无弃牌语句：牌留在手牌，之后每回合结束重复触发
+        assert "dark_memory" in inv.hand
         _emit(game, GameEvent.INVESTIGATOR_TURN_ENDS)
-        assert inv.horror == 2
+        assert inv.horror == 4
+        assert "dark_memory" in inv.hand
 
 
 class TestAbandonedAndAlone:
@@ -343,10 +379,13 @@ class TestHypochondria:
         impl = _register(game, Hypochondria)
         _draw(game, "hypochondria")
         inv = game.state.get_investigator("test_investigator")
+        # 调查员受到伤害（DAMAGE_ASSIGNED）才触发；打敌人的 DAMAGE_DEALT 不触发
         _emit(game, GameEvent.DAMAGE_DEALT, amount=2)
+        assert inv.horror == 0
+        _emit(game, GameEvent.DAMAGE_ASSIGNED, amount=2)
         assert inv.horror == 1
         # 0伤害不触发
-        _emit(game, GameEvent.DAMAGE_DEALT, amount=0)
+        _emit(game, GameEvent.DAMAGE_ASSIGNED, amount=0)
         assert inv.horror == 1
         assert impl.activate_discard(game.state, "test_investigator") is True
 

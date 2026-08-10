@@ -1,0 +1,25 @@
+{
+  "id": "the_painted_world_lv0",
+  "arkhamdb_code": "03012",
+  "name": "The Painted World",
+  "name_cn": "画中世界",
+  "class": "neutral",
+  "type": "event",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Sefina Rousseau deck only.\nCannot be placed beneath Sefina Rousseau.\nPlay The Painted World as an exact copy of a non-exceptional event that is beneath Sefina Rousseau. Remove The Painted World from the game instead of discarding it.",
+  "text_cn": "赛菲娜·卢梭牌组专用。\n不能放在赛菲娜·卢梭下。\n打出画中世界时，将其作为赛菲娜·卢梭下的一张非卓越事件卡。不要丢弃画中世界，改为将其从游戏中移除。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

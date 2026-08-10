@@ -46,3 +46,53 @@ class TestHyperawareness:
         card_data = state.card_database["hyperawareness_lv0"]
         assert card_data.skill_icons.get("intellect") == 1
         assert card_data.skill_icons.get("agility") == 1
+
+    def test_spend_boosts_intellect(self, setup):
+        """花1资源：本次智力检定+1。"""
+        from backend.models.enums import GameEvent, Skill
+        from backend.engine.event_bus import EventContext
+        state, bus, inv, impl = setup
+        inv.resources = 2
+
+        assert impl.spend(state, "inv1", Skill.INTELLECT) is True
+        assert inv.resources == 1
+
+        ctx = EventContext(
+            game_state=state, event=GameEvent.SKILL_VALUE_DETERMINED,
+            investigator_id="inv1", skill_type=Skill.INTELLECT, amount=3,
+        )
+        bus.emit(ctx)
+        assert ctx.amount == 4
+
+    def test_spend_stacks_multiple_times(self, setup):
+        """官方：快速能力可多次支付叠加（2资源→+2敏捷）。"""
+        from backend.models.enums import GameEvent, Skill
+        from backend.engine.event_bus import EventContext
+        state, bus, inv, impl = setup
+        inv.resources = 2
+
+        assert impl.spend(state, "inv1", Skill.AGILITY) is True
+        assert impl.spend(state, "inv1", Skill.AGILITY) is True
+        assert inv.resources == 0
+
+        ctx = EventContext(
+            game_state=state, event=GameEvent.SKILL_VALUE_DETERMINED,
+            investigator_id="inv1", skill_type=Skill.AGILITY, amount=3,
+        )
+        bus.emit(ctx)
+        assert ctx.amount == 5
+
+    def test_spend_rejects_wrong_skill(self, setup):
+        """只能提升智力/敏捷。"""
+        from backend.models.enums import Skill
+        state, bus, inv, impl = setup
+        inv.resources = 5
+        assert impl.spend(state, "inv1", Skill.COMBAT) is False
+        assert impl.spend(state, "inv1", Skill.WILLPOWER) is False
+        assert inv.resources == 5
+
+    def test_spend_requires_resources(self, setup):
+        from backend.models.enums import Skill
+        state, bus, inv, impl = setup
+        inv.resources = 0
+        assert impl.spend(state, "inv1", Skill.INTELLECT) is False

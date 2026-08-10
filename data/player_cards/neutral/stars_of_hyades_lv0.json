@@ -1,0 +1,22 @@
+{
+  "id": "stars_of_hyades_lv0",
+  "arkhamdb_code": "03013",
+  "name": "Stars of Hyades",
+  "name_cn": "毕宿星团",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Randomly choose an event beneath Sefina Rousseau and remove it from the game. If you cannot, take 1 damage and 1 horror. If your deck has 5 or more cards in it, shuffle Stars of Hyades back into your deck instead of discarding it.",
+  "text_cn": "<b>显现</b> - 随机选择赛菲娜·卢梭下的一张事件卡，将其从游戏中移除。如果你不能这么做，受到1点伤害和1点恐惧。如果你的牌组有5张或以上卡牌，不要丢弃毕宿星团，改为将其重洗回你的牌组。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "weakness"
+}

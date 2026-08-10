@@ -1,0 +1,58 @@
+{
+  "id": "the_pallid_mask",
+  "name": "The Pallid Mask",
+  "name_cn": "苍白面具",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 6,
+  "encounter_sets": [
+    "the_pallid_mask",
+    "ghouls",
+    "hauntings",
+    "chilling_cold"
+  ],
+  "scenario_set": "the_pallid_mask",
+  "start_location": "the_gate_to_hell",
+  "initial_locations": [
+    "the_gate_to_hell"
+  ],
+  "set_aside": [
+    "tomb_of_shadows",
+    "blocked_passage",
+    "stone_archways",
+    "crypt_of_the_sepulchral_lamp",
+    "bone_filled_caverns",
+    "well_of_souls",
+    "candlelit_tunnels",
+    "labyrinth_of_bones",
+    "narrow_shaft",
+    "shivering_pools",
+    "the_man_in_the_pallid_mask"
+  ],
+  "connections": {},
+  "act_deck": [
+    "through_the_catacombs",
+    "the_path_is_barred",
+    "the_way_out",
+    "leading_the_way"
+  ],
+  "agenda_deck": [
+    "empire_of_the_dead",
+    "empire_of_the_undead"
+  ],
+  "locations": [
+    "the_gate_to_hell",
+    "stone_archways",
+    "crypt_of_the_sepulchral_lamp",
+    "bone_filled_caverns",
+    "well_of_souls",
+    "candlelit_tunnels",
+    "labyrinth_of_bones",
+    "narrow_shaft",
+    "shivering_pools",
+    "blocked_passage",
+    "tomb_of_shadows"
+  ],
+  "story_assets": [],
+  "setup_notes": "起始地点为地狱之门（若战役日志为『在墓穴中醒来』则改为随机1张地下墓穴地点作为起始地点）。暗影坟墓与堵塞通道先放在一边，再与另外3张随机地下墓穴地点洗混组成『地下墓穴牌堆』底部5张，其余地下墓穴地点随机叠在上面，全部以『地下墓穴』面朝上（stone_archways/candlelit_tunnels/labyrinth_of_bones 各2张）。本剧本地点卡不印连接图标：新地点由探索放置到现有地点的上/下/左/右，正交相邻的地点视为相连，对角不相连（故 connections 为空，连接在放置时动态产生）。苍白面具男子弱点由持有者从牌库找出放在一边。场景2推进方式决定场景3：击败苍白面具男子→the_way_out（记2个Conviction）；花费线索→leading_the_way（记2个Doubt）。"
+}

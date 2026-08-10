@@ -1,0 +1,23 @@
+{
+  "id": "reckless_assault_lv0",
+  "arkhamdb_code": "03118",
+  "name": "Reckless Assault",
+  "name_cn": "拼死出击",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "desperate"
+  ],
+  "skill_icons": {
+    "combat": 4
+  },
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nCommit to a skill test only if you have 3 or fewer remaining sanity.",
+  "text_cn": "每次技能检定最多投入1张。\n你剩余神智值为3点或更少时才可投入技能检定。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

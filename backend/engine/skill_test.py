@@ -184,7 +184,7 @@ class SkillTestEngine:
             for card_id in self._effect_card_ids:
                 if self.card_registry.get_implementation(card_id):
                     temp_id = self.game_state.next_instance_id()
-                    self.card_registry.activate_card(card_id, temp_id, self.bus)
+                    self.card_registry.activate_card(card_id, temp_id, self.bus, chaos_bag=self.chaos_bag)
                     self._committed_temp_ids.append(temp_id)
 
         ctx = EventContext(
@@ -192,12 +192,17 @@ class SkillTestEngine:
             event=GameEvent.SKILL_TEST_COMMIT,
             investigator_id=result.investigator_id,
             skill_type=result.skill_type,
+            difficulty=result.difficulty,
             committed_cards=committed_card_ids,
             amount=total_icons,
         )
         self.bus.emit(ctx)
         # Update in case handlers modified
         result.committed_icons = ctx.amount
+        # Allow committed-card effects (e.g. Double or Nothing) to modify the
+        # test difficulty during the commit step.
+        if ctx.difficulty is not None and ctx.difficulty != result.difficulty:
+            result.difficulty = max(0, ctx.difficulty)
 
     def _st3_reveal(self, result: SkillTestResult) -> None:
         from backend.engine.event_bus import EventContext
@@ -250,6 +255,14 @@ class SkillTestEngine:
         )
         self.bus.emit(ctx)
         result.token_modifier = ctx.amount
+        # Scenario token effects (e.g. Hard/Expert reference card) may force
+        # the test to auto-fail regardless of the final skill value.
+        if ctx.extra.get("force_auto_fail"):
+            result.auto_fail = True
+        # Symmetric escape hatch: card effects (e.g. Eucatastrophe) may cancel
+        # an auto-fail token after it was revealed.
+        if result.auto_fail and ctx.extra.get("cancel_auto_fail"):
+            result.auto_fail = False
 
     def _st5_determine_value(self, result: SkillTestResult) -> None:
         from backend.engine.event_bus import EventContext

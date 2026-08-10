@@ -16,10 +16,10 @@
   "slots": [
     "ally"
   ],
-  "text": "Forced: Place 1 doom on enter. Exhaust: Search top 3 for Spell, draw it.",
+  "text": "<b>Forced</b> - After Arcane Initiate enters play: Place 1 doom on it.\n[fast] Exhaust Arcane Initiate: Search the top 3 cards of your deck for a [[Spell]] card and draw it. Shuffle your deck.",
   "health": 1,
   "sanity": 2,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>强制</b> - 在刷新阶段开始时：弃置新晋术士或在其上放置1点恐惧。\n<b>反应</b> - 在新晋术士进场时或在其上有恐惧放置时：搜索你的牌库，将一张<b>法术</b>支援卡加入手牌，然后洗牌。"
+  "text_cn": "<b>强制</b> - 在新晋术士进场后：在其上放置1个毁灭标记。\n[fast] 横置新晋术士：搜索你牌库顶的3张牌，从中选择1张<b>法术</b>卡并抽取它。洗混你的牌库。"
 }

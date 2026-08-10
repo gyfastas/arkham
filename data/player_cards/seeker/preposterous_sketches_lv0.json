@@ -19,5 +19,5 @@
   "sanity": null,
   "pack": "dwl",
   "unique": false,
-  "text_cn": "<b>洞察</b>。如果你所在地点有线索，抽取2张牌。"
+  "text_cn": "只能在你所在地点有线索时打出。\n抽取3张牌。"
 }

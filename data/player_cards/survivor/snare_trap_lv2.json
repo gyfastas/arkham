@@ -1,0 +1,25 @@
+{
+  "id": "snare_trap_lv2",
+  "arkhamdb_code": "03199",
+  "name": "Snare Trap",
+  "name_cn": "诱捕陷阱",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "trap",
+    "improvised"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Attach to your location. Limit 1 per location.\n<b>Forced</b> - After a non-[[Elite]] enemy enters attached location: Exhaust that enemy, disengage it from all investigators, and attach Snare Trap to it.\n<b>Forced</b> - When attached enemy would ready: Instead, discard Snare Trap.",
+  "text_cn": "叠加到你所在地点。每个地点限制1张。\n<b>强制</b> - 在1名非[[精英]]敌人进入被叠加地点后：消耗该敌人，解除它与所有调查员的交战状态，并对其叠加诱捕陷阱。\n<b>强制</b> - 在被叠加的敌人将要准备时：改为丢弃诱捕陷阱。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

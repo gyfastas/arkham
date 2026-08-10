@@ -16,10 +16,11 @@
   "slots": [
     "hand"
   ],
-  "text": "Fast. You get +1 intellect while investigating. If there are no clues on your location: Return Magnifying Glass to your hand.",
+  "text": "Fast.\nYou get +1 intellect while investigating.\nFast. If there are no clues on your location: Return Magnifying Glass to your hand.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "你获得+1智力。"
+  "fast": true,
+  "text_cn": "快速。\n调查时你获得+1智力。\n[快速]如果你所在地点没有线索：将放大镜收回你的手牌。"
 }

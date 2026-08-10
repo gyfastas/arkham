@@ -1,0 +1,24 @@
+{
+  "id": "calling_in_favors_lv0",
+  "arkhamdb_code": "03158",
+  "name": "Calling in Favors",
+  "name_cn": "施恩求报",
+  "class": "neutral",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "favor"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Choose an [[Ally]] asset you control and return it to your hand. Then, search the top 9 cards of your deck for an [[Ally]] asset and play it, reducing its cost by X. X is the cost of the [[Ally]] asset returned to your hand. Shuffle your deck.",
+  "text_cn": "选择一张你控制的[[盟友]]支援卡并将其返回你的手牌。然后，在你牌堆顶部9张卡牌中查找并打出一张[[盟友]]支援卡，其费用降低X点，其中X为返回你手牌的[[盟友]]支援卡的费用。混洗你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -16,10 +16,10 @@
   "slots": [
     "hand"
   ],
-  "text": "Exhaust Old Book of Lore: Choose an investigator at your location. That investigator searches the top 3 cards of his or her deck for a card, draws it, and shuffles the remaining cards into his or her deck.",
+  "text": "[action] Exhaust Old Book of Lore: Choose an investigator at your location. That investigator searches the top 3 cards of his or her deck for a card, draws it, and shuffles the remaining cards into his or her deck.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "消耗智慧古书：查看你牌库顶的3张牌。将其中1张加入手牌，其余以任意顺序置于牌库底。"
+  "text_cn": "[行动]消耗智慧古书：选择你所在地点的一名调查员。该调查员查看其牌库顶的3张牌，抽取其中1张，并将其余的牌洗入其牌库。"
 }

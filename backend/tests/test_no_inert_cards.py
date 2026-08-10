@@ -18,7 +18,7 @@ import pytest
 
 from backend.cards.registry import CardRegistry
 
-CARDS_ROOT = Path(__file__).resolve().parents[2] / "cards"
+CARDS_ROOT = Path(__file__).resolve().parents[1] / "cards"
 
 # Public methods that count as a real effect entry point
 _ACTION_PREFIXES = ("activate", "resolve", "use", "spend", "attach",
@@ -31,6 +31,12 @@ _ALLOWED_INERT = {
     "zoeys_cross_lv0",      # effect unified into zoey_samaras.py choice flow
     "disc_of_itzamna_lv2",  # spawn interception lives in official_core spawn hook
     "unexpected_courage_lv0",  # pure skill-icon card: works via commit, no effect text
+    # 官方卡面无文字能力：asset 自带4生命/理智用于承伤/承恐，soak 分配
+    # 通道（get_ally_soak_targets 仅限盟友）暂不支持非盟友 asset，见卡内注释。
+    "bulletproof_vest_lv3",
+    "elder_sign_amulet_lv3",
+    "leather_coat_lv0",       # 同上：health:2 承伤
+    "cherished_keepsake_lv0",  # 同上：官方卡面无文字能力，sanity:2 承恐
 }
 
 
@@ -117,3 +123,35 @@ class TestNoInertHandlers:
             if not working_total and not action_total:
                 inert.append(card_id)
         assert not inert, f"注册但完全无效果的卡: {inert}"
+
+
+PLAYER_CARDS_ROOT = Path(__file__).resolve().parents[2] / "data" / "player_cards"
+
+# Data-only cards with no effect of their own (placeholder entries)
+_NO_IMPL_WHITELIST = {
+    "random_basic_weakness",  # 占位卡：开局时替换为一张随机基础弱点
+}
+
+
+class TestDataCoverage:
+    def test_every_player_card_data_has_implementation(self):
+        """Every data/player_cards JSON must have a registered implementation.
+
+        Guards the opposite direction of the inert-card tests: a card that
+        exists in the deck-building pool but silently has no effect in game.
+        """
+        import json
+
+        registry = CardRegistry()
+        registry.discover_cards()
+        missing = []
+        for path in sorted(PLAYER_CARDS_ROOT.rglob("*.json")):
+            if path.name == "schema.json":
+                continue
+            data = json.loads(path.read_text(encoding="utf-8"))
+            card_id = data.get("id")
+            if not card_id or card_id in _NO_IMPL_WHITELIST:
+                continue
+            if registry.get_implementation(card_id) is None:
+                missing.append(f"{path.parent.name}/{card_id}")
+        assert not missing, f"有数据但无实现的卡: {missing}"

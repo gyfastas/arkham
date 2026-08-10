@@ -1,0 +1,46 @@
+{
+  "id": "william_yorick",
+  "arkhamdb_code": "03005",
+  "name": "William Yorick",
+  "name_cn": "威廉·约里克",
+  "title": "The Gravedigger",
+  "title_cn": "挖墓人",
+  "class": "survivor",
+  "health": 8,
+  "sanity": 6,
+  "skills": {
+    "willpower": 3,
+    "intellect": 2,
+    "combat": 4,
+    "agility": 3
+  },
+  "ability": "[reaction] After you defeat an enemy: Play an asset from your discard pile <i>(paying its cost)</i>. (Limit once per round.)\n[elder_sign] effect: +2. If this test is successful, return 1 card from your discard pile to your hand.",
+  "ability_cn": "[reaction]在你击败敌人后：从你的弃牌堆<i>(支付其费用)</i>打出一张支援卡。(每轮限制1次。)\n[elder_sign]效果：+2。如果本次检定成功，将你弃牌堆中的1张卡牌返回你的手牌。",
+  "elder_sign": "[elder_sign] effect: +2. If this test is successful, return 1 card from your discard pile to your hand.",
+  "elder_sign_cn": "[elder_sign]效果：+2。如果本次检定成功，将你弃牌堆中的1张卡牌返回你的手牌。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "survivor": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "guardian": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    }
+  },
+  "signature_cards": [
+    "bury_them_deep_lv0"
+  ],
+  "weakness": "graveyard_ghouls_lv0",
+  "flavor_text": "\"I am but a simple player in this drama, but if I am lucky, I'll live to see the curtains fall.\"",
+  "pack": "path_to_carcosa",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Survivor cards ([survivor]) level 0-5, Neutral cards level 0-5, Guardian cards ([guardian]) level 0-2.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Bury Them Deep, Graveyard Ghouls, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：求生者卡([survivor])等级0-5，中立卡牌等级0-5，守卫者卡([guardian])等级0-2。\n<b>牌组构建需求</b>(不计入卡牌张数)：挖土深埋、墓地食尸鬼、1张随机基础弱点。"
+}

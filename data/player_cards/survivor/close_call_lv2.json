@@ -14,10 +14,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "Fast. Play after you evade a non-Elite enemy. Shuffle that enemy into the encounter deck.",
+  "text": "Fast. Play after a non-weakness, non-[[Elite]] enemy at your location is evaded.\nShuffle that enemy into the encounter deck.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你躲避一个敌人后打出。将该敌人洗入遭遇牌堆。"
+  "text_cn": "<b>快速</b>。在你所在地点的一个非弱点、非精英敌人被躲避后打出。\n将该敌人洗入遭遇牌堆。"
 }

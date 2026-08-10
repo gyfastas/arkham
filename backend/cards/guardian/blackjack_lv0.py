@@ -15,9 +15,9 @@ class Blackjack(CardImplementation):
 
     @on_event(GameEvent.SKILL_VALUE_DETERMINED, priority=TimingPriority.WHEN)
     def combat_bonus(self, ctx):
-        """用金属棍棒攻击时 +1 战斗。"""
+        """用金属棍棒攻击时 +1 战斗（引擎以 ctx.source 传武器实例）。"""
         if ctx.skill_type != Skill.COMBAT:
             return
-        if ctx.extra.get("weapon_card_id") != "blackjack_lv0":
+        if ctx.source != self.instance_id:
             return
         ctx.modify_amount(1, "blackjack_combat_bonus")

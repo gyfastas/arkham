@@ -72,6 +72,48 @@ class TestBeatCop:
         enemy = game.state.get_card_instance("enemy_1")
         assert enemy.damage > 0
 
+    def test_discard_damage_engaged_enemy(self, game):
+        """弃置巡警：对交战敌人造成1伤害，巡警进入弃牌堆。"""
+        cop_id = _equip_beat_cop(game)
+        enemy = _spawn_enemy(game)
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_discard_damage(game.state, "inv1", "enemy_1") is True
+        assert enemy.damage == 1
+        inv = game.state.get_investigator("inv1")
+        assert cop_id not in inv.play_area
+        assert "beat_cop_lv0" in inv.discard
+        assert cop_id not in game.state.cards_in_play
+
+    def test_discard_damage_unengaged_enemy_at_location(self, game):
+        """目标放宽：同地点未交战的敌人也可指定（官方：你所在地点的敌人）。"""
+        cop_id = _equip_beat_cop(game)
+        # 敌人只放在地点，不与调查员交战
+        enemy = CardInstance(
+            instance_id="enemy_2", card_id="test_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play["enemy_2"] = enemy
+        game.state.locations["test_location"].enemies.append("enemy_2")
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_discard_damage(game.state, "inv1", "enemy_2") is True
+        assert enemy.damage == 1
+
+    def test_discard_damage_enemy_elsewhere_fails(self, game):
+        """敌人不在你所在地点时不能指定。"""
+        cop_id = _equip_beat_cop(game)
+        enemy = CardInstance(
+            instance_id="enemy_3", card_id="test_enemy",
+            owner_id="scenario", controller_id="scenario",
+        )
+        game.state.cards_in_play["enemy_3"] = enemy
+        # 既不在地点也不在任何同地点调查员威胁区
+
+        impl = game.card_registry.active_instances.get(cop_id)
+        assert impl.activate_discard_damage(game.state, "inv1", "enemy_3") is False
+        assert enemy.damage == 0
+
 
 def _spawn_enemy(game, instance_id="enemy_1"):
     enemy = CardInstance(

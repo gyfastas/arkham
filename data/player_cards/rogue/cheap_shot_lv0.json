@@ -1,0 +1,24 @@
+{
+  "id": "cheap_shot_lv0",
+  "arkhamdb_code": "03194",
+  "name": "Cheap Shot",
+  "name_cn": "暗中偷袭",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> Add your [agility] value to your skill value for this attack. If you succeed by 2 or more, automatically evade the attacked enemy.",
+  "text_cn": "<b>攻击</b>。本次攻击中将你的[agility]数值加入你的技能值。如果你成功且超过难度2点或以上，自动躲避本次攻击的敌人。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

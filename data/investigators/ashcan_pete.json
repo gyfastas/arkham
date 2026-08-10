@@ -1,40 +1,45 @@
 {
- "id": "ashcan_pete",
- "arkhamdb_code": "02005",
- "name": "\"Ashcan\" Pete",
- "name_cn": "\"灰堆\"皮特",
- "title": "The Drifter",
- "title_cn": "流浪者",
- "class": "survivor",
- "health": 6,
- "sanity": 5,
- "skills": {
-  "willpower": 4,
-  "intellect": 2,
-  "combat": 2,
-  "agility": 3
- },
- "ability": "You begin the game with Duke in play.\n[fast] Discard a card from your hand: Ready an asset you control. (Limit once per round.)\n[elder_sign] effect: +2. Ready Duke.",
- "ability_cn": "開始遊戲時，將杜克放置入場。\n[free]丟棄一張手牌：準備1張你控制的支援卡。(每輪限制1次。)\n[elder_sign]效果：+2。準備杜克。",
- "elder_sign": "",
- "elder_sign_cn": "",
- "deck_requirements": {
-  "size": 30,
-  "cards": {
-   "survivor": {
-    "min_level": 0,
-    "max_level": 5
-   },
-   "neutral": {
-    "min_level": 0,
-    "max_level": 5
-   }
-  }
- },
- "signature_cards": [
-  "duke_lv0"
- ],
- "weakness": "wracked_by_nightmares_lv0",
- "flavor_text": "\"C'mere, boy. We got work to do.\"",
- "pack": "dunwich_legacy"
+  "id": "ashcan_pete",
+  "arkhamdb_code": "02005",
+  "name": "\"Ashcan\" Pete",
+  "name_cn": "\"灰堆\"皮特",
+  "title": "The Drifter",
+  "title_cn": "流浪者",
+  "class": "survivor",
+  "health": 6,
+  "sanity": 5,
+  "skills": {
+    "willpower": 4,
+    "intellect": 2,
+    "combat": 2,
+    "agility": 3
+  },
+  "ability": "You begin the game with Duke in play.\n[fast] Discard a card from your hand: Ready an asset you control. (Limit once per round.)\n[elder_sign] effect: +2. Ready Duke.",
+  "ability_cn": "開始遊戲時，將杜克放置入場。\n[free]丟棄一張手牌：準備1張你控制的支援卡。(每輪限制1次。)\n[elder_sign]效果：+2。準備杜克。",
+  "elder_sign": "",
+  "elder_sign_cn": "",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "survivor": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "any": {
+        "min_level": 0,
+        "max_level": 0,
+        "max_count": 5
+      }
+    }
+  },
+  "signature_cards": [
+    "duke_lv0"
+  ],
+  "weakness": "wracked_by_nightmares_lv0",
+  "flavor_text": "\"C'mere, boy. We got work to do.\"",
+  "pack": "dunwich_legacy"
 }

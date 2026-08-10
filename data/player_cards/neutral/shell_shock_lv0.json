@@ -1,0 +1,22 @@
+{
+  "id": "shell_shock_lv0",
+  "arkhamdb_code": "03008",
+  "name": "Shell Shock",
+  "name_cn": "砲弹休克",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - For every 2 damage on you, take 1 horror.",
+  "text_cn": "<b>显现</b> - 你身上每有2点伤害，受到1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "subtype": "weakness"
+}

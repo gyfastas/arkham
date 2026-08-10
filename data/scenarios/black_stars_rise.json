@@ -1,0 +1,178 @@
+{
+  "id": "black_stars_rise",
+  "name": "Black Stars Rise",
+  "name_cn": "黑星升起",
+  "type": "official",
+  "campaign": "path_to_carcosa",
+  "sequence": 7,
+  "encounter_sets": [
+    "black_stars_rise",
+    "evil_portents",
+    "byakhee",
+    "inhabitants_of_carcosa",
+    "stranger",
+    "pentagram",
+    "ancient_evils"
+  ],
+  "scenario_set": "black_stars_rise",
+  "start_location": "porte_de_lavancée",
+  "initial_locations": [
+    "porte_de_lavancée",
+    "grand_rue",
+    "outer_wall_a",
+    "outer_wall_b",
+    "north_tower_a",
+    "north_tower_b",
+    "broken_steps_a",
+    "broken_steps_b",
+    "abbey_church"
+  ],
+  "set_aside": [
+    "open_the_path_below",
+    "open_the_path_above",
+    "beast_of_aldebaran",
+    "tidal_terror",
+    "rift_seeker",
+    "cloister",
+    "knights_hall",
+    "abbey_tower_a",
+    "abbey_tower_b",
+    "chapel_of_st_aubert_a",
+    "chapel_of_st_aubert_b",
+    "chœur_gothique_a",
+    "chœur_gothique_b"
+  ],
+  "connections": {
+    "porte_de_lavancée": [
+      "grand_rue"
+    ],
+    "grand_rue": [
+      "porte_de_lavancée",
+      "outer_wall_a",
+      "outer_wall_b",
+      "north_tower_a",
+      "north_tower_b",
+      "broken_steps_a",
+      "broken_steps_b"
+    ],
+    "outer_wall_a": [
+      "grand_rue",
+      "north_tower_a",
+      "north_tower_b",
+      "broken_steps_a",
+      "broken_steps_b"
+    ],
+    "outer_wall_b": [
+      "grand_rue",
+      "north_tower_a",
+      "north_tower_b",
+      "broken_steps_a",
+      "broken_steps_b"
+    ],
+    "north_tower_a": [
+      "grand_rue",
+      "outer_wall_a",
+      "outer_wall_b",
+      "broken_steps_a",
+      "broken_steps_b"
+    ],
+    "north_tower_b": [
+      "grand_rue",
+      "outer_wall_a",
+      "outer_wall_b",
+      "broken_steps_a",
+      "broken_steps_b"
+    ],
+    "broken_steps_a": [
+      "grand_rue",
+      "outer_wall_a",
+      "outer_wall_b",
+      "north_tower_a",
+      "north_tower_b",
+      "abbey_church"
+    ],
+    "broken_steps_b": [
+      "grand_rue",
+      "outer_wall_a",
+      "outer_wall_b",
+      "north_tower_a",
+      "north_tower_b",
+      "abbey_church"
+    ],
+    "abbey_church": [
+      "broken_steps_a",
+      "broken_steps_b",
+      "chœur_gothique_a",
+      "chœur_gothique_b",
+      "cloister",
+      "knights_hall",
+      "chapel_of_st_aubert_a",
+      "chapel_of_st_aubert_b"
+    ],
+    "chœur_gothique_a": [
+      "abbey_church",
+      "abbey_tower_a",
+      "abbey_tower_b"
+    ],
+    "chœur_gothique_b": [
+      "abbey_church",
+      "abbey_tower_a",
+      "abbey_tower_b"
+    ],
+    "cloister": [
+      "abbey_church",
+      "knights_hall"
+    ],
+    "knights_hall": [
+      "abbey_church",
+      "cloister"
+    ],
+    "chapel_of_st_aubert_a": [
+      "abbey_church"
+    ],
+    "chapel_of_st_aubert_b": [
+      "abbey_church"
+    ],
+    "abbey_tower_a": [
+      "chœur_gothique_a",
+      "chœur_gothique_b"
+    ],
+    "abbey_tower_b": [
+      "chœur_gothique_a",
+      "chœur_gothique_b"
+    ]
+  },
+  "act_deck": [
+    "open_the_path_below",
+    "open_the_path_above"
+  ],
+  "agenda_deck": [
+    "the_tide_rises",
+    "let_the_storm_rage_a",
+    "the_city_floods",
+    "the_ritual_begins",
+    "the_entity_above_a",
+    "swallowed_sky"
+  ],
+  "locations": [
+    "porte_de_lavancée",
+    "grand_rue",
+    "outer_wall_a",
+    "outer_wall_b",
+    "north_tower_a",
+    "north_tower_b",
+    "broken_steps_a",
+    "broken_steps_b",
+    "abbey_church",
+    "chœur_gothique_a",
+    "chœur_gothique_b",
+    "cloister",
+    "knights_hall",
+    "chapel_of_st_aubert_a",
+    "chapel_of_st_aubert_b",
+    "abbey_tower_a",
+    "abbey_tower_b"
+  ],
+  "story_assets": [],
+  "setup_notes": "无行动幕，双密谋幕并行（1a/2a/3a 与 1c/2c/3c）。设置时先将 Agenda 2a/2c、修道院塔樓、聖奧伯特禮拜堂各两版本按背面遭遇组图标（洪水/漩渦）分两堆，随机选一堆移出游戏。北部塔樓/外城牆/垮塌的臺階各随机选一版本入场，其余版本移除；哥特式唱詩臺随机选一版本搁置，另一移除。搁置：两张 act（浪破路現/天開路現）、畢宿五的野獸、潮汐駭物x2、裂縫探求者x2、迴廊、騎士大廳、修道院塔樓、聖奧伯特禮拜堂。调查员从晉升之門开始。每名调查员从 Madness/Pact/Cultist/Detective 弱点中随机选一张加入牌库。"
+}

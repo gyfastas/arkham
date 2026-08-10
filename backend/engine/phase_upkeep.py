@@ -14,10 +14,11 @@ HAND_SIZE_LIMIT = 8
 
 
 class UpkeepPhase:
-    def __init__(self, game_state: GameState, event_bus: EventBus, card_registry=None) -> None:
+    def __init__(self, game_state: GameState, event_bus: EventBus, card_registry=None, chaos_bag=None) -> None:
         self.game_state = game_state
         self.bus = event_bus
         self.card_registry = card_registry
+        self.chaos_bag = chaos_bag
 
     def resolve(self, discard_callback=None) -> None:
         """Execute the Upkeep phase (4.1-4.6).
@@ -64,7 +65,7 @@ class UpkeepPhase:
                 card_id = inv.deck.pop(0)
                 inv.hand.append(card_id)
                 from backend.engine.draw_hooks import emit_card_drawn
-                emit_card_drawn(self.game_state, self.bus, self.card_registry, inv, card_id)
+                emit_card_drawn(self.game_state, self.bus, self.card_registry, inv, card_id, chaos_bag=self.chaos_bag)
 
             # Gain 1 resource
             inv.resources += 1
@@ -80,7 +81,19 @@ class UpkeepPhase:
             if inv is None:
                 continue
 
-            excess = len(inv.hand) - HAND_SIZE_LIMIT
+            # Per-investigator hand limit: cards (Laboratory Assistant +2, ...)
+            # adjust via the UPKEEP_PHASE_BEGINS ctx amount.
+            from backend.engine.event_bus import EventContext
+            limit_ctx = EventContext(
+                game_state=self.game_state,
+                event=GameEvent.UPKEEP_PHASE_BEGINS,
+                investigator_id=inv_id,
+                amount=HAND_SIZE_LIMIT,
+            )
+            self.bus.emit(limit_ctx)
+            limit = max(0, limit_ctx.amount)
+
+            excess = len(inv.hand) - limit
             if excess <= 0:
                 continue
 

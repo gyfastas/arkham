@@ -4,9 +4,11 @@
 远古印记：+1（阿格尼丝·贝克身上每有1点恐惧，+1）。
 
 简化说明：
-- 恐惧经由 HORROR_ASSIGNED 事件检测。引擎在盟友吸收分配前即以原始恐惧量发出该事件
-  （见 engine/damage.py 的 deal_damage 顺序），因此若恐惧全部被盟友吸收，能力仍会触发，
-  与实体规则"放置在阿格尼丝身上"略有差异。
+- 触发条件按"实际有恐惧落到阿格尼丝身上"判定：DamageEngine 在 HORROR_ASSIGNED
+  事件发出前已完成盟友吸收结算（见 engine/damage.py 的 deal_damage 顺序），
+  实现通过对比盟友吸收前后恐惧差值推算落到阿格尼丝身上的恐惧量；全部经盟友
+  吸收时不触发。盟友恐惧若因事件外的其他途径变化（如直接治愈/直接伤害资产），
+  推算可能有偏差（遗留简化，无更精确引擎钩子）。
 - 所在地点有多名可选敌人时，默认选择第一个（优先交战中的敌人）；可在触发前设置
   scenario.vars["agnes_baker_target"] = enemy_instance_id 指定目标。
   未实现交互式 pending_choice（需要 server 端解析支持，且不允许修改已有文件）。
@@ -22,6 +24,8 @@ class AgnesBaker(CardImplementation):
     def __init__(self, instance_id: str = "") -> None:
         super().__init__(instance_id)
         self._used_this_phase = False
+        # 盟友恐惧快照：用于推算本次分配中被盟友吸收、而未落到阿格尼丝身上的恐惧
+        self._ally_horror: dict[str, int] = {}
 
     def _get_agnes(self, ctx):
         """Return the investigator state iff ctx investigator is Agnes Baker."""
@@ -46,10 +50,22 @@ class AgnesBaker(CardImplementation):
     @on_event(GameEvent.HORROR_ASSIGNED, priority=TimingPriority.AFTER)
     def deal_damage_on_horror(self, ctx):
         """被放置1点或以上恐惧后：对所在地点的一名敌人造成1点伤害（每阶段限1次）。"""
-        if self._used_this_phase or ctx.amount < 1:
-            return
         inv = self._get_agnes(ctx)
         if inv is None:
+            return
+        # 实际落到阿格尼丝身上的恐惧 = 原始恐惧量 - 盟友已吸收量
+        # （盟友吸收在 HORROR_ASSIGNED 发出前已结算，按快照差值推算）
+        absorbed = 0
+        for inst_id in inv.play_area:
+            inst = ctx.game_state.get_card_instance(inst_id)
+            if inst is None:
+                continue
+            prev = self._ally_horror.get(inst_id)
+            if prev is not None and inst.horror > prev:
+                absorbed += inst.horror - prev
+            self._ally_horror[inst_id] = inst.horror
+        landed = max(0, ctx.amount - absorbed)
+        if self._used_this_phase or landed < 1:
             return
 
         # 候选敌人：交战中的敌人 + 所在地点未交战的敌人

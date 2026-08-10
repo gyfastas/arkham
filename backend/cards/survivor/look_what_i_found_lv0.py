@@ -1,12 +1,14 @@
 """Look What I Found! (Level 0) — Survivor Event.
-快速。在你检定失败后打出。在你所在地点发现2条线索。
+Fast. Play after you fail a skill test while investigating by 2 or less.
+Discover 2 clues at your location.
 
 简化说明：
-- 从手牌中自动触发：你检定失败后自动打出。
+- 从手牌中自动触发：你调查检定失败且差值≤2时自动打出（官方为玩家选择时机）。
+- "调查"按智力检定判定（引擎中调查动作为智力检定；其他技能调查从简）。
 """
 
 from backend.cards.base import CardImplementation, on_event
-from backend.models.enums import GameEvent, TimingPriority
+from backend.models.enums import GameEvent, Skill, TimingPriority
 
 
 class LookWhatIFound(CardImplementation):
@@ -14,6 +16,13 @@ class LookWhatIFound(CardImplementation):
 
     @on_event(GameEvent.SKILL_TEST_FAILED, priority=TimingPriority.AFTER)
     def discover_two(self, ctx):
+        # 仅调查（智力）检定失败且差值≤2时可打出
+        if ctx.skill_type != Skill.INTELLECT:
+            return
+        margin = (ctx.difficulty or 0) - (ctx.modified_skill or 0)
+        if margin < 1 or margin > 2:
+            return
+
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None or "look_what_i_found_lv0" not in inv.hand:
             return

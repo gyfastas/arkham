@@ -14,10 +14,11 @@
     "combat": 2
   },
   "slots": [],
-  "text": "Fast. Choose an enemy at your location. Test intellect (X), where X is that enemy's fight value. For each point you succeed by, reduce that enemy's fight value by 1 for the next attack this phase.",
+  "text": "Fast. Play during any fast player window.\nChoose an enemy at your location. Test intellect (X), where X is that enemy's fight value. For each point you succeed by, reduce that enemy's fight value by 1 for the next attack performed against it this phase.",
   "health": null,
   "sanity": null,
   "pack": "dwl",
   "unique": false,
-  "text_cn": "选择一个在你地点的敌人。查看该敌人的牌面文字。发现1条线索（如果该敌人是精英，则改为发现2条线索）。"
+  "fast": true,
+  "text_cn": "快速。可在任意快速玩家窗口打出。\n选择一个在你地点的敌人。检定智力(X)，X为该敌人的战斗力。你每超出1点难度，本阶段内下一次对该敌人进行的攻击，其战斗力-1。"
 }

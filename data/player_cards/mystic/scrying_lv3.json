@@ -1,5 +1,6 @@
 {
   "id": "scrying_lv3",
+  "arkhamdb_code": "03236",
   "name": "Scrying",
   "name_cn": "探知术",
   "class": "mystic",
@@ -15,10 +16,13 @@
   "slots": [
     "arcane"
   ],
-  "text": "Uses (3 charges). Fast. Look at top 3 cards of any deck.",
+  "text": "Uses (3 charges).\n[fast] Exhaust Scrying and spend 1 charge: Look at the top 3 cards of any investigator's deck, or the encounter deck. Return them to the top of that deck, in any order. If a [[Terror]] or [[Omen]] card is among the looked-at cards, take 1 horror.",
+  "text_cn": "使用(3充能)。\n[free]消耗探知术并花费1充能：查看任意一位调查员牌堆或遭遇牌堆顶部的3张卡牌。将它们按任意顺序放回其牌堆顶。如果查看的卡牌中有[[恐怖]]或[[征兆]]，受到1点恐惧。",
   "health": null,
   "sanity": null,
-  "pack": "rcore",
   "unique": false,
-  "text_cn": "使用(3充能）。消耗探知术并花费1充能：查看一名调查员牌库顶的3张牌。该调查员可以将其中任意张置于其牌库底，其余以任意顺序置于其牌库顶。然后，该调查员抽取1张牌。"
+  "pack": "path_to_carcosa",
+  "uses": {
+    "charges": 3
+  }
 }

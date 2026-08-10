@@ -1,0 +1,23 @@
+{
+  "id": "time_warp_lv2",
+  "arkhamdb_code": "03311",
+  "name": "Time Warp",
+  "name_cn": "时间曲折",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "spell",
+    "paradox"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Fast. Play immediately after an investigator at your location finishes resolving an action during his or her turn.\nUndo that action <i>(return the game state to exactly the way it was before that action was performed, except for the playing of Time Warp and its costs)</i>.",
+  "text_cn": "快速。你所在地点的一位调查员在其回合结算完毕一次行动之后，你立即打出本卡。撤销该行动<i>(游戏返回到该行动执行之前的状态，但仍然视作你打出了时间曲折，且本卡牌打出的费用不会返还)</i>。<i>(FAQ, v1.4)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "fast": true
+}

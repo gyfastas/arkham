@@ -1,5 +1,5 @@
 """Charisma (Level 3) — Neutral Asset (Permanent).
-你获得2个额外的盟友槽位。
+你获得1个额外的盟友槽位。
 
 简化说明：
 - 通过 GameState.slot_managers 的 bonus_slots 授予（engine 已将 slot_managers
@@ -13,7 +13,7 @@ from backend.models.enums import GameEvent, SlotType, TimingPriority
 class Charisma(CardImplementation):
     card_id = "charisma_lv3"
     slot_type = SlotType.ALLY
-    bonus = 2
+    bonus = 1
 
     @on_event(GameEvent.CARD_ENTERS_PLAY, priority=TimingPriority.AFTER)
     def enter_play(self, ctx):

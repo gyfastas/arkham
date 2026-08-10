@@ -1,0 +1,25 @@
+{
+  "id": "eureka_lv0",
+  "arkhamdb_code": "03231",
+  "name": "Eureka!",
+  "name_cn": "重大发现",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful, the investigator performing this test searches the top 3 cards of his or her deck for a card, draws it, and shuffles his or her deck.",
+  "text_cn": "如果本次技能检定成功，执行本次检定的调查员查找其牌堆顶的3张卡牌，抽取其中1张并混洗其牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

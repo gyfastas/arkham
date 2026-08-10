@@ -1,0 +1,25 @@
+{
+  "id": "bury_them_deep_lv0",
+  "arkhamdb_code": "03016",
+  "name": "Bury Them Deep",
+  "name_cn": "挖土深埋",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "task"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "William Yorick deck only.\nFast. Play after a non-[[Elite]] enemy at your location is defeated.\nAdd that enemy <i>(and this card)</i> to the victory display.",
+  "text_cn": "威廉·约里克牌组专用。\n快速。你所在地点中1个非[[精英]]敌人被击败后打出。\n将该敌人<i>(与本卡牌)</i>放入胜利牌区。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

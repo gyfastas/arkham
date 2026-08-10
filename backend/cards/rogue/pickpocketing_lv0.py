@@ -1,5 +1,5 @@
 """Pickpocketing (Level 0) — Rogue Asset.
-扒窃。在你成功闪避敌人后，消耗：抽1张卡。
+反应 - 在你躲避一个敌人后，消耗扒窃：抽1张牌。
 """
 from backend.cards.base import CardImplementation, on_event
 from backend.models.enums import GameEvent, TimingPriority
@@ -10,7 +10,15 @@ class Pickpocketing(CardImplementation):
 
     @on_event(GameEvent.ENEMY_EVADED, priority=TimingPriority.REACTION)
     def draw_card(self, ctx):
-        """After you evade an enemy, exhaust to draw 1 card."""
+        """After you evade an enemy, exhaust Pickpocketing to draw 1 card."""
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
-        if inv and self.instance_id in inv.play_area and inv.deck:
-            inv.hand.append(inv.deck.pop(0))
+        if inv is None or self.instance_id not in inv.play_area:
+            return
+        inst = ctx.game_state.get_card_instance(self.instance_id)
+        if inst is None or inst.exhausted:
+            return
+        if not inv.deck:
+            return
+        inst.exhausted = True
+        inv.hand.append(inv.deck.pop(0))
+        ctx.extra["pickpocketing_draw"] = True

@@ -1,11 +1,11 @@
-"""Rite of Seeking (Level 0) — Mystic Asset, Arcane slot.
+"""Rite of Seeking (Level 0) — Mystic Asset, Arcane slot. (02028)
 使用(3充能)。[action]花费1充能：调查。这次调查不使用[intellect]，改为使用[willpower]。
 如果成功，额外发现所在地点1个线索。如果检定中抽出[skull]、[cultist]、[tablet]、
 [elder_thing]或[auto_fail]标记，在检定结束后，失去所有剩余行动，并立刻结束你的回合。
 
 简化说明：
 - activate() 花费1充能并武装；随后由会话层发起调查行动，
-  本实现在检定时替换智力为意志。
+  本实现在检定时替换智力为意志。官方卡面无横置要求（不 exhaust）。
 """
 
 from backend.cards.base import CardImplementation, on_event
@@ -39,7 +39,6 @@ class RiteOfSeeking(CardImplementation):
         if inst is None or inst.uses.get("charges", 0) <= 0:
             return False
         inst.uses["charges"] -= 1
-        inst.exhausted = True
         self._armed = True
         self._bad_token_drawn = False
         return True

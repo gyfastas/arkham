@@ -9,10 +9,12 @@
   "traits": ["insight"],
   "skill_icons": {"intellect": 1},
   "slots": [],
-  "text_cn": "快速。在一位調查員發現你所在地點的最後一個線索後打出。\n位於該地點的調查員獲得總計X資源，由你自行分配，X為該地點的隱藏值。",
+  "text": "Fast. Play after an investigator discovers the last remaining clue at your location.\nInvestigators at that location gain a total of X resources, distributed as you wish. X is that location's shroud value.",
+  "text_cn": "快速。在一位调查员发现你所在地点的最后一条线索后打出。\n位于该地点的调查员获得总计X资源，由你自行分配。X为该地点的隐藏值。",
   "health": null,
   "sanity": null,
   "pack": "tsn",
   "unique": false,
+  "fast": true,
   "deck_limit": 2
 }

@@ -5,10 +5,21 @@ import { useGameStore } from '../stores/game'
 import { localizeDisplayText } from '../utils/displayText'
 import { traitsLabel } from '../utils/labels'
 
-const props = defineProps<{
+/** 队友地图标记（由 GameView 从 other_investigators 换算） */
+export interface TeammateMarker {
+  name: string
+  location_id: string
+  active: boolean
+  defeated: boolean
+}
+
+const props = withDefaults(defineProps<{
   locations: Record<string, LocationDisplay>
   currentLocationId: string
-}>()
+  teammates?: TeammateMarker[]
+}>(), {
+  teammates: () => [],
+})
 
 const emit = defineEmits<{
   move: [locationId: string]
@@ -29,6 +40,16 @@ const nameById = computed(() => {
   const m: Record<string, string> = {}
   for (const [id, loc] of Object.entries(props.locations)) {
     m[id] = localizeDisplayText(loc.name_cn || loc.name, store.language)
+  }
+  return m
+})
+
+/** locId → 该地点的队友标记 */
+const teammatesByLoc = computed(() => {
+  const m: Record<string, TeammateMarker[]> = {}
+  for (const tm of props.teammates) {
+    if (!tm.location_id) continue
+    ;(m[tm.location_id] ||= []).push(tm)
   }
   return m
 })
@@ -99,6 +120,15 @@ const attachIsCurrent = computed(() => attachPopup.value?.locId === props.curren
           </span>
         </div>
         <div class="loc-markers">
+          <div
+            v-for="tm in (teammatesByLoc[String(locId)] || [])"
+            :key="tm.name"
+            class="loc-teammate"
+            :class="{ active: tm.active, defeated: tm.defeated }"
+            :title="tm.defeated ? '已被击败' : (tm.active ? '正在行动' : '队友所在地点')"
+          >
+            🧑 {{ tm.name }}
+          </div>
           <div
             v-if="loc.enemies_here > 0"
             class="loc-enemies clickable"
@@ -306,6 +336,25 @@ const attachIsCurrent = computed(() => attachPopup.value?.locId === props.curren
 .loc-enemies {
   font-size: 12px;
   color: #e74c3c;
+}
+
+.loc-teammate {
+  font-size: 11px;
+  color: #7ec8e3;
+  background: #12202e;
+  border: 1px solid #2a4a5e;
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+
+.loc-teammate.active {
+  border-color: #c0a060;
+  color: #c0a060;
+}
+
+.loc-teammate.defeated {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 
 .clickable {

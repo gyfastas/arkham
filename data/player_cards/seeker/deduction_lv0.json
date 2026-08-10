@@ -13,10 +13,10 @@
     "intellect": 1
   },
   "slots": [],
-  "text": "If this test is successful, discover 1 additional clue at your location.",
+  "text": "If this skill test is successful while investigating a location, discover 1 additional clue at that location.",
   "health": null,
   "sanity": null,
   "pack": "core",
   "unique": false,
-  "text_cn": "如果你成功超过难度2点或以上，你发现额外1条线索。"
+  "text_cn": "如果本次检定在调查地点时成功，在该地点额外发现1条线索。"
 }

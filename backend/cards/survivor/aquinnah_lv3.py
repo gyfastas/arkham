@@ -1,5 +1,9 @@
 """Aquinnah (Level 3) — Survivor Asset, Ally slot.
-反应 - 当你受到敌人伤害时：弃置安奎娜。取消该伤害，改为对该敌人造成2点伤害。
+[reaction] When an enemy attacks you, exhaust Aquinnah and deal 1 horror to her:
+Deal that enemy's damage to any enemy at your location, instead.
+(You still take horror dealt by the attack.)
+
+与 lv1 的差异：目标可以是任意敌人（含攻击者本身），默认选攻击者。
 """
 
 from backend.cards.survivor.aquinnah_lv1 import AquinnahLv1
@@ -7,4 +11,4 @@ from backend.cards.survivor.aquinnah_lv1 import AquinnahLv1
 
 class AquinnahLv3(AquinnahLv1):
     card_id = "aquinnah_lv3"
-    reflect_damage = 2
+    target_any_enemy = True

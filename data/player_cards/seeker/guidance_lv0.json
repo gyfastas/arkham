@@ -1,0 +1,23 @@
+{
+  "id": "guidance_lv0",
+  "arkhamdb_code": "03265",
+  "name": "Guidance",
+  "name_cn": "指导",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Choose another investigator at your location who has yet to take his or her turn this round. That investigator may take an additional action during his or her turn this round.",
+  "text_cn": "选择你所在地点的另一位本轮尚未进行其回合的调查员。该调查员可以在本轮自己回合中进行额外一次行动。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

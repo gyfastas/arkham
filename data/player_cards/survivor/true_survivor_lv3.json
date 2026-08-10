@@ -1,0 +1,21 @@
+{
+  "id": "true_survivor_lv3",
+  "arkhamdb_code": "03273",
+  "name": "True Survivor",
+  "name_cn": "求生高手",
+  "class": "survivor",
+  "type": "event",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Return 3 [[Innate]] skills from your discard pile to your hand.",
+  "text_cn": "将你弃牌堆中的3张[[天性]]技能卡返回你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

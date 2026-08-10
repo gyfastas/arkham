@@ -6,13 +6,23 @@
   "type": "asset",
   "cost": 3,
   "level": 0,
-  "traits": ["ally"],
-  "skill_icons": {"willpower": 1},
-  "slots": ["ally"],
-  "text_cn": "使用(3秘密)。\n[free]消耗\"老千\"先生並花費1秘密：在你牌堆頂部3張、6張、或9張卡牌中查找並抽取任意一張卡牌。如果查找的卡牌中有至少1張弱點，也抽取其中1張。混洗你的牌堆。",
+  "traits": [
+    "ally"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Uses (3 secrets).\n[fast] Exhaust Mr. \"Rook\" and spend 1 secret: Search the top 3, 6, or 9 cards of your deck for any card and draw it. If at least 1 weakness is among the searched cards, draw 1 of them, as well. Shuffle your deck.",
+  "text_cn": "使用(3秘密)。\n[快速]消耗\"老千\"先生并花费1秘密：在你牌堆顶部3张、6张或9张卡牌中查找并抽取任意1张卡牌。如果查找的卡牌中有至少1张弱点，也抽取其中1张。混洗你的牌堆。",
   "health": 2,
   "sanity": 2,
   "pack": "tcu",
   "unique": false,
-  "deck_limit": 2
+  "deck_limit": 2,
+  "uses": {
+    "secrets": 3
+  }
 }

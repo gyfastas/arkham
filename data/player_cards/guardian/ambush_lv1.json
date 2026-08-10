@@ -1,0 +1,24 @@
+{
+  "id": "ambush_lv1",
+  "arkhamdb_code": "03148",
+  "name": "Ambush",
+  "name_cn": "埋伏",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Attach to your location.\nIf there are no investigators at attached location, discard Ambush.\n<b>Forced</b> - After an enemy spawns at attached location: Deal 2 damage to that enemy and discard Ambush.",
+  "text_cn": "叠加到你所在地点。\n如果被叠加的地点没有调查员，丢弃埋伏。\n<b>强制</b> - 有敌人生成在被叠加的地点后：对该敌人造成2点伤害并丢弃埋伏。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

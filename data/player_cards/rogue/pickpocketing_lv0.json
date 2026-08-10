@@ -19,5 +19,5 @@
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>反应</b> - 在你成功躲避一次攻击后：抽取1张牌。"
+  "text_cn": "<b>反应</b> - 在你躲避一个敌人后，消耗扒窃：抽1张牌。"
 }

@@ -35,6 +35,17 @@ export const INVESTIGATOR_GROUPS: { label: string; investigators: InvestigatorEn
       { id: 'ashcan_pete', name_cn: '流浪汉皮特', name_hant: '流浪漢皮特', class: 'survivor' },
     ],
   },
+  {
+    label: '卡尔克萨',
+    investigators: [
+      { id: 'mark_harrigan', name_cn: '马克·哈里根', name_hant: '馬克·哈里根', class: 'guardian' },
+      { id: 'minh_thi_phan', name_cn: '潘明', name_hant: '潘明', class: 'seeker' },
+      { id: 'sefina_rousseau', name_cn: '赛菲娜·卢梭', name_hant: '賽菲娜·盧梭', class: 'rogue' },
+      { id: 'akachi_onyele', name_cn: '阿喀琦·奥耶莉', name_hant: '阿喀琦·奧耶莉', class: 'mystic' },
+      { id: 'william_yorick', name_cn: '威廉·约里克', name_hant: '威廉·約里克', class: 'survivor' },
+      { id: 'lola_hayes', name_cn: '萝拉·海耶斯', name_hant: '蘿拉·海耶斯', class: 'neutral' },
+    ],
+  },
 ]
 
 export const ALL_INVESTIGATORS: InvestigatorEntry[] =
@@ -64,6 +75,21 @@ export const CAMPAIGNS: CampaignEntry[] = [
       { id: 'undimensioned_and_unseen', name_cn: '无形无踪', name_hant: '無形無蹤' },
       { id: 'where_doom_awaits', name_cn: '末日将至', name_hant: '末日將至' },
       { id: 'lost_in_time_and_space', name_cn: '迷失于时空', name_hant: '迷失於時空' },
+    ],
+  },
+  {
+    id: 'path_to_carcosa',
+    name_cn: '卡尔克萨之路',
+    name_hant: '卡爾克薩之路',
+    chapters: [
+      { id: 'curtain_call', name_cn: '谢幕', name_hant: '謝幕' },
+      { id: 'the_last_king', name_cn: '最后的王者', name_hant: '最後的王者' },
+      { id: 'echoes_of_the_past', name_cn: '往事回声', name_hant: '往事回聲' },
+      { id: 'the_unspeakable_oath', name_cn: '邪秽誓约', name_hant: '邪穢誓約' },
+      { id: 'a_phantom_of_truth', name_cn: '真相幻影', name_hant: '真相幻影' },
+      { id: 'the_pallid_mask', name_cn: '苍白面具', name_hant: '蒼白面具' },
+      { id: 'black_stars_rise', name_cn: '黑星升起', name_hant: '黑星升起' },
+      { id: 'dim_carcosa', name_cn: '卡城幽影', name_hant: '卡城幽影' },
     ],
   },
 ]

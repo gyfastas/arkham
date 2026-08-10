@@ -1,0 +1,27 @@
+{
+  "id": "archaic_glyphs_lv0",
+  "arkhamdb_code": "03025",
+  "name": "Archaic Glyphs",
+  "name_cn": "古代雕文",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "item",
+    "occult",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action] Discard a card with at least 1 [intellect] skill icon from your hand: Place 1 resource on Archaic Glyphs from the token pool, as a secret.\n<b>Forced</b> - After the third secret is placed on Archaic Glyphs: Discard Archaic Glyphs and gain 5 resources. Record in your Campaign Log that \"you have translated the glyphs.\"",
+  "text_cn": "[action]丢弃手牌中1张含有至少1个[intellect]技能图标的卡牌：从供应堆拿取1资源放到古代雕文上，作为秘密。\n<b>强制</b> - 第3个秘密放到古代雕文上后：丢弃古代雕文并获得5资源。在你的冒险日志上记录下\"你翻译出了雕文。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

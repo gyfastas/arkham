@@ -27,15 +27,17 @@ class LiquidCourage(CardImplementation):
         if inv is None:
             return False
         inst = game_state.get_card_instance(self.instance_id)
-        if inst is None or inst.uses.get("supply", 0) <= 0:
+        if inst is None or inst.uses.get("supplies", 0) <= 0:
             return False
         target = game_state.get_investigator(target_investigator_id or investigator_id)
-        if target is None or target.horror <= 0:
+        if target is None:
             return False
         if target.location_id != inv.location_id:
             return False
-        inst.uses["supply"] -= 1
-        target.horror -= 1
+        # 目标满恐惧时仍可发动（治愈无效，仍做意志检定）
+        inst.uses["supplies"] -= 1
+        if target.horror > 0:
+            target.horror -= 1
         return True
 
     def resolve_test(self, game_state, investigator_id: str, success: bool) -> None:

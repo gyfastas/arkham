@@ -171,7 +171,7 @@ class TestClarityOfMindActivation:
         assert result["success"] is True
         assert inv.horror == 2
         assert ci.uses["charges"] == 2
-        assert ci.exhausted is True
+        assert ci.exhausted is False  # 官方卡面无横置费用
 
     def test_no_charges(self):
         game, inv, state = _make_game_with_inv(horror=3)
@@ -181,7 +181,8 @@ class TestClarityOfMindActivation:
         result = session._activate_asset(inv, {"instance_id": inst_id})
         assert result["success"] is False
 
-    def test_discard_when_empty(self):
+    def test_no_discard_when_empty(self):
+        """官方卡面无"充能耗尽则弃置"条款：耗尽后保留在场上。"""
         game, inv, state = _make_game_with_inv(horror=3)
         ci, inst_id = _place_asset(state, inv, "clarity_of_mind_lv0", uses={"charges": 1})
         session = _make_session_like(state, game)
@@ -189,8 +190,7 @@ class TestClarityOfMindActivation:
         result = session._activate_asset(inv, {"instance_id": inst_id})
         assert result["success"] is True
         assert inv.horror == 2
-        # Asset should be discarded since charges ran out
-        assert inst_id not in inv.play_area
+        assert inst_id in inv.play_area
 
 
 class TestRiteOfSeekingActivation:
@@ -209,7 +209,7 @@ class TestRiteOfSeekingActivation:
         result = session._activate_asset(inv, {"instance_id": inst_id})
         # With +1 token, willpower 4 vs shroud 2 should succeed
         assert ci.uses["charges"] == 2
-        assert ci.exhausted is True
+        assert ci.exhausted is False  # 官方卡面无横置费用
         if result["success"]:
             # Should discover 2 clues (1 base + 1 bonus)
             assert inv.clues == 2

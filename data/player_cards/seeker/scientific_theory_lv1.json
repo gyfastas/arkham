@@ -1,0 +1,25 @@
+{
+  "id": "scientific_theory_lv1",
+  "arkhamdb_code": "03109",
+  "name": "Scientific Theory",
+  "name_cn": "科学理论",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "talent",
+    "composure"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Limit 1 [[Composure]] in play.\nNon-direct horror must be assigned to Scientific Theory before it can be assigned to your investigator card.\n[fast] Spend 1 resource: You get +1 [intellect] for this skill test.\n[fast] Spend 1 resource: You get +1 [combat] for this skill test.",
+  "text_cn": "快速。场上限制1张[[沉稳]]。\n非直接恐惧必须分配给科学理论后才能分配给你的调查员卡。\n[free]花费1资源：这次技能检定中你+1[intellect]。\n[free]花费1资源：这次技能检定中你+1[combat]。",
+  "health": null,
+  "sanity": 1,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -41,6 +41,7 @@ class Game:
         self.action_resolver = ActionResolver(
             self.state, self.event_bus, self.skill_test_engine,
             self.damage_engine, self.slot_managers, self.card_registry,
+            self.chaos_bag,
         )
 
         # Phase objects
@@ -49,7 +50,7 @@ class Game:
             self.state, self.event_bus, self.action_resolver,
         )
         self.enemy_phase = EnemyPhase(self.state, self.event_bus, self.damage_engine)
-        self.upkeep_phase = UpkeepPhase(self.state, self.event_bus, self.card_registry)
+        self.upkeep_phase = UpkeepPhase(self.state, self.event_bus, self.card_registry, self.chaos_bag)
 
     def register_card_data(self, card_data: CardData) -> None:
         self.state.card_database[card_data.id] = card_data
@@ -122,6 +123,14 @@ class Game:
         self.state.scenario.current_phase = Phase.SETUP
         self.card_registry.discover_cards()
 
+        # Scale per-investigator (⊙) location clue placement by player count
+        # (official setup rule). Solo play is unchanged (×1).
+        player_count = max(1, len(self.state.player_order))
+        for loc in self.state.locations.values():
+            cd = getattr(loc, "card_data", None)
+            if cd is not None and getattr(cd, "per_investigator", False) and loc.clues:
+                loc.clues = cd.clue_value * player_count
+
         # Activate investigator ability implementations (registered under the
         # investigator's card_id, e.g. "zoey_samaras"). Uses a stable
         # instance_id so handlers can be correlated with the investigator.
@@ -132,7 +141,8 @@ class Game:
             inv_card_id = getattr(getattr(inv, "card_data", None), "id", None)
             if inv_card_id and self.card_registry.get_implementation(inv_card_id):
                 self.card_registry.activate_card(
-                    inv_card_id, f"investigator_{inv_id}", self.event_bus
+                    inv_card_id, f"investigator_{inv_id}", self.event_bus,
+                    chaos_bag=self.chaos_bag,
                 )
 
         # Give each investigator 5 resources and draw 5 cards.
@@ -156,7 +166,7 @@ class Game:
                     set_aside.setdefault(inv_id, []).append(card_id)
                     continue
                 inv.hand.append(card_id)
-                emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id)
+                emit_card_drawn(self.state, self.event_bus, self.card_registry, inv, card_id, chaos_bag=self.chaos_bag)
                 drawn += 1
         if set_aside:
             self.state.scenario.vars["setup_set_aside"] = set_aside

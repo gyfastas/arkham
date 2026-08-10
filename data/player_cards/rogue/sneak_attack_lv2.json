@@ -1,0 +1,24 @@
+{
+  "id": "sneak_attack_lv2",
+  "arkhamdb_code": "03152",
+  "name": "Sneak Attack",
+  "name_cn": "偷袭",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 2
+  },
+  "slots": [],
+  "text": "Deal 2 damage to an enemy not engaged with you at your location.",
+  "text_cn": "对你所在地点的一个未与你交战的敌人造成2点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

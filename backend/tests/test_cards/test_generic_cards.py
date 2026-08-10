@@ -61,8 +61,7 @@ class TestBlackjack:
         _register(game, Blackjack, "bj_1")
         ctx = _emit(
             game, GameEvent.SKILL_VALUE_DETERMINED,
-            skill_type=Skill.COMBAT, amount=3,
-            extra={"weapon_card_id": "blackjack_lv0"},
+            skill_type=Skill.COMBAT, amount=3, source="bj_1",
         )
         assert ctx.amount == 4
 
@@ -70,13 +69,12 @@ class TestBlackjack:
         _register(game, Blackjack, "bj_1")
         ctx = _emit(
             game, GameEvent.SKILL_VALUE_DETERMINED,
-            skill_type=Skill.COMBAT, amount=3, extra={},
+            skill_type=Skill.COMBAT, amount=3,
         )
         assert ctx.amount == 3
         ctx = _emit(
             game, GameEvent.SKILL_VALUE_DETERMINED,
-            skill_type=Skill.INTELLECT, amount=3,
-            extra={"weapon_card_id": "blackjack_lv0"},
+            skill_type=Skill.INTELLECT, amount=3, source="bj_1",
         )
         assert ctx.amount == 3
 

@@ -1,0 +1,23 @@
+{
+  "id": "a_test_of_will_lv1",
+  "arkhamdb_code": "03156",
+  "name": "A Test of Will",
+  "name_cn": "意志考验",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an investigator at your location draws a non-weakness treachery card.\nCancel that card's revelation effect. Exile A Test of Will.",
+  "text_cn": "快速。在你所在地点的一位调查员抽出一张非弱点诡计卡时打出。\n取消该卡牌的显现效果。放逐意志考验。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

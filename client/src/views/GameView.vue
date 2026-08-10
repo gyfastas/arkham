@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { watch, computed, ref } from 'vue'
+import { watch, computed, ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '../stores/game'
 import { useSocket } from '../composables/useSocket'
-import type { EncounterCardDisplay, GameEventData, PendingSkillTest, SkillTestAnimation } from '../state/types'
+import type { EncounterCardDisplay, GameEventData, GameState, PendingSkillTest, SkillTestAnimation } from '../state/types'
+import {
+  viewerInstanceId, isMultiplayer, otherEntryInstanceId, instanceName, pendingChoiceOwnerId,
+} from '../utils/multiplayer'
+import { localizeDisplayText } from '../utils/displayText'
 
 import HUD from '../components/HUD.vue'
 import LogPanel from '../components/LogPanel.vue'
@@ -11,12 +15,14 @@ import MapArea from '../components/MapArea.vue'
 import HandArea from '../components/HandArea.vue'
 import PlayArea from '../components/PlayArea.vue'
 import EnemyPanel from '../components/EnemyPanel.vue'
+import TeammatePanel from '../components/TeammatePanel.vue'
 import ScenarioPanel from '../components/ScenarioPanel.vue'
 import ActionBar from '../components/ActionBar.vue'
 import ChoiceModal from '../components/ChoiceModal.vue'
 import EncounterPopup from '../components/EncounterPopup.vue'
 import MulliganModal from '../components/MulliganModal.vue'
 import SkillTestOverlay from '../components/SkillTestOverlay.vue'
+import SlotDiscardModal from '../components/SlotDiscardModal.vue'
 import DeckPanel from '../components/DeckPanel.vue'
 
 const router = useRouter()
@@ -24,11 +30,80 @@ const store = useGameStore()
 const socket = useSocket()
 
 const state = computed(() => store.state)
-const pendingChoice = computed(() => state.value?.pending_choice ?? null)
+
+// --- 多人联机 ---
+/** viewer 的调查员实例 id（"player"/"player2"/...） */
+const myInstanceId = computed(() => (state.value ? viewerInstanceId(state.value) : 'player'))
+const yourTurn = computed(() => state.value?.your_turn !== false)
+
+/** 队友条目：公开信息 + 实例 id / 是否行动中 / 所在地点名 */
+const teammates = computed(() => {
+  const st = state.value
+  if (!st) return []
+  return (st.other_investigators ?? []).map((o, i) => {
+    const instanceId = otherEntryInstanceId(st, i)
+    const loc = st.locations[o.location_id]
+    return {
+      ...o,
+      instanceId,
+      active: instanceId === st.active_investigator_id,
+      locationName: loc ? (loc.name_cn || loc.name) : o.location_id,
+    }
+  })
+})
+
+/** 地图队友标记 */
+const mapTeammates = computed(() =>
+  teammates.value.map(tm => ({
+    name: localizeDisplayText(tm.name_cn || tm.name, store.language),
+    location_id: tm.location_id,
+    active: tm.active,
+    defeated: tm.defeated,
+  })),
+)
+
+/** 弹窗归属过滤：只有属主玩家看到 ChoiceModal */
+const pendingChoice = computed(() => {
+  const st = state.value
+  const pc = st?.pending_choice
+  if (!st || !pc) return null
+  return pendingChoiceOwnerId(st) === myInstanceId.value ? pc : null
+})
+
+/** 有待结算项但属主是队友 → 显示等待提示条 */
+const waitingForTeammate = computed(() => {
+  const st = state.value
+  if (!st || !isMultiplayer(st)) return ''
+  let ownerId = ''
+  if (st.pending_choice && pendingChoiceOwnerId(st) !== myInstanceId.value) {
+    ownerId = pendingChoiceOwnerId(st)
+  } else if (st.pending_skill_test && st.pending_skill_test.investigator_id !== myInstanceId.value) {
+    ownerId = st.pending_skill_test.investigator_id
+  }
+  if (!ownerId) return ''
+  const raw = instanceName(st, ownerId)
+  return raw ? localizeDisplayText(raw, store.language) : '队友'
+})
 const lastEncounter = ref<EncounterCardDisplay | null>(null)
 const skillTestAnimation = ref<SkillTestAnimation | null>(null)
 const skillTestMode = ref<'commit' | 'spinning'>('commit')
 let handledSkillTestKey = ''
+
+// 多人联机：队友行动时服务端只发 state_update（无 action_result），
+// 必须在本视图挂载期间接管该回调（大厅卸载后会置空）。
+function handleStateUpdate(newState: GameState, events?: GameEventData[]) {
+  store.updateState(newState, events)
+}
+
+onMounted(() => {
+  socket.onStateUpdate = handleStateUpdate
+})
+
+onUnmounted(() => {
+  if (socket.onStateUpdate === handleStateUpdate) {
+    socket.onStateUpdate = null
+  }
+})
 
 // 技能检定投入卡牌面板
 interface CommitRequest {
@@ -263,6 +338,8 @@ watch(() => store.pendingEvents, (events) => {
 let pendingSkillTestKey = ''
 watch(() => state.value?.pending_skill_test, (pending) => {
   if (!pending) return
+  // 弹窗归属：检定不属于本玩家时不弹投入面板（由属主玩家结算）
+  if (pending.investigator_id && pending.investigator_id !== myInstanceId.value) return
   const key = `${pending.investigator_id}:${pending.skill_type}:${pending.difficulty}`
   if (key === pendingSkillTestKey && skillTestAnimation.value) return
   pendingSkillTestKey = key
@@ -279,6 +356,11 @@ watch(() => state.value?.pending_skill_test, (pending) => {
 
 // Actions
 function handleAction(type: string) {
+  // 回合门控（按钮已禁用，这里兜底）
+  if (!yourTurn.value) {
+    store.addToast('等待其他玩家', 'info')
+    return
+  }
   if (type === 'END_TURN') {
     socket.endTurn()
   } else if (type === 'INVESTIGATE') {
@@ -320,6 +402,10 @@ function handlePlayCard(cardId: string) {
 }
 
 function handleMove(locationId: string) {
+  if (!yourTurn.value) {
+    store.addToast('等待其他玩家', 'info')
+    return
+  }
   socket.sendAction('MOVE', { location_id: locationId })
 }
 
@@ -367,6 +453,7 @@ function handleChoice(optionId: string) {
         <MapArea
           :locations="state.locations"
           :current-location-id="state.location.id"
+          :teammates="mapTeammates"
           class="game-map"
           @move="handleMove"
           @unlock-door="handleUnlockDoor"
@@ -393,6 +480,7 @@ function handleChoice(optionId: string) {
 
       <!-- Right: Enemies + Scenario -->
       <div class="game-right">
+        <TeammatePanel v-if="teammates.length" :teammates="teammates" />
         <EnemyPanel
           :enemies="state.enemies"
           @attack="handleAttack"
@@ -406,6 +494,10 @@ function handleChoice(optionId: string) {
 
     <!-- Modals -->
     <ChoiceModal :choice="pendingChoice" @choose="handleChoice" />
+    <!-- 多人：队友的待结算项提示条 -->
+    <div v-if="waitingForTeammate" class="waiting-bar">
+      ⏳ {{ store.language === 'zh-Hant' ? '等待' : '等待' }} {{ waitingForTeammate }}{{ store.language === 'zh-Hant' ? '結算…' : '结算…' }}
+    </div>
     <EncounterPopup :encounter="lastEncounter" @dismiss="dismissEncounter" />
     <MulliganModal
       v-if="state.mulligan_available"
@@ -536,6 +628,21 @@ function handleChoice(optionId: string) {
   gap: 0;
   overflow-y: auto;
   background: #1a1a2e;
+}
+
+.waiting-bar {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #14142b;
+  border: 1px solid #c0a060;
+  border-radius: 8px;
+  color: #e0d0a0;
+  font-size: 13px;
+  padding: 8px 20px;
+  z-index: 900;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .game-loading {

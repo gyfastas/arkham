@@ -1,0 +1,25 @@
+{
+  "id": "mano_a_mano_lv1",
+  "arkhamdb_code": "03229",
+  "name": "Mano a Mano",
+  "name_cn": "单打独斗",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "spirit",
+    "bold"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Play only as your first action.\nDeal 1 damage to an enemy engaged with you. This action does not provoke attacks of opportunity.",
+  "text_cn": "只可作为你的第一个行动打出。\n对与你交战的一个敌人造成1点伤害。此行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

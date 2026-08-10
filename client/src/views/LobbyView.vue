@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useSocket } from '../composables/useSocket'
 import { useGameStore } from '../stores/game'
 import DeckBuilder from '../components/DeckBuilder.vue'
-import { DIFFICULTIES, DIFFICULTY_LABELS } from '../data/meta'
+import { CAMPAIGNS, DIFFICULTIES, DIFFICULTY_LABELS, INVESTIGATOR_GROUPS } from '../data/meta'
+import type { RoomState } from '../state/types'
 
+const route = useRoute()
 const router = useRouter()
 const client = useSocket()
 const store = useGameStore()
@@ -13,6 +15,13 @@ const store = useGameStore()
 const phase = ref<'setup' | 'deckbuilder'>('setup')
 const customDeckCards = ref<string[]>([])
 const starting = ref(false)
+
+// --- 多人联机房间 ---
+const mode = ref<'single' | 'multi'>(route.query.mode === 'multi' ? 'multi' : 'single')
+const room = ref<RoomState | null>(null)
+const joinRoomId = ref('')
+const joining = ref(false)   // create/join 请求中
+const readying = ref(false)  // setup_game 已发送、等待 room_update 确认
 
 // --- Data ---
 
@@ -56,6 +65,28 @@ const UI_TEXT = {
     neutral: '中立',
     selectFirst: '请先选择调查员',
     deckBuiltSuffix: '张卡组',
+    tabSingle: '单人游戏',
+    tabMulti: '多人合作',
+    createRoomTitle: '创建房间',
+    createRoomDesc: '创建 2-4 人合作房间，把房间 ID 发给队友',
+    createRoomBtn: '创建房间',
+    joinRoomTitle: '加入房间',
+    joinRoomPlaceholder: '输入房间 ID',
+    joinRoomBtn: '加入',
+    leaveRoom: '离开房间',
+    ready: '准备',
+    readying: '准备中…',
+    updatePick: '更新选择',
+    roomId: '房间 ID',
+    copy: '复制',
+    copied: '已复制',
+    seatEmpty: '空位',
+    seatMe: '我',
+    seatReady: '已准备',
+    seatPicking: '选择中…',
+    multiHint: '剧本与难度以最后点击「准备」的玩家所选为准',
+    waitOthers: '已准备，等待其他玩家…',
+    connecting: '连接中…',
   },
   'zh-Hant': {
     selectScenario: '選擇劇本',
@@ -84,6 +115,28 @@ const UI_TEXT = {
     neutral: '中立',
     selectFirst: '請先選擇調查員',
     deckBuiltSuffix: '張牌組',
+    tabSingle: '單人遊戲',
+    tabMulti: '多人合作',
+    createRoomTitle: '創建房間',
+    createRoomDesc: '創建 2-4 人合作房間，把房間 ID 發給隊友',
+    createRoomBtn: '創建房間',
+    joinRoomTitle: '加入房間',
+    joinRoomPlaceholder: '輸入房間 ID',
+    joinRoomBtn: '加入',
+    leaveRoom: '離開房間',
+    ready: '準備',
+    readying: '準備中…',
+    updatePick: '更新選擇',
+    roomId: '房間 ID',
+    copy: '複製',
+    copied: '已複製',
+    seatEmpty: '空位',
+    seatMe: '我',
+    seatReady: '已準備',
+    seatPicking: '選擇中…',
+    multiHint: '劇本與難度以最後點擊「準備」的玩家所選為準',
+    waitOthers: '已準備，等待其他玩家…',
+    connecting: '連接中…',
   },
 } as const
 
@@ -100,52 +153,13 @@ const INVESTIGATOR_TEXT: Record<string, { name_cn: string; name_hant: string; ti
   ashcan_pete: { name_cn: '流浪汉皮特', name_hant: '流浪漢皮特', title_cn: '流浪者', title_hant: '流浪者', ability_hant: '開始遊戲時，將杜克放置入場。\n[free]丟棄一張手牌：準備1張你控制的支援卡。(每輪限制1次。)\n[elder_sign]效果：+2。準備杜克。' },
 }
 
-const scenarioGroups: { label: string; scenarios: ScenarioEntry[] }[] = [
-  {
-    label: '核心包',
-    scenarios: [
-      { id: 'the_gathering', name_cn: '聚集于此', name_hant: '聚集於此' },
-      { id: 'the_midnight_masks', name_cn: '午夜假面', name_hant: '午夜假面' },
-      { id: 'the_devourer_below', name_cn: '吞噬星辰', name_hant: '吞噬星辰' },
-    ],
-  },
-  {
-    label: '敦威治遗产',
-    scenarios: [
-      { id: 'extracurricular_activity', name_cn: '课外活动', name_hant: '課外活動' },
-      { id: 'the_house_always_wins', name_cn: '赌场必胜', name_hant: '賭場必勝' },
-      { id: 'the_miskatonic_museum', name_cn: '米斯卡塔尼克博物馆', name_hant: '米斯卡塔尼克博物館' },
-      { id: 'essex_county_express', name_cn: '埃塞克斯快车', name_hant: '埃塞克斯縣快車' },
-      { id: 'blood_on_the_altar', name_cn: '祭坛之血', name_hant: '祭壇之血' },
-      { id: 'undimensioned_and_unseen', name_cn: '无形无踪', name_hant: '無形無蹤' },
-      { id: 'where_doom_awaits', name_cn: '末日将至', name_hant: '末日將至' },
-      { id: 'lost_in_time_and_space', name_cn: '迷失于时空', name_hant: '迷失於時空' },
-    ],
-  },
-]
+const scenarioGroups = CAMPAIGNS.map(c => ({
+  label: c.name_cn,
+  label_hant: c.name_hant,
+  scenarios: c.chapters as ScenarioEntry[],
+}))
 
-const investigatorGroups: { label: string; investigators: InvestigatorEntry[] }[] = [
-  {
-    label: '核心包',
-    investigators: [
-      { id: 'roland_banks', name_cn: '罗兰·班克斯', name_hant: '羅蘭·班克斯', class: 'guardian' },
-      { id: 'daisy_walker', name_cn: '黛西·沃克', name_hant: '黛西·沃克', class: 'seeker' },
-      { id: 'skids_otoole', name_cn: '斯基兹·奥图尔', name_hant: '斯基茲·奧圖爾', class: 'rogue' },
-      { id: 'agnes_baker', name_cn: '阿格妮丝·贝克', name_hant: '阿格妮絲·貝克', class: 'mystic' },
-      { id: 'wendy_adams', name_cn: '温蒂·亚当斯', name_hant: '溫蒂·亞當斯', class: 'survivor' },
-    ],
-  },
-  {
-    label: '敦威治',
-    investigators: [
-      { id: 'zoey_samaras', name_cn: '佐伊·萨马拉斯', name_hant: '佐伊·薩馬拉斯', class: 'guardian' },
-      { id: 'rex_murphy', name_cn: '雷克斯·墨菲', name_hant: '雷克斯·墨菲', class: 'seeker' },
-      { id: 'jenny_barnes', name_cn: '珍妮·巴恩斯', name_hant: '珍妮·巴恩斯', class: 'rogue' },
-      { id: 'jim_culver', name_cn: '吉姆·卡尔弗', name_hant: '吉姆·卡爾弗', class: 'mystic' },
-      { id: 'ashcan_pete', name_cn: '流浪汉皮特', name_hant: '流浪漢皮特', class: 'survivor' },
-    ],
-  },
-]
+const investigatorGroups = INVESTIGATOR_GROUPS
 
 // --- Computed ---
 
@@ -155,10 +169,12 @@ function localizedName(entry: { name_cn: string; name_hant: string }): string {
   return store.language === 'zh-Hant' ? entry.name_hant : entry.name_cn
 }
 
-function localizedGroupLabel(label: string): string {
+function localizedGroupLabel(group: { label: string; label_hant?: string } | string): string {
+  const label = typeof group === 'string' ? group : group.label
   if (label === '核心包') return labels.value.core
   if (label === '敦威治遗产') return labels.value.dunwichLegacy
   if (label === '敦威治') return labels.value.dunwich
+  if (typeof group !== 'string' && store.language === 'zh-Hant' && group.label_hant) return group.label_hant
   return label
 }
 
@@ -183,6 +199,33 @@ const detail = computed(() => {
 const canStart = computed(() => {
   return Boolean(store.selectedScenario && store.selectedInvestigator)
 })
+
+// --- 多人联机 computed ---
+
+const myPlayerId = computed(() => client.playerId || store.playerId)
+
+const mySeat = computed(() =>
+  room.value?.seats.find(s => s.player_id !== null && s.player_id === myPlayerId.value) ?? null,
+)
+
+const amReady = computed(() => Boolean(mySeat.value?.ready))
+
+const inRoom = computed(() => room.value !== null)
+
+const investigatorNames = computed<Record<string, { name_cn: string; name_hant: string }>>(() =>
+  Object.fromEntries(
+    investigatorGroups.flatMap(g => g.investigators.map(i => [i.id, { name_cn: i.name_cn, name_hant: i.name_hant }])),
+  ),
+)
+
+function seatInvestigatorName(id: string): string {
+  const entry = investigatorNames.value[id]
+  return entry ? localizedName(entry) : id
+}
+
+function playerTail(playerId: string): string {
+  return playerId.slice(-4)
+}
 
 const skillLabels: Record<string, string> = {
   willpower: '意志',
@@ -231,59 +274,88 @@ function onDeckBack() {
   phase.value = 'setup'
 }
 
+/** 发送 setup_game：选定调查员/牌组并标记 ready（单人局收到房间后直接开局） */
+function sendSetup() {
+  // If user built custom deck in deck builder, send deck_cards
+  // Otherwise use preset for this investigator ("{investigator_id}_starter")
+  const hasCustomDeck = customDeckCards.value.length > 0
+  client.setupGame(
+    store.selectedScenario,
+    store.selectedInvestigator,
+    hasCustomDeck ? undefined : `${store.selectedInvestigator}_starter`,
+    hasCustomDeck ? customDeckCards.value : undefined,
+    store.difficulty,
+  )
+}
+
 async function startGame() {
   if (!canStart.value || starting.value) return
   starting.value = true
-
-  // Set up callbacks before creating the room so a fast server response is
-  // not missed. The connection check also recovers from a stale HMR/socket.
-  const prevRoomCb = client.onRoomUpdate
-  client.onRoomUpdate = (_room) => {
-    client.onRoomUpdate = prevRoomCb
-
-    // Determine deck preset and custom deck cards
-    // If user built custom deck in deck builder, send deck_cards
-    // Otherwise use first available preset for this investigator
-    const hasCustomDeck = customDeckCards.value.length > 0
-    let deckPreset: string | undefined = undefined
-    let deckCards: string[] | undefined = undefined
-
-    if (hasCustomDeck) {
-      // User built a custom deck - send the card list, no preset
-      deckCards = customDeckCards.value
-      deckPreset = undefined
-    } else {
-      // Use preset - find the first preset for this investigator
-      // The preset ID format is "{investigator_id}_starter"
-      deckPreset = `${store.selectedInvestigator}_starter`
-    }
-
-    client.setupGame(
-      store.selectedScenario,
-      store.selectedInvestigator,
-      deckPreset,
-      deckCards,
-      store.difficulty,
-    )
-  }
-
-  // Also set up error handler
-  const prevErrCb = client.onError
-  client.onError = (err) => {
-    starting.value = false
-    store.addToast(err.message || '连接错误', 'error')
-    client.onError = prevErrCb
-  }
-
   try {
     await client.ensureConnected()
     client.createRoom()
   } catch (err) {
     starting.value = false
-    client.onRoomUpdate = prevRoomCb
-    client.onError = prevErrCb
     store.addToast(err instanceof Error ? err.message : '无法连接到游戏服务器', 'error')
   }
+}
+
+// --- 多人房间操作 ---
+
+async function createRoomMulti() {
+  if (joining.value) return
+  joining.value = true
+  try {
+    await client.ensureConnected()
+    client.createRoom()
+  } catch (err) {
+    joining.value = false
+    store.addToast(err instanceof Error ? err.message : '无法连接到游戏服务器', 'error')
+  }
+}
+
+async function joinRoomMulti() {
+  const id = joinRoomId.value.trim()
+  if (!id || joining.value) return
+  joining.value = true
+  try {
+    await client.ensureConnected()
+    client.joinRoom(id)
+  } catch (err) {
+    joining.value = false
+    store.addToast(err instanceof Error ? err.message : '无法连接到游戏服务器', 'error')
+  }
+}
+
+function leaveRoom() {
+  client.leaveRoom()
+  room.value = null
+  readying.value = false
+}
+
+function readyUp() {
+  if (!store.selectedInvestigator) {
+    store.addToast(labels.value.selectFirst, 'error')
+    return
+  }
+  if (readying.value) return
+  readying.value = true
+  sendSetup()
+}
+
+function copyRoomId() {
+  const id = room.value?.room_id
+  if (!id) return
+  navigator.clipboard?.writeText(id).then(
+    () => store.addToast(labels.value.copied, 'info'),
+    () => store.addToast(id, 'info'),
+  )
+}
+
+function goHome() {
+  if (room.value) client.leaveRoom()
+  room.value = null
+  router.push('/')
 }
 
 // --- Socket callbacks ---
@@ -292,15 +364,40 @@ function handleInvestigatorDetail(d: any) {
   store.investigatorDetail = d
 }
 
+function handleRoomUpdate(r: RoomState) {
+  room.value = r
+  joining.value = false
+  readying.value = false
+  // 单人快速游戏：房间创建成功 → 立即 setup 开局（保持原有流程）
+  if (mode.value === 'single' && starting.value) {
+    sendSetup()
+  }
+}
+
 function handleStateUpdate(state: any, events?: any) {
   starting.value = false
+  readying.value = false
   store.updateState(state, events)
   router.push('/game')
 }
 
+function handleError(err: { message: string }) {
+  starting.value = false
+  joining.value = false
+  readying.value = false
+  store.addToast(err.message || '连接错误', 'error')
+}
+
+let prevOnError: typeof client.onError = null
+
 onMounted(() => {
+  // 多人 ready 必须带剧本；未选时给默认值（单人模式同样受益）
+  if (!store.selectedScenario) store.selectedScenario = 'the_gathering'
   client.onInvestigatorDetail = handleInvestigatorDetail
   client.onStateUpdate = handleStateUpdate
+  client.onRoomUpdate = handleRoomUpdate
+  prevOnError = client.onError
+  client.onError = handleError
 })
 
 onUnmounted(() => {
@@ -310,13 +407,64 @@ onUnmounted(() => {
   if (client.onStateUpdate === handleStateUpdate) {
     client.onStateUpdate = null
   }
-  client.onRoomUpdate = null
+  if (client.onRoomUpdate === handleRoomUpdate) {
+    client.onRoomUpdate = null
+  }
+  if (client.onError === handleError) {
+    client.onError = prevOnError
+  }
 })
 </script>
 
 <template>
   <div class="lobby" v-if="phase === 'setup'" :lang="store.language">
-    <div class="lobby-columns">
+    <!-- Mode Tabs（多人进房后隐藏，避免误触；单人局的房间是临时的，不隐藏） -->
+    <div class="mode-tabs" v-if="!(mode === 'multi' && inRoom)">
+      <button
+        type="button"
+        class="mode-tab"
+        :class="{ active: mode === 'single' }"
+        @click="mode = 'single'"
+      >{{ labels.tabSingle }}</button>
+      <button
+        type="button"
+        class="mode-tab"
+        :class="{ active: mode === 'multi' }"
+        @click="mode = 'multi'"
+      >{{ labels.tabMulti }}</button>
+    </div>
+
+    <!-- 多人：未进房 → 创建/加入面板 -->
+    <div v-if="mode === 'multi' && !inRoom" class="room-entry">
+      <div class="room-entry-cards">
+        <div class="room-entry-card">
+          <h2 class="entry-title">{{ labels.createRoomTitle }}</h2>
+          <p class="entry-desc">{{ labels.createRoomDesc }}</p>
+          <button class="btn btn-primary entry-btn" :disabled="joining" @click="createRoomMulti">
+            {{ joining ? labels.connecting : labels.createRoomBtn }}
+          </button>
+        </div>
+        <div class="room-entry-card">
+          <h2 class="entry-title">{{ labels.joinRoomTitle }}</h2>
+          <input
+            v-model="joinRoomId"
+            class="room-id-input"
+            type="text"
+            :placeholder="labels.joinRoomPlaceholder"
+            @keyup.enter="joinRoomMulti"
+          />
+          <button
+            class="btn btn-primary entry-btn"
+            :disabled="joining || !joinRoomId.trim()"
+            @click="joinRoomMulti"
+          >{{ labels.joinRoomBtn }}</button>
+        </div>
+      </div>
+      <button class="btn btn-secondary" @click="router.push('/')">← 主页</button>
+    </div>
+
+    <!-- 选人/选剧本三栏（单人始终显示；多人进房后显示） -->
+    <div class="lobby-columns" v-else>
       <!-- Left: Scenario Selection -->
       <div class="column col-scenario">
         <h2 class="column-title">{{ labels.selectScenario }}</h2>
@@ -439,9 +587,44 @@ onUnmounted(() => {
       </div>
     </div>
 
+    <!-- 多人：座位条（4 个座位） -->
+    <div v-if="mode === 'multi' && room" class="seats-bar">
+      <div class="room-info">
+        <span class="room-id-label">{{ labels.roomId }}：</span>
+        <code class="room-id">{{ room.room_id }}</code>
+        <button type="button" class="copy-btn" @click="copyRoomId">{{ labels.copy }}</button>
+        <span class="multi-hint">{{ labels.multiHint }}</span>
+      </div>
+      <div class="seats">
+        <div
+          v-for="seat in room.seats"
+          :key="seat.seat_num"
+          class="seat"
+          :class="{
+            empty: !seat.player_id,
+            me: seat.player_id !== null && seat.player_id === myPlayerId,
+            ready: seat.ready,
+          }"
+        >
+          <template v-if="seat.player_id">
+            <span class="seat-player">
+              #{{ playerTail(seat.player_id) }}
+              <span v-if="seat.player_id === myPlayerId" class="seat-me">（{{ labels.seatMe }}）</span>
+            </span>
+            <span class="seat-inv">{{ seatInvestigatorName(seat.investigator_id) }}</span>
+            <span class="seat-status" :class="{ on: seat.ready }">
+              {{ seat.ready ? `✓ ${labels.seatReady}` : `… ${labels.seatPicking}` }}
+            </span>
+          </template>
+          <span v-else class="seat-empty">{{ labels.seatEmpty }}</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Bottom Bar -->
-    <div class="bottom-bar">
-      <button class="btn btn-secondary" @click="router.push('/')">← 主页</button>
+    <div class="bottom-bar" v-if="mode === 'single' || inRoom">
+      <button class="btn btn-secondary" @click="goHome">← 主页</button>
+      <button v-if="mode === 'multi'" class="btn btn-secondary" @click="leaveRoom">{{ labels.leaveRoom }}</button>
       <button class="btn btn-secondary" @click="openDeckBuilder">{{ labels.buildDeck }}</button>
       <div class="deck-status" v-if="customDeckCards.length > 0">
         {{ labels.built }} {{ customDeckCards.length }} 张
@@ -452,9 +635,24 @@ onUnmounted(() => {
           <option v-for="d in DIFFICULTIES" :key="d" :value="d">{{ DIFFICULTY_LABELS[d] }}</option>
         </select>
       </div>
-      <button class="btn btn-primary" :disabled="!canStart || starting" @click="startGame">
+      <button
+        v-if="mode === 'single'"
+        class="btn btn-primary"
+        :disabled="!canStart || starting"
+        @click="startGame"
+      >
         {{ starting ? labels.starting : labels.startGame }}
       </button>
+      <template v-else>
+        <span v-if="amReady" class="wait-others">{{ labels.waitOthers }}</span>
+        <button
+          class="btn btn-primary"
+          :disabled="!store.selectedInvestigator || readying"
+          @click="readyUp"
+        >
+          {{ amReady ? labels.updatePick : (readying ? labels.readying : labels.ready) }}
+        </button>
+      </template>
     </div>
   </div>
 
@@ -790,5 +988,190 @@ onUnmounted(() => {
 
 .btn-secondary:hover {
   background: #252540;
+}
+
+/* Mode Tabs */
+.mode-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 8px 16px 0;
+}
+
+.mode-tab {
+  padding: 8px 22px;
+  border: 1px solid #2a2a4e;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #0d0d20;
+  color: #888;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mode-tab:hover {
+  color: #ccc;
+}
+
+.mode-tab.active {
+  background: #1a1a2e;
+  color: #c0a060;
+}
+
+/* Room Entry (create / join) */
+.room-entry {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.room-entry-cards {
+  display: flex;
+  gap: 24px;
+}
+
+.room-entry-card {
+  width: 300px;
+  padding: 28px 24px;
+  background: #12122a;
+  border: 1px solid #2a2a4e;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entry-title {
+  margin: 0;
+  font-size: 18px;
+  color: #e0d0a0;
+}
+
+.entry-desc {
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.entry-btn {
+  align-self: flex-start;
+  margin-left: 0;
+}
+
+.room-id-input {
+  background: #0d0d20;
+  border: 1px solid #2a2a4e;
+  color: #eee;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.room-id-input:focus {
+  outline: none;
+  border-color: #4a4a8e;
+}
+
+/* Seats Bar */
+.seats-bar {
+  padding: 8px 24px;
+  background: #0d0d20;
+  border-top: 1px solid #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.room-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #999;
+}
+
+.room-id-label {
+  color: #888;
+}
+
+.room-id {
+  color: #c0a060;
+  background: #1a1a2e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.copy-btn {
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.multi-hint {
+  margin-left: auto;
+  font-size: 12px;
+  color: #666;
+}
+
+.seats {
+  display: flex;
+  gap: 12px;
+}
+
+.seat {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: #14142b;
+  border: 1px solid #2a2a4e;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.seat.empty {
+  justify-content: center;
+  color: #444;
+  border-style: dashed;
+}
+
+.seat.me {
+  border-color: #c0a060;
+}
+
+.seat-player {
+  color: #999;
+  font-family: monospace;
+}
+
+.seat-me {
+  color: #c0a060;
+}
+
+.seat-inv {
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+.seat-status {
+  margin-left: auto;
+  font-size: 12px;
+  color: #777;
+}
+
+.seat-status.on {
+  color: #2ecc71;
+}
+
+.wait-others {
+  font-size: 13px;
+  color: #2ecc71;
 }
 </style>

@@ -1,0 +1,22 @@
+{
+  "id": "sophie_lv0",
+  "arkhamdb_code": "03009",
+  "name": "Sophie",
+  "name_cn": "索菲",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "item",
+    "spirit"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Mark Harrigan deck only.\nSophie cannot leave play.\n[fast] Take 1 direct damage: You get +2 to your skill value for this skill test.\n<b>Forced</b> - If Mark Harrigan has 5 or more damage on him: Flip Sophie.",
+  "text_cn": "马克·哈里根牌组专用。\n索菲不能离场。\n[free]受到1点直接伤害：这次技能检定你+2技能值。\n<b>强制</b> - 如果马克·哈里根身上有5点或更多伤害：将索菲翻面。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "path_to_carcosa"
+}

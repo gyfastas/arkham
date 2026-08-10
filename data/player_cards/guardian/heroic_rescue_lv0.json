@@ -1,0 +1,25 @@
+{
+  "id": "heroic_rescue_lv0",
+  "arkhamdb_code": "03106",
+  "name": "Heroic Rescue",
+  "name_cn": "英勇救援",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "spirit",
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when a non-[[Elite]] enemy would attack another investigator at your location.\nEngage that enemy and resolve its attack against you instead. Then, deal it 1 damage.",
+  "text_cn": "快速。在一个非[[精英]]敌人将要攻击你所在地点的另一位调查员时打出。改为与该敌人交战并结算它对你的攻击。然后，对其造成1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

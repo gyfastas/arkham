@@ -18,5 +18,5 @@
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "对一个与你交战的敌人造成2点伤害。"
+  "text_cn": "对你所在地点的一个已横置敌人造成2点伤害。"
 }

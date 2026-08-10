@@ -1,0 +1,40 @@
+{
+  "investigator_id": "mark_harrigan",
+  "presets": [
+    {
+      "name": "马克·哈里根（入门）",
+      "cards": [
+        "blackjack_lv0",
+        "blackjack_lv0",
+        "combat_training_lv1",
+        "combat_training_lv1",
+        "knife_lv0",
+        "knife_lv0",
+        "trench_knife_lv0",
+        "trench_knife_lv0",
+        "bulletproof_vest_lv3",
+        "bulletproof_vest_lv3",
+        "elder_sign_amulet_lv3",
+        "elder_sign_amulet_lv3",
+        "first_aid_lv0",
+        "first_aid_lv0",
+        "first_aid_lv3",
+        "first_aid_lv3",
+        "flashlight_lv0",
+        "flashlight_lv0",
+        "kukri_lv0",
+        "kukri_lv0",
+        "physical_training_lv0",
+        "physical_training_lv0",
+        "32_colt_lv0",
+        "32_colt_lv0",
+        "guard_dog_lv0",
+        "guard_dog_lv0",
+        "key_of_ys_lv5",
+        "key_of_ys_lv5",
+        "machete_lv0",
+        "machete_lv0"
+      ]
+    }
+  ]
+}

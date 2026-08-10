@@ -1,0 +1,40 @@
+{
+  "investigator_id": "william_yorick",
+  "presets": [
+    {
+      "name": "威廉·约里克（入门）",
+      "cards": [
+        "cherished_keepsake_lv0",
+        "cherished_keepsake_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "blackjack_lv0",
+        "blackjack_lv0",
+        "combat_training_lv1",
+        "combat_training_lv1",
+        "fire_axe_lv0",
+        "fire_axe_lv0",
+        "knife_lv0",
+        "knife_lv0",
+        "newspaper_lv2",
+        "newspaper_lv2",
+        "plucky_lv1",
+        "plucky_lv1",
+        "rabbits_foot_lv0",
+        "rabbits_foot_lv0",
+        "scavenging_lv0",
+        "scavenging_lv0",
+        "stray_cat_lv0",
+        "stray_cat_lv0",
+        "trench_knife_lv0",
+        "trench_knife_lv0",
+        "baseball_bat_lv0",
+        "baseball_bat_lv0",
+        "bulletproof_vest_lv3",
+        "bulletproof_vest_lv3",
+        "dig_deep_lv0",
+        "dig_deep_lv0"
+      ]
+    }
+  ]
+}

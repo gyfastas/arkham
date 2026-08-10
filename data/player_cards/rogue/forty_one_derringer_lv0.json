@@ -18,7 +18,7 @@
   "slots": [
     "hand"
   ],
-  "text": "Uses (3 ammo). Fight. You get +2 combat for this attack. If you succeed by 2 or more, this attack deals +1 damage.",
+  "text": "Uses (3 ammo). [action] Spend 1 ammo: Fight. You get +2 combat for this attack. If you succeed by 2 or more, this attack deals +1 damage.",
   "uses": {
     "ammo": 3
   },
@@ -26,5 +26,5 @@
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "使用(3弹药)。消耗.41短口手枪并花费1弹药：<b>攻击</b>。你获得+2战斗。如果这次攻击击败该敌人，发现你所在地点1条线索。"
+  "text_cn": "使用(3弹药)。<b>行动</b> - 花费1弹药：<b>攻击</b>。本次攻击你获得+2战斗。若你成功且超出难度2点以上，本次攻击造成+1伤害。"
 }

@@ -1,0 +1,23 @@
+{
+  "id": "true_grit_lv0",
+  "arkhamdb_code": "03021",
+  "name": "True Grit",
+  "name_cn": "勇气过人",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "True Grit may be assigned damage dealt to other investigators at your location.",
+  "text_cn": "你所在地点的其他调查员受到的伤害可以分配给勇气过人。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

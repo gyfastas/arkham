@@ -12,8 +12,8 @@
     "wild": 2
   },
   "slots": ["accessory"],
-  "text": "Wendy Adams deck only.\nYou may play the topmost event card in your discard pile as if it were in your hand.\n<b>Forced</b> - After you play an event: Place it on the bottom of your deck instead of in your discard pile.",
-  "text_cn": "温蒂·亚当斯牌组专用。\n你可以将弃牌堆最上面的事件牌当作手牌来打出。\n<b>强制</b> - 在你打出一张事件牌后：将其放到你的牌堆底部，而非弃牌堆。",
+  "text": "Wendy Adams deck only.\nYou may play the topmost event in your discard pile as if it were in your hand.\n<b>Forced</b> - After you play an event or discard an event from play: Place it on the bottom of your deck instead of in your discard pile.",
+  "text_cn": "温蒂·亚当斯牌组专用。\n你可以将弃牌堆最上面的事件牌当作手牌来打出。\n<b>强制</b> - 在你打出一张事件牌或从场上弃置一张事件牌后：将其放到你的牌堆底部，而非弃牌堆。",
   "health": null,
   "sanity": null,
   "unique": true,

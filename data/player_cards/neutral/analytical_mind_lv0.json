@@ -1,0 +1,23 @@
+{
+  "id": "analytical_mind_lv0",
+  "arkhamdb_code": "03010",
+  "name": "Analytical Mind",
+  "name_cn": "缜密分析",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Minh Thi Phan deck only.\nYou may commit 1 card to each skill test performed by an investigator at another location.\n[reaction] After you commit exactly 1 card to a skill test, exhaust Analytical Mind: Draw 1 card.",
+  "text_cn": "潘明牌组专用。\n每次其它地点的调查员进行技能检定时，你都可以投入1张卡牌。\n[reaction]你在技能检定中投入正好1张卡牌后，消耗缜密分析：抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

@@ -40,9 +40,12 @@ class CoverUp(CardImplementation):
 
     @on_event(GameEvent.CLUE_DISCOVERED, priority=TimingPriority.WHEN)
     def redirect_clues(self, ctx):
-        """从掩盖真相上弃掉等量线索代替发现线索。"""
+        """当你将要从所在地点发现线索时：改为从掩盖真相上弃掉等量线索。"""
         inv = ctx.game_state.get_investigator(ctx.investigator_id)
         if inv is None:
+            return
+        # 卡面限定"在你的地点"：在其他地点发现线索（如指导、解码器）不触发
+        if ctx.location_id is not None and ctx.location_id != inv.location_id:
             return
         cover_up = self._find_cover_up(ctx.game_state, inv)
         if cover_up is None:

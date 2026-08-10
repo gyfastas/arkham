@@ -1,0 +1,24 @@
+{
+  "id": "the_home_front_lv0",
+  "arkhamdb_code": "03007",
+  "name": "The Home Front",
+  "name_cn": "保卫后方",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced",
+    "expert"
+  ],
+  "skill_icons": {
+    "combat": 4
+  },
+  "slots": [],
+  "text": "Mark Harrigan deck only.\nIf this skill test is successful during an attack, move 1 damage from Mark Harrigan to the attacked enemy.",
+  "text_cn": "马克·哈里根牌组专用。\n如果攻击中的这次技能检定成功，将马克·哈里根身上的1点伤害移动到受到攻击的敌人身上。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa"
+}

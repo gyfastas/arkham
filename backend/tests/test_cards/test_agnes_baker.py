@@ -104,6 +104,37 @@ class TestAgnesBaker:
         _emit(game, GameEvent.HORROR_ASSIGNED, investigator_id="other", amount=1)
         assert enemy.damage == 0
 
+    def test_no_trigger_when_horror_fully_soaked_by_ally(self, game, impl):
+        """恐惧全部被盟友吸收（未放到阿格尼丝身上）时不触发。"""
+        from backend.tests.conftest import make_asset_data
+        ally_data = make_asset_data(
+            id="ally_lv0", name="Ally", health=2, sanity=2,
+        )
+        game.register_card_data(ally_data)
+        ally = CardInstance(
+            instance_id="ally_1", card_id="ally_lv0",
+            owner_id="agnes", controller_id="agnes",
+        )
+        game.state.cards_in_play["ally_1"] = ally
+        inv = game.state.get_investigator("agnes")
+        inv.play_area.append("ally_1")
+
+        enemy = _add_enemy(game, "enemy_1")
+        game.state.locations["test_location"].enemies.append("enemy_1")
+
+        # 首次事件建立盟友快照（无吸收）
+        _emit(game, GameEvent.HORROR_ASSIGNED, investigator_id="agnes", amount=0)
+        # 盟友吸收1点（模拟 horror_assignment 结算后的状态）后发出事件
+        ally.horror += 1
+        _emit(game, GameEvent.HORROR_ASSIGNED, investigator_id="agnes", amount=1)
+        assert enemy.damage == 0
+
+        # 部分吸收：2点恐惧盟友吸收1点，1点落到阿格尼丝 → 触发
+        _emit(game, GameEvent.ENEMY_PHASE_BEGINS)
+        ally.horror += 1
+        _emit(game, GameEvent.HORROR_ASSIGNED, investigator_id="agnes", amount=2)
+        assert enemy.damage == 1
+
     def test_elder_sign_bonus_per_horror(self, game, impl):
         """远古印记：阿格尼丝身上每有1点恐惧 +1。"""
         inv = game.state.get_investigator("agnes")

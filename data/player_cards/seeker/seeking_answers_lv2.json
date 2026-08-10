@@ -9,12 +9,15 @@
   "traits": [
     "insight"
   ],
-  "skill_icons": {},
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 2
+  },
   "slots": [],
-  "text": "Investigate. If you succeed, instead of discovering 1 clue at your location, discover a total of 2 clues at your location and connected locations.",
+  "text": "Investigate. If you succeed, instead of discovering a clue at your location, discover 2 total clues from among your location and connecting locations.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。在你成功调查超过难度2点或以上后打出。发现并消耗该地点的一个线索，发现一个相邻地点的线索。"
+  "text_cn": "调查。如果你成功，不发现你所在地点的1条线索，改为在你所在地点与各连接地点之间共发现2条线索。"
 }

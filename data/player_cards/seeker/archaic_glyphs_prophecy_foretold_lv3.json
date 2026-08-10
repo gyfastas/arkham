@@ -1,0 +1,31 @@
+{
+  "id": "archaic_glyphs_prophecy_foretold_lv3",
+  "arkhamdb_code": "03193",
+  "name": "Archaic Glyphs",
+  "name_cn": "古代雕文",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Researched. Uses (3 charges).\n[action] Spend 1 charge: <b>Investigate.</b> If you succeed, you may automatically evade an engaged enemy. This action does not provoke attacks of opportunity.",
+  "text_cn": "研究。<i>(FAQ, v2.0)</i>\n使用(3充能)。\n[action]花费1充能：<b>调查</b>。如果你成功，你可以自动躲避一个与你交战的敌人。本行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "path_to_carcosa",
+  "uses": {
+    "charges": 3
+  },
+  "subname": "Prophecy Foretold",
+  "subname_cn": "预言"
+}

@@ -14,10 +14,10 @@
     "intellect": 1
   },
   "slots": [],
-  "text": "Draw top encounter card. Discover 2 clues at your location.",
+  "text": "Draw the top card of the encounter deck. Then, discover 2 clues at your location.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>快速</b>。发现并消耗你所在地点的所有线索。然后，从遭遇牌堆顶抽取一张牌。"
+  "text_cn": "抽取遭遇牌堆顶的1张牌。然后，在你所在地点发现2条线索。"
 }

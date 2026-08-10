@@ -16,10 +16,10 @@
   "slots": [
     "ally"
   ],
-  "text": "You get +1 combat. Discard Beat Cop: Deal 1 damage to an enemy at your location.",
+  "text": "You get +1 [combat].\n[fast] Discard Beat Cop: Deal 1 damage to an enemy at your location.",
   "health": 2,
   "sanity": 2,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "你获得+1战斗。\n<b>强制</b> - 当巡警入场时：放置1点伤害在巡警上。\n<b>反应</b> - 弃置巡警：对一个在你地点的敌人造成1点伤害。"
+  "text_cn": "你获得+1[战斗]。\n<b>快速</b> - 弃置巡警：对你所在地点的一名敌人造成1点伤害。"
 }

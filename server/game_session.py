@@ -205,9 +205,14 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
     allowed_classes: dict[str, tuple[int, int]] = {}  # class -> (min_level, max_level)
 
     inv_json = _load_investigator_json(investigator_id) if investigator_id else None
+    any_class_levels: tuple[int, int] | None = None
     if inv_json and inv_json.get("deck_requirements"):
         deck_req = inv_json["deck_requirements"]
         for cls, levels in deck_req.get("cards", {}).items():
+            if cls == "any":
+                # 官方"任意阵营0级卡至多N张"选项（Jim Culver / Ashcan Pete 等）
+                any_class_levels = (levels.get("min_level", 0), levels.get("max_level", 0))
+                continue
             allowed_classes[cls] = (levels.get("min_level", 0), levels.get("max_level", 5))
     elif investigator_id:
         # Fallback: investigator's class + neutral
@@ -279,10 +284,15 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
         # Check deck building rules
         if allowed_classes:
             if card_class not in allowed_classes:
-                continue
-            min_lv, max_lv = allowed_classes[card_class]
-            if not (min_lv <= card_level <= max_lv):
-                continue
+                # "any" 选项：允许任意阵营指定等级范围的外挂牌（数量上限在前端/校验层落实）
+                if not any_class_levels:
+                    continue
+                if not (any_class_levels[0] <= card_level <= any_class_levels[1]):
+                    continue
+            else:
+                min_lv, max_lv = allowed_classes[card_class]
+                if not (min_lv <= card_level <= max_lv):
+                    continue
 
         # XP check: card is "allowed" if player can afford it
         # Level 0 cards are always allowed; level N costs N XP
@@ -355,6 +365,7 @@ def _load_player_cards(g: Game) -> None:
                 fast=bool(data.get("fast") or False),
                 victory=int(data.get("victory") or 0),
                 subtype=str(data.get("subtype") or ""),
+                uses=(dict(data["uses"]) if data.get("uses") else None),
             )
         except Exception:
             continue
@@ -386,13 +397,39 @@ class GameSession:
         self._players: dict[str, PlayerSession] = {}
         self._pending_skill_test: dict[str, Any] | None = None
         self._pending_skill_test_resume: str | None = None
+        # --- 多人联机状态 ---
+        # player_id -> 其控制的调查员实例 id（"player"/"player2"/...）
+        self._inv_by_player: dict[str, str] = {}
+        # 本回合行动顺序（调查员 id）与当前行动者下标
+        self._turn_order: list[str] = []
+        self._turn_idx: int = 0
+        # 神话阶段逐调查员遭遇抽取队列（pending 检定/选择时暂停，结算后续抽）
+        self._encounter_draw_queue: list[str] = []
 
     @property
     def is_started(self) -> bool:
         return self.game is not None
 
+    @property
+    def active_investigator_id(self) -> str | None:
+        if not self._turn_order:
+            return None
+        return self._turn_order[min(self._turn_idx, len(self._turn_order) - 1)]
+
+    def inv_id_for_player(self, player_id: str) -> str:
+        """Map a connected player to their investigator instance id."""
+        return self._inv_by_player.get(player_id, "player")
+
+    def player_id_for_inv(self, inv_id: str) -> str | None:
+        for pid, iid in self._inv_by_player.items():
+            if iid == inv_id:
+                return pid
+        return None
+
     def add_player(self, player: PlayerSession) -> None:
         self._players[player.player_id] = player
+        if player.player_id in self._inv_by_player:
+            player.investigator_ids = [self._inv_by_player[player.player_id]]
 
     def remove_player(self, player_id: str) -> None:
         self._players.pop(player_id, None)
@@ -408,10 +445,30 @@ class GameSession:
         difficulty: str = "standard",
         trauma_physical: int = 0,
         trauma_mental: int = 0,
+        players: list[dict] | None = None,
     ) -> dict:
-        """Initialize a single-player game (multi-player setup in Phase 4)."""
+        """Initialize a game (1-4 players).
+
+        ``players``: optional list of per-player dicts
+        ``{player_id, investigator_id, deck_preset, deck_cards,
+        trauma_physical, trauma_mental}``. When omitted, a single-player
+        game is built from the legacy keyword arguments above.
+        Investigator instance ids are "player", "player2", "player3", ...
+        in seat order.
+        """
         self.action_log = []
         self.game_over = None
+
+        if players is None:
+            players = [{
+                "player_id": "player",
+                "investigator_id": investigator_id,
+                "deck_preset": deck_preset,
+                "deck_cards": deck_cards,
+                "trauma_physical": trauma_physical,
+                "trauma_mental": trauma_mental,
+            }]
+        players = list(players)[:4]
 
         if seed is None:
             import random as _random
@@ -430,6 +487,113 @@ class GameSession:
         )
         g.register_card_data(filler)
 
+        # Build each player's investigator + deck
+        built: list[tuple[str, str, CardData, list[str]]] = []  # (player_id, inv_id, data, deck)
+        for i, spec in enumerate(players):
+            inv_id = "player" if i == 0 else f"player{i + 1}"
+            inv_data, deck_ids = self._build_investigator_and_deck(
+                g,
+                spec.get("investigator_id", "daisy_walker"),
+                spec.get("deck_preset", ""),
+                spec.get("deck_cards"),
+            )
+            built.append((spec.get("player_id") or inv_id, inv_id, inv_data, deck_ids))
+
+        # Scenario
+        apply_scenario_to_game(g, scenario_id, seed=seed, difficulty=difficulty)
+
+        # 卡尔克萨之路：战役轨道注入 + 苍白面具混乱袋规则
+        camp = self.campaign
+        if camp is not None and getattr(camp, "campaign_id", "") == "path_to_carcosa":
+            g.state.scenario.vars["doubt"] = camp.doubt
+            g.state.scenario.vars["conviction"] = camp.conviction
+            if scenario_id == "the_pallid_mask":
+                # 官方：移除全部 cultist/tablet/elder_thing，再加回 2 个战役
+                # 选定的符号（简化：默认 cultist，可经 campaign 属性覆盖）
+                from backend.models.enums import ChaosTokenType
+                bag = g.chaos_bag.tokens
+                for t in (ChaosTokenType.CULTIST, ChaosTokenType.TABLET, ChaosTokenType.ELDER_THING):
+                    while t in bag:
+                        bag.remove(t)
+                symbol = getattr(camp, "pallid_mask_symbol", "cultist")
+                bag.extend([ChaosTokenType(symbol)] * 2)
+                self.action_log.append(f"🎭 苍白面具：混乱袋移除三种符号，加回2个[{symbol}]")
+        scen = load_scenario_definition(scenario_id)
+        for _pid, inv_id, inv_data, deck_ids in built:
+            g.add_investigator(inv_id, inv_data, deck=deck_ids, starting_location=scen["start_location"])
+        g.setup()
+        # Official rule: opening hand mulligan (redraw any number of cards, once)
+        g.state.scenario.vars["mulligan_available"] = True
+        g.state.scenario.vars["mulligan_done"] = []
+        for _inv_id, _cards in (g.state.scenario.vars.get("setup_set_aside") or {}).items():
+            if _cards:
+                _names = "、".join(_card_name_cn(g, c) for c in _cards)
+                self.action_log.append(f"🃏 开局抽到弱点已搁置：{_names}（调度后洗回牌库）")
+
+        if scenario_id == "the_midnight_masks":
+            g.state.scenario.vars["central_location"] = "downtown"
+        else:
+            g.state.scenario.vars["central_location"] = scen["start_location"]
+
+        self.controller = ScenarioController(g, action_log=self.action_log)
+        self.controller.skill_test_request_handler = self._request_skill_test
+        self.controller.attach()
+
+        # Event logger for animation
+        self.event_logger = EventLogger(g.event_bus)
+
+        g.state.scenario.current_phase = Phase.INVESTIGATION
+        g.state.scenario.round_number = 1
+
+        # Turn order & ownership mapping
+        self._turn_order = list(g.state.player_order)
+        self._turn_idx = 0
+        self._encounter_draw_queue = []
+        self._inv_by_player = {pid: inv_id for pid, inv_id, _d, _deck in built}
+
+        # First investigator starts with 3 actions; others wait their turn.
+        # Campaign trauma (Appendix III step 2): start with damage/horror
+        # equal to physical/mental trauma.
+        for _pid, inv_id, inv_data, _deck in built:
+            _inv = g.state.get_investigator(inv_id)
+            if _inv is None:
+                continue
+            _inv.actions_remaining = 3 if inv_id == self.active_investigator_id else 0
+            spec = next(s for s in players if (s.get("player_id") or inv_id) == _pid)
+            tp = int(spec.get("trauma_physical") or 0)
+            tm = int(spec.get("trauma_mental") or 0)
+            if tp:
+                _inv.damage = tp
+                self.action_log.append(f"🩸 战役创伤：{inv_data.name_cn} 开局携带 {tp} 点伤害")
+            if tm:
+                _inv.horror = tm
+                self.action_log.append(f"🧠 战役创伤：{inv_data.name_cn} 开局携带 {tm} 点恐惧")
+
+        # 第1轮调查阶段开始事件（黛西典籍行动授予等，须在行动点重置之后）
+        from backend.engine.event_bus import EventContext
+        for inv_id in g.state.player_order:
+            g.event_bus.emit(EventContext(
+                game_state=g.state,
+                event=GameEvent.INVESTIGATION_PHASE_BEGINS,
+                investigator_id=inv_id,
+            ))
+
+        self.action_log.append(f"=== 核心剧本：{scen.get('name_cn', scenario_id)} ===")
+        names = "、".join(d.name_cn for _p, _i, d, _k in built)
+        self.action_log.append(f"调查员：{names}")
+        self.action_log.append("第1轮 调查阶段")
+
+        self.game = g
+        return {"success": True, "message": "游戏已初始化"}
+
+    def _build_investigator_and_deck(
+        self,
+        g: Game,
+        investigator_id: str,
+        deck_preset: str = "",
+        deck_cards: list[str] | None = None,
+    ) -> tuple[CardData, list[str]]:
+        """Build investigator CardData + shuffled deck for one player."""
         # Investigator — try JSON first, then hardcoded fallback
         inv_json = _load_investigator_json(investigator_id)
         inv_def = INVESTIGATORS.get(investigator_id)
@@ -494,10 +658,14 @@ class GameSession:
                     break
 
         deck_ids = [cid for cid in deck_ids if g.state.get_card_data(cid) is not None]
-        if len(deck_ids) < 30:
-            deck_ids += ["filler"] * (30 - len(deck_ids))
-        elif len(deck_ids) > 30:
-            deck_ids = deck_ids[:30]
+        # 牌组张数按调查员要求（Sefina 33 / Lola 35，其余 30）
+        deck_size = 30
+        if inv_json and inv_json.get("deck_requirements"):
+            deck_size = int(inv_json["deck_requirements"].get("size") or 30)
+        if len(deck_ids) < deck_size:
+            deck_ids += ["filler"] * (deck_size - len(deck_ids))
+        elif len(deck_ids) > deck_size:
+            deck_ids = deck_ids[:deck_size]
 
         # Add signature cards and weakness (don't count toward 30-card limit)
         sig_cards: list[str] = []
@@ -520,67 +688,11 @@ class GameSession:
         if basic_weakness_pool:
             bw = random.choice(basic_weakness_pool)
             sig_cards.append(bw)
-            self.action_log.append(f"🃏 随机基础弱点：{_card_name_cn(g, bw)}")
+            self.action_log.append(f"🃏 随机基础弱点（{inv_data.name_cn}）：{_card_name_cn(g, bw)}")
         deck_ids.extend(sig_cards)
 
         random.shuffle(deck_ids)
-
-
-        # Scenario
-        apply_scenario_to_game(g, scenario_id, seed=seed, difficulty=difficulty)
-        scen = load_scenario_definition(scenario_id)
-        g.add_investigator("player", inv_data, deck=deck_ids, starting_location=scen["start_location"])
-        g.setup()
-        # Official rule: opening hand mulligan (redraw any number of cards, once)
-        g.state.scenario.vars["mulligan_available"] = True
-        for _inv_id, _cards in (g.state.scenario.vars.get("setup_set_aside") or {}).items():
-            if _cards:
-                _names = "、".join(_card_name_cn(g, c) for c in _cards)
-                self.action_log.append(f"🃏 开局抽到弱点已搁置：{_names}（调度后洗回牌库）")
-
-        if scenario_id == "the_midnight_masks":
-            g.state.scenario.vars["central_location"] = "downtown"
-        else:
-            g.state.scenario.vars["central_location"] = scen["start_location"]
-
-        self.controller = ScenarioController(g, action_log=self.action_log)
-        self.controller.skill_test_request_handler = self._request_skill_test
-        self.controller.attach()
-
-        # Event logger for animation
-        self.event_logger = EventLogger(g.event_bus)
-
-        g.state.scenario.current_phase = Phase.INVESTIGATION
-        g.state.scenario.round_number = 1
-
-        # Initialize investigator actions for first turn
-        inv = g.state.get_investigator("player")
-        if inv:
-            inv.actions_remaining = 3
-            # Campaign trauma (Appendix III step 2): start with damage/horror
-            # equal to physical/mental trauma.
-            if trauma_physical:
-                inv.damage = trauma_physical
-                self.action_log.append(f"🩸 战役创伤：开局携带 {trauma_physical} 点伤害")
-            if trauma_mental:
-                inv.horror = trauma_mental
-                self.action_log.append(f"🧠 战役创伤：开局携带 {trauma_mental} 点恐惧")
-
-        # 第1轮调查阶段开始事件（黛西典籍行动授予等，须在行动点重置之后）
-        from backend.engine.event_bus import EventContext
-        for inv_id in g.state.player_order:
-            g.event_bus.emit(EventContext(
-                game_state=g.state,
-                event=GameEvent.INVESTIGATION_PHASE_BEGINS,
-                investigator_id=inv_id,
-            ))
-
-        self.action_log.append(f"=== 核心剧本：{scen.get('name_cn', scenario_id)} ===")
-        self.action_log.append(f"调查员：{inv_data.name_cn}")
-        self.action_log.append("第1轮 调查阶段")
-
-        self.game = g
-        return {"success": True, "message": "游戏已初始化"}
+        return inv_data, deck_ids
 
     def _clear_game_over(self) -> None:
         if self.game is None:
@@ -591,13 +703,16 @@ class GameSession:
             msg = self.game.state.scenario.vars.get("resolution_message") or f"结局：{res}"
             self.game_over = {"type": "win" if win else "lose", "message": msg}
         if not self.game_over:
-            # 被击败检测（行动中途也可能发生：反击/机会攻击/卡牌效果）
-            inv = self.game.state.get_investigator("player")
-            if inv is not None and inv.is_defeated:
-                cause = "伤害" if inv.damage >= inv.health else "恐惧"
+            # 全员被击败才判负（行动中途也可能发生：反击/机会攻击/卡牌效果）
+            invs = [
+                self.game.state.get_investigator(inv_id)
+                for inv_id in self.game.state.player_order
+            ]
+            invs = [i for i in invs if i is not None]
+            if invs and all(i.is_defeated for i in invs):
                 self.game_over = {
                     "type": "lose",
-                    "message": f"调查员被击败！（{cause}归零）",
+                    "message": "所有调查员都被击败了……",
                 }
         self._maybe_settle_campaign()
 
@@ -634,6 +749,19 @@ class GameSession:
                 camp.trauma_mental += 1
                 self.action_log.append("🧠 被击败：获得 1 点精神创伤")
 
+        # 卡尔克萨之路：剧本结算的 Doubt/Conviction 增减（scenario.vars 由
+        # 遭遇/结局逻辑写入 mark_doubt / mark_conviction）
+        if getattr(camp, "campaign_id", "") == "path_to_carcosa":
+            svars = self.game.state.scenario.vars
+            dd = int(svars.get("mark_doubt", 0) or 0)
+            dc = int(svars.get("mark_conviction", 0) or 0)
+            if dd:
+                camp.doubt += dd
+                self.action_log.append(f"🌑 战役记录：怀疑 +{dd}（累计 {camp.doubt}）")
+            if dc:
+                camp.conviction += dc
+                self.action_log.append(f"🌕 战役记录：确信 +{dc}（累计 {camp.conviction}）")
+
         from server.campaign import save_campaign
         save_campaign(camp)
 
@@ -642,17 +770,23 @@ class GameSession:
         if self.game is None:
             return {}
         self._clear_game_over()
-        # For now, single-player always views as "player"
         player = self._players.get(player_id)
         viewer = "player"
         if player and player.investigator_ids:
             viewer = player.investigator_ids[0]
-        return serialize_game_state(
+        state = serialize_game_state(
             self.game,
             action_log=self.action_log,
             game_over=self.game_over,
             viewer_investigator_id=viewer,
         )
+        # 多人联机：当前行动者与回合归属
+        scen_vars = self.game.state.scenario.vars
+        state["active_investigator_id"] = self.active_investigator_id
+        state["your_turn"] = viewer == self.active_investigator_id
+        done = scen_vars.get("mulligan_done", [])
+        state["mulligan_available"] = bool(scen_vars.get("mulligan_available")) and viewer not in done
+        return state
 
     def get_victory_xp(self) -> int:
         """Calculate total XP from victory display cards."""
@@ -742,7 +876,7 @@ class GameSession:
         if self.game is None:
             return {"success": False, "message": "游戏未初始化"}
 
-        inv = self.game.state.get_investigator("player")
+        inv = self.game.state.get_investigator(self.inv_id_for_player(player_id))
         if inv is None:
             return {"success": False, "message": "未找到调查员"}
         if self.game_over or inv.is_defeated:
@@ -754,7 +888,7 @@ class GameSession:
 
         # 玩家在调度窗口内直接行动 → 视为放弃调度，搁置卡洗回牌库
         if act != "MULLIGAN":
-            self._close_mulligan_window()
+            self._close_mulligan_window(inv)
 
         # Clear previous encounter card display
         self.game.state.scenario.vars.pop("last_encounter", None)
@@ -763,91 +897,163 @@ class GameSession:
         if self.event_logger:
             self.event_logger.flush()
 
-        # Resolve pending choice
+        pending = self._pending_skill_test
+        pending_owner = pending.get("investigator_id") if pending else None
+
+        # Resolve pending choice / skill test (按属主路由，不要求是当前回合玩家)
         if act == "SKILL_TEST_ROLL":
+            if pending is None:
+                return {"success": False, "message": "当前没有等待中的技能检定"}
+            if pending_owner != inv.investigator_id:
+                return {"success": False, "message": "等待其他玩家完成检定"}
             result = self._resolve_pending_skill_test(inv, data)
-        elif self._pending_skill_test is not None and act != "ACTIVATE_CARD":
-            return {"success": False, "message": "请先完成当前技能检定"}
         elif act == "RESOLVE_CHOICE":
-            result = self._resolve_choice(data)
+            result = self._resolve_choice(data, inv)
         elif act == "MULLIGAN":
             result = self._mulligan(inv, data)
-        elif act == "ADVANCE_ACT":
-            result = self._advance_act(inv)
+        elif pending is not None:
+            if pending_owner != inv.investigator_id:
+                return {"success": False, "message": "等待其他玩家完成检定"}
+            if act != "ACTIVATE_CARD":
+                return {"success": False, "message": "请先完成当前技能检定"}
+            result = self._activate_card(inv, data)
         elif act == "RESIGN":
             result = self._resign()
-        elif act == "LOCKED_DOOR_TEST":
-            result = self._locked_door_test(inv, data)
-        elif act == "ACTIVATE_ASSET":
-            result = self._activate_asset(inv, data)
-        elif act == "ACTIVATE_CARD":
-            result = self._activate_card(inv, data)
         else:
-            result = self._normal_action(inv, act, data)
+            # 回合权限：只有当前行动者可以执行游戏行动
+            if inv.investigator_id != self.active_investigator_id:
+                return {"success": False, "message": "还没到你的回合"}
+            if act == "ADVANCE_ACT":
+                result = self._advance_act(inv)
+            elif act == "LOCKED_DOOR_TEST":
+                result = self._locked_door_test(inv, data)
+            elif act == "ACTIVATE_ASSET":
+                result = self._activate_asset(inv, data)
+            elif act == "ACTIVATE_CARD":
+                result = self._activate_card(inv, data)
+            else:
+                result = self._normal_action(inv, act, data)
 
         # Capture events for animation
         events = self.event_logger.flush() if self.event_logger else []
         self._drain_effect_log()
         result["events"] = events
-        self._clear_game_over()
+        self._check_new_defeats()
         return result
 
     def _finish_end_turn_after_encounter(self) -> dict:
         """Finish the end-turn transition after an encounter skill test."""
         if self.game is None:
             return {"success": False, "message": "游戏未初始化"}
+        # 多人：可能还有其他调查员未抽遭遇，继续处理队列
+        if self._encounter_draw_queue:
+            return self._process_encounter_queue()
+        return self._advance_to_next_round()
 
-        inv = self.game.state.get_investigator("player")
-        if inv is None:
-            return {"success": False, "message": "未找到调查员"}
-
-        if inv.is_defeated:
-            self.game_over = {"type": "lose", "message": "调查员被遭遇击败！"}
-            return {"success": True, "message": self.game_over["message"]}
+    def _advance_to_next_round(self) -> dict:
+        """All investigators acted and encounters resolved → new round."""
+        if self.game is None:
+            return {"success": False, "message": "游戏未初始化"}
 
         self._clear_game_over()
         if self.game_over:
             return {"success": True, "message": self.game_over["message"]}
 
-        inv.actions_remaining = 3
+        self._turn_idx = 0
+        active = (
+            self.game.state.get_investigator(self.active_investigator_id)
+            if self.active_investigator_id else None
+        )
+        if active is not None:
+            active.actions_remaining = 3
         self.game.state.scenario.current_phase = Phase.INVESTIGATION
         self.action_log.append(f"=== 第{self.game.state.scenario.round_number}轮 调查阶段 ===")
         from backend.engine.event_bus import EventContext
-        for inv_id in self.game.state.player_order:
+        if active is not None:
             self.game.event_bus.emit(EventContext(
                 game_state=self.game.state,
                 event=GameEvent.INVESTIGATION_PHASE_BEGINS,
-                investigator_id=inv_id,
+                investigator_id=active.investigator_id,
+            ))
+            self.game.event_bus.emit(EventContext(
+                game_state=self.game.state,
+                event=GameEvent.INVESTIGATOR_TURN_BEGINS,
+                investigator_id=active.investigator_id,
             ))
 
         self._drain_effect_log()
         return {"success": True, "message": "进入下一轮"}
 
+    def _handle_investigator_defeat(self, inv) -> None:
+        """Official: a defeated investigator drops all their clues on their
+        current location and takes no further turns."""
+        if inv is None:
+            return
+        inv_id = inv.investigator_id
+        scen = self.game.state.scenario
+        recorded = scen.vars.setdefault("defeated_investigators", [])
+        if inv_id in recorded:
+            return
+        recorded.append(inv_id)
+        loc = self.game.state.get_location(inv.location_id)
+        if loc is not None and inv.clues:
+            loc.clues += inv.clues
+            self.action_log.append(
+                f"💀 {inv.card_data.name_cn} 被击败，{inv.clues} 条线索掉落在【{loc.card_data.name_cn}】"
+            )
+            inv.clues = 0
+        else:
+            self.action_log.append(f"💀 {inv.card_data.name_cn} 被击败！")
+        # 从行动顺序移除
+        if inv_id in self._turn_order:
+            idx = self._turn_order.index(inv_id)
+            self._turn_order.remove(inv_id)
+            if idx < self._turn_idx:
+                self._turn_idx -= 1
+            if self._turn_idx >= len(self._turn_order):
+                self._turn_idx = max(0, len(self._turn_order) - 1)
+
+    def _check_new_defeats(self) -> None:
+        if self.game is None:
+            return
+        for inv_id in list(self.game.state.player_order):
+            inv = self.game.state.get_investigator(inv_id)
+            if inv is not None and inv.is_defeated:
+                self._handle_investigator_defeat(inv)
+        self._clear_game_over()
+
     def handle_end_turn(self, player_id: str) -> dict:
-        """End the current player's turn."""
+        """End the current player's turn (advances to the next investigator;
+        phases run only after everyone has acted)."""
         if self.game is None:
             return {"success": False, "message": "游戏未初始化"}
 
-        inv = self.game.state.get_investigator("player")
+        inv = self.game.state.get_investigator(self.inv_id_for_player(player_id))
         if inv is None:
             return {"success": False, "message": "未找到调查员"}
-        if inv.is_defeated or self.game_over:
+        if self.game_over:
             return {"success": False, "message": "游戏已结束"}
+        if inv.investigator_id != self.active_investigator_id:
+            return {"success": False, "message": "还没到你的回合"}
+        if self._pending_skill_test is not None:
+            return {"success": False, "message": "请先完成当前技能检定"}
 
         if self.event_logger:
             self.event_logger.flush()
 
-        # Frozen in Fear test at end of turn
-        if self.controller and self.controller.has_treachery("frozen_in_fear"):
+        # Frozen in Fear test at end of this investigator's turn
+        if not inv.is_defeated and self.controller and self.controller.has_treachery(
+            "frozen_in_fear", investigator_id=inv.investigator_id
+        ):
             ok = {"success": False}
 
             def on_success(_r):
                 ok["success"] = True
                 self.controller.remove_treachery("frozen_in_fear")
-                self.action_log.append("🥶 ���惧冻结：意志检定成功，弃掉")
+                self.action_log.append("🥶 恐惧冻结：意志检定成功，弃掉")
 
             self.game.skill_test_engine.run_test(
-                investigator_id="player",
+                investigator_id=inv.investigator_id,
                 skill_type=Skill.WILLPOWER,
                 difficulty=3,
                 committed_card_ids=[],
@@ -855,15 +1061,48 @@ class GameSession:
                 on_failure=lambda _r: None,
             )
 
-        # Enemy Phase
-        self.action_log.append("--- 敌人阶段 ---")
-        old_d, old_h = inv.damage, inv.horror
-        self.game.enemy_phase.resolve()
-        if inv.damage > old_d or inv.horror > old_h:
-            self.action_log.append(f"👹 敌人攻击：{inv.damage - old_d}伤害/{inv.horror - old_h}恐惧")
+        inv.has_taken_turn = True
+        from backend.engine.event_bus import EventContext
+        self.game.event_bus.emit(EventContext(
+            game_state=self.game.state,
+            event=GameEvent.INVESTIGATOR_TURN_ENDS,
+            investigator_id=inv.investigator_id,
+        ))
 
-        if inv.is_defeated:
-            self.game_over = {"type": "lose", "message": "调查员被击败！"}
+        # 还有下一位调查员 → 移交回合（不跑阶段）
+        if self._turn_idx < len(self._turn_order) - 1:
+            self._turn_idx += 1
+            next_inv = self.game.state.get_investigator(self._turn_order[self._turn_idx])
+            if next_inv is not None:
+                next_inv.actions_remaining = 3
+                self.action_log.append(f"--- {next_inv.card_data.name_cn} 的回合 ---")
+                self.game.event_bus.emit(EventContext(
+                    game_state=self.game.state,
+                    event=GameEvent.INVESTIGATOR_TURN_BEGINS,
+                    investigator_id=next_inv.investigator_id,
+                ))
+            self._drain_effect_log()
+            events = self.event_logger.flush() if self.event_logger else []
+            name = next_inv.card_data.name_cn if next_inv else ""
+            return {"success": True, "message": f"轮到 {name}", "events": events,
+                    "turn_advanced": True}
+
+        # --- 全员行动完毕：敌人阶段 ---
+        self.action_log.append("--- 敌人阶段 ---")
+        deltas = {}
+        for _iid in self.game.state.player_order:
+            _i = self.game.state.get_investigator(_iid)
+            if _i is not None:
+                deltas[_iid] = (_i.damage, _i.horror)
+        self.game.enemy_phase.resolve()
+        for inv_id, (old_d, old_h) in deltas.items():
+            i = self.game.state.get_investigator(inv_id)
+            if i is not None and (i.damage > old_d or i.horror > old_h):
+                self.action_log.append(
+                    f"👹 敌人攻击 {i.card_data.name_cn}：{i.damage - old_d}伤害/{i.horror - old_h}恐惧"
+                )
+        self._check_new_defeats()
+        if self.game_over:
             events = self.event_logger.flush() if self.event_logger else []
             return {"success": True, "message": self.game_over["message"], "events": events}
 
@@ -872,6 +1111,7 @@ class GameSession:
         self.game.upkeep_phase.resolve()
         self.action_log.append("♻️ 就绪、抽1牌、+1资源")
         self._drain_effect_log()
+        self._check_new_defeats()
 
         # Dissonant Voices cleanup
         if self.controller and self.controller.has_treachery("dissonant_voices"):
@@ -892,46 +1132,66 @@ class GameSession:
             events = self.event_logger.flush() if self.event_logger else []
             return {"success": True, "message": self.game_over["message"], "events": events}
 
-        # Encounter draw
-        scen = self.game.state.scenario
-        if not scen.encounter_deck:
-            scen.encounter_deck = list(scen.encounter_discard)
-            random.shuffle(scen.encounter_deck)
-            scen.encounter_discard.clear()
-            self.action_log.append("♻️ 遭遇弃牌堆洗回")
+        # 逐调查员抽取遭遇（官方：每名调查员各抽1张）
+        self._encounter_draw_queue = []
+        for inv_id in self._turn_order:
+            _i = self.game.state.get_investigator(inv_id)
+            if _i is not None and not _i.is_defeated:
+                self._encounter_draw_queue.append(inv_id)
+        result = self._process_encounter_queue()
+        events = self.event_logger.flush() if self.event_logger else []
+        result["events"] = events
+        return result
 
-        if scen.encounter_deck:
+    def _process_encounter_queue(self) -> dict:
+        """Draw & resolve one encounter per investigator; pauses on pending
+        choices / skill tests (resumed via RESOLVE_CHOICE / SKILL_TEST_ROLL)."""
+        scen = self.game.state.scenario
+        while self._encounter_draw_queue:
+            inv_id = self._encounter_draw_queue.pop(0)
+            inv = self.game.state.get_investigator(inv_id)
+            if inv is None or inv.is_defeated:
+                continue
+            if not scen.encounter_deck:
+                scen.encounter_deck = list(scen.encounter_discard)
+                random.shuffle(scen.encounter_deck)
+                scen.encounter_discard.clear()
+                self.action_log.append("♻️ 遭遇弃牌堆洗回")
+            if not scen.encounter_deck:
+                continue
+
             enc_id = scen.encounter_deck.pop(0)
             scen.encounter_discard.append(enc_id)
             # Store encounter card info for client display
             scen.vars["last_encounter"] = _lookup_encounter_card(enc_id, scen.vars.get("campaign", "core"))
+            scen.vars["last_encounter_owner"] = inv_id
             # Ward of Protection may have cancelled this encounter
             if scen.vars.get("cancelled_encounter") == enc_id:
                 scen.vars.pop("cancelled_encounter", None)
                 self.action_log.append("🛡️ 守护结界：取消遭遇")
-                res = {"pending": False, "message": "cancelled"}
-            else:
-                res = self.controller.resolve_encounter_card(enc_id)
+                continue
+
+            res = self.controller.resolve_encounter_card(enc_id, investigator_id=inv_id)
             if res.get("surge"):
                 if scen.encounter_deck:
                     enc2 = scen.encounter_deck.pop(0)
                     scen.encounter_discard.append(enc2)
                     # Update last_encounter to show the surge card
                     scen.vars["last_encounter"] = _lookup_encounter_card(enc2, scen.vars.get("campaign", "core"))
-                    self.controller.resolve_encounter_card(enc2)
+                    self.controller.resolve_encounter_card(enc2, investigator_id=inv_id)
             if res.get("pending"):
-                events = self.event_logger.flush() if self.event_logger else []
-                return {"success": True, "message": "需要做出选择", "events": events}
-
+                # 选择结算后继续处理队列（_resolve_choice 的 encounter 分支经
+                # _pending_skill_test_resume 续跑）
+                self._pending_skill_test_resume = "end_turn_after_encounter"
+                return {"success": True, "message": "需要做出选择"}
             if self._pending_skill_test is not None:
                 self._pending_skill_test_resume = "end_turn_after_encounter"
-                events = self.event_logger.flush() if self.event_logger else []
-                return {"success": True, "message": "等待技能检定", "events": events}
+                return {"success": True, "message": "等待技能检定"}
+            self._check_new_defeats()
+            if self.game_over:
+                return {"success": True, "message": self.game_over["message"]}
 
-        result = self._finish_end_turn_after_encounter()
-        events = self.event_logger.flush() if self.event_logger else []
-        result["events"] = events
-        return result
+        return self._advance_to_next_round()
 
     def _drain_effect_log(self) -> None:
         """Move card effect messages (GameState.effect_log) into the action log."""
@@ -1041,10 +1301,15 @@ class GameSession:
             "replace_instance_ids": selected,
         })
 
-    def _resolve_choice(self, data: dict) -> dict:
+    def _resolve_choice(self, data: dict, inv=None) -> dict:
         pc = self.game.state.scenario.vars.get("pending_choice")
         if not pc:
             return {"success": False, "message": "当前没有待选择项"}
+        # 归属路由：有属主记录的选择只能由属主玩家结算
+        if inv is not None:
+            owner_inv = pc.get("investigator_id")
+            if owner_inv and owner_inv != inv.investigator_id:
+                return {"success": False, "message": "等待其他玩家做出选择"}
         choice_id = data.get("choice_id")
         kind = pc.get("kind") or "encounter"
         self.game.state.scenario.vars.pop("pending_choice", None)
@@ -1054,7 +1319,17 @@ class GameSession:
 
         if kind == "encounter":
             card_id = pc.get("card_id")
-            self.controller.resolve_encounter_card(card_id, choice=choice_id)
+            owner = pc.get("investigator_id") or "player"
+            self.controller.resolve_encounter_card(card_id, investigator_id=owner, choice=choice_id)
+            self._check_new_defeats()
+            # 神话阶段遭遇队列的选择结算 → 继续队列/进入下一轮
+            if self._pending_skill_test_resume == "end_turn_after_encounter":
+                self._pending_skill_test_resume = None
+                if self._pending_skill_test is not None:
+                    # 选择结算又触发了技能检定 → 等检定再续跑
+                    self._pending_skill_test_resume = "end_turn_after_encounter"
+                    return {"success": True, "message": "等待技能检定"}
+                return self._finish_end_turn_after_encounter()
             self._clear_game_over()
             return {"success": True, "message": "已选择"}
 
@@ -1143,12 +1418,15 @@ class GameSession:
             chosen = choice_id if choice_id in peek_cards else peek_cards[0]
             rest = [c for c in peek_cards if c != chosen]
             inv.hand.append(chosen)
+            # 官方：其余洗入牌库（非置于牌库底）
+            import random as _rnd
             inv.deck.extend(rest)
+            _rnd.shuffle(inv.deck)
             cd = self.game.state.get_card_data(chosen)
             chosen_name = (cd.name_cn or "").strip() if cd else "（未翻译卡牌）"
             if not chosen_name:
                 chosen_name = "（未翻译卡牌）"
-            self.action_log.append(f"📚 智慧古书：你选择抽取【{chosen_name}】（其余{len(rest)}张置于牌库底）")
+            self.action_log.append(f"📚 智慧古书：你选择抽取【{chosen_name}】（其余{len(rest)}张洗入牌库）")
             return {"success": True, "message": "已抽牌"}
 
         # --- Mr. "Rook" step 1: search depth chosen → show cards ---
@@ -1319,33 +1597,40 @@ class GameSession:
         "dr_milan_christopher_lv0": "被动：+1智力；调查成功后+1资源",
         "magnifying_glass_lv0": "被动：调查时+1智力",
         "beat_cop_lv0": "被动：+1战斗；可弃掉对敌人造成1伤害",
-        "guard_dog_lv0": "被动：受到攻击时对敌人造成1伤害",
+        "guard_dog_lv0": "被动：敌人攻击对它造成伤害时反击1伤害",
         "holy_rosary_lv0": "被动：+1意志",
-        "leather_coat_lv0": "被动：+2生命值",
+        "leather_coat_lv0": "无能力：2点生命承伤",
         "research_librarian_lv0": "被动：入场时搜索1张典籍",
         "laboratory_assistant_lv0": "被动：手牌上限+2；入场时抽2张",
         "arcane_studies_lv0": "花费资源：+1意志或+1智力",
         "hard_knocks_lv0": "花费资源：+1战斗或+1敏捷",
         "physical_training_lv0": "花费资源：+1意志或+1战斗",
         "dig_deep_lv0": "花费资源：+1意志或+1敏捷",
-        "forbidden_knowledge_lv0": "被动：用秘密换取资源",
-        "rabbits_foot_lv0": "被动：检定失败后抽1张",
-        "scavenging_lv0": "被动：调查成功+2时回收弃牌堆支援",
-        "pickpocketing_lv0": "被动：闪避成功后抽1张",
+        "forbidden_knowledge_lv0": "快速：横置+受1恐惧，移1秘密为1资源",
+        "rabbits_foot_lv0": "被动：检定失败后横置抽1张",
+        "scavenging_lv0": "被动：调查成功+2时横置回收弃牌堆支援",
+        "pickpocketing_lv0": "被动：闪避成功后消耗抽1张",
         "leo_de_luca_lv0": "被动：每回合+1行动",
         "leo_de_luca_lv1": "被动：每回合+1行动",
-        "stray_cat_lv0": "被动：闪避时可弃掉自动成功",
-        "arcane_initiate_lv0": "被动：刷新阶段搜索1张法术",
+        "stray_cat_lv0": "快速：弃掉自动躲避所在地点一个非精英敌人",
+        "arcane_initiate_lv0": "快速：横置，查看牌库顶3张抽取1张法术",
         "kukri_lv0": "武器：+1战斗",
         "ritual_candles_lv0": "被动：技能检定时+1",
     }
 
-    def _close_mulligan_window(self) -> None:
-        """玩家跳过调度直接开始行动 → 关闭调度窗口，把开局搁置的卡牌
-        （弱点）洗回牌库（官方规则：调度步骤完成后洗回）。"""
+    def _close_mulligan_window(self, inv=None) -> None:
+        """玩家跳过调度直接开始行动 → 视为该玩家放弃调度；所有玩家调度
+        （或放弃）后，把开局搁置的卡牌（弱点）洗回各自牌库。"""
         scen = self.game.state.scenario
-        if not scen.vars.pop("mulligan_available", None) and not scen.vars.get("setup_set_aside"):
+        if not scen.vars.get("mulligan_available"):
             return
+        done = scen.vars.setdefault("mulligan_done", [])
+        if inv is not None and inv.investigator_id not in done:
+            done.append(inv.investigator_id)
+        total = len(self.game.state.player_order)
+        if len(done) < total:
+            return
+        scen.vars.pop("mulligan_available", None)
         shuffled = self.game.shuffle_set_aside_into_decks()
         if shuffled:
             names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
@@ -1353,13 +1638,15 @@ class GameSession:
 
     def _mulligan(self, inv, data: dict) -> dict:
         """官方调度规则：选定卡牌搁置 → 等量补抽（补抽中的弱点同样搁置再补）
-        → 调度结束后所有搁置卡牌洗回牌库。每局一次。"""
+        → 全员调度结束后所有搁置卡牌洗回牌库。每局每玩家一次。"""
         from backend.models.state import is_weakness_card
 
         scen = self.game.state.scenario
         if not scen.vars.get("mulligan_available"):
             return {"success": False, "message": "调度已不可用"}
-        scen.vars.pop("mulligan_available", None)
+        done = scen.vars.setdefault("mulligan_done", [])
+        if inv.investigator_id in done:
+            return {"success": False, "message": "你已调度过"}
 
         card_ids = [c for c in (data.get("card_ids") or []) if c in inv.hand]
         inv_set_aside = scen.vars.setdefault("setup_set_aside", {}).setdefault(
@@ -1380,15 +1667,20 @@ class GameSession:
             inv.hand.append(cid)
             drawn += 1
 
-        shuffled = self.game.shuffle_set_aside_into_decks()
+        done.append(inv.investigator_id)
         if card_ids:
-            self.action_log.append(f"🔁 调度：重抽 {len(card_ids)} 张手牌")
+            self.action_log.append(f"🔁 {inv.card_data.name_cn} 调度：重抽 {len(card_ids)} 张手牌")
         else:
-            self.action_log.append("🔁 保留初始手牌")
-        if shuffled:
-            names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
-            self.action_log.append(f"🃏 搁置卡牌洗回牌库：{names}")
-        return {"success": True, "message": "调度完成"}
+            self.action_log.append(f"🔁 {inv.card_data.name_cn} 保留初始手牌")
+
+        if len(done) >= len(self.game.state.player_order):
+            scen.vars.pop("mulligan_available", None)
+            shuffled = self.game.shuffle_set_aside_into_decks()
+            if shuffled:
+                names = "、".join(_card_name_cn(self.game, c) for c in shuffled)
+                self.action_log.append(f"🃏 搁置卡牌洗回牌库：{names}")
+            return {"success": True, "message": "调度完成"}
+        return {"success": True, "message": "调度完成，等待其他玩家调度"}
 
     def _activate_card(self, inv, data: dict) -> dict:
         """Generic activation channel: routes ACTIVATE_CARD to a card's
@@ -1510,7 +1802,7 @@ class GameSession:
                 "card_id": card_id,
                 "asset_instance_id": instance_id,
                 "peek_cards": peek_cards,
-                "prompt": "<b>智慧古书</b>：查看牌库顶3张牌，选择1张加入手牌（其余置于牌库底）。",
+                "prompt": "<b>智慧古书</b>：查看牌库顶3张牌，选择1张加入手牌（其余洗入牌库）。",
                 "options": options,
             }
             self.action_log.append("📚 智慧古书：查看牌库顶3张，等待选择…")
@@ -1544,23 +1836,19 @@ class GameSession:
         if card_id == "clarity_of_mind_lv0":
             if ci.uses.get("charges", 0) <= 0:
                 return {"success": False, "message": "清明之心没有剩余充能"}
-            ci.exhausted = True
+            # 官方卡面无横置费用、无充能耗尽自弃条款
             ci.uses["charges"] = ci.uses.get("charges", 0) - 1
             healed = min(1, inv.horror)
             inv.horror -= healed
             msg = f"清明之心：治愈{healed}点恐惧" if healed else "清明之心：当前没有恐惧可治愈"
             self.action_log.append(f"💜 {msg}")
-            # Discard if no charges left
-            if ci.uses.get("charges", 0) <= 0:
-                self._discard_asset(inv, instance_id)
-                self.action_log.append("💜 清明之心充能耗尽，弃置")
             return {"success": True, "message": msg}
 
         # --- Rite of Seeking (spend 1 charge: investigate with willpower) ---
         if card_id == "rite_of_seeking_lv0":
             if ci.uses.get("charges", 0) <= 0:
                 return {"success": False, "message": "寻秘仪式没有剩余充能"}
-            ci.exhausted = True
+            # 官方卡面无横置费用（充能允许可多次发动）、无充能耗尽自弃条款
             ci.uses["charges"] = ci.uses.get("charges", 0) - 1
             loc = self.game.state.get_location(inv.location_id)
             if not loc:
@@ -1586,9 +1874,6 @@ class GameSession:
                 on_success=on_success,
                 on_failure=on_failure,
             )
-            if ci.uses.get("charges", 0) <= 0:
-                self._discard_asset(inv, instance_id)
-                self.action_log.append("🔮 寻秘仪式充能耗尽，弃置")
             return {"success": result_ok["success"],
                     "message": "调查成功" if result_ok["success"] else "调查失败"}
 

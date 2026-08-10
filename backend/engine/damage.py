@@ -53,7 +53,10 @@ class DamageEngine:
                 inv, damage, horror, damage_assignment, horror_assignment,
             )
 
-            # Step 2: Emit events for abilities to react
+            # Step 2: Emit events for abilities to react. Handlers may reduce
+            # the amount (e.g. "I've had worse…" cancels up to 5) or cancel
+            # the assignment entirely; the reduction is applied to the
+            # investigator's portion (ally assignments stand).
             if damage > 0:
                 from backend.engine.event_bus import EventContext
                 ctx = EventContext(
@@ -64,6 +67,10 @@ class DamageEngine:
                     source=source,
                 )
                 self.bus.emit(ctx)
+                if ctx.cancelled:
+                    inv_damage = 0
+                elif (ctx.amount or 0) < damage:
+                    inv_damage = max(0, inv_damage - (damage - ctx.amount))
 
             if horror > 0:
                 from backend.engine.event_bus import EventContext
@@ -75,6 +82,10 @@ class DamageEngine:
                     source=source,
                 )
                 self.bus.emit(ctx)
+                if ctx.cancelled:
+                    inv_horror = 0
+                elif (ctx.amount or 0) < horror:
+                    inv_horror = max(0, inv_horror - (horror - ctx.amount))
 
             # Step 3: Apply remaining to investigator
             self._apply_to_investigator(inv, inv_damage, inv_horror)
@@ -112,7 +123,7 @@ class DamageEngine:
         enemy.damage += ctx.amount
 
         if enemy_data.enemy_health and enemy.damage >= enemy_data.enemy_health:
-            self._defeat_enemy(enemy_instance_id)
+            self._defeat_enemy(enemy_instance_id, defeated_by=investigator_id)
             return True
         return False
 
@@ -174,7 +185,11 @@ class DamageEngine:
         return inv_damage, inv_horror
 
     def get_ally_soak_targets(self, investigator_id: str) -> list[dict]:
-        """Return list of allies that can soak damage or horror.
+        """Return list of in-play assets that can soak damage or horror.
+
+        Official rule: damage may be assigned to any asset you control with a
+        health value, horror to any with a sanity value — not only allies
+        (e.g. Bulletproof Vest, Leather Coat, Elder Sign Amulet).
 
         Each entry: {instance_id, card_id, name, remaining_health, remaining_sanity}
         """
@@ -190,12 +205,6 @@ class DamageEngine:
             if cd is None:
                 continue
             if cd.health is None and cd.sanity is None:
-                continue
-            # Must be an ally (has ally slot or ally trait)
-            from backend.models.enums import SlotType
-            is_ally = (SlotType.ALLY in (cd.slots or [])
-                       or "ally" in (cd.traits or []))
-            if not is_ally:
                 continue
             remaining_hp = (cd.health - ci.damage) if cd.health is not None else None
             remaining_san = (cd.sanity - ci.horror) if cd.sanity is not None else None
@@ -261,7 +270,7 @@ class DamageEngine:
             self.bus.emit(ctx)
             self._remove_card_from_play(instance_id)
 
-    def _defeat_enemy(self, instance_id: str) -> None:
+    def _defeat_enemy(self, instance_id: str, defeated_by: str | None = None) -> None:
         from backend.engine.event_bus import EventContext
         enemy = self.game_state.get_card_instance(instance_id)
         if enemy is None:
@@ -271,6 +280,8 @@ class DamageEngine:
             game_state=self.game_state,
             event=GameEvent.ENEMY_DEFEATED,
             target=instance_id,
+            investigator_id=defeated_by,
+            extra={"card_id": enemy.card_id},
         )
         self.bus.emit(ctx)
 

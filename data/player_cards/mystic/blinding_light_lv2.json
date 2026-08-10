@@ -14,10 +14,10 @@
     "agility": 1
   },
   "slots": [],
-  "text": "Evade using willpower. If succeed, deal 2 damage.",
+  "text": "<b>Evade.</b> This evasion attempt uses [willpower] instead of [agility]. If you succeed, deal 2 damage to the enemy just evaded. If a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol is revealed during this evasion attempt, lose 1 action this turn and take 1 horror.",
   "health": null,
   "sanity": null,
   "pack": "rcore",
   "unique": false,
-  "text_cn": "<b>法术</b>。消耗眩光一闪并花费1充能：<b>躲避</b>。本次躲避使用意志代替敏捷。你获得+4敏捷。"
+  "text_cn": "<b>躲避</b>。本次躲避尝试使用[willpower]代替[agility]。如果成功，对刚被躲避的敌人造成2点伤害。如果本次躲避尝试中揭示了[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记，本回合失去1个行动并受到1点恐惧。"
 }

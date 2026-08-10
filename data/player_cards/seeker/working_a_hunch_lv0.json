@@ -19,5 +19,5 @@
   "pack": "core",
   "unique": false,
   "fast": true,
-  "text_cn": "<b>洞察</b>。发现并消耗你所在地点的一个线索。"
+  "text_cn": "快速。只能在你的回合中打出。\n发现你所在地点的1条线索。"
 }
