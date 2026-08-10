@@ -1,0 +1,25 @@
+{
+  "id": "ríastrad_lv1",
+  "arkhamdb_code": "07193",
+  "name": "Ríastrad",
+  "name_cn": "狂怒畸变",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "spell",
+    "spirit",
+    "cursed"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> When you initiate this attack, add up to 3 [curse] tokens to the chaos bag. For each [curse] token added to the chaos bag in this way, you get +1 [combat] and deal +1 damage for this attack.",
+  "text_cn": "<b>攻击</b>。在你发动这次攻击时，加入最多3个[curse]标记到混乱袋。每以此方式加入1个[curse]标记到混乱袋，你这次攻击+1[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

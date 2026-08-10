@@ -1,0 +1,22 @@
+{
+  "id": "improvised_weapon_lv0",
+  "arkhamdb_code": "04033",
+  "name": "Improvised Weapon",
+  "name_cn": "临时武器",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "improvised"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "You may play Improvised Weapon from your discard pile. If you do, shuffle it into your deck after resolving its effects.\n<b>Fight.</b> The attacked enemy gets -1 fight for this attack. (If you played Improvised Weapon from your discard pile, this attack deals +1 damage.)",
+  "text_cn": "你可以从弃牌堆打出临时武器。如果你这么做，结算效果后将其洗回你的牌堆。\n<b>攻击</b>。这次攻击中，受到攻击的敌人-1攻击。(如果你从弃牌堆打出了临时武器，这次攻击造成+1伤害。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "plucky_lv3",
+  "arkhamdb_code": "08081",
+  "name": "Plucky",
+  "name_cn": "有胆有识",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "talent",
+    "composure"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Fast. Limit 1 [[Composure]] in play.\nYou get +1 [willpower] and +1 [intellect].\nNon-direct damage/horror must be assigned to Plucky before it can be assigned to your investigator card.\n[fast] Spend 1 resource: You get +1 [willpower] or +1 [intellect] for this skill test.",
+  "text_cn": "快速。场上限制1张[[沉稳]]在场。\n你获得+1[willpower]和+1[intellect]。\n非直接伤害/恐惧在被分配给你的调查员卡之前，必须先分配给有胆有识。\n[fast]花费1资源：你这次技能检定+1[willpower]或+1[intellect]。",
+  "health": 1,
+  "sanity": 3,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "get_behind_me_lv0",
+  "arkhamdb_code": "08021",
+  "name": "\"Get behind me!\"",
+  "name_cn": "\"到我身后！\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit",
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] window.\nUntil the end of the phase, whenever an enemy would attack another investigator at your location, it attacks you instead, then engages you. Cancel 1 horror dealt by each attack made in this way.",
+  "text_cn": "快速。在任何[fast]时间段中打出。\n直到本阶段结束，任何攻击你所在地点另一位调查员的敌人，改为攻击你，然后与你交战。取消每次因此类攻击造成的1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,40 @@
+{
+  "investigator_id": "tommy_muldoon",
+  "presets": [
+    {
+      "name": "托米·马尔登（入门）",
+      "cards": [
+        "cherished_keepsake_lv0",
+        "cherished_keepsake_lv0",
+        "combat_training_lv3",
+        "combat_training_lv3",
+        "drawing_thin_lv0",
+        "drawing_thin_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "old_shotgun_lv2",
+        "old_shotgun_lv2",
+        "rite_of_sanctification_lv0",
+        "rite_of_sanctification_lv0",
+        "solemn_vow_lv0",
+        "solemn_vow_lv0",
+        "the_councils_coffer_lv2",
+        "augur_lv0",
+        "blackjack_lv0",
+        "blackjack_lv0",
+        "combat_training_lv1",
+        "combat_training_lv1",
+        "empty_vessel_lv4",
+        "enchanted_armor_lv2",
+        "enchanted_armor_lv2",
+        "favor_of_the_moon_lv1",
+        "fire_axe_lv0",
+        "fire_axe_lv0",
+        "guiding_spirit_lv1",
+        "guiding_spirit_lv1",
+        "hope_lv0",
+        "ice_pick_lv1"
+      ]
+    }
+  ]
+}

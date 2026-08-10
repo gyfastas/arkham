@@ -1,0 +1,24 @@
+{
+  "id": "slip_away_lv0",
+  "arkhamdb_code": "04232",
+  "name": "Slip Away",
+  "name_cn": "悄然遁去",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Evade.</b> Add your [intellect] to your skill value for this evasion attempt. If you succeed by 2 or more and the evaded enemy is non-[[Elite]], it does not ready during the next upkeep phase.",
+  "text_cn": "<b>躲避</b>。本次躲避尝试将你的[intellect]加入你的技能值。如果你成功且超过难度至少2点，且被躲避的敌人非[[精英]]，该敌人在下一个补给阶段不进入准备状态。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

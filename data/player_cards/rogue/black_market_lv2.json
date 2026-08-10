@@ -1,0 +1,21 @@
+{
+  "id": "black_market_lv2",
+  "arkhamdb_code": "08055",
+  "name": "Black Market",
+  "name_cn": "黑市",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "favor"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Fast. Play at the start of the investigation phase.\nOne at a time, reveal cards from the top of any investigator deck(s) until exactly 5 cards have been revealed. Set those cards aside, out of play. While set aside, any investigator may play any of those cards as if they were in their hand. At the start of the next investigation phase, shuffle each of those cards still set aside into its owner's deck.",
+  "text_cn": "快速。当调查阶段开始时打出。\n依次从任一调查员的牌堆顶部揭示卡牌，直到正好揭示5张卡牌。将这些卡牌放在一边，位于场外。只要这些卡牌放在一边，任何调查员可以将其视为自己的手牌打出。当下次调查阶段开始时，将仍放在一边的这些卡牌混洗入其所有者的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

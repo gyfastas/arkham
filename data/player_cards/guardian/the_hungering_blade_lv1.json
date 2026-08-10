@@ -1,0 +1,31 @@
+{
+  "id": "the_hungering_blade_lv1",
+  "arkhamdb_code": "06018",
+  "name": "The Hungering Blade",
+  "name_cn": "渴血之刃",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "item",
+    "weapon",
+    "melee",
+    "relic",
+    "cursed"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Limit 1 per deck. As an additional cost to play this card, you must search your bonded cards for 3 copies of Bloodlust and shuffle them into your deck.\n[action]: <b>Fight.</b> You get +1 [combat] for this attack for each attached copy of Bloodlust. This attack deals +1 damage. If this attack defeats an enemy, place 1 resource on this card <i>(from the token bank)</i>, as an offering.",
+  "text_cn": "每副牌组限制1张。作为打出本卡牌的额外的费用，你必须在你的绑定卡牌中查找3张嗜血，并将其混洗入你的牌堆。<i>(FAQ, v1.9)</i>\n[action]：<b>攻击</b>。每叠加1张嗜血，这次攻击你+1[combat]。这次攻击造成+1伤害。如果这次攻击击败了一名敌人，<i>(从供应堆)</i>放置1资源在本卡牌上，作为贡品。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Calamitous Blade of Celephaïs",
+  "subname_cn": "赛勒菲斯的灾厄之刃"
+}

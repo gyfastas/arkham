@@ -1,0 +1,23 @@
+{
+  "id": "true_understanding_lv0",
+  "arkhamdb_code": "04153",
+  "name": "True Understanding",
+  "name_cn": "参透真谛",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Commit only to a skill test from an ability printed on a scenario card.<br/>If this skill test is successful, discover 1 clue at your location.",
+  "text_cn": "只能投入冒险卡上打印的能力中的技能检定。\n如果本次技能检定成功，发现你所在地点的1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

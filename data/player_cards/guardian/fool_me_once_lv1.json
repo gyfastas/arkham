@@ -1,0 +1,24 @@
+{
+  "id": "fool_me_once_lv1",
+  "arkhamdb_code": "06156",
+  "name": "\"Fool me once...\"",
+  "name_cn": "\"吃一堑……\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "insight",
+    "tactic"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would discard a treachery card after resolving any of its effects.\nPut \"Fool me once...\" into play in your play area and attach that treachery to it.\n[reaction] When any investigator draws a copy of the attached treachery card, discard \"Fool me once...\": Cancel that card's revelation effect.",
+  "text_cn": "快速。在你结算一张诡计卡的任何效果后，将要丢弃该卡牌时打出。\n将\"吃一堑……\"放置入你的游戏区域，并叠加该诡计卡到其上。\n[reaction]在任一调查员抽取到一张与叠加的诡计卡同名的卡牌时，丢弃\"吃一堑……\"：取消该卡牌的显现效果。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

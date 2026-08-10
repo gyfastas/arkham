@@ -1,0 +1,24 @@
+{
+  "id": "savant_lv1",
+  "arkhamdb_code": "08052",
+  "name": "Savant",
+  "name_cn": "行业专家",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "innate",
+    "developed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Savant gains [wild] icons equal to your lowest skill other than the skill being tested.",
+  "text_cn": "行业专家获得等于(除正在检定的技能外)你最低技能值的[wild]图标。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

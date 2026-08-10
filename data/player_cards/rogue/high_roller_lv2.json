@@ -1,0 +1,24 @@
+{
+  "id": "high_roller_lv2",
+  "arkhamdb_code": "04156",
+  "name": "High Roller",
+  "name_cn": "挥金如土",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "[fast] Spend 3 resources and exhaust High Roller: You get +2 skill value for this skill test. If you succeed, gain 3 resources.",
+  "text_cn": "[free]花费3资源并消耗挥金如土：这次技能检定你的技能值+2。如果你成功，获得3资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

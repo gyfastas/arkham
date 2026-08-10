@@ -1,0 +1,22 @@
+{
+  "id": "guardian_of_the_crystallizer_lv0",
+  "arkhamdb_code": "06025",
+  "name": "Guardian of the Crystallizer",
+  "name_cn": "结晶器守卫",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "monster"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Bonded (Crystallizer of Dreams). Hunter.\n<b>Prey</b> - Investigator with a Crystallizer of Dreams only.\nGuardian of the Crystallizer enters play exhausted.\n<b>Forced</b> - If there is no Crystallizer of Dreams in play: Set Guardian of the Crystallizer aside, out of play.",
+  "text_cn": "绑定(梦境结晶器)。猎手。\n<b>猎物</b> -仅对有梦境结晶器的调查员。\n结晶器守卫以消耗状态入场。\n<b>强制</b> - 如果场上没有梦境结晶器：将结晶器守卫放在一边，位于场外。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

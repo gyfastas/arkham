@@ -1,0 +1,25 @@
+{
+  "id": "hand_of_fate_lv0",
+  "arkhamdb_code": "07020",
+  "name": "Hand of Fate",
+  "name_cn": "命运之手",
+  "class": "guardian",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "spell",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, add [bless] tokens to the chaos bag equal to the attacking enemy's total combined damage and horror values.",
+  "text_cn": "快速。在一名敌人攻击你所在地点一位调查员时打出。\n取消该次攻击。然后，加入数量等同于该攻击敌人的伤害值和恐惧值总和的[bless]标记到混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

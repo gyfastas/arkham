@@ -1,0 +1,24 @@
+{
+  "id": "expeditious_retreat_lv1",
+  "arkhamdb_code": "06246",
+  "name": "Expeditious Retreat",
+  "name_cn": "迅速撤退",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "innate",
+    "developed"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nWhile Expeditious Retreat is committed during a basic evade action, it gains [agility][agility] and the text: \"If this test is successful by 2 or more, you may automatically evade another enemy at your location.\"",
+  "text_cn": "每次技能检定最多投入1张。\n只要在躲避行动中投入迅速撤退，其获得[agility][agility]和以下文本：\"如果这次检定成功且超过难度至少2点，你可以自动躲避你所在地点的另一名敌人。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

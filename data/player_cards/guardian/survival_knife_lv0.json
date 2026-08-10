@@ -1,0 +1,27 @@
+{
+  "id": "survival_knife_lv0",
+  "arkhamdb_code": "04017",
+  "name": "Survival Knife",
+  "name_cn": "求生匕首",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Fight.</b> You get +1 [combat] for this attack.\n[reaction] After an enemy attack deals damage to you during the enemy phase, exhaust Survival Knife: <b>Fight.</b> This attack targets the attacking enemy. You get +2 [combat] and deal +1 damage for this attack.",
+  "text_cn": "[action]：<b>攻击</b>。这次攻击中你+1[combat]。\n[reaction]在一个敌人在敌军阶段攻击你并对你造成伤害后，消耗求生匕首：<b>攻击</b>。这次攻击将刚刚发动攻击的敌人作为目标。这次攻击中你+2[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

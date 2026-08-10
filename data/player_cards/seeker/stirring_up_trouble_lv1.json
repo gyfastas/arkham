@@ -1,0 +1,25 @@
+{
+  "id": "stirring_up_trouble_lv1",
+  "arkhamdb_code": "07112",
+  "name": "Stirring Up Trouble",
+  "name_cn": "掀起麻烦",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "insight",
+    "cursed"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to play Stirring Up Trouble, add [curse] tokens to the chaos bag equal to your location's shroud value.\nDiscover 2 clues at your location.",
+  "text_cn": "作为打出掀起麻烦的额外费用，加入数量等于你所在地点隐藏值的[curse]标记到混乱袋。\n发现你所在地点的2个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

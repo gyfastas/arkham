@@ -1,0 +1,29 @@
+{
+  "id": "ikiaq_lv3",
+  "arkhamdb_code": "07267",
+  "name": "Ikiaq",
+  "name_cn": "伊恰克",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "ally",
+    "sorcerer"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [willpower] and +1 [intellect]. You get -1 [willpower] and -1 [intellect] for each weakness beneath Ikiaq.\n[reaction] When an investigator at your location draws a basic weakness, exhaust Ikiaq: Cancel that weakness's effects and place it facedown beneath Ikiaq. Its owner must draw it if Ikiaq leaves play.",
+  "text_cn": "你获得+1[willpower]和+1[intellect]。伊恰克底下每有一张弱点，你获得-1[willpower]和-1[intellect]。\n[reaction]你所在地点的一位调查员在抽取一张基础弱点时，消耗伊恰克：取消该弱点的效果并将其正面朝下放置在伊恰克底下。如果伊恰克离场，弱点的所有者必须将其抽取。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "subname": "The Council's Chosen",
+  "subname_cn": "委员会之选"
+}

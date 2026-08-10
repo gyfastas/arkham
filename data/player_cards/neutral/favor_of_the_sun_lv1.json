@@ -1,0 +1,25 @@
+{
+  "id": "favor_of_the_sun_lv1",
+  "arkhamdb_code": "07272",
+  "name": "Favor of the Sun",
+  "name_cn": "日之恩惠",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "pact",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Seal (up to 3 [bless]). If there are no tokens sealed on Favor of the Sun, discard it.\n[reaction] When you would reveal a chaos token from the chaos bag, exhaust Favor of the Sun: Resolve a token sealed here instead, as if it were just revealed from the chaos bag.",
+  "text_cn": "快速。封印(最多3[bless])。如果日之恩惠上没有封印标记，将其丢弃。\n[reaction]在你将要从混乱袋抽出一个混乱标记时，消耗日之恩惠：改为结算一个封印在此处的标记，如同其刚刚从混乱袋抽出。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "marksmanship_lv1",
+  "arkhamdb_code": "04104",
+  "name": "Marksmanship",
+  "name_cn": "枪法如神",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you activate the <b>Fight</b> ability on a [[Firearm]] or [[Ranged]] asset.\nThis attack can target an enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack. If this attack succeeds against an enemy not engaged with you, the attack deals +1 damage.",
+  "text_cn": "快速。在你启动一张[[枪械]]或[[远程]]支援卡的<b>攻击</b>能力时打出。\n这次攻击可以选择一个连接地点上的一个敌人作为目标。这次攻击忽略冷漠和反击关键词。如果这次攻击的目标未与你交战，且你攻击成功，这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

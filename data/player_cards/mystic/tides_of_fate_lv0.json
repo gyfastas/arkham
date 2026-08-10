@@ -1,0 +1,24 @@
+{
+  "id": "tides_of_fate_lv0",
+  "arkhamdb_code": "07030",
+  "name": "Tides of Fate",
+  "name_cn": "命运之潮",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "spell",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] window, or at the start of the round.\nReplace all [curse] tokens in the chaos bag with an equal number of [bless] tokens. At the end of the round, replace all [bless] tokens in the chaos bag with an equal number of [curse] tokens.",
+  "text_cn": "快速。在任何[fast]玩家时间段中，或当一轮开始时打出。\n将混乱袋内所有的[curse]标记替换为相同数量的[bless]标记。当该轮结束时，将混乱袋内所有的[bless]标记替换为相同数量的[curse]标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

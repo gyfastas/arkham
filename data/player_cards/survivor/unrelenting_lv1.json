@@ -1,0 +1,23 @@
+{
+  "id": "unrelenting_lv1",
+  "arkhamdb_code": "07196",
+  "name": "Unrelenting",
+  "name_cn": "不屈不挠",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Max 1 committed per test.\nAfter you commit Unrelenting to a skill test, search the chaos bag for up to 3 non-[auto_fail] chaos tokens of your choice, and seal them on Unrelenting. If all 3 tokens sealed on Unrelenting are \"+1,\", \"0,\" [bless], and/or [elder_sign] tokens, draw 2 cards. Release all tokens sealed here after this test ends.",
+  "text_cn": "每次检定最多投入1张。\n在你投入不屈不挠到技能检定后，在混乱袋查找最多3个你选择的非[auto_fail]混乱标记，并将其封印在不屈不挠上。如果不屈不挠上封印的3个标记都是\"+1\"、\"0\"、[bless]和/或[elder_sign]标记，抽取2张卡牌。在这次检定结束后，释放此处封印的所有标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

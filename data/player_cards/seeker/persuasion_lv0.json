@@ -1,0 +1,25 @@
+{
+  "id": "persuasion_lv0",
+  "arkhamdb_code": "04105",
+  "name": "Persuasion",
+  "name_cn": "劝服",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight",
+    "trick"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "<b>Parley.</b> Choose a non-weakness [[Humanoid]] enemy at your location and test [intellect] (3). This test gets +X difficulty, where X is that enemy's horror value. If you succeed, shuffle the chosen enemy into the encounter deck. If the chosen enemy is [[Elite]], automatically evade it instead.",
+  "text_cn": "<b>谈判</b>。选择你所在地点的一个非弱点的[[类人]]敌人，检定[intellect](3)。这次检定难度+X，X为该敌人的恐惧值。如果你成功，将所选的敌人洗回遭遇牌堆。如果所选的敌人为[[精英]]，改为自动躲避它。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "bangle_of_jinxes_lv1",
+  "arkhamdb_code": "08075",
+  "name": "Bangle of Jinxes",
+  "name_cn": "厄运手镯",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "item",
+    "charm",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Uses (1 charge).\n[fast] Spend 1 charge: You get +2 skill value for this test. (Limit once per test.)\n[reaction] After an enemy attacks you: Place 1 charge on Bangle of Jinxes.",
+  "text_cn": "使用(1充能)。\n[fast]花费1充能：你这次检定+2技能值。(每次检定限制1次。)\n[reaction]在一名敌人攻击你后：在厄运手镯上放置1充能。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "uses": {
+    "charges": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "decoy_lv0",
+  "arkhamdb_code": "05234",
+  "name": "Decoy",
+  "name_cn": "诱敌",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "favor",
+    "service"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "<b>Evade.</b> Automatically evade a non-[[Elite]] enemy at your location.\n[reaction] When you play Decoy, increase its cost by 2: Change \"a non-[[Elite]] enemy\" to \"up to 2 non-[[Elite]] enemies.\"\n[reaction] When you play Decoy, increase its cost by 2: Change \"at your location\" to \"at a location up to 2 connections away.\"",
+  "text_cn": "<b>躲避</b>。自动躲避你所在地点的一名非[[精英]]敌人。\n[reaction]在你打出诱敌时，提升其费用2点：将\"一名非[[精英]]敌人\"变为\"最多2名非[[精英]]敌人\"。\n[reaction]在你打出诱敌时，提升其费用2点：将\"你所在地点\"变为\"1个与你所在地点之间连接次数不超过2的地点。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

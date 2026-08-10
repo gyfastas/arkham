@@ -1,0 +1,33 @@
+{
+  "id": "gené_beauregard_lv3",
+  "arkhamdb_code": "08099",
+  "name": "Gené Beauregard",
+  "name_cn": "吉恩·波尔格",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 5,
+  "level": 3,
+  "traits": [
+    "ally",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [intellect] and +1 [agility].\n[reaction] During your turn, after you move to a location, exhaust Gené Beauregard: Move a clue or a non-[[Elite]] enemy from a connecting location to your location, or vice versa.",
+  "text_cn": "你获得+1[intellect]和+1[agility]。\n[reaction]在你的回合中，在你移动到一个地点后，消耗吉恩·波尔格：将一个线索或一名非[[精英]]敌人从连接地点移动到你所在地点，或从你所在地点移动到连接地点。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "rogue"
+  ],
+  "subname": "Intrepid Explorer",
+  "subname_cn": "英勇的探险家"
+}

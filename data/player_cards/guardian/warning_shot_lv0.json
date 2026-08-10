@@ -1,0 +1,25 @@
+{
+  "id": "warning_shot_lv0",
+  "arkhamdb_code": "05229",
+  "name": "Warning Shot",
+  "name_cn": "鸣枪示警",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "trick"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to play Warning Shot, spend 1 ammo from a [[Firearm]] asset you control.\nMove all non-[[Elite]] enemies at your location to a connecting location. This action does not provoke attacks of opportunity.",
+  "text_cn": "作为打出鸣枪示警的额外费用，花费你控制的1张[[枪械]]支援卡的1子弹。\n移动你所在地点所有非[[精英]]敌人到一个连接地点。此行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

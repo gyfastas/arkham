@@ -103,6 +103,12 @@ const groupedCards = computed(() => {
 
 const deckSize = computed(() => deck.value.length)
 
+/** 官方牌组张数：多数调查员 30，赛菲娜 33、萝拉 35（来自 deck_requirements.size） */
+const requiredSize = computed(() => {
+  const size = store.deckRequirements?.size
+  return typeof size === 'number' && size > 0 ? size : 30
+})
+
 /** 战役升级：客户端预估牌组变动的 XP 花费（规则与服务端一致：
  *  升级=等级差(min 1)，新卡=等级(min 1)，移除免费） */
 const xpCost = computed(() => {
@@ -154,7 +160,7 @@ const xpCost = computed(() => {
 const xpRemaining = computed(() => (props.xp ?? 0) - xpCost.value)
 
 const canConfirm = computed(() => {
-  if (deckSize.value !== 30) return false
+  if (deckSize.value !== requiredSize.value) return false
   if (isUpgrade.value) return xpCost.value <= (props.xp ?? 0)
   return true
 })
@@ -171,7 +177,7 @@ function maxCopies(card: CardDisplay): number {
 
 function canAddCard(card: CardDisplay): boolean {
   if (card.allowed === false) return false
-  if (deckSize.value >= 30) return false
+  if (deckSize.value >= requiredSize.value) return false
   return countInDeck(card.id) < maxCopies(card)
 }
 
@@ -414,7 +420,7 @@ onUnmounted(() => {
       <!-- Right: Deck List -->
       <div class="deck-panel">
         <div class="deck-header">
-          <span class="deck-count" :class="{ full: deckSize === 30 }">{{ deckSize }} / 30</span>
+          <span class="deck-count" :class="{ full: deckSize === requiredSize }">{{ deckSize }} / {{ requiredSize }}</span>
         </div>
 
         <div class="deck-list">
@@ -879,6 +885,8 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   padding: 12px 16px;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .deck-header {
@@ -896,8 +904,8 @@ onUnmounted(() => {
 }
 
 .deck-list {
-  flex: 1;
-  overflow-y: auto;
+  flex: 1 0 auto;
+  min-height: 0;
 }
 
 .deck-entry {
@@ -1040,6 +1048,10 @@ onUnmounted(() => {
   gap: 10px;
   padding-top: 12px;
   border-top: 1px solid #1a1a2e;
+  position: sticky;
+  bottom: 0;
+  background: #0a0a1a;
+  z-index: 5;
 }
 
 .btn {

@@ -1,0 +1,24 @@
+{
+  "id": "curiosity_lv0",
+  "arkhamdb_code": "05026",
+  "name": "Curiosity",
+  "name_cn": "好奇心",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "While you have 4 or more cards in hand, Curiosity gains [willpower] [intellect] (while you have 7 or more cards in hand, Curiosity gains [willpower] [willpower] [intellect] [intellect], instead).",
+  "text_cn": "只要你至少有4张手牌，好奇心获得[willpower][intellect](只要你至少有7张手牌，改为好奇心获得[willpower][willpower][intellect][intellect])。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

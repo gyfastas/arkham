@@ -1,0 +1,34 @@
+{
+  "id": "becky_lv0",
+  "arkhamdb_code": "06006",
+  "name": "Becky",
+  "name_cn": "贝基",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Tommy Muldoon deck only. Uses (2 ammo).\nEach resource gained from Tommy Muldoon's [reaction] ability may instead be placed on Becky, as ammo.\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] and deal +1 damage for this attack.",
+  "text_cn": "托米·马尔登牌组专用。使用(2子弹)。\n从托米·马尔登的[reaction]能力获得的资源可以改为放置在贝基上，作为子弹。\n[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Custom Marlin Model 1894",
+  "subname_cn": "马林1894型订制步枪",
+  "uses": {
+    "ammo": 2
+  }
+}

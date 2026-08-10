@@ -1,0 +1,24 @@
+{
+  "id": "curse_of_aeons_lv3",
+  "arkhamdb_code": "07195",
+  "name": "Curse of Aeons",
+  "name_cn": "万古诅咒",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "ritual",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "[reaction] When a second [curse] token is revealed during a single skill test at your location, exhaust Curse of Aeons: Cancel that token and treat it as if it were a [skull] token instead. You may choose to remove both of those tokens from the chaos bag after the test ends.",
+  "text_cn": "[reaction]在你所在地点的单次检定检定中抽出第二个[curse]标记时，消耗万古诅咒：取消该标记，并改为将其视为如同[skull]标记。在检定结束后，你可以选择将这两个标记都从混乱袋移除。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

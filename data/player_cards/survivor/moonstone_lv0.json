@@ -1,0 +1,25 @@
+{
+  "id": "moonstone_lv0",
+  "arkhamdb_code": "06203",
+  "name": "Moonstone",
+  "name_cn": "月石",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "dreamlands"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "accessory"
+  ],
+  "text": "You get +1 [willpower] and +1 [agility].\nYou cannot play or commit Moonstone from your hand.\n[reaction] After you discard Moonstone from your hand: Play it <i>(paying its cost)</i>.",
+  "text_cn": "你获得+1[willpower]和+1[agility]。\n你不能将月石从你的手牌中打出或投入检定。\n[reaction]在你从手牌中丢弃月石后：将其打出<i>(支付其费用)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

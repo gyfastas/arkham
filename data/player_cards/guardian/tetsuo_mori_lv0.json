@@ -1,0 +1,28 @@
+{
+  "id": "tetsuo_mori_lv0",
+  "arkhamdb_code": "06155",
+  "name": "Tetsuo Mori",
+  "name_cn": "森哲夫",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "police"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Tetsuo Mori may be assigned damage and/or horror dealt to other investigators at your location.\n[reaction] When Tetsuo Mori is defeated: Choose an investigator at your location. That investigator searches either their discard pile or the top 9 cards of their deck for an [[Item]] asset and adds it to their hand. Shuffle their deck if it is searched.",
+  "text_cn": "对你所在地点其他调查员造成的伤害和/或恐惧，可以分配给森哲夫。\n[reaction]在森哲夫被击败时：选择你所在地点的一位调查员。该调查员在其弃牌堆或牌堆顶部9张卡牌中查找一张[[道具]]支援卡，并加入其手牌。如果查找了牌堆，将其混洗。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Too Noble for His Own Good",
+  "subname_cn": "大公无私"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lucky_cigarette_case_lv0",
+  "arkhamdb_code": "04107",
+  "name": "Lucky Cigarette Case",
+  "name_cn": "幸运烟盒",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "charm"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "[reaction] After you succeed at a skill test by 2 or more, exhaust Lucky Cigarette Case: Draw 1 card.",
+  "text_cn": "[reaction]在你技能检定成功且超过难度至少2点后，消耗幸运烟盒：抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

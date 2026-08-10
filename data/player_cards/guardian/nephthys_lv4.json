@@ -1,0 +1,29 @@
+{
+  "id": "nephthys_lv4",
+  "arkhamdb_code": "07262",
+  "name": "Nephthys",
+  "name_cn": "奈芙蒂斯",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "ally",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 2
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [willpower].\n[reaction] When 1 or more [bless] tokens would be removed from the chaos bag during a skill test: Seal them on Nephthys, instead.\n[fast] Exhaust Nephthys: Either release 3 [bless] tokens sealed on her, or return 3 [bless] tokens sealed on her to the token pool to deal 2 damage to an enemy at your location.",
+  "text_cn": "你获得+1[willpower]。\n[reaction]在技能检定中将要从混乱袋移除至少1个[bless]标记时：改为将其封印在奈芙蒂斯上。\n[free]消耗奈芙蒂斯：释放封印在她上面的3个[bless]标记，或将封印在她上面的3个[bless]标记返回供应堆来对你所在地点一名敌人造成2点伤害。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Huntress of Bast",
+  "subname_cn": "巴斯特的女猎手"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "double_double_lv4",
+  "arkhamdb_code": "05320",
+  "name": "Double, Double",
+  "name_cn": "超级加倍",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 4,
+  "level": 4,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Exceptional.\n[reaction] After you play an event, exhaust Double, Double: Play that event again as if it were in your hand.",
+  "text_cn": "卓越。\n[reaction]在你打出一张事件卡后，消耗超级加倍：再次打出该事件卡，如同其在你手牌中。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "exceptional": true
+}

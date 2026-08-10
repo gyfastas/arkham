@@ -1,0 +1,35 @@
+{
+  "id": "enchanted_blade_lv0",
+  "arkhamdb_code": "05118",
+  "name": "Enchanted Blade",
+  "name_cn": "附魔剑",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand. arcane"
+  ],
+  "text": "Uses (3 charges).\n[action]: <b>Fight.</b> You get +1 [combat] for this attack. As an additional cost to initiate this ability, you may spend 1 charge to empower the blade. If you do, you get +1 [combat] and deal +1 damage for this attack.",
+  "text_cn": "使用(3充能)。\n[action]：<b>攻击</b>。你这次攻击+1[combat]。作为发动此能力的额外费用，你可以花费1充能来为剑附魔。如果你这么做，你这次攻击再+1[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "classes": [
+    "mystic",
+    "guardian"
+  ],
+  "uses": {
+    "charges": 3
+  }
+}

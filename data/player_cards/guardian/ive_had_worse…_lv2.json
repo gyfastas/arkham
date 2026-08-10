@@ -1,0 +1,24 @@
+{
+  "id": "ive_had_worse…_lv2",
+  "arkhamdb_code": "05315",
+  "name": "\"I've had worse…\"",
+  "name_cn": "\"我见过更糟的……\"",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you are dealt damage and/or horror.\nCancel up to 2 damage and/or horror just dealt to you. Then, gain that many resources.",
+  "text_cn": "快速。在你受到伤害和/或恐惧时打出。\n取消你这次受到的最多2点伤害和/或恐惧。然后，获得同等数量的资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

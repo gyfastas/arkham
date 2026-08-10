@@ -1,0 +1,24 @@
+{
+  "id": "able_bodied_lv0",
+  "arkhamdb_code": "05038",
+  "name": "Able Bodied",
+  "name_cn": "体格强健",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "While you control 2 or fewer [[Item]] assets, Able Bodied gains [combat] [agility] (while you control 1 or fewer [[Item]] assets, Able Bodied gains [combat] [combat] [agility] [agility], instead).",
+  "text_cn": "只要你控制的[[道具]]支援卡不超过2张，体格强健获得[combat][agility](只要你控制的[[道具]]支援卡不超过1张，改为体格强健获得[combat][combat][agility][agility])。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

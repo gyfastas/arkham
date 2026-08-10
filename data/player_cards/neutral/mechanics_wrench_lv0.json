@@ -1,0 +1,28 @@
+{
+  "id": "mechanics_wrench_lv0",
+  "arkhamdb_code": "08002",
+  "name": "Mechanic's Wrench",
+  "name_cn": "机修工扳手",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 2,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Daniela Reyes deck only.\n[fast] Exhaust Mechanic's Wrench: Choose an enemy at your location. That enemy attacks you.\n[action]: <b>Fight.</b> Use this ability only against an enemy that has attacked you since the end of your last turn. You get +2 [combat] for this attack and deal +1 damage for this attack.",
+  "text_cn": "丹妮拉·雷耶丝牌组专用。\n[fast]消耗机修工扳手：选择你所在地点的一名敌人。该敌人攻击你。\n[action]：<b>攻击</b>。只能对你上回合结束后攻击过你的敌人使用此能力。你这次攻击+2[combat]并且这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

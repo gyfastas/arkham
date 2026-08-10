@@ -1,0 +1,30 @@
+{
+  "id": "patrices_violin_lv0",
+  "arkhamdb_code": "06016",
+  "name": "Patrice's Violin",
+  "name_cn": "派翠斯的小提琴",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "instrument"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Patrice Hathaway deck only.\n[fast] Choose and discard 1 card from your hand and exhaust Patrice's Violin: Choose an investigator at your location to either gain 1 resource or draw 1 card.",
+  "text_cn": "派翠斯·海瑟薇牌组专用。\n[fast]选择并丢弃你1张手牌，并消耗派翠斯的小提琴：选择你所在地点的一位调查员，其获得1资源或抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "My Muse",
+  "subname_cn": "我的缪斯女神"
+}

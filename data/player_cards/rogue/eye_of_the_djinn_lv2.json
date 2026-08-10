@@ -1,0 +1,31 @@
+{
+  "id": "eye_of_the_djinn_lv2",
+  "arkhamdb_code": "07225",
+  "name": "Eye of the Djinn",
+  "name_cn": "迪精之眼",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "relic",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Exceptional.\n[reaction] When you initiate a skill test during your turn, exhaust Eye of the Djinn: Set your base skill value to 5 for this test. If a [bless] token is revealed during this test, ready Eye of the Djinn. If a [curse] token is revealed during this test, you may take an additional action this turn.",
+  "text_cn": "卓越。\n[reaction]你在你的回合中发动技能检定时，消耗迪精之眼：将你这次检定的基础技能值设为5。如果这次检定中抽出[bless]标记，准备迪精之眼。如果这次检定中抽出[curse]标记，这回合你可以进行一个额外的行动。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Vessel of Good and Evil",
+  "subname_cn": "善恶容器",
+  "exceptional": true
+}

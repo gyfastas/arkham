@@ -1,0 +1,25 @@
+{
+  "id": "surprising_find_lv1",
+  "arkhamdb_code": "06278",
+  "name": "Surprising Find",
+  "name_cn": "惊喜的发现",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "fortune",
+    "research"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Myriad.\n[reaction] When you search your deck and Surprising Find is among the searched cards: Put it into play in your play area. You must commit it to the next eligible skill test you perform. If that test is successful, draw 1 card. (Max one [[Research]] ability per search.)",
+  "text_cn": "多重。\n[reaction]在你查找你的牌堆时若惊喜的发现在被查找卡牌中：将其放置入你的游戏区域。你必须将其投入到你执行的下一次能将其投入的技能检定。如果该检定成功，抽取1张卡牌。(每次查找最多使用一次[[研究]]能力。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

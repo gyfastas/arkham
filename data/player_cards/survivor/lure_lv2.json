@@ -1,0 +1,23 @@
+{
+  "id": "lure_lv2",
+  "arkhamdb_code": "05323",
+  "name": "Lure",
+  "name_cn": "诱敌深入",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Attach to your location or to a connecting location.\nDuring the enemy phase, each enemy that moves does so along the shortest path toward the attached location, instead of to where it would normally move.\n <b>Forced</b> - While attached, at the end of the round: Discard Lure. ",
+  "text_cn": "叠加到你所在地点或一个连接地点。\n在敌人阶段中，每名敌人不以正常移动方向移动，改为以最短路现朝向叠加地点移动。\n <b>强制</b> - 叠加状态下，当一轮结束时：丢弃诱敌深入。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "diana_stanley",
+  "arkhamdb_code": "05004",
+  "name": "Diana Stanley",
+  "name_cn": "黛安娜·史丹利",
+  "title": "The Redeemed Cultist",
+  "title_cn": "洗心革面的异教徒",
+  "class": "mystic",
+  "health": 7,
+  "sanity": 7,
+  "skills": {
+    "willpower": 1,
+    "intellect": 3,
+    "combat": 3,
+    "agility": 3
+  },
+  "ability": "Diana Stanley gets +1 [willpower] for each card beneath her.\n[reaction] After a card you own cancels or ignores a card effect or game effect, if there are fewer than 5 cards beneath Diana Stanley: Place that card facedown beneath her. Draw 1 card and gain 1 resource. (Limit once per phase.)\n[elder_sign] effect: +2. You may choose a card beneath Diana Stanley and add it to your hand.",
+  "ability_cn": "黛安娜·史丹利底下每有1张卡牌，获得+1[willpower]。\n[reaction]在你拥有的一张卡牌取消或忽略一个卡牌效果或游戏效果后，如果黛安娜·史丹利底下的卡牌张数少于5：将该卡牌正面朝下放在她底下。抽取1张卡牌并获得1资源。(每阶段限制1次。)\n[elder_sign]效果：+2。你可以选择黛安娜·史丹利底下的一张卡牌加入手牌。",
+  "elder_sign": "[elder_sign] effect: +2. You may choose a card beneath Diana Stanley and add it to your hand.",
+  "elder_sign_cn": "[elder_sign]效果：+2。你可以选择黛安娜·史丹利底下的一张卡牌加入手牌。",
+  "deck_requirements": {
+    "size": 35,
+    "cards": {
+      "mystic": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "guardian": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    }
+  },
+  "signature_cards": [
+    "dark_insight_lv0",
+    "twilight_blade_lv0"
+  ],
+  "weakness": "terrible_secret_lv0",
+  "flavor_text": "",
+  "back_text": "<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Mystic cards ([mystic]) level 0-5, Guardian cards ([guardian]) level 0-2, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Twilight Blade, Dark Insight, Terrible Secret, 1 random basic weakness.\n<b>Additional Setup</b>: You begin each game with Dark Insight as an additional card in your opening hand.",
+  "back_text_cn": "<b>卡牌张数</b>：35。\n<b>牌组构建选项</b>：潜修者([mystic])等级0-5，守卫者([guardian])等级0-2，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：银暮匕首、黑暗洞察、可怕的秘密、1张随机基础弱点。\n<b>额外设置</b>：每场游戏开始时，你的起始手牌中额外有1张黑暗洞察。",
+  "pack": "the_circle_undone"
+}

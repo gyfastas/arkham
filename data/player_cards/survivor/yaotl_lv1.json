@@ -1,0 +1,28 @@
+{
+  "id": "yaotl_lv1",
+  "arkhamdb_code": "04035",
+  "name": "Yaotl",
+  "name_cn": "雅沃托",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "ally",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[fast] Exhaust Yaotl: During this skill test, you get a bonus to each skill equal to the number of matching skill icons on the top card of your discard pile (not counting [wild] icons).\n[fast]: Discard the top card of your deck. (Limit once per phase.)",
+  "text_cn": "[free]消耗雅沃托：在技能检定中，你每项技能获得加成，加成的点数等于你弃牌堆顶上的1张卡牌的对应技能图标数([wild]图标不计算在内)。\n[free]：丢弃你牌堆顶部的1张卡牌。(每阶段限制1次。)<i>(FAQ v1.4)</i>",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Lost Son of Eztli",
+  "subname_cn": "埃兹特里失落之子"
+}

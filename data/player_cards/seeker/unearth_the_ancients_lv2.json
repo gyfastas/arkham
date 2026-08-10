@@ -1,0 +1,24 @@
+{
+  "id": "unearth_the_ancients_lv2",
+  "arkhamdb_code": "08039",
+  "name": "Unearth the Ancients",
+  "name_cn": "发掘古物",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Investigate.</b> Choose up to 2 [seeker] assets in your hand. The difficulty of this skill test is equal to the combined cost of the chosen assets. If you succeed, put the chosen assets into play, one at a time. For each [[Relic]] asset put into play by this ability, draw 1 card.",
+  "text_cn": "<b>调查</b>。选择你手中最多2张[seeker]支援卡。这次技能检定难度等于所选支援卡费用之和。如果你成功，将所选支援卡依次放置入场。每有1张[[遗物]]支援卡通过此能力放置入场，抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

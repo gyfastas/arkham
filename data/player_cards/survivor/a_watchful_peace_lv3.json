@@ -1,0 +1,24 @@
+{
+  "id": "a_watchful_peace_lv3",
+  "arkhamdb_code": "07269",
+  "name": "A Watchful Peace",
+  "name_cn": "警戒和平",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "spirit",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase.",
+  "text_cn": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n快速。在神话阶段的\"抽取遭遇卡\"步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

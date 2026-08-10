@@ -1,0 +1,24 @@
+{
+  "id": "the_stygian_eye_lv3",
+  "arkhamdb_code": "07263",
+  "name": "The Stygian Eye",
+  "name_cn": "幽暗之眼",
+  "class": "seeker",
+  "type": "event",
+  "cost": 10,
+  "level": 3,
+  "traits": [
+    "insight",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 3
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nReduce the cost to play The Stygian Eye by 1 for each [curse] token in the chaos bag.\nUntil the end of the round, you get +3 to each of your skills.",
+  "text_cn": "快速。只能在你的回合中打出。\n混乱袋内每有一个[curse]标记，打出幽暗之眼的费用减1。\n直到本轮结束，你的每项技能+3。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

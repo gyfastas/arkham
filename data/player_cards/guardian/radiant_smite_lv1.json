@@ -1,0 +1,26 @@
+{
+  "id": "radiant_smite_lv1",
+  "arkhamdb_code": "07153",
+  "name": "Radiant Smite",
+  "name_cn": "耀灿一击",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "spell",
+    "spirit",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> You may use [willpower] instead of [combat] for this attack. When you initiate this attack, search the chaos bag for up to 3 [bless] tokens, and seal them here. For each [bless] token sealed on Radiant Smite, you get +1 skill value and deal +1 damage for this attack. If this attack defeats the attacked enemy, return the sealed tokens to the token pool. Otherwise, release them.",
+  "text_cn": "<b>攻击</b>。这次攻击你可以不使用[combat]，改为使用[willpower]。在你发动这次攻击时，在混乱袋中查找最多3个[bless]标记，并将其封印在此。耀灿一击上每有一个封印的[bless]标记，这次攻击你+1技能值并造成+1伤害。如果这次攻击击败被攻击的敌人，将封印的标记返回供应堆。否则，将其释放。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

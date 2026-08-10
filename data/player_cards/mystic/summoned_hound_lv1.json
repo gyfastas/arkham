@@ -1,0 +1,27 @@
+{
+  "id": "summoned_hound_lv1",
+  "arkhamdb_code": "06282",
+  "name": "Summoned Hound",
+  "name_cn": "受召猎犬",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "ally",
+    "summon"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "ally. arcane"
+  ],
+  "text": "As an additional cost to play Summoned Hound, you must search your bonded cards for 1 copy of Unbound Beast and shuffle it into your deck.\n[fast] During your turn, except during an action, exhaust Summoned Hound: <b>Fight/Investigate.</b> Either attack with a base [combat] skill of 5, or investigate with a base [intellect] skill of 5.",
+  "text_cn": "作为打出受召猎犬的额外费用，你必须在你的绑定卡牌中查找1张脱缰野兽，并将其混洗入你的牌堆。\n[free]在你的回合中，除了行动中以外，消耗受召猎犬：<b>攻击/调查</b>。以基础值5点的[combat]技能攻击，或用基础值5点的[intellect]技能调查。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

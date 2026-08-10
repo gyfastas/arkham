@@ -1,0 +1,28 @@
+{
+  "id": "trusty_bullwhip_lv0",
+  "arkhamdb_code": "08008",
+  "name": "Trusty Bullwhip",
+  "name_cn": "可靠的长鞭",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "agility": 2,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Fast. Monterey Jack deck only.\n[action]: <b>Fight.</b> This attack uses [agility] instead of [combat]. If this attack succeeds, you may exhaust Trusty Bullwhip to either automatically evade the attacked enemy or deal +1 damage for this attack.",
+  "text_cn": "快速。蒙特雷·杰克牌组专用。\n[action]：<b>攻击</b>。这次攻击不使用[combat]，改为使用[agility]。如果这次攻击成功，你可以消耗可靠的长鞭，以自动躲避被攻击的敌人或这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

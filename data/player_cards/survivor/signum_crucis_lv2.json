@@ -1,0 +1,24 @@
+{
+  "id": "signum_crucis_lv2",
+  "arkhamdb_code": "07197",
+  "name": "Signum Crucis",
+  "name_cn": "十字圣号",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "practiced",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Commit only to a skill test you are performing, and only if the difficulty of that test is higher than your base skill value.\nAfter you commit Signum Crucis to a skill test, add X [bless] tokens to the chaos bag. X is the difference between the test's difficulty and your base skill value.",
+  "text_cn": "只能在你执行的技能检定中投入，且该检定难度必须高于你的基础技能值。\n在你投入十字圣到技能检定后，加入X个[bless]标记到混乱袋。X为本检定难度和你的基础技能值之差。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

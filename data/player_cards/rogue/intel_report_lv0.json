@@ -1,0 +1,24 @@
+{
+  "id": "intel_report_lv0",
+  "arkhamdb_code": "05111",
+  "name": "Intel Report",
+  "name_cn": "情报报告",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "favor",
+    "service"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Discover 1 clue at your location.\n[reaction] When you play Intel Report, increase its cost by 2: Change \"Discover 1 clue\" to \"Discover 2 clues.\"\n[reaction] When you play Intel Report, increase its cost by 2: Change \"at your location\" to \"at a location up to 2 connections away.\"",
+  "text_cn": "发现你所在地点的1个线索。\n[reaction]在你打出情报报告时，提升其费用2点：将\"发现……的1个线索\"变为\"发现……的2个线索。\"\n[reaction]在你打出情报报告时，提升其费用2点：将\"你所在地点\"变为\"1个与你所在地点之间连接次数不超过2的地点\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

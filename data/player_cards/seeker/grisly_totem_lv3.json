@@ -1,0 +1,28 @@
+{
+  "id": "grisly_totem_lv3",
+  "arkhamdb_code": "05194",
+  "name": "Grisly Totem",
+  "name_cn": "恐怖图腾",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "item",
+    "charm",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "[reaction] After you commit a card to a skill test, exhaust Grisly Totem: That card gains another instance of one of its skill icons of your choice. If that skill test is successful, the performing investigator draws 1 card.",
+  "text_cn": "[reaction]在你将一张卡牌投入技能检定后，消耗恐怖图腾：你选择该卡牌已有的任意一个技能图标，该卡牌额外获得该图标。如果该技能检定成功，执行该检定的调查员抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

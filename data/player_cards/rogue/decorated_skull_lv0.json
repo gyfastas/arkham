@@ -1,0 +1,32 @@
+{
+  "id": "decorated_skull_lv0",
+  "arkhamdb_code": "04026",
+  "name": "Decorated Skull",
+  "name_cn": "彩饰骷髅",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "cursed"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Uses (0 charges).\n[reaction] After an investigator, [[Ally]] asset, or enemy at your location is defeated: Place 1 resource <i>(from the token bank)</i> on Decorated Skull, as a charge.\n[action] Spend 1 charge: Draw 1 card and gain 1 resource.",
+  "text_cn": "使用(0充能)。\n[reaction]在你所在地点有调查员、[[盟友]]支援卡或敌人被击败后：将1资源<i>(从供应堆拿取)</i>放到彩饰骷髅上，视为充能。\n[action]花费1充能：抽取1张卡牌并获得1资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subname": "Doom Begets Doom",
+  "subname_cn": "不祥之物招致厄运",
+  "uses": {
+    "charges": 0
+  }
+}

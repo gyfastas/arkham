@@ -1,0 +1,22 @@
+{
+  "id": "winging_it_lv0",
+  "arkhamdb_code": "04272",
+  "name": "Winging It",
+  "name_cn": "将就一下",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "improvised"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "You may play Winging It from your discard pile. If you do, shuffle it into your deck after resolving its effects.\n<b>Investigate.</b> Your location gets -1 shroud for this investigation. (If you played Winging It from your discard pile, discover 1 additional clue if you succeed.)",
+  "text_cn": "你可以从你弃牌堆打出将就一下。如果你这么做，结算效果后将其洗回你的牌堆。\n<b>调查</b>。这次调查中，你所在地点隐藏值-1。(如果你从你的弃牌堆打出将就一下，并且调查成功，发现1个额外的线索。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

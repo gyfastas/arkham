@@ -1,0 +1,26 @@
+{
+  "id": "telescopic_sight_lv3",
+  "arkhamdb_code": "05230",
+  "name": "Telescopic Sight",
+  "name_cn": "瞄准镜",
+  "class": "guardian",
+  "type": "event",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "item",
+    "upgrade"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Attach to a [[Firearm]] asset you control that takes up two hand slots. Attached asset cannot be used to attack enemies engaged with you.\n[reaction] When you perform a <b>Fight</b> action using attached asset, if you are engaged with no enemies, exhaust Telecopic Sight: This attack can target a non-[[Elite]] enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack.",
+  "text_cn": "快速。叠加到你控制的一张占用2个手部槽位的[[枪械]]支援卡。被叠加支援卡不能被用来攻击与你交战的敌人。\n[reaction]在你使用被叠加的支援卡执行<b>攻击</b>行动时，如果你未与敌人交战，消耗瞄准镜：这次攻击可以选择位于一个连接地点的一名非[[精英]]敌人作为目标。这次攻击忽略冷漠和反击关键词。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stunning_blow_lv0",
+  "arkhamdb_code": "04112",
+  "name": "Stunning Blow",
+  "name_cn": "晕眩重击",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful during an attack, automatically evade the attacked enemy.",
+  "text_cn": "如果攻击中的这次技能检定成功，自动躲避受到攻击的敌人。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

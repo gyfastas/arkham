@@ -1,0 +1,26 @@
+{
+  "id": "heroic_rescue_lv2",
+  "arkhamdb_code": "06234",
+  "name": "Heroic Rescue",
+  "name_cn": "英勇救援",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "spirit",
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when a non-[[Elite]] enemy would attack another investigator at your location or a connecting location.\nMove to that location if you are not already there. Engage that enemy and resolve its attack against you instead. Then, deal it 1 damage.",
+  "text_cn": "快速。在一名非[[精英]]敌人将要攻击你所在地点或连接地点的另一位调查员时打出。\n如果你此时不在该地点，移动到那里。该敌人改为与你交战，并对你结算该次攻击。然后，对其造成1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "schoffners_catalogue_lv0",
+  "arkhamdb_code": "08072",
+  "name": "Schoffner's Catalogue",
+  "name_cn": "沙夫纳的目录",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Uses (5 secrets). If Schoffner's Catalogue has no secrets, discard it.\nYou may spend secrets on Schoffner's Catalogue as resources to pay for [[Item]] assets played by any investigator at your location.",
+  "text_cn": "使用(5秘密)。如果沙夫纳的目录没有秘密，则将其丢弃。\n你可以花费沙夫纳的目录上的秘密作为资源，来支付你所在地点任何调查员打出的[[道具]]支援卡。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "uses": {
+    "secrets": 5
+  }
+}

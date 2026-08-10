@@ -1,0 +1,24 @@
+{
+  "id": "in_the_shadows_lv0",
+  "arkhamdb_code": "07010",
+  "name": "In the Shadows",
+  "name_cn": "潜于阴影",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "agility": 2,
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Trish Scarborough deck only.\nFast. Play after your turn begins.\nDisengage from each enemy engaged with you. Until the end of the round, enemies cannot engage you and you cannot deal damage to enemies.",
+  "text_cn": "特里希‧斯卡波罗牌组专用。\n快速。在你的回合开始后打出。\n与每名与你交战的敌人解除交战。直到本轮结束，敌人不能与你交战，且你不能对敌人造成伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "third_times_a_charm_lv2",
+  "arkhamdb_code": "07161",
+  "name": "Third Time's a Charm",
+  "name_cn": "事不过三",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when a skill test at your location begins.\nTwice during this test, when an investigator reveals a chaos token, they may cancel it, return it to the chaos bag, and reveal a new chaos token.",
+  "text_cn": "快速。在你所在地点技能检定开始时打出。\n这次检定中两次，在调查员抽出混乱标记时，可以将其取消，返回混乱袋，并抽出一个新的混乱标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

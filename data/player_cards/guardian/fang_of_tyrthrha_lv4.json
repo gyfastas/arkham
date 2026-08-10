@@ -1,0 +1,24 @@
+{
+  "id": "fang_of_tyrthrha_lv4",
+  "arkhamdb_code": "08029",
+  "name": "Fang of Tyr'thrha",
+  "name_cn": "提尔斯哈之牙",
+  "class": "guardian",
+  "type": "event",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "combat": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> Choose an enemy at any revealed location as the target for this attack. Before resolving this attack, you may move to that enemy's location. Add your [agility] to your [combat] for this attack. This attack deals +3 damage.",
+  "text_cn": "<b>攻击</b>。选择任何已揭示地点的一名敌人作为这次攻击的目标。在结算这次攻击前，你可以移动到该敌人的地点。这次攻击将你的[agility]加入你的[combat]。这次攻击造成+3伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

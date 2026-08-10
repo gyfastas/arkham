@@ -1,0 +1,24 @@
+{
+  "id": "dark_prophecy_lv0",
+  "arkhamdb_code": "04032",
+  "name": "Dark Prophecy",
+  "name_cn": "黑暗预言",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "augury"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would reveal a chaos token.\nReveal 5 chaos tokens instead of 1. Choose one of those tokens with a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol to resolve, and ignore the rest. (If no such token is revealed, choose any one of those tokens to resolve, and ignore the rest.)",
+  "text_cn": "快速。在你将要抽出混乱标记时打出。\n改为抽出5个混乱标记，而不是1个。从这些标记中选择1个[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记来结算，忽略其余标记。(如果没有抽出上述标记，从这些标记中选择任意1个标记来结算，忽略其余标记。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

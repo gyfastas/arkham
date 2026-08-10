@@ -1,0 +1,30 @@
+{
+  "id": "shroud_of_shadows_lv4",
+  "arkhamdb_code": "07228",
+  "name": "Shroud of Shadows",
+  "name_cn": "暗影遁形",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "spell",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (3 charges).\n[action] Spend 1 charge: <b>Evade.</b> This evasion attempt uses [willpower] instead of [agility]. You get +2 [willpower] for this test. If you succeed and the evaded enemy is non-[[Elite]], you may move that enemy to a connecting location. For each [curse] token revealed during this evasion attempt, you may move to a connecting location or place 1 charge on Shroud of Shadows.",
+  "text_cn": "使用(3充能)。\n[action]花费1充能：<b>躲避</b>。这次躲避不使用[agility]，改为使用[willpower]。这次检定你+2[willpower]。如果你成功且被躲避敌人非[[精英]]，你可以将该敌人移动到连接地点。这次躲避尝试期间每抽出一个[curse]标记，你可以移动到一个连接地点，或在暗影遁形上放置1充能。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "charges": 3
+  }
+}

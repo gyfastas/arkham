@@ -1,0 +1,26 @@
+{
+  "id": "investments_lv0",
+  "arkhamdb_code": "05233",
+  "name": "Investments",
+  "name_cn": "投资",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "connection"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Uses (0 supplies). Limit 10 supplies on Investments.\n[fast] Exhaust Investments: Place 1 supply on it.\n[action] Exhaust and discard Investments: Move all supplies from it to your resource pool, as resources.",
+  "text_cn": "使用(0补给)。投资上的补给上限为10。\n[free]消耗投资：在本卡牌上放置1补给。\n[action]消耗并丢弃投资：将本卡牌上所有补给移动到你的资源池，作为资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "supplies": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ace_of_rods_lv1",
+  "arkhamdb_code": "05040",
+  "name": "Ace of Rods",
+  "name_cn": "权杖王牌",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "tarot"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "tarot"
+  ],
+  "text": "[fast] During your turn, remove Ace of Rods from the game: You may take an additional action this turn, during which you get +2 to each of your skills.\n[reaction] When the game begins, if Ace of Rods is in your opening hand: Put it into play.",
+  "text_cn": "[fast]在你的回合中，将权杖王牌移出游戏：这回合你可以进行额外一个行动，且该行动你每项技能值+2。\n[reaction]在游戏开始时，如果权杖王牌在你起始手牌中：将其放置入场。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subname": "The Fateful Step",
+  "subname_cn": "决定性的一步"
+}

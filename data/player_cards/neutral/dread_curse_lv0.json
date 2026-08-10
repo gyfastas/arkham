@@ -1,0 +1,22 @@
+{
+  "id": "dread_curse_lv0",
+  "arkhamdb_code": "07039",
+  "name": "Dread Curse",
+  "name_cn": "惊骇诅咒",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Add 5 [curse] tokens to the chaos bag.",
+  "text_cn": "<b>显现</b> - 加入5个[curse]标记到混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "basic_weakness"
+}

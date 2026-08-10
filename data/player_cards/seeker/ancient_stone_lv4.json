@@ -1,0 +1,28 @@
+{
+  "id": "ancient_stone_lv4",
+  "arkhamdb_code": "04231",
+  "name": "Ancient Stone",
+  "name_cn": "古代巨石",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Researched. Uses (X secrets). X is the number in parentheses next to \"you have identified the stone.\"\n[reaction] When you draw any number of cards, spend that many secrets: Heal that much horror from a card at your location.",
+  "text_cn": "研究。<i>(FAQ, v2.0)</i>\n使用(X秘密)。X为\"你鉴定了古代巨石\"旁括号内的数字。\n[reaction]在你抽取任何数量的卡牌时，花费等量的秘密：治愈你所在地点的一张卡牌的等量恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subname": "Minds in Harmony",
+  "subname_cn": "心灵和谐"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "delay_the_inevitable_lv0",
+  "arkhamdb_code": "05021",
+  "name": "Delay the Inevitable",
+  "name_cn": "劫数延后",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight",
+    "spirit",
+    "tactic"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn. Attach to an investigator at your location, under his or her control.\n[reaction] When you are dealt damage and/or horror: Discard Delay the Inevitable and cancel all damage and/or horror just dealt.\n<b>Forced</b> - When the mythos phase ends: You must either spend 2 resources or discard Delay the Inevitable.",
+  "text_cn": "快速。只能在你回合中打出。叠加到你所在地点的一位调查员，置于该调查员的控制之下。\n[reaction]在你受到伤害和/或恐惧时：丢弃劫数延后并取消你这次受到的全部伤害和/或恐惧。\n<b>强制</b> - 在神话阶段结束时：你必须花费2资源或丢弃劫数延后。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

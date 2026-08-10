@@ -1,0 +1,31 @@
+{
+  "id": "the_black_fan_lv3",
+  "arkhamdb_code": "08057",
+  "name": "The Black Fan",
+  "name_cn": "黑色扇子",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Exceptional.\nWhile you have...\n- ...10+ resources, you get +1 health and +1 sanity.\n- ...15+ resources, you may take one additional action during your turn.\n- ...20+ resources, you get +1 to each of your skills.",
+  "text_cn": "卓越。\n只要你有……\n- ……10+资源，你获得+1生命和+1神智。\n- ……15+资源，在你回合中你可以进行一次额外行动。\n- ……20+资源，你的每项技能+1。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "subname": "Symbol of Power",
+  "subname_cn": "力量的象征",
+  "exceptional": true
+}

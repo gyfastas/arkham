@@ -1,0 +1,24 @@
+{
+  "id": "smuggled_goods_lv0",
+  "arkhamdb_code": "04010",
+  "name": "Smuggled Goods",
+  "name_cn": "走私货物",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "supply",
+    "illicit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Finn Edwards deck only.\nPlay only if there are no ready enemies at your location.\nSearch either your discard pile or the top 9 cards of your deck for an [[Illicit]] card and draw it. If you searched your deck, shuffle Smuggled Goods into your deck.",
+  "text_cn": "芬恩·爱德华兹牌组专用。\n你所在地点没有处于准备状态的敌人才能打出。\n从你的弃牌堆或牌堆顶部9张卡牌中查找并抽取1张[[违法]]卡牌。如果你查找了你的牌堆，将走私货物洗回你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

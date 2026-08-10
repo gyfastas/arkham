@@ -1,0 +1,26 @@
+{
+  "id": "rod_of_animalism_lv1",
+  "arkhamdb_code": "08128",
+  "name": "Rod of Animalism",
+  "name_cn": "驯兽之杖",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "You have 2 additional ally slots, which can only be used to hold [[Creature]] assets.\n[reaction] When you play a [[Creature]] asset during your turn: Reduce that asset's cost by 1.",
+  "text_cn": "你拥有2个额外的盟友槽位，只能用来放置[[生物]]支援卡。\n[reaction]在你的回合中打出一张[[生物]]支援卡时：该支援卡的费用减1。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "edge_of_the_earth"
+}

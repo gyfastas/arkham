@@ -1,0 +1,25 @@
+{
+  "id": "soothing_melody_lv0",
+  "arkhamdb_code": "05314",
+  "name": "Soothing Melody",
+  "name_cn": "舒缓旋律",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Bonded (Hallowed Mirror).\nHeal 2 damage or 2 horror (or any combination thereof) from among investigators and/or [[Ally]] assets at your location. Draw 1 card.",
+  "text_cn": "绑定(圣化之镜)。\n治愈你所在地点的调查员和/或[[盟友]]支援卡的2点伤害或2恐惧(或者以任意方式组合，总计2点)。抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

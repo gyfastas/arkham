@@ -1,0 +1,22 @@
+{
+  "id": "survey_the_area_lv1",
+  "arkhamdb_code": "08037",
+  "name": "Survey the Area",
+  "name_cn": "地区勘测",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "practiced",
+    "expert"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "While Survey the Area is in your hand or committed to a skill test, it gains [intellect] icons equal to your [agility], and [agility] icons equal to your [intellect].",
+  "text_cn": "只要地区勘测在你手中或被投入到技能检定中，其获得等于你[agility]的[intellect]图标，以及等于你[intellect]的[agility]图标。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "deep_knowledge_lv0",
+  "arkhamdb_code": "07023",
+  "name": "Deep Knowledge",
+  "name_cn": "深沉知识",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "insight",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to play Deep Knowledge, add 2 [curse] tokens to the chaos bag.\nInvestigators at your location draw a combined total of 3 cards <i>(you decide how many cards each investigator draws)</i>.",
+  "text_cn": "作为打出深沉知识的额外费用，加入2个[curse]标记到混乱袋。\n你所在地点的调查员抽取总计3张卡牌<i>(由你决定每位调查员各抽取几张卡牌)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

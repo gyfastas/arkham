@@ -1,0 +1,25 @@
+{
+  "id": "fey_lv1",
+  "arkhamdb_code": "07222",
+  "name": "Fey",
+  "name_cn": "鬼灵精怪",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "innate",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 2
+  },
+  "slots": [],
+  "text": "If a [curse] token is revealed during this skill test, you may return Fey to your hand when this test ends.",
+  "text_cn": "如果这次技能检定中抽出[curse]标记，在这次检定结束时，你可以将鬼灵精怪返回你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

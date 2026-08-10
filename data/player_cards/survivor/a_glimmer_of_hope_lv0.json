@@ -1,0 +1,25 @@
+{
+  "id": "a_glimmer_of_hope_lv0",
+  "arkhamdb_code": "06245",
+  "name": "A Glimmer of Hope",
+  "name_cn": "希望微光",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "blessed",
+    "fortune"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Myriad.\nA Glimmer of Hope can only be played from your discard pile.\nAdd all copies of A Glimmer of Hope in your discard pile to your hand <i>(including this copy)</i>.",
+  "text_cn": "多重。\n只能从你的弃牌堆打出希望微光。\n将你弃牌堆中所有希望微光加入你的手牌<i>(包括本卡牌)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

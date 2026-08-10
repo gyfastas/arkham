@@ -1,0 +1,29 @@
+{
+  "id": "prophesiae_profana_lv5",
+  "arkhamdb_code": "08045",
+  "name": "Prophesiae Profana",
+  "name_cn": "亵渎预言",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 4,
+  "level": 5,
+  "traits": [
+    "item",
+    "relic",
+    "tome"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "While you are not at the locus, you get +1 [intellect], +1 [agility], and you may ignore attacks of opportunity.\n[reaction] After Prophesiae Profana enters play: Choose a revealed location. That location is \"the locus\" until Prophesiae Profana leaves play.\n[action]: Move any investigator to the locus.",
+  "text_cn": "只要你没位于座标点，你获得+1[intellect]和+1[agility]，并且你可以忽略趁乱攻击。\n[reaction]在亵渎预言入场后：选择一个已揭示地点。该地点为\"座标点\"，直到亵渎预言离场为止。\n[action]：移动任一位调查员到座标点。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "subname": "Atlas of the Unknowable",
+  "subname_cn": "未知地图集"
+}

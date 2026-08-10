@@ -1,0 +1,29 @@
+{
+  "id": "jeremiah_kirby_lv0",
+  "arkhamdb_code": "08032",
+  "name": "Jeremiah Kirby",
+  "name_cn": "耶利米·科尔比",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "ally",
+    "miskatonic",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck.",
+  "text_cn": "你获得+1[intellect]。\n[reaction]在耶利米·科尔比入场后，选择\"偶数\"或\"奇数\"：揭示你牌堆顶部的5张卡牌。抽取费用符合你所选择的每张卡牌。将剩余卡牌与你的牌堆混洗。",
+  "health": 2,
+  "sanity": 1,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "subname": "Arctic Archaeologist",
+  "subname_cn": "北极历史学家"
+}

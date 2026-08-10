@@ -1,0 +1,24 @@
+{
+  "id": "safeguard_lv2",
+  "arkhamdb_code": "06196",
+  "name": "Safeguard",
+  "name_cn": "安全护卫",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[reaction] During another investigator's turn, exhaust Safeguard: For the remainder of that investigator's turn, as they move from your location to a connecting location, you may move to that location as well.",
+  "text_cn": "[reaction]在另一位调查员的回合中，消耗安全护卫：该调查员的回合接下来的时间里，其从你所在地点移动到连接地点时，你也可以移动到该地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

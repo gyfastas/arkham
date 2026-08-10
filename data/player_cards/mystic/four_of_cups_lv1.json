@@ -1,0 +1,25 @@
+{
+  "id": "four_of_cups_lv1",
+  "arkhamdb_code": "05035",
+  "name": "Four of Cups",
+  "name_cn": "圣杯四",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "tarot"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "tarot"
+  ],
+  "text": "You get +1 [willpower].\n[reaction] When the game begins, if Four of Cups is in your opening hand: Put it into play.",
+  "text_cn": "你获得+1[willpower]。\n[reaction]在游戏开始时，如果圣杯四在你起始手牌中：将其放置入场。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subname": "Chalice of the Heart",
+  "subname_cn": "心灵之杯"
+}

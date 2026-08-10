@@ -1,0 +1,26 @@
+{
+  "id": "shield_of_faith_lv2",
+  "arkhamdb_code": "07221",
+  "name": "Shield of Faith",
+  "name_cn": "信仰之盾",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "spell",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Seal (up to 5 [bless]). If Shield of Faith has no tokens sealed on it, discard it.\n[reaction] When an enemy attacks an investigator at your location, exhaust Shield of Faith and release a chaos token sealed here: Cancel that attack.",
+  "text_cn": "封印(最多5[bless])。如果信仰之盾上没有封印的标记，将其丢弃。\n[reaction]在一名敌人攻击你所在地点的一位调查员时，消耗信仰之盾并释放一个封印在此的混乱标记：取消该次攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

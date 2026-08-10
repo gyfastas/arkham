@@ -1,0 +1,28 @@
+{
+  "id": "de_vermis_mysteriis_lv2",
+  "arkhamdb_code": "05235",
+  "name": "De Vermis Mysteriis",
+  "name_cn": "蠕虫的秘密",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action] Exhaust De Vermis Mysteriis and place 1 doom on it: Play a [[Spell]] or [[Insight]] event from your discard pile, reducing its resource cost by 1. After that event resolves, remove it from the game.",
+  "text_cn": "[action]消耗蠕虫的秘密并在其上放置1个毁灭标记：从你的弃牌堆打出一张[[法术]]或[[洞察]]事件卡，其资源费用降低1点。在该事件卡结算后，将其移出游戏。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "Signs of the Black Stars",
+  "subname_cn": "黑星印记"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "enchant_weapon_lv3",
+  "arkhamdb_code": "07261",
+  "name": "Enchant Weapon",
+  "name_cn": "附魔武器",
+  "class": "guardian",
+  "type": "event",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "spell",
+    "upgrade"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Attach to a [[Weapon]] asset controlled by an investigator at your location. Limit 1 per asset.\nAttached asset gains the [[Relic]] trait and takes up an arcane slot in addition to its other slots.\n[reaction] When you perform a <b>Fight</b> action using attached asset, exhaust this card: Add the owner of this card's [willpower] to your [combat] for this attack. This attack deals +1 damage.",
+  "text_cn": "叠加到你所在地点调查员控制的一张[[武器]]支援卡。每张支援卡限制一张。\n叠加支援卡获得[[遗物]]关键词，并且额外占用一个法术槽位。\n[reaction]在你使用叠加支援卡执行<b>攻击</b>行动时，消耗此卡牌：这次攻击将此卡牌所有者的[willpower]加入你的[combat]。这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

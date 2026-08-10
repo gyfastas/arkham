@@ -1,0 +1,22 @@
+{
+  "id": "ancestral_knowledge_lv3",
+  "arkhamdb_code": "07303",
+  "name": "Ancestral Knowledge",
+  "name_cn": "先祖知识",
+  "class": "seeker",
+  "type": "asset",
+  "cost": null,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Exceptional.\nYour deck must include at least 10 skills. Your deck size is increased by 5.\n[reaction] Before drawing your opening hand: Attach 5 random non-weakness skills from your deck facedown to this card.\n[fast] Exhaust Ancestral Knowledge: Draw 1 attached skill.",
+  "text_cn": "永久。卓越。\n你的牌组必须包含至少10张技能卡。你的牌组卡牌张数加5。\n[reaction]在抽取你的起始手牌前：从你牌堆将随机5张非弱点技能卡正面朝下叠加到此卡牌。\n[fast] 消耗先祖知识:抽取1张叠加的技能卡。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "exceptional": true
+}

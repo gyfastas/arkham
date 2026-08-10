@@ -1,0 +1,24 @@
+{
+  "id": "small_favor_lv0",
+  "arkhamdb_code": "05277",
+  "name": "Small Favor",
+  "name_cn": "帮个小忙",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "favor",
+    "service"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [],
+  "text": "Deal 1 damage to a non-[[Elite]] enemy at your location.\n[reaction] When you play Small Favor, increase its cost by 2: Change \"Deal 1 damage\" to \"Deal 2 damage.\"\n[reaction] When you play Small Favor, increase its cost by 2: Change \"at your location\" to \"at a location up to 2 connections away.\"",
+  "text_cn": "对你所在地点的一名非[[精英]]敌人造成1点伤害。\n[reaction]在你打出帮个小忙时，提升其费用2点：将\"造成1点伤害\"变为\"造成2点伤害\"。\n[reaction]在你打出帮个小忙时，提升其费用2点：将\"你所在地点\"变为\"1个与你所在地点之间连接次数不超过2的地点\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

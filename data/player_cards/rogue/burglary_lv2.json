@@ -1,0 +1,24 @@
+{
+  "id": "burglary_lv2",
+  "arkhamdb_code": "06200",
+  "name": "Burglary",
+  "name_cn": "夜盗",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "talent",
+    "illicit"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "[action] Exhaust Burglary: <b>Investigate.</b> If you succeed, instead of discovering clues, gain 2 resources, +1 additional resource for each point you succeed by (to a maximum of +3 resources).",
+  "text_cn": "[action]消耗夜盗：<b>调查</b>。如果你成功，不发现线索，改为获得2资源，你每成功且超过难度1点，额外获得+1资源(最大+3资源)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

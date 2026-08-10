@@ -1,0 +1,29 @@
+{
+ "id": "eye_of_chaos_lv0",
+ "arkhamdb_code": "07118",
+ "name": "Eye of Chaos",
+ "name_cn": "混乱之眼",
+ "class": "mystic",
+ "type": "asset",
+ "cost": 5,
+ "level": 0,
+ "traits": [
+  "spell",
+  "cursed"
+ ],
+ "skill_icons": {
+  "intellect": 1
+ },
+ "slots": [
+  "arcane"
+ ],
+ "text": "Uses (3 charges).\n[action] Spend 1 charge: <b>Investigate.</b> Investigate using [willpower] instead of [intellect]. If you succeed, discover 1 additional clue at this location. If a [curse] token is revealed during this investigation, you may discover 1 clue at a connecting location or place 1 charge on Eye of Chaos.",
+ "text_cn": "使用(3充能)。\n[action] 花费1充能：<b>调查</b>。不使用[intellect]，改为使用[willpower]调查。如果你成功，发现此地点的额外1个线索。如果这次调查中抽出[curse]标记，你可以发现连接地点的1个线索，或在混乱之眼上放置1充能。",
+ "health": null,
+ "sanity": null,
+ "unique": false,
+ "pack": "innsmouth_conspiracy",
+ "uses": {
+  "charges": 3
+ }
+}

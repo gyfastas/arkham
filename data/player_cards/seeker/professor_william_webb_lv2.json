@@ -1,0 +1,36 @@
+{
+  "id": "professor_william_webb_lv2",
+  "arkhamdb_code": "08106",
+  "name": "Professor William Webb",
+  "name_cn": "威廉·韦伯教授",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "ally",
+    "miskatonic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "wild": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Uses (3 secrets).\n[reaction] When you successfully investigate, exhaust Professor William Webb and spend 1 secret: Choose an [[Item]] card in your discard pile and add it to your hand. Instead of discovering a clue at your location, you may discover a clue at a connecting location.",
+  "text_cn": "使用(3秘密)。\n[reaction]在你成功调查时，消耗威廉·韦伯教授并花费1秘密：选择你的弃牌堆中1张[[道具]]卡牌并加入你的手牌。你可以不发现你所在地点的一个线索，改为发现连接地点的一个线索。",
+  "health": 1,
+  "sanity": 3,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "survivor"
+  ],
+  "subname": "Finder of Hidden Connections",
+  "subname_cn": "内情发现者",
+  "uses": {
+    "secrets": 3
+  }
+}

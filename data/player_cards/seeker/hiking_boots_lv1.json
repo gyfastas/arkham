@@ -1,0 +1,25 @@
+{
+  "id": "hiking_boots_lv1",
+  "arkhamdb_code": "08035",
+  "name": "Hiking Boots",
+  "name_cn": "登山靴",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "item",
+    "clothing",
+    "footwear"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Limit 1 [[Footwear]] per investigator.\nYou get +1 [agility].\n[reaction] After the last clue is discovered from your location, exhaust Hiking Boots: Move to a connecting location with at least 1 clue, or to a connecting unrevealed location.",
+  "text_cn": "每位调查员限制1[[鞋子]]。\n你获得+1[agility]。\n[reaction]在你所在地点的最后一个线索被发现后，消耗登山靴：移动到有至少一个线索，或未揭示的连接地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

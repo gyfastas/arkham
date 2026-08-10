@@ -1,0 +1,22 @@
+{
+  "id": "caught_red_handed_lv0",
+  "arkhamdb_code": "04012",
+  "name": "Caught Red-Handed",
+  "name_cn": "当场抓获",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "blunder"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Ready each enemy at your location or a connecting location. Each hunter enemy at a connecting location moves 1 location toward you. If no enemies move as a result of this effect, shuffle Caught Red-Handed back into your deck.",
+  "text_cn": "<b>显现</b> - 准备你所在地点或一个连接地点的所有敌人。在连接地点的每个猎手敌人向你移动1个地点。如果本效果没有导致敌人移动，将当场抓获洗回你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

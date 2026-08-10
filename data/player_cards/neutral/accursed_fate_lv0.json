@@ -1,0 +1,22 @@
+{
+  "id": "accursed_fate_lv0",
+  "arkhamdb_code": "04041",
+  "name": "Accursed Fate",
+  "name_cn": "被诅咒的命运",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Take 2 horror. In your Campaign Log, under your investigator's earned story assets/weaknesses, record that \"the hour is nigh.\" If this was already recorded, remove Accursed Fate from your deck, search the collection for The Bell Tolls, and place it on the bottom of your deck.",
+  "text_cn": "<b>显现</b> - 受到2点恐惧。在冒险日志中，调查员获得的剧情支援/弱点下方, 记下\"时间到\"。如果已有此条纪录，从你的牌组中移除被诅咒的命运，搜索收藏找出丧钟敲响，并将其放到你牌堆底。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

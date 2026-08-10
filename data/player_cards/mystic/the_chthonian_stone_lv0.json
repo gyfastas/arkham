@@ -1,0 +1,29 @@
+{
+  "id": "the_chthonian_stone_lv0",
+  "arkhamdb_code": "04030",
+  "name": "The Chthonian Stone",
+  "name_cn": "钻地魔虫之石",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "cursed"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Seal ([skull], [cultist], [tablet], or [elder_thing]).\n<b>Forced</b> - After you reveal an [auto_fail] symbol during a skill test: Return The Chthonian Stone to your hand.",
+  "text_cn": "封印([skull]、[cultist]、[tablet]或[elder_thing])。\n<b>强制</b> - 在你在技能检定中抽出[auto_fail]标记后：将钻地魔虫之石返回手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Stygian Waymark",
+  "subname_cn": "幽暗的路标"
+}

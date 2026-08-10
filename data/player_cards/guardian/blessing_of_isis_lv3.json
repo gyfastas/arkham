@@ -1,0 +1,24 @@
+{
+  "id": "blessing_of_isis_lv3",
+  "arkhamdb_code": "07190",
+  "name": "Blessing of Isis",
+  "name_cn": "伊西斯的祝福",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "ritual",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "[reaction] When a second [bless] token is revealed during a single skill test at your location, exhaust Blessing of Isis: Cancel that token and treat it as if it were a [elder_sign] token instead. Return both of those tokens to the chaos bag after this test ends.",
+  "text_cn": "[reaction]在你所在地点的单次技能检定中抽出第二个[bless]标记时，消耗伊西斯的祝福：取消该标记，并改为将其视为如同[elder_sign]标记。在这次检定结束后，将这两个标记都放回混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

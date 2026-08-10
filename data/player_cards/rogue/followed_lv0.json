@@ -1,0 +1,24 @@
+{
+  "id": "followed_lv0",
+  "arkhamdb_code": "06114",
+  "name": "Followed",
+  "name_cn": "跟踪",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Investigate.</b> Choose an enemy at your location. You get +1 [intellect] for this investigation for each damage on the chosen enemy (to a maximum of +5 [intellect]). If you succeed, discover 1 additional clue at this location. This action does not provoke attacks of opportunity from the chosen enemy.",
+  "text_cn": "<b>调查</b>。选择你所在地点的一名敌人。所选敌人上每有1点伤害，这次调查你+1[intellect](最多+5[intellect])。如果你成功，在此地点发现额外1个线索。此行动不会引起所选敌人的趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

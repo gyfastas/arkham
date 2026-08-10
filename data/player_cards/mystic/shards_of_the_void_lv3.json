@@ -1,0 +1,29 @@
+{
+  "id": "shards_of_the_void_lv3",
+  "arkhamdb_code": "04310",
+  "name": "Shards of the Void",
+  "name_cn": "虚空碎裂",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Seal (0). Uses (3 charges).\n[action] Spend 1 charge or release a chaos token sealed here: <b>Fight.</b> This attack uses [willpower] instead of [combat] and deals +1 damage. You get +2 [willpower] for this attack for each \"0\" token sealed on Shards of the Void. For each \"0\" token revealed during this attack, seal that token on Shards of the Void and this attack deals 1 additional damage.",
+  "text_cn": "封印(0)。使用(3充能)。\n[action]花费1充能或将封印在本卡牌上的1个混乱标记释放：<b>攻击</b>。这次调查不使用[combat]，改为使用[willpower]，并造成+1伤害。每有一个\"0\"标记封印在虚空碎裂上，这次攻击中你+2[willpower]。你在这次攻击中每抽出1个\"0\"标记，将该标记封印在虚空碎裂上，这次攻击造成额外+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "charges": 3
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "preston_fairmont",
+  "arkhamdb_code": "05003",
+  "name": "Preston Fairmont",
+  "name_cn": "普雷斯顿·费尔蒙特",
+  "title": "The Millionaire",
+  "title_cn": "百万富翁",
+  "class": "rogue",
+  "health": 7,
+  "sanity": 7,
+  "skills": {
+    "willpower": 1,
+    "intellect": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "ability": "Anytime you gain 1 or more resources from a card effect, place them on Family Inheritance instead of in your resource pool.\n[elder_sign] effect: +0. You may spend 2 resources to automatically succeed, instead.",
+  "ability_cn": "每当你从一个卡牌效果获得1个或多个资源，不将其放在资源池，改为放在家族遗产上。\n[elder_sign]效果：+0。你可以花费2资源来改为自动成功。",
+  "elder_sign": "[elder_sign] effect: +0. You may spend 2 resources to automatically succeed, instead.",
+  "elder_sign_cn": "[elder_sign]效果：+0。你可以花费2资源来改为自动成功。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "rogue": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "survivor": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    },
+    "_trait_options": [
+      "trait:illicit lv0-5"
+    ]
+  },
+  "signature_cards": [
+    "family_inheritance_lv0"
+  ],
+  "weakness": "lodge_debts_lv0",
+  "flavor_text": "\"My money, my legacy, my problem. Let me handle it in my own way.\"",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Rogue cards ([rogue]) level 0-5, Survivor cards ([survivor]) level 0-2, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Family Inheritance, Lodge \"Debts,\" 1 random basic weakness.\n<b>Deckbuilding Restrictions</b>: No [[Illicit]] cards.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：流浪者([rogue])等级0-5，求生者([survivor])等级0-2，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：家族遗产、秘社\"债务\"、1张随机基础弱点。\n<b>牌组构建限制</b>：无[[违法]]卡牌。",
+  "pack": "the_circle_undone"
+}

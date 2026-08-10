@@ -1,0 +1,32 @@
+{
+  "id": "seal_of_the_seventh_sign_lv5",
+  "arkhamdb_code": "04311",
+  "name": "Seal of the Seventh Sign",
+  "name_cn": "第七印记的封印",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 4,
+  "level": 5,
+  "traits": [
+    "spell",
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Seal ([auto_fail]). Uses (7 charges). If Seal of the Seventh Sign has no charges, or if it leaves play, remove it from the game.\n<b>Forced</b> - After a [skull], [cultist], [tablet], or [elder_thing] token is revealed during any skill test: Remove 1 charge from Seal of the Seventh Sign.",
+  "text_cn": "封印([auto_fail])。使用(7充能)。如果第七印记的封印没有充能，或者离场，将其从游戏中移除。\n<b>强制</b> - 在任何技能检定中抽出[skull]、[cultist]、[tablet]或[elder_thing]标记后：移除第七印记的封印上的1充能。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Over the Threshold and Beyond",
+  "subname_cn": "横跨界限和彼端",
+  "uses": {
+    "charges": 7
+  }
+}

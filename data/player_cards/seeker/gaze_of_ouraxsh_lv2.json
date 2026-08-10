@@ -1,0 +1,25 @@
+{
+  "id": "gaze_of_ouraxsh_lv2",
+  "arkhamdb_code": "07155",
+  "name": "Gaze of Ouraxsh",
+  "name_cn": "沃科施的凝视",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "spell",
+    "cursed"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Reveal 7 random chaos tokens from the chaos bag. Deal a total of 1 damage plus 1 additional damage for each [curse] or [auto_fail] token revealed, divided as you choose among enemies at your location. This action does not provoke attacks of opportunity.",
+  "text_cn": "从混乱袋随机抽出7个。对你所在地点的敌人造成总计为1+抽出的[curse]和[auto_fail]标记数量的伤害。这个行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

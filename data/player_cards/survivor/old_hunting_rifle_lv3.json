@@ -1,0 +1,31 @@
+{
+  "id": "old_hunting_rifle_lv3",
+  "arkhamdb_code": "04273",
+  "name": "Old Hunting Rifle",
+  "name_cn": "陈旧猎枪",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (3 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +3 [combat] and deal +2 damage for this attack. If a [skull] or [auto_fail] symbol is revealed during this attack, the rifle jams. (This attack automatically fails. Before you can activate this ability again, you must perform the following ability: \"[action]: You clear the jam.\")",
+  "text_cn": "使用(3子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击中你+3[combat]并造成+2伤害。如果本次攻击中抽出[skull]或[auto_fail]标记，猎枪卡膛了。(这次攻击自动失败。在你再次启动本攻击能力前，你必须先执行以下能力：\"[action]：你解决了卡膛情况。\")",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "ammo": 3
+  }
+}

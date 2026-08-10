@@ -1,0 +1,32 @@
+{
+  "id": "the_red_clock_lv5",
+  "arkhamdb_code": "08058",
+  "name": "The Red Clock",
+  "name_cn": "红色闹钟",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 5,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Exceptional. Uses (0 charges).\n<b>Forced</b> - After your turn begins: You may take all charges here, as resources. Place 1 charge here. If it has exactly...\n- 1 charge, you get +4 skill value for your next skill test.\n- 2 charges, you may move up to 3 times.\n- 3 charges, you may take 2 additional actions this turn.",
+  "text_cn": "卓越。使用(0充能)。\n<b>强制</b> - 在你的回合开始后：你可以取走此处所有充能，作为资源。在此放置1充能。如果其正好有……\n- 1充能，下次技能检定你+4技能值。\n- 2充能，你可以移动最多3次.\n- 3充能，这回合你可以进行2个额外行动。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "subname": "Broken but Reliable",
+  "subname_cn": "损坏却可靠",
+  "uses": {
+    "charges": 0
+  },
+  "exceptional": true
+}

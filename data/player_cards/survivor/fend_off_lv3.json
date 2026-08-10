@@ -1,0 +1,24 @@
+{
+  "id": "fend_off_lv3",
+  "arkhamdb_code": "08082",
+  "name": "Fend Off",
+  "name_cn": "抵挡",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "gambit",
+    "trick"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Play when a non-[[Elite]] enemy spawns at your location.\nThat enemy attacks you. Then, automatically evade that enemy and attach Fend Off to it.\nAttached enemy cannot ready.",
+  "text_cn": "快速。在一名非[[精英]]敌人在你所在地点生成时打出。\n该敌人攻击你。然后，自动躲避该敌人并将抵挡叠加到它。\n被叠加的敌人不能准备。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

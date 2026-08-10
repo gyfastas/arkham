@@ -1,0 +1,25 @@
+{
+  "id": "counterspell_lv2",
+  "arkhamdb_code": "04110",
+  "name": "Counterspell",
+  "name_cn": "反击法术",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "spell",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when a [skull], [cultist], [tablet], or [elder_thing] chaos token is revealed during a skill test at your location.\nCancel that chaos token. <i>(Do not reveal a new chaos token to replace it.)</i>",
+  "text_cn": "快速。在你所在地点的技能检定期间抽出[skull]、[cultist]、[tablet]或[elder_thing]混乱标记时打出。\n取消该混乱标记。<i>(不要再抽1个混乱标记来替代。)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

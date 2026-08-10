@@ -1,0 +1,28 @@
+{
+  "id": "hallowed_mirror_lv0",
+  "arkhamdb_code": "05313",
+  "name": "Hallowed Mirror",
+  "name_cn": "圣化之镜",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "occult",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Limit 1 per deck.\n<b>Forced</b> - After Hallowed Mirror enter play: Search your bonded cards for 3 copies of Soothing Melody. Add 1 to your hand and shuffle the other 2 into your deck. When Hallowed Mirror leaves play, find each of those copies of Soothing Melody (<i>even if they are out of play</i>) and set them aside, out of play.",
+  "text_cn": "每副牌组限制1张。\n<b>强制</b> - 在圣化之镜入场后：在你的绑定卡牌中查找3张舒缓旋律。将其中1张加入你的手牌并将其余2张混洗入你的牌堆。在圣化之镜离场时，找出所有的舒缓旋律(不论其是否在场)并将其放在一边，位于场外。<i>(FAQ, v2.0)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

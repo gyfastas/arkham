@@ -1,0 +1,24 @@
+{
+  "id": "handcuffs_lv0",
+  "arkhamdb_code": "04265",
+  "name": "Handcuffs",
+  "name_cn": "手铐",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "police"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[action] If Handcuffs is not attached to an enemy: <b>Evade.</b> Use only on a [[Humanoid]] enemy. This evasion attempt uses [combat] instead of [agility]. If you succeed, attach Handcuffs to the just-evaded enemy.\nIf the attached enemy is non-[[Elite]], it cannot ready and doom cannot be placed on it.",
+  "text_cn": "[action]如果手铐未被叠加到敌人：<b>躲避</b>。仅可对[[类人]]敌人使用。这次躲避尝试不使用[agility]，改为使用[combat]。如果你成功，将手铐叠加到刚刚躲避的敌人。\n如果被叠加的敌人非[[精英]]，该敌人不能准备，且不能在该敌人上放置毁灭标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

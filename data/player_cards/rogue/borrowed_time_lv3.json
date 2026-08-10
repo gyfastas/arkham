@@ -1,0 +1,27 @@
+{
+  "id": "borrowed_time_lv3",
+  "arkhamdb_code": "04308",
+  "name": "Borrowed Time",
+  "name_cn": "时间借取",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Exceptional.\n[action]: Place 1 resource on Borrowed Time, as a click (to a maximum of 3 clicks on Borrowed Time). Does not provoke attacks of opportunity.\n<b>Forced</b> - When your turn begins: Remove all clicks from Borrowed Time. You may take that many additional actions this turn.",
+  "text_cn": "卓越。\n[action]：在时间借取上放置1资源，视为一声滴答(时间借取上最多保有3声滴答)。此行动不会引起趁乱攻击。\n<b>强制</b> - 在你回合开始时：移除时间借取上所有的滴答。你本回合可以额外进行等量的行动。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "exceptional": true
+}

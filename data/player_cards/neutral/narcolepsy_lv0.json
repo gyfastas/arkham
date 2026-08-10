@@ -1,0 +1,22 @@
+{
+  "id": "narcolepsy_lv0",
+  "arkhamdb_code": "06037",
+  "name": "Narcolepsy",
+  "name_cn": "嗜睡症",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Multiplayer only.\n<b>Revelation</b> - Put Narcolepsy into play in your threat area.\nYou cannot take actions, trigger abilities, or play cards.\n[action]: \"Wake up!\" Discard Narcolepsy.\n<b>Forced</b> - After you take damage or horror: Discard Narcolepsy.",
+  "text_cn": "多人游戏专用。\n<b>显现</b> - 将嗜睡症放置入你的威胁区域。\n你不能进行行动、触发能力或打出卡牌。\n[action]：\"醒醒！\"丢弃嗜睡症。\n<b>强制</b> - 在你受到伤害或恐惧后：丢弃嗜睡症。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "basic_weakness"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nothing_left_to_lose_lv3",
+  "arkhamdb_code": "06284",
+  "name": "Nothing Left to Lose",
+  "name_cn": "背水一战",
+  "class": "survivor",
+  "type": "event",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "If you have fewer than 5 resources, gain resources until you have 5 resources.\nIf you have fewer than 5 cards in your hand, draw cards until you have 5 cards in your hand.\nRemove Nothing Left to Lose from the game.",
+  "text_cn": "如果你的资源少于5，获得资源，直到你有5资源。\n如果你手牌少于5张，抽取卡牌，直到你有5张手牌。\n将背水一战移出游戏。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

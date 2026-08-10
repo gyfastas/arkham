@@ -1,0 +1,24 @@
+{
+  "id": "brute_force_lv1",
+  "arkhamdb_code": "06166",
+  "name": "Brute Force",
+  "name_cn": "蛮力",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "innate",
+    "developed"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nWhile Brute Force is committed during a basic fight action, it gains [combat][combat] and the text: \"If this test is successful by 2 or more, this attack deals +2 damage.\"",
+  "text_cn": "每次技能检定最多投入1张。\n只要在基础攻击行动中投入蛮力，其获得[combat][combat]和以下文本：\"如果这次检定成功且超过难度至少2点，这次攻击造成+2伤害。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

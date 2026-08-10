@@ -1,0 +1,24 @@
+{
+  "id": "parallel_fates_lv2",
+  "arkhamdb_code": "08066",
+  "name": "Parallel Fates",
+  "name_cn": "平行命运",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "augury"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Look at the top 6 cards of an investigator's deck or the encounter deck. You may either return them to the top of that deck in any order, or shuffle them into that deck. If you looked at an investigator's deck, that investigator may draw 1 card.",
+  "text_cn": "查看一位调查员的牌堆或遭遇牌堆顶部6张卡牌。你可以将它们以任何顺序放回该牌堆顶部，或将它们与该牌堆混洗。如果你查看了调查员的牌堆，该调查员可以抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

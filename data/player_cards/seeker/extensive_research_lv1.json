@@ -1,0 +1,23 @@
+{
+  "id": "extensive_research_lv1",
+  "arkhamdb_code": "06198",
+  "name": "Extensive Research",
+  "name_cn": "海量研究",
+  "class": "seeker",
+  "type": "event",
+  "cost": 10,
+  "level": 1,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Reduce the cost to play Extensive Research by 1 for each other card in your hand.\nDiscover 2 clues at your location.",
+  "text_cn": "你每有1张其它手牌，降低海量研究的打出费用1点。\n发现你所在地点的2个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

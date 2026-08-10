@@ -1,0 +1,25 @@
+{
+  "id": "track_shoes_lv0",
+  "arkhamdb_code": "05036",
+  "name": "Track Shoes",
+  "name_cn": "钉鞋",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "clothing",
+    "footwear"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Limit 1 [[Footwear]] per investigator.\nYou get +1 [agility].\n[reaction] After you move, but before enemies at your new location engage you, exhaust Track Shoes: Test [agility] (3). If you succeed, move to a connecting location.",
+  "text_cn": "每位调查员限制1[[鞋子]]。\n你获得+1[agility]。\n[reaction]在你移动后，新到地点的敌人与你交战之前，消耗钉鞋：检定[agility](3)。如果你成功，移动到一个连接地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "ornate_bow_lv3",
+  "arkhamdb_code": "04204",
+  "name": "Ornate Bow",
+  "name_cn": "华饰弓",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 4,
+  "level": 3,
+  "traits": [
+    "item",
+    "relic",
+    "weapon",
+    "ranged"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (1 ammo). Limit 1 ammo on Ornate Bow.\n[action] Spend 1 ammo: <b>Fight.</b> This attack uses [agility] instead of [combat]. You get +2 [agility] and deal +2 damage for this attack.\n[action]: You nock another arrow. Place 1 ammo on Ornate Bow.",
+  "text_cn": "使用(1子弹)。华饰弓上限制1子弹。\n[action]花费1子弹：<b>攻击</b>。这次攻击不使用[combat]，改为使用[agility]。这次攻击中你+2[agility]并造成+2伤害。\n[action]：你重新搭上一支箭。在华饰弓上放置1子弹。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "ammo": 1
+  }
+}

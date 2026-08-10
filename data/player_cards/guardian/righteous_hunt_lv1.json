@@ -1,0 +1,25 @@
+{
+  "id": "righteous_hunt_lv1",
+  "arkhamdb_code": "07109",
+  "name": "Righteous Hunt",
+  "name_cn": "正义猎杀",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "tactic",
+    "blessed"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Engage.</b> Choose an enemy up to 2 locations away. Move (one location at a time) to that enemy's location, engage it, and add [bless] tokens to the chaos bag equal to that enemy's horror value.",
+  "text_cn": "<b>交战</b>。选择一名最多2个连接地点远的敌人。移动(一次一个地点)到该敌人的地点，与其交战，并加入等于该敌人的恐惧值数量的[bless]标记到混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

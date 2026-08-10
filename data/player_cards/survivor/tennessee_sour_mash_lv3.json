@@ -1,0 +1,28 @@
+{
+  "id": "tennessee_sour_mash_lv3",
+  "arkhamdb_code": "05191",
+  "name": "Tennessee Sour Mash",
+  "name_cn": "田纳西酸麦芽威士忌",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "item",
+    "illicit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Uses (3 supplies).\n[fast] Exhaust Tennessee Sour Mash and spend 1 supply: You get +2 [willpower] for a skill test on a treachery card.\n[action] Discard Tennessee Sour Mash: <b>Fight.</b> You get +3 [combat] for this attack. If this attack succeeds against a non-[[Elite]] enemy, automatically evade it.",
+  "text_cn": "使用(3补给)。\n[fast]消耗田纳西酸麦芽威士忌并花费1补给：你在诡计卡的一次技能检定中+2[willpower]。\n[action]丢弃田纳西酸麦芽威士忌：<b>攻击</b>。你这次攻击+3[combat]。如果这次攻击目标为一名非[[精英]]敌人并成功，自动躲避该敌人。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "supplies": 3
+  }
+}

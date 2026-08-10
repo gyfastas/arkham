@@ -1,0 +1,30 @@
+{
+  "id": "talisman_of_protection_lv0",
+  "arkhamdb_code": "08116",
+  "name": "Talisman of Protection",
+  "name_cn": "护身法宝",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "charm"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Fast. Play only during your turn.\nPlay Talisman of Protection under the control of any investigator at your location.\n[reaction] When you assign damage and/or horror that would defeat you, discard Talisman of Protection: Cancel up to 2 of that damage and/or horror.",
+  "text_cn": "快速。只能在你的回合中打出。\n打出护身法宝，置于你所在地点任一位调查员控制之下。\n[reaction]在你被分配伤害和/或恐惧，且该数值足够击败你时，丢弃护身法宝：取消该伤害和/或恐惧中的最多2点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "mystic",
+    "survivor"
+  ]
+}

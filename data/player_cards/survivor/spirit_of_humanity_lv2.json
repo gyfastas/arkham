@@ -1,0 +1,27 @@
+{
+  "id": "spirit_of_humanity_lv2",
+  "arkhamdb_code": "07229",
+  "name": "Spirit of Humanity",
+  "name_cn": "人性抉择",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "ritual",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "[fast] Exhaust Spirit of Humanity and take 1 damage and 1 horror: Add 2 [bless] tokens to the chaos bag.\n[fast] Exhaust Spirit of Humanity and add 2 [curse] tokens to the chaos bag: Heal 1 damage and 1 horror.",
+  "text_cn": "[fast]消耗人性抉择并受到1点伤害和1点恐惧：加入2个[bless]标记到混乱袋。\n[fast]消耗人性抉择并加入2个[curse]标记到混乱袋：治愈1点伤害和1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

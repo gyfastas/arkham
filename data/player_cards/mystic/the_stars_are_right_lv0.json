@@ -1,0 +1,21 @@
+{
+  "id": "the_stars_are_right_lv0",
+  "arkhamdb_code": "06028",
+  "name": "The Stars Are Right",
+  "name_cn": "群星正确之时",
+  "class": "mystic",
+  "type": "event",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "augury"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Bonded (Stargazing).\n<b>Revelation</b> - Remove The Stars Are Right from the game. Choose an investigator. That investigator draws 1 card, gains 1 resource, and may take an immediate action as if it were their turn (this action does not count toward the number of actions that investigator can take each turn).",
+  "text_cn": "绑定(仰望星空)。\n<b>显现</b> - 将群星正确之时移出游戏。选择一位调查员。该调查员抽取1张卡牌，获得1资源，并且可以立即进行一次行动，如同在自己回合(本行动不计入该调查员每回合可进行的行动数)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

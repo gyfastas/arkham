@@ -1,0 +1,40 @@
+{
+  "investigator_id": "lily_chen",
+  "presets": [
+    {
+      "name": "陈丽丽（入门）",
+      "cards": [
+        "forbidden_knowledge_lv0",
+        "forbidden_knowledge_lv0",
+        "rite_of_sanctification_lv0",
+        "rite_of_sanctification_lv0",
+        "solemn_vow_lv0",
+        "solemn_vow_lv0",
+        "the_councils_coffer_lv2",
+        "alchemical_transmutation_lv0",
+        "alchemical_transmutation_lv0",
+        "arcane_initiate_lv0",
+        "arcane_initiate_lv0",
+        "blackjack_lv0",
+        "blackjack_lv0",
+        "favor_of_the_moon_lv1",
+        "knife_lv0",
+        "knife_lv0",
+        "ritual_candles_lv0",
+        "ritual_candles_lv0",
+        "scroll_of_secrets_lv0",
+        "scroll_of_secrets_lv0",
+        "scrying_lv0",
+        "scrying_lv0",
+        "trench_knife_lv0",
+        "trench_knife_lv0",
+        "arcane_studies_lv0",
+        "arcane_studies_lv0",
+        "backpack_lv0",
+        "backpack_lv0",
+        "blood_pact_lv0",
+        "blood_pact_lv0"
+      ]
+    }
+  ]
+}

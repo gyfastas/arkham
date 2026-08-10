@@ -1,0 +1,29 @@
+{
+  "id": "ethereal_slip_lv2",
+  "arkhamdb_code": "08110",
+  "name": "Ethereal Slip",
+  "name_cn": "虚影易位",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "spell",
+    "trick"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Choose a non-[[Elite]] enemy at any revealed location. Swap places with that enemy.",
+  "text_cn": "选择任何已揭示地点的一名非[[精英]]敌人。与该敌人交换位置。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "rogue",
+    "mystic"
+  ]
+}

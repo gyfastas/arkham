@@ -1,0 +1,21 @@
+{
+  "id": "word_of_command_lv2",
+  "arkhamdb_code": "06202",
+  "name": "Word of Command",
+  "name_cn": "命令真言",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Name a [[Spell]] card. Search your deck for 1 copy of the named card and draw it. Shuffle your deck.",
+  "text_cn": "声名一张[[法术]]卡牌。在你的牌堆中查并抽取1张声名的卡牌。混洗你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

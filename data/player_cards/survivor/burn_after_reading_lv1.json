@@ -1,0 +1,23 @@
+{
+  "id": "burn_after_reading_lv1",
+  "arkhamdb_code": "08076",
+  "name": "Burn After Reading",
+  "name_cn": "阅后即焚",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Exile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading.\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>",
+  "text_cn": "放逐你手中1张等级0-5的卡牌。发现你所在地点的2个线索。如果被放逐卡牌为等级2或更高，从当前密谋移除1个毁灭标记。放逐阅后即焚。\n<b>卡牌设计：Council-in-Exile，Gen Con 2020</b>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "dream_diary_lv0",
+  "arkhamdb_code": "06112",
+  "name": "Dream Diary",
+  "name_cn": "梦境日记",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tome",
+    "charm"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: Search your bonded cards for Essence of the Dream and add it to your hand.\n[reaction] After you succeed by 3 or more during a skill test to which Essence of the Dream is committed: Record in your Campaign Log that \"you have interpreted the dreams.\"",
+  "text_cn": "[action]：在你的绑定卡牌中查找梦的本质，并将其加入你的手牌。\n[reaction]在你投入梦的本质的技能检定中成功并超过难度至少3点后：在你的冒险日志中记录\"你洞悉了梦境\"。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subname": "Untranslated",
+  "subname_cn": "未翻译"
+}

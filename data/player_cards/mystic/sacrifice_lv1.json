@@ -1,0 +1,23 @@
+{
+  "id": "sacrifice_lv1",
+  "arkhamdb_code": "04234",
+  "name": "Sacrifice",
+  "name_cn": "献祭贡品",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Discard a [mystic] asset you control. Then, draw 3 cards or gain 3 resources, or any combination thereof.",
+  "text_cn": "丢弃你控制的1张[mystic]支援卡。然后，抽取3张卡牌，或者获得3资源，或者以任意形式组合，卡牌和/或资源的总数为3。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

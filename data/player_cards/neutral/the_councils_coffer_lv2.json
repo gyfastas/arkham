@@ -1,0 +1,26 @@
+{
+  "id": "the_councils_coffer_lv2",
+  "arkhamdb_code": "05196",
+  "name": "The Council's Coffer",
+  "name_cn": "委员会的保险箱",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Uses (1 [per_investigator] locks). If there are no locks on The Council's Coffer, each investigator searches his or her deck or discard pile for any card and immediately plays it at no cost. Exile The Council's Coffer. (Max once per campaign.)\n[action] [action]: Test any skill (5). If you succeed, remove 1 lock. Any investigator at your location may activate this ability.\n<b>Card design by The Council at Arkham Nights 2017.</b>",
+  "text_cn": "使用(1[per_investigator]锁头)。如果委员会的保险箱上没有锁头，每位调查员在自己的牌堆或弃牌堆中查找并立即免费打出任意一张卡牌。放逐委员会的保险箱。(每个剧本最多1次。)\n[action][action]：检定任意一项技能(5)。如果你成功，移除1个锁头。你所在地点的任何调查员都可以启动这个能力。\n<b>卡牌设计于阿卡姆之夜2017理事会。</b>",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "What’s in the Box?",
+  "subname_cn": "箱子里面是什么？"
+}

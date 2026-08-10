@@ -1,0 +1,25 @@
+{
+  "id": "cheat_the_system_lv1",
+  "arkhamdb_code": "08050",
+  "name": "Cheat the System",
+  "name_cn": "欺骗制度",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "trick",
+    "synergy"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] window.\nGain 1 resource for each different class among cards you control.",
+  "text_cn": "快速。在任何[fast]时间段中打出。\n你控制的卡牌之中每有一个不同的职阶，获得1资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

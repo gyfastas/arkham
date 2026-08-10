@@ -1,0 +1,26 @@
+{
+  "id": "heavy_furs_lv0",
+  "arkhamdb_code": "08126",
+  "name": "Heavy Furs",
+  "name_cn": "厚重皮衣",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "armor"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "body"
+  ],
+  "text": "[reaction] After you reveal a non-[auto_fail] symbol on a chaos token during a skill test you are perfoming, deal 1 damage to Heavy Furs: Cancel that chaos token and return it to the bag. Reveal a new chaos token.",
+  "text_cn": "[reaction]在你执行的技能检定中你抽出一个非[auto_fail]的符号混乱标记后，对厚重皮衣造成1点伤害：取消该混乱标记并将其放回混乱袋。抽出一个新的混乱标记。",
+  "health": 2,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

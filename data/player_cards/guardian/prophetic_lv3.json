@@ -1,0 +1,31 @@
+{
+  "id": "prophetic_lv3",
+  "arkhamdb_code": "08120",
+  "name": "Prophetic",
+  "name_cn": "先知先觉",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\nResources on Prophetic may be spent to pay for [[Fortune]], [[Spell]], or [[Spirit]] cards.\n[fast] During a skill test on a [[Fortune]], [[Spell]], or [[Spirit]] card, spend 1 resource from Prophetic: You get +1 skill value for this test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n先知先觉上的资源可以被用来支付[[幸运]]、[[法术]]或[[勇气]]卡牌。\n[fast]在[[幸运]]、[[法术]]或[[勇气]]卡牌上的技能检定中，从先知先觉花费1资源：你这次检定+1技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "mystic",
+    "survivor"
+  ],
+  "uses": {
+    "resourcess": 2
+  }
+}

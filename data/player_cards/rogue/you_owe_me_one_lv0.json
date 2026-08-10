@@ -1,0 +1,26 @@
+{
+  "id": "you_owe_me_one_lv0",
+  "arkhamdb_code": "05319",
+  "name": "\"You owe me one!\"",
+  "name_cn": "\"你欠我一次！\"",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "favor",
+    "gambit"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Look at another investigator's hand. You may play a non-weakness card in that investigator's hand, under your control. If you do, you and that investigator each draw 1 card.",
+  "text_cn": "查看另一位调查员的手牌。你可以打出该调查员手牌中的一张非弱点卡牌，置于你的控制之下。如果你这么做，你和该调查员每人抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

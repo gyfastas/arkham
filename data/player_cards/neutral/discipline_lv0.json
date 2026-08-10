@@ -1,0 +1,23 @@
+{
+  "id": "discipline_lv0",
+  "arkhamdb_code": "08014a",
+  "name": "Discipline",
+  "name_cn": "演武",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "unbroken"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Lily Chen deck only. Permanent.\nYou get +1 [agility].\n[action]: One at a time, take up to 3 different fight or evade actions. Flip this asset over. This action does not provoke attacks of opportunity.",
+  "text_cn": "陈丽丽牌组专用。永久。\n你获得+1[agility]。\n[action]：依次执行最多3次不同的攻击或躲避行动。将本支援卡翻面。本行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subname": "Balance of Body",
+  "subname_cn": "稳如泰山"
+}

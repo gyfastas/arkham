@@ -1,0 +1,23 @@
+{
+  "id": "untimely_transaction_lv1",
+  "arkhamdb_code": "08051",
+  "name": "Untimely Transaction",
+  "name_cn": "不当交易",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "favor"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Reveal an [[Item]] asset in your hand. Another investigator at your location may play that asset as if it were in their hand. If they do, draw 1 card and gain resources equal to that asset's printed cost.",
+  "text_cn": "揭示你手中的一张[[道具]]支援卡。你所在地点的另一位调查员可以打出该支援卡，如同其在他的手牌中。如果他这么做，你抽取1张卡牌并获得等于该支援卡打印费用的资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

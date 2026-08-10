@@ -1,0 +1,24 @@
+{
+  "id": "grounded_lv3",
+  "arkhamdb_code": "08069",
+  "name": "Grounded",
+  "name_cn": "情绪稳定",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "talent",
+    "composure"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Fast. Limit 1 [[Composure]] in play.\nYou get +1 skill value during skill tests on [[Spell]] cards.\nNon-direct damage/horror must be assigned to Grounded before it can be assigned to your investigator card.\n[fast] During a skill test on a [[Spell]] card, spend 1 resource: You get +1 skill value for this test.",
+  "text_cn": "快速。场上限制1张[[沉稳]]在场。\n你在[[法术]]卡牌的技能检定中+1技能值。\n非直接伤害/恐惧在被分配给你的调查员卡之前，必须先分配给情绪稳定。\n[fast]在[[法术]]卡牌的技能检定中，花费1资源：你这次检定+1技能值。",
+  "health": 2,
+  "sanity": 2,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

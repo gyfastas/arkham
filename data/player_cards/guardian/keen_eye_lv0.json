@@ -1,0 +1,24 @@
+{
+  "id": "keen_eye_lv0",
+  "arkhamdb_code": "07152",
+  "name": "Keen Eye",
+  "name_cn": "锐利目光",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "[fast] Spend 2 resources: You get +1 [intellect] until the end of the phase.\n[fast] Spend 2 resources: You get +1 [combat] until the end of the phase.",
+  "text_cn": "[free]花费2资源：你获得+1[intellect]直到本阶段结束。\n[free]花费2资源：你获得+1[combat]直到本阶段结束。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

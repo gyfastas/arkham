@@ -1,0 +1,26 @@
+{
+  "id": "guardian_angel_lv0",
+  "arkhamdb_code": "07006",
+  "name": "Guardian Angel",
+  "name_cn": "守护天使",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "ritual",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Sister Mary deck only.\nGuardian Angel may be assigned damage dealt to other investigators at your location and connecting locations.\n[reaction] When any amount of damage is assigned to Guardian Angel: Add that many [bless] tokens to the chaos bag.",
+  "text_cn": "玛丽修女牌组专用。\n你所在地点和连接地点的其他调查员受到的伤害可以分配给守护天使。\n[reaction]在任意数量的伤害分配给守护天使时：加入同等数量的[bless]标记到混乱袋。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

@@ -1,0 +1,40 @@
+{
+  "investigator_id": "luke_robinson",
+  "presets": [
+    {
+      "name": "卢克·罗宾逊（入门）",
+      "cards": [
+        "flute_of_the_outer_gods_lv4",
+        "arcane_initiate_lv3",
+        "arcane_initiate_lv3",
+        "archaic_glyphs_lv0",
+        "archaic_glyphs_lv0",
+        "forbidden_knowledge_lv0",
+        "forbidden_knowledge_lv0",
+        "grounded_lv3",
+        "grounded_lv3",
+        "magnifying_glass_lv1",
+        "magnifying_glass_lv1",
+        "the_councils_coffer_lv2",
+        "alchemical_transmutation_lv0",
+        "alchemical_transmutation_lv0",
+        "ancient_stone_lv1",
+        "ancient_stone_lv1",
+        "arcane_initiate_lv0",
+        "arcane_initiate_lv0",
+        "favor_of_the_moon_lv1",
+        "grounded_lv1",
+        "grounded_lv1",
+        "ice_pick_lv1",
+        "ice_pick_lv1",
+        "knife_lv0",
+        "knife_lv0",
+        "magnifying_glass_lv0",
+        "magnifying_glass_lv0",
+        "protective_incantation_lv1",
+        "protective_incantation_lv1",
+        "ritual_candles_lv0"
+      ]
+    }
+  ]
+}

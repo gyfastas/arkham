@@ -1,0 +1,24 @@
+{
+  "id": "banish_lv1",
+  "arkhamdb_code": "05113",
+  "name": "Banish",
+  "name_cn": "驱除",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Evade.</b> Use only on a non-[[Elite]] enemy. This evasion attempt uses [willpower] instead of [agility]. If you succeed, move the enemy just evaded to any location in play. If you succeed and a [skull], [cultist], [tablet], or [elder_thing] symbol was revealed during this evasion attempt, that enemy does not ready during the next upkeep phase.",
+  "text_cn": "<b>躲避</b>。仅可对非[[精英]]敌人使用。这次躲避尝试不使用[agility]，改为使用[willpower]。如果你成功，将刚刚躲避的敌人移动到场上任意一个地点。如果你成功，且这次躲避尝试期间抽出[skull]、[cultist]、[tablet]或[elder_thing]符号，该敌人在下一个补给阶段中不准备。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

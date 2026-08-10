@@ -1,0 +1,23 @@
+{
+  "id": "dumb_luck_lv0",
+  "arkhamdb_code": "04034",
+  "name": "Dumb Luck",
+  "name_cn": "狗屎运",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Play after you fail a skill test by 2 or less during an evasion attempt against a non-[[Elite]] enemy.\nPlace that enemy on top of the encounter deck.",
+  "text_cn": "快速。躲避尝试一个非[[精英]]敌人期间，在你失败且低于难度2点以内后打出。\n将该敌人放到遭遇牌堆顶。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

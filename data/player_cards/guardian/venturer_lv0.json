@@ -1,0 +1,29 @@
+{
+  "id": "venturer_lv0",
+  "arkhamdb_code": "04018",
+  "name": "Venturer",
+  "name_cn": "冒险家",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "ally",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Uses (3 supplies).\n[fast] Spend 1 supply and exhaust Venturer: Place 1 supply or ammo on an asset controlled by an investigator at your location.",
+  "text_cn": "使用(3补给)。\n[free]花费1补给并消耗冒险家：将1补给或子弹放在你所在地点的一位调查员控制的一张支援卡上。",
+  "health": 2,
+  "sanity": 2,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "supplies": 3
+  }
+}

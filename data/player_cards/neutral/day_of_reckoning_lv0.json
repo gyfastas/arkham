@@ -1,0 +1,22 @@
+{
+  "id": "day_of_reckoning_lv0",
+  "arkhamdb_code": "07040",
+  "name": "Day of Reckoning",
+  "name_cn": "清算之日",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "endtimes"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Attach Day of Reckoning to the current agenda. Then, search the chaos bag for an [elder_sign] token and seal it on Day of Reckoning.\n<b>Card design inspired by the events of Arkham Nights 2018.</b>",
+  "text_cn": "<b>显现</b> - 将清算之日叠加到当前密谋。然后，在混乱袋中查找一个[elder_sign]标记，并将其封印在清算之日上。\n<b>卡片设计灵感来自于阿卡姆之夜活动2018。</b>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "basic_weakness"
+}

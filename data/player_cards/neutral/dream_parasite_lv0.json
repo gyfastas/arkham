@@ -1,0 +1,24 @@
+{
+  "id": "dream_parasite_lv0",
+  "arkhamdb_code": "06331",
+  "name": "Dream Parasite",
+  "name_cn": "梦境寄生物",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Bonded (Nightmare Bauble).\nWhile Dream Parasite is in your hand, you must commit it to the next skill test you perform, if able.\nThis skill's icons subtract from your skill value instead of adding to it.\nIf this skill test fails, take 1 damage and 1 horror.",
+  "text_cn": "绑定(噩梦球)。\n只要梦境寄生物在你手牌中，你必须将其投入到你执行的下一次技能检定(如可能)。\n你的技能值不加上此技能卡的图标，改为减去。\n如果这次技能检定失败，受到1点伤害和1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

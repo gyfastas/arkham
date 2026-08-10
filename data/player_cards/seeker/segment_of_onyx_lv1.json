@@ -1,0 +1,26 @@
+{
+  "id": "segment_of_onyx_lv1",
+  "arkhamdb_code": "06021",
+  "name": "Segment of Onyx",
+  "name_cn": "一瓣缟玛瑙",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "item",
+    "relic",
+    "occult"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Myriad. Fast.\n[fast] If you have 3 copies of Segment of Onyx in play: Set them aside, out of play. Search your bonded cards for Pendant of the Queen and put it into play.",
+  "text_cn": "多重。快速。\n[free]如果你场上有3张一瓣缟玛瑙：将它们放在一边，位于场外。在你的绑定卡牌中查找并将皇后的挂坠放置入场。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

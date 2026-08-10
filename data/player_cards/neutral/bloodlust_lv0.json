@@ -1,0 +1,22 @@
+{
+  "id": "bloodlust_lv0",
+  "arkhamdb_code": "06019",
+  "name": "Bloodlust",
+  "name_cn": "嗜血",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Bonded (The Hungering Blade).\n<b>Revelation</b> - Remove 2 offerings from The Hungering Blade to attach Bloodlust to it. If you cannot, take 1 horror and shuffle Bloodlust back into your deck.\n[fast] While attacking with The Hungering Blade, shuffle Bloodlust into your deck: You deal +1 damage for this attack. (Max once per attack.)",
+  "text_cn": "绑定(渴血之刃)。\n<b>显现</b> - 从渴血之刃移除2贡品来叠加嗜血到其上。如果你不能这么做，受到1点恐惧并将嗜血混洗回你的牌堆。\n[free]用渴血之刃攻击时，将嗜血混洗入你的牌堆：这次攻击你造成+1伤害。(每次攻击最多一次。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

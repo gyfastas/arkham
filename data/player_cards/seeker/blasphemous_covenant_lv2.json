@@ -1,0 +1,22 @@
+{
+  "id": "blasphemous_covenant_lv2",
+  "arkhamdb_code": "07113",
+  "name": "Blasphemous Covenant",
+  "name_cn": "亵渎圣约",
+  "class": "seeker",
+  "type": "asset",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "covenant",
+    "cursed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When an investigator at your location reveals a [curse] token during a skill test, exhaust Blasphemous Covenant: Treat that token's modifier as +1 instead of its normal modifier. After this test ends, return that token to the chaos bag.",
+  "text_cn": "永久。每副牌组限制1张[[圣约]]。\n[reaction]你所在地点的调查员在技能检定中抽出一个[curse]标记时，消耗亵渎圣约：将将该标记的修正值改为视为+1。在这次检定结束后，将该标记返回混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

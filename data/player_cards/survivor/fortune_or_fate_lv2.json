@@ -1,0 +1,24 @@
+{
+  "id": "fortune_or_fate_lv2",
+  "arkhamdb_code": "05237",
+  "name": "Fortune or Fate",
+  "name_cn": "幸运或是注定",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "fortune",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when doom would be placed on any scenario card.\nMax 1 per game.\nCancel 1 doom just placed on that card. Exile Fortune or Fate.",
+  "text_cn": "快速。在毁灭标记将被放置到任何一张冒险卡上时打出。\n每场游戏最多1次。\n取消刚要被放置到该卡牌上的1个毁灭标记。放逐幸运或是注定。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

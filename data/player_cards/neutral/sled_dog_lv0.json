@@ -1,0 +1,26 @@
+{
+  "id": "sled_dog_lv0",
+  "arkhamdb_code": "08127",
+  "name": "Sled Dog",
+  "name_cn": "雪橇犬",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "creature"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You may include up to 4 copies of Sled Dog in your deck. Up to 2 Sled Dog cards take up a single ally slot.\n[action] Exhaust X Sled Dogs: <b>Move.</b> Move X times.\n[action] Exhaust X Sled Dogs: <b>Fight.</b> You get +X [combat] for this attack. Instead of its standard damage, this attack deals X damage.",
+  "text_cn": "你的牌组里可以有最多4张雪橇犬。一个盟友槽位可以有最多2张雪橇犬卡牌。\n[action]消耗X张雪橇犬：<b>移动</b>。移动X次。\n[action]消耗X张雪橇犬：<b>攻击</b>。你这次攻击+X[combat]。这次攻击不造成基础伤害，改为造成X点伤害。",
+  "health": 2,
+  "sanity": 2,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

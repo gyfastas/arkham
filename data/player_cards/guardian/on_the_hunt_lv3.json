@@ -1,0 +1,25 @@
+{
+  "id": "on_the_hunt_lv3",
+  "arkhamdb_code": "08028",
+  "name": "On the Hunt",
+  "name_cn": "追猎行动",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would draw an encounter card during the mythos phase.\nInstead, search the encounter deck for an enemy, spawn it engaged with you <i>(instead of its normal spawn location)</i>, attach On the Hunt to it, and shuffle the encounter deck.\n[reaction] When you defeat attached enemy: Gain 3 resources.",
+  "text_cn": "快速。在神话阶段中你将要抽取一张遭遇卡时打出。\n改为在遭遇牌堆中查找一名敌人，将其生成并与你交战<i>(代替其原有的生成地点)</i>，叠加追猎行动到该敌人，并混洗遭遇牌堆。\n[reaction]在你击败被叠加的敌人时：获得3资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "down_the_rabbit_hole_lv0",
+  "arkhamdb_code": "08059",
+  "name": "Down the Rabbit Hole",
+  "name_cn": "掉进兔子洞",
+  "class": "mystic",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck. Purchase at deck creation.\nAfter each scenario of a campaign, reduce the experience cost of the first 2 cards you upgrade before the next scenario by 1.\nIncrease the experience cost for you to purchase new cards by 1.",
+  "text_cn": "永久。每副牌组限制1张。当牌组构建时购买。\n在一个剧本的每场冒险结束后，在下一场冒险之前，你升级的前2张卡牌经验值费用减1。\n你购买新卡牌的经验值费用加1。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

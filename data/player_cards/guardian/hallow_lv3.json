@@ -1,0 +1,25 @@
+{
+  "id": "hallow_lv3",
+  "arkhamdb_code": "07301",
+  "name": "Hallow",
+  "name_cn": "圣洁",
+  "class": "guardian",
+  "type": "event",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "spell",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play.",
+  "text_cn": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n移除场上任一卡牌上的1个毁灭标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

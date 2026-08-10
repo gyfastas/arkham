@@ -1,0 +1,32 @@
+{
+  "id": "gregory_gry_lv0",
+  "arkhamdb_code": "06162",
+  "name": "Gregory Gry",
+  "name_cn": "格雷戈里·葛利",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "criminal",
+    "dreamer"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Uses (9 resources).\n[reaction] When you initiate a skill test, spend up to 3 resources from Gregory Gry: If this test succeeds by at least that amount, gain that many resources.",
+  "text_cn": "使用(9资源)。\n[reaction]在你发起技能检定时，花费格雷戈里·葛利的最多3资源：如果这次技能检定成功且至少超过该资源数量，获得同等数量的资源。",
+  "health": 1,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Muckraker",
+  "subname_cn": "丑闻披露者",
+  "uses": {
+    "resourcess": 9
+  }
+}

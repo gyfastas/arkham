@@ -1,0 +1,24 @@
+{
+  "id": "serpents_of_yig_lv0",
+  "arkhamdb_code": "04014",
+  "name": "Serpents of Yig",
+  "name_cn": "伊格蛇族",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "humanoid",
+    "monster",
+    "serpent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Prey</b> - Father Mateo only.\nHunter.\n<b>Revelation</b> - Search the chaos bag for the [elder_sign] chaos token and seal it on Serpents of Yig.",
+  "text_cn": "<b>猎物</b> - 仅限马泰奥神父。\n猎手。\n<b>显现</b> - 从混乱袋中找出[elder_sign]混乱标记，将它封印在伊格蛇族上。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

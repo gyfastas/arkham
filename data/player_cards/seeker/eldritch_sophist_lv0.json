@@ -1,0 +1,29 @@
+{
+  "id": "eldritch_sophist_lv0",
+  "arkhamdb_code": "07111",
+  "name": "Eldritch Sophist",
+  "name_cn": "惊悚贤人",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "ally",
+    "miskatonic"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Uses (3 secrets).\n[fast] Exhaust Eldritch Sophist: Move 1 secret or charge from an asset you control to another asset controlled by an investigator at your location.",
+  "text_cn": "使用(3秘密)。\n[fast]：消耗惊悚贤人：将你控制的支援卡上的1个秘密或充能移动到你所在地点调查员控制的另一张支援卡上。",
+  "health": 1,
+  "sanity": 3,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "secrets": 3
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "butterfly_swords_lv2",
+  "arkhamdb_code": "08025",
+  "name": "Butterfly Swords",
+  "name_cn": "蝴蝶对剑",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "[action]: <b>Fight.</b> You get +1 [combat] for this attack. After this attack, you may exhaust Butterfly Swords to fight again, adding your [agility] to your skill value for that attack. That attack deals +1 damage.",
+  "text_cn": "[action]：<b>攻击</b>。你这次攻击+1[combat]。在这次攻击后，你可以消耗蝴蝶对剑以再次攻击，该攻击将你的[agility]加入你的技能值。该攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

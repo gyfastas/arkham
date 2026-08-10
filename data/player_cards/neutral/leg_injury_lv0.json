@@ -1,0 +1,22 @@
+{
+  "id": "leg_injury_lv0",
+  "arkhamdb_code": "08131",
+  "name": "Leg Injury",
+  "name_cn": "腿伤",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "injury"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Leg Injury into play in your threat area.\nLeg Injury can be healed as if it were a single point of damage on you <i>(if it is healed, discard it)</i>.\n<b>Forced</b> - After you take a move, resign, or evade action: You cannot take any of those types of actions for the remainder of the turn.",
+  "text_cn": "<b>显现</b> -将腿伤放置入你的威胁区域。\n腿伤可被治愈，如同其为你身上的单独1点伤害<i>(如果它被治愈，则将其丢弃)</i>。\n<b>强制</b> - 在你进行移动、撤退或躲避行动后：在该回合剩余时间内你不能再进行任何这些类型的行动。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subtype": "basic_weakness"
+}

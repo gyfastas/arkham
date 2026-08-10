@@ -1,0 +1,28 @@
+{
+  "id": "jacob_morrison_lv3",
+  "arkhamdb_code": "07309",
+  "name": "Jacob Morrison",
+  "name_cn": "雅各布‧莫里森",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "ally",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Jacob Morrison does not ready during the upkeep phase.\n[reaction] When you would fail a skill test, exhaust Jacob Morrison: You get +2 skill value for that test.\n[reaction] After a [bless] token is revealed from the chaos bag during a skill test you are performing: Ready Jacob Morrison.",
+  "text_cn": "雅各布‧莫里森在补给阶段中不准备。\n[reaction]在你技能检定将要失败时，消耗雅各布‧莫里森：该检定你+2技能值。\n[reaction]你在你执行的技能检定中从混乱袋抽出[bless]标记后：准备雅各布‧莫里森。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Coast Guard Captain",
+  "subname_cn": "海岸警卫队队长"
+}

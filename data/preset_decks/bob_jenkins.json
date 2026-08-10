@@ -1,0 +1,40 @@
+{
+  "investigator_id": "bob_jenkins",
+  "presets": [
+    {
+      "name": "鲍勃·詹金斯（入门）",
+      "cards": [
+        "cherished_keepsake_lv0",
+        "cherished_keepsake_lv0",
+        "decorated_skull_lv0",
+        "decorated_skull_lv0",
+        "drawing_thin_lv0",
+        "drawing_thin_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "the_councils_coffer_lv2",
+        "augur_lv0",
+        "burglary_lv0",
+        "burglary_lv0",
+        "crystallizer_of_dreams_lv0",
+        "crystallizer_of_dreams_lv0",
+        "dark_ritual_lv0",
+        "dark_ritual_lv0",
+        "favor_of_the_moon_lv1",
+        "fire_axe_lv0",
+        "fire_axe_lv0",
+        "hope_lv0",
+        "investments_lv0",
+        "investments_lv0",
+        "knife_lv0",
+        "knife_lv0",
+        "liquid_courage_lv0",
+        "liquid_courage_lv0",
+        "rabbits_foot_lv0",
+        "rabbits_foot_lv0",
+        "scavenging_lv0",
+        "scavenging_lv0"
+      ]
+    }
+  ]
+}

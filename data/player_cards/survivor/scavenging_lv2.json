@@ -1,0 +1,23 @@
+{
+  "id": "scavenging_lv2",
+  "arkhamdb_code": "06332",
+  "name": "Scavenging",
+  "name_cn": "拾荒",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "[reaction] After you successfully investigate by 2 or more, exhaust Scavenging: Choose an [[Item]] card in your discard pile and either add it to your hand or play it <i>(paying its cost)</i>.",
+  "text_cn": "[reaction]在你成功调查并且超过难度至少2点后，消耗拾荒：选择你弃牌堆中一张[[道具]]卡牌，将其加入你的手牌或者打出<i>(支付其费用)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

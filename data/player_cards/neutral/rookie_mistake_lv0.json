@@ -1,0 +1,23 @@
+{
+  "id": "rookie_mistake_lv0",
+  "arkhamdb_code": "06007",
+  "name": "Rookie Mistake",
+  "name_cn": "低级错误",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "blunder",
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Discard each asset you control with damage or horror on it. If no assets are discarded by this effect, shuffle Rookie Mistake back into your deck.",
+  "text_cn": "<b>显现</b> - 丢弃你控制的带有伤害或恐惧的每张支援卡。如果没有支援卡被此效果丢弃，将低级错误混洗回你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

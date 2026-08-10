@@ -1,0 +1,24 @@
+{
+  "id": "dodge_lv2",
+  "arkhamdb_code": "08026",
+  "name": "Dodge",
+  "name_cn": "闪躲",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, test [agility] (1). If you succeed, deal 1 damage to that enemy.",
+  "text_cn": "快速。在一名敌人攻击你所在地点一位调查员时打出。\n取消该次攻击。然后，检定[agility](1)。如果你成功，对该名敌人造成1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

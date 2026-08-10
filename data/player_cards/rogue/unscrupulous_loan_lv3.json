@@ -1,0 +1,25 @@
+{
+  "id": "unscrupulous_loan_lv3",
+  "arkhamdb_code": "08113",
+  "name": "Unscrupulous Loan",
+  "name_cn": "大肆借贷",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "pact"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan.",
+  "text_cn": "每位调查员限制1张。不能离场。\n[reaction]在你打出大肆借贷后：获得10资源。\n<b>强制</b> - 在游戏结束或你退场时，如果你的资源池中的资源少于10：放逐大肆借贷。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "rogue",
+    "survivor"
+  ]
+}

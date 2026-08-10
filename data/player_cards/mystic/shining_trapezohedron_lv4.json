@@ -1,0 +1,28 @@
+{
+  "id": "shining_trapezohedron_lv4",
+  "arkhamdb_code": "06329",
+  "name": "Shining Trapezohedron",
+  "name_cn": "闪耀的偏方三八面体",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 1,
+  "level": 4,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "[reaction] When you would pay the cost of a [[Spell]] card, exhaust Shining Trapezohedron: Instead, test [willpower] (X), where X is the card's resource cost. If you succeed, its resource cost is considered paid. If you fail, cancel the playing of that card without paying any of its costs (<i>including its action cost</i>). For the remainder of the round, you cannot play copies of that card.",
+  "text_cn": "[reaction]在你将要支付一张[[法术]]卡牌的费用时，消耗闪耀的偏方三八面体：改为检定[willpower](X)，其中X为该卡牌的资源费用。如果你成功，其资源费用被视为你已支付。如果你失败，取消打出该卡牌，并且不支付其任何费用(<i>包括其行动费用</i>)。本轮接下来的时间里，你不能打出该卡名的卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters"
+}

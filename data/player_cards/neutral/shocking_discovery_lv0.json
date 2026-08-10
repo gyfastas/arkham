@@ -1,0 +1,23 @@
+{
+  "id": "shocking_discovery_lv0",
+  "arkhamdb_code": "06009",
+  "name": "Shocking Discovery",
+  "name_cn": "惊人的发现",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "blunder",
+    "mystery"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Shuffle Shocking Discovery back into your deck. (If you cannot, discard it and draw the top card of the encounter deck, instead.)\n<b>Forced</b> - When you search your deck and this card is among the searched cards: Discard it. Cancel the search and all of its effects. Shuffle the searched deck. Draw the top card of the encounter deck.",
+  "text_cn": "<b>显现</b> - 将惊人的发现混洗回你的牌堆。(如果你不能，改为将其丢弃并抽取遭遇牌堆顶部的卡牌。)\n<b>强制</b> - 在你查找你的牌堆时若此卡牌在被查找卡牌中：将其丢弃。取消该次查找以及其所有效果。混洗被查找的牌堆。抽取遭遇牌堆顶部的卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

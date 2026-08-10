@@ -1,0 +1,25 @@
+{
+  "id": "interrogate_lv0",
+  "arkhamdb_code": "05020",
+  "name": "Interrogate",
+  "name_cn": "拷问",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "<b>Parley.</b> Choose a [[Humanoid]] enemy at your location and test [combat] (3). This test gets +X difficulty, where X is the chosen enemy's damage value. If you succeed, discover 1 clue at your location and 1 clue at any other location.",
+  "text_cn": "<b>谈判</b>。选择你所在地点的一名[[类人]]敌人并检定[combat](3)。这次检定难度+X，X为所选敌人的伤害值。如果你成功，发现你所在地点的1个线索和其它任意地点的1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

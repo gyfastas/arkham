@@ -1,0 +1,28 @@
+{
+  "id": "hit_me_lv0",
+  "arkhamdb_code": "08112",
+  "name": "\"Hit me!\"",
+  "name_cn": "\"再来一张！\"",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "fortune",
+    "gambit"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play after you reveal a chaos token during a skill test.\nReveal an additional chaos token, switching its \"-\" to a \"+\". If that chaos token is a [skull] token, you automatically fail.",
+  "text_cn": "快速。你在技能检定中抽出混乱标记后打出。\n抽出额外一个混乱标记，将其\"-\"变为\"+\"。如果该混乱标记是[skull]标记，你自动失败。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "rogue",
+    "survivor"
+  ]
+}

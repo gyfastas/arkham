@@ -1,0 +1,28 @@
+{
+  "id": "ariadnes_twine_lv3",
+  "arkhamdb_code": "07304",
+  "name": "Ariadne's Twine",
+  "name_cn": "阿里阿德涅之线",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (0 secrets).\nSecrets on Ariadne's Twine can be spent as if they were on any asset controlled by an investigator at your location.\n[fast] Exhaust Ariadne's Twine: Move 1 secret from an asset you control to your resource pool, as a resource, or vice versa.",
+  "text_cn": "使用(0秘密)。\n阿里阿德涅之线上的秘密能被花费，如同其在你所在地点调查员控制的任何支援卡上。\n[free]消耗阿里阿德涅之线：将1秘密从你控制的支援卡移动到你的资源池，作为资源；或从你的资源池将1资源移动到你控制的支援卡，作为秘密。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "secrets": 0
+  }
+}

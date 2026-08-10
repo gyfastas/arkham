@@ -1,0 +1,22 @@
+{
+  "id": "dark_pact_lv0",
+  "arkhamdb_code": "04038",
+  "name": "Dark Pact",
+  "name_cn": "黑暗契约",
+  "class": "neutral",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "pact"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Campaign Mode only.\nDeal 2 damage to an investigator at your location.\n<b>Forced</b> - When the game ends or you are eliminated, if Dark Pact is still in your hand: Remove Dark Pact from your deck. Search the collection for The Price of Failure and add it to your deck.",
+  "text_cn": "剧本模式专用。\n对你所在地点的一位调查员造成2点伤害。\n<b>强制</b> - 在游戏结束或你退场时，如果黑暗契约仍在你手牌中：从你的牌组中移除黑暗契约。搜索收藏找出失败的代价，并将其加入你的牌组。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "basic_weakness"
+}

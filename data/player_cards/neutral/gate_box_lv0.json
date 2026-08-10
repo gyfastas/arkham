@@ -1,0 +1,27 @@
+{
+  "id": "gate_box_lv0",
+  "arkhamdb_code": "06013",
+  "name": "Gate Box",
+  "name_cn": "门之匣",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Luke Robinson deck only. Uses (3 charges).\n[fast] Exhaust Gate Box and spend 1 charge: Disengage from each enemy engaged with you, search your bonded cards for Dream-Gate <i>(Wondrous Journey)</i>, put it into play, and move to it.",
+  "text_cn": "卢克·罗宾逊牌组专用。 使用(3充能)。\n[fast]消耗门之匣并花费1充能：与每名与你交战的敌人解除交战，在你的绑定卡牌中查找并放置梦境之门<i>(奇妙旅程)</i>入场，并移动到该地点。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Worlds within Worlds",
+  "subname_cn": "别有天地",
+  "uses": {
+    "charges": 3
+  }
+}

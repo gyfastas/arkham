@@ -1,0 +1,22 @@
+{
+  "id": "impromptu_barrier_lv0",
+  "arkhamdb_code": "04312",
+  "name": "Impromptu Barrier",
+  "name_cn": "临时路障",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "improvised"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "You may play Impromptu Barrier from your discard pile. If you do, shuffle it into your deck after resolving its effects.\n<b>Evade.</b> The chosen enemy gets -1 evade for this evasion attempt. (If you played Impromptu Barrier from your discard pile, you may evade an additional enemy at the same location with evade X or lower. X is the amount you succeed by.)",
+  "text_cn": "你可以从你弃牌堆中打出临时路障。如果你这么做，结算效果后将其洗回你的牌堆。\n<b>躲避</b>。本次躲避尝试所选敌人-1躲避。(如果你从你弃牌堆打出临时路障，你可以躲避同一地点的一个额外的敌人，且该敌人的躲避值必须不超过X，其中X为你成功并超出的点数。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

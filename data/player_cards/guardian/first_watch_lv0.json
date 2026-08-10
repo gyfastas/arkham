@@ -1,0 +1,24 @@
+{
+  "id": "first_watch_lv0",
+  "arkhamdb_code": "06110",
+  "name": "First Watch",
+  "name_cn": "头班守夜",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nInstead of resolving that step, look at the top X cards of the encounter deck, where X is the number of investigators. Deal those cards among the investigators as you wish, dealing no more than 1 card to each investigator other than yourself. Then, one at a time, each investigator draws the card(s) dealt to them.",
+  "text_cn": "快速。在神话阶段的\"抽取遭遇卡\"步骤将要开始时打出。\n不结算该步骤，改为查看遭遇牌堆顶部X张卡牌，其中X等于调查员人数。在任意调查员之间分发那些卡牌，你以外的每位调查员最多分发1张卡牌。然后，每位调查员依序抽取分发给他们的卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

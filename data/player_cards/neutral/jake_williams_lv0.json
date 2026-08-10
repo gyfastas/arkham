@@ -1,0 +1,29 @@
+{
+  "id": "jake_williams_lv0",
+  "arkhamdb_code": "04008",
+  "name": "Jake Williams",
+  "name_cn": "杰克·威廉斯",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "wild": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Ursula Downs deck only.\nThe first move or investigate action you perform each turn does not provoke attacks of opportunity.\n[reaction] After you reveal a location or put a new location into play, exhaust Jake Williams: Draw 1 card.",
+  "text_cn": "厄休拉·唐斯牌组专用。\n你每个回合执行的第一个移动或调查行动不会引起趁乱攻击。\n[reaction]在你翻开一张地点卡或放置一张新的地点卡入场后，消耗杰克·威廉斯：抽取1张卡牌。",
+  "health": 3,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Loyal Companion",
+  "subname_cn": "忠诚的伙伴"
+}

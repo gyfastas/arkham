@@ -1,0 +1,30 @@
+{
+  "id": "m1918_bar_lv4",
+  "arkhamdb_code": "04229",
+  "name": "M1918 BAR",
+  "name_cn": "M1918勃朗宁自动步枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 5,
+  "level": 4,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (8 ammo).\n[action] Spend 1-5 ammo: <b>Fight.</b> You get +X [combat] for this attack. Instead of its standard damage, this attack deals X damage. X is the amount of ammo spent as part of this ability's cost.",
+  "text_cn": "使用(8子弹)。\n[action]花费1-5子弹：<b>攻击</b>。这次攻击中你+X[combat]。这次攻击不造成基础伤害，改为造成X点伤害。X为本能力的费用中花费的子弹数量。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "ammo": 8
+  }
+}

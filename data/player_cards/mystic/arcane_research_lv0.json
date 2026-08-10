@@ -1,0 +1,21 @@
+{
+  "id": "arcane_research_lv0",
+  "arkhamdb_code": "04109",
+  "name": "Arcane Research",
+  "name_cn": "奥术研究",
+  "class": "mystic",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent.\nWhen you purchase Arcane Research, suffer 1 mental trauma.\nAfter each scenario of a campaign, reduce the experience cost of the first [[Spell]] card you upgrade before the next scenario by 1.",
+  "text_cn": "永久。\n在你购买奥术研究时，受到1点精神创伤。\n在一个剧本的每场冒险结束后，在下一场冒险之前，你升级的第一张[[法术]]卡牌经验值费用减少1点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,29 @@
+{
+ "id": "mists_of_rlyeh_lv4",
+ "arkhamdb_code": "04271",
+ "name": "Mists of R'lyeh",
+ "name_cn": "拉莱耶迷雾",
+ "class": "mystic",
+ "type": "asset",
+ "cost": 2,
+ "level": 4,
+ "traits": [
+  "spell"
+ ],
+ "skill_icons": {
+  "willpower": 1,
+  "agility": 1
+ },
+ "slots": [
+  "arcane"
+ ],
+ "text": "Uses (5 charges).\n[action] Spend 1 charge: <b>Evade.</b> This evasion attempt uses [willpower] instead of [agility]. You get +3 [willpower] for this evasion attempt. If you succeed, after evading the chosen enemy, you may move to a connecting location. If a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol is revealed during this evasion attempt, choose and discard a card from your hand.",
+ "text_cn": "使用(5充能)。\n[action]花费1充能：<b>躲避</b>。这次躲避尝试不使用[agility]，改为使用[willpower]。这次躲避尝试你+3[willpower]。如果你成功，在躲避所选敌人后，你可以移动到一个连接地点。如果本次躲避尝试期间抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]符号，从你手牌中选择并丢弃1张卡牌。",
+ "health": null,
+ "sanity": null,
+ "unique": false,
+ "pack": "the_forgotten_age",
+ "uses": {
+  "charges": 5
+ }
+}

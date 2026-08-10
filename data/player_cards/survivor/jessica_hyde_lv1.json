@@ -1,0 +1,29 @@
+{
+  "id": "jessica_hyde_lv1",
+  "arkhamdb_code": "06118",
+  "name": "Jessica Hyde",
+  "name_cn": "杰西卡·海德",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "ally",
+    "wayfarer",
+    "cursed"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [combat].\nJessica Hyde enters play with 2 damage on her.\n[reaction] After your turn ends: Heal 1 damage from Jessica Hyde.",
+  "text_cn": "你获得+1[combat]。\n杰西卡·海德入场时，其上带有2点伤害。\n[reaction]在你的回合结束后：治愈杰西卡·海德1点伤害。",
+  "health": 3,
+  "sanity": 1,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Wrong Place, Wrong Time",
+  "subname_cn": "错的时间，错的地点"
+}

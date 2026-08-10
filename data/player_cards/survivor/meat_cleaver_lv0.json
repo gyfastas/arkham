@@ -1,0 +1,27 @@
+{
+  "id": "meat_cleaver_lv0",
+  "arkhamdb_code": "05114",
+  "name": "Meat Cleaver",
+  "name_cn": "切肉刀",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Fight.</b> You get +1 [combat] for this attack (+2 [combat] instead if you have 3 or fewer remaining sanity). If this attack defeats an enemy, you may heal 1 horror. As an additional cost to initiate this ability, you may take 1 horror to have this attack deal +1 damage.",
+  "text_cn": "[action]：<b>攻击</b>。这次攻击你+1[combat](如果你剩余神智值不超过3点，改为+2[combat])。如果这次攻击击败一名敌人，你可以治愈1点恐惧。作为发动此能力的额外费用，你可以受到1点恐惧来让这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

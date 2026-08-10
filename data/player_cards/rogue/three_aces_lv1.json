@@ -1,0 +1,25 @@
+{
+  "id": "three_aces_lv1",
+  "arkhamdb_code": "06199",
+  "name": "Three Aces",
+  "name_cn": "三条A",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "fortune",
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test).",
+  "text_cn": "多重。\n如果你将3张三条A投入到一次技能检定，该次检定自动成功<i>(不要从混乱袋抽出混乱标记)</i>。然后，抽取3张卡牌并获得3资源(本效果每次检定最多一次)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

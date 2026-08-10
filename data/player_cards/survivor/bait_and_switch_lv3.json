@@ -1,0 +1,24 @@
+{
+  "id": "bait_and_switch_lv3",
+  "arkhamdb_code": "05282",
+  "name": "Bait and Switch",
+  "name_cn": "偷梁换柱",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Either (choose one):\n- <b>Evade.</b> If you succeed and the enemy is non-[[Elite]], evade the enemy and move it to a connecting location.\n- <b>Evade.</b> Use only on a non-[[Elite]] enemy at a connecting location. If you succeed, evade that enemy and switch locations with it.",
+  "text_cn": "选择以下一项：\n- <b>躲避</b>。如果你成功且该敌人为非[[精英]]，躲避该敌人并将其移动到一个连接地点。\n- <b>躲避</b>。只能对连接地点的一名非[[精英]]敌人使用，如果你成功，躲避并与该敌人交换地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

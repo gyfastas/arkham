@@ -1,0 +1,24 @@
+{
+  "id": "keep_faith_lv0",
+  "arkhamdb_code": "07034",
+  "name": "Keep Faith",
+  "name_cn": "坚守信念",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "fortune",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] window.\nAdd 4 [bless] tokens to the chaos bag.",
+  "text_cn": "快速。在任何[fast]玩家时间段中打出。\n加入4个[bless]标记到混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

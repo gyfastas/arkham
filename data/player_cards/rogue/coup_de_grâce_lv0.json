@@ -1,0 +1,24 @@
+{
+  "id": "coup_de_grâce_lv0",
+  "arkhamdb_code": "04269",
+  "name": "Coup de Grâce",
+  "name_cn": "最后的枪击",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "fated"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [],
+  "text": "Deal 1 damage to an enemy at your location. If this effect defeats that enemy, draw 1 card. If it is your turn, end your turn. This action does not provoke attacks of opportunity.",
+  "text_cn": "对你所在地点的1个敌人造成1点伤害。如果本效果击败该敌人，抽取1张卡牌。如果此时是你的回合，则结束你的回合。此行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

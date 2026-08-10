@@ -1,0 +1,25 @@
+{
+  "id": "rite_of_equilibrium_lv5",
+  "arkhamdb_code": "07308",
+  "name": "Rite of Equilibrium",
+  "name_cn": "均衡仪式",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 5,
+  "traits": [
+    "spell",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Either (choose one):\n- Add X [curse] tokens to the chaos bag to add X [bless] tokens to the chaos bag.\n- Remove X [curse] and X [bless] tokens from the chaos bag to heal X total horror from among cards at your location.",
+  "text_cn": "选择以下一项：\n- 加入X个[curse]标记到混乱袋，来加入X个[bless]标记到混乱袋。\n- 从混乱袋移除X个[curse]和X个[bless]标记，来治愈你所在地点卡牌的总计X点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

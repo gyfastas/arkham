@@ -1,0 +1,29 @@
+{
+ "id": "scroll_of_prophecies_lv0",
+ "arkhamdb_code": "06116",
+ "name": "Scroll of Prophecies",
+ "name_cn": "预言卷轴",
+ "class": "mystic",
+ "type": "asset",
+ "cost": 3,
+ "level": 0,
+ "traits": [
+  "item",
+  "tome"
+ ],
+ "skill_icons": {
+  "willpower": 1
+ },
+ "slots": [
+  "hand"
+ ],
+ "text": "Uses (4 secrets).\n[action] Spend 1 secret: Choose an investigator at your location. That investigator draws 3 cards, then discards 1 card from their hand.",
+ "text_cn": "使用(4秘密)。\n[action]花费1秘密：选择你所在地点的一位调查员。该调查员抽取3张卡牌，然后丢弃其1张手牌。",
+ "health": null,
+ "sanity": null,
+ "unique": false,
+ "pack": "the_dream_eaters",
+ "uses": {
+  "secrets": 4
+ }
+}

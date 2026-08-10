@@ -1,0 +1,24 @@
+{
+  "id": "let_god_sort_them_out_lv0",
+  "arkhamdb_code": "06160",
+  "name": "\"Let God sort them out...\"",
+  "name_cn": "\"让上帝分辨去吧……\"",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "fated"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Play only during one of your turns in which you defeated enemies with a total of 6 or more health.\nAdd \"Let God sort them out...\" to the victory display and immediately end your turn. When earning experience during the resolution of this scenario, you earn 1 additional experience.",
+  "text_cn": "只能在你击败了总计生命值至少6点的敌人的回合中打出。\n将\"让上帝分辨去吧……\"加入胜利牌区，并立即结束你的回合。在这场冒险结局中获得经验值时，你获得额外1点经验值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

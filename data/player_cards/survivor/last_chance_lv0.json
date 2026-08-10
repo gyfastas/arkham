@@ -1,0 +1,23 @@
+{
+  "id": "last_chance_lv0",
+  "arkhamdb_code": "04036",
+  "name": "Last Chance",
+  "name_cn": "殊死一搏",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "gambit"
+  ],
+  "skill_icons": {
+    "wild": 5
+  },
+  "slots": [],
+  "text": "Commit only to a skill test with no other cards committed to it. Other cards cannot be committed to this skill test.\nLast Chance loses [wild] for each card in your hand.",
+  "text_cn": "在一次未投入其它卡牌的技能检定中，才能投入本卡牌。该次技能检定不能投入其他卡牌。\n你手牌中每有1张卡牌，殊死一搏失去[wild]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

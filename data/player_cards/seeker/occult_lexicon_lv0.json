@@ -1,0 +1,27 @@
+{
+  "id": "occult_lexicon_lv0",
+  "arkhamdb_code": "05316",
+  "name": "Occult Lexicon",
+  "name_cn": "密教辞典",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tome",
+    "occult"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Limit 1 per deck.\n<b>Forced</b> - After Occult Lexicon enters play: Search your bonded cards for 3 copies of Blood-Rite. Add 1 to your hand and shuffle the other 2 into your deck. When Occult Lexicon leaves play, find each of those copies of Blood-Rite (even if they are out of play) and set them aside, out of play.",
+  "text_cn": "每副牌组限制1张。\n<b>强制</b> - 在密教辞典入场后：在你的绑定卡牌中查找3张鲜血仪式。将其中1张加入你的手牌并将其余2张混洗入你的牌堆。在密教辞典离场时，找出所有的鲜血仪式(不论其是否在场)并将其放在一边，位于场外。<i>(FAQ, v2.0)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

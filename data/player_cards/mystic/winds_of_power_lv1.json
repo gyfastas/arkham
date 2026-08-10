@@ -1,0 +1,23 @@
+{
+  "id": "winds_of_power_lv1",
+  "arkhamdb_code": "08063",
+  "name": "Winds of Power",
+  "name_cn": "力量之风",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Place 2 charges on an asset you control.\n[reaction] After you draw Winds of Power during your turn: Play it.",
+  "text_cn": "在你控制的一张支援卡上放置2充能。\n[reaction]在你的回合中抽取了力量之风后：将其打出。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

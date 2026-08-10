@@ -1,0 +1,25 @@
+{
+  "id": "scene_of_the_crime_lv0",
+  "arkhamdb_code": "04103",
+  "name": "Scene of the Crime",
+  "name_cn": "犯罪现场",
+  "class": "guardian",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight",
+    "bold"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Play only as your first action.\nDiscover 1 clue at your location (2 clues instead if there is an enemy at that location). This action does not provoke attacks of opportunity.",
+  "text_cn": "只可作为你的第一个行动打出。\n发现你所在地点的1个线索(如果该地点有敌人，改为发现2个线索)。此行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

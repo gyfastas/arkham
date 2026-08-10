@@ -1,0 +1,22 @@
+{
+  "id": "lodge_debts_lv0",
+  "arkhamdb_code": "05012",
+  "name": "Lodge \"Debts\"",
+  "name_cn": "秘社\"债务\"",
+  "class": "neutral",
+  "type": "event",
+  "cost": 10,
+  "level": 0,
+  "traits": [
+    "pact"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Remove Lodge \"Debts\" from the game.\n<b>Forced</b> - When the game ends or you are eliminated, if Lodge \"Debts\" is still in your hand: You suffer 1 mental trauma.",
+  "text_cn": "将秘社\"债务\"移出游戏。\n<b>强制</b> - 在游戏结束或你退场时，如果秘社\"债务\"仍在你手牌中：你受到1点精神创伤。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subtype": "weakness"
+}

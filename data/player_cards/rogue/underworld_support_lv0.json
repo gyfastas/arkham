@@ -1,0 +1,22 @@
+{
+  "id": "underworld_support_lv0",
+  "arkhamdb_code": "08046",
+  "name": "Underworld Support",
+  "name_cn": "地下支持",
+  "class": "rogue",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "favor",
+    "illicit"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck. Purchase at deck creation.\nYour deck cannot include more than 1 copy of each non-weakness, non-signature card (by title).\nReduce your deck size by 5.",
+  "text_cn": "永久。每副牌组限制1张。当牌组构建时购买。\n你的牌组中每张非弱点、非专属卡牌最多只能有一张同名卡牌。\n你的牌组卡牌张数减5。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "garrote_wire_lv2",
+  "arkhamdb_code": "06280",
+  "name": "Garrote Wire",
+  "name_cn": "绞喉索",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "weapon"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "[fast] During your turn, exhaust Garrote Wire: <b>Fight.</b> You get +2 [combat] for this attack. Use only on an enemy with exactly 1 remaining health.",
+  "text_cn": "[fast]在你的回合中，消耗绞喉索：<b>攻击</b>。这次攻击你+2[combat]。只能对剩余1点生命值的敌人使用此能力。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

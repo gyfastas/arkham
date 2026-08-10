@@ -283,14 +283,17 @@ def list_available_cards(investigator_id: str = "", xp_available: int = 0) -> di
 
         # Check deck building rules
         if allowed_classes:
-            if card_class not in allowed_classes:
+            # 多阵营卡（EOE 起）：任一阵营命中即可
+            card_classes = data.get("classes") or [card_class]
+            matched = next((c for c in card_classes if c in allowed_classes), None)
+            if matched is None:
                 # "any" 选项：允许任意阵营指定等级范围的外挂牌（数量上限在前端/校验层落实）
                 if not any_class_levels:
                     continue
                 if not (any_class_levels[0] <= card_level <= any_class_levels[1]):
                     continue
             else:
-                min_lv, max_lv = allowed_classes[card_class]
+                min_lv, max_lv = allowed_classes[matched]
                 if not (min_lv <= card_level <= max_lv):
                     continue
 

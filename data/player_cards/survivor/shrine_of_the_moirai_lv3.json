@@ -1,0 +1,30 @@
+{
+  "id": "shrine_of_the_moirai_lv3",
+  "arkhamdb_code": "07310",
+  "name": "Shrine of the Moirai",
+  "name_cn": "命运三女神的祭坛",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "fortune",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Attach to your location. Uses (3 offerings).\nAttached location gains: \"[fast] Draw the top card of the encounter deck, exhaust Shrine of the Moirai, and spend 1 offering: Return up to 2 cards with a total combined level of 5 or less from your discard pile to your hand. Any investigator at this location may trigger this ability.\"\n<b>Card design by the Moirai at Arkham Nights 2019.</b>",
+  "text_cn": "叠加到你所在地点。使用(3贡品)。\n叠加地点获得：\"[fast]抽取遭遇牌堆顶部的卡牌，消耗命运三女神的祭坛，并花费1贡品：从你的弃牌堆将最多2张等级总计5以下的卡牌返回你的手牌。位于该地点的所有调查员均可触发此能力。<i>(FAQ, v2.0)</i>\"\n<b>卡牌由命运三女神于阿卡姆之夜2019设计。</b>",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "offeringss": 3
+  }
+}

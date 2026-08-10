@@ -1,0 +1,29 @@
+{
+  "id": "cryptographic_cipher_lv0",
+  "arkhamdb_code": "07021",
+  "name": "Cryptographic Cipher",
+  "name_cn": "加密编码盘",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Uses (3 secrets).\n[fast] Exhaust Cryptographic Cipher and spend 1 secret: <b>Investigate.</b> Your location gets +1 shroud for this investigation.\n[action] Exhaust Cryptographic Cipher and spend 1 secret: <b>Investigate.</b> Your location gets -2 shroud for this investigation.",
+  "text_cn": "使用(3秘密)。\n[fast]消耗加密编码盘并花费1秘密：<b>调查</b>。这次调查你所在地点隐藏值+1。\n[action]消耗加密编码盘并花费1秘密：<b>调查</b>。这次调查你所在地点隐藏值-2。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "secrets": 3
+  }
+}

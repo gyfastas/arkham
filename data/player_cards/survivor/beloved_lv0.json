@@ -1,0 +1,26 @@
+{
+  "id": "beloved_lv0",
+  "arkhamdb_code": "07036",
+  "name": "Beloved",
+  "name_cn": "挚爱",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "If a [bless] token is revealed during this test, you may remove Beloved from the game to replace that token's effects with the following: \"You automatically succeed. <i>(Do not reveal another token. Return this token to the chaos bag after this test ends)</i>.\"",
+  "text_cn": "如果这次检定中抽出[bless]标记，你可以将挚爱从游戏中移除，来将该标记的效果替换为以下文本：\"你自动成功。<i>(不要再抽出另一个标记。在这次检定结束后，将该标记返回混乱袋)</i>。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

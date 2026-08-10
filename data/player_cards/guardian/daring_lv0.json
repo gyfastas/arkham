@@ -1,0 +1,23 @@
+{
+  "id": "daring_lv0",
+  "arkhamdb_code": "06111",
+  "name": "Daring",
+  "name_cn": "浑身是胆",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "wild": 3
+  },
+  "slots": [],
+  "text": "Commit only to a skill test during an attack or evasion attempt against an enemy. That enemy gains retaliate and alert for the duration of this skill test. After this test ends, draw 1 card.",
+  "text_cn": "只能投入到攻击或尝试躲避敌人的技能检定中。该敌人在这次技能期间检定获得反击和警戒。在这次检定结束后，抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

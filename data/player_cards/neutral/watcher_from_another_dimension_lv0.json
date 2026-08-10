@@ -1,0 +1,23 @@
+{
+  "id": "watcher_from_another_dimension_lv0",
+  "arkhamdb_code": "06017",
+  "name": "Watcher from Another Dimension",
+  "name_cn": "异次元监视者",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "monster",
+    "extradimensional"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Peril. Hidden. Hunter.\n<b>Revelation</b> - Secretly add this enemy to your hand.\nYou may fight or evade this enemy while it is in your hand (as if it were at your location). If you succeed, discard it from your hand. If you fail, spawn it engaged with you.\n<b>Forced</b> - When your deck runs out of cards, if this enemy is in your hand: It attacks you <i>(from your hand)</i>.",
+  "text_cn": "祸害。隐私。猎手。\n<b>显现</b> - 秘密地将本敌人加入你的手牌。\n只要本敌人在你的手牌中，你可以攻击或躲避它(如同其在你所在地点)。如果你成功，将其从你手牌中丢弃。如果你失败，将其生成并与你交战。\n<b>强制</b> - 在你牌堆的卡牌耗尽时，如果本敌人在你的手牌中：其<i>(从你的手牌中)</i>攻击你。",
+  "health": 2,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "ursula_downs",
+  "arkhamdb_code": "04002",
+  "name": "Ursula Downs",
+  "name_cn": "厄休拉·唐斯",
+  "title": "The Explorer",
+  "title_cn": "探险家",
+  "class": "seeker",
+  "health": 7,
+  "sanity": 7,
+  "skills": {
+    "willpower": 3,
+    "intellect": 4,
+    "combat": 1,
+    "agility": 4
+  },
+  "ability": "[reaction] After you move to a location: Take an investigate action. (Limit once per round.)\n[elder_sign] effect: +1. After this test ends, you may move to a connecting location.",
+  "ability_cn": "[reaction]在你移动到一个地点后：进行一次调查行动。(每轮限制1次。)\n[elder_sign]效果：+1。在本次检定结束后，你可以移动到一个连接地点。",
+  "elder_sign": "[elder_sign] effect: +1. After this test ends, you may move to a connecting location.",
+  "elder_sign_cn": "[elder_sign]效果：+1。在本次检定结束后，你可以移动到一个连接地点。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "seeker": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      }
+    },
+    "_trait_options": [
+      "trait:relic lv0-4"
+    ]
+  },
+  "signature_cards": [
+    "jake_williams_lv0"
+  ],
+  "weakness": "call_of_the_unknown_lv0",
+  "flavor_text": "\"Discovery is easy. Understanding is the hard part.\"",
+  "back_text": "<b>Deck Size:</b> 30.\n<b>Deckbuilding Options:</b> Seeker cards ([seeker]) level 0-5, [[Relic]] cards level 0-4, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Jake Williams, Call of the Unknown, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：探求者([seeker])等级0-5，[[遗物]]卡牌等级0-4，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：杰克·威廉斯、未知的呼唤、1张随机基础弱点。",
+  "pack": "the_forgotten_age"
+}

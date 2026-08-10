@@ -1,0 +1,29 @@
+{
+  "id": "abigail_foreman_lv4",
+  "arkhamdb_code": "06324",
+  "name": "Abigail Foreman",
+  "name_cn": "阿比盖尔·福尔曼",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "ally",
+    "miskatonic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[fast]: Attach a [[Tome]] asset in your play area to Abigail Foreman, or switch a [[Tome]] asset in your play area with an attached asset. The asset attached to her takes up no hand slots. (Limit 1 attached asset.)\n[reaction] After you resolve an [action] ability on the attached [[Tome]] asset, exhaust Abigail Foreman: Resolve its effects again.",
+  "text_cn": "[fast]：将你的游戏区域中一张[[书籍]]支援卡叠加到阿比盖尔·福尔曼，或将你游戏区域中的一张[[书籍]]支援卡与已叠加的支援卡互换。叠加到她的支援卡不占手部槽位(叠加的支援卡限制1张)。\n[reaction]在你结算此叠加的[[书籍]]支援卡上的[action]能力后，消耗阿比盖尔·福尔曼：再次结算其效果。",
+  "health": 1,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Library Intern",
+  "subname_cn": "图书馆实习"
+}

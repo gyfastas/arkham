@@ -1,0 +1,25 @@
+{
+  "id": "21_or_bust_lv0",
+  "arkhamdb_code": "08048",
+  "name": "21 or Bust",
+  "name_cn": "21点",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "fortune",
+    "gambit"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "One at a time, reveal random tokens from the chaos bag until you choose to stop. Treat each [skull], [cultist], [tablet], or [elder_thing] as a 5; the [auto_fail] as a 10; and the [elder_sign] as either a 1 or an 11. If the combined value of those tokens (ignoring +/-) is...\n- ...18 or less, gain 4 resources.\n- ...19, gain 5 resources.\n- ...20, gain 6 resources.\n- ...21, gain 9 resources.",
+  "text_cn": "依次从混乱袋随机抽出标记，直到你选择停下。将每个[skull]、[cultist]、[tablet]或[elder_thing]视为5；[auto_fail]视为10；[elder_sign]视为1或11。如果这些标记的总和(忽略+/-)为……\n- ……18或更少，获得4资源。\n- ……19，获得5资源。\n- ……20，获得6资源。\n- ……21，获得9资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

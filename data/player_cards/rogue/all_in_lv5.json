@@ -1,0 +1,23 @@
+{
+  "id": "all_in_lv5",
+  "arkhamdb_code": "04309",
+  "name": "All In",
+  "name_cn": "孤注一掷",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 5,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nIf this test is successful, draw 1 card for each point you succeeded by, to a maximum of 5. Shuffle each weakness drawn by this effect back into your deck without resolving it.",
+  "text_cn": "每次技能检定最多投入1张。\n如果本次检定成功，你每超过难度1点，抽取1张卡牌，最多可抽取5张。将本效果中抽到的所有弱点洗回你的牌堆，而不进行结算。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

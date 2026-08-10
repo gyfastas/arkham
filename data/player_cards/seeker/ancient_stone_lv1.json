@@ -1,0 +1,28 @@
+{
+  "id": "ancient_stone_lv1",
+  "arkhamdb_code": "04022",
+  "name": "Ancient Stone",
+  "name_cn": "古代巨石",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: <b>Investigate.</b> Your location gets +3 shroud for this investigation. If you succeed, discover 1 additional clue at your location, discard Ancient Stone, and record in your Campaign Log that \"you have identified the stone.\" Next to this, in parentheses, record the difficulty of this skill test.",
+  "text_cn": "[action]：<b>调查</b>。这次调查中，你所在地点隐藏值+3。如果成功，额外发现你所在地点的1个线索，丢弃古代巨石，并在冒险日志中记录下\"你鉴定了古代巨石\"。在记下的文字旁边将本次技能检定的难度记在括号内。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subname": "Unidentified",
+  "subname_cn": "未鉴定"
+}

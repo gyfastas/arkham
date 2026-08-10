@@ -1,0 +1,23 @@
+{
+  "id": "mob_goons_lv0",
+  "arkhamdb_code": "08003",
+  "name": "Mob Goons",
+  "name_cn": "黑帮暴徒",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "humanoid",
+    "criminal"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Hunter.\n<b>Prey</b> - Daniela Reyes only.\nThis enemy's attacks cannot be canceled.\nDamage/horror dealt by this enemy's attacks is treated as direct.",
+  "text_cn": "猎手。\n<b>猎物</b> - 仅对丹妮拉·雷耶丝。\n本敌人的攻击不能被取消。\n本敌人的攻击造成的伤害/恐惧被视为直接伤害/恐惧。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subtype": "weakness"
+}

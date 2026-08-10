@@ -1,0 +1,25 @@
+{
+  "id": "backpack_lv0",
+  "arkhamdb_code": "04037",
+  "name": "Backpack",
+  "name_cn": "背包",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "body"
+  ],
+  "text": "[reaction] After Backpack enters play: Search the top 6 cards of your deck for up to 3 non-weakness [[Item]] or [[Supply]] cards, and attach them facedown to Backpack. Shuffle your deck.\nCards attached to Backpack may be played as if they were in your hand. If there are no cards attached to Backpack, discard it.",
+  "text_cn": "[reaction]在背包入场后：在你牌堆顶部6张卡牌中查找最多3张非弱点的[[道具]]或[[供给]]卡牌，并将这些卡牌面朝下叠加到背包。混洗你的牌堆。\n可以打出叠加到背包的卡牌，如同这些卡牌在你的手牌中。如果没有卡牌叠加到背包，则将其丢弃。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

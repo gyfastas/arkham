@@ -1,0 +1,26 @@
+{
+  "id": "trench_coat_lv0",
+  "arkhamdb_code": "04203",
+  "name": "Trench Coat",
+  "name_cn": "战壕大衣",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "clothing"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "body"
+  ],
+  "text": "You get +1 [agility] during evasion attempts.",
+  "text_cn": "你在躲避尝试期间得到+1[agility]。",
+  "health": 2,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

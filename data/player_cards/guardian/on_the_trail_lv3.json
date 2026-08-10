@@ -1,0 +1,30 @@
+{
+  "id": "on_the_trail_lv3",
+  "arkhamdb_code": "08085",
+  "name": "On the Trail",
+  "name_cn": "追踪",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "insight",
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 2,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Choose an enemy at any location other than yours. Move twice toward that enemy. Discover 1 clue at each location you entered by this effect.",
+  "text_cn": "选择你所在地点以外任何地点的一名敌人。朝该敌人移动2次。在每个你因此效果进入的地点各发现1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "seeker"
+  ]
+}

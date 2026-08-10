@@ -1,0 +1,23 @@
+{
+  "id": "family_inheritance_lv0",
+  "arkhamdb_code": "05011",
+  "name": "Family Inheritance",
+  "name_cn": "家族遗产",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "boon"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Preston Fairmont deck only.\n[action]: Move all resources from this card to your resource pool.\n<b>Forced</b> - When your turn begins: Place 4 resources <i>(from the token pool)</i> on this card. Resources on this card may be spent as if they were in your resource pool. Discard all resources from this card at the end of your turn.",
+  "text_cn": "永久。普雷斯顿·费尔蒙特牌组专用。\n[action]：将本卡牌上的所有资源移动你的资源池。\n<b>强制</b> - 在你回合开始时：在本卡牌上放置4资源<i>(从供应堆拿取)</i>。卡牌上的资源可以被花费，如同在你的资源池中。当你回合结束时，丢弃本卡牌上的所有资源。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "A Windfall? Or a Burden?",
+  "subname_cn": "天降横财？天将横祸？"
+}

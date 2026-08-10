@@ -1,0 +1,24 @@
+{
+  "id": "mystifying_song_lv0",
+  "arkhamdb_code": "05018",
+  "name": "Mystifying Song",
+  "name_cn": "神秘乐曲",
+  "class": "neutral",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "spell",
+    "song"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Marie Lambeau deck only.\nFast. Play when the agenda would advance by reaching its doom threshold.\nUntil the end of the phase, the agenda cannot advance by reaching its doom threshold. Remove Mystifying Song from the game.",
+  "text_cn": "玛丽·朗博牌组专用。\n快速。在密谋因为达到毁灭目标值而要推进时打出。\n本阶段结束前，该密谋不会因为达到毁灭目标值而推进。将神秘乐曲移出游戏。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

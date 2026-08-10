@@ -1,0 +1,29 @@
+{
+  "id": "pendant_of_the_queen_lv0",
+  "arkhamdb_code": "06022",
+  "name": "Pendant of the Queen",
+  "name_cn": "皇后的挂坠",
+  "class": "seeker",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "accessory"
+  ],
+  "text": "Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, set it aside, out of play, and shuffle 3 set-aside copies of Segment of Onyx into your deck.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location.",
+  "text_cn": "绑定(一瓣缟玛瑙)。使用(3充能)。如果本卡牌没有充能，将其放在一边，位于场外，并将放在一边的3张一瓣缟玛瑙混洗入你的牌堆。\n[free]消耗皇后的挂坠并花费1充能：选择一个已揭示地点并选择以下一项 - 移动到该地点、发现该地点的1个线索、自动躲避该地点的一名敌人。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Of Nothing at All",
+  "subname_cn": "虚无皇后",
+  "uses": {
+    "charges": 3
+  }
+}

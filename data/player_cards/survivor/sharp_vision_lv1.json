@@ -1,0 +1,24 @@
+{
+  "id": "sharp_vision_lv1",
+  "arkhamdb_code": "06204",
+  "name": "Sharp Vision",
+  "name_cn": "目力敏锐",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "innate",
+    "developed"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nWhile Sharp Vision is committed during a basic investigate action, it gains [intellect] [intellect] and the text: \"If this test is successful by 2 or more, discover 1 additional clue at this location.\"",
+  "text_cn": "每次技能检定最多投入1张。\n只要在基础调查行动中投入目力敏锐，其获得[intellect][intellect]和以下文本：\"如果这次检定成功且超过难度至少2点，在此地点发现额外1个线索。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

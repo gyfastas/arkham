@@ -1,0 +1,21 @@
+{
+  "id": "self_sacrifice_lv0",
+  "arkhamdb_code": "06157",
+  "name": "Self-Sacrifice",
+  "name_cn": "自我牺牲",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Commit only to a skill test (of any type) being performed by another investigator at your location.\nIf this test fails, you must resolve all effects from the failed test, instead of the performing investigator. Then, either you draw 2 cards, or the performing investigator draws 2 cards.",
+  "text_cn": "只能投入到你所在地点的另一位调查员执行的(任何类型的)技能检定中。\n如果这次检定失败，检定失败的所有效果不由执行检定的调查员结算，改为必须由你结算。然后，你或执行检定的调查员抽取2张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

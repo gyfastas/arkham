@@ -1,0 +1,24 @@
+{
+  "id": "swift_reload_lv2",
+  "arkhamdb_code": "06161",
+  "name": "Swift Reload",
+  "name_cn": "快速装填",
+  "class": "rogue",
+  "type": "event",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "tactic",
+    "trick"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nChoose a [[Firearm]] asset you control with fewer ammo tokens than its uses (X) value. Place ammo on that asset until it has ammo equal to its uses (X) value.",
+  "text_cn": "快速。只能在你的回合中打出。\n选择你控制的一张子弹标记数量少于其\"使用(X)\"中的X的[[枪械]]支援卡。在该支援卡上放置子弹，直到其子弹等于其\"使用(X)\"中的X。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

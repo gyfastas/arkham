@@ -1,0 +1,21 @@
+{
+  "id": "take_heart_lv0",
+  "arkhamdb_code": "04201",
+  "name": "Take Heart",
+  "name_cn": "重拾信念",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nYou may commit Take Heart to any type of test.\nIf this test fails, the performing investigator draws 2 cards and gains 2 resources.",
+  "text_cn": "每次技能检定最多投入1张。\n你可以在任何类型的检定中投入重拾信念。\n如果这次检定失败，执行检定的调查员抽取2张卡牌并获得2资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

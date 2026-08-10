@@ -1,0 +1,33 @@
+{
+  "id": "precious_memento_lv4",
+  "arkhamdb_code": "08115",
+  "name": "Precious Memento",
+  "name_cn": "珍贵记忆",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "item",
+    "charm",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Limit 1 Precious Memento <i>(From a Future Life)</i> per deck.\n[reaction] After you fail a skill test by 2 or more, exhaust Precious Memento: Heal 1 horror from it.\n[reaction] After you succeed at a skill test by 2 or more, exhaust Precious Memento: Heal 1 damage from it.",
+  "text_cn": "每副牌组限制1张珍贵记忆<i>(来自后世)</i>。\n[reaction]在你技能检定失败且低于难度至少2点后，消耗珍贵记忆：治愈其1点恐惧。\n[reaction]在你技能检定成功且超过难度至少2点后，消耗珍贵记忆：治愈其1点伤害。",
+  "health": 3,
+  "sanity": 3,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "rogue",
+    "survivor"
+  ],
+  "subname": "From a Future Life",
+  "subname_cn": "来自后世"
+}

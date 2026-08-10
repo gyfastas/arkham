@@ -1,0 +1,22 @@
+{
+  "id": "greed_lv0",
+  "arkhamdb_code": "08018",
+  "name": "Greed",
+  "name_cn": "贪婪",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Take 1 horror. If you have...\n- ...10 or fewer resources, take 1 additional horror.\n- ...5 or fewer resources, take 1 additional horror.\n- ...0 resources, take 1 additional horror.",
+  "text_cn": "<b>显现</b> - 受到1点恐惧。如果你有……\n- ……10资源或更少，额外受到1点恐惧。\n- ……5资源或更少，额外受到1点恐惧。\n- ……0资源，额外受到1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subtype": "weakness"
+}

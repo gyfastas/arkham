@@ -1,0 +1,21 @@
+{
+  "id": "dark_insight_lv0",
+  "arkhamdb_code": "05014",
+  "name": "Dark Insight",
+  "name_cn": "黑暗洞察",
+  "class": "neutral",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Diana Stanley deck only.\nFast. Play when an investigator at your location draws an encounter card or a weakness.\nCancel all of that card's effects and shuffle it back into its deck. <i>(Do not draw a new card to replace it.)</i>",
+  "text_cn": "黛安娜·史丹利牌组专用。\n快速。在你所在地点的调查员抽取一张遭遇卡或弱点时打出。\n取消该卡牌的所有效果并将其混洗回其牌堆。<i>(不要再抽取一张卡牌来替代。)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

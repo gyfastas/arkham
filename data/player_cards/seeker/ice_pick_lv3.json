@@ -1,0 +1,32 @@
+{
+  "id": "ice_pick_lv3",
+  "arkhamdb_code": "08107",
+  "name": "Ice Pick",
+  "name_cn": "破冰锥",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "item",
+    "tool",
+    "melee"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Fast.\n[fast] During a skill test while fighting or investigating, exhaust Ice Pick: You get +1 skill value for this test. If you succeed, you may discard Ice Pick to have this attack deal +1 damage <i>(if you are fighting)</i>, or to discover 1 additional clue at your location <i>(if you are investigating)</i>.",
+  "text_cn": "快速。\n[fast]攻击或调查时的技能检定中，消耗破冰锥：你这次检定+1技能值。如果你成功，你可以丢弃破冰锥来使这次攻击造成+1伤害<i>(如果你攻击)</i>，或发现你所在地点额外1个线索<i>(如果你调查)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "survivor"
+  ]
+}

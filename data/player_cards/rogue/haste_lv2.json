@@ -1,0 +1,25 @@
+{
+  "id": "haste_lv2",
+  "arkhamdb_code": "06239",
+  "name": "Haste",
+  "name_cn": "快手",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Limit 1 per investigator.\n[reaction] After you perform the same type of action twice in a row, exhaust Haste: Take another action of that type again <i>(types include activate, engage, evade, fight, investigate, move, play, resource, and draw)</i>.",
+  "text_cn": "每位调查员限制1张。\n[reaction]在你连续执行同一种行动两次后，消耗快手：再进行一次该种行动<i>(行动种类包括启动、交战、躲避、攻击、调查、移动、打出、资源和抽取)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

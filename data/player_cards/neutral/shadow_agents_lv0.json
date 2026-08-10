@@ -1,0 +1,23 @@
+{
+  "id": "shadow_agents_lv0",
+  "arkhamdb_code": "07011",
+  "name": "Shadow Agents",
+  "name_cn": "影子特工",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "humanoid",
+    "cultist"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Prey</b> - Trish Scarborough only.\nHunter.\nWhile Shadow Agents is engaged with you, you cannot discover clues except by investigating.\n<b>Forced</b> - After Shadow Agents is evaded: Discard it.",
+  "text_cn": "<b>猎物</b> - 仅对特里希‧斯卡波罗。\n猎手。\n只要影子特工与你交战，你除了调查外不能发现线索。\n<b>强制</b> - 在躲避影子特工后：将其丢弃。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "weakness"
+}

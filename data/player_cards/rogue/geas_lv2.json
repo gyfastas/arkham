@@ -1,0 +1,22 @@
+{
+  "id": "geas_lv2",
+  "arkhamdb_code": "07265",
+  "name": "Geas",
+  "name_cn": "誓愿",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "pact"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Exceptional.\nYou get +1 [willpower], +1 [intellect], +1 [combat], and +1 [agility].\n<b>Forced</b> - After Geas enters play: Make a promise using the following formula - \"I shall not (draw/play/commit) any cards during each of my turns.\" If you break this promise while Geas is in play, discard it and add 10 [curse] tokens to the chaos bag.",
+  "text_cn": "卓越。\n你获得+1[willpower]、+1[intellect]、+1[combat]和+1[agility]。\n<b>强制</b> - 在誓愿入场后：使用以下格式做出承诺——\"在我的每个回合中，我不会(抽取/打出/投入)任何卡牌。\" 。如果誓愿在场时你打破承诺，将其丢弃并加入10个[curse]标记到混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "exceptional": true
+}

@@ -1,0 +1,25 @@
+{
+  "id": "blood_eclipse_lv3",
+  "arkhamdb_code": "04266",
+  "name": "Blood Eclipse",
+  "name_cn": "鲜血失色",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "spell",
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to play Blood Eclipse, take up to 3 damage.\n<b>Fight.</b> This attack uses [willpower] instead of [combat]. You get +1 [willpower] and deal +1 damage for this attack for each damage taken as part of this card's cost.",
+  "text_cn": "作为打出鲜血失色的额外费用，受到最多3点伤害。\n<b>攻击</b>。这次攻击不使用[combat]，改为使用[willpower]。支付本卡牌费用时你每受到1点伤害，这次攻击中你+1[willpower]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

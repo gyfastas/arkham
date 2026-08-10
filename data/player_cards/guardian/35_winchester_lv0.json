@@ -1,0 +1,30 @@
+{
+  "id": "35_winchester_lv0",
+  "arkhamdb_code": "06195",
+  "name": ".35 Winchester",
+  "name_cn": ".35温彻斯特步枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a +1, 0, or [elder_sign] chaos token is revealed during this attack, this attack deals +2 damage.",
+  "text_cn": "使用(5子弹)。\n[action]花费1子弹：<b>攻击</b>。<i>(FAQ, v1.7)</i>这次攻击你+2[combat]。如果这次攻击中抽出+1、0或[elder_sign]混乱标记，这次攻击造成+2伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "uses": {
+    "ammo": 5
+  }
+}

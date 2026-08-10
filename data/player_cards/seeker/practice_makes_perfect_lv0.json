@@ -1,0 +1,25 @@
+{
+  "id": "practice_makes_perfect_lv0",
+  "arkhamdb_code": "06197",
+  "name": "Practice Makes Perfect",
+  "name_cn": "熟能生巧",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "gambit",
+    "tactic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during a skill test at your location.\nSearch the top 9 cards of your deck for a [[Practiced]] skill and commit it to this skill test, if able. Shuffle the remaining cards back into your deck. After this test ends, if it was successful, add that skill to your hand instead of discarding it.",
+  "text_cn": "快速。在你所在地点的技能检定中打出。\n在你的牌堆顶部9张卡牌中查找一张[[精通]]技能卡，并将其投入这次技能检定(如可能)。将其余卡牌混洗回你的牌堆。在这次检定结束后，如果检定成功，不将该技能卡丢弃，改为将其加入你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

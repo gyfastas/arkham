@@ -1,0 +1,24 @@
+{
+  "id": "astounding_revelation_lv0",
+  "arkhamdb_code": "06023",
+  "name": "Astounding Revelation",
+  "name_cn": "骇人真相",
+  "class": "seeker",
+  "type": "event",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "research"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Myriad.\nAstounding Revelation cannot be played.\n[reaction] When you search your deck and Astounding Revelation is among the searched cards, discard it: Either gain 2 resources or place 1 secret on an asset you control. (Max one [[Research]] ability per search.)",
+  "text_cn": "多重。\n不能打出骇人真相。\n[reaction]在你查找你的牌堆时若骇人真相在被查找卡牌中，将其丢弃：获得2资源或在你控制的支援卡上放置1秘密。(每次查找最多使用一次[[研究]]能力。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

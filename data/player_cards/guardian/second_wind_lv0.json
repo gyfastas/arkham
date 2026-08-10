@@ -1,0 +1,24 @@
+{
+  "id": "second_wind_lv0",
+  "arkhamdb_code": "04149",
+  "name": "Second Wind",
+  "name_cn": "恢复元气",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "spirit",
+    "bold"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Play only as your first action.\nHeal 1 damage (2 instead if you drew a treachery this round). Then, draw 1 card.",
+  "text_cn": "只可作为你的第一个行动打出。\n治愈1点伤害(如果你本轮抽出了1张诡计卡，改为治愈2点伤害)。然后，抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

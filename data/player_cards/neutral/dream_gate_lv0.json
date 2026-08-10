@@ -1,0 +1,23 @@
+{
+  "id": "dream_gate_lv0",
+  "arkhamdb_code": "06015a",
+  "name": "Dream-Gate",
+  "name_cn": "梦境之门",
+  "class": "neutral",
+  "type": "location",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "dreamlands"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Bonded (Gate Box).\nDream-Gate is connected to each other revealed location, and vice versa. Enemies and investigators other than Luke Robinson cannot enter Dream-Gate.\n<b>Forced</b> - At the end of the investigation phase: Set Dream-Gate aside, out of play. (If Luke Robinson is here, move him to any revealed location.)",
+  "text_cn": "绑定(门之匣)。\n梦境之门与其它每个已揭示地点互相连接。敌人和卢克·罗宾逊以外的调查员不能进入梦境之门。\n<b>强制</b> - 当调查员阶段结束时：将梦境之门放在一边，位于场外。(如果卢克·罗宾逊在这里，将他移动到任一已揭示地点。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subname": "Wondrous Journey",
+  "subname_cn": "奇妙旅程"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "agency_backup_lv5",
+  "arkhamdb_code": "05274",
+  "name": "Agency Backup",
+  "name_cn": "特工支援",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 7,
+  "level": 5,
+  "traits": [
+    "ally",
+    "agency"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Agency Backup may be assigned damage and/or horror dealt to other investigators at your location.\n[fast] Exhaust Agency Backup and deal 1 damage to it: Deal 1 damage to an enemy at your location.\n[fast] Exhaust Agency Backup and deal 1 horror to it: Discover 1 clue at your location.",
+  "text_cn": "对你所在地点其他调查员造成的伤害和/或恐惧可以被分配到特工支援。\n[free]消耗特工支援并对其造成1点伤害：对你所在地点的1名敌人造成1点伤害。\n[free]消耗特工支援并对其造成1点恐惧：发现你所在地点的1个线索。",
+  "health": 4,
+  "sanity": 4,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

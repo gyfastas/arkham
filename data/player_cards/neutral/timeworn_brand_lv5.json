@@ -1,0 +1,29 @@
+{
+  "id": "timeworn_brand_lv5",
+  "arkhamdb_code": "04276",
+  "name": "Timeworn Brand",
+  "name_cn": "古旧锈剑",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 5,
+  "level": 5,
+  "traits": [
+    "item",
+    "relic",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action] If Timeworn Brand is ready: <b>Fight.</b> You get +2 [combat] and deal +1 damage for this attack.\n[action] Exhaust Timeworn Brand: <b>Fight.</b> Add your [willpower] to your skill value for this attack. This attack deals +3 damage. If this attack defeats an [[Elite]] enemy, draw 3 cards. (Max once per game.)",
+  "text_cn": "[action]如果古旧锈剑已准备：<b>攻击</b>。这次攻击中你+2[combat]并造成+1伤害。\n[action]消耗古旧锈剑：<b>攻击</b>。这次攻击中将你的[willpower]加入你的技能值。这次攻击造成+3伤害。如果这次攻击击败[[精英]]敌人，抽取3张卡牌。(每场游戏最多一次。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

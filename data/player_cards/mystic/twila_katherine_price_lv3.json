@@ -1,0 +1,30 @@
+{
+  "id": "twila_katherine_price_lv3",
+  "arkhamdb_code": "06244",
+  "name": "Twila Katherine Price",
+  "name_cn": "特薇拉·凯瑟琳·普莱斯",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "ally",
+    "artist",
+    "dreamer"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[reaction] After you spend 1 or more charges from a [[Spell]] asset, exhaust Twila Katherine Price: Place 1 charge on that asset.",
+  "text_cn": "[reaction]在你花费一张[[法术]]支援卡的充能后，消耗特薇拉·凯瑟琳·普莱斯：在该支援卡上放置1充能。",
+  "health": 1,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Lost in a Dream",
+  "subname_cn": "迷失梦境"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "bought_in_blood_lv0",
+  "arkhamdb_code": "04007",
+  "name": "Bought in Blood",
+  "name_cn": "血的代价",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - You must either discard an [[Ally]] asset you control from play, or discard each [[Ally]] asset from your hand. If no assets are discarded by this effect, shuffle Bought in Blood back into your deck.",
+  "text_cn": "<b>显现</b> - 你必须从场上丢弃你控制的一张[[盟友]]支援卡，或丢弃手牌中的所有[[盟友]]支援卡。如果没有支援卡借由本效果被丢弃，将血的代价洗回你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

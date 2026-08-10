@@ -1,0 +1,25 @@
+{
+  "id": "moxie_lv3",
+  "arkhamdb_code": "08056",
+  "name": "Moxie",
+  "name_cn": "刚毅果敢",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "talent",
+    "composure"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Limit 1 [[Composure]] in play.\nYou get +1 [willpower] and +1 [agility].\nNon-direct damage/horror must be assigned to Moxie before it can be assigned to your investigator card.\n[fast] Spend 1 resource: You get +1 [willpower] or +1 [agility] for this skill test.",
+  "text_cn": "快速。场上限制1张[[沉稳]]在场。\n你获得+1[willpower]和+1[agility]。\n非直接伤害/恐惧在被分配给你的调查员卡之前，必须先分配给刚毅果敢。\n[fast]花费1资源：你这次技能检定+1[willpower]或+1[agility]。",
+  "health": 3,
+  "sanity": 1,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

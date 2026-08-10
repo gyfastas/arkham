@@ -1,0 +1,30 @@
+{
+  "id": "lucky_dice_lv3",
+  "arkhamdb_code": "07307",
+  "name": "Lucky Dice",
+  "name_cn": "幸运骰子",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Exceptional.\n[reaction] When you reveal a non-[curse], non-[auto_fail] chaos token, add 1 [curse] token to the chaos bag: Ignore the just revealed chaos token and reveal another one to resolve. If that token has a [curse] or [auto_fail] symbol, return Lucky Dice to your hand (cannot be ignored/canceled).",
+  "text_cn": "卓越。\n[reaction]在你抽出一个非[curse]、非[auto_fail]的混乱标记时，加入1个[curse]标记到混乱袋：忽略刚刚抽出的混乱标记并抽出另一个结算。如果该标记有[curse]或[auto_fail]符号，将幸运骰子返回你的手牌(不能被忽略/取消)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subname": "...Or Are They?",
+  "subname_cn": "还是……？",
+  "exceptional": true
+}

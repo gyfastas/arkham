@@ -1,0 +1,31 @@
+{
+  "id": "45_thompson_lv3",
+  "arkhamdb_code": "05186",
+  "name": ".45 Thompson",
+  "name_cn": ".45汤姆逊冲锋枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 6,
+  "level": 3,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (5 ammo).\nAmmo spent from .45 Thompson is placed in your resource pool, as resources.\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] and deal +1 damage for this attack.",
+  "text_cn": "使用(5子弹)。\n将.45汤姆逊冲锋枪花费的子弹放进你的资源池，作为资源。\n[action]花费1子弹：<b>攻击</b>。你这次攻击+2[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "ammo": 5
+  }
+}

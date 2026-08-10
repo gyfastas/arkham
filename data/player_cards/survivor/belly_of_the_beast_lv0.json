@@ -1,0 +1,25 @@
+{
+  "id": "belly_of_the_beast_lv0",
+  "arkhamdb_code": "05160",
+  "name": "Belly of the Beast",
+  "name_cn": "勇闯虎穴",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "gambit",
+    "trick"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play after you successfully evade an enemy by 2 or more.\nDiscover 1 clue at that enemy's location.",
+  "text_cn": "快速。在你成功躲避一名敌人并超过难度至少2点后打出。\n发现该敌人所在地点的1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

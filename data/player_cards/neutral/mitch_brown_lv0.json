@@ -1,0 +1,28 @@
+{
+  "id": "mitch_brown_lv0",
+  "arkhamdb_code": "04006",
+  "name": "Mitch Brown",
+  "name_cn": "米奇·布朗",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Leo Anderson deck only.\nYou have 2 additional ally slots, which can only be used to hold non-unique allies.",
+  "text_cn": "里奥·安德森牌组专用。\n你拥有2个额外的盟友槽位，只能用来放置非独特的盟友。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Sole Survivor",
+  "subname_cn": "唯一生还者"
+}

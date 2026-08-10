@@ -1,0 +1,24 @@
+{
+  "id": "strength_in_numbers_lv1",
+  "arkhamdb_code": "08077",
+  "name": "Strength in Numbers",
+  "name_cn": "人多力量大",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "innate",
+    "synergy"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Strength in Numbers gains a [wild] icon for each different class among cards you control.",
+  "text_cn": "你控制的卡牌之中每有一个不同的职阶，人多力量大获得一个[wild]图标。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

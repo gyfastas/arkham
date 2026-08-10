@@ -1,0 +1,25 @@
+{
+  "id": "toe_to_toe_lv0",
+  "arkhamdb_code": "08020",
+  "name": "Toe to Toe",
+  "name_cn": "正面迎击",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit",
+    "tactic"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> This attack deals +1 damage and is automatically successful. As an additional cost to perform this attack, the chosen enemy makes an attack against you.",
+  "text_cn": "<b>攻击</b>。这次攻击造成+1伤害并自动成功。作为执行这次攻击的额外费用，所选敌人攻击你。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

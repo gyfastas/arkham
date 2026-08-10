@@ -1,0 +1,21 @@
+{
+  "id": "versatile_lv2",
+  "arkhamdb_code": "06167",
+  "name": "Versatile",
+  "name_cn": "多才多艺",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent.\nYou get +5 Deck Size.\nYour investigator's Deckbuilding Options gain: \"one other level 0 card from any class ([guardian], [seeker], [rogue], [mystic], or [survivor]).\"",
+  "text_cn": "永久。\n你的牌组卡牌张数+5。\n你的调查员的牌组构建选项获得：\"1张任何职阶([guardian]、[seeker]、[rogue]、[mystic]或[survivor])的其它0级卡牌。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

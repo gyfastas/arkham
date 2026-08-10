@@ -1,0 +1,25 @@
+{
+  "id": "expose_weakness_lv3",
+  "arkhamdb_code": "04195",
+  "name": "Expose Weakness",
+  "name_cn": "暴露弱点",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 3,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] player window.\nChoose an enemy at your location. Test [intellect] (X), where X is that enemy's fight value. If you succeed, treat that enemy's fight value as if it were 0 for the next attack performed against it this phase. Draw 1 card.",
+  "text_cn": "快速。在任何[free]玩家时间段中打出。\n选择你所在地点的一个敌人。检定[intellect](X)，X为该敌人的攻击值。如果你成功，本阶段下次对该敌人执行攻击时，将其攻击值视为0。抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

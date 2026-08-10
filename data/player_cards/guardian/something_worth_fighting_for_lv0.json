@@ -1,0 +1,23 @@
+{
+  "id": "something_worth_fighting_for_lv0",
+  "arkhamdb_code": "05109",
+  "name": "Something Worth Fighting For",
+  "name_cn": "赴汤蹈火",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Something Worth Fighting For may be assigned horror dealt to other investigators at your location.",
+  "text_cn": "对你所在地点的其他调查员造成的恐惧可以分配到赴汤蹈火。",
+  "health": null,
+  "sanity": 3,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "trusted_lv0",
+  "arkhamdb_code": "04019",
+  "name": "Trusted",
+  "name_cn": "肝胆相照",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "fast": true,
+  "traits": [
+    "upgrade"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nAttach to an [[Ally]] asset you control.\nAttached asset gets +1 health and +1 sanity.",
+  "text_cn": "快速。只能在你的回合中打出。\n叠加到你控制的一张[[盟友]]支援卡。\n被叠加的支援卡生命值+1，神智值+1。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

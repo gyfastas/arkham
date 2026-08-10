@@ -1,0 +1,25 @@
+{
+  "id": "against_all_odds_lv2",
+  "arkhamdb_code": "04202",
+  "name": "Against All Odds",
+  "name_cn": "勇斗异劫",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you perform a skill test with a difficulty higher than your base skill value.\nReveal X additional chaos tokens for this skill test. Choose one to resolve and ignore the rest. X is the difference between the test's difficulty and your base skill value.",
+  "text_cn": "快速。在你执行一次技能检定，且该检定的难度高于你的基础技能值时打出。\n为本次技能检定额外抽出X个混乱标记。选出其中1个标记来结算，忽略其余标记。X为本次检定难度和你基础技能值的差值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

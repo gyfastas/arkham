@@ -1,0 +1,24 @@
+{
+  "id": "quick_study_lv2",
+  "arkhamdb_code": "04154",
+  "name": "Quick Study",
+  "name_cn": "一目十行",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[fast] Place 1 of your clues on your location and exhaust Quick Study: You get +3 skill value for this skill test.",
+  "text_cn": "[free]将你的1个线索放在所在地点上，并消耗一目十行：这次技能检定你的技能值+3。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

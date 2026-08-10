@@ -1,0 +1,24 @@
+{
+  "id": "read_the_signs_lv0",
+  "arkhamdb_code": "06117",
+  "name": "Read the Signs",
+  "name_cn": "解读秘符",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "<b>Investigate.</b> Add your [willpower] value to your skill value for this investigation. You may ignore any effect or keyword on your location which would trigger during this investigation. If you succeed, discover 1 additional clue at this location.",
+  "text_cn": "<b>调查</b>。将你的[willpower]值加入你这次调查的技能值。你可以忽略在这次调查中将在你所在地点触发的任意效果或关键词。如果你成功，在此地点发现额外1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

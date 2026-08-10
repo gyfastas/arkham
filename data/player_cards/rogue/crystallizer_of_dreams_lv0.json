@@ -1,0 +1,26 @@
+{
+  "id": "crystallizer_of_dreams_lv0",
+  "arkhamdb_code": "06024",
+  "name": "Crystallizer of Dreams",
+  "name_cn": "梦境结晶器",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "As an additional cost to play this card, you must search your bonded cards for 1 copy of Guardian of the Crystallizer and shuffle it into your deck.\n[reaction] After you play an event: Attach it facedown to Crystallizer of Dreams instead of discarding it (to a maximum of 5 attached events). Attached events may be committed to skill tests as if they were in your hand.",
+  "text_cn": "作为打出本卡牌的额外费用，你必须在你的绑定卡牌中查找1张结晶器守卫，并将其混洗入你的牌堆。<i>(FAQ, v1.9)</i>\n[reaction]在你打出一张事件卡后：不将其丢弃，改为将其正面朝下叠加到梦境结晶器(最多叠加5张事件卡)。可以将叠加的事件卡投入技能检定，如同其为你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

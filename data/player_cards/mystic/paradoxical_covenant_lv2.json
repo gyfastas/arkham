@@ -1,0 +1,23 @@
+{
+  "id": "paradoxical_covenant_lv2",
+  "arkhamdb_code": "07120",
+  "name": "Paradoxical Covenant",
+  "name_cn": "矛盾圣约",
+  "class": "mystic",
+  "type": "asset",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "covenant",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] After an investigator at your location performs the \"reveal the chaos token\" step of a skill test, if both a [bless] token and a [curse] token were revealed during that test, exhaust Paradoxical Covenant: This test automatically succeeds. <i>(Remove each [bless] and [curse] token revealed from the chaos bag after this test ends.)</i>",
+  "text_cn": "永久。每副牌组限制1张[[圣约]]。\n[reaction]你所在地点的调查员在执行技能检定的\"抽出混乱标记\"步骤(步骤3)后，如果该检定中同时抽出[bless]标记和[curse]标记，消耗矛盾圣约：这次检定自动成功。<i>(在这次检定结束后，移除所有从混乱袋抽出的[bless]和[curse]标记。)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

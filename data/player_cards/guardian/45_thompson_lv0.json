@@ -1,0 +1,35 @@
+{
+  "id": "45_thompson_lv0",
+  "arkhamdb_code": "05115",
+  "name": ".45 Thompson",
+  "name_cn": ".45汤姆逊冲锋枪",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 6,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] and deal +1 damage for this attack.",
+  "text_cn": "使用(5子弹)。\n[action]花费1子弹：<b>攻击</b>。你这次攻击+2[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "classes": [
+    "guardian",
+    "rogue"
+  ],
+  "uses": {
+    "ammo": 5
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "whispers_from_the_deep_lv0",
+  "arkhamdb_code": "07009",
+  "name": "Whispers from the Deep",
+  "name_cn": "深海低语",
+  "class": "neutral",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "This skill's icons subtract from your skill value instead of adding to it.\n<b>Forced</b> - When choosing a card to place beneath Amanda Sharpe, if Whispers from the Deep is in your hand: You must choose it.",
+  "text_cn": "你的技能值不增加此技能卡的图标，改为减少。\n<b>强制</b> - 在选择卡牌放置到阿曼达‧夏普底下时，如果深海低语在你手牌：你必须选择它。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "weakness"
+}

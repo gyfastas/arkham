@@ -1,0 +1,25 @@
+{
+  "id": "hypnotic_therapy_lv0",
+  "arkhamdb_code": "05007",
+  "name": "Hypnotic Therapy",
+  "name_cn": "催眠疗法",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Carolyn Fern deck only.\n[action] Exhaust Hypnotic Therapy: Test [intellect] (2). If you succeed, heal 1 horror from an investigator at your location. Then, that investigator may draw 1 card.\n[reaction] After one of your other card effects heals horror from an investigator, exhaust Hypnotic Therapy: That effect heals 1 additional horror.",
+  "text_cn": "卡洛琳·弗恩牌组专用。\n[action]消耗催眠疗法：检定[intellect](2)。如果你成功，治愈你所在地点一位调查员的1点恐惧。然后，该调查员可以抽取1张卡牌。\n[reaction]在你其它一张卡牌的效果治愈一位调查员的恐惧后，消耗催眠疗法：该效果治愈额外1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

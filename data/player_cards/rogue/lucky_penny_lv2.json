@@ -1,0 +1,31 @@
+{
+  "id": "lucky_penny_lv2",
+  "arkhamdb_code": "07224",
+  "name": "\"Lucky\" Penny",
+  "name_cn": "\"幸运\"分币",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "charm",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Exceptional.\n<b>Forced</b> - When you reveal a [bless] or [curse] token during a skill test you are performing: Flip a coin. On a heads, treat that token as a [bless] token. On a tails, treat that token as a [curse] token. If you treat a [bless] token as a [curse] token as a result of this effect, draw 1 card.",
+  "text_cn": "卓越。\n<b>强制</b> - 你在你执行的技能检定中抽出一个[bless]或[curse]标记时：掷一枚硬币。正面的话，将该标记视为[bless]标记。反面的话，将该标记视为[curse]标记。如果你因此效果的结果将[bless]标记视为[curse]标记，抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Omen of Misfortune",
+  "subname_cn": "厄运征兆",
+  "exceptional": true
+}

@@ -1,0 +1,27 @@
+{
+  "id": "hyperawareness_lv4",
+  "arkhamdb_code": "07264",
+  "name": "Hyperawareness",
+  "name_cn": "超感知",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\n[fast] Spend 1 resource from your resource pool or from Hyperawareness: You get +1 [intellect] or +1 [agility] for this skill test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n[free]花费你的资源池或超感知的1资源：这次技能检定你+1[intellect]或+1[agility]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "resourcess": 2
+  }
+}

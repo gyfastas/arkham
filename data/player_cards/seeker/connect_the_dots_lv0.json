@@ -1,0 +1,23 @@
+{
+  "id": "connect_the_dots_lv0",
+  "arkhamdb_code": "05025",
+  "name": "Connect the Dots",
+  "name_cn": "串联线索",
+  "class": "seeker",
+  "type": "event",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Fast. Play after you discover the last clue at your location.\nDiscover 2 clues at a location with a lower printed shroud value than your location.",
+  "text_cn": "快速。在你发现你所在地点最后一个线索后打出。\n发现一个地点的2个线索，该地点的打印隐藏值须低于你所在地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

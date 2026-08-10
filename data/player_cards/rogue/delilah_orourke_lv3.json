@@ -1,0 +1,30 @@
+{
+  "id": "delilah_orourke_lv3",
+  "arkhamdb_code": "06281",
+  "name": "Delilah O'Rourke",
+  "name_cn": "黛利拉·欧鲁尔克",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "ally",
+    "criminal",
+    "syndicate"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [combat] and +1 [agility].\n[fast] Exhaust Delilah O'Rourke and spend X resources: Choose an enemy at your location. Deal 1 damage to the chosen enemy (2 damage instead if that enemy is exhausted). X is the chosen enemy's evade value.",
+  "text_cn": "你获得+1[combat]和+1[agility]。\n[fast]消耗黛利拉·欧鲁尔克并花费X资源：选择你所在地点的一名敌人。对所选敌人造成1点伤害(如果该敌人已消耗，改为2点伤害)。X为所选敌人的躲避值。",
+  "health": 3,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Syndicate Assassin",
+  "subname_cn": "组织刺客"
+}

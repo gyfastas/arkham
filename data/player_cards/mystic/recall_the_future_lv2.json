@@ -1,0 +1,25 @@
+{
+  "id": "recall_the_future_lv2",
+  "arkhamdb_code": "04158",
+  "name": "Recall the Future",
+  "name_cn": "追忆未来",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "augury",
+    "ritual"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[reaction] When a skill test you are performing begins, if Recall the Future is ready, name a chaos token: If the named chaos token is revealed during this skill test, exhaust Recall the Future. Then, you get +2 skill value for this skill test.",
+  "text_cn": "[reaction]在你正在执行的技能检定开始时，如果追忆未来为准备状态，声明一个混乱标记：如果这次技能检定中抽出了声明的混乱标记，消耗追忆未来。然后，这次技能检定你的技能值+2。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "luke_robinson",
+  "arkhamdb_code": "06004",
+  "name": "Luke Robinson",
+  "name_cn": "卢克·罗宾逊",
+  "title": "The Dreamer",
+  "title_cn": "入梦者",
+  "class": "mystic",
+  "health": 5,
+  "sanity": 9,
+  "skills": {
+    "willpower": 4,
+    "intellect": 3,
+    "combat": 2,
+    "agility": 3
+  },
+  "ability": "You begin the game with Gate Box in play.\nYou may play one event each turn as if you were at a connecting location and engaged with each enemy at that location.\n[elder_sign] effect: +1. Place 1 charge on Gate Box.",
+  "ability_cn": "你以门之匣在场开始游戏。\n你每回合可以视为你位于一个连接地点并与该地点的每名敌人交战下，打出一张事件卡。\n[elder_sign]效果：+1。在门之匣上放置1充能。",
+  "elder_sign": "[elder_sign] effect: +1. Place 1 charge on Gate Box.",
+  "elder_sign_cn": "[elder_sign]效果：+1。在门之匣上放置1充能。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "mystic": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "seeker": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    }
+  },
+  "signature_cards": [
+    "gate_box_lv0"
+  ],
+  "weakness": "detached_from_reality_lv0",
+  "flavor_text": "\"The key to the Dreamlands lies within us all.\"",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Mystic cards ([mystic]) level 0-5, Seeker cards ([seeker]) level 0-2, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Gate Box, Detached from Reality, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：潜修者([mystic])等级0-5，探求者([seeker])等级0-2，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：门之匣、脱离现实，1张随机基础弱点。",
+  "pack": "the_dream_eaters"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "hard_knocks_lv4",
+  "arkhamdb_code": "07266",
+  "name": "Hard Knocks",
+  "name_cn": "沉重打击",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "combat": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\n[fast] Spend 1 resource from your resource pool or from Hard Knocks: You get +1 [combat] or +1 [agility] for this skill test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n[free]花费你的资源池或沉重打击的1资源：这次技能检定你+1[combat]或+1[agility]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "resourcess": 2
+  }
+}

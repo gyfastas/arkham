@@ -1,0 +1,32 @@
+{
+  "id": "enchanted_blade_lv3",
+  "arkhamdb_code": "05192",
+  "name": "Enchanted Blade",
+  "name_cn": "附魔剑",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "item",
+    "relic",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "hand. arcane"
+  ],
+  "text": "Uses (3 charges).\n[action]: <b>Fight.</b> You get +2 [combat] for this attack. If you succeed, you may spend 1 charge to empower the blade, dealing +1 damage for this attack. If the blade is empowered and this attack defeats an enemy, draw 1 card and heal 1 horror.",
+  "text_cn": "使用(3充能)。\n[action]：<b>攻击</b>。你这次攻击+2[combat]。如果你成功，你可以花费1充能来为剑附魔，这次攻击造成+1伤害。如果剑已附魔且这次攻击击败1名敌人，抽取1张卡牌并治愈1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "charges": 3
+  }
+}

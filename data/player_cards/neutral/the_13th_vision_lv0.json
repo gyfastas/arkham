@@ -1,0 +1,22 @@
+{
+  "id": "the_13th_vision_lv0",
+  "arkhamdb_code": "05041",
+  "name": "The 13th Vision",
+  "name_cn": "第十三幻象",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "omen"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put The 13th Vision into play in your threat area.\nInvestigators at your location fail ties during skill tests.\n[action] [action]: Discard The 13th Vision.",
+  "text_cn": "<b>显现</b> - 将第十三幻象放置入你的威胁区域。\n你所在地点的调查员在技能检定中，技能值等于检定难度时失败。\n[action][action]：丢弃第十三幻象。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subtype": "basic_weakness"
+}

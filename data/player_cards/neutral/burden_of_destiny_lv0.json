@@ -1,0 +1,22 @@
+{
+  "id": "burden_of_destiny_lv0",
+  "arkhamdb_code": "08015",
+  "name": "Burden of Destiny",
+  "name_cn": "命运重担",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - You must either (choose one):\n- Flip a Discipline you control to its [[Broken]] side. It cannot be flipped back this round.\n- Take 1 damage and 1 horror.",
+  "text_cn": "<b>显现</b> - 你必须做出决定(选择一项)：\n-将一张你控制的演武翻转至其[[破功]]面。该卡牌本轮不能被翻回来。\n- 受到1点伤害和1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subtype": "weakness"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "perseverance_lv0",
+  "arkhamdb_code": "04111",
+  "name": "Perseverance",
+  "name_cn": "坚韧不拔",
+  "class": "survivor",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Fast. Play when you are assigned damage and/or horror that would defeat you.\nCancel up to 4 of that damage and/or horror.",
+  "text_cn": "快速。在你将被分配伤害和/或恐惧，且其数值足够击败你时打出。\n取消该伤害和/或恐惧中的最多4点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "michael_leigh_lv5",
+  "arkhamdb_code": "08086",
+  "name": "Michael Leigh",
+  "name_cn": "迈克尔·利",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 5,
+  "traits": [
+    "ally",
+    "detective"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [intellect] and +1 [combat].\n[reaction] After you successfully investigate: Place 1 resource <i>(from the token pool)</i> on Michael Leigh, as evidence (to a maximum of 3 evidence).\n[reaction] When you initiate an attack, exhaust Michael Leigh and spend 1 evidence: You deal +1 damage for this attack.",
+  "text_cn": "你获得+1[intellect]和+1[combat]。\n[reaction]在你成功调查后：从供应堆拿取1资源放在迈克尔·利上，作为证据(最多3证据)。\n[reaction]在你发动一次攻击时，消耗迈克尔·利并花费1证据：你这次攻击造成+1伤害。",
+  "health": 3,
+  "sanity": 3,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "seeker"
+  ],
+  "subname": "Experienced Hunter",
+  "subname_cn": "资深猎手"
+}

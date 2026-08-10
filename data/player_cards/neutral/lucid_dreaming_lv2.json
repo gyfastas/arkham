@@ -1,0 +1,21 @@
+{
+  "id": "lucid_dreaming_lv2",
+  "arkhamdb_code": "06205",
+  "name": "Lucid Dreaming",
+  "name_cn": "清醒梦",
+  "class": "neutral",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Choose a card in your play area or reveal a card in your hand. Search your deck for another copy of that card and draw it. Shuffle your deck.",
+  "text_cn": "选择你游戏区域的一张卡牌，或揭示你的一张手牌。在你的牌堆中查找并抽取另一张该卡牌的同名卡牌。混洗你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

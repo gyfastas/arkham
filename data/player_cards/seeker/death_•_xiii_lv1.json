@@ -1,0 +1,25 @@
+{
+  "id": "death_•_xiii_lv1",
+  "arkhamdb_code": "05027",
+  "name": "Death • XIII",
+  "name_cn": "死神·XIII",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "tarot"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "tarot"
+  ],
+  "text": "You get +1 [intellect].\n[reaction] When the game begins, if Death • XIII is in your opening hand: Put it into play.",
+  "text_cn": "你获得+1[intellect]。\n[reaction]在游戏开始时，如果死神·XIII在你起始手牌中：将其放置入场。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subname": "Free from the Past",
+  "subname_cn": "摆脱过去"
+}

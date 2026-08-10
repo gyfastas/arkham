@@ -1,0 +1,25 @@
+{
+  "id": "sixth_sense_lv4",
+  "arkhamdb_code": "05322",
+  "name": "Sixth Sense",
+  "name_cn": "第六感",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "[action]: <b>Investigate.</b> Investigate using [willpower] instead of [intellect]. You get +2 [willpower] for this investigation. If a [skull], [cultist], [tablet], or [elder_thing] symbol is revealed during this test, you may choose a revealed location up to 2 connections away from your current location; you are now investigating as if you were at the chosen location in addition to your location (you may use either shroud value).",
+  "text_cn": "[action]：<b>调查</b>。不使用[intellect]，改为使用[willpower]调查。这次调查你+2[willpower]。如果这次检定抽出[skull]、[cultist]、[tablet]或[elder_thing]符号，你可以选择与你所在地点之间连接次数不超过2的一个已揭示地点；如同你在所在地点调查的同时，也在所选地点调查 (你可以使用两个地点中任意一个地点的隐藏值)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

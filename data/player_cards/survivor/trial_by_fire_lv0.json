@@ -1,0 +1,23 @@
+{
+  "id": "trial_by_fire_lv0",
+  "arkhamdb_code": "05281",
+  "name": "Trial by Fire",
+  "name_cn": "勇闯火线",
+  "class": "survivor",
+  "type": "event",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nChoose one of your skills. Until the end of your turn, set the base value of that skill to 5.",
+  "text_cn": "快速。只能在你回合中打出。\n选择你的一项技能。直到你的回合结束，将该技能的基础值设为5。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "archive_of_conduits_lv0",
+  "arkhamdb_code": "08033",
+  "name": "Archive of Conduits",
+  "name_cn": "通路档案",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tome",
+    "occult"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Limit 1 per deck. As an additional cost to play this asset, place 1 resource on 4 different locations, as leylines.\n[reaction] After you successfully investigate a location with a leyline, exhaust this asset: Move that leyline onto this asset. Then, if there are 4 leylines on it, discard it, take its leylines as resources, and record in your Campaign Log that \"you have identified the gateway.\"",
+  "text_cn": "每副牌组限制1张。作为打出本支援卡的额外费用，在4个不同地点放置1资源，作为灵脉。\n[reaction]在你成功调查一个带有灵脉的地点后，消耗本支援卡：将该灵脉移动到本支援卡上。然后，如果通路档案上有4灵脉，将其丢弃，取得灵脉作为资源，并在你的冒险日志中记录下\"你已经确认了前行道路。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subname": "Unidentified",
+  "subname_cn": "前路未知"
+}

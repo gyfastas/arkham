@@ -1,0 +1,33 @@
+{
+  "id": "divination_lv1",
+  "arkhamdb_code": "08101",
+  "name": "Divination",
+  "name_cn": "占卜",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "spell",
+    "augury"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (4 charges).\n[action]: <b>Investigate.</b> For this investigation, you may use [willpower] instead of [intellect], and you get +1 skill value. If you succeed, spend 1 or 2 charges. Instead of discovering a clue at your location, discover 1 clue at your location for each charge spent. If you succeed by 0, choose and discard a card from your hand.",
+  "text_cn": "使用(4充能)。\n[action]：<b>调查</b>。你这次调查+1技能值，并且你可以不使用[intellect]，改为使用[willpower]。如果你成功，花费1或2充能。不发现你所在地点的一个线索，改为每花费1充能，发现你所在地点的1个线索。如果你成功且等于难度，从你手牌中选择并丢弃1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "mystic"
+  ],
+  "uses": {
+    "charges": 4
+  }
+}

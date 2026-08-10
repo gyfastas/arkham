@@ -1,0 +1,24 @@
+{
+  "id": "shrewd_dealings_lv0",
+  "arkhamdb_code": "08017",
+  "name": "Shrewd Dealings",
+  "name_cn": "精明的交易",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 2,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Bob Jenkins deck only.\nReduce the cost of each [[Item]] asset you play by 1.\n[reaction] When you play an [[Item]] asset: Play it under the control of any investigator at your location.",
+  "text_cn": "鲍勃·詹金斯牌组专用。\n你打出的每张[[道具]]支援卡费用-1。\n[reaction]在你打出一张[[道具]]支援卡时：将其置于你所在地点任一位调查员的控制之下。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

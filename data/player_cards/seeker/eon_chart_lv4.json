@@ -1,0 +1,35 @@
+{
+  "id": "eon_chart_lv4",
+  "arkhamdb_code": "08100",
+  "name": "Eon Chart",
+  "name_cn": "远古海图",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different actions of the following, in any order (move, evade, or investigate).",
+  "text_cn": "使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。<i>(FAQ, v2.1)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "rogue"
+  ],
+  "uses": {
+    "secrets": 3
+  }
+}

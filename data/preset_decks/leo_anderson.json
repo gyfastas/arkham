@@ -1,0 +1,40 @@
+{
+  "investigator_id": "leo_anderson",
+  "presets": [
+    {
+      "name": "里奥·安德森（入门）",
+      "cards": [
+        "combat_training_lv3",
+        "combat_training_lv3",
+        "decorated_skull_lv0",
+        "decorated_skull_lv0",
+        "old_shotgun_lv2",
+        "old_shotgun_lv2",
+        "rite_of_sanctification_lv0",
+        "rite_of_sanctification_lv0",
+        "solemn_vow_lv0",
+        "solemn_vow_lv0",
+        "the_councils_coffer_lv2",
+        "blackjack_lv0",
+        "blackjack_lv0",
+        "burglary_lv0",
+        "burglary_lv0",
+        "burglary_lv2",
+        "burglary_lv2",
+        "combat_training_lv1",
+        "combat_training_lv1",
+        "crystallizer_of_dreams_lv0",
+        "crystallizer_of_dreams_lv0",
+        "dark_ritual_lv0",
+        "dark_ritual_lv0",
+        "empty_vessel_lv4",
+        "enchanted_armor_lv2",
+        "enchanted_armor_lv2",
+        "favor_of_the_moon_lv1",
+        "hired_muscle_lv1",
+        "hired_muscle_lv1",
+        "investments_lv0"
+      ]
+    }
+  ]
+}

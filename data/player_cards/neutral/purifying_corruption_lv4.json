@@ -1,0 +1,25 @@
+{
+  "id": "purifying_corruption_lv4",
+  "arkhamdb_code": "07273",
+  "name": "Purifying Corruption",
+  "name_cn": "净化腐败",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 4,
+  "level": 4,
+  "traits": [
+    "ritual",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "[reaction] When you draw a non-weakness treachery, take 1 damage and 1 horror: Cancel that card's revelation effect and place 1 resource on this card, as corruption. If this card has 3 or more corruption, remove it from the game.\n[fast] Draw the top card of the encounter deck: Either heal 1 damage and 1 horror, or remove 1 corruption from this card.\n<b>Card design by the Impure at Arkham Nights 2019.</b>",
+  "text_cn": "[reaction]在你抽取一张非弱点诡计卡时，受到1点伤害和1点恐惧：取消该卡牌的显现效果并在此卡牌上放置1资源，作为腐败。如果此卡牌有至少3个腐败，将其从游戏移除。\n[fast]抽取遭遇牌堆顶部的卡牌：治愈1点伤害和1点恐惧，或从此卡牌移除1腐败。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

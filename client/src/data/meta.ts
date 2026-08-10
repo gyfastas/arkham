@@ -46,6 +46,57 @@ export const INVESTIGATOR_GROUPS: { label: string; investigators: InvestigatorEn
       { id: 'lola_hayes', name_cn: '萝拉·海耶斯', name_hant: '蘿拉·海耶斯', class: 'neutral' },
     ],
   },
+  {
+    label: '遗忘时代',
+    investigators: [
+      { id: 'leo_anderson', name_cn: '里奥·安德森', name_hant: '里奧·安德森', class: 'guardian' },
+      { id: 'ursula_downs', name_cn: '厄休拉·唐斯', name_hant: '厄休拉·唐斯', class: 'seeker' },
+      { id: 'finn_edwards', name_cn: '芬恩·爱德华兹', name_hant: '芬恩·愛德華茲', class: 'rogue' },
+      { id: 'father_mateo', name_cn: '马泰奥神父', name_hant: '馬泰奧神父', class: 'mystic' },
+      { id: 'calvin_wright', name_cn: '加尔文·怀特', name_hant: '加爾文·懷特', class: 'survivor' },
+    ],
+  },
+  {
+    label: '万象祭环',
+    investigators: [
+      { id: 'carolyn_fern', name_cn: '卡罗琳·弗恩', name_hant: '卡羅琳·弗恩', class: 'guardian' },
+      { id: 'joe_diamond', name_cn: '乔·戴蒙德', name_hant: '喬·戴蒙德', class: 'seeker' },
+      { id: 'preston_fairmont', name_cn: '普雷斯顿·费尔蒙特', name_hant: '普雷斯頓·費爾蒙特', class: 'rogue' },
+      { id: 'diana_stanley', name_cn: '黛安娜·史丹利', name_hant: '黛安娜·史丹利', class: 'mystic' },
+      { id: 'rita_young', name_cn: '丽塔·杨', name_hant: '麗塔·楊', class: 'survivor' },
+      { id: 'marie_lambeau', name_cn: '玛丽·朗博', name_hant: '瑪麗·朗博', class: 'mystic' },
+    ],
+  },
+  {
+    label: '食梦者',
+    investigators: [
+      { id: 'tommy_muldoon', name_cn: '托米·马尔登', name_hant: '托米·馬爾登', class: 'guardian' },
+      { id: 'mandy_thompson', name_cn: '曼蒂·汤普森', name_hant: '曼蒂·湯普森', class: 'seeker' },
+      { id: 'tony_morgan', name_cn: '托尼·摩尔根', name_hant: '托尼·摩爾根', class: 'rogue' },
+      { id: 'luke_robinson', name_cn: '卢克·罗宾逊', name_hant: '盧克·羅賓遜', class: 'mystic' },
+      { id: 'patrice_hathaway', name_cn: '派翠斯·海瑟薇', name_hant: '派翠斯·海瑟薇', class: 'survivor' },
+    ],
+  },
+  {
+    label: '印斯茅斯',
+    investigators: [
+      { id: 'sister_mary', name_cn: '玛丽修女', name_hant: '瑪麗修女', class: 'guardian' },
+      { id: 'amanda_sharpe', name_cn: '阿曼达·夏普', name_hant: '阿曼達‧夏普', class: 'seeker' },
+      { id: 'trish_scarborough', name_cn: '特里希·斯卡波罗', name_hant: '特里希‧斯卡波羅', class: 'rogue' },
+      { id: 'dexter_drake', name_cn: '戴克斯特·德雷克', name_hant: '戴克斯特‧德雷克', class: 'mystic' },
+      { id: 'silas_marsh', name_cn: '赛拉斯·马什', name_hant: '賽拉斯‧馬什', class: 'survivor' },
+    ],
+  },
+  {
+    label: '地极秘境',
+    investigators: [
+      { id: 'daniela_reyes', name_cn: '丹妮拉·雷耶丝', name_hant: '丹妮拉·雷耶絲', class: 'guardian' },
+      { id: 'norman_withers', name_cn: '诺曼·威瑟斯', name_hant: '諾曼·威瑟斯', class: 'seeker' },
+      { id: 'monterey_jack', name_cn: '蒙特雷·杰克', name_hant: '蒙特雷·傑克', class: 'rogue' },
+      { id: 'lily_chen', name_cn: '陈丽丽', name_hant: '陳麗麗', class: 'mystic' },
+      { id: 'bob_jenkins', name_cn: '鲍勃·詹金斯', name_hant: '鮑勃·詹金斯', class: 'survivor' },
+    ],
+  },
 ]
 
 export const ALL_INVESTIGATORS: InvestigatorEntry[] =

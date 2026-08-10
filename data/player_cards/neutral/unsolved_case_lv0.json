@@ -1,0 +1,23 @@
+{
+  "id": "unsolved_case_lv0",
+  "arkhamdb_code": "05010",
+  "name": "Unsolved Case",
+  "name_cn": "悬案",
+  "class": "neutral",
+  "type": "event",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "insight",
+    "mystery"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Place 1 of your clues on the location with the highest shroud. Remove Unsolved Case from the game.\n<b>Forced</b> - If Unsolved Case would be shuffled into your hunch deck: Add it to your threat area instead. For the remainder of the game, it gains: \"<b>Forced</b> - When the game ends: Joe Diamond earns 2 fewer experience for this scenario.\"",
+  "text_cn": "将你的1个线索放在隐藏值最高的地点。将悬案移出游戏。\n<b>强制</b> - 如果悬案将要混洗入你的直觉牌组：改为将其加入到你的威胁区域。直到这场游戏结束之前，其获得：\"<b>强制</b> - 在游戏结束时：乔·戴蒙德这场冒险少获得2点经验值。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subtype": "weakness"
+}

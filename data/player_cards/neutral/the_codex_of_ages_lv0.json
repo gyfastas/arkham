@@ -1,0 +1,31 @@
+{
+  "id": "the_codex_of_ages_lv0",
+  "arkhamdb_code": "04013",
+  "name": "The Codex of Ages",
+  "name_cn": "古代抄本",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "tome",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Father Mateo deck only. Seal ([elder_sign]).\nYou get +1 [willpower] while there is a token sealed here.\n[reaction] When you would reveal a chaos token from the chaos bag, discard The Codex of Ages: Resolve the [elder_sign] token that was sealed here as if it were just revealed from the chaos bag <i>(instead of revealing a token from the chaos bag)</i>.",
+  "text_cn": "马泰奥神父牌组专用。封印([elder_sign])。\n只要有标记被封印于此，你获得+1[willpower]。\n[reaction]在你将要从混乱袋中抽出1个混乱标记时，丢弃古代抄本：结算封印在此的[elder_sign]标记，视为刚刚从混乱袋中抽出该标记<i>(而不是从混乱袋中抽出一个标记)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "finis omnium nunc est",
+  "subname_cn": "现在一切都结束了"
+}

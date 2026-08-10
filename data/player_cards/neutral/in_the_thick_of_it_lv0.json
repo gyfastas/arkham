@@ -1,0 +1,21 @@
+{
+  "id": "in_the_thick_of_it_lv0",
+  "arkhamdb_code": "08125",
+  "name": "In the Thick of It",
+  "name_cn": "危险处境",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck. Purchase at deck creation.\nWhen you purchase In the Thick of It, suffer 2 total physical and/or mental trauma. Then, earn 3 experience.",
+  "text_cn": "永久。每副牌组限制1张。当牌组构建时购买。\n在你购买危险处境后，受到总共2点肉体和/或精神创伤。然后，获得3点经验值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

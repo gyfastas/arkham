@@ -1,0 +1,40 @@
+{
+  "investigator_id": "mandy_thompson",
+  "presets": [
+    {
+      "name": "曼蒂·汤普森（入门）",
+      "cards": [
+        "archaic_glyphs_lv0",
+        "archaic_glyphs_lv0",
+        "ariadnes_twine_lv3",
+        "ariadnes_twine_lv3",
+        "magnifying_glass_lv1",
+        "magnifying_glass_lv1",
+        "scientific_theory_lv3",
+        "scientific_theory_lv3",
+        "the_councils_coffer_lv2",
+        "ancient_stone_lv1",
+        "ancient_stone_lv1",
+        "favor_of_the_moon_lv1",
+        "ice_pick_lv1",
+        "ice_pick_lv1",
+        "ice_pick_lv3",
+        "ice_pick_lv3",
+        "knife_lv0",
+        "knife_lv0",
+        "magnifying_glass_lv0",
+        "magnifying_glass_lv0",
+        "scientific_theory_lv1",
+        "scientific_theory_lv1",
+        "scroll_of_secrets_lv0",
+        "scroll_of_secrets_lv0",
+        "scroll_of_secrets_lv3",
+        "scroll_of_secrets_lv3",
+        "segment_of_onyx_lv1",
+        "segment_of_onyx_lv1",
+        "strange_solution_lv0",
+        "strange_solution_lv0"
+      ]
+    }
+  ]
+}

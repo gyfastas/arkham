@@ -1,0 +1,29 @@
+{
+  "id": "joey_the_rat_vigil_lv3",
+  "arkhamdb_code": "06326",
+  "name": "Joey \"The Rat\" Vigil",
+  "name_cn": "乔伊\"老鼠\"弗吉尔",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "ally",
+    "criminal"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[fast] Spend 1 resource: Choose an [[Item]] asset from your hand and play it (paying its cost).\n[fast] Discard an [[Item]] asset from play: Gain 2 resources.",
+  "text_cn": "[free]花费1资源：从你的手牌选择一张[[道具]]支援卡并将其打出(支付其费用)。\n[free]从场上丢弃一张[[道具]]支援卡：获得2资源。",
+  "health": 3,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Lookin' Out for #1",
+  "subname_cn": "劫富者"
+}

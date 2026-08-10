@@ -1,0 +1,23 @@
+{
+  "id": "on_your_own_lv3",
+  "arkhamdb_code": "04236",
+  "name": "On Your Own",
+  "name_cn": "自食其力",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Limit 1 per investigator.\nDiscard On Your Own if you control an asset that takes up an ally slot.\n[reaction] When you play a [survivor] event, exhaust On Your Own: Reduce that event's cost by 2.",
+  "text_cn": "每位调查员限制1张。\n如果你控制的支援卡占据了盟友槽，丢弃自食其力。\n[reaction]在你打出一张[survivor]事件时，消耗自食其力：该事件费用减少2点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

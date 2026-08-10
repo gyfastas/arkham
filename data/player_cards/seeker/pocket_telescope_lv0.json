@@ -1,0 +1,30 @@
+{
+  "id": "pocket_telescope_lv0",
+  "arkhamdb_code": "08097",
+  "name": "Pocket Telescope",
+  "name_cn": "袖珍望远镜",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[fast] Exhaust Pocket Telescope: Look at the revealed side of a connecting unrevealed location.\n[action]: <b>Investigate.</b> Investigate a revealed connecting location as if you were there.",
+  "text_cn": "[fast]消耗袖珍望远镜：查看一个连接的未揭示地点的已揭示面。\n[action]：<b>调查</b>。调查一个连接的已揭示地点，如同你在那里。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "rogue"
+  ]
+}

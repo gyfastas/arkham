@@ -1,0 +1,23 @@
+{
+  "id": "momentum_lv1",
+  "arkhamdb_code": "06115",
+  "name": "Momentum",
+  "name_cn": "势不可挡",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful, reduce the difficulty of the next skill test you perform this phase by X, where X is the amount this skill test succeeded by (to a maximum of 3).",
+  "text_cn": "如果这次技能检定成功，本阶段你执行的下次技能检定难度降低X，其中X为这次技能检定超过难度的点数(最多为3)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

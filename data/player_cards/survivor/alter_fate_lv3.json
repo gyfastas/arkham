@@ -1,0 +1,24 @@
+{
+  "id": "alter_fate_lv3",
+  "arkhamdb_code": "04313",
+  "name": "Alter Fate",
+  "name_cn": "改变命运",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "spell",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] player window.\nChoose and discard from play a non-weakness treachery that is not attached to an [[Elite]] enemy.",
+  "text_cn": "快速。在任何[free]玩家时间段中打出。\n选择并丢弃场上一张没有叠加在[[精英]]敌人上的非弱点诡计卡。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

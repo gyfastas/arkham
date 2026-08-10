@@ -1,0 +1,29 @@
+{
+  "id": "the_black_cat_lv5",
+  "arkhamdb_code": "06285",
+  "name": "The Black Cat",
+  "name_cn": "黑猫",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 5,
+  "traits": [
+    "ally",
+    "avatar",
+    "dreamlands"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Anytime you reveal a [tablet], [elder_thing], or [elder_sign] symbol during a skill test, you may choose to use the following effects instead of that symbol's normal effects:\n[tablet]: -1. The Black Cat takes 1 direct damage.\n[elder_thing]: -1. The Black Cat takes 1 direct horror.\n[elder_sign]: +5. Heal all damage and horror from The Black Cat.",
+  "text_cn": "每当你在技能检定中抽出[tablet]、[elder_thing]或[elder_sign]符号，你可以不使用该图标的效果，改为选择使用以下效果：\n[tablet]：-1。黑猫受到1点直接伤害。\n[elder_thing]：-1。黑猫受到1点直接恐惧。\n[elder_sign]：+5。治愈黑猫的所有伤害和恐惧。",
+  "health": 3,
+  "sanity": 3,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "A Liar, or a Prophet, or Both",
+  "subname_cn": "骗子、预言家、抑或都是"
+}

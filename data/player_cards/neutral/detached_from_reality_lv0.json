@@ -1,0 +1,22 @@
+{
+  "id": "detached_from_reality_lv0",
+  "arkhamdb_code": "06014",
+  "name": "Detached from Reality",
+  "name_cn": "脱离现实",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - If Dream-Gate <i>(Wondrous Journey)</i> is already in play, flip it over. Otherwise, search your bonded cards for Dream-Gate <i>(Pointless Reality)</i> and put it into play. In either case, disengage from each enemy engaged with you and move to Dream-Gate.",
+  "text_cn": "<b>显现</b> - 如果梦境之门 <i>(奇妙旅程)</i>已经在场，将其翻面。否则，在你的绑定卡牌中查找并放置梦境之门<i>(无谓现实)</i>入场。不论哪种情况，与每名与你交战的敌人解除交战，并移动到梦境之门。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

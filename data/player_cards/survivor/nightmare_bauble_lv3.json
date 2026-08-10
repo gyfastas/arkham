@@ -1,0 +1,28 @@
+{
+  "id": "nightmare_bauble_lv3",
+  "arkhamdb_code": "06330",
+  "name": "Nightmare Bauble",
+  "name_cn": "噩梦球",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 3,
+  "traits": [
+    "item",
+    "charm",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Limit 1 per deck.\n<b>Forced</b> - After Nightmare Bauble enters play: Search your bonded cards for 3 copies of Dream Parasite and attach them to Nightmare Bauble. When Nightmare Bauble leaves play, set each attached Dream Parasite aside, out of play.\n[reaction] When you reveal an [auto_fail] chaos token, shuffle an attached Dream Parasite into your deck: Cancel that token.",
+  "text_cn": "每副牌组限制1张。\n<b>强制</b> - 在噩梦球入场后：在你的绑定卡牌中查找3张梦境寄生物，并将其叠加到噩梦球。在噩梦球离场时，将叠加的每张梦境寄生物放在一边，位于场外。\n[reaction] 在你抽出一个[auto_fail]混乱标记时，将一张叠加的梦境寄生物混洗入你的牌堆：取消该标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

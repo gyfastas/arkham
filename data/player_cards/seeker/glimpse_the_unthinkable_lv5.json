@@ -1,0 +1,23 @@
+{
+  "id": "glimpse_the_unthinkable_lv5",
+  "arkhamdb_code": "05318",
+  "name": "Glimpse the Unthinkable",
+  "name_cn": "窥看不思议之事",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 5,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 3
+  },
+  "slots": [],
+  "text": "Shuffle any number of non-weakness cards from your hand into your deck. Draw cards until you reach your maximum hand-size. Remove Glimpse the Unthinkable from the game.",
+  "text_cn": "将你手牌中任意数量的非弱点卡牌混洗入你的牌堆。抽取卡牌，直到手牌数量达到上限。将窥看不思议之事移出游戏。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

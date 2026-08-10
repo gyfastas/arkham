@@ -1,0 +1,24 @@
+{
+  "id": "cunning_lv0",
+  "arkhamdb_code": "05030",
+  "name": "Cunning",
+  "name_cn": "狡猾",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "While you have 5 or more resources, Cunning gains [intellect] [agility] (while you have 10 or more resources, Cunning gains [intellect] [intellect] [agility] [agility], instead).",
+  "text_cn": "只要你拥有至少5资源，狡猾获得[intellect][agility](只要你拥有至少10资源，改为狡猾获得[intellect][intellect][agility][agility])。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

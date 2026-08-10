@@ -1,0 +1,32 @@
+{
+  "id": "earthly_serenity_lv4",
+  "arkhamdb_code": "08119",
+  "name": "Earthly Serenity",
+  "name_cn": "尘世宁静",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (6 charges).\n[action]: Test [willpower] (0). For each point you succeed by, you may spend 1 charge to heal 1 damage or 1 horror from an investigator at your location. If you succeed by 0, lose 2 resources.",
+  "text_cn": "使用(6充能)。\n[action]：检定[willpower](0)。你成功且每超过难度1点，你可以花费1充能治愈你所在地点一位调查员1点伤害或1点恐惧。如果你成功且等于难度，失去2资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "mystic",
+    "survivor"
+  ],
+  "uses": {
+    "charges": 6
+  }
+}

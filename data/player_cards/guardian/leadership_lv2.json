@@ -1,0 +1,23 @@
+{
+  "id": "leadership_lv2",
+  "arkhamdb_code": "06235",
+  "name": "Leadership",
+  "name_cn": "领导力",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "While Leadership is committed to a skill test being performed by another investigator, Leadership gains [willpower] [wild].\nIf this test is successful, gain 2 resources. If Leadership is committed to a skill test being performed by another investigator, that investigator also gains 2 resources.",
+  "text_cn": "只要领导力被投入到另一位调查员执行的技能检定，领导力获得[willpower][wild]。\n如果这次检定成功，获得2资源。如果领导力被投入到另一位调查员执行的技能检定，该调查员也获得2资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

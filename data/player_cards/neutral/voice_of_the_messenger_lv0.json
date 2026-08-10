@@ -1,0 +1,23 @@
+{
+  "id": "voice_of_the_messenger_lv0",
+  "arkhamdb_code": "04016",
+  "name": "Voice of the Messenger",
+  "name_cn": "信使之声",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse",
+    "pact"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - You must either (choose one):\n - Take 1 direct damage and suffer 1 physical trauma.\n - Take 1 direct horror and suffer 1 mental trauma.",
+  "text_cn": "<b>显现</b> - 你必须作出决定(选择以下一项):\n - 受到1点直接伤害，受到1点肉体创伤。\n - 受到1点直接恐惧，受到1点精神创伤。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

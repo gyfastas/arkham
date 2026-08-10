@@ -1,0 +1,40 @@
+{
+  "investigator_id": "father_mateo",
+  "presets": [
+    {
+      "name": "马泰奥神父（入门）",
+      "cards": [
+        "flute_of_the_outer_gods_lv4",
+        "arcane_initiate_lv3",
+        "arcane_initiate_lv3",
+        "forbidden_knowledge_lv0",
+        "forbidden_knowledge_lv0",
+        "grounded_lv3",
+        "grounded_lv3",
+        "the_councils_coffer_lv2",
+        "alchemical_transmutation_lv0",
+        "alchemical_transmutation_lv0",
+        "arcane_initiate_lv0",
+        "arcane_initiate_lv0",
+        "favor_of_the_moon_lv1",
+        "grounded_lv1",
+        "grounded_lv1",
+        "knife_lv0",
+        "knife_lv0",
+        "protective_incantation_lv1",
+        "protective_incantation_lv1",
+        "ritual_candles_lv0",
+        "ritual_candles_lv0",
+        "scroll_of_secrets_lv0",
+        "scroll_of_secrets_lv0",
+        "scroll_of_secrets_lv3",
+        "scroll_of_secrets_lv3",
+        "scrying_lv0",
+        "scrying_lv0",
+        "scrying_lv3",
+        "scrying_lv3",
+        "shining_trapezohedron_lv4"
+      ]
+    }
+  ]
+}

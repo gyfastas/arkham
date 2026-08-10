@@ -1,0 +1,33 @@
+{
+  "id": "true_magick_lv5",
+  "arkhamdb_code": "08070",
+  "name": "True Magick",
+  "name_cn": "真法魔典",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 4,
+  "level": 5,
+  "traits": [
+    "item",
+    "relic",
+    "tome"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "wild": 1
+  },
+  "slots": [
+    "hand. arcane"
+  ],
+  "text": "Uses (1 charge). Replenish this charge at the start of each round.\nYou may resolve abilities on [[Spell]] assets in your hand by revealing them from your hand. Treat True Magick as if it were the revealed asset <i>(to pay its costs, spend charges, perfom its effect, etc)</i>.",
+  "text_cn": "使用(1充能)。当每轮开始时重新补满此充能。\n你可以借由揭示你手牌中的[[法术]]支援卡来结算其能力。将真法魔典视为被揭示的支援卡<i>(支付费用、花费充能、执行效果等)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "subname": "Reworking Reality",
+  "subname_cn": "重塑现实",
+  "uses": {
+    "charges": 1
+  }
+}

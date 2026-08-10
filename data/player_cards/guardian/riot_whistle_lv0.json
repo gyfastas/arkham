@@ -1,0 +1,26 @@
+{
+  "id": "riot_whistle_lv0",
+  "arkhamdb_code": "07108",
+  "name": "Riot Whistle",
+  "name_cn": "警哨",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "You may take an additional action during your turn, which can only be used to <b>engage</b>.",
+  "text_cn": "在你的回合中你可以进行一次额外的行动，该行动只能用于<b>交战</b>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

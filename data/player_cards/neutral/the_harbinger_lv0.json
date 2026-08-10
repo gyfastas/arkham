@@ -1,0 +1,23 @@
+{
+  "id": "the_harbinger_lv0",
+  "arkhamdb_code": "08006",
+  "name": "The Harbinger",
+  "name_cn": "预示者",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "omen",
+    "endtimes"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Place this card on top of your deck.\nWhile The Harbinger is revealed and on top of your deck, cards in your deck cannot be searched, drawn, or manipulated in any way except by the below ability.\n[action] [action]: Discard The Harbinger. This ability may be activated while The Harbinger is on top of your deck, as if it were in your threat area.",
+  "text_cn": "<b>显现</b> - 将本卡牌放置于你的牌堆顶部。\n只要你的牌堆顶部揭示了预示者，除了下方能力外，你牌堆内的卡牌不能被查找、抽取、或以任何方式操纵。\n[action] [action]：丢弃预示者。只要预示者在你的牌堆顶部就可以启动本能力，如同其在你的威胁区域。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subtype": "weakness"
+}

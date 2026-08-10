@@ -1,0 +1,24 @@
+{
+  "id": "deny_existence_lv0",
+  "arkhamdb_code": "05032",
+  "name": "Deny Existence",
+  "name_cn": "否决存在",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spell",
+    "paradox"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an encounter card or an enemy attack would cause you to do one of the following (choose one): Discard cards from hand, lose resources, lose actions, take damage, or take horror.\nYou ignore that aspect of the effect. <i>(Each other aspect resolves normally.)</i>",
+  "text_cn": "快速。在遭遇卡或一名敌人攻击将会导致你执行以下一项(选择一项)时打出：丢弃手牌、失去资源、失去行动、受到伤害或受到恐惧。\n你忽略该效果的影响。<i>(其它效果正常结算。)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

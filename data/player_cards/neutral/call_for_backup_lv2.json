@@ -1,0 +1,24 @@
+{
+  "id": "call_for_backup_lv2",
+  "arkhamdb_code": "08129",
+  "name": "Call for Backup",
+  "name_cn": "请求支援",
+  "class": "neutral",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "favor",
+    "synergy"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "One at a time, in any order, if you control a...\n- [rogue] card, you may move to a connecting location.\n- [guardian] card, deal 1 damage to an enemy at your location.\n- [seeker] card, discover 1 clue at your location.\n- [mystic] card, heal 1 horror from any card.\n- [survivor] card, heal 1 damage from any card.",
+  "text_cn": "以任意顺序依次结算，如果你控制……\n- [rogue]卡牌，你可以移动到连接地点。\n- [guardian]卡牌，对你所在地点的一名敌人造成1点伤害。\n- [seeker]卡牌，发现你所在地点的1个线索。\n- [mystic]卡牌，治愈任意卡牌1点恐惧。\n- [survivor]卡牌，治愈任意卡牌1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

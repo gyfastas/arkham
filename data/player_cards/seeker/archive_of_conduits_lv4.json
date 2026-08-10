@@ -1,0 +1,31 @@
+{
+  "id": "archive_of_conduits_lv4",
+  "arkhamdb_code": "08044",
+  "name": "Archive of Conduits",
+  "name_cn": "通路档案",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 4,
+  "level": 4,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "wild": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Researched. Uses (4 leylines). Limit 1 per deck.\n[fast]: Move 1 leyline from this asset to an investigator.\n[action]: Choose an investigator with a leyline. That investigator draws 1 card and heals 1 damage or 1 horror. You may remove the leyline to have them instead draw 2 cards and heal 2 damage or 2 horror.",
+  "text_cn": "研究。使用(4灵脉)。每副牌组限制1张。\n[fast]从本支援卡移动1灵脉到一位调查员。\n[action]：选择一位带有灵脉的调查员。该调查员抽取1张卡牌并治愈1点伤害或1点恐惧。你可以移除此灵脉来使其改为抽取2张卡牌并治愈2点伤害或2点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "subname": "Gateway to Paradise",
+  "subname_cn": "通往天堂",
+  "uses": {
+    "leyliness": 4
+  }
+}

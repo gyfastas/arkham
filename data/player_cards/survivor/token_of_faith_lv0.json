@@ -1,0 +1,26 @@
+{
+  "id": "token_of_faith_lv0",
+  "arkhamdb_code": "07033",
+  "name": "Token of Faith",
+  "name_cn": "宗教信物",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "charm"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "[reaction] After a skill test ends in which 1 or more [curse] or [auto_fail] tokens were revealed, exhaust Token of Faith: Add that many [bless] tokens to the chaos bag.",
+  "text_cn": "[reaction]在抽出了至少1个[curse]或[auto_fail]标记的技能检定结束后，消耗宗教信物：加入同等数量的[bless]标记到混乱袋。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

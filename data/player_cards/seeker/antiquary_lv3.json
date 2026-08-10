@@ -1,0 +1,31 @@
+{
+  "id": "antiquary_lv3",
+  "arkhamdb_code": "08124",
+  "name": "Antiquary",
+  "name_cn": "古物藏家",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\nResources on Antiquary may be spent to pay for [[Favor]], [[Relic]] or [[Ritual]] cards.\n[fast] During a skill test on a [[Favor]], [[Relic]] or [[Ritual]] card, spend 1 resource from Antiquary: You get +1 skill value for this test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n古物藏家上的资源可以被用来支付[[恩惠]]、[[遗物]]或[[仪式]]卡牌。\n[fast]在[[恩惠]]、[[遗物]]或[[仪式]]卡牌上的技能检定中，从古物藏家花费1资源：你这次检定+1技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "rogue",
+    "mystic"
+  ],
+  "uses": {
+    "resourcess": 2
+  }
+}

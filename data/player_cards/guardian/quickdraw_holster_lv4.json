@@ -1,0 +1,32 @@
+{
+  "id": "quickdraw_holster_lv4",
+  "arkhamdb_code": "08089",
+  "name": "Quickdraw Holster",
+  "name_cn": "快拔枪套",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 4,
+  "traits": [
+    "item",
+    "tool",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 2
+  },
+  "slots": [
+    "body"
+  ],
+  "text": "[fast]: Choose a [[Firearm]] asset taking up only 1 hand slot in your play area. Attach it to Quickdraw Holster, or switch it with the attached asset. The attached asset takes up no hand slots. (Limit 1 attached asset.)\n[fast] Exhaust Quickdraw Holster: Perform a fight action on the attached asset without paying its [action] cost.",
+  "text_cn": "[fast]：选择你游戏区域中一张仅占用1个手部槽位的[[枪械]]支援卡。将其叠加到快拔枪套，或将其与叠加的支援卡交换。叠加的支援卡不占用手部槽位。(叠加的支援卡限制1张。)\n[fast]消耗快拔枪套：执行叠加的支援卡上的一个攻击行动而无须支付其[action]费用。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "rogue"
+  ]
+}

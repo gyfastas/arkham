@@ -1,0 +1,21 @@
+{
+  "id": "shrewd_analysis_lv0",
+  "arkhamdb_code": "04106",
+  "name": "Shrewd Analysis",
+  "name_cn": "老练分析",
+  "class": "seeker",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck.\nAnytime you upgrade a card with the <i>(Unidentified)</i> or <i>(Untranslated)</i> subtitle, you may upgrade a second copy of that card at no experience cost. If you do, the two upgraded versions are chosen at random from among the eligible options. <i>(You must still meet all deckbuilding restrictions.)</i>",
+  "text_cn": "永久。每副牌组限制1张。\n每当你升级带有<i>(未鉴定)</i>或<i>(未翻译)</i>副标题的卡牌时，你可以多升级1张该卡牌，而不用花费经验值。如果你这么做，从可用选项中随机选择该卡牌的2张升级版本。<i>(你仍须满足牌组构建的所有要求。)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

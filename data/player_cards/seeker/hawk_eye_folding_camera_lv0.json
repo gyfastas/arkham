@@ -1,0 +1,26 @@
+{
+  "id": "hawk_eye_folding_camera_lv0",
+  "arkhamdb_code": "05154",
+  "name": "Hawk-Eye Folding Camera",
+  "name_cn": "鹰眼折叠相机",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[reaction] After the last clue is discovered from your location: Place 1 resource <i>(from the token pool)</i> on this card, as evidence. (Limit once per game at each location.)\nWhile Hawk-Eye Folding Camera has ...\n- ... 1 or more evidence, you get +1 [willpower].\n- ... 2 or more evidence, you get +1 [intellect].\n- ... 3 or more evidence, you get +1 sanity.",
+  "text_cn": "[reaction]在你所在地点的最后1个线索被发现后：在本卡牌上放置1资源<i>(从供应堆拿取)</i>，作为证据。(每场游戏每个地点限制一次。)\n只要鹰眼折叠相机上有……\n- …… 至少1个证据，你获得+1[willpower]。\n- ……至少2个证据，你获得+1[intellect]。\n- ……至少3个证据，你+1神智值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "guided_by_the_unseen_lv3",
+  "arkhamdb_code": "07223",
+  "name": "Guided by the Unseen",
+  "name_cn": "隐形指引",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (4 secrets).\n[fast] During a skill test at your location: The performing investigator may search the top 3 cards of their deck for a card that can be committed to this test. You may spend 1 secret to commit that card. Shuffle the performing investigator's deck. (Limit once per test.)",
+  "text_cn": "使用(4秘密)。\n[fast]在你所在地点的技能检定中：执行检定的调查员可以在其牌堆顶部3张卡牌中查找一张能投入到这次检定的卡牌。你可以花费1秘密来投入该卡牌。混洗执行检定的调查员的牌堆。(每次检定限制1次。)<i>(FAQ, v1.9)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "secrets": 4
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "sign_magick_lv0",
+  "arkhamdb_code": "05112",
+  "name": "Sign Magick",
+  "name_cn": "魔法手势",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ritual",
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Fast.\nYou have 1 additional arcane slot, which can only be used to hold a [[Spell]] or [[Ritual]] asset.",
+  "text_cn": "快速。\n你拥有额外1个法术槽位，只能用来放置[[法术]]或[[仪式]]支援卡。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

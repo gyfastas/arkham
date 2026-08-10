@@ -1,0 +1,24 @@
+{
+  "id": "essence_of_the_dream_lv0",
+  "arkhamdb_code": "06113",
+  "name": "Essence of the Dream",
+  "name_cn": "梦的本质",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced",
+    "expert"
+  ],
+  "skill_icons": {
+    "wild": 2
+  },
+  "slots": [],
+  "text": "Bonded (Dream Diary).\nWhen Essence of the Dream would enter your discard pile or be shuffled into your deck, instead set Essence of the Dream aside, out of play (with your bonded cards).",
+  "text_cn": "绑定(梦境日记)。\n在梦的本质将要进入你的弃牌堆或被混洗入你的牌堆时，不将其放入，改为将其放在一边，位于场外 (与你的绑定卡牌一起)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

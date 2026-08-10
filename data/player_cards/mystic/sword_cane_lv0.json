@@ -1,0 +1,28 @@
+{
+  "id": "sword_cane_lv0",
+  "arkhamdb_code": "07029",
+  "name": "Sword Cane",
+  "name_cn": "剑杖",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Playing Sword Cane does not provoke attacks of opportunity.\n[reaction] After Sword Cane enters play: Immediately trigger its \"[action]\" ability without paying its cost.\n[action] Exhaust Sword Cane: <b>Fight</b>/<b>Evade.</b> You may use your [willpower] in place of your [combat] or [agility] for this attack or evasion attempt.",
+  "text_cn": "打出剑杖不会引起趁乱攻击。\n[reaction]在剑杖入场后：立即触发其\"[action]\"能力，不支付其费用。\n[action]消耗剑杖：<b>攻击</b>/<b>躲避</b>。这次攻击或躲避尝试你可以不使用你的[combat]或[agility]，改为使用你的[willpower]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

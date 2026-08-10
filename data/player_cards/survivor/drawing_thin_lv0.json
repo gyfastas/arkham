@@ -1,0 +1,23 @@
+{
+  "id": "drawing_thin_lv0",
+  "arkhamdb_code": "05159",
+  "name": "Drawing Thin",
+  "name_cn": "险中求胜",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "[reaction] When you initiate a skill test, exhaust Drawing Thin: Increase the difficulty of this skill test by 2. Gain 2 resources or draw 1 card.",
+  "text_cn": "[reaction]在你发动一次技能检定时，消耗险中求胜：提升这次技能检定难度2点。获得2资源或抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

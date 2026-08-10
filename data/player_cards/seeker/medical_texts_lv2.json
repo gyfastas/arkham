@@ -1,0 +1,27 @@
+{
+  "id": "medical_texts_lv2",
+  "arkhamdb_code": "08038",
+  "name": "Medical Texts",
+  "name_cn": "医学教科书",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: Choose an investigator at your location and test [intellect] (2). If you succeed, heal 1 damage from that investigator (2 damage instead if you succeed by 2 or more). If you fail, you must either exhaust Medical Texts or deal 1 damage to that investigator.",
+  "text_cn": "[action]：选择你所在地点的一位调查员并检定[intellect](2)。如果你成功，治愈该调查员1点伤害(如果你成功且超过难度至少2点，改为治愈2点伤害)。如果你失败，你必须消耗医学教科书或对该调查员造成1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

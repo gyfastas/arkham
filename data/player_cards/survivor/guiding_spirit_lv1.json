@@ -1,0 +1,26 @@
+{
+  "id": "guiding_spirit_lv1",
+  "arkhamdb_code": "05236",
+  "name": "Guiding Spirit",
+  "name_cn": "指路鬼魂",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "ally",
+    "geist"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [intellect].\nNon-direct horror must be assigned to Guiding Spirit before it can be assigned to your investigator card.\n<b>Forced</b> - When Guiding Spirit is defeated by horror: Exile it.",
+  "text_cn": "你获得+1[intellect]。\n非直接恐惧在被分配到你的调查员卡之前，必须先被分配到指路鬼魂。\n<b>强制</b> - 在指路鬼魂由于恐惧而被击败时：将其放逐。",
+  "health": null,
+  "sanity": 3,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

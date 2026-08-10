@@ -1,0 +1,26 @@
+{
+  "id": "try_and_try_again_lv1",
+  "arkhamdb_code": "04159",
+  "name": "Try and Try Again",
+  "name_cn": "反复尝试",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "Uses (3 tries). If Try and Try Again has no tries, discard it.<br/>[reaction] After a skill test is failed, if a skill card you own is committed to that test, exhaust Try and Try Again and spend 1 try: Return that skill card to your hand.",
+  "text_cn": "使用(3次数)。如果反复尝试没有次数，则将其丢弃。[reaction]在一次技能检定失败后，如果你拥有的1张技能卡被投入该次检定中，消耗反复尝试并花费1次数：将该技能卡返回你手中。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "triess": 3
+  }
+}

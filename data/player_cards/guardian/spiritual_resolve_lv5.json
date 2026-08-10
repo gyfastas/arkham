@@ -1,0 +1,26 @@
+{
+  "id": "spiritual_resolve_lv5",
+  "arkhamdb_code": "06323",
+  "name": "Spiritual Resolve",
+  "name_cn": "摒绝杂念",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 5,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Myriad.\n[fast] Discard a copy of Spiritual Resolve from your hand: Heal all damage and horror from this copy of Spiritual Resolve.",
+  "text_cn": "多重。\n[fast]从你的手牌丢弃一张摒绝杂念：治愈本摒绝杂念的所有伤害和恐惧。",
+  "health": 3,
+  "sanity": 3,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

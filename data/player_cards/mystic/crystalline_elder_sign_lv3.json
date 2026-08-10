@@ -1,0 +1,27 @@
+{
+  "id": "crystalline_elder_sign_lv3",
+  "arkhamdb_code": "04235",
+  "name": "Crystalline Elder Sign",
+  "name_cn": "远古印记结晶",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "item",
+    "relic",
+    "blessed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Seal (+1 or [elder_sign]).\nYou get +1 [willpower], +1 [intellect], +1 [combat], and +1 [agility].",
+  "text_cn": "封印(+1或[elder_sign])。\n你获得+1[willpower]、+1[intellect]、+1[combat]和+1[agility]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

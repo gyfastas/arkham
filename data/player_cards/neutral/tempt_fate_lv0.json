@@ -1,0 +1,25 @@
+{
+  "id": "tempt_fate_lv0",
+  "arkhamdb_code": "07037",
+  "name": "Tempt Fate",
+  "name_cn": "人定胜天",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "fortune",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] window.\nAdd 3 [curse] tokens to the chaos bag. Then, add 3 [bless] tokens to the chaos bag and draw 1 card.",
+  "text_cn": "快速。在任何[fast]玩家时间段中打出。\n加入3个[curse]标记到混乱袋。然后，加入3个[bless]标记到混乱袋并抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

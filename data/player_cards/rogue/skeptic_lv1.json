@@ -1,0 +1,23 @@
+{
+  "id": "skeptic_lv1",
+  "arkhamdb_code": "07115",
+  "name": "Skeptic",
+  "name_cn": "无神论者",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "During this skill test, treat the modifier of each [bless] and each [curse] token as +1 instead of its normal modifier.",
+  "text_cn": "这次技能检定中，将每个[bless]和[curse]标记的修正值改为视为+1。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

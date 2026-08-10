@@ -1,0 +1,24 @@
+{
+  "id": "unbound_beast_lv0",
+  "arkhamdb_code": "06283",
+  "name": "Unbound Beast",
+  "name_cn": "脱缰野兽",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "monster",
+    "extradimensional",
+    "tindalos"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Bonded (Summoned Hound).\n<b>Prey</b> - Bearer.\nHunter. Retaliate.\n<b>Revelation</b> - If there is no copy of Summoned Hound in play, set Unbound Beast aside, out of play. Otherwise, set an investigator's Summoned Hound aside, out of play, and spawn Unbound Beast engaged with the same investigator.",
+  "text_cn": "绑定 (受召猎犬)。\n<b>猎物</b> - 承受者。\n猎手。反击。\n<b>显现</b> - 如果场上没有受召猎犬，将脱缰野兽放在一边，位于场外。否则，将一位调查员的受召猎犬放在一边，位于场外，并且生成脱缰野兽并与该调查员交战。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

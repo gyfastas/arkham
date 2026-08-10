@@ -1,0 +1,24 @@
+{
+  "id": "daredevil_lv2",
+  "arkhamdb_code": "06240",
+  "name": "Daredevil",
+  "name_cn": "虎口拔牙",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "fortune",
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "After you commit Daredevil to a skill test, reveal cards from the top of your deck until you reveal a [rogue] skill you can commit to this test. Commit it. Shuffle each other revealed card back into your deck.",
+  "text_cn": "在你投入虎口拔牙到技能检定后，从你的牌堆顶部揭示卡牌，直到你揭示了能投入到这次检定的[rogue]技能卡。将其投入。将其它每张已揭示卡牌混洗回你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

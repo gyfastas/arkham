@@ -1,0 +1,26 @@
+{
+  "id": "rite_of_sanctification_lv0",
+  "arkhamdb_code": "07019",
+  "name": "Rite of Sanctification",
+  "name_cn": "成圣仪式",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "ritual",
+    "blessed"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Seal (up to 5 [bless]). If Rite of Sanctification has no tokens sealed on it, discard it.\n[reaction] When an investigator at your location plays a card, exhaust Rite of Sanctification and release a chaos token sealed on it: Reduce the cost of that card by 2.",
+  "text_cn": "封印(最多5[bless])。如果成圣仪式上没有封印的标记，将其丢弃。\n[reaction]你所在地点一位调查员在打出一张卡牌时，消耗成圣仪式并释放其上封印的一个混乱标记：该卡牌费用降低2。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

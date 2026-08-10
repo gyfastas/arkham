@@ -1,0 +1,29 @@
+{
+  "id": "armageddon_lv0",
+  "arkhamdb_code": "07117",
+  "name": "Armageddon",
+  "name_cn": "哈米吉多顿",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "spell",
+    "cursed"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (3 charges).\n[action] Spend 1 charge: <b>Fight.</b> This attack uses [willpower] instead of [combat] and deals +1 damage. If a [curse] token is revealed during this attack, you may deal 1 damage to an enemy at your location or place 1 charge on Armageddon.",
+  "text_cn": "使用(3充能)。\n[action]花费1充能：<b>攻击</b>。这次攻击不使用[combat]，改为使用[willpower]，并造成+1伤害。如果这次攻击中抽出[curse]标记，你可以对你所在地点的一名敌人造成1点伤害，或在哈米吉多顿上放置1充能。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "charges": 3
+  }
+}

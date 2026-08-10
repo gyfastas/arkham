@@ -1,0 +1,23 @@
+{
+  "id": "hoods_lv0",
+  "arkhamdb_code": "05017",
+  "name": "Hoods",
+  "name_cn": "兜帽人",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "humanoid",
+    "cultist"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Prey</b> - Rita Young only.\nAlert. Hunter.\n<b>Forced</b> - After you evade Hoods: It attacks you.",
+  "text_cn": "<b>猎物</b> - 仅对丽塔·杨。\n警戒。猎手。\n<b>强制</b> - 在你躲避兜帽人后：兜帽人攻击你。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subtype": "weakness"
+}

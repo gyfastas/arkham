@@ -1,0 +1,31 @@
+{
+  "id": "twilight_blade_lv0",
+  "arkhamdb_code": "05013",
+  "name": "Twilight Blade",
+  "name_cn": "银暮匕首",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "weapon"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Diana Stanley deck only.\n[action]: <b>Fight.</b> You may use [willpower] instead of [combat] for this attack.\nYou may play or commit events and skills beneath Diana Stanley as if they were in your hand. As an additional cost to play or commit a card in this way, exhaust Twilight Blade. You cannot trigger Diana Stanley's [reaction] ability while playing or committing a card in this way.",
+  "text_cn": "黛安娜·史丹利牌组专用。\n[action]：<b>攻击</b>。你这次攻击可以不使用[combat]，改为使用[willpower]。\n你可以打出或投入黛安娜·史丹利底下的事件卡和技能卡，如同其在你的手牌中。作为以此方式打出或投入卡牌的额外费用，消耗银暮匕首。只要以此方式打出或投入卡牌就不能触发黛安娜·史丹利的[reaction]能力。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "Sanctum's Reward",
+  "subname_cn": "圣堂的奖赏"
+}

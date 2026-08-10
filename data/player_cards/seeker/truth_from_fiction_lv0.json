@@ -1,0 +1,23 @@
+{
+  "id": "truth_from_fiction_lv0",
+  "arkhamdb_code": "04152",
+  "name": "Truth from Fiction",
+  "name_cn": "去伪存真",
+  "class": "seeker",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Play only if there is a clue on your location.<br/>Place 2 secrets on an asset you control.",
+  "text_cn": "只有当你所在地点有线索时才能打出。\n在你控制的1张支援卡上放置2秘密。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "meditative_trance_lv0",
+  "arkhamdb_code": "08061",
+  "name": "Meditative Trance",
+  "name_cn": "冥想放空",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "insight",
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "For each of your arcane slots that is filled, either heal 1 damage or 1 horror.",
+  "text_cn": "你每有一个法术槽位被占用，治愈1点伤害或1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

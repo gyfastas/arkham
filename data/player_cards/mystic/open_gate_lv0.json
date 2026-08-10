@@ -1,0 +1,25 @@
+{
+  "id": "open_gate_lv0",
+  "arkhamdb_code": "06029",
+  "name": "Open Gate",
+  "name_cn": "开启大门",
+  "class": "mystic",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Myriad. Fast.\nPlay only during your turn.\nAttach to your location. Group limit 3 in play.\nInvestigators may move between any two locations with an attached Open Gate as if the locations were connected.",
+  "text_cn": "多重。 快速。\n只能在你的回合中打出。\n叠加到你所在地点。团队在场上限制3张。\n调查员可以在任何2个叠加开启大门的地点之间移动，如同两地点连接。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

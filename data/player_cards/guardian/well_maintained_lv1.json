@@ -1,0 +1,24 @@
+{
+  "id": "well_maintained_lv1",
+  "arkhamdb_code": "05152",
+  "name": "Well-Maintained",
+  "name_cn": "妥善养护",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "fast": true,
+  "traits": [
+    "upgrade"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nAttach to an [[Item]] asset you control. Limit 1 per asset.\n[reaction] After attached asset is discarded: Return it to its owner's hand, along with each other [[Upgrade]] attachment that was attached to it.",
+  "text_cn": "快速。只能在你回合中打出。\n叠加到你控制的一张[[道具]]支援卡。每张支援卡限制1张。\n[reaction]在被叠加的支援卡被丢弃后：将其返回其所有者手牌，叠加到该支援卡的每张其它[[升级]]卡也返回各自所有者的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ethereal_form_lv0",
+  "arkhamdb_code": "06164",
+  "name": "Ethereal Form",
+  "name_cn": "飘渺灵体",
+  "class": "mystic",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Evade.</b> Add your [willpower] value to your skill value for this evasion attempt. If you succeed, disengage from each other enemy engaged with you, and for the remainder of the round, you are ethereal (enemies cannot engage or be engaged with you, and you cannot attack or deal damage to enemies).",
+  "text_cn": "<b>躲避</b>。将你的[willpower]值加入你这次躲避尝试的技能值。如果你成功，与每名与你交战的其余敌人解除交战，并且本轮接下来的时间里，你视为无形(敌人不能与你交战，且你不能攻击或对敌人造成伤害)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

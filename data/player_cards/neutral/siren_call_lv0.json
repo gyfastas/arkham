@@ -1,0 +1,22 @@
+{
+  "id": "siren_call_lv0",
+  "arkhamdb_code": "07016",
+  "name": "Siren Call",
+  "name_cn": "海妖之唤",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Siren Call into play in your threat area.\nAs an additional cost to commit 1 or more cards to a skill test, you must pay 1 resource for each matching skill icon those cards have.\n[action][action]: Discard Siren Call.",
+  "text_cn": "<b>显现</b> - 将海妖之唤放置入你的威胁区域。\n作为投入卡牌到技能检定的额外费用，那些卡牌每有一个匹配的技能图标，你必须支付1资源。\n[action][action]：丢弃海妖之唤。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "weakness"
+}

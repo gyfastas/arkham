@@ -1,0 +1,25 @@
+{
+  "id": "eldritch_inspiration_lv0",
+  "arkhamdb_code": "05033",
+  "name": "Eldritch Inspiration",
+  "name_cn": "恐怖灵感",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spell",
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when you would resolve an effect on a [mystic] card that triggers \"when,\" \"if,\" or \"after\" a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol is revealed.\nEither cancel that effect, or resolve it an additional time.",
+  "text_cn": "快速。在你将要结算一张[mystic]卡牌的效果，且该效果在抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]符号时、如果抽出或在抽出后触发时打出。<i>(FAQ, v1.5)</i>\n取消该效果，或额外结算一次该效果。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

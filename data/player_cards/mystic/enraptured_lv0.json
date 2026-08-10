@@ -1,0 +1,23 @@
+{
+  "id": "enraptured_lv0",
+  "arkhamdb_code": "04157",
+  "name": "Enraptured",
+  "name_cn": "如痴如醉",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful during an investigation, place 1 charge or secret on an asset you control.",
+  "text_cn": "如果调查中的这次技能检定成功，在你控制的1张支援卡上放置1充能或1秘密。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

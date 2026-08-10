@@ -1,0 +1,54 @@
+{
+  "id": "marie_lambeau",
+  "arkhamdb_code": "05006",
+  "name": "Marie Lambeau",
+  "name_cn": "玛丽·朗博",
+  "title": "The Entertainer",
+  "title_cn": "演艺人士",
+  "class": "mystic",
+  "health": 6,
+  "sanity": 8,
+  "skills": {
+    "willpower": 4,
+    "intellect": 4,
+    "combat": 1,
+    "agility": 3
+  },
+  "ability": "While you have 1 or more doom among cards you control, you may take an additional action during your turn, which can only be used to play [[Spell]] cards or activate [[Spell]] [action] abilities.\n[elder_sign] effect: +1. You may add 1 doom to or remove 1 doom from a card you control.",
+  "ability_cn": "只要你控制的卡牌上有至少1个毁灭标记，你可以在自己的回合期间进行一个额外行动，该额外行动只能用于打出[[法术]]卡牌或启动[[法术]][action]能力。\n[elder_sign]效果：+1。你可以在你控制的一张卡牌上增加或移除1个毁灭标记。",
+  "elder_sign": "[elder_sign] effect: +1. You may add 1 doom to or remove 1 doom from a card you control.",
+  "elder_sign_cn": "[elder_sign]效果：+1。你可以在你控制的一张卡牌上增加或移除1个毁灭标记。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "mystic": {
+        "min_level": 0,
+        "max_level": 3
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "seeker": {
+        "min_level": 0,
+        "max_level": 0
+      },
+      "survivor": {
+        "min_level": 0,
+        "max_level": 0
+      }
+    },
+    "_trait_options": [
+      "trait:spell lv0-5",
+      "trait:occult lv0-0"
+    ]
+  },
+  "signature_cards": [
+    "mystifying_song_lv0"
+  ],
+  "weakness": "baron_samedi_lv0",
+  "flavor_text": "",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: [[Spell]] cards level 0-5, Mystic cards ([mystic]) level 0-3, Neutral cards level 0-5, [[Occult]] cards level 0, up to five other level 0 Seeker and/or Survivor cards ([seeker] and/or [survivor]).\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Mystifying Song, Baron Samedi, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：[[法术]]卡等级0-5，潜修者([mystic])等级0-3，中立卡牌等级0-5，[[密教]]卡等级0，最多5张其它的等级0探求者卡牌和/或求生者卡牌([seeker]和/或[survivor])。\n<b>牌组构建需求</b>(不计入卡牌张数)：神秘乐曲、安息日男爵、1张随机基础弱点。",
+  "pack": "the_circle_undone"
+}

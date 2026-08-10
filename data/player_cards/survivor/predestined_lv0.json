@@ -1,0 +1,22 @@
+{
+  "id": "predestined_lv0",
+  "arkhamdb_code": "07035",
+  "name": "Predestined",
+  "name_cn": "既定命运",
+  "class": "survivor",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "fortune",
+    "blessed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Max 1 committed per skill test.\nYou may commit Predestined to any type of test.\nIf this test fails, either add 2 [bless] tokens to the chaos bag or remove 2 [curse] tokens from the chaos bag.",
+  "text_cn": "每次技能检定最多投入1张。\n你可以投入既定命运到任意类型的检定。\n如果这次检定失败，加入2个[bless]标记到混乱袋，或从混乱袋移除2个[curse]标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

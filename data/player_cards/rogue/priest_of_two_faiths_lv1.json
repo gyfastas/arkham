@@ -1,0 +1,27 @@
+{
+  "id": "priest_of_two_faiths_lv1",
+  "arkhamdb_code": "07156",
+  "name": "Priest of Two Faiths",
+  "name_cn": "双面神父",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "ally",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[reaction] After Priest of Two Faiths enters play: Add 3 [bless] tokens to the chaos bag.\n<b>Forced</b> - At the end of the upkeep phase: You must either add 1 [curse] token to the chaos bag or discard Priest of Two Faiths.",
+  "text_cn": "[reaction]在双面神父入场后：加入3个[bless]标记到混乱袋。\n<b>强制</b> - 当结束补给阶段时：你必须加入1个[curse]标记到混乱袋或丢弃双面神父。",
+  "health": 2,
+  "sanity": 2,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

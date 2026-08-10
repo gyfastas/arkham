@@ -1,0 +1,31 @@
+{
+  "id": "dayana_esperence_lv3",
+  "arkhamdb_code": "05279",
+  "name": "Dayana Esperence",
+  "name_cn": "黛雅娜·艾丝帕伦斯",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 4,
+  "level": 3,
+  "traits": [
+    "ally",
+    "witch"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "Uses (3 secrets).\n[fast]: Attach a non-weakness [[Spell]] event from your hand to Dayana Esperence. Limit 1 event attached to her.\nThe attached event may be played as if it were in your hand. It is not placed in your discard pile after it is played <i>(it remains attached)</i>. As an additional cost to play the attached event, exhaust Dayana Esperence and spend 1 secret.",
+  "text_cn": "使用(3秘密)。\n[free]：将一张非弱点[[法术]]事件卡从你的手牌叠加到黛雅娜·艾丝帕伦斯。被叠加到其身上的事件卡限制1张。\n可以打出被叠加的事件卡，如同其在你的手牌中。将其打出后，不放到你的弃牌堆<i>(其仍维持叠加)</i>。作为打出打出被叠加事件卡的额外费用，消耗黛雅娜·艾丝帕伦斯并花费1秘密。",
+  "health": 3,
+  "sanity": 1,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "Deals with \"Devils\"",
+  "subname_cn": "与\"恶魔\"交易",
+  "uses": {
+    "secrets": 3
+  }
+}

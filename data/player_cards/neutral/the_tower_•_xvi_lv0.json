@@ -1,0 +1,27 @@
+{
+  "id": "the_tower_•_xvi_lv0",
+  "arkhamdb_code": "05042",
+  "name": "The Tower • XVI",
+  "name_cn": "高塔·XVI",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "omen",
+    "tarot"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "tarot"
+  ],
+  "text": "You cannot commit cards to skill tests while The Tower • XVI is in your hand.\nIf The Tower • XVI is drawn in your opening hand during setup <i>(before or after taking a mulligan)</i>, you cannot replace it. It must stay in your opening hand.",
+  "text_cn": "只要高塔·XVI在你手牌中，你就无法投入卡牌到技能检定。\n如果在设置阶段你抽取了高塔·XVI作为你的起始手牌<i>(不论在换牌之前还是之后)</i>，你不能将其替换。本卡牌必须留在你的起始手牌中。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subname": "Circumstances Beyond Your Control",
+  "subname_cn": "情况难以控制",
+  "subtype": "basic_weakness"
+}

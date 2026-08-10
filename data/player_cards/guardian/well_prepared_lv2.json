@@ -1,0 +1,21 @@
+{
+  "id": "well_prepared_lv2",
+  "arkhamdb_code": "04151",
+  "name": "Well Prepared",
+  "name_cn": "准备万全",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "[fast] Exhaust Well Prepared: Choose an asset you control. You get +X skill value for this skill test, where X is the number of matching skill icons on the chosen asset.",
+  "text_cn": "[free]消耗准备万全：选择你控制的1张支援卡。这次技能检定你的技能值+X，X为所选支援卡上对应的技能图标数量。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

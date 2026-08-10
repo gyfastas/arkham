@@ -1,0 +1,22 @@
+{
+  "id": "false_covenant_lv2",
+  "arkhamdb_code": "07116",
+  "name": "False Covenant",
+  "name_cn": "虚假圣约",
+  "class": "rogue",
+  "type": "asset",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "covenant",
+    "cursed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When an investigator at your location reveals a [curse] token during a skill test, exhaust False Covenant: Cancel that chaos token, return it to the token pool, and reveal another token.",
+  "text_cn": "永久。每副牌组限制1张[[圣约]]。\n[reaction]你所在地点的调查员在技能检定中抽出一个[curse]标记时，消耗虚假圣约：取消该混乱标记，将其返回供应堆，并抽出另一个标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

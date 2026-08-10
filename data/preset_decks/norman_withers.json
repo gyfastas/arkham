@@ -1,0 +1,40 @@
+{
+  "investigator_id": "norman_withers",
+  "presets": [
+    {
+      "name": "诺曼·威瑟斯（入门）",
+      "cards": [
+        "archaic_glyphs_lv0",
+        "archaic_glyphs_lv0",
+        "forbidden_knowledge_lv0",
+        "forbidden_knowledge_lv0",
+        "the_councils_coffer_lv2",
+        "alchemical_transmutation_lv0",
+        "alchemical_transmutation_lv0",
+        "arcane_initiate_lv0",
+        "arcane_initiate_lv0",
+        "favor_of_the_moon_lv1",
+        "knife_lv0",
+        "knife_lv0",
+        "magnifying_glass_lv0",
+        "magnifying_glass_lv0",
+        "ritual_candles_lv0",
+        "ritual_candles_lv0",
+        "scroll_of_secrets_lv0",
+        "scroll_of_secrets_lv0",
+        "scrying_lv0",
+        "scrying_lv0",
+        "strange_solution_lv0",
+        "strange_solution_lv0",
+        "arcane_studies_lv0",
+        "arcane_studies_lv0",
+        "archive_of_conduits_lv0",
+        "archive_of_conduits_lv0",
+        "art_student_lv0",
+        "art_student_lv0",
+        "backpack_lv0",
+        "backpack_lv0"
+      ]
+    }
+  ]
+}

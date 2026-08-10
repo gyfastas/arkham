@@ -1,0 +1,24 @@
+{
+  "id": "stargazing_lv1",
+  "arkhamdb_code": "06027",
+  "name": "Stargazing",
+  "name_cn": "仰望星空",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "insight",
+    "augury"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Max twice per game.\nPlay only if there are 10 or more cards in the encounter deck.\nSearch your bonded cards for 1 copy of The Stars Are Right and shuffle it into the top 10 cards of the encounter deck.",
+  "text_cn": "每场游戏最多两次。\n遭遇牌堆有10张以上卡牌时才能打出。\n在你的绑定卡牌中查找1张群星正确之时，并将其混洗入遭遇牌堆顶部10张卡牌中。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

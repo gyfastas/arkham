@@ -1,0 +1,23 @@
+{
+  "id": "swift_reflexes_lv0",
+  "arkhamdb_code": "05156",
+  "name": "Swift Reflexes",
+  "name_cn": "反应灵敏",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "gambit"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Fast. Play during any investigator's turn, except during an action.\nImmediately take an action as if it were your turn. This action does not count toward the number of actions you can take each turn.",
+  "text_cn": "快速。在任意调查员的回合中(不含行动中)打出。\n立刻进行一个行动，如同在你的回合。这个行动不计入你每回合可进行的行动数。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

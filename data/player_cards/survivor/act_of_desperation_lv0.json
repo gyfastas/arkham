@@ -1,0 +1,24 @@
+{
+  "id": "act_of_desperation_lv0",
+  "arkhamdb_code": "05037",
+  "name": "Act of Desperation",
+  "name_cn": "绝望之举",
+  "class": "survivor",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "tactic",
+    "gambit"
+  ],
+  "skill_icons": {
+    "combat": 2
+  },
+  "slots": [],
+  "text": "As an additional cost to play Act of Desperation, choose and discard an [[Item]] asset that takes up at least 1 hand slot from your hand or play area.\n<b>Fight.</b> You get +X [combat] and deal +1 damage for this attack, where X is the chosen asset's printed resource cost. If you succeed and that asset was in your play area, gain X resources.",
+  "text_cn": "作为打出绝望之举的额外费用，从你手牌或游戏区域选择并丢弃一张占用至少1个手部槽位的[[道具]]支援卡。\n<b>攻击</b>。你这次攻击+X[combat]并造成+1伤害，X为所选支援卡的打印资源 费用。如果你成功且该支援卡是从你的游戏区域中丢弃的，获得X资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

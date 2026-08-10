@@ -1,0 +1,24 @@
+{
+  "id": "cornered_lv2",
+  "arkhamdb_code": "04160",
+  "name": "Cornered",
+  "name_cn": "围困",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "[fast] Discard 1 card from your hand: You get +2 skill value for this skill test. (Limit once per test.)",
+  "text_cn": "[free]丢弃你1张手牌：这次技能检定你的技能值+2。(每次检定限制1次)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "fence_lv1",
+  "arkhamdb_code": "04108",
+  "name": "Fence",
+  "name_cn": "销赃贩子",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "connection",
+    "illicit"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "[reaction] When you play an [[Illicit]] card during your turn, exhaust Fence: The [[Illicit]] card gains fast. If it was already fast, reduce its cost by 1 instead.",
+  "text_cn": "[reaction]在你在你回合中打出[[违法]]卡牌时，消耗销赃贩子：该[[违法]]卡牌获得快速。如果该卡牌本身即为快速，改为将其费用减少1点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

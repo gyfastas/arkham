@@ -1,0 +1,25 @@
+{
+  "id": "join_the_caravan_lv1",
+  "arkhamdb_code": "08036",
+  "name": "Join the Caravan",
+  "name_cn": "加入马队",
+  "class": "seeker",
+  "type": "event",
+  "cost": 5,
+  "level": 1,
+  "traits": [
+    "insight",
+    "synergy"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn. Reduce the cost of this card by 1 for each different class among cards you control.\nMove to any revealed location.",
+  "text_cn": "快速。只能在你的回合中打出。你控制的卡牌之中每有一个不同的职阶，本卡牌的费用减1。\n移动到任一个已揭示地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

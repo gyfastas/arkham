@@ -1,0 +1,28 @@
+{
+  "id": "feed_the_mind_lv3",
+  "arkhamdb_code": "04267",
+  "name": "Feed the Mind",
+  "name_cn": "养神术",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (3 secrets).\n[action] Exhaust Feed the Mind and spend 1 secret: Test [intellect] (0). For each point you succeed by, draw 1 card. Then, take 1 horror for each card in your hand in excess of your maximum hand size.",
+  "text_cn": "使用(3秘密)。\n[action]消耗养神术并花费1秘密：检定[intellect](0)。你成功且每超过难度1点，抽取1张卡牌。然后，你手牌每超出上限1张，受到1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "secrets": 3
+  }
+}

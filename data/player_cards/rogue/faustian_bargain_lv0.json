@@ -1,0 +1,25 @@
+{
+  "id": "faustian_bargain_lv0",
+  "arkhamdb_code": "07028",
+  "name": "Faustian Bargain",
+  "name_cn": "浮士德的交易",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "pact",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "As an additional cost to play Faustian Bargain, add 2 [curse] tokens to the chaos bag.\nInvestigators at your location gain a total of 5 resources, distributed as you wish.",
+  "text_cn": "作为打出浮士德的交易的额外费用，加入2个[curse]标记到混乱袋。\n你所在地点的调查员获得总计5资源，由你自行分配。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

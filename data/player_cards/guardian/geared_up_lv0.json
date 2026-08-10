@@ -1,0 +1,21 @@
+{
+  "id": "geared_up_lv0",
+  "arkhamdb_code": "08019",
+  "name": "Geared Up",
+  "name_cn": "全副武装",
+  "class": "guardian",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: One at a time, play any number of [[Item]] assets from your hand, reducing the cost of each by 1. During this turn, you have 3 fewer actions to take.",
+  "text_cn": "永久。每副牌组限制1张。当牌组构建时购买。\n<b>强制</b> - 在你游戏的第一回合开始时：一次一张，打出你手牌中任意数量的[[道具]]支援卡，每张费用减少1点。这回合中你减少3次行动。<i>(FAQ, v2.0)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

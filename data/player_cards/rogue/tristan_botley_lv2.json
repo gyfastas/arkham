@@ -1,0 +1,29 @@
+{
+  "id": "tristan_botley_lv2",
+  "arkhamdb_code": "07194",
+  "name": "Tristan Botley",
+  "name_cn": "崔斯丹‧波特雷",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 5,
+  "level": 2,
+  "traits": [
+    "ally",
+    "criminal",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[reaction] After your turn begins: Choose two skills. Until the start of your next turn, you get +1 to each of those skills.\n[reaction] After any skill test ends in which a total of 3 or more [curse] or [bless] tokens were revealed: Play Tristan Botley from your hand, at no cost.",
+  "text_cn": "[reaction]在你的回合开始后：选择两项技能。这些技能你每项得到+1，直到你的下回合开始。\n[reaction]在任何抽出总计至少3个[curse]或[bless]标记的技能检定结束后：从你手牌免费打出崔斯丹‧波特雷。",
+  "health": 3,
+  "sanity": 2,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Fixer for Hire",
+  "subname_cn": "收钱办事"
+}

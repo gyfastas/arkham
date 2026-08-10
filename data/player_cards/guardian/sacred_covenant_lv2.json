@@ -1,0 +1,22 @@
+{
+  "id": "sacred_covenant_lv2",
+  "arkhamdb_code": "07110",
+  "name": "Sacred Covenant",
+  "name_cn": "庄严圣约",
+  "class": "guardian",
+  "type": "asset",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "covenant",
+    "blessed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] After an investigator at any location performs the \"reveal chaos token\" step of a skill test, exhaust Sacred Covenant: Return any number of [bless] tokens revealed during this test to the chaos bag, ignoring their modifiers for this test.",
+  "text_cn": "永久。每副牌组限制1张[[圣约]]。\n[reaction]在任意地点的调查员执行技能检定的\"抽出混乱标记\"步骤(步骤3)后，消耗庄严圣约: 将这次检定中抽出的任意数量的[bless]标记返回混乱袋，这次检定忽略其修正值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

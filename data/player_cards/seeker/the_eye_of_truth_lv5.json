@@ -1,0 +1,24 @@
+{
+  "id": "the_eye_of_truth_lv5",
+  "arkhamdb_code": "06325",
+  "name": "The Eye of Truth",
+  "name_cn": "真理之眼",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 5,
+  "traits": [
+    "spell",
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 4
+  },
+  "slots": [],
+  "text": "If this skill test is on a treachery and the test is successful, add that treachery to the victory display and attach The Eye of Truth to it.\nWhile attached, The Eye of Truth contributes its skill icons to all tests on copies of the attached treachery.",
+  "text_cn": "如果这次技能检定是诡计卡上的检定，且检定成功，将该诡计卡加入胜利牌区，并叠加真理之眼到其上。\n只要真理之眼叠加到诡计卡，其技能图标会投入到该卡牌的同名卡牌的所有技能检定。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

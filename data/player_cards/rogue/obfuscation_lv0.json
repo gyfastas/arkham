@@ -1,0 +1,28 @@
+{
+  "id": "obfuscation_lv0",
+  "arkhamdb_code": "07027",
+  "name": "Obfuscation",
+  "name_cn": "眼花撩乱",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Fast. Uses (3 charges).\n[reaction] When an enemy makes an attack of opportunity against you, spend 1 charge: Cancel that attack.",
+  "text_cn": "快速。使用(3充能)。\n[reaction]在一名敌人对你进行趁乱攻击时，花费1充能：取消该次攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "charges": 3
+  }
+}

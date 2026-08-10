@@ -1,0 +1,36 @@
+{
+  "id": "enchanted_bow_lv2",
+  "arkhamdb_code": "08118",
+  "name": "Enchanted Bow",
+  "name_cn": "附魔弓",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "spell",
+    "blessed",
+    "weapon",
+    "ranged"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand x2. arcane"
+  ],
+  "text": "Uses (3 charges).\n[action] Exhaust Enchanted Bow: <b>Fight.</b> You must use either [willpower] or [agility] instead of [combat] and get +1 skill value for this attack. This attack deals +1 damage. As an additional cost to initiate this ability, you may spend 1 charge to have this attack target a non-[[Elite]] enemy at a connecting location; if you do, ignore the aloof and retaliate keywords for this attack.",
+  "text_cn": "使用(3充能)。\n[action]消耗附魔弓：<b>攻击</b>。你这次攻击+1技能值，并且必须不使用[combat]，改为使用[willpower]或[agility]。这次攻击造成+1伤害。作为发动本能力的额外费用，你可以花费1充能来使这次攻击以连接地点的一名非[[精英]]敌人为目标；如果你这么做，这次攻击忽略冷漠和反击关键词。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "mystic",
+    "survivor"
+  ],
+  "uses": {
+    "charges": 3
+  }
+}

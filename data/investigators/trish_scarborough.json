@@ -1,0 +1,46 @@
+{
+  "id": "trish_scarborough",
+  "arkhamdb_code": "07003",
+  "name": "Trish Scarborough",
+  "name_cn": "特里希‧斯卡波罗",
+  "title": "The Spy",
+  "title_cn": "间谍",
+  "class": "rogue",
+  "health": 8,
+  "sanity": 6,
+  "skills": {
+    "willpower": 2,
+    "intellect": 4,
+    "combat": 2,
+    "agility": 4
+  },
+  "ability": "[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead.",
+  "ability_cn": "[reaction]你在有敌人的地点发现线索后：发现该地点的额外1个线索，或自动躲避该敌人(每轮限制一次)。\n[elder_sign]效果：+2。如果是调查检定，你可以选择任一已揭示地点；改为如同你正在该地点调查。",
+  "elder_sign": "[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead.",
+  "elder_sign_cn": "[elder_sign]效果：+2。如果是调查检定，你可以选择任一已揭示地点；改为如同你正在该地点调查。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "rogue": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "seeker": {
+        "min_level": 0,
+        "max_level": 2
+      }
+    }
+  },
+  "signature_cards": [
+    "in_the_shadows_lv0"
+  ],
+  "weakness": "shadow_agents_lv0",
+  "flavor_text": "",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Rogue cards ([rogue]) level 0-5, Neutral cards level 0-5, Seeker cards ([seeker]) level 0-2.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): In the Shadows, Shadow Agents, 1 random basic weakness.",
+  "back_text_cn": "<b>牌组卡牌张数</b>：30。\n<b>牌组构建选项</b>：流浪者卡牌([rogue])等级0-5，中立卡牌等级0-5，探求者卡牌([seeker])等级0-2。\n<b>牌组构建需求</b>(不计入牌组卡牌张数)：潜于阴影、影子特工、1张随机基础弱点。",
+  "pack": "innsmouth_conspiracy"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "rational_thought_lv0",
+  "arkhamdb_code": "05008",
+  "name": "Rational Thought",
+  "name_cn": "理性思考",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "flaw"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Rational Thought into play in your threat area, with 4 horror on it. Horror on Rational Thought may be healed as if it were on Carolyn Fern. If there is no horror on Rational Thought, discard it.\nYou cannot heal horror from cards other than Rational Thought. You cannot gain resources from Carolyn Fern's [reaction] ability.",
+  "text_cn": "<b>显现</b> - 将理性思考放置入你的威胁区域，在其上面放置4点恐惧。理性思考上的恐惧可以被治愈，如同其在卡洛琳·弗恩上。如果理性思考上没有恐惧，将其丢弃。\n你不能治愈理性思考以外的卡牌上的恐惧。你不能从卡洛琳·弗恩的 [reaction]能力获得资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subtype": "weakness"
+}

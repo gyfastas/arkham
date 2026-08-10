@@ -1,0 +1,53 @@
+{
+  "id": "carolyn_fern",
+  "arkhamdb_code": "05001",
+  "name": "Carolyn Fern",
+  "name_cn": "卡洛琳·弗恩",
+  "title": "The Psychologist",
+  "title_cn": "心理学家",
+  "class": "guardian",
+  "health": 6,
+  "sanity": 9,
+  "skills": {
+    "willpower": 3,
+    "intellect": 4,
+    "combat": 2,
+    "agility": 2
+  },
+  "ability": "[reaction] After one of your card effects heals horror from an investigator or [[Ally]] asset: The healed card's controller gains 1 resource.\n[elder_sign] effect: +1. You may heal 1 horror from an investigator or [[Ally]] asset at your location.",
+  "ability_cn": "[reaction]在你一张卡牌效果治愈一位调查员或一张[[盟友]]支援卡的恐惧后：被治愈的卡牌的控制者获得1资源。\n[elder_sign]效果：+1。你可以治愈你所在地点的一位调查员或一张[[盟友]] 支援卡的1点恐惧。",
+  "elder_sign": "[elder_sign] effect: +1. You may heal 1 horror from an investigator or",
+  "elder_sign_cn": "[elder_sign]效果：+1。你可以治愈你所在地点的一位调查员或一张",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "guardian": {
+        "min_level": 0,
+        "max_level": 3
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "seeker": {
+        "min_level": 0,
+        "max_level": 1
+      },
+      "mystic": {
+        "min_level": 0,
+        "max_level": 1
+      }
+    },
+    "_trait_options": [
+      "trait:weapon lv1-5"
+    ]
+  },
+  "signature_cards": [
+    "hypnotic_therapy_lv0"
+  ],
+  "weakness": "rational_thought_lv0",
+  "flavor_text": "The mind is fragile, but through understanding, we can protect it.",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Guardian cards ([guardian]) level 0-3, Neutral cards level 0-5, cards that \"heal horror\" level 0-5, up to 15 other Seeker and/or Mystic cards level 0-1 ([seeker] and/or [mystic]).\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Hypnotic Therapy, Rational Thought, 1 random basic weakness.\n<b>Additional Restrictions</b>: No [[Weapon]] cards level 1-5.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：守卫者([guardian])等级0-3，中立卡牌等级0-5，带有\"治愈……恐惧\"字样的卡牌等级0-5，最多15张其它的探求者卡牌和/或潜修者卡牌等级0-1([seeker]和/或[mystic])。\n<b>牌组构建需求</b>(不计入卡牌张数)：催眠疗法、理性思考、1张随机基础弱点。\n<b>附加限制</b>：无等级1-5的[[武器]]卡牌。",
+  "pack": "the_circle_undone"
+}

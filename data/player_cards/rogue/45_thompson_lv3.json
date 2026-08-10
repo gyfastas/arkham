@@ -1,0 +1,32 @@
+{
+  "id": "45_thompson_lv3",
+  "arkhamdb_code": "05187",
+  "name": ".45 Thompson",
+  "name_cn": ".45汤姆逊冲锋枪",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 5,
+  "level": 3,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] and deal +1 damage for this attack. If you succeed by at least X, you may spend 1 ammo to deal this attack's damage to another enemy at your location, where X is that enemy's fight value.",
+  "text_cn": "使用(5子弹)。\n[action]花费1子弹：<b>攻击</b>。你这次攻击+2[combat]并造成+1伤害。如果你成功并超过难度至少X点，你可以花费1子弹来对你所在地点的另一名敌人造成这次攻击的伤害，X为该敌人的攻击值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "ammo": 5
+  }
+}

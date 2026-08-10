@@ -1,0 +1,27 @@
+{
+  "id": "abyssal_tome_lv2",
+  "arkhamdb_code": "07159",
+  "name": "Abyssal Tome",
+  "name_cn": "深渊典籍",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action] Exhaust Abyssal Tome: <b>Fight.</b> You may use either [intellect] or [willpower] for this attack, instead of [combat]. When you initiate this attack, you may place 1 doom on Abyssal Tome (to a maximum of 3). You get +1 skill value and deal +1 damage for this attack for each doom on Abyssal Tome.",
+  "text_cn": "[action]消耗深渊典籍：<b>攻击</b>。这次攻击你可以不使用[combat]，改为使用[intellect]或[willpower]。在你发动这次攻击时，你可以在深渊典籍上放置1个毁灭标记(深渊典籍上最多3个)。深渊典籍每有一个毁灭标记，这次攻击你+1技能值并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

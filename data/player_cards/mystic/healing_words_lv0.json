@@ -1,0 +1,28 @@
+{
+ "id": "healing_words_lv0",
+ "arkhamdb_code": "06163",
+ "name": "Healing Words",
+ "name_cn": "治愈真言",
+ "class": "mystic",
+ "type": "asset",
+ "cost": 2,
+ "level": 0,
+ "traits": [
+  "spell"
+ ],
+ "skill_icons": {
+  "willpower": 1
+ },
+ "slots": [
+  "arcane"
+ ],
+ "text": "Uses (3 charges).\n[action] Spend 1 charge: Heal 1 damage from an investigator at your location.",
+ "text_cn": "使用(3充能)。\n[action]花费1充能：治愈你所在地点一位调查员的1点伤害。",
+ "health": null,
+ "sanity": null,
+ "unique": false,
+ "pack": "the_dream_eaters",
+ "uses": {
+  "charges": 3
+ }
+}

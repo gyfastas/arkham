@@ -1,0 +1,25 @@
+{
+  "id": "eavesdrop_lv0",
+  "arkhamdb_code": "04027",
+  "name": "Eavesdrop",
+  "name_cn": "窃听",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight",
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Choose an unengaged enemy at your location. Test [intellect] (X), where X is the evade value of the chosen enemy. If you succeed, discover 2 clues at your location.",
+  "text_cn": "选择你所在地点的一名未处于交战状态的敌人。检定[intellect](X)，X为所选敌人的躲避值。如果你成功，你发现所在地点的2个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

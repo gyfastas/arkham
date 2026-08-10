@@ -1,0 +1,26 @@
+{
+  "id": "treasure_hunter_lv1",
+  "arkhamdb_code": "04025",
+  "name": "Treasure Hunter",
+  "name_cn": "寻宝猎人",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "ally",
+    "wayfarer"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [intellect].\n<b>Forced</b> - At the end of the upkeep phase: You must either pay 1 resource or discard Treasure Hunter.",
+  "text_cn": "你获得+1[intellect]。\n<b>强制</b> - 当补给阶段结束时：你必须支付1资源或丢弃寻宝猎人。",
+  "health": 2,
+  "sanity": 2,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

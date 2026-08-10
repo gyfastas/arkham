@@ -1,0 +1,23 @@
+{
+  "id": "kleptomania_lv0",
+  "arkhamdb_code": "06036",
+  "name": "Kleptomania",
+  "name_cn": "偷窃癖",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness",
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Multiplayer only.\n<b>Revelation</b> - Put Kleptomania into play in your play area.\n[action]: Take control of an [[Item]] asset or 2 resources from another investigator at your location. Then, shuffle Kleptomania into your deck.\n<b>Forced</b> - At the end of your turn: Take 1 horror.",
+  "text_cn": "多人游戏专用。\n<b>显现</b> - 将偷窃癖放置入你的游戏区域。\n[action]：控制你所在地点另一位调查员的一个[[道具]]支援卡或2资源。然后，将偷窃癖混洗入你的牌堆。\n<b>强制</b> - 当你回合结束时：受到1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "basic_weakness"
+}

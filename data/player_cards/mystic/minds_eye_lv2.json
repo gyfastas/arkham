@@ -1,0 +1,29 @@
+{
+ "id": "minds_eye_lv2",
+ "arkhamdb_code": "06328",
+ "name": "Mind's Eye",
+ "name_cn": "神识之眼",
+ "class": "mystic",
+ "type": "asset",
+ "cost": 3,
+ "level": 2,
+ "traits": [
+  "ritual"
+ ],
+ "skill_icons": {
+  "willpower": 1
+ },
+ "slots": [
+  "arcane_x2"
+ ],
+ "text": "Myriad. Uses (3 secrets).\n[reaction] When you would test your [intellect], [combat], or [agility], spend 1 secret: Test your [willpower] instead.\n[fast] Discard a copy of Mind's Eye from your hand: Place 2 secrets on this copy of Mind's Eye.",
+ "text_cn": "多重。使用(3秘密)。\n[reaction]在你将要检定你的[intellect]、[combat]或[agility]时，花费1秘密：改为检定你的[willpower]。\n[fast]从你的手牌丢弃一张神识之眼：在本神识之眼上放置2秘密。",
+ "health": null,
+ "sanity": null,
+ "unique": false,
+ "pack": "the_dream_eaters",
+ "uses": {
+  "secrets": 3
+ },
+ "myriad": true
+}

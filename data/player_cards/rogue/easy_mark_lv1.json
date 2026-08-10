@@ -1,0 +1,25 @@
+{
+  "id": "easy_mark_lv1",
+  "arkhamdb_code": "06026",
+  "name": "Easy Mark",
+  "name_cn": "冤大头",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Myriad.\nGain 2 resources and draw 1 card.\n[reaction] After you play Easy Mark: Play another Easy Mark from your hand, at no cost.",
+  "text_cn": "多重。\n获得2资源并抽取1张卡牌。\n[reaction]在你打出冤大头后：从你手牌中免费打出另一张冤大头。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

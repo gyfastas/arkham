@@ -1,0 +1,29 @@
+{
+  "id": "cryptic_grimoire_lv0",
+  "arkhamdb_code": "07022",
+  "name": "Cryptic Grimoire",
+  "name_cn": "神秘魔法书",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "tome",
+    "occult"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action]: Add 1 [curse] token to the chaos bag.\n[action] If there are 10 [curse] tokens in the chaos bag, discard Cryptic Grimoire: Record in your Campaign Log that \"you have translated the grimoire.\" Replace 5 [curse] tokens in the chaos bag with 5 [bless] tokens.",
+  "text_cn": "[action]：加入1个[curse]标记到混乱袋。\n[action]如果混乱袋内有10个[curse]标记，丢弃神秘魔法书：在你的冒险日志中纪录\"你翻译了魔法书\"。将混乱袋内的5个[curse]标记替换为5个[bless]标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Untranslated",
+  "subname_cn": "未翻译"
+}

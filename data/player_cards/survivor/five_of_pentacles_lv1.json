@@ -1,0 +1,25 @@
+{
+  "id": "five_of_pentacles_lv1",
+  "arkhamdb_code": "05039",
+  "name": "Five of Pentacles",
+  "name_cn": "星币五",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "tarot"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "tarot"
+  ],
+  "text": "You get +1 health and +1 sanity.\n[reaction] When the game begins, if Five of Pentacles is in your opening hand: Put it into play.",
+  "text_cn": "你获得+1生命值+1神智值。\n[reaction]在游戏开始时，如果星币五在你起始手牌中：将其放置入场。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "subname": "From the Brink",
+  "subname_cn": "拐点"
+}

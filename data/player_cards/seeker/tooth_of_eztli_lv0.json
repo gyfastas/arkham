@@ -1,0 +1,28 @@
+{
+  "id": "tooth_of_eztli_lv0",
+  "arkhamdb_code": "04023",
+  "name": "Tooth of Eztli",
+  "name_cn": "埃兹特里之牙",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "You get +1 [willpower] and +1 [agility] while resolving an ability on a treachery card.\n[reaction] After you succeed at a skill test while resolving an ability on a treachery card, exhaust Tooth of Eztli: Draw 1 card.",
+  "text_cn": "结算诡计卡上的能力时，你获得+1[willpower]和+1[agility]。\n[reaction]在你结算诡计卡上的能力时技能检定成功后，消耗埃兹特里之牙：抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subname": "Mortal Reminder",
+  "subname_cn": "致命警醒"
+}

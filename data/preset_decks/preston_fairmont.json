@@ -1,0 +1,40 @@
+{
+  "investigator_id": "preston_fairmont",
+  "presets": [
+    {
+      "name": "普雷斯顿·费尔蒙特（入门）",
+      "cards": [
+        "cherished_keepsake_lv0",
+        "cherished_keepsake_lv0",
+        "decorated_skull_lv0",
+        "decorated_skull_lv0",
+        "drawing_thin_lv0",
+        "drawing_thin_lv0",
+        "leather_coat_lv0",
+        "leather_coat_lv0",
+        "moxie_lv3",
+        "moxie_lv3",
+        "old_shotgun_lv2",
+        "old_shotgun_lv2",
+        "the_councils_coffer_lv2",
+        "unscrupulous_loan_lv3",
+        "unscrupulous_loan_lv3",
+        "augur_lv0",
+        "borrowed_time_lv3",
+        "borrowed_time_lv3",
+        "burglary_lv0",
+        "burglary_lv0",
+        "burglary_lv2",
+        "burglary_lv2",
+        "crystallizer_of_dreams_lv0",
+        "crystallizer_of_dreams_lv0",
+        "dark_ritual_lv0",
+        "dark_ritual_lv0",
+        "favor_of_the_moon_lv1",
+        "fire_axe_lv0",
+        "fire_axe_lv0",
+        "guiding_spirit_lv1"
+      ]
+    }
+  ]
+}

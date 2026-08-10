@@ -1,0 +1,24 @@
+{
+  "id": "occult_evidence_lv0",
+  "arkhamdb_code": "06008",
+  "name": "Occult Evidence",
+  "name_cn": "神秘证据",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "insight",
+    "research"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Mandy Thompson deck only.\nShuffle Occult Evidence into your deck.\n[reaction] When you search your deck and Occult Evidence is among the searched cards, reveal it: Draw it and discover 1 clue at your location. (Max one [[Research]] ability per search.)",
+  "text_cn": "曼蒂·汤普森牌组专用。\n将神秘证据混洗回你的牌堆。\n[reaction]在你查找你的牌堆时若神秘证据在被查找卡牌中，将其揭示：将其抽取并发现你所在地点的1个线索。(每次查找最多使用一次[[研究]]能力。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "protecting_the_anirniq_lv2",
+  "arkhamdb_code": "08102",
+  "name": "Protecting the Anirniq",
+  "name_cn": "保护魂灵",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play after an [[Ally]] asset at your location is discarded by a card effect or is defeated.\nEither return that asset to its owner's hand, or its owner draws 3 cards.",
+  "text_cn": "快速。在你所在地点一张[[盟友]]支援卡被卡牌效果丢弃或被击败后打出。\n将该支援卡返回其所有者的手中，或其所有者抽取3张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "mystic"
+  ]
+}

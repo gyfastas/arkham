@@ -1,0 +1,22 @@
+{
+  "id": "the_price_of_failure_lv0",
+  "arkhamdb_code": "04039",
+  "name": "The Price of Failure",
+  "name_cn": "失败的代价",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "pact"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Take 2 damage and 2 horror. Place 1 doom on the current agenda (this effect can cause the current agenda to advance). Remove The Price of Failure from your deck. Search the collection for Dark Pact and place it in your discard pile.",
+  "text_cn": "<b>显现</b> - 受到2点伤害和2点恐惧。在当前密谋上放置1个毁灭标记(本效果可能导致当前密谋推进)。从你的牌组中移除失败的代价。搜索收藏找出黑暗契约，并将其放入你的弃牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

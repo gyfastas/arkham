@@ -1,0 +1,23 @@
+{
+  "id": "hatchet_man_lv0",
+  "arkhamdb_code": "04155",
+  "name": "Hatchet Man",
+  "name_cn": "职业杀手",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful during an evasion attempt, the next time the evaded enemy takes damage this turn, deal it 1 additional damage.",
+  "text_cn": "如果躲避尝试期间的这次技能检定成功，则在本回合中，成功躲避的这名敌人下一次受到伤害时，对其造成额外+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

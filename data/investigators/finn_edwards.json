@@ -1,0 +1,54 @@
+{
+  "id": "finn_edwards",
+  "arkhamdb_code": "04003",
+  "name": "Finn Edwards",
+  "name_cn": "芬恩·爱德华兹",
+  "title": "The Bootlegger",
+  "title_cn": "走私贩",
+  "class": "rogue",
+  "health": 7,
+  "sanity": 7,
+  "skills": {
+    "willpower": 1,
+    "intellect": 4,
+    "combat": 3,
+    "agility": 4
+  },
+  "ability": "You may take an additional action during your turn, which can only be used to evade.\n[elder_sign] effect: +1 for each exhausted enemy in play. If you succeed by 2 or more, you may discover 1 clue at your location.",
+  "ability_cn": "在你回合期间，你可以进行额外一个行动，该行动只能用于躲避。\n[elder_sign]效果：场上每有1个已消耗的敌人，+1。如果你成功且超过难度至少2点，你可以发现所在地点的1个线索。",
+  "elder_sign": "[elder_sign] effect: +1 for each exhausted enemy in play. If you succeed by 2 or more, you may discover 1 clue at your location.",
+  "elder_sign_cn": "[elder_sign]效果：场上每有1个已消耗的敌人，+1。如果你成功且超过难度至少2点，你可以发现所在地点的1个线索。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "rogue": {
+        "min_level": 0,
+        "max_level": 3
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "seeker": {
+        "min_level": 0,
+        "max_level": 0
+      },
+      "survivor": {
+        "min_level": 0,
+        "max_level": 0
+      }
+    },
+    "_trait_options": [
+      "trait:illicit lv0-5"
+    ]
+  },
+  "signature_cards": [
+    "finns_trusty_38_lv0",
+    "smuggled_goods_lv0"
+  ],
+  "weakness": "caught_red_handed_lv0",
+  "flavor_text": "\"Never lose track of the exit. Or the merchandise.\"",
+  "back_text": "<b>Deck Size:</b> 30.\n<b>Deckbuilding Options:</b> [[Illicit]] cards level 0-5, Rogue cards ([rogue]) level 0-3, Neutral cards level 0-5, up to five other level 0 Seeker and/or Survivor cards ([seeker] and/or [survivor]).\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Smuggled Goods, Finn's Trusty .38, Caught Red-handed, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：[[违法]]卡牌等级0-5，流浪者([rogue])等级0-3，中立卡牌等级0-5，最多5张其它的等级0探求者卡牌和/或求生者卡牌([seeker]和/或[survivor])。\n<b>牌组构建需求</b>(不计入卡牌张数)：走私货物、芬恩可靠的.38手枪、当场抓获、1张随机基础弱点。",
+  "pack": "the_forgotten_age"
+}

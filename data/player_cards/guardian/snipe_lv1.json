@@ -1,0 +1,28 @@
+{
+  "id": "snipe_lv1",
+  "arkhamdb_code": "08087",
+  "name": "Snipe",
+  "name_cn": "狙击",
+  "class": "guardian",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "tactic"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "During the next fight action you perform this turn using a [[Ranged]] or [[Firearm]] asset, treat each [skull], [cultist], [tablet], [elder_thing], or [auto_fail] token you reveal as a \"0\" token. This action does not provoke attacks of opportunity.",
+  "text_cn": "你这回合使用[[远程]]或[[枪械]]支援卡执行的下一个攻击行动中，将你抽出的每个[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记视为\"0\"标记。本行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "rogue"
+  ]
+}

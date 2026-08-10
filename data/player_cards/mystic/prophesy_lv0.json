@@ -1,0 +1,23 @@
+{
+  "id": "prophesy_lv0",
+  "arkhamdb_code": "05034",
+  "name": "Prophesy",
+  "name_cn": "预见未来",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "While there are 3 or more doom in play, Prophesy gains [wild] (while there are 6 or more doom in play, Prophesy gains [wild] [wild], instead).",
+  "text_cn": "只要场上至少有3个毁灭标记，预见未来获得[wild](只要场上至少有6个毁灭标记，改为预见未来获得[wild][wild])。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

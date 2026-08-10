@@ -1,0 +1,31 @@
+{
+  "id": "protective_gear_lv2",
+  "arkhamdb_code": "08095",
+  "name": "Protective Gear",
+  "name_cn": "防护服",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 2,
+  "traits": [
+    "item",
+    "armor"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "body"
+  ],
+  "text": "[reaction] When you draw a [[Hazard]] treachery, deal 1 damage and 1 horror to Protective Gear: Cancel that card's revelation effect.",
+  "text_cn": "[reaction]在你抽取一张[[危险]]诡计卡时，对防护服造成1点伤害和1点恐惧：取消该卡牌的显现效果。",
+  "health": 3,
+  "sanity": 3,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "survivor"
+  ]
+}

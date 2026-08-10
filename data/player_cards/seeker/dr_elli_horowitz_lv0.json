@@ -1,0 +1,28 @@
+{
+  "id": "dr_elli_horowitz_lv0",
+  "arkhamdb_code": "04021",
+  "name": "Dr. Elli Horowitz",
+  "name_cn": "爱丽·霍洛维兹博士",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "assistant"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[reaction] After Dr. Elli Horowitz enters play: Search the top 9 cards of your deck for a [[Relic]] asset and attach it to her. Shuffle your deck.\nEach [[Relic]] asset attached to Dr. Elli Horowitz does not take up any slots <i>(it is still considered to be in play and under your control)</i>.",
+  "text_cn": "[reaction]在爱丽·霍洛维兹博士入场后：从你牌堆顶部9张卡牌中查找一张[[遗物]]支援卡并将该卡叠加到爱丽·霍洛维兹博士。混洗你的牌堆。\n叠加到爱丽·霍洛维兹博士的[[遗物]]支援卡不占用任何槽位<i>(仍视为在场并由你控制)</i>。",
+  "health": 1,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Assistant Curator",
+  "subname_cn": "馆长助理"
+}

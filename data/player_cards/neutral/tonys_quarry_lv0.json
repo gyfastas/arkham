@@ -1,0 +1,24 @@
+{
+  "id": "tonys_quarry_lv0",
+  "arkhamdb_code": "06012",
+  "name": "Tony's Quarry",
+  "name_cn": "托尼的猎物",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "humanoid",
+    "monster",
+    "deep one"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Spawn</b> - Location farthest from Tony Morgan.\nAloof.\n<b>Forced</b> - After Tony's Quarry enters play: Place 1 doom on it. Then, place 1 resource on it <i>(from the token pool)</i>, as a bounty.",
+  "text_cn": "<b>生成</b> - 离托尼·摩尔根最远的地点。\n冷漠。\n<b>强制</b> - 在托尼的猎物入场后：在其上放置1个毁灭标记。然后，<i>(从供应堆)</i>放置1资源在其上，作为赏金。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "weakness"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "wish_eater_lv0",
+  "arkhamdb_code": "06277",
+  "name": "Wish Eater",
+  "name_cn": "食愿项链",
+  "class": "guardian",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "blessed"
+  ],
+  "skill_icons": {},
+  "slots": [
+    "accessory"
+  ],
+  "text": "Bonded (Empty Vessel).\n[reaction] When you reveal a [skull], [cultist], [tablet], or [elder_thing] chaos token during a skill test, spend 1 charge: Cancel that token. Heal 1 damage and 1 horror.\n<b>Forced</b> - If Wish Eater has no charges: Search your bonded cards for Empty Vessel and swap it with Wish Eater.",
+  "text_cn": "绑定(空虚项链)。\n[reaction]你在技能检定中抽出一个[skull]、[cultist]、[tablet]或[elder_thing]混乱标记时，花费1充能：取消该标记。治愈1点伤害和1点恐惧。\n<b>强制</b> - 如果食愿项链没有充能：在你的绑定卡牌中查找空虚项链，并将其与食愿项链交换。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Jewel of the Gods",
+  "subname_cn": "神之珠宝"
+}

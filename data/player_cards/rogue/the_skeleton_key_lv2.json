@@ -1,0 +1,26 @@
+{
+  "id": "the_skeleton_key_lv2",
+  "arkhamdb_code": "04270",
+  "name": "The Skeleton Key",
+  "name_cn": "骷髅钥匙",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "item",
+    "relic",
+    "cursed"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Exceptional. Fast.\n[action]: If the Skeleton Key is in your play area, attach it to your location. If it is already attached to your location, detach it and return it to your play area instead.\nSet the attached location's shroud value to 1.",
+  "text_cn": "卓越。快速。\n[action]：如果骷髅钥匙在你的游戏区域，将其叠加到你所在地点。<i>(FAQ, v1.41)</i>如果骷髅钥匙已经叠加到你所在地点，改为将其解除叠加并放回你的游戏区域。\n将被叠加的地点的隐藏值设为1。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "exceptional": true
+}

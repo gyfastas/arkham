@@ -1,0 +1,28 @@
+{
+  "id": "mk_1_grenades_lv4",
+  "arkhamdb_code": "05273",
+  "name": "Mk 1 Grenades",
+  "name_cn": "MK1手榴弹",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "item",
+    "weapon",
+    "ranged"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Uses (3 supplies). If Mk 1 Grenades has no supplies, discard it.\n[action] Spend 1 supply: <b>Fight.</b> You get +2 [combat] for this attack. If this attack is successful, instead of its standard damage, this attack deals 2 damage to each enemy and each other investigator at the attacked enemy's location <i>(any additional damage is dealt to the attacked enemy).</i>",
+  "text_cn": "使用(3补给)。如果MK1手榴弹没有补给，则将其丢弃。\n[action]花费1补给：<b>攻击</b>。你这次攻击+2[combat]。如果这次攻击成功，不造成基础伤害，改为对被攻击敌人所在地点的每个敌人和其他每位调查员造成2点伤害<i>(所有额外伤害只对被攻击敌人造成)。</i><i>(FAQ, v2.0)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "supplies": 3
+  }
+}

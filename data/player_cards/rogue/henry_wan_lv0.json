@@ -1,0 +1,28 @@
+{
+  "id": "henry_wan_lv0",
+  "arkhamdb_code": "05155",
+  "name": "Henry Wan",
+  "name_cn": "亨利·万",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "ally",
+    "criminal"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[action] Exhaust Henry Wan: One at a time, reveal random tokens from the chaos bag until you choose to stop, or until you reveal a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\n- If you chose to stop, for each token revealed via this effect, you may either draw 1 card or gain 1 resource.\n- If you revealed a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol, do nothing.",
+  "text_cn": "[action]消耗亨利·万：你依次从混乱袋随机抽出标记，直到你选择停下，或直到你抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]符号。\n-如果你选择停下，你通过本效果每抽出1个标记，你就可以抽取1张卡牌或获得1资源。\n-如果你抽出[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]符号，无事发生。",
+  "health": 1,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "Aspiring Actor",
+  "subname_cn": "艺坛新星"
+}

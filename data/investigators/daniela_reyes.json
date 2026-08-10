@@ -1,0 +1,46 @@
+{
+  "id": "daniela_reyes",
+  "arkhamdb_code": "08001",
+  "name": "Daniela Reyes",
+  "name_cn": "丹妮拉·雷耶丝",
+  "title": "The Mechanic",
+  "title_cn": "机修工",
+  "class": "guardian",
+  "health": 8,
+  "sanity": 6,
+  "skills": {
+    "willpower": 4,
+    "intellect": 1,
+    "combat": 5,
+    "agility": 2
+  },
+  "ability": "[reaction] After an enemy attacks you (except an attack of opportunity you provoked), even if that attack was canceled: Either deal 1 damage to that enemy, or automatically evade it.\n[elder_sign] effect: +1. If you were attacked by an enemy this round, you automatically succeed, instead.",
+  "ability_cn": "[reaction] 在一名敌人攻击你后(除了你引起的趁乱攻击外)，即使该攻击被取消：对该敌人造成1点伤害，或自动躲避它。\n[elder_sign]效果：+1。如果你本轮被敌人攻击过，改为你自动成功。",
+  "elder_sign": "[elder_sign] effect: +1. If you were attacked by an enemy this round, you automatically succeed, instead.",
+  "elder_sign_cn": "[elder_sign]效果：+1。如果你本轮被敌人攻击过，改为你自动成功。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "guardian": {
+        "min_level": 0,
+        "max_level": 0
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "survivor": {
+        "min_level": 0,
+        "max_level": 0
+      }
+    }
+  },
+  "signature_cards": [
+    "mechanics_wrench_lv0"
+  ],
+  "weakness": "mob_goons_lv0",
+  "flavor_text": "\"Relax, tough guy. I'll handle this. You stand over there and look pretty.\"",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Guardian cards ([guardian]) level 0, Survivor cards ([survivor]) level 1-5, Neutral cards level 0-5, up to 5 other Survivor cards ([survivor]) level 0.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Mechanic's Wrench, Mob Goons, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：守卫者([guardian])等级0，求生者([survivor])等级1-5，中立卡牌等级0-5，最多5张其它的求生者卡牌([survivor])等级0。\n<b>牌组构建需求</b>(不计入卡牌张数)：机修工扳手、黑帮暴徒、1张随机基础弱点。",
+  "pack": "edge_of_the_earth"
+}

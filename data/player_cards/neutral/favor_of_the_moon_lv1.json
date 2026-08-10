@@ -1,0 +1,25 @@
+{
+  "id": "favor_of_the_moon_lv1",
+  "arkhamdb_code": "07271",
+  "name": "Favor of the Moon",
+  "name_cn": "月之恩惠",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "pact",
+    "cursed"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Seal (up to 3 [curse]). If there are no tokens sealed on Favor of the Moon, discard it.\n[reaction] When you would reveal a chaos token from the chaos bag, exhaust Favor of the Moon: Resolve a token sealed here instead, as if it were just revealed from the chaos bag. Then, gain 1 resource.",
+  "text_cn": "快速。封印(最多3[curse])。如果月之恩惠上没有封印标记，将其丢弃。\n[reaction]在你将要从混乱袋抽出一个混乱标记时，消耗月之恩惠：改为结算一个封印在此处的标记，如同其刚刚从混乱袋抽出。然后，获得1资源。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy"
+}

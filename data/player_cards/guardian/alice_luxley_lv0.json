@@ -1,0 +1,29 @@
+{
+  "id": "alice_luxley_lv0",
+  "arkhamdb_code": "05151",
+  "name": "Alice Luxley",
+  "name_cn": "爱丽丝·洛克斯雷",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "ally",
+    "detective",
+    "police"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You get +1 [intellect].\n[reaction] After you discover a clue, exhaust Alice Luxley: Deal 1 damage to an enemy at your location.",
+  "text_cn": "你获得+1[intellect]。\n[reaction]在你发现一个线索后，消耗爱丽丝·洛克斯雷：对你所在地点的一名敌人造成1点伤害。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "Fearless Flatfoot",
+  "subname_cn": "无畏的警察"
+}

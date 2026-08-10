@@ -1,0 +1,24 @@
+{
+  "id": "solemn_vow_lv0",
+  "arkhamdb_code": "06020",
+  "name": "Solemn Vow",
+  "name_cn": "庄严立誓",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Myriad. Fast.\nPlay Solemn Vow under the control of another investigator at your location.\n[fast] If the owner of Solemn Vow is at your location, exhaust Solemn Vow: Move 1 damage or horror from a card you control to a card that investigator controls.",
+  "text_cn": "多重。快速。\n打出庄严立誓到你所在地点另一位调查员的控制之下。\n[fast]如果庄严立誓的所有者位于你所在地点，消耗庄严立誓：将你控制的卡牌上的1点伤害或恐惧移动到该调查员控制的卡牌上。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

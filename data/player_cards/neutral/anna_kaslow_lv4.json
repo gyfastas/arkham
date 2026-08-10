@@ -1,0 +1,28 @@
+{
+  "id": "anna_kaslow_lv4",
+  "arkhamdb_code": "05283",
+  "name": "Anna Kaslow",
+  "name_cn": "安娜·卡斯洛",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "ally",
+    "clairvoyant"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "You have 2 additional tarot slots.\n[reaction] When the game begins, if Anna Kaslow is in your opening hand: Put her into play.\n[reaction] After Anna Kaslow enters play: Search your deck for a [[Tarot]] asset and put it into play.",
+  "text_cn": "你拥有额外2个塔罗牌槽位。\n[reaction]在游戏开始时，如果安娜·卡斯洛在你的起始手牌中：将其放置入场。\n[reaction]在安娜·卡斯洛入场后：在你的牌堆中查找并放置一张[[塔罗]]支援卡入场。",
+  "health": 1,
+  "sanity": 1,
+  "unique": true,
+  "pack": "the_circle_undone",
+  "subname": "Mysterious Soothsayer",
+  "subname_cn": "神秘的占卜师"
+}

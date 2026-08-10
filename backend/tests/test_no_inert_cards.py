@@ -133,6 +133,7 @@ _NO_IMPL_WHITELIST = {
 }
 
 
+
 class TestDataCoverage:
     def test_every_player_card_data_has_implementation(self):
         """Every data/player_cards JSON must have a registered implementation.

@@ -1,0 +1,24 @@
+{
+  "id": "money_talks_lv2",
+  "arkhamdb_code": "08054",
+  "name": "Money Talks",
+  "name_cn": "金钱万能",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 2,
+  "traits": [
+    "favor",
+    "gambit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an investigator at any location initiates a skill test.\nInstead of the skill type indicated for this test ([willpower], [intellect], [combat], or [agility]), this is a resource skill test. The performing investigator's base skill value for this test is equal to half the number of resources in your resource pool (rounded down). Draw 1 card.",
+  "text_cn": "快速。在任何地点的调查员发起技能检定时打出。\n这次检定不是其标示的技能类型([willpower]、[intellect]、[combat]或[agility])，而是改为资源技能检定。执行这次检定的调查员的基础技能值等于你资源池内资源数量的一半(向下取整)。抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

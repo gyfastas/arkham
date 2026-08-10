@@ -1,0 +1,24 @@
+{
+  "id": "harmony_restored_lv2",
+  "arkhamdb_code": "07230",
+  "name": "Harmony Restored",
+  "name_cn": "恢复和谐",
+  "class": "survivor",
+  "type": "event",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "fortune",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Search the chaos bag for X [curse] tokens and return them to the token pool. X is the number of [bless] tokens in the chaos bag. Gain 1 resource for each [curse] token removed in this way.",
+  "text_cn": "在混乱袋中查找X个[curse]标记，并将其返回供应堆。X为混乱袋内[bless]标记的数量。每以此方式移除一个[curse]标记，获得1资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "finns_trusty_38_lv0",
+  "arkhamdb_code": "04011",
+  "name": "Finn's Trusty .38",
+  "name_cn": "芬恩可靠的.38手枪",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Finn Edwards deck only. Fast. Uses (3 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If the attacked enemy is not engaged with you, you deal +1 damage for this attack.",
+  "text_cn": "芬恩·爱德华兹牌组专用。快速。使用(3子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击中你+2[combat]。如果你攻击的敌人未与你交战，这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Never Leave Home Without It",
+  "subname_cn": "出门必带",
+  "uses": {
+    "ammo": 3
+  }
+}

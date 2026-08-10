@@ -1,0 +1,22 @@
+{
+  "id": "crisis_of_faith_lv0",
+  "arkhamdb_code": "07007",
+  "name": "Crisis of Faith",
+  "name_cn": "信仰危机",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "madness"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - For each [bless] token in the chaos bag, you must either replace it with a [curse] token or take 1 horror.",
+  "text_cn": "<b>显现</b> - 混乱袋里每有一个[bless]标记，你必须选择将其替换成[curse]标记或受到1点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "weakness"
+}

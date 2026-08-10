@@ -1,0 +1,22 @@
+{
+  "id": "occult_scraps_lv0",
+  "arkhamdb_code": "07013",
+  "name": "Occult Scraps",
+  "name_cn": "密教残页",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "item"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Occult Scraps cannot be played using a play action.\nWhile Occult Scraps is in your hand, you get -2 [willpower].\nWhile Occult Scraps is in play, you get -1 [willpower].",
+  "text_cn": " 不能用打出行动打出密教残页。\n只要密教残页在你的手牌，你获得-2[willpower]。\n只要密教残页在场，你获得-1[willpower]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subtype": "weakness"
+}

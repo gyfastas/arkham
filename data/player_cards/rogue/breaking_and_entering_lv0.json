@@ -1,0 +1,24 @@
+{
+  "id": "breaking_and_entering_lv0",
+  "arkhamdb_code": "07114",
+  "name": "Breaking and Entering",
+  "name_cn": "破门而入",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "trick"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "<b>Investigate.</b> Add your [agility] value to your skill value for this investigation. If you succeed by 2 or more, you may automatically evade an enemy at this location. This action does not provoke attacks of opportunity.",
+  "text_cn": "<b>调查</b>。将你的[agility]值加入你这次调查的技能值。如果你成功且超过难度至少2点，你可以自动躲避此地点的一名敌人。这个行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

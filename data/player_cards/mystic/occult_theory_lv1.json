@@ -1,0 +1,22 @@
+{
+  "id": "occult_theory_lv1",
+  "arkhamdb_code": "08065",
+  "name": "Occult Theory",
+  "name_cn": "密教理论",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "practiced",
+    "expert"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "While Occult Theory is in your hand or committed to a skill test, it gains [willpower] icons equal to your [intellect], and [intellect] icons equal to your [willpower].",
+  "text_cn": "只要密教理论在你手中或被投入到技能检定中，其获得等于你[intellect]的[willpower]图标，以及等于你[willpower]的[intellect]图标。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

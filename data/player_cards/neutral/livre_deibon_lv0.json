@@ -1,0 +1,30 @@
+{
+  "id": "livre_deibon_lv0",
+  "arkhamdb_code": "08005",
+  "name": "Livre d'Eibon",
+  "name_cn": "伊波恩之书",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item",
+    "relic",
+    "tome"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Norman Withers deck only.\n[fast] Exhaust Livre d'Eibon: Swap the top card of your deck with a card in your hand.\n[fast] Exhaust Livre d'Eibon: Commit the top card of your deck to an eligible skill test performed by an investigator at your location.",
+  "text_cn": "诺曼·威瑟斯牌组专用。\n[fast]消耗伊波恩之书：用你1张手牌交换你牌堆顶部的卡牌。\n[fast]消耗伊波恩之书：将你牌堆顶部的卡牌投入到你所在地点调查员执行的符合条件的技能检定中。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "subname": "Hyperborean Grimoire",
+  "subname_cn": "希波利尔的魔法书"
+}

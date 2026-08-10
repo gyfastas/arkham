@@ -1,0 +1,28 @@
+{
+  "id": "holy_rosary_lv2",
+  "arkhamdb_code": "07220",
+  "name": "Holy Rosary",
+  "name_cn": "圣玫瑰珠",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "charm",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "You get +1 [willpower].\n[reaction] After you succeed at a [willpower] test on a treachery, exhaust Holy Rosary: Add 2 [bless] tokens to the chaos bag.",
+  "text_cn": "你获得+1[willpower]。\n[reaction]你在诡计卡上的[willpower]检定成功后，消耗圣玫瑰珠：加入2个[bless]标记到混乱袋。",
+  "health": null,
+  "sanity": 2,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

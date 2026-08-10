@@ -1,0 +1,26 @@
+{
+  "id": "zeal_lv0",
+  "arkhamdb_code": "06032",
+  "name": "Zeal",
+  "name_cn": "热诚",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "ally",
+    "creature",
+    "dreamlands"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Bonded (Miss Doyle). Fast.\n<b>Forced</b> - After Zeal enters play: Discard Hope and Augur.\n[action] If Zeal is ready, exhaust or discard her: <b>Fight.</b> Fight with a base [combat] value of 5. (If you discarded Zeal, this test is automatically successful. Then, you may shuffle Zeal into your deck to put Hope or Augur into play from your discard pile.)",
+  "text_cn": "绑定(道尔女士)。快速。\n<b>强制</b> - 在热诚入场后：丢弃希望和预见。\n[action]如果热诚已准备，将其消耗或丢弃：<b>攻击</b>。以5点基础[combat]值攻击。(如果你丢弃热诚，这次检定自动成功。然后，你可以将热诚混洗入你的牌堆来将希望或预见从你的弃牌堆放置入场。)",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters"
+}

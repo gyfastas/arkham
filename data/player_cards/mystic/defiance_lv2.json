@@ -1,0 +1,24 @@
+{
+  "id": "defiance_lv2",
+  "arkhamdb_code": "04198",
+  "name": "Defiance",
+  "name_cn": "逆反",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "innate",
+    "developed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Ignore the effects of all [skull], [cultist], [tablet], and [elder_thing] symbols during this test (including their modifiers).",
+  "text_cn": "忽略本次检定期间抽出的所有[skull]、[cultist]、[tablet]和[elder_thing]符号的效果(包括其修正值)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

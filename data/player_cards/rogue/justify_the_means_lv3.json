@@ -1,0 +1,22 @@
+{
+  "id": "justify_the_means_lv3",
+  "arkhamdb_code": "07306",
+  "name": "Justify the Means",
+  "name_cn": "不择手段",
+  "class": "rogue",
+  "type": "skill",
+  "cost": null,
+  "level": 3,
+  "traits": [
+    "practiced",
+    "cursed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "You may commit Justify the Means to any type of test.\nAs an additional cost to commit Justify the Means to a skill test, add [curse] tokens to the chaos bag equal to this test's difficulty.\nThis test automatically succeeds.",
+  "text_cn": "你可以投入不择手段到任何类型的检定中。\n作为投入不择手段到技能检定的额外费用，加入数量等于这次检定难度的[curse]标记到混乱袋。\n这次检定自动成功。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

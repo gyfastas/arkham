@@ -1,0 +1,23 @@
+{
+  "id": "well_connected_lv0",
+  "arkhamdb_code": "05028",
+  "name": "Well Connected",
+  "name_cn": "良好人脉",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "condition"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [],
+  "text": "Limit 1 per investigator.\n[fast] Exhaust Well Connected: You get +1 skill value for this skill test for every 5 resources you have.",
+  "text_cn": "每位调查员限制1张。\n[fast]消耗良好人脉：你每有5资源，这次技能检定你的技能值+1。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

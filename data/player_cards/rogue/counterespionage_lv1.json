@@ -1,0 +1,24 @@
+{
+  "id": "counterespionage_lv1",
+  "arkhamdb_code": "08049",
+  "name": "Counterespionage",
+  "name_cn": "反间谍活动",
+  "class": "rogue",
+  "type": "event",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "favor",
+    "service"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [],
+  "text": "Fast. Play when you draw a non-weakness treachery.\nCancel that card's revelation effect and draw the top card of the encounter deck.\n[reaction] When you play Counterespionage, increase its cost by 2: Change \"the encounter deck\" to \"your deck\".\n[reaction] When you play Counterespionage, increase its cost by 2: Change \"you\" to \"any investigator\".",
+  "text_cn": "快速。在你抽取一张非弱点诡计卡时打出。\n取消该卡牌的显现效果并抽取遭遇牌堆顶部的卡牌。\n[reaction]在你打出反间谍活动时，提升其费用2点：将\"遭遇牌堆\"换成\"你的牌堆\"。\n[reaction]在你打出反间谍活动时，提升其费用2点：将\"你\"换成\"任一位调查员\"。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "take_the_initiative_lv0",
+  "arkhamdb_code": "04150",
+  "name": "Take the Initiative",
+  "name_cn": "占据先机",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced",
+    "bold"
+  ],
+  "skill_icons": {
+    "wild": 3
+  },
+  "slots": [],
+  "text": "Commit only to a skill test you are performing.<br/>Take the Initiative loses [wild] for each action that has been completed by any investigator this phase.",
+  "text_cn": "只能在你执行的技能检定中投入。\n任何调查员在本阶段每完成1个行动，占据先机失去[wild]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

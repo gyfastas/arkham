@@ -1,0 +1,29 @@
+{
+  "id": "on_the_trail_lv1",
+  "arkhamdb_code": "08084",
+  "name": "On the Trail",
+  "name_cn": "追踪",
+  "class": "guardian",
+  "type": "event",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "insight",
+    "tactic"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Choose an enemy at any location other than yours. Either move twice toward that enemy, or discover 1 clue at any empty location between you and the chosen enemy, along the shortest path to reach that enemy.",
+  "text_cn": "选择你所在地点以外任何地点的一名敌人。朝该敌人移动2次，或在你与所选敌人之间，沿著到达该敌人的最短路径上的任一个无人地点发现1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "seeker"
+  ]
+}

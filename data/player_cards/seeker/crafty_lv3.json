@@ -1,0 +1,31 @@
+{
+  "id": "crafty_lv3",
+  "arkhamdb_code": "08123",
+  "name": "Crafty",
+  "name_cn": "技艺精湛",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\nResources on Crafty may be spent to pay for [[Insight]], [[Tool]], or [[Trick]] cards.\n[fast] During a skill test on a [[Insight]], [[Tool]], or [[Trick]] card, spend 1 resource from Crafty: You get +1 skill value for this test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n技艺精湛上的资源可以被用来支付[[洞察]]、[[工具]]或[[技巧]]卡牌。\n[fast]在[[洞察]]、[[工具]]或[[技巧]]卡牌上的技能检定中，从技艺精湛花费1资源：你这次检定+1技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "rogue",
+    "survivor"
+  ],
+  "uses": {
+    "resourcess": 2
+  }
+}

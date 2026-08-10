@@ -1,0 +1,26 @@
+{
+  "id": "dream_enhancing_serum_lv0",
+  "arkhamdb_code": "06159",
+  "name": "Dream-Enhancing Serum",
+  "name_cn": "强梦血清",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "science"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Only the first copy of each card in your hand counts toward your maximum hand size.\n[reaction] After you draw a copy of a card that is already in your hand, reveal both copies and exhaust Dream-Enhancing Serum: Draw 1 card.",
+  "text_cn": "你手牌中的每张同名卡牌，于检查手牌上限时其只算作1张。\n[reaction]在你抽取到一张与你的手牌同名的卡牌后，揭示这两张卡牌，并消耗强梦血清：抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

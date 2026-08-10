@@ -1,0 +1,32 @@
+{
+  "id": "nkosi_mabati_lv3",
+  "arkhamdb_code": "08091",
+  "name": "Nkosi Mabati",
+  "name_cn": "恩科西·马巴蒂",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 3,
+  "traits": [
+    "ally",
+    "sorcerer"
+  ],
+  "skill_icons": {
+    "willpower": 2
+  },
+  "slots": [
+    "ally"
+  ],
+  "text": "[reaction] After Nkosi Mabati enters play: Name a non-[elder_sign] chaos token with a symbol. Until this card leaves play, the named symbol is your \"sigil.\"\n[reaction] When an investigator at your location reveals a [cultist], [tablet], or [elder_thing] symbol, exhaust Nkosi Mabati: Search the chaos bag for your sigil and reveal it, instead <i>(returning the other token to the chaos bag)</i>.",
+  "text_cn": "[reaction]在恩科西·马巴蒂入场后：声名一个非[elder_sign]的符号混乱标记。直到此卡牌离场，声明的标记为你的\"咒印\"。\n[reaction]在你所在地点的一位调查员抽出一个[cultist]、[tablet]或[elder_thing]符号时，消耗恩科西·马巴蒂：改为在混乱袋中查找并抽出你的咒印<i>(将其余标记放回混乱袋)</i>。",
+  "health": 2,
+  "sanity": 2,
+  "unique": true,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "mystic"
+  ],
+  "subname": "Enigmatic Warlock",
+  "subname_cn": "谜一般的术士"
+}

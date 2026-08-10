@@ -1,0 +1,31 @@
+{
+  "id": "ice_pick_lv1",
+  "arkhamdb_code": "08105",
+  "name": "Ice Pick",
+  "name_cn": "破冰锥",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "item",
+    "tool",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Fast.\n[fast] During a skill test while fighting or investigating, exhaust Ice Pick: You get +1 skill value for this test.",
+  "text_cn": "快速。\n[fast]攻击或调查时的技能检定中，消耗破冰锥：你这次检定+1技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "seeker",
+    "survivor"
+  ]
+}

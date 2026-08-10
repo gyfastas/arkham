@@ -1,0 +1,26 @@
+{
+  "id": "bandages_lv0",
+  "arkhamdb_code": "08073",
+  "name": "Bandages",
+  "name_cn": "绷带",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "item"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Uses (3 supplies). If Bandages has no supplies, discard it.\n[reaction] After an investigator or [[Ally]] asset at your location takes 1 or more damage, spend 1 supply: Heal 1 damage from that card.",
+  "text_cn": "使用(3补给)。如果绷带没有补给，则将其丢弃。\n[reaction]在你所在地点一位调查员或一张[[盟友]]支援卡受到至少1点伤害后，花费1补给：治愈该卡牌1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "uses": {
+    "supplies": 3
+  }
+}

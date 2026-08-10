@@ -1,0 +1,21 @@
+{
+  "id": "another_day_another_dollar_lv3",
+  "arkhamdb_code": "05278",
+  "name": "Another Day, Another Dollar",
+  "name_cn": "干一天活计拿一天钱",
+  "class": "rogue",
+  "type": "asset",
+  "cost": null,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent.\nYou begin each game with 2 additional resources.",
+  "text_cn": "永久。\n你每场游戏开始时拥有额外2资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

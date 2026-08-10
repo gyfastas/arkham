@@ -1,0 +1,23 @@
+{
+  "id": "intrepid_lv0",
+  "arkhamdb_code": "04192",
+  "name": "Intrepid",
+  "name_cn": "英勇无畏",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [],
+  "text": "If this skill test is successful, add Intrepid to your play area as an asset with the text:\n\"You get +1 [intellect], +1 [combat], and +1 [agility].\n<b>Forced</b> - At the end of the round: Discard Intrepid.\"",
+  "text_cn": "如果本次技能检定成功，将英勇无畏加入到你的游戏区域，视为一张带有以下文字的支援卡：\n\"你获得+1[intellect]、+1[combat]和+1[agility]。\n<b>强制</b> - 当本轮结束时：丢弃英勇无畏。\"",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "dragon_pole_lv0",
+  "arkhamdb_code": "08060",
+  "name": "Dragon Pole",
+  "name_cn": "咏春棍",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "hand_x2"
+  ],
+  "text": "You have 1 additional arcane slot.\n[action]: <b>Fight.</b> You get +1 [combat] for this attack for each of your arcane slots that is filled. If at least 2 of your arcane slots are filled, this attack deals +1 damage.",
+  "text_cn": "你拥有1个额外的法术槽位。\n[action]：<b>攻击</b>。你每有一个法术槽位被占用，这次攻击+1[combat]。如果你有至少2个法术槽位被占用，这次攻击造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

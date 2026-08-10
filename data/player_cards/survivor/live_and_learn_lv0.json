@@ -1,0 +1,23 @@
+{
+  "id": "live_and_learn_lv0",
+  "arkhamdb_code": "04200",
+  "name": "Live and Learn",
+  "name_cn": "学无止境",
+  "class": "survivor",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play after a skill test you failed ends <i>(after resolving all effects from the failed test)</i>.\nAttempt that test again. You get +2 skill value for this test.",
+  "text_cn": "快速。在你技能检定失败且完毕后<i>(结算该次检定的所有效果后)</i>打出。\n再次尝试该次检定。你本次检定+2技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

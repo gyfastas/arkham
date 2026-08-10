@@ -1,0 +1,29 @@
+{
+  "id": "fingerprint_kit_lv0",
+  "arkhamdb_code": "05024",
+  "name": "Fingerprint Kit",
+  "name_cn": "指纹采集工具",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "item",
+    "tool"
+  ],
+  "skill_icons": {
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Uses (3 supplies).\n[action] Exhaust Fingerprint Kit and spend 1 supply: <b>Investigate.</b> You get +1 [intellect] for this investigation. If you succeed, you discover 1 additional clue at your location.",
+  "text_cn": "使用(3补给)。\n[action]消耗指纹采集工具并花费1补给：<b>调查</b>。你这次调查+1[intellect]。如果你成功，你额外发现所在地点的1个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "supplies": 3
+  }
+}

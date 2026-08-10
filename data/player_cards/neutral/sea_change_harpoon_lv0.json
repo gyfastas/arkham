@@ -1,0 +1,28 @@
+{
+  "id": "sea_change_harpoon_lv0",
+  "arkhamdb_code": "07014",
+  "name": "Sea Change Harpoon",
+  "name_cn": "骇变鱼叉",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 3,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "melee"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Silas Marsh deck only.\n[action]: <b>Fight.</b> You get +1 [combat] for this attack. If you committed 1 or more skills to this skill test, this attack deals +1 damage. When this skill test ends, you may return Sea Change Harpoon to your hand to return all of your committed skill cards to your hand instead of discarding them.",
+  "text_cn": "赛拉斯‧马什牌组专用。\n[action]：<b>攻击</b>。这次攻击你+1[combat]。如果你有投入技能卡到这次技能检定，这次攻击造成+1伤害。在这次技能检定结束时，你可以将骇变鱼叉返回你的手牌，来让所有你投入的技能卡都不丢弃，改为返回你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy"
+}

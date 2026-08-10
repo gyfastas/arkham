@@ -1,0 +1,21 @@
+{
+  "id": "studious_lv3",
+  "arkhamdb_code": "05276",
+  "name": "Studious",
+  "name_cn": "苦心钻研",
+  "class": "seeker",
+  "type": "asset",
+  "cost": null,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent.\nYou begin each game with 1 additional card in your opening hand.",
+  "text_cn": "永久。\n你每场游戏开始时的起始手牌中拥有额外1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

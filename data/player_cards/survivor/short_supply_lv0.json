@@ -1,0 +1,21 @@
+{
+  "id": "short_supply_lv0",
+  "arkhamdb_code": "08071",
+  "name": "Short Supply",
+  "name_cn": "补给匮乏",
+  "class": "survivor",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: Discard the top 10 cards of your deck.",
+  "text_cn": "永久。每副牌组限制1张。当牌组构建时购买。\n<b>强制</b> - 在你游戏的第一回合开始时：丢弃你牌堆顶部10张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "blood_pact_lv0",
+  "arkhamdb_code": "07158",
+  "name": "Blood Pact",
+  "name_cn": "鲜血盟约",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "spell",
+    "pact"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "[fast] Add 1 doom to Blood Pact: You get +2 [willpower] for this skill test. (Limit once per test.)\n[fast] Add 1 doom to Blood Pact: You get +2 [combat] for this skill test. (Limit once per test.)",
+  "text_cn": "[free]增加1个毁灭标记到鲜血盟约：这次技能检定你+2[willpower]。(每次检定限制一次。)\n[free]增加1个毁灭标记到鲜血盟约：这次技能检定你+2[combat]。(每次检定限制一次。)",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

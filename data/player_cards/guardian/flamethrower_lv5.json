@@ -1,0 +1,31 @@
+{
+  "id": "flamethrower_lv5",
+  "arkhamdb_code": "04305",
+  "name": "Flamethrower",
+  "name_cn": "火焰喷射器",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 4,
+  "level": 5,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm"
+  ],
+  "skill_icons": {
+    "combat": 2,
+    "wild": 1
+  },
+  "slots": [
+    "body. hand x2"
+  ],
+  "text": "Uses (4 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> The enemy chosen for this attack must be the enemy engaged with you with the highest fight. You get +4 [combat] for this attack. If this attack is successful, instead of its standard damage, you may assign up to 4 damage among enemies engaged with you <i>(any additional damage adds to this total)</i>.",
+  "text_cn": "使用(4子弹).\n[action]花费1子弹：<b>攻击</b>。本次攻击选择的敌人必须是与你交战的敌人中攻击值最高的。这次攻击中你+4[combat]。如果本次攻击成功，不对其造成基础伤害，改为你对所有与你交战的敌人分配最多4点伤害<i>(如有任何额外的伤害，则加到此伤害上)</i>。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "uses": {
+    "ammo": 4
+  }
+}

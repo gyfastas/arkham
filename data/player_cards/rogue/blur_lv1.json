@@ -1,0 +1,32 @@
+{
+  "id": "blur_lv1",
+  "arkhamdb_code": "08109",
+  "name": "Blur",
+  "name_cn": "身形虚化",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (3 charges).\n[action] If Blur has charges remaining: <b>Evade.</b> For this evasion attempt, you may use [willpower] instead of [agility], and you get +1 skill value. If you succeed, spend 1 charge and you may take an additional action this turn. If you succeed by 0, take 1 damage.",
+  "text_cn": "使用(3充能)。\n[action]如果身形虚化还有剩余充能：<b>躲避</b>。你这次躲避尝试+1技能值，并且你可以不使用[agility]，改为使用[willpower]。如果你成功，花费1充能并且这回合你可以进行一个额外行动。如果你成功且等于难度，受到1点伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "rogue",
+    "mystic"
+  ],
+  "uses": {
+    "charges": 3
+  }
+}

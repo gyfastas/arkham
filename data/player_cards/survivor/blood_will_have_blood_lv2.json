@@ -1,0 +1,25 @@
+{
+  "id": "blood_will_have_blood_lv2",
+  "arkhamdb_code": "08079",
+  "name": "Blood Will Have Blood",
+  "name_cn": "血债血偿",
+  "class": "survivor",
+  "type": "event",
+  "cost": 1,
+  "level": 2,
+  "traits": [
+    "pact",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Fast. Play after an enemy attacks you. Max 1 per attack.\nDamage/horror from this attack cannot be assigned to [[Ally]] assets. For each point of damage and/or horror you took from this attack, draw 1 card.",
+  "text_cn": "快速。在一名敌人攻击你后打出。每次攻击最多1张。\n这次攻击的伤害/恐惧不能被分配给[[盟友]]支援卡。你每从这次攻击受到1点伤害和/或恐惧，抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

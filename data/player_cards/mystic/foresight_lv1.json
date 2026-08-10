@@ -1,0 +1,23 @@
+{
+  "id": "foresight_lv1",
+  "arkhamdb_code": "08064",
+  "name": "Foresight",
+  "name_cn": "先见",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "augury"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Fast. Play when an investigator at your location would draw a card from their deck or from the encounter deck.\nName a card. If the drawn card is the named card, that investigator may either (choose one):\n- Cancel that card's effects and discard it.\n- Immediately play that card at -2 cost.",
+  "text_cn": "快速。在一位你所在地点的调查员将要从其牌堆或从遭遇牌堆抽取一张卡牌时打出。\n声明一张卡牌。如果抽取的卡牌是声明的卡牌，该调查员可以(选择一项)：\n- 取消该卡牌的效果并将其丢弃。\n- 立刻-2费用打出该卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

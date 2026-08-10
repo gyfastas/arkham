@@ -1,0 +1,31 @@
+{
+  "id": "sleuth_lv3",
+  "arkhamdb_code": "08121",
+  "name": "Sleuth",
+  "name_cn": "一探究竟",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 3,
+  "level": 3,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\nResources on Sleuth may be spent to pay for [[Charm]], [[Tactic]], or [[Tome]] cards.\n[fast] During a skill test on a [[Charm]], [[Tactic]], or [[Tome]] card, spend 1 resource from Sleuth: You get +1 skill value for this test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n一探究竟上的资源可以被用来支付[[守护]]、[[策略]]或[[书籍]]卡牌。\n[fast]在[[守护]]、[[策略]]或[[书籍]]卡牌上的技能检定中，从一探究竟花费1资源：你这次检定+1技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "seeker",
+    "mystic"
+  ],
+  "uses": {
+    "resourcess": 2
+  }
+}

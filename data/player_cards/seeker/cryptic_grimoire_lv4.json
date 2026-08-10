@@ -1,0 +1,30 @@
+{
+  "id": "cryptic_grimoire_lv4",
+  "arkhamdb_code": "07192",
+  "name": "Cryptic Grimoire",
+  "name_cn": "神秘魔法书",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 4,
+  "traits": [
+    "item",
+    "tome",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Researched.\n[reaction] After you resolve 1 or more [curse] tokens during a skill test: Place that many secrets on Cryptic Grimoire.\n[reaction] When you would draw the top card of the encounter deck, spend 5 secrets: Draw a card from your deck instead.",
+  "text_cn": "研究。<i>(FAQ, v2.0)</i>\n[reaction]：你在技能检定中结算至少1个[curse]标记后：在神秘魔法书上放置同等数量的秘密。\n[reaction]在你将要抽取遭遇牌堆顶部的卡牌时，花费5秘密：改为从你的牌堆抽取一张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "subname": "Text of the Elder Guardian",
+  "subname_cn": "古老守卫之书"
+}

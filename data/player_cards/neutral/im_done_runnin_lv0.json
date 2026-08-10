@@ -1,0 +1,25 @@
+{
+  "id": "im_done_runnin_lv0",
+  "arkhamdb_code": "05016",
+  "name": "\"I'm done runnin'!\"",
+  "name_cn": "\"我不会再逃了！\"",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Rita Young deck only.\nFast. Play only during your turn.\nReady and engage all enemies at your location. For the remainder of your turn, whenever you evade an enemy, instead of exhausting and disengaging from that enemy, you may deal it 1 damage. <i>(All other effects of the successful evasion still apply.)</i>",
+  "text_cn": "丽塔·杨牌组专用。\n快速。只能在你回合中打出。\n你所在地点所有敌人准备并与你交战。你的回合的剩余时间内，每当你躲避一名敌人，你可以不消耗该敌人也不与其解除交战，而是改为对其造成1点伤害。<i>(成功躲避的其它所有效果仍然有效。)</i>",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fortuitous_discovery_lv0",
+  "arkhamdb_code": "06034",
+  "name": "Fortuitous Discovery",
+  "name_cn": "意外的发现",
+  "class": "survivor",
+  "type": "event",
+  "cost": -2,
+  "level": 0,
+  "traits": [
+    "fortune",
+    "insight"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Myriad.\nX is the number of other copies of Fortuitous Discovery in your discard pile.\n<b>Investigate.</b> You get +X [intellect] for this investigation. If you succeed, discover X additional clues at your location.",
+  "text_cn": "多重。\nX为你弃牌堆中其余的意外的发现张数。\n<b>调查</b>。这次调查你+X[intellect]。如果你成功，额外发现你所在地点的X个线索。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "myriad": true
+}

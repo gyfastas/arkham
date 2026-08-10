@@ -1,0 +1,32 @@
+{
+  "id": "brand_of_cthugha_lv1",
+  "arkhamdb_code": "08090",
+  "name": "Brand of Cthugha",
+  "name_cn": "克图格亚的烙印",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (6 charges).\n[action]: <b>Fight.</b> For this attack, you may use [willpower] instead of [combat], and you get +1 skill value. If you succeed, spend 1 or 2 charges. Instead of its standard damage, this attack deals 1 damage for each charge spent. If you succeed by 0, lose 1 action.",
+  "text_cn": "使用(6充能)。\n[action]：<b>攻击</b>。这次攻击你可以不使用[combat]，改为使用[willpower]，并且你+1技能值。如果你成功，花费1或2充能。这次攻击不造成基础伤害，改为每花费1充能，造成1点伤害。如果你成功且等于难度，失去1行动。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "classes": [
+    "guardian",
+    "mystic"
+  ],
+  "uses": {
+    "charges": 6
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "unearth_the_ancients_lv0",
+  "arkhamdb_code": "04024",
+  "name": "Unearth the Ancients",
+  "name_cn": "发掘古物",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "<b>Investigate.</b> Choose a [seeker] asset in your hand. The difficulty of this skill test is equal to the chosen asset's printed cost. If you succeed, instead of discovering clues, put the chosen asset into play. If that asset has the [[Relic]] trait, draw 1 card.",
+  "text_cn": "<b>调查</b>。选择你手牌中的1张[seeker]支援卡。本次技能检定难度等于所选支援卡上打印的费用。如果成功，不发现线索，改为将该支援卡放置入场。如果该支援卡带有[[遗物]]属性，抽取1张卡牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

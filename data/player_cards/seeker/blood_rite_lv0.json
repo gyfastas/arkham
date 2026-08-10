@@ -1,0 +1,25 @@
+{
+  "id": "blood_rite_lv0",
+  "arkhamdb_code": "05317",
+  "name": "Blood-Rite",
+  "name_cn": "鲜血仪式",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Bonded (Occult Lexicon).\nDraw 2 cards. Discard up to 2 cards from your hand. For each card thusly discarded, you may either gain 1 resource, or spend 1 resource to deal 1 damage to an enemy at your location. This action does not provoke attacks of opportunity.",
+  "text_cn": "绑定(密教辞典)。\n抽取2张卡牌。丢弃你最多2张手牌。每有1张卡牌因此被丢弃，你可以获得1资源，或花费1资源来对你所在地点的1名敌人造成1点伤害。此行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "flute_of_the_outer_gods_lv4",
+  "arkhamdb_code": "07268",
+  "name": "Flute of the Outer Gods",
+  "name_cn": "外神的长笛",
+  "class": "mystic",
+  "type": "asset",
+  "cost": -2,
+  "level": 4,
+  "traits": [
+    "item",
+    "instrument",
+    "relic",
+    "cursed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Exceptional. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity.",
+  "text_cn": "卓越。封印(最多X[curse])。\n[action]消耗外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "innsmouth_conspiracy",
+  "exceptional": true
+}

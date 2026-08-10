@@ -1,0 +1,30 @@
+{
+  "id": "dream_diary_lv3",
+  "arkhamdb_code": "06238",
+  "name": "Dream Diary",
+  "name_cn": "梦境日记",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 3,
+  "traits": [
+    "item",
+    "tome",
+    "charm"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "intellect": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Researched.\nWhile you have at least 8 cards in hand, your Essence of the Dream gains [wild][wild].\n[reaction] When your turn begins: Search your bonded cards for Essence of the Dream and add it to your hand.",
+  "text_cn": "研究。<i>(FAQ, v2.0)</i>\n只要你有至少8张手牌，你的梦的本质获得[wild][wild]。\n[reaction]在你的回合开始时：在你的绑定卡牌中查找梦的本质，并将其加入你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subname": "Dreams of a Child",
+  "subname_cn": "稚子之梦"
+}

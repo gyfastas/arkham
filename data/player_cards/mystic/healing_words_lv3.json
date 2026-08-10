@@ -1,0 +1,28 @@
+{
+ "id": "healing_words_lv3",
+ "arkhamdb_code": "08068",
+ "name": "Healing Words",
+ "name_cn": "治愈真言",
+ "class": "mystic",
+ "type": "asset",
+ "cost": 2,
+ "level": 3,
+ "traits": [
+  "spell"
+ ],
+ "skill_icons": {
+  "willpower": 2
+ },
+ "slots": [
+  "arcane"
+ ],
+ "text": "Uses (4 charges).\n[action] Spend 1 charge: Heal 2 damage from among investigators at your location.",
+ "text_cn": "使用(4充能)。\n[action]花费1充能：治愈你所在地点的调查员总计2点伤害。",
+ "health": null,
+ "sanity": null,
+ "unique": false,
+ "pack": "edge_of_the_earth",
+ "uses": {
+  "charges": 4
+ }
+}

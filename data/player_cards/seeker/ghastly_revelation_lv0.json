@@ -1,0 +1,23 @@
+{
+  "id": "ghastly_revelation_lv0",
+  "arkhamdb_code": "05275",
+  "name": "Ghastly Revelation",
+  "name_cn": "恐怖揭露",
+  "class": "seeker",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "spirit"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [],
+  "text": "Discover 3 clues at your location. Give any number of your clues to another investigator, or place any number of your clues on any location. You are defeated and suffer 1 mental trauma. This action does not provoke attacks of opportunity.",
+  "text_cn": "发现你所在地点的3个线索。将你任意数量的线索交给其他一位调查员，或将你任意数量的线索放置在任意一个地点上。你被击败并受到1点精神创伤。此行动不会引起趁乱攻击。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

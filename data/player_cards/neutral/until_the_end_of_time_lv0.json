@@ -1,0 +1,24 @@
+{
+  "id": "until_the_end_of_time_lv0",
+  "arkhamdb_code": "04015",
+  "name": "Until the End of Time",
+  "name_cn": "时间尽头",
+  "class": "neutral",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Calvin Wright deck only.\nDirect damage and direct horror may be assigned to Until the End of Time.",
+  "text_cn": "加尔文·怀特牌组专用。\n可将直接伤害或直接恐惧分配到时间尽头上。",
+  "health": 2,
+  "sanity": 2,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

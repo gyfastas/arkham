@@ -1,0 +1,23 @@
+{
+  "id": "plan_of_action_lv0",
+  "arkhamdb_code": "07024",
+  "name": "Plan of Action",
+  "name_cn": "行动计划",
+  "class": "seeker",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "If this skill test is during or before the first action of this turn, Plan of Action gains [willpower] [agility].\nIf this skill test is between the first and third actions of this turn, draw 1 card if it succeeds.\nIf this skill test is during or after the third action of this turn, Plan of Action gains [combat] [intellect].",
+  "text_cn": "如果这次技能检定在本回合的第一个行动中或之前，行动计划获得[willpower][agility]。\n如果这次技能检定在本回合的第一个和第三个行动之间且成功，抽取1张卡牌。\n如果这次技能检定在本回合的第三个行动中或之后，行动计划获得[combat][intellect]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

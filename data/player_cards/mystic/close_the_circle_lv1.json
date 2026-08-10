@@ -1,0 +1,27 @@
+{
+  "id": "close_the_circle_lv1",
+  "arkhamdb_code": "08062",
+  "name": "Close the Circle",
+  "name_cn": "闭环",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 1,
+  "traits": [
+    "ritual",
+    "synergy"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Uses (1 charge for each class among cards you control, including this one).\n[fast] Spend 1 charge and exhaust Close the Circle: Take a basic action. For each skill test performed during that action, you may use your [willpower] instead of the skill indicated for that action.",
+  "text_cn": "使用(充能数等于你控制卡牌之中不同的职阶数，包含本卡牌)。\n[fast]花费1充能并消耗闭环：进行一次基础行动。该行动期间执行的每次技能检定，你可以不使用该行动指定的技能，改为使用你的[willpower]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

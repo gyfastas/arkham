@@ -1,0 +1,27 @@
+{
+  "id": "jury_rig_lv0",
+  "arkhamdb_code": "08074",
+  "name": "Jury-Rig",
+  "name_cn": "应急装备",
+  "class": "survivor",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "upgrade"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "Uses (3 durability).\nAttach to an [[Item]] asset controlled by an investigator at your location.\n[fast] During a skill test on attached asset, spend 1 durability: You get +2 skill value for this test.",
+  "text_cn": "使用(3耐久)。\n叠加到你所在地点调查员控制的一张[[道具]]支援卡。\n[fast]在被叠加的支援卡的技能检定中，花费1耐久：你这次检定+2技能值。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth",
+  "uses": {
+    "durabilitys": 3
+  }
+}

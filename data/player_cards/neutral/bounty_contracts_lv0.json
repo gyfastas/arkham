@@ -1,0 +1,24 @@
+{
+  "id": "bounty_contracts_lv0",
+  "arkhamdb_code": "06010",
+  "name": "Bounty Contracts",
+  "name_cn": "赏金合约",
+  "class": "neutral",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "job"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Tony Morgan deck only. Uses (6 bounties).\n[reaction]: After an enemy enters play: Move 1-3 bounties from Bounty Contracts to that enemy, to a maximum of that enemy's health.\n<b>Forced</b> - After you defeat an enemy with 1 or more bounties on it: Move its bounties to your resource pool, as resources.",
+  "text_cn": "永久。托尼·摩尔根牌组专用。使用(6赏金)。\n[reaction]在一名敌人入场后：将1-3赏金从赏金合约移动到该敌人，最多放置该敌人生命值的赏金。\n<b>强制</b> - 在你击败一名带有赏金的敌人后：将其赏金移动到你的资源池，作为资源。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "uses": {
+    "bounties": 6
+  }
+}

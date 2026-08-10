@@ -1,0 +1,25 @@
+{
+  "id": "wither_lv0",
+  "arkhamdb_code": "05157",
+  "name": "Wither",
+  "name_cn": "凋零术",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 2,
+  "level": 0,
+  "traits": [
+    "spell"
+  ],
+  "skill_icons": {
+    "combat": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "[action]: <b>Fight.</b> This attack uses [willpower] instead of [combat]. If a [skull], [cultist], [tablet], or [elder_thing] symbol is revealed during this attack, the attacked enemy gets -1 fight and -1 evade for the remainder of the turn (to a minimum of 1).",
+  "text_cn": "[action]：<b>攻击</b>。这次攻击不使用[combat]，改为使用[willpower]。如果这次攻击中抽出[skull]、[cultist]、[tablet]或[elder_thing]符号，受到攻击的敌人在本回合剩余时间内-1攻击并-1躲避(最低减至1)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

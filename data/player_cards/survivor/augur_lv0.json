@@ -1,0 +1,26 @@
+{
+  "id": "augur_lv0",
+  "arkhamdb_code": "06033",
+  "name": "Augur",
+  "name_cn": "预见",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "ally",
+    "creature",
+    "dreamlands"
+  ],
+  "skill_icons": {
+    "combat": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Bonded (Miss Doyle). Fast.\n<b>Forced</b> - After Augur enters play: Discard Hope and Zeal.\n[action] If Augur is ready, exhaust or discard her: <b>Investigate.</b> Investigate with a base [intellect] value of 5. (If you discarded Augur, this test is automatically successful. Then, you may shuffle Augur into your deck to put Hope or Zeal into play from your discard pile.)",
+  "text_cn": "绑定(道尔女士)。快速。\n<b>强制</b> - 在预见入场后：丢弃希望和热诚。\n[action]如果预见已准备，将其消耗或丢弃：<b>调查</b>。以5点基础[intellect]值调查。(如果你丢弃预见，这次检定自动成功。然后，你可以将预见混洗入你的牌堆来将希望或热诚从你的弃牌堆放置入场。)",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters"
+}

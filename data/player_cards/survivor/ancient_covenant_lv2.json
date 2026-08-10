@@ -1,0 +1,22 @@
+{
+  "id": "ancient_covenant_lv2",
+  "arkhamdb_code": "07122",
+  "name": "Ancient Covenant",
+  "name_cn": "古代圣约",
+  "class": "survivor",
+  "type": "asset",
+  "cost": null,
+  "level": 2,
+  "traits": [
+    "covenant",
+    "blessed"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When an investigator at your location resolves a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect.",
+  "text_cn": "永久。每副牌组限制1张[[圣约]]。\n[reaction]在你所在地点的调查员的技能检定期间结算一个[bless]标记时，消耗古代圣约：不要为此[bless]标记的效果抽出另一个标记。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

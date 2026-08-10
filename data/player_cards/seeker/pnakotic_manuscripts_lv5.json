@@ -1,0 +1,33 @@
+{
+  "id": "pnakotic_manuscripts_lv5",
+  "arkhamdb_code": "04307",
+  "name": "Pnakotic Manuscripts",
+  "name_cn": "纳克特手稿",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 5,
+  "level": 5,
+  "traits": [
+    "item",
+    "relic",
+    "tome"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "wild": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Uses (3 secrets).\n[reaction] When an investigator at your location would perform a skill test during a revelation effect, spend 1 secret: Do not reveal chaos tokens for that test.\n[action] Spend 1 secret: Choose an investigator at your location. Do not reveal chaos tokens for the next skill test that investigator performs this round.",
+  "text_cn": "使用(3秘密)。\n[reaction]在你所在地点有调查员将要在显现效果期间执行一次技能检定时，花费1秘密：该检定中不抽出混乱标记。\n[action]花费1秘密：选择你所在地点的1位调查员。该调查员在本轮执行下一次技能检定时不抽出混乱标记。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_forgotten_age",
+  "subname": "Mind-Expanding Ideas",
+  "subname_cn": "天马行空",
+  "uses": {
+    "secrets": 3
+  }
+}

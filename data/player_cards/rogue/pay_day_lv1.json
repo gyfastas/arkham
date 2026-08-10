@@ -1,0 +1,22 @@
+{
+  "id": "pay_day_lv1",
+  "arkhamdb_code": "04233",
+  "name": "Pay Day",
+  "name_cn": "收获日",
+  "class": "rogue",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "illicit",
+    "fated"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Gain 1 resource for each action you performed this turn <i>(including this one)</i>. If it is your turn, end your turn.",
+  "text_cn": "你获得资源，数量等同于你本回合已执行的行动数量<i>(包括本行动)</i>。如果此时是你的回合，则结束你的回合。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "calvin_wright",
+  "arkhamdb_code": "04005",
+  "name": "Calvin Wright",
+  "name_cn": "加尔文·怀特",
+  "title": "The Haunted",
+  "title_cn": "著魔者",
+  "class": "survivor",
+  "health": 6,
+  "sanity": 6,
+  "skills": {
+    "willpower": 0,
+    "intellect": 0,
+    "combat": 0,
+    "agility": 0
+  },
+  "ability": "You get +1 [willpower] and +1 [intellect] for each horror on you.\nYou get +1 [combat] and +1 [agility] for each damage on you.\n[elder_sign] effect: +0. You may either heal 1 damage or horror, or take 1 direct damage or direct horror.",
+  "ability_cn": "每有1点恐惧在你身上，你获得+1[willpower]和+1[intellect]。\n每有1点伤害在你身上，你获得+1[combat]和+1[agility]。\n[elder_sign]效果：+0。你可以治愈1点伤害或恐惧，或受到1点直接伤害或直接恐惧。",
+  "elder_sign": "[elder_sign] effect: +0. You may either heal 1 damage or horror, or take 1 direct damage or direct horror.",
+  "elder_sign_cn": "[elder_sign]效果：+0。你可以治愈1点伤害或恐惧，或受到1点直接伤害或直接恐惧。",
+  "deck_requirements": {
+    "size": 30,
+    "cards": {
+      "survivor": {
+        "min_level": 0,
+        "max_level": 5
+      },
+      "neutral": {
+        "min_level": 0,
+        "max_level": 5
+      }
+    },
+    "_trait_options": [
+      "trait:spirit lv0-3"
+    ]
+  },
+  "signature_cards": [
+    "until_the_end_of_time_lv0"
+  ],
+  "weakness": "voice_of_the_messenger_lv0",
+  "flavor_text": "\"If you hurt him, I'll kill you.\"",
+  "back_text": "<b>Deck Size</b>: 30.\n<b>Deckbuilding Options</b>: Survivor cards ([survivor]) level 0-5, [[Spirit]] cards level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): Until the End of Time, Voice of the Messenger, 1 random basic weakness.",
+  "back_text_cn": "<b>卡牌张数</b>：30。\n<b>牌组构建选项</b>：求生者([survivor])等级0-5，[[勇气]]卡牌等级0-3，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：时间尽头、信使之声、1张随机基础弱点。",
+  "pack": "the_forgotten_age"
+}

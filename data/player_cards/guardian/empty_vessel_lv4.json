@@ -1,0 +1,33 @@
+{
+  "id": "empty_vessel_lv4",
+  "arkhamdb_code": "06276",
+  "name": "Empty Vessel",
+  "name_cn": "空虚项链",
+  "class": "guardian",
+  "type": "asset",
+  "cost": 1,
+  "level": 4,
+  "traits": [
+    "item",
+    "relic",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "wild": 1
+  },
+  "slots": [
+    "accessory"
+  ],
+  "text": "Limit 1 per deck. Uses (0 charges).\n[reaction] After you defeat an enemy: Place 1 charge on Empty Vessel.\n[fast] If there are at least 3 charges on Empty Vessel: Search your bonded cards for Wish Eater and swap it with Empty Vessel, moving all charges from Empty Vessel to Wish Eater.",
+  "text_cn": "每副牌组限制1张。使用(0充能)。\n[reaction]在你击败一名敌人后：在空虚项链上放置充能。\n[fast]如果空虚项链上有至少3充能：在你的绑定卡牌中查找食愿项链，并将其与空虚项链交换，将空虚项链上的所有充能移动到食愿项链上。",
+  "health": null,
+  "sanity": null,
+  "unique": true,
+  "pack": "the_dream_eaters",
+  "subname": "Abandoned by the Gods",
+  "subname_cn": "众神所弃",
+  "uses": {
+    "charges": 0
+  }
+}

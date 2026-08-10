@@ -1,0 +1,26 @@
+{
+  "id": "protective_incantation_lv1",
+  "arkhamdb_code": "04031",
+  "name": "Protective Incantation",
+  "name_cn": "保护咒语",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 1,
+  "level": 1,
+  "traits": [
+    "ritual",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Group limit 2 copies of Protective Incantation in play.\nSeal (any except [auto_fail]).\n<b>Forced</b> - At the end of your turn: You must either spend 1 resource or discard Protective Incantation.",
+  "text_cn": "团队限制2张保护咒语在场。\n封印(除了[auto_fail]以外的任何标记)。\n<b>强制</b> - 当你回合结束时：你必须花费1资源或丢弃保护咒语。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

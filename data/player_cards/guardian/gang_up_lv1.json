@@ -1,0 +1,25 @@
+{
+  "id": "gang_up_lv1",
+  "arkhamdb_code": "08022",
+  "name": "Gang Up",
+  "name_cn": "成群结队",
+  "class": "guardian",
+  "type": "event",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "spirit",
+    "synergy"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "<b>Fight.</b> For each different class among cards you control, you get +1 [combat] and deal +1 damage for this attack.",
+  "text_cn": "<b>攻击</b>。你控制的卡牌之中每有一个不同的职阶，你这次攻击+1[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

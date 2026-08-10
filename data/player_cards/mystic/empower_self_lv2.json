@@ -1,0 +1,28 @@
+{
+  "id": "empower_self_lv2",
+  "arkhamdb_code": "06243",
+  "name": "Empower Self",
+  "name_cn": "增强自我",
+  "class": "mystic",
+  "type": "asset",
+  "cost": 3,
+  "level": 2,
+  "traits": [
+    "ritual"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [
+    "arcane"
+  ],
+  "text": "Myriad. Limit 1 Empower Self <i>(Acuity)</i> per deck.\nUp to 3 Empower Self cards take up a single arcane slot.\nAnytime a card effect requires you to use [willpower] instead of [intellect], you may ignore that aspect of the effect.\n[fast] Exhaust Empower Self: You get +2 [intellect] for this test.",
+  "text_cn": "多重。每副牌组限制1张增强自我<i>(敏锐)</i>。\n一个法术槽位可以有最多3张增强自我卡牌。\n每当有卡牌效果要求你不使用[intellect]，改为使用[willpower]，你可以忽略此类效果。\n[fast]消耗增强自我：这次检定你+2[intellect]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subname": "Acuity",
+  "subname_cn": "敏锐",
+  "myriad": true
+}

@@ -1,0 +1,24 @@
+{
+  "id": "promise_of_power_lv0",
+  "arkhamdb_code": "07032",
+  "name": "Promise of Power",
+  "name_cn": "允诺力量",
+  "class": "mystic",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "practiced",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 4
+  },
+  "slots": [],
+  "text": "After you commit Promise of Power to a skill test, add 1 [curse] token to the chaos bag. If you cannot, take 2 horror instead.",
+  "text_cn": "在你投入允诺力量到技能检定后，加入1个[curse]标记到混乱袋。如果你不能，改为受到2点恐惧。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

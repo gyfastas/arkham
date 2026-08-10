@@ -1,0 +1,24 @@
+{
+  "id": "scout_ahead_lv0",
+  "arkhamdb_code": "08047",
+  "name": "Scout Ahead",
+  "name_cn": "提前侦察",
+  "class": "rogue",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight",
+    "trick"
+  ],
+  "skill_icons": {
+    "agility": 2
+  },
+  "slots": [],
+  "text": "<b>Move.</b> Move up to 3 times. Enemies do not engage you during this movement.",
+  "text_cn": "<b>移动</b>。移动最多3次。这次移动中敌人不会与你交战。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

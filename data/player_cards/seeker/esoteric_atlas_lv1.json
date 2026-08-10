@@ -1,0 +1,29 @@
+{
+  "id": "esoteric_atlas_lv1",
+  "arkhamdb_code": "05232",
+  "name": "Esoteric Atlas",
+  "name_cn": "绝密地图集",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 3,
+  "level": 1,
+  "traits": [
+    "item",
+    "tome"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Uses (4 secrets).\n[action] Spend 1 secret and exhaust Esoteric Atlas: Choose a revealed location that is exactly 2 connections away from your location. Move to that location.",
+  "text_cn": "使用(4秘密)。\n[action]花费1秘密并消耗绝密地图集：选择1个与你所在地点之间连接次数恰好为2的已揭示地点。移动到该地点。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone",
+  "uses": {
+    "secrets": 4
+  }
+}

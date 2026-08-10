@@ -1,0 +1,23 @@
+{
+  "id": "written_in_the_stars_lv0",
+  "arkhamdb_code": "08034",
+  "name": "Written in the Stars",
+  "name_cn": "繁星密语",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play only during your turn.\nDiscard the top card of your deck. If that card is a weakness, shuffle it back into your deck. Otherwise, for the remainder of your turn, while that card is in your discard pile, commit it to each eligible skill test you perform.",
+  "text_cn": "快速。只能在你的回合中打出。\n丢弃你牌堆顶部的卡牌。如果该卡牌为弱点，将其混洗回你的牌堆。否则在你的回合剩余时间内，只要该卡牌在你的弃牌堆中，将其投入到你执行的每个符合条件的技能检定中。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

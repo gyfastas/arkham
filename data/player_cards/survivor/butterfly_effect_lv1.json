@@ -1,0 +1,25 @@
+{
+  "id": "butterfly_effect_lv1",
+  "arkhamdb_code": "07160",
+  "name": "Butterfly Effect",
+  "name_cn": "蝴蝶效应",
+  "class": "survivor",
+  "type": "event",
+  "cost": 0,
+  "level": 1,
+  "traits": [
+    "paradox",
+    "blessed",
+    "cursed"
+  ],
+  "skill_icons": {
+    "wild": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when a chaos token with a symbol is revealed during a skill test at your location <i>(before resolving its effects)</i>.\nYou or the performing investigator may either commit a card to this skill test, or return a card they committed to this test to their hand.",
+  "text_cn": "快速。在你所在地点的技能检定中抽出带有符号的混乱标记时打出<i>(在结算其效果之前)</i>。\n你或执行检定的调查员可投入一张卡牌到这次技能检定，或将其投入到这次检定的一张卡牌返回其手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

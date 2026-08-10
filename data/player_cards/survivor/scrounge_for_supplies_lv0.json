@@ -1,0 +1,21 @@
+{
+  "id": "scrounge_for_supplies_lv0",
+  "arkhamdb_code": "06165",
+  "name": "Scrounge for Supplies",
+  "name_cn": "搜刮补给",
+  "class": "survivor",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "fortune"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Choose a level 0 card in your discard pile. Add the chosen card to your hand.",
+  "text_cn": "选择你弃牌堆中一张0级卡牌。将所选卡牌加入你的手牌。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters"
+}

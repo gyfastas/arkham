@@ -1,0 +1,24 @@
+{
+  "id": "steadfast_lv0",
+  "arkhamdb_code": "05022",
+  "name": "Steadfast",
+  "name_cn": "坚定不移",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "innate"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "combat": 1
+  },
+  "slots": [],
+  "text": "While you have 5 or more total remaining health and sanity, Steadfast gains [willpower] [combat] (while you have 10 or more total remaining health and sanity, Steadfast gains [willpower] [willpower] [combat] [combat], instead).",
+  "text_cn": "只要你剩余生命值和神智值总合至少为5时，坚定不移获得[willpower][combat](只要你剩余生命值和神智值总合至少为10时，改为坚定不移获得[willpower][willpower][combat][combat]。)。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_circle_undone"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "premonition_lv0",
+  "arkhamdb_code": "04199",
+  "name": "Premonition",
+  "name_cn": "危险预感",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "augury"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play during any [fast] player window.\nPut Premonition into play, reveal a random chaos token from the chaos bag, and seal it on Premonition.\n<b>Forced</b> - When a chaos token would be revealed from the chaos bag: Resolve the token sealed here as if it were just revealed from the chaos bag, instead. Then, discard Premonition.",
+  "text_cn": "快速。在任何[free]玩家时间段中打出。\n将危险预感放置入场，从混乱袋随机抽出1个混乱标记，将它封印在危险预感上。\n<b>强制</b> - 在1个混乱标记将要从混乱袋中被抽出时：改为结算封印在此的标记，视为该标记刚刚从混乱袋中抽出。然后，丢弃危险预感。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

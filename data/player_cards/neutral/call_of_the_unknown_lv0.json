@@ -1,0 +1,22 @@
+{
+  "id": "call_of_the_unknown_lv0",
+  "arkhamdb_code": "04009",
+  "name": "Call of the Unknown",
+  "name_cn": "未知的呼唤",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "task"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - Put Call of the Unknown into play in your threat area.\n<b>Forced</b> - At the beginning of your turn: Choose a location other than your location. When your turn ends, if you did not successfully investigate the chosen location this turn, take 2 horror and shuffle Call of the Unknown back into your deck.",
+  "text_cn": "<b>显现</b> - 将未知的呼唤放置到你的威胁区域。\n<b>强制</b> - 当你回合开始时：选择你所在地点以外的一个地点。在你回合结束时，如果本回合你没能成功调查所选地点，受到2点恐惧并将未知的呼唤洗回你的牌堆。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "obscure_studies_lv0",
+  "arkhamdb_code": "07008",
+  "name": "Obscure Studies",
+  "name_cn": "晦涩研究",
+  "class": "neutral",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "wild": 3
+  },
+  "slots": [],
+  "text": "Amanda Sharpe deck only.\nFast. Play when you initiate a skill test.\nReturn the card beneath Amanda Sharpe to your hand and place Obscure Studies beneath her.",
+  "text_cn": "阿曼达‧夏普牌组专用。\n快速。在你发动技能检定时打出。\n将阿曼达‧夏普底下的卡牌返回你的手牌，并将晦涩研究放置在她底下。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

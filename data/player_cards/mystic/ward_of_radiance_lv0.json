@@ -1,0 +1,25 @@
+{
+  "id": "ward_of_radiance_lv0",
+  "arkhamdb_code": "07031",
+  "name": "Ward of Radiance",
+  "name_cn": "光辉结界",
+  "class": "mystic",
+  "type": "event",
+  "cost": 0,
+  "level": 0,
+  "traits": [
+    "insight",
+    "blessed"
+  ],
+  "skill_icons": {
+    "willpower": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Fast. Play when an investigator at your location draws a non-weakness treachery card.\nReveal 5 random chaos tokens from the chaos bag. If a [bless] or [elder_sign] token is revealed, cancel that treachery card's revelation effect.",
+  "text_cn": "快速。你所在地点一位调查员在抽取一张非弱点诡计卡时打出。\n从混乱袋随机抽出5个混乱标记。\n如果抽出[bless]或[elder_sign]标记，取消该诡计卡的显现效果。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

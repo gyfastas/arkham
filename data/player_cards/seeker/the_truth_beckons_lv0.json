@@ -1,0 +1,24 @@
+{
+  "id": "the_truth_beckons_lv0",
+  "arkhamdb_code": "07154",
+  "name": "The Truth Beckons",
+  "name_cn": "真相的呼唤",
+  "class": "seeker",
+  "type": "event",
+  "cost": 1,
+  "level": 0,
+  "traits": [
+    "insight"
+  ],
+  "skill_icons": {
+    "intellect": 1,
+    "agility": 1
+  },
+  "slots": [],
+  "text": "Play only if you are not engaged with an enemy.\n<b>Move.</b> Choose an unrevealed location. Move (one location at a time) along the shortest path toward that location, until you enter that location. End this effect if you reveal a location, if an enemy engages you, or if your movement is blocked.",
+  "text_cn": "只能在你未与敌人交战时打出。\n<b>移动</b>。选择一个未揭示地点。朝向该地点最短的路径移动(一次一个地点)，直到你进入该地点。如果你翻开了地点，或与敌人交战，或你的移动被阻挡，结束此效果。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy"
+}

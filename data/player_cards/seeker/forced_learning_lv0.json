@@ -1,0 +1,22 @@
+{
+  "id": "forced_learning_lv0",
+  "arkhamdb_code": "08031",
+  "name": "Forced Learning",
+  "name_cn": "强制学习",
+  "class": "seeker",
+  "type": "asset",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "talent",
+    "ritual"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Permanent. Limit 1 per deck. Purchase at deck creation.\nIncrease your deck size by 15.\nDuring each upkeep phase, instead of drawing 1 card, draw 2 cards and discard 1 of them.",
+  "text_cn": "永久。每副牌组限制1张。当牌组构建时购买。\n你的牌组卡牌张数加15。\n补给阶段中，不抽取1张卡牌，改为抽取2张卡牌并丢弃其中1张。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

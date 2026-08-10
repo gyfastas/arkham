@@ -1,0 +1,22 @@
+{
+  "id": "the_bell_tolls_lv0",
+  "arkhamdb_code": "04042",
+  "name": "The Bell Tolls",
+  "name_cn": "丧钟敲响",
+  "class": "neutral",
+  "type": "treachery",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "curse"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "<b>Revelation</b> - The hour of your demise has arrived. You are <b>killed</b>.",
+  "text_cn": "<b>显现</b> - 你的死期到了。你<b>阵亡</b>了。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age",
+  "subtype": "weakness"
+}

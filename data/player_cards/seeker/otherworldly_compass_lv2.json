@@ -1,0 +1,26 @@
+{
+  "id": "otherworldly_compass_lv2",
+  "arkhamdb_code": "04194",
+  "name": "Otherworldly Compass",
+  "name_cn": "异界罗盘",
+  "class": "seeker",
+  "type": "asset",
+  "cost": 2,
+  "level": 2,
+  "traits": [
+    "item",
+    "relic"
+  ],
+  "skill_icons": {
+    "intellect": 2
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "[action] Exhaust Otherworldly Compass: <b>Investigate.</b> Your location gets -X shroud for this investigation. X is the number of revealed locations connected to your location.",
+  "text_cn": "[action]消耗异界罗盘：<b>调查</b>。这次调查中，你所在地点隐藏值-X。X为与你所在地点相互连接、且已翻开的地点数。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_forgotten_age"
+}

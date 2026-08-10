@@ -1,0 +1,27 @@
+{
+  "id": "dig_deep_lv4",
+  "arkhamdb_code": "07270",
+  "name": "Dig Deep",
+  "name_cn": "深挖",
+  "class": "survivor",
+  "type": "asset",
+  "cost": 2,
+  "level": 4,
+  "traits": [
+    "talent"
+  ],
+  "skill_icons": {
+    "willpower": 2,
+    "agility": 2
+  },
+  "slots": [],
+  "text": "Uses (2 resources). Replenish these resources at the start of each round.\n[fast] Spend 1 resource from your resource pool or from Dig Deep: You get +1 [willpower] or +1 [agility] for this skill test.",
+  "text_cn": "使用(2资源)。当每轮开始时重新补满这些资源。\n[free] 花费你的资源池或深挖的1资源：这次技能检定你+1[willpower]或+1[agility]。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "resourcess": 2
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "your_worst_nightmare_lv0",
+  "arkhamdb_code": "06038",
+  "name": "Your Worst Nightmare",
+  "name_cn": "最可怕的噩梦",
+  "class": "neutral",
+  "type": "enemy",
+  "cost": null,
+  "level": 0,
+  "traits": [
+    "monster"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "Multiplayer only.\nHunter.\n<b>Prey</b> - Bearer only.\nThe bearer of Your Worst Nightmare cannot attack, damage, or defeat it.",
+  "text_cn": "多人游戏专用。\n猎手。\n<b>猎物</b> - 仅对承受者。\n最可怕的噩梦的承受者不能对其攻击、造成伤害或将其击败。",
+  "health": 3,
+  "sanity": null,
+  "unique": false,
+  "pack": "the_dream_eaters",
+  "subtype": "basic_weakness"
+}

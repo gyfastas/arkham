@@ -1,0 +1,22 @@
+{
+  "id": "defensive_stance_lv1",
+  "arkhamdb_code": "08024",
+  "name": "Defensive Stance",
+  "name_cn": "防御姿态",
+  "class": "guardian",
+  "type": "skill",
+  "cost": null,
+  "level": 1,
+  "traits": [
+    "practiced",
+    "expert"
+  ],
+  "skill_icons": {},
+  "slots": [],
+  "text": "While Defensive Stance is in your hand or committed to a skill test, it gains [combat] icons equal to your [agility], and [agility] icons equal to your [combat].",
+  "text_cn": "只要防御姿态在你手中或被投入到技能检定中，其获得等于你[agility]的[combat]图标，以及等于你[combat]的[agility]图标。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "edge_of_the_earth"
+}

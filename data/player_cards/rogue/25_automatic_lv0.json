@@ -1,0 +1,31 @@
+{
+  "id": "25_automatic_lv0",
+  "arkhamdb_code": "07025",
+  "name": ".25 Automatic",
+  "name_cn": ".25自动手枪",
+  "class": "rogue",
+  "type": "asset",
+  "cost": 4,
+  "level": 0,
+  "traits": [
+    "item",
+    "weapon",
+    "firearm",
+    "illicit"
+  ],
+  "skill_icons": {
+    "agility": 1
+  },
+  "slots": [
+    "hand"
+  ],
+  "text": "Fast. Uses (4 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> If the attacked enemy is exhausted, you get +2 [combat] and deal +1 damage for this attack.",
+  "text_cn": "快速。使用(4子弹)。\n[action]花费1子弹：<b>攻击</b>。如果攻击的敌人已消耗，这次攻击你+2[combat]并造成+1伤害。",
+  "health": null,
+  "sanity": null,
+  "unique": false,
+  "pack": "innsmouth_conspiracy",
+  "uses": {
+    "ammo": 4
+  }
+}
