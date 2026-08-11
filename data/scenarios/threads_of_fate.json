@@ -1,0 +1,116 @@
+{
+  "id": "threads_of_fate",
+  "name": "Threads of Fate",
+  "name_cn": "命运之线",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 3,
+  "encounter_sets": [
+    "threads_of_fate",
+    "pnakotic_brotherhood",
+    "arkham",
+    "locked_doors",
+    "nightgaunts",
+    "pentagram"
+  ],
+  "scenario_set": "threads_of_fate",
+  "start_location": "rivertown",
+  "initial_locations": [
+    "rivertown",
+    "northside",
+    "downtown",
+    "easttown",
+    "miskatonic_university",
+    "velmas_diner",
+    "curiositie_shoppe"
+  ],
+  "set_aside": [
+    "town_hall",
+    "ichtaca_b",
+    "expedition_journal"
+  ],
+  "connections": {
+    "rivertown": [
+      "easttown",
+      "miskatonic_university"
+    ],
+    "easttown": [
+      "rivertown",
+      "downtown",
+      "velmas_diner"
+    ],
+    "downtown": [
+      "easttown",
+      "northside",
+      "town_hall"
+    ],
+    "northside": [
+      "downtown",
+      "miskatonic_university",
+      "curiositie_shoppe"
+    ],
+    "miskatonic_university": [
+      "rivertown",
+      "northside"
+    ],
+    "velmas_diner": [
+      "easttown"
+    ],
+    "curiositie_shoppe": [
+      "northside"
+    ],
+    "town_hall": [
+      "downtown"
+    ]
+  },
+  "act_deck": [
+    "the_relic_is_missing",
+    "harlan_is_in_danger",
+    "at_the_exhibit_a",
+    "at_the_exhibit_b",
+    "harlans_curse_a",
+    "harlans_curse_b",
+    "find_the_relic",
+    "recover_the_relic",
+    "search_for_alejandro",
+    "missing_persons",
+    "at_the_station_a",
+    "at_the_station_b",
+    "friends_in_high_places_a",
+    "friends_in_high_places_b",
+    "alejandros_prison",
+    "alejandros_plight",
+    "trial_of_the_huntress",
+    "the_guardians_inquiry",
+    "the_cave_of_darkness_a",
+    "the_cave_of_darkness_b",
+    "strange_relics_a",
+    "strange_relics_b",
+    "strange_occurrences",
+    "the_brotherhood_is_revealed"
+  ],
+  "agenda_deck": [
+    "three_fates",
+    "behind_the_curtain",
+    "hidden_entanglements"
+  ],
+  "locations": [
+    "rivertown",
+    "northside",
+    "downtown",
+    "easttown",
+    "miskatonic_university",
+    "velmas_diner",
+    "curiositie_shoppe",
+    "town_hall"
+  ],
+  "story_assets": [
+    "ichtaca_b",
+    "expedition_journal"
+  ],
+  "setup_notes": "三条平行act牌堆各取3张：a/b遗物线(圣物交Harlan→harlan_is_in_danger+harlans_curse_a/b随机1张；否则the_relic_is_missing+at_the_exhibit_a/b随机1张；两线均含find_the_relic、recover_the_relic)；c/d亚历山卓线(报警→missing_persons+friends_in_high_places_a/b随机1张；自行搜寻→search_for_alejandro+at_the_station_a/b随机1张；两线均含alejandros_prison、alejandros_plight)；e/f伊塔卡线(听过她的故事→the_guardians_inquiry+strange_relics_a/b随机1张；否则trial_of_the_huntress+the_cave_of_darkness_a/b随机1张；两线均含strange_occurrences、the_brotherhood_is_revealed)。velmas_diner/curiositie_shoppe/town_hall为单面地点，卡面无自有图标，连接以卡面文字为准。bag_add：cultist为固定+1；elder_thing仅当调查员选择forging your own path时加入(并移除全部cultist/tablet)。",
+  "bag_add": {
+    "cultist": 1,
+    "elder_thing": 1
+  }
+}

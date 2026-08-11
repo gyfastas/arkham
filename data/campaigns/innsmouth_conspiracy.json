@@ -1,0 +1,23 @@
+{
+  "id": "innsmouth_conspiracy",
+  "name": "The Innsmouth Conspiracy",
+  "name_cn": "印斯茅斯阴谋",
+  "type": "official",
+  "scenarios": [
+    "the_vanishing_of_elina_harper",
+    "in_too_deep",
+    "the_pit_of_despair",
+    "devil_reef",
+    "horror_in_high_gear",
+    "a_light_in_the_fog",
+    "the_lair_of_dagon",
+    "into_the_maelstrom"
+  ],
+  "investigators": [
+    "sister_mary",
+    "amanda_sharpe",
+    "trish_scarborough",
+    "dexter_drake",
+    "silas_marsh"
+  ]
+}

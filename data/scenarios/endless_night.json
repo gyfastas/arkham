@@ -1,0 +1,18 @@
+{
+  "id": "endless_night",
+  "name": "Endless Night",
+  "name_cn": "无尽长夜",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 6,
+  "encounter_sets": [],
+  "initial_locations": [],
+  "set_aside": [],
+  "connections": {},
+  "act_deck": [],
+  "agenda_deck": [],
+  "locations": [],
+  "story_assets": [],
+  "bag_add": {},
+  "setup_notes": "插曲II（纯剧情，无地点/密谋/事件幕/遭遇牌堆）。依次选读3段队员对话（若队伍找到另一条翻山路径则为4段）；按队员存活/死亡结算各段效果（如移除至多5张Tekeli-li弱点、治疗创伤/队员伤害、获得Memorials of the Lost故事卡、记录Dr. Kensler研究进度等）。效果无法执行时不计入次数并可另选。"
+}

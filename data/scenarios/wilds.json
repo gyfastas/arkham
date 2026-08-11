@@ -1,0 +1,111 @@
+{
+  "id": "wilds",
+  "name": "The Untamed Wilds",
+  "name_cn": "荒莽密林",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 1,
+  "encounter_sets": [
+    "wilds",
+    "rainforest",
+    "serpents",
+    "expedition",
+    "guardians_of_time",
+    "agents_of_yig",
+    "poison",
+    "ancient_evils"
+  ],
+  "scenario_set": "wilds",
+  "start_location": "expedition_camp",
+  "initial_locations": [
+    "expedition_camp"
+  ],
+  "set_aside": [
+    "ruins_of_eztli",
+    "temple_of_the_fang",
+    "overgrown_ruins",
+    "alejandro_vela",
+    "ichtaca_a",
+    "poisoned"
+  ],
+  "connections": {
+    "expedition_camp": [
+      "path_of_thorns",
+      "river_canyon",
+      "rope_bridge"
+    ],
+    "path_of_thorns": [
+      "expedition_camp",
+      "river_canyon",
+      "serpents_haven",
+      "temple_of_the_fang"
+    ],
+    "river_canyon": [
+      "expedition_camp",
+      "path_of_thorns",
+      "rope_bridge",
+      "circuitous_trail",
+      "serpents_haven"
+    ],
+    "rope_bridge": [
+      "expedition_camp",
+      "river_canyon",
+      "circuitous_trail",
+      "overgrown_ruins"
+    ],
+    "serpents_haven": [
+      "path_of_thorns",
+      "river_canyon",
+      "ruins_of_eztli",
+      "temple_of_the_fang"
+    ],
+    "circuitous_trail": [
+      "river_canyon",
+      "rope_bridge",
+      "ruins_of_eztli",
+      "overgrown_ruins"
+    ],
+    "ruins_of_eztli": [
+      "serpents_haven",
+      "circuitous_trail"
+    ],
+    "temple_of_the_fang": [
+      "path_of_thorns",
+      "serpents_haven"
+    ],
+    "overgrown_ruins": [
+      "rope_bridge",
+      "circuitous_trail"
+    ]
+  },
+  "act_deck": [
+    "exploring_the_rainforest",
+    "huntress_of_the_eztli",
+    "search_for_the_ruins",
+    "the_guarded_ruins"
+  ],
+  "agenda_deck": [
+    "expedition_into_the_wild",
+    "intruders"
+  ],
+  "locations": [
+    "expedition_camp",
+    "path_of_thorns",
+    "river_canyon",
+    "rope_bridge",
+    "serpents_haven",
+    "circuitous_trail",
+    "ruins_of_eztli",
+    "temple_of_the_fang",
+    "overgrown_ruins"
+  ],
+  "story_assets": [
+    "alejandro_vela",
+    "ichtaca_a"
+  ],
+  "setup_notes": "探索牌堆=5张单面丛林地点(path_of_thorns/river_canyon/rope_bridge/serpents_haven/circuitous_trail)+lost_in_the_wilds/overgrowth/snake_bite/low_on_supplies/arrows_from_the_trees各1张洗混。agents_of_yig遭遇组与4张poisoned弱点搁置出场；3张单面遗迹地点(ruins_of_eztli/temple_of_the_fang/overgrown_ruins)搁置。Act2由伊塔卡立场二选一(search_for_the_ruins或huntress_of_the_eztli)。bag_add为两种互斥战役调整的合计：伊塔卡带路+1cultist、与其交战+1tablet，实际只加其一。temple_of_the_fang/overgrown_ruins卡面上的第三个连接图标(深绿等号)指向heart_of_the_elders的mouth_of_kn_yan，本剧本无对应地点故略去。",
+  "bag_add": {
+    "cultist": 2,
+    "tablet": 2
+  }
+}

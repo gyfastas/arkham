@@ -1,0 +1,160 @@
+{
+  "id": "the_boundary_beyond",
+  "name": "The Boundary Beyond",
+  "name_cn": "界限彼端",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 4,
+  "encounter_sets": [
+    "the_boundary_beyond",
+    "flux",
+    "poison"
+  ],
+  "scenario_set": "the_boundary_beyond",
+  "start_location": "zócalo",
+  "initial_locations": [
+    "zócalo",
+    "temple_ruins",
+    "metropolitan_cathedral",
+    "chapultepec_park",
+    "xochimilco",
+    "coyoacán"
+  ],
+  "set_aside": [
+    "padma_amrita"
+  ],
+  "connections": {
+    "temple_ruins": [
+      "zócalo",
+      "coyoacán"
+    ],
+    "metropolitan_cathedral": [
+      "zócalo"
+    ],
+    "chapultepec_park": [
+      "coyoacán"
+    ],
+    "zócalo": [
+      "temple_ruins",
+      "metropolitan_cathedral",
+      "xochimilco",
+      "coyoacán"
+    ],
+    "xochimilco": [
+      "zócalo",
+      "coyoacán"
+    ],
+    "coyoacán": [
+      "temple_ruins",
+      "chapultepec_park",
+      "zócalo",
+      "xochimilco"
+    ],
+    "templo_mayor_a": [
+      "temples_of_tenochtitlán_a",
+      "temples_of_tenochtitlán_b",
+      "chapultepec_hill_a",
+      "chapultepec_hill_b"
+    ],
+    "templo_mayor_b": [
+      "temples_of_tenochtitlán_a",
+      "temples_of_tenochtitlán_b",
+      "chapultepec_hill_a",
+      "chapultepec_hill_b"
+    ],
+    "temples_of_tenochtitlán_a": [
+      "templo_mayor_a",
+      "templo_mayor_b",
+      "canals_of_tenochtitlán_a",
+      "canals_of_tenochtitlán_b"
+    ],
+    "temples_of_tenochtitlán_b": [
+      "templo_mayor_a",
+      "templo_mayor_b",
+      "canals_of_tenochtitlán_a",
+      "canals_of_tenochtitlán_b"
+    ],
+    "chapultepec_hill_a": [
+      "templo_mayor_a",
+      "templo_mayor_b",
+      "sacred_woods_a",
+      "sacred_woods_b"
+    ],
+    "chapultepec_hill_b": [
+      "templo_mayor_a",
+      "templo_mayor_b",
+      "sacred_woods_a",
+      "sacred_woods_b"
+    ],
+    "canals_of_tenochtitlán_a": [
+      "temples_of_tenochtitlán_a",
+      "temples_of_tenochtitlán_b",
+      "lake_xochimilco_a",
+      "lake_xochimilco_b"
+    ],
+    "canals_of_tenochtitlán_b": [
+      "temples_of_tenochtitlán_a",
+      "temples_of_tenochtitlán_b",
+      "lake_xochimilco_a",
+      "lake_xochimilco_b"
+    ],
+    "lake_xochimilco_a": [
+      "canals_of_tenochtitlán_a",
+      "canals_of_tenochtitlán_b",
+      "sacred_woods_a",
+      "sacred_woods_b"
+    ],
+    "lake_xochimilco_b": [
+      "canals_of_tenochtitlán_a",
+      "canals_of_tenochtitlán_b",
+      "sacred_woods_a",
+      "sacred_woods_b"
+    ],
+    "sacred_woods_a": [
+      "chapultepec_hill_a",
+      "chapultepec_hill_b",
+      "lake_xochimilco_a",
+      "lake_xochimilco_b"
+    ],
+    "sacred_woods_b": [
+      "chapultepec_hill_a",
+      "chapultepec_hill_b",
+      "lake_xochimilco_a",
+      "lake_xochimilco_b"
+    ]
+  },
+  "act_deck": [
+    "crossing_the_threshold",
+    "past_and_present",
+    "the_return_trip"
+  ],
+  "agenda_deck": [
+    "the_boundary_broken",
+    "the_barrier_is_thin",
+    "time_collapsing"
+  ],
+  "locations": [
+    "temple_ruins",
+    "metropolitan_cathedral",
+    "chapultepec_park",
+    "zócalo",
+    "xochimilco",
+    "coyoacán",
+    "templo_mayor_a",
+    "templo_mayor_b",
+    "temples_of_tenochtitlán_a",
+    "temples_of_tenochtitlán_b",
+    "chapultepec_hill_a",
+    "chapultepec_hill_b",
+    "canals_of_tenochtitlán_a",
+    "canals_of_tenochtitlán_b",
+    "lake_xochimilco_a",
+    "lake_xochimilco_b",
+    "sacred_woods_a",
+    "sacred_woods_b"
+  ],
+  "story_assets": [
+    "padma_amrita"
+  ],
+  "setup_notes": "起始地点为zócalo或coyoacán(调查员任选)。探索牌堆=12张单面古代地点(6种各2张)+window_to_another_time/timeline_destabilization/a_tear_in_time/lost_in_time各1张洗混。古代地点与相同自有图标的现代地点一一对应：templo_mayor↔temple_ruins(黄圆)、temples_of_tenochtitlán↔metropolitan_cathedral(红方块)、chapultepec_hill↔chapultepec_park(蓝三角)、canals_of_tenochtitlán↔zócalo(绿菱)、lake_xochimilco↔xochimilco(橙心)、sacred_woods↔coyoacán(紫星)；古代地点入场时叠放到对应现代地点上并接替其位置，两时代连接图各自独立(connections按时代分别给出，同名a/b两版图标相同互为通道)。遭遇组按混沌袋分支：cultist≥2→加pnakotic_brotherhood+pentagram；tablet≥2→加venom+guardians_of_time；两者均<2→加pnakotic_brotherhood+guardians_of_time。"
+}

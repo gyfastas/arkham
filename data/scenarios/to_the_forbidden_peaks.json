@@ -1,0 +1,137 @@
+{
+  "id": "to_the_forbidden_peaks",
+  "name": "To the Forbidden Peaks",
+  "name_cn": "失落之峰",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 4,
+  "encounter_sets": [
+    "to_the_forbidden_peaks",
+    "deadly_weather",
+    "elder_things",
+    "hazards_of_antarctica",
+    "nameless_horrors",
+    "tekelili"
+  ],
+  "scenario_set": "to_the_forbidden_peaks",
+  "start_location": "deep_drifts",
+  "initial_locations": [
+    "deep_drifts",
+    "white_bluff",
+    "steep_incline",
+    "narrow_ridge",
+    "rocky_ledge",
+    "snow_covered_crag",
+    "windswept_path",
+    "the_summit"
+  ],
+  "set_aside": [
+    "terror_of_the_stars_a"
+  ],
+  "connections": {
+    "deep_drifts": [
+      "white_bluff",
+      "steep_incline",
+      "narrow_ridge",
+      "rocky_ledge",
+      "snow_covered_crag",
+      "windswept_path",
+      "the_summit"
+    ],
+    "white_bluff": [
+      "deep_drifts",
+      "steep_incline",
+      "narrow_ridge",
+      "rocky_ledge",
+      "snow_covered_crag",
+      "windswept_path",
+      "the_summit"
+    ],
+    "steep_incline": [
+      "deep_drifts",
+      "white_bluff",
+      "narrow_ridge",
+      "rocky_ledge",
+      "snow_covered_crag",
+      "windswept_path",
+      "the_summit"
+    ],
+    "narrow_ridge": [
+      "deep_drifts",
+      "white_bluff",
+      "steep_incline",
+      "rocky_ledge",
+      "snow_covered_crag",
+      "windswept_path",
+      "the_summit"
+    ],
+    "rocky_ledge": [
+      "deep_drifts",
+      "white_bluff",
+      "steep_incline",
+      "narrow_ridge",
+      "snow_covered_crag",
+      "windswept_path",
+      "the_summit"
+    ],
+    "snow_covered_crag": [
+      "deep_drifts",
+      "white_bluff",
+      "steep_incline",
+      "narrow_ridge",
+      "rocky_ledge",
+      "windswept_path",
+      "the_summit"
+    ],
+    "windswept_path": [
+      "deep_drifts",
+      "white_bluff",
+      "steep_incline",
+      "narrow_ridge",
+      "rocky_ledge",
+      "snow_covered_crag",
+      "the_summit"
+    ],
+    "the_summit": [
+      "deep_drifts",
+      "white_bluff",
+      "steep_incline",
+      "narrow_ridge",
+      "rocky_ledge",
+      "snow_covered_crag",
+      "windswept_path"
+    ]
+  },
+  "act_deck": [
+    "ascend_the_mountain"
+  ],
+  "agenda_deck": [
+    "forbidden_peaks",
+    "terror_descends"
+  ],
+  "locations": [
+    "deep_drifts",
+    "white_bluff",
+    "steep_incline",
+    "narrow_ridge",
+    "rocky_ledge",
+    "snow_covered_crag",
+    "windswept_path",
+    "the_summit"
+  ],
+  "story_assets": [
+    "professor_william_dyer_c",
+    "danforth_c",
+    "eliyah_ashevak_c",
+    "dr_mala_sinha_c",
+    "avery_claypool_c",
+    "james_cookie_fredericks_c",
+    "dr_amy_kensler_c",
+    "roald_ellsworth_c",
+    "takada_hiroko_c"
+  ],
+  "bag_add": {
+    "elder_thing": 1
+  },
+  "setup_notes": "官方布置：7张Mountainside洗混取5张排成斜线（等级0-4），The Summit固定顶端（等级5），其余2张场外；等级0地点揭示，调查员由此开始（数据默认 deep_drifts）。本剧本地点卡无印刷连接图标，规则为每地点与其正上/正下相邻地点相连，connections 按随机摆放的全连通近似记录。若Eliyah Ashevak存活且已回收Wooden Sledge则无效果，否则混乱袋再+1[frost]（bag_add 未含此项）。已回收供应对应的Expedition故事资产置于等级0地点。Terror of the Stars场外搁置。困难/专家密谋1a +1/+2毁灭。"
+}

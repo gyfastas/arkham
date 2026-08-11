@@ -1,0 +1,99 @@
+{
+  "id": "waking_nightmare",
+  "name": "Waking Nightmare",
+  "name_cn": "清醒恶梦",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 2,
+  "encounter_sets": [
+    "waking_nightmare",
+    "merging_realities",
+    "whispers_of_hypnos",
+    "locked_doors",
+    "striking_fear",
+    "agents_of_atlach_nacha",
+    "spiders"
+  ],
+  "scenario_set": "waking_nightmare",
+  "start_location": "waiting_room",
+  "initial_locations": [
+    "waiting_room",
+    "emergency_room",
+    "experimental_therapies_ward",
+    "records_office"
+  ],
+  "set_aside": [
+    "stairwell",
+    "morgue",
+    "operating_room",
+    "private_room",
+    "randolph_carter_b",
+    "outbreak",
+    "corrupted_orderly",
+    "the_infestation_begins",
+    "grey_weaver",
+    "will_of_the_spider_mother",
+    "spider_of_leng",
+    "swarm_of_spiders",
+    "sickening_webs"
+  ],
+  "connections": {
+    "waiting_room": [
+      "records_office",
+      "experimental_therapies_ward",
+      "emergency_room"
+    ],
+    "emergency_room": [
+      "waiting_room",
+      "experimental_therapies_ward"
+    ],
+    "experimental_therapies_ward": [
+      "waiting_room",
+      "emergency_room",
+      "stairwell"
+    ],
+    "records_office": [
+      "waiting_room"
+    ],
+    "stairwell": [
+      "experimental_therapies_ward",
+      "morgue",
+      "operating_room",
+      "private_room"
+    ],
+    "morgue": [
+      "stairwell"
+    ],
+    "operating_room": [
+      "stairwell"
+    ],
+    "private_room": [
+      "stairwell"
+    ]
+  },
+  "act_deck": [
+    "looking_for_answers",
+    "search_for_the_patient",
+    "containing_the_outbreak"
+  ],
+  "agenda_deck": [
+    "halls_of_st_marys",
+    "the_infestation_spreads",
+    "hospital_of_horrors"
+  ],
+  "locations": [
+    "waiting_room",
+    "emergency_room",
+    "experimental_therapies_ward",
+    "records_office",
+    "stairwell",
+    "morgue",
+    "operating_room",
+    "private_room"
+  ],
+  "story_assets": [
+    "randolph_carter_b",
+    "dr_shivani_maheswaran"
+  ],
+  "setup_notes": "候诊室/急诊室/实验治疗病房/档案室入场，调查员从候诊室开始；楼梯间与3张 Basement Door（太平间/手术室/单人病房的未揭示面，共用酒红十字图标）搁置，由 act 1b 带入。搁置：伦道夫·卡特(缚于清醒世界)、3张 Outbreak、2张堕落护工、双面故事卡 The Infestation Begins。agents_of_atlach_nacha 与 spiders 两遭遇组设置时搁置不入遭遇牌堆，按剧本进程洗入。setup 时选择医生(Dr. Shivani Maheswaran)分支。楼梯间底部印有酒红十字图标（指向未揭示的 Basement Door），等价于连接三张地下室地点。"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "weaver_of_the_cosmos",
+  "name": "Weaver of the Cosmos",
+  "name_cn": "编织宇宙",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 8,
+  "encounter_sets": [
+    "weaver_of_the_cosmos",
+    "agents_of_atlach_nacha",
+    "spiders",
+    "ancient_evils",
+    "chilling_cold"
+  ],
+  "scenario_set": "weaver_of_the_cosmos",
+  "start_location": "the_great_web_a",
+  "initial_locations": [
+    "the_great_web_a",
+    "the_great_web_b",
+    "the_great_web_c",
+    "the_great_web_d",
+    "the_great_web_e",
+    "the_great_web_f"
+  ],
+  "set_aside": [
+    "atlach_nacha",
+    "legs_of_atlach_nacha_a",
+    "legs_of_atlach_nacha_b",
+    "legs_of_atlach_nacha_c",
+    "legs_of_atlach_nacha_d",
+    "the_spinner_in_darkness"
+  ],
+  "connections": {
+    "the_great_web_a": [],
+    "the_great_web_b": [],
+    "the_great_web_c": [],
+    "the_great_web_d": [],
+    "the_great_web_e": [],
+    "the_great_web_f": []
+  },
+  "act_deck": [
+    "journey_across_the_bridge",
+    "the_weaver_of_the_cosmos",
+    "the_schemes_demise"
+  ],
+  "agenda_deck": [
+    "the_bridge_of_webs",
+    "a_trail_of_twists",
+    "realities_interwoven"
+  ],
+  "locations": [
+    "the_great_web_a",
+    "the_great_web_b",
+    "the_great_web_c",
+    "the_great_web_d",
+    "the_great_web_e",
+    "the_great_web_f"
+  ],
+  "story_assets": [],
+  "bag_add": {
+    "-4": 1
+  },
+  "setup_notes": "洗混全部15张 The Great Web 地点（6种各2-3份，均无地点图标、无印刷连接），随机4张竖线入场，调查员从最上方开始；每张连接其上/下相邻地点。act 2 推进时只留最下方地点，再随机放7张围成圆圈，每张连接左右相邻地点。搁置：双面 Atlach-Nacha、4条 Atlach-Nacha 之腿（作为其身躯部位进场的敌人）、2张 The Spinner in Darkness。按战役日志 Steps of the Bridge 计数在密谋1a放毁灭（0-2不放/3-5放1/6-8放2/9-11放3/12+放4）。若 Randolph survived the descent：按难度向混沌袋加标记（简单-3/标准-4/困难-5/专家-7；bag_add 取标准值-4）。"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "the_circle_undone",
+  "name": "The Circle Undone",
+  "name_cn": "万象祭环",
+  "type": "official",
+  "scenarios": [
+    "the_witching_hour",
+    "at_deaths_doorstep",
+    "the_secret_name",
+    "the_wages_of_sin",
+    "for_the_greater_good",
+    "union_and_disillusion",
+    "in_the_clutches_of_chaos",
+    "before_the_black_throne"
+  ],
+  "investigators": [
+    "carolyn_fern",
+    "joe_diamond",
+    "preston_fairmont",
+    "diana_stanley",
+    "rita_young",
+    "marie_lambeau"
+  ]
+}

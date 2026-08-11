@@ -1,0 +1,122 @@
+{
+  "id": "the_wages_of_sin",
+  "name": "The Wages of Sin",
+  "name_cn": "恶罪报应",
+  "type": "official",
+  "campaign": "the_circle_undone",
+  "sequence": 4,
+  "encounter_sets": [
+    "the_wages_of_sin",
+    "anettes_coven",
+    "city_of_sins",
+    "inexorable_fate",
+    "realm_of_death",
+    "trapped_spirits",
+    "witchcraft"
+  ],
+  "scenario_set": "the_wages_of_sin",
+  "start_location": "hangmans_brook",
+  "initial_locations": [
+    "hangmans_brook",
+    "haunted_fields",
+    "abandoned_chapel",
+    "the_gallows_a",
+    "heretics_graves_a",
+    "chapel_crypt_a",
+    "chapel_attic_a"
+  ],
+  "set_aside": [
+    "spectral_web",
+    "heretic_a",
+    "heretic_b",
+    "heretic_c",
+    "heretic_d",
+    "heretic_e",
+    "heretic_f"
+  ],
+  "connections": {
+    "hangmans_brook": [
+      "haunted_fields",
+      "abandoned_chapel"
+    ],
+    "haunted_fields": [
+      "hangmans_brook",
+      "abandoned_chapel",
+      "the_gallows_a",
+      "the_gallows_b",
+      "heretics_graves_a",
+      "heretics_graves_b"
+    ],
+    "abandoned_chapel": [
+      "hangmans_brook",
+      "haunted_fields",
+      "chapel_crypt_a",
+      "chapel_crypt_b",
+      "chapel_attic_a",
+      "chapel_attic_b"
+    ],
+    "the_gallows_a": [
+      "haunted_fields",
+      "heretics_graves_a",
+      "heretics_graves_b"
+    ],
+    "the_gallows_b": [
+      "haunted_fields",
+      "heretics_graves_a",
+      "heretics_graves_b"
+    ],
+    "heretics_graves_a": [
+      "haunted_fields",
+      "the_gallows_a",
+      "the_gallows_b"
+    ],
+    "heretics_graves_b": [
+      "haunted_fields",
+      "the_gallows_a",
+      "the_gallows_b"
+    ],
+    "chapel_crypt_a": [
+      "abandoned_chapel",
+      "chapel_attic_a",
+      "chapel_attic_b"
+    ],
+    "chapel_crypt_b": [
+      "abandoned_chapel",
+      "chapel_attic_a",
+      "chapel_attic_b"
+    ],
+    "chapel_attic_a": [
+      "abandoned_chapel",
+      "chapel_crypt_a",
+      "chapel_crypt_b"
+    ],
+    "chapel_attic_b": [
+      "abandoned_chapel",
+      "chapel_crypt_a",
+      "chapel_crypt_b"
+    ]
+  },
+  "act_deck": [
+    "in_pursuit_of_the_dead",
+    "in_pursuit_of_the_living"
+  ],
+  "agenda_deck": [
+    "the_hanged_man_·_xii",
+    "deaths_approach"
+  ],
+  "locations": [
+    "hangmans_brook",
+    "haunted_fields",
+    "abandoned_chapel",
+    "the_gallows_a",
+    "the_gallows_b",
+    "heretics_graves_a",
+    "heretics_graves_b",
+    "chapel_crypt_a",
+    "chapel_crypt_b",
+    "chapel_attic_a",
+    "chapel_attic_b"
+  ],
+  "story_assets": [],
+  "setup_notes": "绞刑架/异端者墓地/教堂地下室/教堂阁楼各从两张中随机选一张进场（另一面为 Spectral 版，两张均可能为 Spectral 或非 Spectral 揭示面），其余移出游戏。4张幽灵迷网与随机4张异端者（双面，背面为故事卡）置于场外。the_watcher 组置于一旁。本剧本使用两个遭遇牌堆：Spectral 牌堆与普通牌堆。"
+}

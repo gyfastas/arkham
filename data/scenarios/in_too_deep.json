@@ -1,0 +1,147 @@
+{
+  "id": "in_too_deep",
+  "name": "In Too Deep",
+  "name_cn": "深陷危局",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 2,
+  "encounter_sets": [
+    "in_too_deep",
+    "creatures_of_the_deep",
+    "rising_tide",
+    "syzygy",
+    "the_locals",
+    "agents_of_cthulhu"
+  ],
+  "scenario_set": "in_too_deep",
+  "start_location": "desolate_coastline",
+  "initial_locations": [
+    "railroad_station",
+    "esoteric_order_of_dagon_b",
+    "new_church_green_b",
+    "marsh_refinery_b",
+    "the_house_on_water_street_b",
+    "the_little_bookshop_b",
+    "first_national_grocery_b",
+    "innsmouth_square_b",
+    "fish_street_bridge_b",
+    "innsmouth_harbour_b",
+    "sawbone_alley_b",
+    "gilman_house_b",
+    "innsmouth_jail_b",
+    "shoreward_slums_b",
+    "desolate_coastline"
+  ],
+  "set_aside": [
+    "ravager_from_the_deep",
+    "young_deep_one",
+    "joe_sargent",
+    "teachings_of_the_order",
+    "innsmouth_shoggoth"
+  ],
+  "connections": {
+    "railroad_station": [
+      "the_little_bookshop_b",
+      "esoteric_order_of_dagon_b"
+    ],
+    "esoteric_order_of_dagon_b": [
+      "railroad_station",
+      "new_church_green_b",
+      "first_national_grocery_b"
+    ],
+    "new_church_green_b": [
+      "esoteric_order_of_dagon_b",
+      "marsh_refinery_b",
+      "innsmouth_square_b"
+    ],
+    "marsh_refinery_b": [
+      "new_church_green_b",
+      "the_house_on_water_street_b",
+      "fish_street_bridge_b"
+    ],
+    "the_house_on_water_street_b": [
+      "marsh_refinery_b",
+      "innsmouth_harbour_b"
+    ],
+    "the_little_bookshop_b": [
+      "railroad_station",
+      "first_national_grocery_b",
+      "sawbone_alley_b"
+    ],
+    "first_national_grocery_b": [
+      "the_little_bookshop_b",
+      "esoteric_order_of_dagon_b",
+      "innsmouth_square_b",
+      "gilman_house_b"
+    ],
+    "innsmouth_square_b": [
+      "first_national_grocery_b",
+      "new_church_green_b",
+      "fish_street_bridge_b",
+      "innsmouth_jail_b"
+    ],
+    "fish_street_bridge_b": [
+      "innsmouth_square_b",
+      "marsh_refinery_b",
+      "innsmouth_harbour_b",
+      "shoreward_slums_b"
+    ],
+    "innsmouth_harbour_b": [
+      "fish_street_bridge_b",
+      "the_house_on_water_street_b",
+      "desolate_coastline"
+    ],
+    "sawbone_alley_b": [
+      "the_little_bookshop_b",
+      "gilman_house_b"
+    ],
+    "gilman_house_b": [
+      "sawbone_alley_b",
+      "first_national_grocery_b",
+      "innsmouth_jail_b"
+    ],
+    "innsmouth_jail_b": [
+      "gilman_house_b",
+      "innsmouth_square_b",
+      "shoreward_slums_b"
+    ],
+    "shoreward_slums_b": [
+      "innsmouth_jail_b",
+      "fish_street_bridge_b",
+      "desolate_coastline"
+    ],
+    "desolate_coastline": [
+      "innsmouth_harbour_b",
+      "shoreward_slums_b"
+    ]
+  },
+  "act_deck": [
+    "through_the_labyrinth"
+  ],
+  "agenda_deck": [
+    "barricaded_streets",
+    "relentless_tide",
+    "flooded_streets",
+    "rage_of_the_deep"
+  ],
+  "locations": [
+    "railroad_station",
+    "esoteric_order_of_dagon_b",
+    "new_church_green_b",
+    "marsh_refinery_b",
+    "the_house_on_water_street_b",
+    "the_little_bookshop_b",
+    "first_national_grocery_b",
+    "innsmouth_square_b",
+    "fish_street_bridge_b",
+    "innsmouth_harbour_b",
+    "sawbone_alley_b",
+    "gilman_house_b",
+    "innsmouth_jail_b",
+    "shoreward_slums_b",
+    "desolate_coastline"
+  ],
+  "story_assets": [],
+  "bag_add": {},
+  "setup_notes": "全部15个地点按官方3x5网格入场（布局见战役指南；地点卡面无连接图标，本剧本中正交相邻的地点两两相连，connections 即按该网格推导）。如图所示在地点之间放置共24个路障（resource token）：相邻地点间有路障时调查员不能往返，可用地点能力/幕1a能力清除。The House on Water Street、Innsmouth Harbour、Desolate Coastline 初始各提升1级淹没等级。钥匙：若战役日志 Possible Hideouts 中有下划线地点，黑色钥匙放在该地点上；其余钥匙面朝下洗混备用。战役日志中每个 out for blood 的 Suspect 敌人各触发一次其揭示效果（不放线索）。另需从收藏中取出 Angry Mob（07062b，Finding Agent Harper 参考卡背面，项目遭遇库无此卡）备用。；Flashback VII：若战役日志 Memories Recovered 记录了干预，袋中 +1 个 +1 标记（当前未实现战役日志追踪，默认不加）。"
+}

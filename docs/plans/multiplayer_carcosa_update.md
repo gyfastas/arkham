@@ -86,3 +86,24 @@
 ## 关键原则（CLAUDE.md 开发原则）
 
 实现逻辑检查透、与官方 DB 对齐（含 back_text 难度分面）、功能一致性（引擎/UI/接口/存档一致）。
+
+---
+
+# 追加更新：循环 3-7 全量引入（2026-08-10/11）
+
+## 卡牌与调查员（已完成）
+- 516 玩家卡 + 26 调查员（TFA/TCU/TDE/TIC/EOE 调查员扩展包），全部实现 + 行为测试
+- 多阵营卡支持、deck 规则结构化、26 预设牌组、前端分组、简体翻译
+
+## 战役内容（进行中→完成状态见下）
+- [x] 遭遇库 5 循环（tfac/tcuc/tdec/ticc/eoec，~1200 卡，含 back_text）
+- [x] 混乱袋 5 循环（官方战役指南 PDF 图像逐行核实；EOE 含 frost、TIC 符号×2 等）
+- [x] 剧本级 token 增补 bag_add（zzorba 结构化提取）+ apply_scenario_to_game 应用
+- [x] loader 合并分支、campaign_name_cn、campaigns/*.json、前端 CAMPAIGNS 章节
+- [x] token 效果模块 ×5（tokens_{tfa,tcu,tde,tic,eoe}.py，327 测试）
+- [x] 遭遇卡模块 ×5（encounters_*.py，~335 测试）
+- [ ] 40 个剧本 JSON（5 后台代理读卡面图标生成连接，进行中）
+- [ ] 最终验证 + 提交
+
+## 遗留（剧本子系统，按 vars 记录未强制）
+TFA 探索牌堆/复仇点/中毒、TCU 闹鬼/裂口/钥匙、TDE 警戒等级/蛛群、TIC 淹没/载具/俘虏、EOE 庇护/高度/忒咳哩-哩牌堆——卡面读写均已就绪，由后续剧本逻辑层注入。

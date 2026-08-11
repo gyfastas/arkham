@@ -1,0 +1,63 @@
+{
+  "id": "the_pit_of_despair",
+  "name": "The Pit of Despair",
+  "name_cn": "绝望深坑",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 3,
+  "encounter_sets": [
+    "the_pit_of_despair",
+    "creatures_of_the_deep",
+    "flooded_caverns",
+    "rising_tide",
+    "shattered_memories",
+    "agents_of_cthulhu",
+    "rats"
+  ],
+  "scenario_set": "the_pit_of_despair",
+  "start_location": "unfamiliar_chamber",
+  "initial_locations": [
+    "unfamiliar_chamber"
+  ],
+  "set_aside": [
+    "the_amalgam",
+    "blindsense",
+    "from_the_depths",
+    "idol_chamber",
+    "altar_to_dagon",
+    "sealed_exit"
+  ],
+  "connections": {
+    "unfamiliar_chamber": [],
+    "bone_ridden_pit": [],
+    "fish_graveyard": [],
+    "altar_to_dagon": [],
+    "idol_chamber": [],
+    "sealed_exit": [],
+    "underwater_cavern": [],
+    "tidal_pool": [],
+    "underground_river": []
+  },
+  "act_deck": [
+    "the_pit",
+    "the_escape"
+  ],
+  "agenda_deck": [
+    "awakening",
+    "the_water_rises",
+    "sacrifice_for_the_deep"
+  ],
+  "locations": [
+    "unfamiliar_chamber",
+    "bone_ridden_pit",
+    "fish_graveyard",
+    "altar_to_dagon",
+    "idol_chamber",
+    "sealed_exit",
+    "underwater_cavern",
+    "tidal_pool",
+    "underground_river"
+  ],
+  "story_assets": [],
+  "setup_notes": "钥匙：蓝/绿面朝上备用；红/黄/紫面朝下洗混备用；黑/白移出游戏。开局仅 Unfamiliar Chamber 入场；将剩余 Tidal Tunnel 背面地点（6张 Flooded Caverns 卡）洗混后随机抽3张，未揭示面向上放在其下方、左方、右方，其余面朝下备用；Idol Chamber / Altar to Dagon / Sealed Exit（均为 Tidal Tunnel 背面卡，其揭示面）单独备用。本剧本地点均无连接图标：正交相邻（上下左右）的地点即相连，故 connections 为空；游戏中潮汐隧道牌堆组建后，新地点向现有地点的下/左/右伸出入场（占用已有地点的位置则不放）。The Amalgam 可经卡牌效果进出场外'the depths'区域（从场上进入时移除其上除钥匙外的所有标记）。"
+}

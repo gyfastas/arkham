@@ -1,0 +1,60 @@
+{
+  "id": "before_the_black_throne",
+  "name": "Before the Black Throne",
+  "name_cn": "黑色王座",
+  "type": "official",
+  "campaign": "the_circle_undone",
+  "sequence": 8,
+  "encounter_sets": [
+    "before_the_black_throne",
+    "agents_of_azathoth",
+    "inexorable_fate",
+    "ancient_evils",
+    "pentagram"
+  ],
+  "scenario_set": "before_the_black_throne",
+  "start_location": "cosmic_ingress",
+  "initial_locations": [
+    "cosmic_ingress"
+  ],
+  "set_aside": [
+    "hideous_palace",
+    "court_of_the_great_old_ones_b",
+    "the_black_throne",
+    "piper_of_azathoth"
+  ],
+  "connections": {
+    "cosmic_ingress": [],
+    "hideous_palace": [],
+    "court_of_the_great_old_ones_b": [],
+    "the_black_throne": [],
+    "dancers_mist": [],
+    "flight_into_oblivion": [],
+    "infinity_of_darkness": [],
+    "cosmic_gate": [],
+    "pathway_into_void": []
+  },
+  "act_deck": [
+    "the_cosmos_beckons",
+    "in_azathoths_domain",
+    "what_must_be_done"
+  ],
+  "agenda_deck": [
+    "wheel_of_fortune_·_x",
+    "it_awaits",
+    "the_final_countdown"
+  ],
+  "locations": [
+    "cosmic_ingress",
+    "hideous_palace",
+    "court_of_the_great_old_ones_b",
+    "the_black_throne",
+    "dancers_mist",
+    "flight_into_oblivion",
+    "infinity_of_darkness",
+    "cosmic_gate",
+    "pathway_into_void"
+  ],
+  "story_assets": [],
+  "setup_notes": "憎恶宫殿/旧日支配者皇廷/黑色王座置于场外，其余5张宇宙地点洗成 Cosmos 牌堆（ Cosmos面朝上）。Act 1 布置：憎恶宫殿与 Cosmos 顶1张洗混后按官方布局进场，空格用调查员牌库顶暗置牌填充。Azathoth 进场（不在任何地点）。Piper of Azathoth 置于场外。宇宙地点按各自的 Cosmos 连接指令进场（网格方位连接）。"
+}

@@ -1,0 +1,128 @@
+{
+  "id": "beyond_the_gates_of_sleep",
+  "name": "Beyond the Gates of Sleep",
+  "name_cn": "梦境门外",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 1,
+  "encounter_sets": [
+    "beyond_the_gates_of_sleep",
+    "agents_of_nyarlathotep",
+    "zoogs",
+    "dreamers_curse",
+    "dreamlands",
+    "chilling_cold"
+  ],
+  "scenario_set": "beyond_the_gates_of_sleep",
+  "start_location": "seventy_steps",
+  "initial_locations": [
+    "seventy_steps",
+    "the_cavern_of_flame"
+  ],
+  "set_aside": [
+    "seven_hundred_steps",
+    "base_of_the_steps",
+    "the_enchanted_path",
+    "enchanted_woods_a",
+    "enchanted_woods_b",
+    "enchanted_woods_c",
+    "enchanted_woods_d",
+    "enchanted_woods_e",
+    "enchanted_woods_f",
+    "enchanted_woods_g",
+    "randolph_carter_a",
+    "laboring_gug",
+    "nasht",
+    "kaman_thah"
+  ],
+  "connections": {
+    "seventy_steps": [
+      "the_cavern_of_flame"
+    ],
+    "the_cavern_of_flame": [
+      "seventy_steps",
+      "seven_hundred_steps"
+    ],
+    "seven_hundred_steps": [
+      "the_cavern_of_flame",
+      "base_of_the_steps"
+    ],
+    "base_of_the_steps": [
+      "seven_hundred_steps",
+      "the_enchanted_path"
+    ],
+    "the_enchanted_path": [
+      "base_of_the_steps",
+      "enchanted_woods_a",
+      "enchanted_woods_b",
+      "enchanted_woods_c",
+      "enchanted_woods_d",
+      "enchanted_woods_e",
+      "enchanted_woods_f",
+      "enchanted_woods_g"
+    ],
+    "enchanted_woods_a": [
+      "the_enchanted_path",
+      "enchanted_woods_e",
+      "enchanted_woods_f"
+    ],
+    "enchanted_woods_b": [
+      "the_enchanted_path",
+      "enchanted_woods_d",
+      "enchanted_woods_e"
+    ],
+    "enchanted_woods_c": [
+      "the_enchanted_path",
+      "enchanted_woods_f",
+      "enchanted_woods_d"
+    ],
+    "enchanted_woods_d": [
+      "the_enchanted_path",
+      "enchanted_woods_c",
+      "enchanted_woods_b"
+    ],
+    "enchanted_woods_e": [
+      "the_enchanted_path",
+      "enchanted_woods_b",
+      "enchanted_woods_a"
+    ],
+    "enchanted_woods_f": [
+      "the_enchanted_path",
+      "enchanted_woods_a",
+      "enchanted_woods_c"
+    ],
+    "enchanted_woods_g": [
+      "the_enchanted_path"
+    ]
+  },
+  "act_deck": [
+    "entering_the_dreamlands",
+    "the_trial_of_nasht_and_kaman_thah",
+    "the_final_descent",
+    "the_path"
+  ],
+  "agenda_deck": [
+    "journey_through_the_gates"
+  ],
+  "locations": [
+    "seventy_steps",
+    "the_cavern_of_flame",
+    "seven_hundred_steps",
+    "base_of_the_steps",
+    "the_enchanted_path",
+    "enchanted_woods_a",
+    "enchanted_woods_b",
+    "enchanted_woods_c",
+    "enchanted_woods_d",
+    "enchanted_woods_e",
+    "enchanted_woods_f",
+    "enchanted_woods_g"
+  ],
+  "story_assets": [
+    "randolph_carter_a"
+  ],
+  "bag_add": {
+    "skull": 1
+  },
+  "setup_notes": "每位调查员读一条适用梦境并获得对应效果。七十级台阶(浅眠)与火焰洞穴入场，调查员从七十级台阶开始；其余10张地点与伦道夫·卡特(梦境专家)、劳工古革、双面敌人纳什特/卡曼塔搁置。本剧本开始无遭遇牌堆（Steps of Slumber：与遭遇牌堆互动的效果均失败，act 1a 神话阶段不抽遭遇卡），按剧本进程再洗成。沉睡加深时（act推进）向混沌袋加1个[skull]标记（剧本结束后保留到战役，bag_add 即此）。魔幻小径按卡面文字连接所有 Enchanted Woods 地点；6张魔幻森林（除 Lost Woods）两两连成环。"
+}

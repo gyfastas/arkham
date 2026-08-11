@@ -1,0 +1,149 @@
+{
+  "id": "point_of_no_return",
+  "name": "Point of No Return",
+  "name_cn": "无归之地",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 6,
+  "encounter_sets": [
+    "point_of_no_return",
+    "creatures_of_the_underworld",
+    "whispers_of_hypnos",
+    "ancient_evils",
+    "ghouls",
+    "striking_fear",
+    "descent_into_the_pitch",
+    "terror_of_the_vale",
+    "agents_of_atlach_nacha",
+    "nightgaunts"
+  ],
+  "scenario_set": "point_of_no_return",
+  "start_location": "vaults_of_zin",
+  "initial_locations": [
+    "vaults_of_zin",
+    "city_of_gugs",
+    "tower_of_koth",
+    "plain_of_the_ghouls"
+  ],
+  "set_aside": [
+    "crag_of_the_ghouls",
+    "sea_of_bones",
+    "peaks_of_thok",
+    "vale_of_pnath",
+    "sea_of_pitch_a",
+    "sea_of_pitch_b",
+    "sea_of_pitch_c",
+    "sea_of_pitch_d",
+    "enchanted_woods_d",
+    "gug_sentinel",
+    "richard_upton_pickman",
+    "false_awakening_b",
+    "pitch_spider",
+    "shadow_of_atlach_nacha",
+    "slithering_dhole",
+    "dhole_tunnel",
+    "grey_weaver",
+    "will_of_the_spider_mother",
+    "hunting_nightgaunt",
+    "on_wings_of_darkness"
+  ],
+  "connections": {
+    "vaults_of_zin": [
+      "city_of_gugs",
+      "plain_of_the_ghouls"
+    ],
+    "city_of_gugs": [
+      "vaults_of_zin",
+      "tower_of_koth",
+      "plain_of_the_ghouls"
+    ],
+    "tower_of_koth": [
+      "city_of_gugs",
+      "enchanted_woods_d"
+    ],
+    "plain_of_the_ghouls": [
+      "vaults_of_zin",
+      "city_of_gugs",
+      "crag_of_the_ghouls"
+    ],
+    "crag_of_the_ghouls": [
+      "plain_of_the_ghouls",
+      "sea_of_bones",
+      "vale_of_pnath"
+    ],
+    "sea_of_bones": [
+      "crag_of_the_ghouls",
+      "peaks_of_thok",
+      "vale_of_pnath"
+    ],
+    "peaks_of_thok": [
+      "vale_of_pnath",
+      "sea_of_bones"
+    ],
+    "vale_of_pnath": [
+      "crag_of_the_ghouls",
+      "peaks_of_thok",
+      "sea_of_bones",
+      "sea_of_pitch_a",
+      "sea_of_pitch_b",
+      "sea_of_pitch_c",
+      "sea_of_pitch_d"
+    ],
+    "sea_of_pitch_a": [
+      "vale_of_pnath",
+      "sea_of_pitch_b",
+      "sea_of_pitch_c",
+      "sea_of_pitch_d"
+    ],
+    "sea_of_pitch_b": [
+      "vale_of_pnath",
+      "sea_of_pitch_a",
+      "sea_of_pitch_c",
+      "sea_of_pitch_d"
+    ],
+    "sea_of_pitch_c": [
+      "vale_of_pnath",
+      "sea_of_pitch_a",
+      "sea_of_pitch_b",
+      "sea_of_pitch_d"
+    ],
+    "sea_of_pitch_d": [
+      "vale_of_pnath",
+      "sea_of_pitch_a",
+      "sea_of_pitch_b",
+      "sea_of_pitch_c"
+    ],
+    "enchanted_woods_d": [
+      "tower_of_koth"
+    ]
+  },
+  "act_deck": [
+    "entering_the_underworld_v_i",
+    "entering_the_underworld_v_ii",
+    "the_descent",
+    "the_black_expanse"
+  ],
+  "agenda_deck": [
+    "a_sinister_realm",
+    "beset_by_monsters"
+  ],
+  "locations": [
+    "vaults_of_zin",
+    "city_of_gugs",
+    "tower_of_koth",
+    "plain_of_the_ghouls",
+    "crag_of_the_ghouls",
+    "sea_of_bones",
+    "peaks_of_thok",
+    "vale_of_pnath",
+    "sea_of_pitch_a",
+    "sea_of_pitch_b",
+    "sea_of_pitch_c",
+    "sea_of_pitch_d",
+    "enchanted_woods_d"
+  ],
+  "story_assets": [
+    "richard_upton_pickman"
+  ],
+  "setup_notes": "津之穹窟/古革之城/科特之塔/食尸鬼平原入场，调查员从津之穹窟开始。从收藏找出 Enchanted Woods(Stone Trapdoor #53) 搁置（与科特之塔互连）。搁置：古革哨兵、Richard Upton Pickman、False Awakening 弱点；descent_into_the_pitch/terror_of_the_vale/agents_of_atlach_nacha/nightgaunts 四遭遇组设置时搁置，act 推进时洗入。Act 1 按战役日志选用 v.I 或 v.II（移除另一版本）。按 Steps of the Bridge 计数结算现实扭曲。本剧本地点无未揭示面，部分带 veiled。act 1b 带入4张 Vale 地点，act 2b 带入4张 Sea of Pitch（共用酒红十字图标，互连并连帕纳斯山谷）。"
+}

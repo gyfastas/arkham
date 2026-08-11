@@ -1,0 +1,96 @@
+{
+  "id": "the_lair_of_dagon",
+  "name": "The Lair of Dagon",
+  "name_cn": "达贡巢穴",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 7,
+  "encounter_sets": [
+    "the_lair_of_dagon",
+    "agents_of_dagon",
+    "flooded_caverns",
+    "syzygy",
+    "pentagram",
+    "locked_doors"
+  ],
+  "scenario_set": "the_lair_of_dagon",
+  "start_location": "grand_entryway",
+  "initial_locations": [
+    "grand_entryway",
+    "foul_corridors",
+    "hall_of_blood",
+    "hall_of_loyalty",
+    "hall_of_silence"
+  ],
+  "set_aside": [
+    "syzygy",
+    "tidal_alignment",
+    "yha_nthlei_statue",
+    "apostle_of_dagon",
+    "dagon_a",
+    "hall_of_the_deep",
+    "hall_of_rebirth",
+    "doorway_to_the_depths",
+    "lair_of_dagon_a"
+  ],
+  "connections": {
+    "grand_entryway": [
+      "hall_of_blood",
+      "foul_corridors",
+      "hall_of_the_deep"
+    ],
+    "hall_of_blood": [
+      "grand_entryway"
+    ],
+    "hall_of_the_deep": [
+      "grand_entryway"
+    ],
+    "foul_corridors": [
+      "grand_entryway",
+      "hall_of_rebirth",
+      "hall_of_silence",
+      "hall_of_loyalty"
+    ],
+    "hall_of_loyalty": [
+      "foul_corridors"
+    ],
+    "hall_of_rebirth": [
+      "foul_corridors"
+    ],
+    "hall_of_silence": [
+      "foul_corridors"
+    ],
+    "doorway_to_the_depths": [
+      "lair_of_dagon_a"
+    ],
+    "lair_of_dagon_a": [
+      "doorway_to_the_depths"
+    ]
+  },
+  "act_deck": [
+    "the_first_oath",
+    "the_second_oath",
+    "the_third_oath"
+  ],
+  "agenda_deck": [
+    "the_initiation_v_i",
+    "what_lurks_below_v_i",
+    "the_ritual_advances"
+  ],
+  "locations": [
+    "grand_entryway",
+    "hall_of_blood",
+    "hall_of_the_deep",
+    "foul_corridors",
+    "hall_of_loyalty",
+    "hall_of_rebirth",
+    "hall_of_silence",
+    "doorway_to_the_depths",
+    "lair_of_dagon_a"
+  ],
+  "story_assets": [],
+  "bag_add": {
+    "bless": 5
+  },
+  "setup_notes": "初始地点以未揭示面入场（First Floor Hall x2=hall_of_blood、Second Floor Hall x2=hall_of_loyalty、Third Floor Hall=hall_of_silence；未揭示面图标 三叶形/沙漏形/新月形 已并入 connections 推导；布局：底层 鲜血厅堂-宏伟入口-鲜血厅堂，中层 笃忠厅堂-邪秽走廊-笃忠厅堂，顶层 寂静厅堂）。其余地点面朝下备用。密谋版本：Memories Recovered 含 an encounter with a secret cult 时密谋1用 The Initiation v.I，否则 v.II；含 a decision to stick together 时 Thomas Dawson（07082，来自艾琳娜·哈珀失踪案遭遇组）由任一调查员控制入场且密谋2用 What Lurks Below v.I，否则 Dawson 备用、密谋2用 v.II（本文件均默认收录 v.I）。含 a jailbreak 时：战役日志 Possible Suspects 中圈定的 Suspect 敌人取出备用。混沌袋按记忆数加 bless/curse（见 bag_add）。结局 R2/R3/R4 还会分别向混沌袋加入 1 枚 elder_thing/tablet/cultist token（按 zzorba 数据顺序，持续至战役结束）。每位调查员牌库中的 Elina Harper 移出游戏至本剧本结束。钥匙：黑/蓝/绿/紫/红面朝上备用，白/黄面朝下洗混；调查员可被要求花费其控制的钥匙（放到剧本参考卡上）。；混沌袋按 Memories Recovered 数调整：≤4 加 5 祝福（默认）；5-7 加 2 诅咒；≥8 加 5 诅咒。"
+}

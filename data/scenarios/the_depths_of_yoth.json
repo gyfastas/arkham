@@ -1,0 +1,134 @@
+{
+  "id": "the_depths_of_yoth",
+  "name": "The Depths of Yoth",
+  "name_cn": "幽嘶深渊",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 7,
+  "encounter_sets": [
+    "the_depths_of_yoth",
+    "agents_of_yig",
+    "venom",
+    "expedition",
+    "ruins",
+    "poison"
+  ],
+  "scenario_set": "the_depths_of_yoth",
+  "initial_locations": [],
+  "set_aside": [
+    "steps_of_yoth",
+    "city_of_the_serpents",
+    "hall_of_heresy",
+    "crumbling_precipice",
+    "caverns_of_yoth",
+    "forked_path",
+    "bridge_over_nkai",
+    "broken_passage",
+    "abandoned_site",
+    "bright_canyon"
+  ],
+  "connections": {
+    "steps_of_yoth": [
+      "city_of_the_serpents",
+      "hall_of_heresy",
+      "crumbling_precipice",
+      "bridge_over_nkai",
+      "abandoned_site"
+    ],
+    "city_of_the_serpents": [
+      "steps_of_yoth",
+      "hall_of_heresy",
+      "caverns_of_yoth",
+      "forked_path",
+      "abandoned_site"
+    ],
+    "hall_of_heresy": [
+      "steps_of_yoth",
+      "city_of_the_serpents",
+      "forked_path",
+      "abandoned_site",
+      "bright_canyon"
+    ],
+    "crumbling_precipice": [
+      "steps_of_yoth",
+      "caverns_of_yoth",
+      "forked_path",
+      "bridge_over_nkai",
+      "broken_passage"
+    ],
+    "caverns_of_yoth": [
+      "city_of_the_serpents",
+      "crumbling_precipice",
+      "bridge_over_nkai",
+      "broken_passage",
+      "bright_canyon"
+    ],
+    "forked_path": [
+      "city_of_the_serpents",
+      "hall_of_heresy",
+      "crumbling_precipice",
+      "abandoned_site",
+      "bright_canyon"
+    ],
+    "bridge_over_nkai": [
+      "steps_of_yoth",
+      "crumbling_precipice",
+      "caverns_of_yoth",
+      "broken_passage",
+      "bright_canyon"
+    ],
+    "broken_passage": [
+      "crumbling_precipice",
+      "caverns_of_yoth",
+      "bridge_over_nkai",
+      "abandoned_site",
+      "bright_canyon"
+    ],
+    "abandoned_site": [
+      "steps_of_yoth",
+      "city_of_the_serpents",
+      "hall_of_heresy",
+      "forked_path",
+      "broken_passage"
+    ],
+    "bright_canyon": [
+      "hall_of_heresy",
+      "caverns_of_yoth",
+      "forked_path",
+      "bridge_over_nkai",
+      "broken_passage"
+    ]
+  },
+  "act_deck": [
+    "journey_to_the_nexus"
+  ],
+  "agenda_deck": [
+    "the_descent_begins",
+    "horrific_descent",
+    "endless_caverns",
+    "city_of_blood",
+    "fury_that_shakes_the_earth",
+    "the_red_depths",
+    "vengeance"
+  ],
+  "locations": [
+    "steps_of_yoth",
+    "city_of_the_serpents",
+    "hall_of_heresy",
+    "crumbling_precipice",
+    "caverns_of_yoth",
+    "forked_path",
+    "bridge_over_nkai",
+    "broken_passage",
+    "abandoned_site",
+    "bright_canyon"
+  ],
+  "story_assets": [
+    "yig",
+    "relic_of_ages_c"
+  ],
+  "setup_notes": "10张单面地点全部搁置：随机抽1张(steps_of_yoth除外)入场作为起始地点，故无固定start_location、initial_locations为空；探索牌堆=steps_of_yoth+其余地点中随机4张洗混，剩余4张本局不出场。深度机制：剧本参考卡上以资源标记记录当前深度，完成Act1(journey_to_the_nexus)即深入一层，到达更深层的结局更好；部分遭遇卡效果随深度增强。追击区：敌人按卡牌效果进入/离开追击区(pursuit area)。若战役日志the Harbinger is still alive则harbinger_of_valusia(eztli遭遇组)入场。bag_add的elder_thing仅当Ichtaca is set against you且forging your own path时加入。",
+  "bag_add": {
+    "elder_thing": 1
+  }
+}

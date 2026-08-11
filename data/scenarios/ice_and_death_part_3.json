@@ -1,0 +1,137 @@
+{
+  "id": "ice_and_death_part_3",
+  "name": "Ice and Death, Part III",
+  "name_cn": "亡命冰原 第三部分",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 3,
+  "encounter_sets": [
+    "ice_and_death",
+    "seeping_nightmares",
+    "creatures_in_the_ice",
+    "deadly_weather",
+    "hazards_of_antarctica",
+    "silence_and_mystery",
+    "tekelili",
+    "ancient_evils"
+  ],
+  "scenario_set": "ice_and_death",
+  "start_location": "crash_site",
+  "initial_locations": [
+    "crash_site",
+    "frozen_shores",
+    "treacherous_path",
+    "precarious_ice_sheet",
+    "broad_snowdrifts",
+    "icy_wastes",
+    "rocky_crags",
+    "snow_graves",
+    "icebreaker_landing",
+    "frigid_cave",
+    "barrier_camp",
+    "remnants_of_lakes_camp",
+    "crystalline_cavern"
+  ],
+  "set_aside": [],
+  "connections": {
+    "crash_site": [
+      "frozen_shores",
+      "treacherous_path",
+      "precarious_ice_sheet"
+    ],
+    "frozen_shores": [
+      "crash_site",
+      "treacherous_path",
+      "precarious_ice_sheet",
+      "broad_snowdrifts"
+    ],
+    "treacherous_path": [
+      "crash_site",
+      "frozen_shores",
+      "precarious_ice_sheet",
+      "rocky_crags"
+    ],
+    "precarious_ice_sheet": [
+      "crash_site",
+      "frozen_shores",
+      "treacherous_path",
+      "icy_wastes"
+    ],
+    "broad_snowdrifts": [
+      "frozen_shores",
+      "crystalline_cavern",
+      "remnants_of_lakes_camp",
+      "snow_graves"
+    ],
+    "icy_wastes": [
+      "precarious_ice_sheet",
+      "remnants_of_lakes_camp",
+      "barrier_camp",
+      "icebreaker_landing"
+    ],
+    "rocky_crags": [
+      "treacherous_path",
+      "crystalline_cavern",
+      "barrier_camp",
+      "frigid_cave"
+    ],
+    "snow_graves": [
+      "broad_snowdrifts"
+    ],
+    "icebreaker_landing": [
+      "icy_wastes"
+    ],
+    "frigid_cave": [
+      "rocky_crags"
+    ],
+    "barrier_camp": [
+      "icy_wastes",
+      "rocky_crags"
+    ],
+    "remnants_of_lakes_camp": [
+      "broad_snowdrifts",
+      "icy_wastes"
+    ],
+    "crystalline_cavern": [
+      "rocky_crags",
+      "broad_snowdrifts"
+    ]
+  },
+  "act_deck": [
+    "under_attack"
+  ],
+  "agenda_deck": [
+    "manifestations_of_evil",
+    "icy_depths"
+  ],
+  "locations": [
+    "crash_site",
+    "frozen_shores",
+    "treacherous_path",
+    "precarious_ice_sheet",
+    "broad_snowdrifts",
+    "icy_wastes",
+    "rocky_crags",
+    "snow_graves",
+    "icebreaker_landing",
+    "frigid_cave",
+    "barrier_camp",
+    "remnants_of_lakes_camp",
+    "crystalline_cavern"
+  ],
+  "story_assets": [
+    "professor_william_dyer_c",
+    "danforth_c",
+    "eliyah_ashevak_c",
+    "dr_mala_sinha_c",
+    "avery_claypool_c",
+    "james_cookie_fredericks_c",
+    "dr_amy_kensler_c",
+    "roald_ellsworth_c",
+    "takada_hiroko_c"
+  ],
+  "bag_add": {
+    "frost": 1
+  },
+  "setup_notes": "官方起点为第一部分记录的营地地点（数据默认 crash_site），营地开局无线索；起始资源=营地庇护值而非5。取每调查员1只Seeping Nightmare入场（其余移出游戏），Ice and Death与Creatures in the Ice遭遇组的8只Eidolon敌人洗混后面朝下尽量均垫在其下。检查点续玩时改为移除The Crash/Lost in the Night/Left Behind遭遇组。Tekeli-li牌堆照旧布置。"
+}

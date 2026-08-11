@@ -1,0 +1,131 @@
+{
+  "id": "union_and_disillusion",
+  "name": "Union and Disillusion",
+  "name_cn": "聚合幻灭",
+  "type": "official",
+  "campaign": "the_circle_undone",
+  "sequence": 6,
+  "encounter_sets": [
+    "union_and_disillusion",
+    "inexorable_fate",
+    "realm_of_death",
+    "spectral_predators",
+    "ancient_evils",
+    "chilling_cold"
+  ],
+  "scenario_set": "union_and_disillusion",
+  "start_location": "miskatonic_river",
+  "initial_locations": [
+    "miskatonic_river",
+    "forbidding_shore"
+  ],
+  "set_aside": [
+    "the_geist_trap",
+    "watchers_gaze",
+    "anette_mason",
+    "josefs_plan"
+  ],
+  "connections": {
+    "miskatonic_river": [
+      "forbidding_shore"
+    ],
+    "forbidding_shore": [
+      "miskatonic_river",
+      "unvisited_isle_a",
+      "unvisited_isle_b",
+      "unvisited_isle_c",
+      "unvisited_isle_d",
+      "unvisited_isle_e",
+      "unvisited_isle_f"
+    ],
+    "unvisited_isle_a": [
+      "forbidding_shore",
+      "unvisited_isle_b",
+      "unvisited_isle_c",
+      "unvisited_isle_d",
+      "unvisited_isle_e",
+      "unvisited_isle_f",
+      "the_geist_trap"
+    ],
+    "unvisited_isle_b": [
+      "forbidding_shore",
+      "unvisited_isle_a",
+      "unvisited_isle_c",
+      "unvisited_isle_d",
+      "unvisited_isle_e",
+      "unvisited_isle_f",
+      "the_geist_trap"
+    ],
+    "unvisited_isle_c": [
+      "forbidding_shore",
+      "unvisited_isle_a",
+      "unvisited_isle_b",
+      "unvisited_isle_d",
+      "unvisited_isle_e",
+      "unvisited_isle_f",
+      "the_geist_trap"
+    ],
+    "unvisited_isle_d": [
+      "forbidding_shore",
+      "unvisited_isle_a",
+      "unvisited_isle_b",
+      "unvisited_isle_c",
+      "unvisited_isle_e",
+      "unvisited_isle_f",
+      "the_geist_trap"
+    ],
+    "unvisited_isle_e": [
+      "forbidding_shore",
+      "unvisited_isle_a",
+      "unvisited_isle_b",
+      "unvisited_isle_c",
+      "unvisited_isle_d",
+      "unvisited_isle_f",
+      "the_geist_trap"
+    ],
+    "unvisited_isle_f": [
+      "forbidding_shore",
+      "unvisited_isle_a",
+      "unvisited_isle_b",
+      "unvisited_isle_c",
+      "unvisited_isle_d",
+      "unvisited_isle_e",
+      "the_geist_trap"
+    ],
+    "the_geist_trap": [
+      "unvisited_isle_a",
+      "unvisited_isle_b",
+      "unvisited_isle_c",
+      "unvisited_isle_d",
+      "unvisited_isle_e",
+      "unvisited_isle_f"
+    ]
+  },
+  "act_deck": [
+    "the_unvisited_isle",
+    "fated_souls",
+    "beyond_the_mist_v_i",
+    "beyond_the_mist_v_ii",
+    "beyond_the_mist_v_iii",
+    "beyond_the_mist_v_iv",
+    "the_binding_rite",
+    "the_broken_rite"
+  ],
+  "agenda_deck": [
+    "the_lovers_·_vi",
+    "crossroads_of_fate"
+  ],
+  "locations": [
+    "miskatonic_river",
+    "forbidding_shore",
+    "unvisited_isle_a",
+    "unvisited_isle_b",
+    "unvisited_isle_c",
+    "unvisited_isle_d",
+    "unvisited_isle_e",
+    "unvisited_isle_f",
+    "the_geist_trap"
+  ],
+  "story_assets": [],
+  "setup_notes": "6张未访之岛洗混后随机2张进场，其余置于场外（另有灵怪陷阱、看守人的注视、Anette Mason、Josef Meiger 置于场外）。Act 3/4 版本按战役日志选择：秘社线 v.I+咒缚仪式；女巫会+核心圈线 v.II+仪式遭毁；其余分支 v.III/v.IV+仪式遭毁。火盆(Circle)机制：秘社线起始时危险河岸与两座岛火盆已点燃。anettes_coven/silver_twilight_lodge/the_watcher 三组置于一旁。"
+}

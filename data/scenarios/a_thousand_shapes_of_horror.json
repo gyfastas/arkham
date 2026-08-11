@@ -1,0 +1,113 @@
+{
+  "id": "a_thousand_shapes_of_horror",
+  "name": "A Thousand Shapes of Horror",
+  "name_cn": "万千骇形",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 4,
+  "encounter_sets": [
+    "a_thousand_shapes_of_horror",
+    "creatures_of_the_underworld",
+    "merging_realities",
+    "chilling_cold",
+    "ghouls",
+    "locked_doors",
+    "rats"
+  ],
+  "scenario_set": "a_thousand_shapes_of_horror",
+  "start_location": "burial_ground",
+  "initial_locations": [
+    "burial_ground",
+    "entryway",
+    "upstairs_hallway",
+    "den",
+    "library"
+  ],
+  "set_aside": [
+    "attic",
+    "unmarked_tomb",
+    "mysterious_stairs_a",
+    "mysterious_stairs_b",
+    "mysterious_stairs_c",
+    "mysterious_stairs_d",
+    "mysterious_stairs_e",
+    "mysterious_stairs_f",
+    "endless_descent",
+    "the_silver_key"
+  ],
+  "connections": {
+    "burial_ground": [
+      "entryway",
+      "unmarked_tomb"
+    ],
+    "entryway": [
+      "burial_ground",
+      "upstairs_hallway",
+      "den",
+      "parlor"
+    ],
+    "den": [
+      "entryway"
+    ],
+    "parlor": [
+      "entryway"
+    ],
+    "upstairs_hallway": [
+      "entryway",
+      "library",
+      "bedroom",
+      "attic"
+    ],
+    "library": [
+      "upstairs_hallway"
+    ],
+    "bedroom": [
+      "upstairs_hallway"
+    ],
+    "attic": [
+      "upstairs_hallway"
+    ],
+    "unmarked_tomb": [
+      "burial_ground"
+    ],
+    "mysterious_stairs_a": [],
+    "mysterious_stairs_b": [],
+    "mysterious_stairs_c": [],
+    "mysterious_stairs_d": [],
+    "mysterious_stairs_e": [],
+    "mysterious_stairs_f": []
+  },
+  "act_deck": [
+    "searching_the_unnamable",
+    "the_endless_stairs"
+  ],
+  "agenda_deck": [
+    "the_house_with_no_name",
+    "the_thing_with_no_name",
+    "the_dead_with_no_name"
+  ],
+  "locations": [
+    "burial_ground",
+    "entryway",
+    "den",
+    "parlor",
+    "upstairs_hallway",
+    "library",
+    "bedroom",
+    "attic",
+    "unmarked_tomb",
+    "mysterious_stairs_a",
+    "mysterious_stairs_b",
+    "mysterious_stairs_c",
+    "mysterious_stairs_d",
+    "mysterious_stairs_e",
+    "mysterious_stairs_f"
+  ],
+  "story_assets": [
+    "the_silver_key"
+  ],
+  "bag_add": {
+    "skull": 1
+  },
+  "setup_notes": "墓地、门廊(Entryway)、楼上走廊、两张楼下门厅(Downstairs Doorway：揭示面为 Den/Parlor，共用酒红沙漏图标)、两张楼上门厅(Upstairs Doorway：揭示面为 Library/Bedroom，共用绿菱形图标)入场，调查员从墓地开始；Den/Library 官方各2张，库中按揭示面各建模1张。搁置：阁楼、无名之墓、6张神秘阶梯、4张 Endless Descent、银钥匙。神秘阶梯无地点图标，按卡面文字连接其上方与下方地点（动态入场）。肉身入梦：向混沌袋加1个[skull]直到战役结束（bag_add）。"
+}

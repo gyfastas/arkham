@@ -1,0 +1,142 @@
+{
+  "id": "at_deaths_doorstep",
+  "name": "At Death's Doorstep",
+  "name_cn": "死亡门前",
+  "type": "official",
+  "campaign": "the_circle_undone",
+  "sequence": 2,
+  "encounter_sets": [
+    "at_deaths_doorstep",
+    "silver_twilight_lodge",
+    "spectral_predators",
+    "trapped_spirits",
+    "inexorable_fate",
+    "chilling_cold"
+  ],
+  "scenario_set": "at_deaths_doorstep",
+  "start_location": "entry_hall_a",
+  "initial_locations": [
+    "entry_hall_a",
+    "victorian_halls_a",
+    "trophy_room_a",
+    "billiards_room_a",
+    "master_bedroom_a",
+    "balcony_a",
+    "office_a"
+  ],
+  "set_aside": [
+    "entry_hall_b",
+    "victorian_halls_b",
+    "trophy_room_b",
+    "billiards_room_b",
+    "master_bedroom_b",
+    "balcony_b",
+    "office_b",
+    "josefs_plan"
+  ],
+  "connections": {
+    "entry_hall_a": [
+      "victorian_halls_a",
+      "victorian_halls_b"
+    ],
+    "victorian_halls_a": [
+      "entry_hall_a",
+      "trophy_room_a",
+      "master_bedroom_a",
+      "office_a",
+      "entry_hall_b",
+      "trophy_room_b",
+      "master_bedroom_b",
+      "office_b"
+    ],
+    "trophy_room_a": [
+      "victorian_halls_a",
+      "billiards_room_a",
+      "victorian_halls_b",
+      "billiards_room_b"
+    ],
+    "billiards_room_a": [
+      "trophy_room_a",
+      "trophy_room_b"
+    ],
+    "master_bedroom_a": [
+      "victorian_halls_a",
+      "balcony_a",
+      "victorian_halls_b",
+      "balcony_b"
+    ],
+    "balcony_a": [
+      "master_bedroom_a",
+      "master_bedroom_b"
+    ],
+    "office_a": [
+      "victorian_halls_a",
+      "victorian_halls_b"
+    ],
+    "entry_hall_b": [
+      "victorian_halls_a",
+      "victorian_halls_b"
+    ],
+    "victorian_halls_b": [
+      "entry_hall_a",
+      "trophy_room_a",
+      "master_bedroom_a",
+      "office_a",
+      "entry_hall_b",
+      "trophy_room_b",
+      "master_bedroom_b",
+      "office_b"
+    ],
+    "trophy_room_b": [
+      "victorian_halls_a",
+      "billiards_room_a",
+      "victorian_halls_b",
+      "billiards_room_b"
+    ],
+    "billiards_room_b": [
+      "trophy_room_a",
+      "trophy_room_b"
+    ],
+    "master_bedroom_b": [
+      "victorian_halls_a",
+      "balcony_a",
+      "victorian_halls_b",
+      "balcony_b"
+    ],
+    "balcony_b": [
+      "master_bedroom_a",
+      "master_bedroom_b"
+    ],
+    "office_b": [
+      "victorian_halls_a",
+      "victorian_halls_b"
+    ]
+  },
+  "act_deck": [
+    "hidden_agendas",
+    "the_spectral_realm",
+    "escape_the_cage"
+  ],
+  "agenda_deck": [
+    "justice_•_xi",
+    "over_the_threshold"
+  ],
+  "locations": [
+    "entry_hall_a",
+    "victorian_halls_a",
+    "trophy_room_a",
+    "billiards_room_a",
+    "master_bedroom_a",
+    "balcony_a",
+    "office_a",
+    "entry_hall_b",
+    "victorian_halls_b",
+    "trophy_room_b",
+    "billiards_room_b",
+    "master_bedroom_b",
+    "balcony_b",
+    "office_b"
+  ],
+  "story_assets": [],
+  "setup_notes": "7张 Spectral(_b) 地点与 Josef Meiger（双面卡，背面为 Josef's Plan）置于场外；Spectral 地点按「替换地点」规则与对应 _a 地点互换位置。realm_of_death 与 the_watcher 两组置于一旁。按战役日志失踪者情况在入口大厅/办公室/台球室/露台各放6线索，每件遗留证据移除1线索。"
+}

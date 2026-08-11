@@ -1,0 +1,106 @@
+{
+  "id": "the_city_of_archives",
+  "name": "The City of Archives",
+  "name_cn": "天机之城",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 6,
+  "encounter_sets": [
+    "the_city_of_archives",
+    "agents_of_yog",
+    "locked_doors",
+    "chilling_cold",
+    "striking_fear"
+  ],
+  "scenario_set": "the_city_of_archives",
+  "start_location": "interview_room_a",
+  "initial_locations": [
+    "interview_room_a",
+    "interview_room_b",
+    "interview_room_c",
+    "halls_of_pnakotus_a",
+    "halls_of_pnakotus_b",
+    "halls_of_pnakotus_c"
+  ],
+  "set_aside": [
+    "the_custodian",
+    "great_library",
+    "yithian_orrery",
+    "laboratory_of_the_great_race",
+    "deconstruction_room",
+    "towers_of_pnakotus"
+  ],
+  "connections": {
+    "interview_room_a": [
+      "halls_of_pnakotus_b"
+    ],
+    "interview_room_b": [
+      "halls_of_pnakotus_b"
+    ],
+    "interview_room_c": [
+      "halls_of_pnakotus_b"
+    ],
+    "halls_of_pnakotus_a": [
+      "halls_of_pnakotus_b",
+      "halls_of_pnakotus_c",
+      "laboratory_of_the_great_race"
+    ],
+    "halls_of_pnakotus_b": [
+      "halls_of_pnakotus_a",
+      "halls_of_pnakotus_c",
+      "interview_room_a",
+      "interview_room_b",
+      "interview_room_c"
+    ],
+    "halls_of_pnakotus_c": [
+      "halls_of_pnakotus_a",
+      "halls_of_pnakotus_b",
+      "great_library",
+      "towers_of_pnakotus"
+    ],
+    "great_library": [
+      "halls_of_pnakotus_c"
+    ],
+    "yithian_orrery": [
+      "laboratory_of_the_great_race"
+    ],
+    "laboratory_of_the_great_race": [
+      "halls_of_pnakotus_a",
+      "yithian_orrery",
+      "deconstruction_room"
+    ],
+    "deconstruction_room": [
+      "laboratory_of_the_great_race"
+    ],
+    "towers_of_pnakotus": [
+      "halls_of_pnakotus_c"
+    ]
+  },
+  "act_deck": [
+    "exploring_pnakotus",
+    "restricted_access",
+    "repossession"
+  ],
+  "agenda_deck": [
+    "city_of_the_great_race",
+    "lost_memories",
+    "humanity_fading"
+  ],
+  "locations": [
+    "interview_room_a",
+    "interview_room_b",
+    "interview_room_c",
+    "halls_of_pnakotus_a",
+    "halls_of_pnakotus_b",
+    "halls_of_pnakotus_c",
+    "great_library",
+    "yithian_orrery",
+    "laboratory_of_the_great_race",
+    "deconstruction_room",
+    "towers_of_pnakotus"
+  ],
+  "story_assets": [
+    "the_custodian"
+  ],
+  "setup_notes": "3张Interview Room与3张Halls of Pnakotus全部入场；起始Interview Room取决于战役日志(cooperated_with_yithians→interview_room_a Arrival Chamber；resisted_captivity→interview_room_b Restraining Chamber)，调查员以其对应面朝上开始。3张Interview Room共享同一自有图标(棕色月牙)，均只与halls_of_pnakotus_b相连。其余地点全部搁置，由act/agenda进展带入；the_custodian搁置。调查员以body_of_a_yithian形态进行游戏(不能使用普通玩家卡)。"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "final_night",
+  "name": "Final Night",
+  "name_cn": "终夜",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 9,
+  "encounter_sets": [],
+  "initial_locations": [],
+  "set_aside": [],
+  "connections": {},
+  "act_deck": [],
+  "agenda_deck": [],
+  "locations": [],
+  "story_assets": [],
+  "bag_add": {},
+  "setup_notes": "插曲III（纯剧情，无地点/密谋/事件幕/遭遇牌堆）。结构与插曲II类似：依次选读数段队员对话并按存活/死亡结算效果；随后按战役日志判定战役结局（见战役指南 Final Night/Epilogue 部分）。"
+}

@@ -1,0 +1,129 @@
+{
+  "id": "for_the_greater_good",
+  "name": "For the Greater Good",
+  "name_cn": "崇高利益",
+  "type": "official",
+  "campaign": "the_circle_undone",
+  "sequence": 5,
+  "encounter_sets": [
+    "for_the_greater_good",
+    "city_of_sins",
+    "silver_twilight_lodge",
+    "ancient_evils",
+    "pentagram",
+    "locked_doors"
+  ],
+  "scenario_set": "for_the_greater_good",
+  "start_location": "lodge_gates_a",
+  "initial_locations": [
+    "lodge_gates_a",
+    "lobby_a",
+    "lodge_cellar_a",
+    "lounge",
+    "lodge_catacombs"
+  ],
+  "set_aside": [
+    "library",
+    "vault",
+    "inner_sanctum",
+    "ceremony_room",
+    "holding_cells",
+    "puzzle_box",
+    "summoned_beast",
+    "august_lindquist",
+    "nathan_wick"
+  ],
+  "connections": {
+    "lodge_gates_a": [
+      "lobby_a",
+      "lobby_b",
+      "lodge_cellar_b"
+    ],
+    "lodge_gates_b": [
+      "lobby_a",
+      "lodge_cellar_a",
+      "lodge_cellar_b"
+    ],
+    "lobby_a": [
+      "lodge_gates_a",
+      "lodge_gates_b",
+      "lodge_cellar_a",
+      "lodge_cellar_b",
+      "lounge"
+    ],
+    "lobby_b": [
+      "lodge_gates_a",
+      "lodge_cellar_a",
+      "lodge_cellar_b",
+      "lounge"
+    ],
+    "lodge_cellar_a": [
+      "lodge_gates_b",
+      "lobby_a",
+      "lobby_b",
+      "lodge_catacombs"
+    ],
+    "lodge_cellar_b": [
+      "lodge_gates_a",
+      "lodge_gates_b",
+      "lobby_a",
+      "lobby_b",
+      "lodge_catacombs"
+    ],
+    "lounge": [
+      "lobby_a",
+      "lobby_b",
+      "vault",
+      "library"
+    ],
+    "vault": [
+      "lounge"
+    ],
+    "library": [
+      "lounge"
+    ],
+    "lodge_catacombs": [
+      "lodge_cellar_a",
+      "lodge_cellar_b",
+      "ceremony_room",
+      "holding_cells",
+      "inner_sanctum"
+    ],
+    "ceremony_room": [
+      "lodge_catacombs"
+    ],
+    "holding_cells": [
+      "lodge_catacombs"
+    ],
+    "inner_sanctum": [
+      "lodge_catacombs"
+    ]
+  },
+  "act_deck": [
+    "warm_welcome",
+    "infiltrating_the_lodge",
+    "obtaining_the_device",
+    "the_four_keys"
+  ],
+  "agenda_deck": [
+    "the_hierophant_·_v",
+    "ends_and_means"
+  ],
+  "locations": [
+    "lodge_gates_a",
+    "lodge_gates_b",
+    "lobby_a",
+    "lobby_b",
+    "lodge_cellar_a",
+    "lodge_cellar_b",
+    "lounge",
+    "vault",
+    "library",
+    "lodge_catacombs",
+    "ceremony_room",
+    "holding_cells",
+    "inner_sanctum"
+  ],
+  "story_assets": [],
+  "setup_notes": "秘社会员路径用 _a 版（We've Been Expecting You）大门/前厅/地窖+Act1 热烈欢迎，非会员路径用 _b 版（Members Only）+Act1 滲透秘社，其余版本移出游戏。置于场外：藏书室、机密室、圣堂内室、2张圣堂门道（即典礼室/拘禁室背面）、机关盒、响应召唤的怪兽、奥古斯特·林奎斯特、双面南森·威克。skull/cultist/tablet/elder_thing 各1枚作为钥匙置于一旁（不入混沌袋）。"
+}

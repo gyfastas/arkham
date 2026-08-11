@@ -1,0 +1,156 @@
+{
+  "id": "ice_and_death_part_2",
+  "name": "Ice and Death, Part II",
+  "name_cn": "亡命冰原 第二部分",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 2,
+  "encounter_sets": [
+    "ice_and_death",
+    "lost_in_the_night",
+    "left_behind",
+    "deadly_weather",
+    "hazards_of_antarctica",
+    "silence_and_mystery",
+    "tekelili",
+    "ancient_evils"
+  ],
+  "scenario_set": "ice_and_death",
+  "start_location": "crash_site",
+  "initial_locations": [
+    "crash_site",
+    "frozen_shores",
+    "treacherous_path",
+    "precarious_ice_sheet",
+    "broad_snowdrifts",
+    "icy_wastes",
+    "rocky_crags",
+    "snow_graves",
+    "icebreaker_landing",
+    "frigid_cave",
+    "barrier_camp",
+    "remnants_of_lakes_camp",
+    "crystalline_cavern"
+  ],
+  "set_aside": [
+    "professor_william_dyer_a",
+    "danforth_a",
+    "eliyah_ashevak_a",
+    "dr_mala_sinha_a",
+    "avery_claypool_a",
+    "james_cookie_fredericks_a",
+    "dr_amy_kensler_a",
+    "roald_ellsworth_a",
+    "takada_hiroko_a",
+    "dead_end",
+    "cracks_in_the_ice",
+    "somber_remains",
+    "disappearing_footprints",
+    "dissected_explorer",
+    "evil_within",
+    "bloody_evidence",
+    "madness_inside"
+  ],
+  "connections": {
+    "crash_site": [
+      "frozen_shores",
+      "treacherous_path",
+      "precarious_ice_sheet"
+    ],
+    "frozen_shores": [
+      "crash_site",
+      "treacherous_path",
+      "precarious_ice_sheet",
+      "broad_snowdrifts"
+    ],
+    "treacherous_path": [
+      "crash_site",
+      "frozen_shores",
+      "precarious_ice_sheet",
+      "rocky_crags"
+    ],
+    "precarious_ice_sheet": [
+      "crash_site",
+      "frozen_shores",
+      "treacherous_path",
+      "icy_wastes"
+    ],
+    "broad_snowdrifts": [
+      "frozen_shores",
+      "crystalline_cavern",
+      "remnants_of_lakes_camp",
+      "snow_graves"
+    ],
+    "icy_wastes": [
+      "precarious_ice_sheet",
+      "remnants_of_lakes_camp",
+      "barrier_camp",
+      "icebreaker_landing"
+    ],
+    "rocky_crags": [
+      "treacherous_path",
+      "crystalline_cavern",
+      "barrier_camp",
+      "frigid_cave"
+    ],
+    "snow_graves": [
+      "broad_snowdrifts"
+    ],
+    "icebreaker_landing": [
+      "icy_wastes"
+    ],
+    "frigid_cave": [
+      "rocky_crags"
+    ],
+    "barrier_camp": [
+      "icy_wastes",
+      "rocky_crags"
+    ],
+    "remnants_of_lakes_camp": [
+      "broad_snowdrifts",
+      "icy_wastes"
+    ],
+    "crystalline_cavern": [
+      "rocky_crags",
+      "broad_snowdrifts"
+    ]
+  },
+  "act_deck": [
+    "the_lost_expedition"
+  ],
+  "agenda_deck": [
+    "a_harsh_wind_blows",
+    "the_chill_of_night",
+    "madness_and_death"
+  ],
+  "locations": [
+    "crash_site",
+    "frozen_shores",
+    "treacherous_path",
+    "precarious_ice_sheet",
+    "broad_snowdrifts",
+    "icy_wastes",
+    "rocky_crags",
+    "snow_graves",
+    "icebreaker_landing",
+    "frigid_cave",
+    "barrier_camp",
+    "remnants_of_lakes_camp",
+    "crystalline_cavern"
+  ],
+  "story_assets": [
+    "professor_william_dyer_c",
+    "danforth_c",
+    "eliyah_ashevak_c",
+    "dr_mala_sinha_c",
+    "avery_claypool_c",
+    "james_cookie_fredericks_c",
+    "dr_amy_kensler_c",
+    "roald_ellsworth_c",
+    "takada_hiroko_c"
+  ],
+  "bag_add": {
+    "frost": 1
+  },
+  "setup_notes": "官方起点为第一部分记录的营地地点（数据默认 crash_site），调查员起始资源=营地庇护值而非5。营地外地点按第一部分\"已揭示地点\"揭示（含线索），其余未揭示进场。与MIA队员同名的Possessed敌人（_a版）面朝下搁置、其余移出游戏，再加入Lost in the Night故事卡凑满9张，洗混后每个Uncharted地点下垫1张。检查点续玩时改为移除The Crash与Creatures in the Ice遭遇组。Tekeli-li牌堆照旧布置。"
+}

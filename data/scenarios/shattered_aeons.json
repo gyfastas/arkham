@@ -1,0 +1,109 @@
+{
+  "id": "shattered_aeons",
+  "name": "Shattered Aeons",
+  "name_cn": "破碎永世",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 8,
+  "encounter_sets": [
+    "shattered_aeons",
+    "pnakotic_brotherhood",
+    "flux",
+    "ancient_evils"
+  ],
+  "scenario_set": "shattered_aeons",
+  "start_location": "nexus_of_nkai",
+  "initial_locations": [
+    "nexus_of_nkai"
+  ],
+  "set_aside": [
+    "formless_spawn",
+    "relic_of_ages_d",
+    "a_pocket_in_time",
+    "paradise_lost",
+    "timelock",
+    "ruins_of_new_york",
+    "mu",
+    "atlantis",
+    "pnakotus",
+    "valusia",
+    "plateau_of_leng"
+  ],
+  "connections": {
+    "nexus_of_nkai": [
+      "yuggoth",
+      "shores_of_rlyeh",
+      "city_of_the_unseen",
+      "a_pocket_in_time"
+    ],
+    "yuggoth": [
+      "nexus_of_nkai"
+    ],
+    "shores_of_rlyeh": [
+      "nexus_of_nkai"
+    ],
+    "city_of_the_unseen": [
+      "nexus_of_nkai"
+    ],
+    "a_pocket_in_time": [
+      "nexus_of_nkai",
+      "ruins_of_new_york",
+      "mu",
+      "atlantis",
+      "pnakotus",
+      "valusia",
+      "plateau_of_leng"
+    ],
+    "ruins_of_new_york": [
+      "a_pocket_in_time"
+    ],
+    "mu": [
+      "a_pocket_in_time"
+    ],
+    "atlantis": [
+      "a_pocket_in_time"
+    ],
+    "pnakotus": [
+      "a_pocket_in_time"
+    ],
+    "valusia": [
+      "a_pocket_in_time"
+    ],
+    "plateau_of_leng": [
+      "a_pocket_in_time"
+    ]
+  },
+  "act_deck": [
+    "worlds_beyond",
+    "search_for_the_brotherhood",
+    "the_yithian_relic",
+    "mend_the_shatter",
+    "paradise_lost",
+    "timelock"
+  ],
+  "agenda_deck": [
+    "threads_of_time",
+    "pendulous_threads",
+    "snapped_threads"
+  ],
+  "locations": [
+    "nexus_of_nkai",
+    "yuggoth",
+    "shores_of_rlyeh",
+    "city_of_the_unseen",
+    "a_pocket_in_time",
+    "ruins_of_new_york",
+    "mu",
+    "atlantis",
+    "pnakotus",
+    "valusia",
+    "plateau_of_leng"
+  ],
+  "story_assets": [
+    "formless_spawn",
+    "relic_of_ages_d",
+    "yigs_mercy",
+    "another_way"
+  ],
+  "setup_notes": "探索牌堆=yuggoth/shores_of_rlyeh/city_of_the_unseen(3张共享棕色月牙图标的异世地点)+wracked_by_time/between_worlds/ancient_evils各1张洗混。搁置：formless_spawn、relic_of_ages_d、a_pocket_in_time、act4的paradise_lost与timelock、6张单面Shattered地点(共享深绿等号图标)。6张Shattered地点由探索/效果叠放到nexus_of_nkai旁经由a_pocket_in_time连通(详见指南)。遭遇组按混沌袋分支：tablet多于cultist→加agents_of_yig；cultist多于tablet→加pentagram；相等→两者都加。yigs_mercy/another_way为战役抉择故事卡。"
+}

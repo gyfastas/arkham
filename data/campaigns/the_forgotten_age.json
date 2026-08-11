@@ -1,0 +1,23 @@
+{
+  "id": "the_forgotten_age",
+  "name": "The Forgotten Age",
+  "name_cn": "遗忘时代",
+  "type": "official",
+  "scenarios": [
+    "wilds",
+    "eztli",
+    "threads_of_fate",
+    "the_boundary_beyond",
+    "heart_of_the_elders",
+    "the_city_of_archives",
+    "the_depths_of_yoth",
+    "shattered_aeons"
+  ],
+  "investigators": [
+    "leo_anderson",
+    "ursula_downs",
+    "finn_edwards",
+    "father_mateo",
+    "calvin_wright"
+  ]
+}

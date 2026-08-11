@@ -1,0 +1,85 @@
+{
+  "id": "eztli",
+  "name": "The Doom of Eztli",
+  "name_cn": "埃兹特里的覆灭",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 2,
+  "encounter_sets": [
+    "eztli",
+    "agents_of_yig",
+    "venom",
+    "flux",
+    "traps",
+    "ruins",
+    "poison",
+    "chilling_cold"
+  ],
+  "scenario_set": "eztli",
+  "start_location": "entryway",
+  "initial_locations": [
+    "entryway"
+  ],
+  "set_aside": [
+    "harbinger_of_valusia",
+    "chamber_of_time",
+    "relic_of_ages_a"
+  ],
+  "connections": {
+    "entryway": [
+      "ancient_hall",
+      "grand_chamber"
+    ],
+    "ancient_hall": [
+      "entryway",
+      "grand_chamber",
+      "underground_ruins"
+    ],
+    "grand_chamber": [
+      "entryway",
+      "ancient_hall",
+      "burial_pit"
+    ],
+    "burial_pit": [
+      "grand_chamber",
+      "underground_ruins",
+      "secret_passage"
+    ],
+    "underground_ruins": [
+      "ancient_hall",
+      "burial_pit",
+      "secret_passage"
+    ],
+    "secret_passage": [
+      "burial_pit",
+      "underground_ruins",
+      "chamber_of_time"
+    ],
+    "chamber_of_time": [
+      "secret_passage"
+    ]
+  },
+  "act_deck": [
+    "into_the_ruins",
+    "magic_and_science",
+    "escape_the_ruins"
+  ],
+  "agenda_deck": [
+    "something_stirs…",
+    "the_temple_warden"
+  ],
+  "locations": [
+    "entryway",
+    "ancient_hall",
+    "grand_chamber",
+    "burial_pit",
+    "underground_ruins",
+    "secret_passage",
+    "chamber_of_time"
+  ],
+  "story_assets": [
+    "relic_of_ages_a",
+    "harbinger_of_valusia"
+  ],
+  "setup_notes": "探索牌堆=5张单面古代地点(ancient_hall/grand_chamber/burial_pit/underground_ruins/secret_passage)+ill_omen/deep_dark/final_mistake/entombed/crypt_chill各1张洗混。harbinger_of_valusia、chamber_of_time、relic_of_ages_a搁置：chamber_of_time由Act2(magic_and_science)带入，harbinger_of_valusia由Act2/Agenda2进展带入并决定其后续战役状态。"
+}

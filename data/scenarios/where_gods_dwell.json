@@ -1,0 +1,115 @@
+{
+  "id": "where_gods_dwell",
+  "name": "Where the Gods Dwell",
+  "name_cn": "神居之所",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 7,
+  "encounter_sets": [
+    "where_the_gods_dwell",
+    "agents_of_nyarlathotep",
+    "dreamers_curse",
+    "whispers_of_hypnos",
+    "pentagram"
+  ],
+  "scenario_set": "where_the_gods_dwell",
+  "start_location": "plateau_of_leng",
+  "initial_locations": [
+    "plateau_of_leng",
+    "cold_wastes",
+    "monastery_of_leng",
+    "onyx_gates",
+    "the_great_hall"
+  ],
+  "set_aside": [
+    "forsaken_tower_a",
+    "forsaken_tower_b",
+    "forsaken_tower_c",
+    "forsaken_tower_d",
+    "forsaken_tower_e",
+    "forsaken_tower_f",
+    "high_priest_not_to_be_described",
+    "nyarlathotep_a",
+    "nyarlathotep_b",
+    "nyarlathotep_c",
+    "nyarlathotep_d",
+    "nyarlathotep_e",
+    "whispering_chaos_a",
+    "whispering_chaos_b",
+    "whispering_chaos_c",
+    "whispering_chaos_d",
+    "myriad_forms",
+    "the_crawling_mist"
+  ],
+  "connections": {
+    "plateau_of_leng": [
+      "cold_wastes"
+    ],
+    "cold_wastes": [
+      "plateau_of_leng",
+      "monastery_of_leng",
+      "onyx_gates"
+    ],
+    "monastery_of_leng": [
+      "cold_wastes"
+    ],
+    "onyx_gates": [
+      "cold_wastes",
+      "the_great_hall"
+    ],
+    "the_great_hall": [
+      "onyx_gates",
+      "forsaken_tower_a",
+      "forsaken_tower_b",
+      "forsaken_tower_c",
+      "forsaken_tower_d",
+      "forsaken_tower_e",
+      "forsaken_tower_f"
+    ],
+    "forsaken_tower_a": [
+      "the_great_hall"
+    ],
+    "forsaken_tower_b": [
+      "the_great_hall"
+    ],
+    "forsaken_tower_c": [
+      "the_great_hall"
+    ],
+    "forsaken_tower_d": [
+      "the_great_hall"
+    ],
+    "forsaken_tower_e": [
+      "the_great_hall"
+    ],
+    "forsaken_tower_f": [
+      "the_great_hall"
+    ]
+  },
+  "act_deck": [
+    "journey_through_the_cold_wastes",
+    "the_thing_in_the_robes",
+    "beyond_dreams",
+    "truth_and_lies",
+    "the_dream_eaters"
+  ],
+  "agenda_deck": [
+    "the_eye_of_chaos",
+    "the_shape_of_chaos",
+    "chaos_incarnate"
+  ],
+  "locations": [
+    "plateau_of_leng",
+    "cold_wastes",
+    "monastery_of_leng",
+    "onyx_gates",
+    "the_great_hall",
+    "forsaken_tower_a",
+    "forsaken_tower_b",
+    "forsaken_tower_c",
+    "forsaken_tower_d",
+    "forsaken_tower_e",
+    "forsaken_tower_f"
+  ],
+  "story_assets": [],
+  "setup_notes": "冷原高原/寒冷荒原/冷原修道院/缟玛瑙之门/缟玛瑙城堡(the_great_hall，未揭示面为 The Onyx Castle)入场，调查员从冷原高原开始（若战役日志记录被掳至寒冷荒原则改从寒冷荒原开始）。搁置：不可言喻的大祭司、5张奈亚拉托提普、4张 Whispering Chaos、2张 Myriad Forms、The Crawling Mist。4张被弃之塔(Forsaken Tower)在间幕围绕大厅十字入场——官方4张共用绿双横图标；库中6个版本(06300-06305)图标相同，均连接大厅；大厅/城堡双面印刷不同连接：缟玛瑙城堡面连接缟玛瑙之门，大厅面连接四座塔。"
+}

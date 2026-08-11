@@ -1,0 +1,82 @@
+{
+  "id": "into_the_maelstrom",
+  "name": "Into the Maelstrom",
+  "name_cn": "暗潮之下",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 8,
+  "encounter_sets": [
+    "into_the_maelstrom",
+    "agents_of_hydra",
+    "creatures_of_the_deep",
+    "flooded_caverns",
+    "shattered_memories",
+    "syzygy",
+    "ancient_evils"
+  ],
+  "scenario_set": "into_the_maelstrom",
+  "start_location": "gateway_to_yha_nthlei",
+  "initial_locations": [
+    "gateway_to_yha_nthlei"
+  ],
+  "set_aside": [
+    "lloigor",
+    "aquatic_abomination",
+    "hydra",
+    "dagon_b",
+    "city_of_the_deep_v_ii",
+    "city_of_the_deep_v_iii",
+    "sunken_halls",
+    "vault_of_riches",
+    "undersea_corridors",
+    "statues_in_the_deep",
+    "submerged_temple",
+    "syzygy_chamber",
+    "onyx_guardians",
+    "lair_of_dagon_b",
+    "lair_of_hydra"
+  ],
+  "connections": {
+    "dark_abyss": [],
+    "gateway_to_yha_nthlei": [],
+    "sunken_halls": [],
+    "vault_of_riches": [],
+    "undersea_corridors": [],
+    "statues_in_the_deep": [],
+    "submerged_temple": [],
+    "syzygy_chamber": [],
+    "onyx_guardians": [],
+    "lair_of_dagon_b": [],
+    "lair_of_hydra": [],
+    "underwater_cavern": [],
+    "tidal_pool": [],
+    "underground_river": []
+  },
+  "act_deck": [
+    "back_into_the_depths",
+    "city_of_the_deep_v_i"
+  ],
+  "agenda_deck": [
+    "under_the_surface",
+    "celestial_alignment",
+    "the_flood"
+  ],
+  "locations": [
+    "dark_abyss",
+    "gateway_to_yha_nthlei",
+    "sunken_halls",
+    "vault_of_riches",
+    "undersea_corridors",
+    "statues_in_the_deep",
+    "submerged_temple",
+    "syzygy_chamber",
+    "onyx_guardians",
+    "lair_of_dagon_b",
+    "lair_of_hydra",
+    "underwater_cavern",
+    "tidal_pool",
+    "underground_river"
+  ],
+  "story_assets": [],
+  "setup_notes": "Gateway to Y'ha-nthlei 以部分淹没入场，8张 Tidal Tunnel 背面地点（未揭示面向上）围绕它放入 3x3 网格（战役通用 Tidal Tunnel 卡池：Flooded Caverns 6张 + Dark Abyss 等）。本剧本正交相邻（上下左右）的地点即相连，对角不相邻（故 connections 为空）；幕2时按玩家人数对应的官方图示将备用的 Y'ha-nthlei / Y'ha-nthlei Sanctum 背面地点（沉没厅堂等7个城区地点）布置入城，每个地点须至少与1个地点相邻，Lair of Dagon/Lair of Hydra（双面地点）随后续效果入场。钥匙：按战役日志——possess the key to Y'ha-nthlei→蓝钥匙由选定调查员控制、possess a map of Y'ha-nthlei→红、guardian of Y'ha-nthlei is dispatched→绿、gateway recognizes you as its rightful keeper→黄，未满足的对应钥匙面朝下洗混备用；若备用钥匙不足4把，将紫/白/黑钥匙逐把面朝下补入至4把，多余移出游戏。拥有 diving suit 的每名调查员起始在其区域放置 Diving Suit 故事资产，未用的移出游戏。事件牌堆幕2仅使用 City of the Deep v.I（v.II/v.III 备用）。"
+}

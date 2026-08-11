@@ -1,0 +1,103 @@
+{
+  "id": "dark_side_of_the_moon",
+  "name": "Dark Side of the Moon",
+  "name_cn": "月之暗面",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 5,
+  "encounter_sets": [
+    "dark_side_of_the_moon",
+    "corsairs",
+    "dreamers_curse",
+    "ancient_evils"
+  ],
+  "scenario_set": "dark_side_of_the_moon",
+  "start_location": "moon_forest",
+  "initial_locations": [
+    "city_of_the_moon_beasts",
+    "temple_of_the_moon_lizard",
+    "moon_forest",
+    "the_dark_crater"
+  ],
+  "set_aside": [
+    "moon_beast_galley",
+    "caverns_beneath_the_moon_a",
+    "the_black_core",
+    "caverns_beneath_the_moon_b",
+    "light_side_of_the_moon",
+    "the_white_ship",
+    "moon_lizard",
+    "virgil_gray_b",
+    "the_captain",
+    "false_awakening_a"
+  ],
+  "connections": {
+    "moon_beast_galley": [],
+    "city_of_the_moon_beasts": [
+      "temple_of_the_moon_lizard",
+      "the_dark_crater"
+    ],
+    "the_dark_crater": [
+      "city_of_the_moon_beasts",
+      "moon_forest",
+      "caverns_beneath_the_moon_a"
+    ],
+    "temple_of_the_moon_lizard": [
+      "moon_forest",
+      "city_of_the_moon_beasts"
+    ],
+    "moon_forest": [
+      "the_dark_crater",
+      "temple_of_the_moon_lizard",
+      "caverns_beneath_the_moon_a"
+    ],
+    "caverns_beneath_the_moon_a": [
+      "moon_forest",
+      "the_dark_crater",
+      "the_black_core"
+    ],
+    "the_black_core": [
+      "caverns_beneath_the_moon_a",
+      "caverns_beneath_the_moon_b"
+    ],
+    "caverns_beneath_the_moon_b": [
+      "the_black_core",
+      "light_side_of_the_moon"
+    ],
+    "light_side_of_the_moon": [
+      "caverns_beneath_the_moon_b",
+      "the_white_ship"
+    ],
+    "the_white_ship": [
+      "light_side_of_the_moon"
+    ]
+  },
+  "act_deck": [
+    "in_the_belly_of_the_moon_beast",
+    "exploring_the_moon",
+    "the_moons_core",
+    "unexpected_rescue"
+  ],
+  "agenda_deck": [
+    "silent_stirring",
+    "the_alarm_is_raised",
+    "they_are_upon_you"
+  ],
+  "locations": [
+    "moon_beast_galley",
+    "city_of_the_moon_beasts",
+    "the_dark_crater",
+    "temple_of_the_moon_lizard",
+    "moon_forest",
+    "caverns_beneath_the_moon_a",
+    "the_black_core",
+    "caverns_beneath_the_moon_b",
+    "light_side_of_the_moon",
+    "the_white_ship"
+  ],
+  "story_assets": [
+    "virgil_gray_b",
+    "the_captain"
+  ],
+  "setup_notes": "月兽之城/月蜥神殿/月之森林/黑暗陨石坑入场。被俘获的调查员从 Moon-Beast Galley 开始（每名使其多放2线索），未被俘获者从月之森林开始；Moon-Beast Galley 无地点图标、无印刷连接，清空线索后翻面按其故事面离场。搁置：月蜥、Virgil Gray(真正醒悟)、船长、False Awakening 弱点及其余地点（月底洞穴a/b、黑色核心、月之亮面、白船，按剧本进程入场）。每位调查员卡上放1个毁灭标记作为警觉等级（不算毁灭、不计入密谋阈值）。"
+}

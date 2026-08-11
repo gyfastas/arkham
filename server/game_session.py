@@ -522,8 +522,11 @@ class GameSession:
                 bag.extend([ChaosTokenType(symbol)] * 2)
                 self.action_log.append(f"🎭 苍白面具：混乱袋移除三种符号，加回2个[{symbol}]")
         scen = load_scenario_definition(scenario_id)
+        # 部分剧本起始地点由剧本逻辑决定（如 Depths of Yoth 随机起始）：
+        # 无 start_location 时以第一个在场地点兜底
+        start_loc = scen.get("start_location") or (scen.get("initial_locations") or scen.get("locations") or [""])[0]
         for _pid, inv_id, inv_data, deck_ids in built:
-            g.add_investigator(inv_id, inv_data, deck=deck_ids, starting_location=scen["start_location"])
+            g.add_investigator(inv_id, inv_data, deck=deck_ids, starting_location=start_loc)
         g.setup()
         # Official rule: opening hand mulligan (redraw any number of cards, once)
         g.state.scenario.vars["mulligan_available"] = True
@@ -536,7 +539,7 @@ class GameSession:
         if scenario_id == "the_midnight_masks":
             g.state.scenario.vars["central_location"] = "downtown"
         else:
-            g.state.scenario.vars["central_location"] = scen["start_location"]
+            g.state.scenario.vars["central_location"] = start_loc
 
         self.controller = ScenarioController(g, action_log=self.action_log)
         self.controller.skill_test_request_handler = self._request_skill_test

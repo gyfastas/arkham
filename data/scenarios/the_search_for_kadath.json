@@ -1,0 +1,145 @@
+{
+  "id": "the_search_for_kadath",
+  "name": "The Search for Kadath",
+  "name_cn": "寻觅卡达斯",
+  "type": "official",
+  "campaign": "the_dream_eaters",
+  "sequence": 3,
+  "encounter_sets": [
+    "the_search_for_kadath",
+    "agents_of_nyarlathotep",
+    "corsairs",
+    "dreamlands",
+    "whispers_of_hypnos",
+    "zoogs"
+  ],
+  "scenario_set": "the_search_for_kadath",
+  "start_location": "ulthar",
+  "initial_locations": [
+    "ulthar",
+    "skai_river",
+    "dylath_leen"
+  ],
+  "set_aside": [
+    "kadatheron",
+    "sarnath",
+    "ruins_of_ib",
+    "ilek_vad",
+    "forbidden_lands",
+    "zulan_thek",
+    "baharna",
+    "mt_ngranek",
+    "nameless_ruins",
+    "celephaïs",
+    "serannian",
+    "hazuth_kleg",
+    "temple_of_unattainable_desires",
+    "city_which_appears_on_no_map",
+    "cats_of_ulthar",
+    "stalking_manticore",
+    "the_crawling_mist",
+    "horde_of_night",
+    "beings_of_ib",
+    "tenebrous_nightgaunt",
+    "corsair_of_leng",
+    "priest_of_a_thousand_masks"
+  ],
+  "connections": {
+    "ulthar": [
+      "skai_river"
+    ],
+    "skai_river": [
+      "ulthar",
+      "dylath_leen"
+    ],
+    "dylath_leen": [
+      "skai_river"
+    ],
+    "kadatheron": [
+      "ruins_of_ib",
+      "sarnath"
+    ],
+    "sarnath": [
+      "kadatheron",
+      "ruins_of_ib"
+    ],
+    "ruins_of_ib": [
+      "kadatheron",
+      "sarnath"
+    ],
+    "ilek_vad": [
+      "forbidden_lands"
+    ],
+    "forbidden_lands": [
+      "ilek_vad",
+      "zulan_thek"
+    ],
+    "zulan_thek": [
+      "forbidden_lands"
+    ],
+    "baharna": [
+      "mt_ngranek",
+      "nameless_ruins"
+    ],
+    "mt_ngranek": [
+      "baharna",
+      "nameless_ruins"
+    ],
+    "nameless_ruins": [
+      "baharna",
+      "mt_ngranek"
+    ],
+    "celephaïs": [
+      "serannian",
+      "hazuth_kleg"
+    ],
+    "serannian": [
+      "celephaïs"
+    ],
+    "hazuth_kleg": [
+      "celephaïs",
+      "temple_of_unattainable_desires"
+    ],
+    "temple_of_unattainable_desires": [
+      "hazuth_kleg",
+      "city_which_appears_on_no_map"
+    ],
+    "city_which_appears_on_no_map": [
+      "temple_of_unattainable_desires"
+    ]
+  },
+  "act_deck": [
+    "kingdom_of_the_skai",
+    "the_isle_of_oriab",
+    "the_doom_that_came_before",
+    "seek_out_the_night",
+    "the_kings_decree"
+  ],
+  "agenda_deck": [
+    "journey_across_the_dreamlands",
+    "agents_of_the_outer_gods"
+  ],
+  "locations": [
+    "ulthar",
+    "skai_river",
+    "dylath_leen",
+    "kadatheron",
+    "sarnath",
+    "ruins_of_ib",
+    "ilek_vad",
+    "forbidden_lands",
+    "zulan_thek",
+    "baharna",
+    "mt_ngranek",
+    "nameless_ruins",
+    "celephaïs",
+    "serannian",
+    "hazuth_kleg",
+    "temple_of_unattainable_desires",
+    "city_which_appears_on_no_map"
+  ],
+  "story_assets": [
+    "virgil_gray_a"
+  ],
+  "setup_notes": "乌尔塔/斯凯河/迪拉斯-琳入场，调查员从乌尔塔开始；其余14张地点搁置。搁置敌人：乌尔塔之猫、潜行蝎尾狮、The Crawling Mist、黑夜兽群、伊布生灵、暗影夜魇x2、冷原海盗x2、千面祭司x3。从遭遇卡找1张 Pack of Vooniths 放到斯凯河（3-4人时再放1张到迪拉斯-琳）。领队获得 Virgil Gray(奇谈作家)。本剧本地点无未揭示面（背面为故事卡），入场即放线索；部分地点带 veiled。另有四套后续设置按剧本进程结算。地点图标在区域组间复用（金圆点/绿菱形/红方块各出现3次），连接按各组内部解读：姆纳尔三角互连、禁地链式、奥瑞巴三角互连、欧斯-纳尔盖链到无图之城。"
+}

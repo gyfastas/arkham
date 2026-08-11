@@ -1,0 +1,208 @@
+{
+  "id": "city_of_the_elder_things",
+  "name": "City of the Elder Things",
+  "name_cn": "古老者之城",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 5,
+  "encounter_sets": [
+    "city_of_the_elder_things",
+    "elder_things",
+    "miasma",
+    "nameless_horrors",
+    "penguins",
+    "shoggoths",
+    "tekelili",
+    "locked_doors"
+  ],
+  "scenario_set": "city_of_the_elder_things",
+  "start_location": "stone_bridge",
+  "initial_locations": [
+    "hidden_tunnel_a",
+    "ancient_planetarium",
+    "stone_bridge",
+    "cylindrical_tower",
+    "labyrinthine_chamber",
+    "map_room",
+    "roofless_rampart",
+    "ruinous_streets",
+    "cyclopean_spires",
+    "submerged_passageway",
+    "temple_of_the_elder_things"
+  ],
+  "set_aside": [
+    "forgotten_shoggoth",
+    "rampaging_shoggoth",
+    "terror_of_the_stars_a"
+  ],
+  "connections": {
+    "hidden_tunnel_a": [
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "ancient_planetarium": [
+      "hidden_tunnel_a",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "stone_bridge": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "cylindrical_tower": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "labyrinthine_chamber": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "map_room": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "roofless_rampart": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "ruinous_streets": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "cyclopean_spires",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "cyclopean_spires": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "submerged_passageway",
+      "temple_of_the_elder_things"
+    ],
+    "submerged_passageway": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "temple_of_the_elder_things"
+    ],
+    "temple_of_the_elder_things": [
+      "hidden_tunnel_a",
+      "ancient_planetarium",
+      "stone_bridge",
+      "cylindrical_tower",
+      "labyrinthine_chamber",
+      "map_room",
+      "roofless_rampart",
+      "ruinous_streets",
+      "cyclopean_spires",
+      "submerged_passageway"
+    ]
+  },
+  "act_deck": [
+    "sprawling_city_v_i",
+    "pursuit_of_the_unknown_v_i"
+  ],
+  "agenda_deck": [
+    "lurking_horrors",
+    "doom_from_below"
+  ],
+  "locations": [
+    "hidden_tunnel_a",
+    "ancient_planetarium",
+    "stone_bridge",
+    "cylindrical_tower",
+    "labyrinthine_chamber",
+    "map_room",
+    "roofless_rampart",
+    "ruinous_streets",
+    "cyclopean_spires",
+    "submerged_passageway",
+    "temple_of_the_elder_things"
+  ],
+  "story_assets": [
+    "professor_william_dyer_c",
+    "danforth_c",
+    "eliyah_ashevak_c",
+    "dr_mala_sinha_c",
+    "avery_claypool_c",
+    "james_cookie_fredericks_c",
+    "dr_amy_kensler_c",
+    "roald_ellsworth_c",
+    "takada_hiroko_c"
+  ],
+  "bag_add": {
+    "elder_thing": 1
+  },
+  "setup_notes": "考察队三组投票决定变体（数据按第一组胜出=v1：遭遇组/事件幕/布置均取 v1；v2/v3 见战役指南，事件幕换用 v_ii/v_iii）。16张City Landscape地点（含多张复本）洗混按网格摆放，Hidden Tunnel固定中央；16把钥匙标记（skull/cultist/tablet/elder_thing/0/-1/-2/-3各2枚）随机每地点1枚。v1领队从最外侧8格选起点（数据默认 stone_bridge）。本剧本地点卡无印刷连接图标，规则为共边相邻地点相连，connections 按随机摆放的全连通近似记录。若Cookie存活且已回收Dynamite则无效果，否则混乱袋再+1[frost]（bag_add 未含此项）。v1移除3张Benign Elder Thing，Shoggoths遭遇组与Terror of the Stars场外搁置。困难/专家密谋1a +1/+2毁灭。"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the_dream_eaters",
+  "name": "The Dream-Eaters",
+  "name_cn": "食梦者",
+  "type": "official",
+  "scenarios": [
+    "beyond_the_gates_of_sleep",
+    "waking_nightmare",
+    "the_search_for_kadath",
+    "a_thousand_shapes_of_horror",
+    "dark_side_of_the_moon",
+    "point_of_no_return",
+    "where_gods_dwell",
+    "weaver_of_the_cosmos"
+  ],
+  "investigators": [
+    "tommy_muldoon",
+    "mandy_thompson",
+    "tony_morgan",
+    "luke_robinson",
+    "patrice_hathaway"
+  ]
+}

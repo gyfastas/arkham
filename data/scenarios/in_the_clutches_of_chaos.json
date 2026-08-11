@@ -1,0 +1,179 @@
+{
+  "id": "in_the_clutches_of_chaos",
+  "name": "In the Clutches of Chaos",
+  "name_cn": "混沌魔掌",
+  "type": "official",
+  "campaign": "the_circle_undone",
+  "sequence": 7,
+  "encounter_sets": [
+    "in_the_clutches_of_chaos",
+    "agents_of_azathoth",
+    "nightgaunts",
+    "music_of_the_damned",
+    "secrets_of_the_universe",
+    "anettes_coven",
+    "city_of_sins",
+    "witchcraft",
+    "silver_twilight_lodge",
+    "striking_fear",
+    "arkham"
+  ],
+  "scenario_set": "in_the_clutches_of_chaos",
+  "start_location": "southside_a",
+  "initial_locations": [
+    "rivertown_a",
+    "merchant_district_a",
+    "french_hill_a",
+    "uptown_a",
+    "southside_a",
+    "south_church_a",
+    "hangmans_hill_a",
+    "silver_twilight_lodge_a"
+  ],
+  "set_aside": [
+    "piper_of_azathoth"
+  ],
+  "connections": {
+    "rivertown_a": [
+      "merchant_district_a",
+      "merchant_district_b",
+      "french_hill_a",
+      "french_hill_b",
+      "southside_a",
+      "southside_b"
+    ],
+    "rivertown_b": [
+      "merchant_district_a",
+      "merchant_district_b",
+      "french_hill_a",
+      "french_hill_b",
+      "southside_a",
+      "southside_b"
+    ],
+    "merchant_district_a": [
+      "rivertown_a",
+      "rivertown_b",
+      "uptown_a",
+      "uptown_b",
+      "southside_a",
+      "southside_b"
+    ],
+    "merchant_district_b": [
+      "rivertown_a",
+      "rivertown_b",
+      "uptown_a",
+      "uptown_b",
+      "southside_a",
+      "southside_b"
+    ],
+    "french_hill_a": [
+      "rivertown_a",
+      "rivertown_b",
+      "southside_a",
+      "southside_b",
+      "silver_twilight_lodge_a",
+      "silver_twilight_lodge_b"
+    ],
+    "french_hill_b": [
+      "rivertown_a",
+      "rivertown_b",
+      "southside_a",
+      "southside_b",
+      "silver_twilight_lodge_a",
+      "silver_twilight_lodge_b"
+    ],
+    "uptown_a": [
+      "merchant_district_a",
+      "merchant_district_b",
+      "southside_a",
+      "southside_b",
+      "hangmans_hill_a",
+      "hangmans_hill_b"
+    ],
+    "uptown_b": [
+      "merchant_district_a",
+      "merchant_district_b",
+      "southside_a",
+      "southside_b",
+      "hangmans_hill_a",
+      "hangmans_hill_b"
+    ],
+    "southside_a": [
+      "rivertown_a",
+      "rivertown_b",
+      "merchant_district_a",
+      "merchant_district_b",
+      "french_hill_a",
+      "french_hill_b",
+      "uptown_a",
+      "uptown_b",
+      "south_church_a",
+      "south_church_b"
+    ],
+    "southside_b": [
+      "rivertown_a",
+      "rivertown_b",
+      "merchant_district_a",
+      "merchant_district_b",
+      "french_hill_a",
+      "french_hill_b",
+      "uptown_a",
+      "uptown_b",
+      "south_church_a",
+      "south_church_b"
+    ],
+    "south_church_a": [
+      "southside_a",
+      "southside_b"
+    ],
+    "south_church_b": [
+      "southside_a",
+      "southside_b"
+    ],
+    "hangmans_hill_a": [
+      "uptown_a",
+      "uptown_b"
+    ],
+    "hangmans_hill_b": [
+      "uptown_a",
+      "uptown_b"
+    ],
+    "silver_twilight_lodge_a": [
+      "french_hill_a",
+      "french_hill_b"
+    ],
+    "silver_twilight_lodge_b": [
+      "french_hill_a",
+      "french_hill_b"
+    ]
+  },
+  "act_deck": [
+    "dark_knowledge_v_i",
+    "beyond_the_grave",
+    "dark_knowledge_v_ii",
+    "new_world_order"
+  ],
+  "agenda_deck": [
+    "the_chariot_·_vii"
+  ],
+  "locations": [
+    "rivertown_a",
+    "rivertown_b",
+    "merchant_district_a",
+    "merchant_district_b",
+    "french_hill_a",
+    "french_hill_b",
+    "uptown_a",
+    "uptown_b",
+    "southside_a",
+    "southside_b",
+    "south_church_a",
+    "south_church_b",
+    "hangmans_hill_a",
+    "hangmans_hill_b",
+    "silver_twilight_lodge_a",
+    "silver_twilight_lodge_b"
+  ],
+  "story_assets": [],
+  "setup_notes": "6个街区地点各从两版中随机选1张进场（其余移出游戏）。分支：Anette 线（被邪灵附身）用 music_of_the_damned+anettes_coven+city_of_sins+witchcraft 组、Act 黑暗知识(v.I)+坟墓彼端、地点绞刑者山丘_a(Where It All Ends)+银暮秘社_a(Shrouded in Mystery)；Carl 线用 secrets_of_the_universe+silver_twilight_lodge+striking_fear+arkham 组、Act 黑暗知识(v.II)+世界新秩序、地点银暮秘社_b+绞刑者山丘_b。arkham 组只取2x False Lead 与3x Hunting Shadow。Piper of Azathoth 置于场外。起始在2个随机地点各放1个 breach（裂隙/侵入机制见指南）。"
+}

@@ -1,0 +1,110 @@
+{
+  "id": "devil_reef",
+  "name": "Devil Reef",
+  "name_cn": "魔鬼礁石",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 4,
+  "encounter_sets": [
+    "devil_reef",
+    "agents_of_hydra",
+    "creatures_of_the_deep",
+    "flooded_caverns",
+    "malfunction",
+    "rising_tide"
+  ],
+  "scenario_set": "devil_reef",
+  "start_location": "churning_waters",
+  "initial_locations": [
+    "churning_waters",
+    "lonely_isle",
+    "hidden_cove",
+    "waveworn_island",
+    "salt_marshes",
+    "black_reef"
+  ],
+  "set_aside": [
+    "awakened_mantle",
+    "headdress_of_yha_nthlei",
+    "waveworn_idol",
+    "deep_one_grotto_a",
+    "deep_one_grotto_b",
+    "cyclopean_ruins_a",
+    "cyclopean_ruins_b",
+    "temple_of_the_union_a",
+    "temple_of_the_union_b"
+  ],
+  "connections": {
+    "churning_waters": [
+      "lonely_isle",
+      "hidden_cove",
+      "waveworn_island",
+      "salt_marshes",
+      "black_reef"
+    ],
+    "lonely_isle": [
+      "churning_waters",
+      "black_reef",
+      "salt_marshes"
+    ],
+    "hidden_cove": [
+      "churning_waters",
+      "salt_marshes",
+      "waveworn_island"
+    ],
+    "waveworn_island": [
+      "churning_waters",
+      "black_reef",
+      "hidden_cove"
+    ],
+    "salt_marshes": [
+      "churning_waters",
+      "hidden_cove",
+      "lonely_isle"
+    ],
+    "black_reef": [
+      "churning_waters",
+      "lonely_isle",
+      "waveworn_island"
+    ],
+    "bootleggers_hideaway_a": [],
+    "bootleggers_hideaway_b": [],
+    "deep_one_grotto_a": [],
+    "deep_one_grotto_b": [],
+    "cyclopean_ruins_a": [],
+    "cyclopean_ruins_b": [],
+    "temple_of_the_union_a": [],
+    "temple_of_the_union_b": [],
+    "underwater_cavern": [],
+    "tidal_pool": [],
+    "underground_river": []
+  },
+  "act_deck": [
+    "reef_of_mysteries"
+  ],
+  "agenda_deck": [
+    "secrets_of_the_sea_v_i",
+    "the_devil_of_the_depths"
+  ],
+  "locations": [
+    "churning_waters",
+    "lonely_isle",
+    "hidden_cove",
+    "waveworn_island",
+    "salt_marshes",
+    "black_reef",
+    "bootleggers_hideaway_a",
+    "bootleggers_hideaway_b",
+    "deep_one_grotto_a",
+    "deep_one_grotto_b",
+    "cyclopean_ruins_a",
+    "cyclopean_ruins_b",
+    "temple_of_the_union_a",
+    "temple_of_the_union_b",
+    "underwater_cavern",
+    "tidal_pool",
+    "underground_river"
+  ],
+  "story_assets": [],
+  "setup_notes": "Churning Waters 以完全淹没状态入场，Fishing Vessel 故事资产置于其上，调查员从船内开始。5个岛礁地点洗混后以未揭示面（Devil Reef）入场，且不与 Churning Waters 相邻——岛礁与 Churning Waters 之间按卡面连接图标相连（已列入 connections；岛礁未揭示面为共用的金色圆盘图标，与 Churning Waters 底部第1个图标对应）。潮汐隧道牌堆=8张 Tidal Tunnel 背面卡（2x Underwater Cavern、2x Tidal Pool、2x Underground River、2x Bootlegger's Hideaway a/b 版本），未揭示面向上洗混置于遭遇牌堆旁。Unfathomable Depths 准备：Cyclopean Ruins、Deep One Grotto、Temple of the Union 各随机1个版本（不看）移出游戏，其余3张 UD 背面卡面朝下备用。岛礁揭示时按卡面效果将隧道/UD 地点放到与其相邻的位置（正交相邻即相连；这些洞穴地点卡面无连接图标，故 connections 为空列表）。密谋1版本：战役日志 Memories Recovered 含 a battle with a horrifying devil 时用 v.I，否则用 v.II（本文件默认收录 v.I）。钥匙：紫/白/黑面朝上备用，黄/绿/红/蓝面朝下洗混。每位调查员牌库中的 Elina Harper 移出游戏至本剧本结束。"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "edge_of_the_earth",
+  "name": "Edge of the Earth",
+  "name_cn": "地极秘境",
+  "type": "official",
+  "scenarios": [
+    "ice_and_death_part_1",
+    "ice_and_death_part_2",
+    "ice_and_death_part_3",
+    "to_the_forbidden_peaks",
+    "city_of_the_elder_things",
+    "endless_night",
+    "fatal_mirage",
+    "the_heart_of_madness_part_1",
+    "final_night"
+  ],
+  "investigators": [
+    "daniela_reyes",
+    "norman_withers",
+    "monterey_jack",
+    "lily_chen",
+    "bob_jenkins"
+  ]
+}

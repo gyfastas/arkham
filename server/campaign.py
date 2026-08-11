@@ -273,7 +273,16 @@ def campaign_scenarios(campaign_id: str) -> list[str]:
 
 
 def campaign_name_cn(campaign_id: str) -> str:
-    names = {"core": "狂热者之夜", "dunwich_legacy": "敦威治遗产", "path_to_carcosa": "卡尔克萨之路"}
+    names = {
+        "core": "狂热者之夜",
+        "dunwich_legacy": "敦威治遗产",
+        "path_to_carcosa": "卡尔克萨之路",
+        "the_forgotten_age": "遗忘时代",
+        "the_circle_undone": "万象祭环",
+        "the_dream_eaters": "食梦者",
+        "innsmouth_conspiracy": "印斯茅斯阴谋",
+        "edge_of_the_earth": "地极秘境",
+    }
     return names.get(campaign_id, campaign_id)
 
 

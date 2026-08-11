@@ -1,0 +1,137 @@
+{
+  "id": "the_vanishing_of_elina_harper",
+  "name": "The Vanishing of Elina Harper",
+  "name_cn": "艾琳娜·哈珀失踪案",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 1,
+  "encounter_sets": [
+    "the_vanishing_of_elina_harper",
+    "agents_of_dagon",
+    "fog_over_innsmouth",
+    "the_locals",
+    "chilling_cold",
+    "locked_doors",
+    "nightgaunts",
+    "arkham"
+  ],
+  "scenario_set": "the_vanishing_of_elina_harper",
+  "start_location": "innsmouth_square_a",
+  "initial_locations": [
+    "innsmouth_square_a",
+    "marsh_refinery_a",
+    "innsmouth_harbour_a",
+    "fish_street_bridge_a",
+    "first_national_grocery_a",
+    "gilman_house_a",
+    "the_little_bookshop_a"
+  ],
+  "set_aside": [
+    "the_rescue",
+    "frantic_pursuit",
+    "thomas_dawson",
+    "elina_harper",
+    "hunting_nightgaunt",
+    "winged_one"
+  ],
+  "connections": {
+    "innsmouth_square_a": [
+      "marsh_refinery_a",
+      "gilman_house_a",
+      "first_national_grocery_a",
+      "fish_street_bridge_a",
+      "new_church_green_a",
+      "innsmouth_jail_a"
+    ],
+    "marsh_refinery_a": [
+      "innsmouth_square_a",
+      "fish_street_bridge_a",
+      "innsmouth_harbour_a",
+      "new_church_green_a",
+      "the_house_on_water_street_a"
+    ],
+    "innsmouth_harbour_a": [
+      "marsh_refinery_a",
+      "fish_street_bridge_a",
+      "shoreward_slums_a",
+      "the_house_on_water_street_a"
+    ],
+    "fish_street_bridge_a": [
+      "innsmouth_square_a",
+      "marsh_refinery_a",
+      "innsmouth_harbour_a",
+      "shoreward_slums_a",
+      "innsmouth_jail_a"
+    ],
+    "first_national_grocery_a": [
+      "innsmouth_square_a",
+      "gilman_house_a",
+      "the_little_bookshop_a",
+      "new_church_green_a",
+      "esoteric_order_of_dagon_a"
+    ],
+    "gilman_house_a": [
+      "innsmouth_square_a",
+      "the_little_bookshop_a",
+      "first_national_grocery_a",
+      "sawbone_alley_a",
+      "innsmouth_jail_a"
+    ],
+    "the_little_bookshop_a": [
+      "gilman_house_a",
+      "first_national_grocery_a",
+      "sawbone_alley_a",
+      "esoteric_order_of_dagon_a"
+    ],
+    "esoteric_order_of_dagon_a": [
+      "the_little_bookshop_a",
+      "first_national_grocery_a"
+    ],
+    "sawbone_alley_a": [
+      "the_little_bookshop_a",
+      "gilman_house_a"
+    ],
+    "shoreward_slums_a": [
+      "fish_street_bridge_a",
+      "innsmouth_harbour_a"
+    ],
+    "the_house_on_water_street_a": [
+      "marsh_refinery_a",
+      "innsmouth_harbour_a"
+    ],
+    "innsmouth_jail_a": [
+      "gilman_house_a",
+      "innsmouth_square_a",
+      "fish_street_bridge_a"
+    ],
+    "new_church_green_a": [
+      "marsh_refinery_a",
+      "innsmouth_square_a",
+      "first_national_grocery_a"
+    ]
+  },
+  "act_deck": [
+    "the_search_for_agent_harper"
+  ],
+  "agenda_deck": [
+    "decrepit_decay",
+    "growing_suspicion"
+  ],
+  "locations": [
+    "innsmouth_square_a",
+    "marsh_refinery_a",
+    "innsmouth_harbour_a",
+    "fish_street_bridge_a",
+    "first_national_grocery_a",
+    "gilman_house_a",
+    "the_little_bookshop_a",
+    "esoteric_order_of_dagon_a",
+    "sawbone_alley_a",
+    "shoreward_slums_a",
+    "the_house_on_water_street_a",
+    "innsmouth_jail_a",
+    "new_church_green_a"
+  ],
+  "story_assets": [],
+  "setup_notes": "arkham（午夜假面）遭遇组只取5张诡计卡（2x False Lead、3x Hunting Shadow），不取该组其他卡。密谋3（frantic_pursuit）与幕2（the_rescue）开局移出备用，不编入密谋/事件牌堆。双面参考卡 Finding Agent Harper（07062a）置于剧本参考卡旁：6个 Suspect 敌人与6个单面 Hideout 地点各随机抽1张，面朝下垫在其下（即真凶与真实藏身处，不要查看），其余10张洗混组成 Leads 牌堆；Hideout 地点通过 Leads 牌堆在游戏中进场（连接已按卡面图标列入 connections）。"
+}

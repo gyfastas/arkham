@@ -1,0 +1,115 @@
+{
+  "id": "a_light_in_the_fog",
+  "name": "A Light in the Fog",
+  "name_cn": "雾中之光",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 6,
+  "encounter_sets": [
+    "a_light_in_the_fog",
+    "creatures_of_the_deep",
+    "flooded_caverns",
+    "rising_tide",
+    "syzygy",
+    "striking_fear"
+  ],
+  "scenario_set": "a_light_in_the_fog",
+  "start_location": "falcon_point_gatehouse",
+  "initial_locations": [
+    "falcon_point_gatehouse",
+    "falcon_point_cliffside",
+    "lighthouse_stairwell",
+    "lighthouse_keepers_cottage",
+    "lantern_room"
+  ],
+  "set_aside": [
+    "oceiros_marsh",
+    "worth_his_salt",
+    "taken_captive",
+    "sunken_grotto_a",
+    "sunken_grotto_b",
+    "sunken_grotto_c",
+    "shrine_to_hydra",
+    "deep_one_nursery",
+    "the_moon_room",
+    "sunken_archives",
+    "pump_room",
+    "underwater_cavern",
+    "tidal_pool"
+  ],
+  "connections": {
+    "falcon_point_gatehouse": [
+      "falcon_point_cliffside",
+      "lighthouse_stairwell",
+      "lighthouse_keepers_cottage"
+    ],
+    "falcon_point_cliffside": [
+      "falcon_point_gatehouse",
+      "lighthouse_stairwell",
+      "lighthouse_keepers_cottage"
+    ],
+    "lighthouse_stairwell": [
+      "falcon_point_gatehouse",
+      "falcon_point_cliffside",
+      "lighthouse_keepers_cottage",
+      "lantern_room",
+      "sunken_grotto_a"
+    ],
+    "lighthouse_keepers_cottage": [
+      "falcon_point_gatehouse",
+      "falcon_point_cliffside",
+      "lighthouse_stairwell"
+    ],
+    "lantern_room": [
+      "lighthouse_stairwell"
+    ],
+    "sunken_grotto_a": [
+      "lighthouse_stairwell",
+      "sunken_grotto_b"
+    ],
+    "sunken_grotto_b": [
+      "sunken_grotto_a",
+      "sunken_grotto_c"
+    ],
+    "sunken_grotto_c": [
+      "sunken_grotto_b"
+    ],
+    "shrine_to_hydra": [],
+    "deep_one_nursery": [],
+    "the_moon_room": [],
+    "sunken_archives": [],
+    "pump_room": [],
+    "underwater_cavern": [],
+    "tidal_pool": []
+  },
+  "act_deck": [
+    "the_lighthouse",
+    "finding_the_path",
+    "worshippers_of_the_deep"
+  ],
+  "agenda_deck": [
+    "fog_on_the_bay",
+    "unchanging_as_the_sea",
+    "the_tide_rises",
+    "terror_at_falcon_point"
+  ],
+  "locations": [
+    "falcon_point_gatehouse",
+    "falcon_point_cliffside",
+    "lighthouse_stairwell",
+    "lighthouse_keepers_cottage",
+    "lantern_room",
+    "sunken_grotto_a",
+    "sunken_grotto_b",
+    "sunken_grotto_c",
+    "shrine_to_hydra",
+    "deep_one_nursery",
+    "the_moon_room",
+    "sunken_archives",
+    "pump_room",
+    "underwater_cavern",
+    "tidal_pool"
+  ],
+  "story_assets": [],
+  "setup_notes": "连接规则写在各密谋卡面上：'同一行的所有地点两两相连'（connections 中 Falcon Point 一排4地据此互连；该排水面地点卡面无图标）。梯井↔灯光室、梯井↔沉没岩洞a、岩洞a↔b↔c 为卡面图标连接（已列入）。布局：4个 Falcon Point 地点同一行（顺序不限），Lantern Room 在 Lighthouse Stairwell 正上方。潮汐隧道：从隧道地点中移出2张 Underground River，其余全部面朝下备用（本剧本隧道池=5张本套海底地点+2x Underwater Cavern+2x Tidal Pool，其未揭示面均为 Tidal Tunnel）。双面故事卡 Captured!（07052a）入场置于剧本参考卡旁，故事面向上；其背面为 Holding Cells 地点（07052b，项目遭遇库无此卡；卡面上它与3个沉没岩洞图标互联，未列入 connections）。幕1/密谋1推进时：Lighthouse Basement（sunken_grotto_a 未揭示面）放到梯井正下方；Oceiros Marsh 携蓝色钥匙在小屋/由领队交战入场（视推进路径）。幕3/密谋3时揭示岩洞列（Upper→Lower→Final Depths 依次向下）并随机放隧道地点补足每行4个（灯光室所在行除外）。若战役日志记载圣物被带到灯塔（idol/mantle/headdress），相应 Relic 故事资产取出备用；reached Falcon Point after sunrise 与 the tide has grown stronger 各在密谋1a放1毁灭。钥匙：白/黑/蓝/黄/红面朝上备用，紫/绿面朝下洗混。"
+}

@@ -1,0 +1,101 @@
+{
+  "id": "heart_of_the_elders",
+  "name": "Heart of the Elders",
+  "name_cn": "久远腹地",
+  "type": "official",
+  "campaign": "the_forgotten_age",
+  "sequence": 5,
+  "encounter_sets": [
+    "pillars_of_judgment",
+    "heart_of_the_elders",
+    "rainforest",
+    "serpents",
+    "expedition",
+    "poison"
+  ],
+  "scenario_set": "heart_of_the_elders",
+  "start_location": "mouth_of_kn_yan",
+  "initial_locations": [
+    "mouth_of_kn_yan"
+  ],
+  "connections": {
+    "mouth_of_kn_yan": [
+      "temple_of_the_fang",
+      "overgrown_ruins",
+      "stone_altar"
+    ],
+    "time_wracked_woods": [
+      "path_of_thorns",
+      "river_canyon",
+      "rope_bridge"
+    ],
+    "path_of_thorns": [
+      "time_wracked_woods",
+      "river_canyon",
+      "serpents_haven",
+      "temple_of_the_fang"
+    ],
+    "river_canyon": [
+      "time_wracked_woods",
+      "path_of_thorns",
+      "rope_bridge",
+      "circuitous_trail",
+      "serpents_haven"
+    ],
+    "rope_bridge": [
+      "time_wracked_woods",
+      "river_canyon",
+      "circuitous_trail",
+      "overgrown_ruins"
+    ],
+    "serpents_haven": [
+      "path_of_thorns",
+      "river_canyon",
+      "temple_of_the_fang",
+      "stone_altar"
+    ],
+    "circuitous_trail": [
+      "river_canyon",
+      "rope_bridge",
+      "overgrown_ruins",
+      "stone_altar"
+    ],
+    "temple_of_the_fang": [
+      "path_of_thorns",
+      "serpents_haven",
+      "mouth_of_kn_yan"
+    ],
+    "overgrown_ruins": [
+      "rope_bridge",
+      "circuitous_trail",
+      "mouth_of_kn_yan"
+    ],
+    "stone_altar": [
+      "serpents_haven",
+      "circuitous_trail",
+      "mouth_of_kn_yan"
+    ]
+  },
+  "act_deck": [
+    "search_for_the_pattern",
+    "opening_the_maw"
+  ],
+  "agenda_deck": [
+    "the_jungles_heart",
+    "setting_sun"
+  ],
+  "locations": [
+    "mouth_of_kn_yan",
+    "path_of_thorns",
+    "river_canyon",
+    "rope_bridge",
+    "serpents_haven",
+    "circuitous_trail",
+    "time_wracked_woods",
+    "overgrown_ruins",
+    "temple_of_the_fang",
+    "stone_altar"
+  ],
+  "story_assets": [],
+  "setup_notes": "本文件为Part 1(剧本卡heart_of_the_elders 04205；act/agenda在pillars_of_judgment遭遇组)。mouth_of_kn_yan以The Cavern's Maw面朝上入场；战役日志中每已知一条路径放1个pillar标记。探索牌堆=6张单面丛林地点(path_of_thorns/river_canyon/rope_bridge/serpents_haven/circuitous_trail/time_wracked_woods)+pitfall/ants/lost_in_the_wilds/low_on_supplies各1张；再从overgrown_ruins/temple_of_the_fang/stone_altar中随机选1张洗入探索牌堆(若已mapped the way forward则改为直接入场)，其余2张移出游戏。共用的rainforest地点卡上黄色圆盘图标在本剧本对应time_wracked_woods，深绿等号图标对应mouth_of_kn_yan，紫色沙漏图标对应stone_altar。Act2(opening_the_maw)推进后翻入Part 2(knyan遭遇组)。"
+}

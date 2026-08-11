@@ -1,0 +1,219 @@
+{
+  "id": "fatal_mirage",
+  "name": "Fatal Mirage",
+  "name_cn": "致命幻景",
+  "type": "official",
+  "campaign": "edge_of_the_earth",
+  "sequence": 7,
+  "encounter_sets": [
+    "fatal_mirage",
+    "agents_of_the_unknown",
+    "left_behind",
+    "miasma",
+    "nameless_horrors",
+    "silence_and_mystery",
+    "tekelili",
+    "chilling_cold"
+  ],
+  "scenario_set": "fatal_mirage",
+  "start_location": "prison_of_memories",
+  "initial_locations": [
+    "prison_of_memories"
+  ],
+  "set_aside": [
+    "base_camp",
+    "deck_of_the_theodosia",
+    "university_halls",
+    "hedge_maze",
+    "deserted_station",
+    "coastal_waters",
+    "elder_chamber",
+    "riverview_theatre",
+    "standing_stones",
+    "airfield",
+    "alaskan_wilds",
+    "cluttered_dormitory",
+    "dyers_classroom",
+    "infirmary",
+    "dr_kenslers_office",
+    "moai_statues",
+    "ottoman_front",
+    "the_black_stone",
+    "memory_of_a_hunt_gone_awry",
+    "memory_of_a_lost_patient",
+    "memory_of_a_missing_father",
+    "memory_of_a_ravaged_country",
+    "memory_of_a_regretful_voyage",
+    "memory_of_an_unspeakable_evil",
+    "memory_of_a_terrible_discovery",
+    "memory_of_an_alien_translation",
+    "memory_of_an_unrequited_love",
+    "professor_william_dyer_b",
+    "danforth_b",
+    "eliyah_ashevak_b",
+    "dr_mala_sinha_b",
+    "avery_claypool_b",
+    "james_cookie_fredericks_b",
+    "dr_amy_kensler_b",
+    "roald_ellsworth_b",
+    "takada_hiroko_b"
+  ],
+  "connections": {
+    "prison_of_memories": [
+      "base_camp",
+      "deck_of_the_theodosia",
+      "university_halls",
+      "hedge_maze",
+      "deserted_station",
+      "coastal_waters",
+      "elder_chamber",
+      "riverview_theatre",
+      "standing_stones",
+      "airfield",
+      "alaskan_wilds",
+      "cluttered_dormitory",
+      "dyers_classroom",
+      "infirmary",
+      "dr_kenslers_office",
+      "moai_statues",
+      "ottoman_front",
+      "the_black_stone"
+    ],
+    "base_camp": [
+      "prison_of_memories",
+      "deck_of_the_theodosia",
+      "university_halls",
+      "coastal_waters",
+      "deserted_station",
+      "riverview_theatre"
+    ],
+    "deck_of_the_theodosia": [
+      "prison_of_memories",
+      "base_camp",
+      "university_halls",
+      "coastal_waters",
+      "hedge_maze",
+      "standing_stones"
+    ],
+    "university_halls": [
+      "prison_of_memories",
+      "base_camp",
+      "deck_of_the_theodosia",
+      "elder_chamber",
+      "riverview_theatre",
+      "standing_stones"
+    ],
+    "hedge_maze": [
+      "prison_of_memories",
+      "deck_of_the_theodosia",
+      "moai_statues"
+    ],
+    "deserted_station": [
+      "prison_of_memories",
+      "base_camp",
+      "alaskan_wilds"
+    ],
+    "coastal_waters": [
+      "prison_of_memories",
+      "base_camp",
+      "deck_of_the_theodosia",
+      "airfield",
+      "ottoman_front"
+    ],
+    "elder_chamber": [
+      "prison_of_memories",
+      "university_halls",
+      "cluttered_dormitory"
+    ],
+    "riverview_theatre": [
+      "prison_of_memories",
+      "base_camp",
+      "university_halls",
+      "dr_kenslers_office",
+      "infirmary"
+    ],
+    "standing_stones": [
+      "prison_of_memories",
+      "deck_of_the_theodosia",
+      "university_halls",
+      "the_black_stone",
+      "dyers_classroom"
+    ],
+    "airfield": [
+      "prison_of_memories",
+      "coastal_waters"
+    ],
+    "alaskan_wilds": [
+      "prison_of_memories",
+      "deserted_station"
+    ],
+    "cluttered_dormitory": [
+      "prison_of_memories",
+      "elder_chamber"
+    ],
+    "dyers_classroom": [
+      "prison_of_memories",
+      "standing_stones"
+    ],
+    "infirmary": [
+      "prison_of_memories",
+      "riverview_theatre"
+    ],
+    "dr_kenslers_office": [
+      "prison_of_memories",
+      "riverview_theatre"
+    ],
+    "moai_statues": [
+      "prison_of_memories",
+      "hedge_maze"
+    ],
+    "ottoman_front": [
+      "prison_of_memories",
+      "coastal_waters"
+    ],
+    "the_black_stone": [
+      "prison_of_memories",
+      "standing_stones"
+    ]
+  },
+  "act_deck": [
+    "shadow_of_the_past_v_i"
+  ],
+  "agenda_deck": [
+    "ethereal_tangle_v_i"
+  ],
+  "locations": [
+    "prison_of_memories",
+    "base_camp",
+    "deck_of_the_theodosia",
+    "university_halls",
+    "hedge_maze",
+    "deserted_station",
+    "coastal_waters",
+    "elder_chamber",
+    "riverview_theatre",
+    "standing_stones",
+    "airfield",
+    "alaskan_wilds",
+    "cluttered_dormitory",
+    "dyers_classroom",
+    "infirmary",
+    "dr_kenslers_office",
+    "moai_statues",
+    "ottoman_front",
+    "the_black_stone"
+  ],
+  "story_assets": [
+    "professor_william_dyer_c",
+    "danforth_c",
+    "eliyah_ashevak_c",
+    "dr_mala_sinha_c",
+    "avery_claypool_c",
+    "james_cookie_fredericks_c",
+    "dr_amy_kensler_c",
+    "roald_ellsworth_c",
+    "takada_hiroko_c"
+  ],
+  "bag_add": {},
+  "setup_notes": "第一部分只用密谋1/事件1，其余密谋/事件移出游戏（fatal_mirage_2/_3 为后续部分，分别用密谋2/事件2、密谋3/事件3，不另建文件）。Prison of Memories揭示面向上入场，其余18张Mirage地点场外搁置，经地点背面故事卡进场；Mirage地点无未揭示面，进场时其mirage关键词列出的卡每张已在场/胜利区则线索值-幻影值。9张Memory of...敌人与9张Resolute故事资产（_b版）场外搁置。印刷连接图标为单向印刷（外圈地点仅印Prison图标），connections按规则集\"任一方印有对方图标即相连\"取并集。困难/专家密谋1a +1/+2毁灭。"
+}

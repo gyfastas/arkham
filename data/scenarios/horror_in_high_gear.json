@@ -1,0 +1,67 @@
+{
+  "id": "horror_in_high_gear",
+  "name": "Horror in High Gear",
+  "name_cn": "全速恐惧",
+  "type": "official",
+  "campaign": "innsmouth_conspiracy",
+  "sequence": 5,
+  "encounter_sets": [
+    "horror_in_high_gear",
+    "fog_over_innsmouth",
+    "malfunction",
+    "shattered_memories",
+    "ancient_evils"
+  ],
+  "scenario_set": "horror_in_high_gear",
+  "start_location": null,
+  "initial_locations": [],
+  "set_aside": [
+    "falcon_point_approach",
+    "long_way_around"
+  ],
+  "connections": {
+    "falcon_point_approach": [],
+    "dimly_lit_road_a": [],
+    "dimly_lit_road_b": [],
+    "dimly_lit_road_c": [],
+    "cliffside_road_a": [],
+    "cliffside_road_b": [],
+    "fork_in_the_road_a": [],
+    "fork_in_the_road_b": [],
+    "intersection_a": [],
+    "intersection_b": [],
+    "tight_turn_a": [],
+    "tight_turn_b": [],
+    "tight_turn_c": [],
+    "desolate_road_a": [],
+    "desolate_road_b": [],
+    "long_way_around": []
+  },
+  "act_deck": [
+    "pedal_to_the_metal"
+  ],
+  "agenda_deck": [
+    "the_chase_is_on_v_i",
+    "hot_pursuit"
+  ],
+  "locations": [
+    "falcon_point_approach",
+    "dimly_lit_road_a",
+    "dimly_lit_road_b",
+    "dimly_lit_road_c",
+    "cliffside_road_a",
+    "cliffside_road_b",
+    "fork_in_the_road_a",
+    "fork_in_the_road_b",
+    "intersection_a",
+    "intersection_b",
+    "tight_turn_a",
+    "tight_turn_b",
+    "tight_turn_c",
+    "desolate_road_a",
+    "desolate_road_b",
+    "long_way_around"
+  ],
+  "story_assets": [],
+  "setup_notes": "道路牌堆：Falcon Point Approach 与全部6张 Long Way Around 均为 Old Innsmouth Road 背面地点的揭示面；将其取出后，Falcon Point Approach 与2张随机 Old Innsmouth Road 地点洗混垫在道路牌堆底部3张，其余 Old Innsmouth Road 地点随机置于其上（全部未揭示面向上）。道路牌堆顶3张入场，从左到右排成一列（左为'后方'、右为'前方'），调查员从乘载具开始：Thomas Dawson's Car / Elina Harper's Car 两辆载具，每名调查员选乘一辆（每辆最多2人、需指定司机，Running 面向上），有人的载具始于最前方地点，无人载具移出游戏。按玩家人数在最后方地点生成随机 Vehicle 敌人：1人=无，2-3人=1个，4人=2个。连接规则：每个地点仅与其正后方/正前方的地点相连，与同列其他地点不相连（卡面无连接图标，故 connections 为空；起始3地点依次为后-中-前链式相连）。Road X：带 Road X 的地点揭示时若其前方无地点，则将道路牌堆顶1张加上若干备用 Long Way Around（洗混，不足则全用）在其前方新建一列共X个地点。密谋1版本：战役日志含 the terror of Devil Reef is dead 时用 v.II，否则用 v.I（本文件默认收录 v.I）。"
+}

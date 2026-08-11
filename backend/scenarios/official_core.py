@@ -27,6 +27,17 @@ SCENARIO_DIR = PROJECT_ROOT / "data" / "scenarios"
 ENCOUNTER_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "core_set.json"
 DUNWICH_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "dunwich_legacy.json"
 CARCOSA_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "path_to_carcosa.json"
+TFA_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "the_forgotten_age.json"
+TCU_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "the_circle_undone.json"
+TDE_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "the_dream_eaters.json"
+TIC_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "innsmouth_conspiracy.json"
+EOE_DB_PATH = PROJECT_ROOT / "data" / "encounter_cards" / "edge_of_the_earth.json"
+
+
+def _load_encounter_db(path: Path) -> dict[str, dict[str, Any]]:
+    payload = _load_json(path)
+    cards: list[dict[str, Any]] = payload.get("cards", [])
+    return {c["id"]: c for c in cards}
 
 
 def _load_json(path: Path) -> Any:
@@ -37,41 +48,42 @@ def _load_json(path: Path) -> Any:
 
 def load_core_encounter_db() -> dict[str, dict[str, Any]]:
     """Return encounter/scenario card records keyed by `id`."""
-    payload = _load_json(ENCOUNTER_DB_PATH)
-    cards: list[dict[str, Any]] = payload.get("cards", [])
-    return {c["id"]: c for c in cards}
+    return _load_encounter_db(ENCOUNTER_DB_PATH)
 
 
 def load_dunwich_encounter_db() -> dict[str, dict[str, Any]]:
     """Return Dunwich Legacy encounter card records keyed by `id`."""
-    payload = _load_json(DUNWICH_DB_PATH)
-    cards: list[dict[str, Any]] = payload.get("cards", [])
-    return {c["id"]: c for c in cards}
+    return _load_encounter_db(DUNWICH_DB_PATH)
 
 
 def load_carcosa_encounter_db() -> dict[str, dict[str, Any]]:
     """Return Path to Carcosa encounter card records keyed by `id`."""
-    payload = _load_json(CARCOSA_DB_PATH)
-    cards: list[dict[str, Any]] = payload.get("cards", [])
-    return {c["id"]: c for c in cards}
+    return _load_encounter_db(CARCOSA_DB_PATH)
 
 
 def load_encounter_db_for_campaign(campaign: str) -> dict[str, dict[str, Any]]:
     """Load the appropriate encounter DB(s) based on campaign.
 
-    Dunwich scenarios reference some core encounter sets (ancient_evils, etc.),
-    so we merge both databases when loading Dunwich content. Path to Carcosa
-    likewise references core sets (rats, striking_fear, ...).
+    Non-core campaigns reference core encounter sets (rats, ancient_evils,
+    etc.), so we merge the core database with the campaign's own.
     """
-    if campaign == "dunwich_legacy":
-        db = load_core_encounter_db()
-        db.update(load_dunwich_encounter_db())
-        return db
-    if campaign == "path_to_carcosa":
-        db = load_core_encounter_db()
-        db.update(load_carcosa_encounter_db())
-        return db
-    return load_core_encounter_db()
+    if campaign == "core":
+        return load_core_encounter_db()
+    db = load_core_encounter_db()
+    cycle_loaders = {
+        "dunwich_legacy": (DUNWICH_DB_PATH,),
+        "path_to_carcosa": (CARCOSA_DB_PATH,),
+        "the_forgotten_age": (TFA_DB_PATH,),
+        "the_circle_undone": (TCU_DB_PATH,),
+        "the_dream_eaters": (TDE_DB_PATH,),
+        "innsmouth_conspiracy": (TIC_DB_PATH,),
+        "edge_of_the_earth": (EOE_DB_PATH,),
+    }
+    paths = cycle_loaders.get(campaign)
+    if paths:
+        for p in paths:
+            db.update(_load_encounter_db(p))
+    return db
 
 
 def load_scenario_definition(scenario_id: str) -> dict[str, Any]:
@@ -93,6 +105,16 @@ def apply_scenario_to_game(game, scenario_id: str, *, seed: int = 1, difficulty:
     # Official chaos bag for this campaign/difficulty (mutate in place so the
     # SkillTestEngine's bag reference stays valid; RNG seeding is untouched).
     game.chaos_bag.tokens = build_bag_tokens(campaign, difficulty)
+    # 剧本级 token 增补（官方战役指南 setup，如 TCU 各章加 tablet/elder_thing）
+    bag_add = scenario_def.get("bag_add") or {}
+    if isinstance(bag_add, list):
+        # 条件型（含 condition 的条目）暂不支持战役日志追踪——仅取无条件默认项
+        bag_add = {t: len(e.get("tokens", [])) for e in bag_add
+                   if isinstance(e, dict) and e.get("default")}
+    if bag_add:
+        from backend.models.enums import ChaosTokenType
+        for value, count in bag_add.items():
+            game.chaos_bag.tokens.extend([ChaosTokenType(value)] * int(count))
 
     s = game.state.scenario
     s.scenario_id = scenario_id
@@ -454,6 +476,32 @@ CARCOSA_SCENARIO_IDS = {
     "black_stars_rise", "dim_carcosa",
 }
 
+# 循环 3-7（TFA/TCU/TDE/TIC/EOE）的符号 token 效果由各循环模块实现：
+# backend/scenarios/tokens_{cyc}.py，导出 apply_token/on_fail/on_success。
+_CYCLE_TOKEN_MODULES = {
+    "the_forgotten_age": "tokens_tfa",
+    "the_circle_undone": "tokens_tcu",
+    "the_dream_eaters": "tokens_tde",
+    "innsmouth_conspiracy": "tokens_tic",
+    "edge_of_the_earth": "tokens_eoe",
+}
+
+_CYCLE_ENCOUNTER_MODULES = {
+    "the_forgotten_age": "encounters_the_forgotten_age",
+    "the_circle_undone": "encounters_the_circle_undone",
+    "the_dream_eaters": "encounters_the_dream_eaters",
+    "innsmouth_conspiracy": "encounters_innsmouth_conspiracy",
+    "edge_of_the_earth": "encounters_edge_of_the_earth",
+}
+
+
+def _cycle_for_scenario(scenario_id: str) -> str | None:
+    """按剧本定义 JSON 的 campaign 字段判断所属循环。"""
+    try:
+        return load_scenario_definition(scenario_id).get("campaign")
+    except Exception:
+        return None
+
 
 @dataclass
 class ScenarioController:
@@ -782,6 +830,17 @@ class ScenarioController:
             self._carcosa_token_effects(ctx, inv, pending, success_pending)
             if ctx.extra.get("token_text"):
                 ctx.game_state.log_effect(f"🎲 标记效果：{ctx.extra['token_text']}")
+            return
+
+        # 循环 3-7：按 campaign 分发到 tokens_{cyc}.apply_token
+        cyc = _cycle_for_scenario(sid)
+        mod_name = _CYCLE_TOKEN_MODULES.get(cyc)
+        if mod_name:
+            import importlib
+            mod = importlib.import_module(f"backend.scenarios.{mod_name}")
+            if mod.apply_token(self, ctx, inv, pending, success_pending):
+                if ctx.extra.get("token_text"):
+                    ctx.game_state.log_effect(f"🎲 标记效果：{ctx.extra['token_text']}")
             return
 
         if sid == "the_gathering":
@@ -1897,6 +1956,14 @@ class ScenarioController:
                 inv.actions_remaining -= 1
                 ctx.game_state.log_effect("💀 旧神之物效果：失去1行动")
             pending.discard("dc_elder_lose_action")
+
+        # 循环 3-7 失败结算
+        cyc = _cycle_for_scenario(self.s.scenario_id)
+        mod_name = _CYCLE_TOKEN_MODULES.get(cyc)
+        if mod_name and pending:
+            import importlib
+            mod = importlib.import_module(f"backend.scenarios.{mod_name}")
+            mod.on_fail(self, ctx, pending)
         if "lits_cultist_move_location" in pending:
             # 简化：找遭遇牌堆顶第一张地点卡放场并移动（找不到则跳过）
             scen = ctx.game_state.scenario
@@ -1936,6 +2003,14 @@ class ScenarioController:
             ctx.extra["bonus_damage"] = -999
             ctx.game_state.log_effect("🎲 异教徒效果：本次攻击不造成伤害")
             pending.discard("tpm_cultist_no_damage_hard")
+
+        # 循环 3-7 成功结算
+        cyc = _cycle_for_scenario(self.s.scenario_id)
+        mod_name = _CYCLE_TOKEN_MODULES.get(cyc)
+        if mod_name and pending:
+            import importlib
+            mod = importlib.import_module(f"backend.scenarios.{mod_name}")
+            mod.on_success(self, ctx, pending)
 
     def _clear_token_pending(self, ctx) -> None:
         self._token_pending.pop(ctx.investigator_id, None)
@@ -2197,6 +2272,16 @@ class ScenarioController:
         result = resolve_dunwich_treachery(self, card_id, investigator_id=investigator_id)
         if result is not None:
             return result
+
+        # 循环 3-7 遭遇卡（各自循环的 encounters 模块）
+        cyc = _cycle_for_scenario(self.s.scenario_id)
+        enc_mod = _CYCLE_ENCOUNTER_MODULES.get(cyc)
+        if enc_mod:
+            import importlib
+            mod = importlib.import_module(f"backend.scenarios.{enc_mod}")
+            result = mod.resolve_treachery(self, card_id, investigator_id=investigator_id, choice=choice)
+            if result is not None:
+                return result
 
         # Unknown/unsupported encounter card (location/etc) is ignored for now
         self.log(f"(未实现) 遭遇牌：{card_id}")

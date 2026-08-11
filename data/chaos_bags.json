@@ -212,6 +212,327 @@
           }
         }
       }
+    },
+    "the_forgotten_age": {
+      "name": "The Forgotten Age",
+      "name_cn": "遗忘时代",
+      "difficulties": {
+        "easy": {
+          "tokens": {
+            "+1": 2,
+            "0": 3,
+            "-1": 2,
+            "-2": 1,
+            "-3": 1,
+            "skull": 2,
+            "elder_thing": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "standard": {
+          "tokens": {
+            "+1": 1,
+            "0": 3,
+            "-1": 1,
+            "-2": 2,
+            "-3": 1,
+            "-5": 1,
+            "skull": 2,
+            "elder_thing": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "hard": {
+          "tokens": {
+            "+1": 1,
+            "0": 2,
+            "-1": 1,
+            "-2": 1,
+            "-3": 2,
+            "-4": 1,
+            "-6": 1,
+            "skull": 2,
+            "elder_thing": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "expert": {
+          "tokens": {
+            "0": 1,
+            "-1": 1,
+            "-2": 2,
+            "-3": 2,
+            "-4": 2,
+            "-6": 1,
+            "-8": 1,
+            "skull": 2,
+            "elder_thing": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        }
+      }
+    },
+    "the_circle_undone": {
+      "name": "The Circle Undone",
+      "name_cn": "万象祭环",
+      "difficulties": {
+        "easy": {
+          "tokens": {
+            "+1": 2,
+            "0": 3,
+            "-1": 2,
+            "-2": 1,
+            "-3": 1,
+            "skull": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "standard": {
+          "tokens": {
+            "+1": 1,
+            "0": 2,
+            "-1": 2,
+            "-2": 2,
+            "-3": 1,
+            "-4": 1,
+            "skull": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "hard": {
+          "tokens": {
+            "0": 2,
+            "-1": 2,
+            "-2": 2,
+            "-3": 1,
+            "-4": 1,
+            "-5": 1,
+            "skull": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "expert": {
+          "tokens": {
+            "0": 1,
+            "-1": 2,
+            "-2": 2,
+            "-3": 1,
+            "-4": 1,
+            "-6": 1,
+            "-8": 1,
+            "skull": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        }
+      }
+    },
+    "the_dream_eaters": {
+      "name": "The Dream-Eaters",
+      "name_cn": "食梦者",
+      "difficulties": {
+        "easy": {
+          "tokens": {
+            "+1": 2,
+            "0": 3,
+            "-1": 2,
+            "-2": 2,
+            "cultist": 1,
+            "tablet": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "standard": {
+          "tokens": {
+            "+1": 1,
+            "0": 2,
+            "-1": 2,
+            "-2": 2,
+            "-3": 1,
+            "-4": 1,
+            "cultist": 1,
+            "tablet": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "hard": {
+          "tokens": {
+            "0": 2,
+            "-1": 2,
+            "-2": 2,
+            "-3": 2,
+            "-4": 1,
+            "-5": 1,
+            "cultist": 1,
+            "tablet": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "expert": {
+          "tokens": {
+            "0": 1,
+            "-1": 2,
+            "-2": 2,
+            "-3": 1,
+            "-4": 2,
+            "-5": 1,
+            "-6": 1,
+            "-8": 1,
+            "cultist": 1,
+            "tablet": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        }
+      }
+    },
+    "innsmouth_conspiracy": {
+      "name": "The Innsmouth Conspiracy",
+      "name_cn": "印斯茅斯阴谋",
+      "difficulties": {
+        "easy": {
+          "tokens": {
+            "+1": 2,
+            "0": 3,
+            "-1": 3,
+            "-2": 2,
+            "skull": 2,
+            "cultist": 2,
+            "tablet": 2,
+            "elder_thing": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "standard": {
+          "tokens": {
+            "+1": 1,
+            "0": 2,
+            "-1": 3,
+            "-2": 2,
+            "-3": 1,
+            "-4": 1,
+            "skull": 2,
+            "cultist": 2,
+            "tablet": 2,
+            "elder_thing": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "hard": {
+          "tokens": {
+            "0": 3,
+            "-1": 2,
+            "-2": 2,
+            "-3": 2,
+            "-4": 1,
+            "-5": 1,
+            "skull": 2,
+            "cultist": 2,
+            "tablet": 2,
+            "elder_thing": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "expert": {
+          "tokens": {
+            "0": 1,
+            "-1": 2,
+            "-2": 2,
+            "-3": 2,
+            "-4": 2,
+            "-5": 1,
+            "-6": 1,
+            "-8": 1,
+            "skull": 2,
+            "cultist": 2,
+            "tablet": 2,
+            "elder_thing": 2,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        }
+      }
+    },
+    "edge_of_the_earth": {
+      "name": "Edge of the Earth",
+      "name_cn": "地极秘境",
+      "difficulties": {
+        "easy": {
+          "tokens": {
+            "+1": 3,
+            "0": 2,
+            "-1": 3,
+            "-2": 2,
+            "skull": 2,
+            "cultist": 1,
+            "tablet": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "standard": {
+          "tokens": {
+            "+1": 1,
+            "0": 2,
+            "-1": 3,
+            "-2": 2,
+            "-3": 1,
+            "-4": 1,
+            "frost": 1,
+            "skull": 2,
+            "cultist": 1,
+            "tablet": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "hard": {
+          "tokens": {
+            "0": 2,
+            "-1": 2,
+            "-2": 2,
+            "-3": 1,
+            "-4": 2,
+            "-5": 1,
+            "frost": 2,
+            "skull": 2,
+            "cultist": 1,
+            "tablet": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        },
+        "expert": {
+          "tokens": {
+            "0": 1,
+            "-1": 1,
+            "-2": 2,
+            "-3": 1,
+            "-4": 2,
+            "-5": 1,
+            "-7": 1,
+            "frost": 3,
+            "skull": 2,
+            "cultist": 1,
+            "tablet": 1,
+            "auto_fail": 1,
+            "elder_sign": 1
+          }
+        }
+      }
     }
   }
 }
